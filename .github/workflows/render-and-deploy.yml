@@ -1,59 +1,48 @@
-on:
+name: Render and deploy Quarto files
+on: 
   push:
-    branches: main
   pull_request:
-    branches: main
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    # Trigger once a week, on a Sunday (0)
-    - cron:  '0 0 * * 0'
-  workflow_dispatch:
-
-name: Build Site
 
 jobs:
-  build-website:
+  quarto-render-and-deploy:
     runs-on: ubuntu-latest
     env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RENV_PATHS_ROOT: ~/.local/share/renv
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      - uses: quarto-dev/quarto-actions/setup@v2
+    - uses: actions/setup-python@v2
 
+    - name: "Install Python deps"
+      run: |
+        pip install -r requirements.txt
 
-      # - name: Put pandoc in PATH
-      #   run: |
-      #     mkdir -p ~/.local/bin
-      #     ln -s $(dirname $(readlink -f  $(which quarto)))"/pandoc" ~/.local/bin/pandoc
-      #     /opt/quarto/bin/tools/pandoc --version
+    - uses: r-lib/actions/setup-r@v1
 
-      - name: Install pandoc
-        run: |
-          DEB=pandoc-2.19.2-1-amd64.deb
-          wget https://github.com/jgm/pandoc/releases/download/2.19.2/$DEB
-          sudo dpkg -i $DEB
-          pandoc --version
-        shell: bash
+    - name: "Install curl for Bioconductor"
+      run: |
+        sudo apt -y install libcurl4-openssl-dev
 
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          use-public-rspm: true
+    - name: "Install R Packages: Cache packages"
+      uses: actions/cache@v1
+      with:
+        path: ${{ env.RENV_PATHS_ROOT }}
+        key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-renv-
 
-      - uses: r-lib/actions/setup-renv@v2
+    - name: "Install R Packages: Restore packages"
+      shell: Rscript {0}
+      run: |
+        if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+        renv::restore()
 
-     # - name: Build site 🔧
-     #   run: Rscript scripts/build_website.R
-        
-      - name: Render Quarto Project
-        uses: quarto-dev/quarto-actions/render@v2
-        with:
-          to: html # If set, it will be equivalent to `quarto render --to html`
-          path: chenq.site # By default, the current working dir is used i.e `quarto render .`  
+    - name: "Install Quarto and render"
+      uses: pommevilla/quarto-render@main
 
-      - name: Deploy 🚀
-        if: github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@4.1.7
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: website/_site # The folder the action should deploy.
+    - name: "Deploy to gh-pages"
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site
