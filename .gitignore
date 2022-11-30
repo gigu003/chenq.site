@@ -7,7 +7,7 @@
 
 # User-specific files
 .Ruserdata
-/chenq.site
+chenq.site/
 
 # Example code in package build process
 *-Ex.R
@@ -38,3 +38,5 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+/.quarto/
