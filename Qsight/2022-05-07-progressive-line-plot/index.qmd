@@ -1,0 +1,93 @@
+---
+title: R语言gganimate包和ggplot2包绘制进度线图(progressive line plot)
+author: 陈琼
+date: '2022-05-07'
+slug: progressive-line-plot
+link: https://chenq.site/tech/2022-progressive-line-plot/
+categories:
+  - R
+  - 科研作图
+keywords:
+  - R语言
+  - progressive line plot
+  - 进度线图
+  - ggplot2
+  - gganimate
+description: '这篇文章将和大家分享如何利用ggplot2包和gganimate包绘制进度线图(progressive line plot)的过程，其实我所说的进度线图就是让线图按照某一个变量一点一点的显示出来，最后显示完全这样一种类型的动态图形。'
+---
+
+
+在利用R语言gganimate包绘制动态的进度线图之前，你需要先理解在R里利用ggplot2包绘制线图的过程。点击了解ggplot2绘制线图
+
+
+在理解了如何利用ggplot2包绘制线图之后，你可以利用gganimate包增加一个绘图函数transition\_...()，从而绘制动态变化图形。给transition\_...()函数提供一个frame变量，这个变量的值每变化一次，就会在图上绘制一次，从而实现图的动态变化。
+
+我们今天使用gganimate包的transition_reveal()函数，实现线图的动态显示过程。
+
+## 准备数据
+
+我们还是利用制作[普通线图](https://chenq.site/tech/2022-ggplot2-lineplot/)的年龄别癌症发病率数据，[点击链接，下载数据](age_incidence.csv)。
+
+对数据进行简单的处理，把合计性别的数据剔除，只显示男性和女性的癌症发病率随年龄变化的趋势即可，这样图里的内容不至于过多而显得杂乱。
+
+```{r}
+#| message: false
+#加载dplyr包
+library(dplyr)
+# 读取年龄别发病率数据
+data <- read.csv("age_incidence.csv")
+data <- data %>%
+  # 剔除合计性别数据
+  filter(area==1,!(sex=="合计"))
+#查看前6条数据结构情况
+head(data)
+```
+
+## 绘制进度线图(progressive line plot)
+
+我们利用线图(line plot)展示了河南省年龄别癌症发病率数据，而我们想让年龄别发病率数据随着年龄的增加而逐渐显示出来，从而让线图动起来，这样，年龄别发病率数据随着年龄变化的特点就能更直观的显示出来。
+
+想要达到这种效果，其实就是在利用ggplot2制作普通线图的基础上，再利用gganimate包的transition_reveal()函数，从而让线图按照某个变量逐步显示，我们这个例子就是按照x轴变量agegrp逐步显示，transition_reveal(agegrp)。
+
+为了让线图更文艺或者更美观，我们可以使用ggthemes包里面绘图的主题来进行图的美化。@fig-plot2
+
+**绘图代码如下：**
+
+```{r}
+#| warning: false
+#| message: false
+#| label: fig-plot2
+#| fig-cap: "河南省肿瘤登记地区癌症年龄别发病率"
+#| fig-align: "center"
+#| fig-height: 6
+#| fig-width: 8
+#| fig-alt: "进度线图 progressive line plot"
+
+#加载包
+library(ggplot2)
+library(gganimate)
+# 绘制动图
+data %>%
+  ggplot(aes(x=factor(agegrp), y=variable, group=sex, color=sex)) +
+  geom_line(linewidth=1.5) +
+  geom_point(linewidth=3) +
+  # 增加图标题
+  # 23rgvf ggrbthggtitle("河南省肿瘤登记地区癌症年龄别发病率") +
+  #annotate("text", x = 18, y = 0, label = "普癌新声")+
+  # 使用ggthemes包fivethirtyeight主题设置线图颜色
+  #scale_color_fivethirtyeight()+ 
+  # 应用fivethirtyeight主题
+  #theme_fivethirtyeight()+
+  # 不显示图例标题
+  theme_classic()+
+  theme(
+    legend.position = c(.1,.9),
+    legend.title = element_blank(),
+    legend.text = element_text(size=20),
+    text = element_text(family='Kai'))+
+  # 让线图按照agegrp变量逐步显示
+    transition_reveal(agegrp)
+
+anim_save("px.gif")
+```
+![进度线图](px.gif)

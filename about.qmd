@@ -1,0 +1,70 @@
+---
+title: 陈琼博士
+image: "profile.jpeg"
+image-alt: "Dr. Qiong Chen Profile"
+about:
+  id: heading
+  template: trestles
+  image-width: 10em
+  image-shape: round
+  links:
+    - icon: git
+      text: Gitee
+      href: https://gitee.com/gigu003
+    - icon: github
+      text: Github
+      href: https://github.com/gigu003
+    - icon: envelope
+      text: 给我发邮件
+      href: "mailto:chenqiong@hnccr.org.cn"
+---
+
+
+
+
+::: {#heading}
+> **陈琼**，博士，副主任医师，就职于河南省肿瘤医院。
+
+*I'm a Cancer Register working in [Henan Cancer Hospital](http://anti-cancer.com.cn/), and I earned my PhD from Department of Epidemiology in [Shanxi Medical University](http://www.sxmu.edu.cn/). 
+My current work often involves SAS and R coding, and cancer registration data report and visualization*. *I also have been invovled in the publication of the Cancer Registration Annual Report in Henan, China for several years, and I like sharing the experience, knowledge, and my life here*. 
+*I have two daughters and they are the greatest achievement I have made*.
+
+*这是陈琼的个人主页。2011年，我从[兰州大学](http://www.lzu.edu.cn/)流行病与卫生统计学专业毕业，就职于[河南省肿瘤医院](http://anti-cancer.com.cn/)，之后一直从事肿瘤登记工作*。
+*2015年中，我开始在山西医科大学攻读博士学位，于2018年顺利毕业，此后，继续从事肿瘤登记工作*。
+*我在工作中经常会涉及SAS以及R的编程，以实现肿瘤登记数据统计报告和可视化等。我喜欢电子产品、喜欢编程、爱折腾网页，用Blog记录点滴。*
+*我将在这里记录和分享一些工作、学习、生活相关的一些信息*。
+
+:::
+
+
+## 关于我
+
+### 教育背景
+
+- 2015.09 ~ 2018.07 山西医科大学 ，流行病与卫生统计学博士
+- 2008.09 ~ 2011.07 兰州大学，流行病与卫生统计学硕士
+- 2003.09 ~ 2008.07 兰州大学，预防医学学士
+
+### 工作经历
+- 2011.07 ~ 至今 河南省肿瘤医院 从事肿瘤流行病学，以人群为基础的肿瘤登记工作
+- 2012.08--2013.09 耶鲁大学，环境医学系，访问学者
+
+### 社会兼职
+- 中国抗癌协会癌症筛查与早诊早治专委会青年委员
+- 《中华肿瘤防治杂志》青年编委
+- 《河南省肿瘤登记年报》副主编
+
+
+## 关于本站
+
+本站点为本人创建的个人网站，初衷是通过本站分享肿瘤登记相关讯息和知识、SAS和R使用相关技巧、同时也会分享点肿瘤科普相关内容。
+
+1. **创建时间**：2020年3月12日
+
+1. **网站名称**：**[普癌新声](https://www.chenq.site/)**，本站点名称由[2021中国肿瘤学大会筹备办公室](https://cco2021.sciconf.cn/cn/web/index/)的李延昭老师所赐。本人于2021年临时调入[2021中国肿瘤学大会筹备办公室](https://cco2021.sciconf.cn/cn/web/index/)，并有幸与李老师共事，参与大会筹备工作。网站起名是对于我来说是一件很困难的事，并在一次闲聊中跟李老师提及此事，李老师根据建站初衷（肿瘤科普、分享知识等）给出了***普癌新声***的站点名称（经过一夜的深思熟虑），在此对李老师深表感谢。
+
+1. **建站初衷**：利用个人网站分享肿瘤登记相关技术知识、数据可视化、R和SAS使用技巧、肿瘤科普等，同时本站点也是展现和存档个人历程的空间。
+1. **建站工具**：本站点是由 R [blogdown包](https://github.com/rstudio/blogdown)和静态网站生成器 [Hugo](https://gohugo.io/) 生成的静态网站，本人从2020年左右开始使用R作为生产力工具，使用 R blogdown 建站也是学习使用R的一次尝试，从R转到SAS作为生产力工具，也是被R语法的弹性和自由度所折服，虽然在数据处理和管理方面还不能达到使用SAS的熟练程度，但是也在逐步熟悉中。
+
+1. **建站历程**：最初建立个人网站也是受到[谢益辉大神](https://yihui.org)的启发，最初使用的模板有[Xmin](https://github.com/yihui/hugo-xmin)、[hugo-them-jane](https://github.com/xianmin/hugo-theme-jane)、[hugo-theme-even](https://github.com/olOwOlo/hugo-theme-even),同时也借鉴了统计学教授[Rob J Hyndman](https://robjhyndman.com/)个人网站中的文章列表和seminar列表中的相关样式。整个2021年，本站点都处在不断调整样式和增加功能的过程中，最终在不断的尝试后，选择了[杨青青站长]()的CSS样式，然后我把这个CSS样式做成了本站点的Hugo Theme，并加入了支持Markdown基本语法，代码高亮，数学公式，页面单列和双列的切换等功能，然后通过Blogdown进行维护和撰写网站内容。
+

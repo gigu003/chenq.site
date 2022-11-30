@@ -1,0 +1,46 @@
+---
+title: '我家养的那些花儿'
+date: '2022-03-19'
+slug: picture
+link: https://chenq.site/post/2022-picture/
+categories: [生活,摄影]
+Keywords:
+  - 多肉植物
+  - 多肉摄影
+filters: 
+  - lightbox
+lightbox: auto
+---
+
+以前养多肉，总是养着养着，仅剩下一个个花盆。卖花的大妈给传授的要点就是少浇水，但是养多肉的要点不仅仅只是少浇水，还有其它一些特点。现在又到了春暖花开的季节，我又耐不住躁动买了一盆盆的多肉，这一次要好好学习一下这些养多肉的知识和技巧，希望能养的好一些！
+
+::: {layout-ncol=3}
+
+![钱串儿](img/qianchuan1.jpg){group="flowers" description="这是过年的时候采购的一批多肉，希望撑过一年。"}
+
+![钱串儿](img/qianchuan2.jpg){group="flowers" description="这是过年的时候采购的一批多肉，希望撑过一年。"}
+
+![钱串儿](img/qianchuan3.jpg){group="flowers" description="这是过年的时候采购的一批多肉，希望撑过一年。"}
+
+![菊花](img/juhua.jpg){group="flowers" description="商家说是可以过冬。"}
+
+![看樱桃](img/cherry.jpg){group="flowers" description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"}
+
+![海棠花](img/IMG_0023.jpg){group="flowers" description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"}
+
+
+![海棠花](img/IMG_0019.jpg){group="flowers" description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"}
+
+![海棠花](img/IMG_0013.jpg){group="flowers" description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"}
+
+![海棠花](img/IMG_0011.jpg){group="flowers" description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"}
+
+
+![海棠花](img/IMG_0010.jpg){group="flowers" description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"}
+
+
+![海棠花](img/IMG_0006.jpg){group="flowers" description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"}
+
+
+![海棠花](img/IMG_0005.jpg){group="flowers" description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"}
+:::

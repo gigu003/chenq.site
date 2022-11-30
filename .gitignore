@@ -7,6 +7,7 @@
 
 # User-specific files
 .Ruserdata
+/chenq.site
 
 # Example code in package build process
 *-Ex.R

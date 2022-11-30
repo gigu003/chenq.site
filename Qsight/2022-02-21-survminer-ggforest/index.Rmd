@@ -1,0 +1,103 @@
+---
+title: 利用survminer包ggforest函数制作用森林图，直观化展示比值比数据！
+date: '2022-02-21'
+slug: r-ggforest
+link: https://chenq.site/tech/2022-r-ggforest/
+categories: [R, 科研作图]
+keywords: [R,科研作图,ggforest]
+summary: '森林图是Meta分析中最常用的结果表达形式，但是现在被用来表达一些比值比数据，使结果更形象的展示出来。一起来看看如何高效的制作森林图吧！'
+---
+
+## 什么是森林图？
+
+森林图是在平面直角坐标系中，以一条垂直的无效线（横坐标刻度为1或0）为中心，用平行于横轴的多条线段描述了每个被纳入研究的效应量和可信区间（confidence interval，CI），用一个棱形（或其它图形）描述了多个研究合并的效应量及可信区间。它非常简单和直观地描述了Meta分析的统计结果，是Meta分析中最常用的结果表达形式。
+
+## 实现森林图的方法有哪些？
+在R语言里，实现森林图的方法有很多，比如forestplot包，ggforestplot包，以及survminer包等都可以，当然也可以利用ggplot2包实现更自由的绘制森林图。
+
+今天我们主要讲讲利用survminer包的ggforest函数绘制森林图
+
+这个包有个优势就是可以直接利用模型拟合输出的结果直接输出森林图，不用另外单独准备数据。比如我们可以用survival包来做预后的影响因素分析，然后利用survminer包里的ggforest函数读取survival包拟合的模型结果绘制森林图。
+
+## 如何安装survminer包？
+照例两种方式，要么从R CRAN的不同镜像上安装，要么从github上安装。
+
+第一种方式：从CRAN镜像上安装
+```r
+install.packages("survminer")
+```
+
+第二种方式：从github上安装
+
+```r
+# 首先判断运行环境里是否安装了devtools包，如果没有安装的话，需要先安装devtools包
+if(!require(devtools)) install.packages("devtools")
+# 利用devtools从github上安装survminer包
+devtools::install_github("kassambara/survminer", build_vignettes = FALSE))
+```
+
+## 准备数据
+加载survival包时，自动加载了colon数据框，我们就可以利用这个数据来拟合预后风险。
+
+首先加载survival包，并查看一下colon数据框的基本情况
+```{r}
+# 加载dplyr包进行数据处理
+library(dplyr)
+library(survival)
+# 看下colon数据的结构
+head(colon)
+```
+
+
+## 首先我们对colon数据预处理一下
+我们对sex变量和differ变量因子化，并增加中文值标签。
+
+如果我们想在森林图里显示交互作用项，那么就需要提前处理数据，比如我们想看surg和nodes的交互作用，我们可以把两者的相乘项加入模型里。
+```{r}
+# 预处理colon数据框
+colon <- colon%>%
+  mutate(sex=factor(sex, labels = c("女性", "男性")),
+         differ=factor(differ,labels = c("高分化", "中分化", "低分化")),
+         # 为模型拟合准备交互项
+         interaction=surg*nodes,
+         surg= factor(surg,label=c("非手术组","手术组"))
+         )
+```
+
+
+## 利用colon数据来拟合预后风险
+```{r}
+model <- coxph(Surv(time, status) ~ sex +  differ + surg + nodes + interaction, data = colon )
+summary(model)
+```
+
+## 利用ggforest函数输出森林图
+
+ggforest函数可以自由定义的参数不多，主要有以下几个:
+
+1. model= modeldata，指定ggforest函数读取的模型拟合数据
+1. data= colon，指定输出模型的数据
+1. cpositions= c(0.01,0.1,0.3)，指定森林图的前三列分别离最左侧有多远，0为最左侧，1为最右侧，大家可以根据放入模型的变量的值标签的长度来自行定义。
+1. refLable=“参照组”，用来指定比值比指标参考组的显示标签，默认的为Reference，我们可以给它调整为参照组。
+1. fontsize=0.7，调整图里的文字大小。
+1. noDigits=2，设置小数点的位数，默认值为2。
+1. main=“图标的标题”，设置图的标题。
+
+```{r,fig.alt="森林图_科研作图"}
+library(survminer)
+ggforest(model = model,
+         data = colon,
+         cpositions = c(0.01,0.1,0.3),
+         refLabel = "参照组",
+         fontsize=0.7,
+         noDigits=2,
+         main = "预后因素回归分析")->pp
+ggsave("forest.png")
+```
+
+![森林图](forest.png)
+好了，森林图出来了，如果你想对输出的图进一步处理的话，可以用本站前面介绍的magick包或者其它包进行更加个性化的调整和处理。
+
+## 小结
+
+利用survminer包ggforest函数制作森林图既有优势也有缺点，优势是可以利用前期拟合的模型输出结果，不用再专门整理数据，当然有优势也就有劣势，就是可以调整的参数较少，缺少更个性化的调整参数。

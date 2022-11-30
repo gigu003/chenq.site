@@ -1,0 +1,18 @@
+# options specified here will apply to all posts in this folder
+lang: en
+# freeze computational output
+# (see https://quarto.org/docs/projects/code-execution.html#freeze)
+freeze: true
+author: 陈琼
+
+title-block-banner: true
+title-block-banner-color: "#c8c8c8"
+title-block-categories: true
+
+format:
+  html:
+    code-fold: true
+    code-summary: "显示代码"
+    pagelayout: full
+
+

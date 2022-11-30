@@ -1,0 +1,93 @@
+---
+title: R语言wordcloud2包绘制词云图
+author: 陈琼
+date: '2022-05-06'
+slug: r-wordcloud2
+link: https://chenq.site/tech/2022-r-wordcloud2/
+categories:
+  - R
+  - 科研作图
+tags:
+  - 科研作图
+soft: R
+keywords:
+  - R语言
+  - wordcloud2包
+  - 词云图
+subtitle: '这篇文章介绍了利用R语言wordlcloud2包绘制词云图的过程。'
+feature: true
+---
+
+## 什么是词云图？
+词云图，也叫文字云，是对网络文本中出现频率较高的“关键词”予以视觉上的突出，出现越多，显示的字体越大，越突出，这个关键词也就越重要。让浏览者通过词云图一眼就可以快速感知最突出的文字，迅速抓住重点，了解主旨。
+![词云图](cover.png)
+
+## 安装wordcloud2包，以及主要参数介绍
+
+```r
+install.packages("wordcloud2")
+```
+
+wordcloud2包里绘制词云图的函数是wordcloud2(),而它常用的参数有以下几种：
+
+- data：词云生成数据，包含具体词语以及频率；
+- size：字体大小，默认为1，一般来说该值越小，生成的形状轮廓越明显；
+- fontFamily：字体，如‘微软雅黑’；
+- fontWeight：字体粗细，包含‘normal’，‘bold’以及‘600’；；
+- color：字体颜色，可以选择‘random-dark’以及‘random-light’，其实就是颜色色系；
+- backgroundColor：背景颜色，支持R语言中的常用颜色，如‘gray’，‘blcak’，但是还支持不了更加具体的颜色选择，如‘gray20’；
+- minRontatin与maxRontatin：字体旋转角度范围的最小值以及最大值，选定后，字体会在该范围内随机旋转；
+- rotationRation：字体旋转比例，如设定为1，则全部词语都会发生旋转；
+- shape：词云形状选择，默认是‘circle’，即圆形。还可以选择‘cardioid’（苹果形或心形），‘star’（星形），‘diamond’（钻石），‘triangle-forward’（三角形），‘triangle’（三角形），‘pentagon’（五边形）； 
+
+## 准备数据
+
+wordcloud2包默认自带了一个**英文词频**数据框，包含了两个变量 word:字符，freq：字符的出现频率，我们可以利用这个数据来做词云图的示例。
+
+```{r}
+library(wordcloud2)
+head(demoFreq)
+```
+
+还有一个中文词频数据框，包含两个变量 V2 词汇，V1词汇频率。
+```{r}
+head(demoFreqC)
+```
+
+## 绘制词云图
+
+绘制星形词云图，字体大小设置为1
+```{r}
+#| fig-width: 8
+#| fig-height: 8
+#| fig-align: "center"
+wordcloud2(demoFreq, size = 1,shape = "star")  
+```
+
+利用demoFreqC数据绘制中文词云图，设定字体为微软雅黑，设定颜色为random-light，背景色设为灰色。
+
+```{r}
+#| fig-width: 8
+#| fig-height: 8
+#| fig-align: "center"
+wordcloud2(demoFreqC,size = 2,fontFamily = "微软雅黑",color = "random-light", backgroundColor = "grey")  
+```
+
+绘制默认词云图，字体大小设置为2，字体旋转最小和最大均设置为-pi/2。
+```{r}
+#| fig-width: 8
+#| fig-height: 8
+#| fig-align: "center"
+wordcloud2(demoFreq, size = 2, minRotation = -pi/2, maxRotation = -pi/2) 
+```
+
+绘制词云图，字体大小设置为2，字体旋转最大和最小角度均为-pi/6，旋转比例设置为0.5，一半的字体会旋转。
+```{r}
+#| fig-width: 8
+#| fig-height: 8
+#| fig-align: "center"
+wordcloud2(demoFreq, size = 2, minRotation = -pi/6, maxRotation = -pi/6,rotateRatio = 0.5)
+```
+
+
+

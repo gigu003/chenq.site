@@ -1,0 +1,16 @@
+{
+  "hash": "e201c6e9b505429221f181051398daae",
+  "result": {
+    "markdown": "---\npagetitle: \"Qiong Chen - Publications\"\nlang: zh\nlisting:\n  - id: gallery\n    template: gallery.ejs\n    contents: gallery.yml\n  - id: firstauthor\n    contents: first-author\n    template: pubs.ejs\n    sort: \"date desc\"\n    categories: true\n    sort-ui: [title,date,author]\n    filter-ui: [date, title, author, details]\n    date-format: \"YYYY-MM-DD\"\n    page-size: 999\nlanguage:\n  listing-page-field-categories: \"文章类型\"\n---\n\n\n::: {#hero-banner .column-screen}\n::: {.grid .column-page}\n::: {.headline .g-col-lg-6 .g-col-12 .g-col-md-12}\n::: h1\nGallery\n:::\n\nQuarto can produce a wide variety of output formats. Here are some examples:\n\n-   [Articles & Reports](https://chenq.site/report/2021)\n-   [Presentations](#presentations)\n-   [Interactive Docs](#interactive-docs)\n-   [Websites](#websites)\n-   [Books](#books)\n:::\n\n\n::: {.cell .g-col-lg-6 .g-col-12 .g-col-md-12}\n\n```{.r .cell-code}\nsource(\"carousel.R\")\ncarousel(\"gallery-carousel\", 5000, \n         yaml.load_file(\"carousel.yml\"))\n```\n\n::: {.cell-output-display}\n```{=html}\n<div id=\"gallery-carousel\" class=\"carousel carousel-dark slide\" data-bs-ride=\"carousel\">\n<div class=\"carousel-indicators\">\n<button type=\"button\" data-bs-target=\"#gallery-carousel\" data-bs-slide-to=\"0\" aria-label=\"Slide 1\" class=\"active\" aria-current=\"true\"></button>\n<button type=\"button\" data-bs-target=\"#gallery-carousel\" data-bs-slide-to=\"1\" aria-label=\"Slide 2\"></button>\n</div>\n<div class=\"carousel-inner\">\n<div class=\"carousel-item active\" data-bs-interval=\"5000\">\n<a href=\"https://chenq.site/report/2021\">\n<img src=\"cover/2020.jpg\" class=\"d-block  mx-auto border\"/>\n</a>\n<div class=\"carousel-caption d-none d-md-block\">\n<p class=\"fw-light\">Articles and reports with Python and R</p>\n</div>\n</div>\n<div class=\"carousel-item\" data-bs-interval=\"5000\">\n<a href=\"https://chenq.site/report/2020\">\n<img src=\"cover/2019.jpg\" class=\"d-block  mx-auto border\"/>\n</a>\n<div class=\"carousel-caption d-none d-md-block\">\n<p class=\"fw-light\">Articles and reports with Python and R</p>\n</div>\n</div>\n</div>\n<button class=\"carousel-control-prev\" type=\"button\" data-bs-target=\"#gallery-carousel\" data-bs-slide=\"prev\">\n<span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n<span class=\"visually-hidden\">Prevoius</span>\n</button>\n<button class=\"carousel-control-next\" type=\"button\" data-bs-target=\"#gallery-carousel\" data-bs-slide=\"next\">\n<span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n<span class=\"visually-hidden\">Next</span>\n</button>\n</div>\n```\n:::\n:::\n\n\n:::\n:::\n\n::: {#gallery .column-page}\n:::\n\n\n\n\n\n\n\n## 出版书籍\n::: {layout-ncol=4}\n![](cover/2020.jpg)\n\n![](cover/2019.jpg)\n\n![](cover/2018.jpg)\n\n![](cover/2017.jpg)\n\n\n![](cover/2016.jpg)\n\n![](cover/2015.jpg)\n\n![](cover/2014.jpg)\n\n![](cover/2013.jpg)\n\n:::\n\n\n## 第一作者论文\n\n::: {#firstauthor}\n:::\n\n[共同作者论文](coauthor.qmd)\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

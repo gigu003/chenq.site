@@ -1,0 +1,43 @@
+---
+title: IARCcrgtools肿瘤登记数据逻辑核查软件
+author: 陈琼
+date: '2022-03-10'
+slug: iarccrgtools
+link: https://chenq.site/tech/2022-iarccrgtools/
+categories: [肿瘤登记,工具]
+keywords:
+  - 肿瘤登记
+  - 质量控制
+  - 国际癌症研究中心
+  - IARC
+---
+
+![iarccrgtool](cover.png)
+
+IARCcrgtools软件是IARC为了肿瘤登记开发的专用软件，用于*ICD不同版本编码的转换*和肿瘤登记数据的*逻辑错误检查*。
+
+肿瘤登记使用ICD-O-3编码体系收集肿瘤数据，为了转换或验证登记处收集到的这些数据，国际癌症研究中心开发了新的软件和程序，也就是我们今天介绍的IARCcrgtools，从而保证登记处收集的数据更准确或接近于真实。使从这些数据计算得来的流行病学相关指标如发病率、死亡率、生存率等更能真实的反映癌症发生的模式和趋势。
+
+IARCcrgtools使用了多种方法来检查登记处数据的有效性。其中一种广泛采用的方法就是所谓的内部一致性。肿瘤登记收集的不同变量之间存在一定的逻辑关系，比如年龄/发病部位、发病部位/形态学、性别/部位等，而IARCcrgtools则使用计算机算法来检测不可能或者不太可能的变量组合，以便登记处进一步核实这些数据。
+
+IARCcrgtools程序最初发表在癌症登记中的可比性和质量控制(Parkin等人，1994年)。最初创建这个程序是为了评估提交的五大洲癌症发病率数据(IARC Scientific Publications nos. 120, 143 and 155)。新程序是基于ICD-O-3的。
+
+目前最新版的程序则是基于ICD-O-3，考虑到ICD-O-3第一版的变化，发布了新的IARC/IACR检查程序。该程序为用户提供内部一致性检查，以检测不可能或不太可信的编码组合。
+
+## IARCcrgtools软件的主要功能
+IARCcrgtools软件的主要功能主要分为两类：（1）ICD9/10与ICD-O-2/ICD-O-3编码的相互转换；(2)用于肿瘤登记数据记录的逻辑核查功能。具体可打开软件查看相应菜单。
+
+## 使用教程
+作者在开展肿瘤登记工作的时候，对IARCcrgtools软件的技术文档进行了翻译，以及编写了相关的使用教程，从而方便肿瘤登记处的工作人员使用。
+- [技术文档下载地址(英文版)](http://www.iacr.com.fr/images/doc/TechRep42.pdf)
+- [技术文档下载地址(中文翻译版)](technical.pdf)
+- [IARCcrgtools使用教程](tutor.pdf)
+
+## 软件下载
+目前软件的最新版本为2.10版，你可以从下面的链接中下载软件或者相关技术文档。
+
+- [软件下载地址](http://www.iacr.com.fr/files/IARCcrgToolsSetup213.zip)
+
+
+
+

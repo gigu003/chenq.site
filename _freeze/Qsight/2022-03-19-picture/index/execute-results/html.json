@@ -1,0 +1,16 @@
+{
+  "hash": "c411e5ca8da8634070e5c6acac155016",
+  "result": {
+    "markdown": "---\ntitle: '我家养的那些花儿'\ndate: '2022-03-19'\nslug: picture\ncategories:\n  - 生活\n  - 摄影\ntags:\n  - 摄影\nKeywords:\n  - 多肉植物\n  - 多肉摄影\nfilters: \n  - lightbox\nlightbox: auto\n---\n\n\n以前养多肉，总是养着养着，仅剩下一个个花盆。卖花的大妈给传授的要点就是少浇水，但是养多肉的要点不仅仅只是少浇水，还有其它一些特点。现在又到了春暖花开的季节，我又耐不住躁动买了一盆盆的多肉，这一次要好好学习一下这些养多肉的知识和技巧，希望能养的好一些！\n\n\n\n::: {.cell lightbox='{\"group\":\"r-graph\",\"description\":\"We see our cars data above\"}'}\n\n```{.r .cell-code}\nplot(cars)\n```\n\n::: {.cell-output-display}\n![Plot about cars data](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

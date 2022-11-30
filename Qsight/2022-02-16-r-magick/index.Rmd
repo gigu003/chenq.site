@@ -1,0 +1,209 @@
+---
+title: 用过R magick包处理图片，你还会用PS来P图吗？
+date: '2022-02-16'
+slug: r-magick
+link: https://chenq.site/tech/2022-r-magick/
+categories: [R,科研作图]
+image: rabbit.gif
+summary: 'R的magick包提供了一系列简单有效的图片处理函数，让我们可以直接在R中进行类似photoshop的图片处理和操作，比如裁剪，改变大小、模糊、加边框、滤镜等，还能跟R生成的统计图一块处理... 有了它你还会用PS吗？'
+keywords: ["R","magick","图片处理","photoshop"]
+
+---
+
+R magick包在R中提供了一套简单而有效的图片处理工具，让你可以直接在R程序中进行相应的图片操作，比如更改大小、图片格式，以及一些滤镜效果等。
+
+## 安装magick包
+可以从CRAN上安装magick包
+```r
+install.packages("magick")
+```
+当然也可以从github上安装
+```r
+devtools::install_github('ropensci/magick')
+```
+## 使用magick包读取和存储图片或视频
+
+magick读取文件图片文件、pdf文件以及视频文件，读取文件的函数有以下几种：
+
+1. image_read( path,density = NULL,depth = NULL,strip = FALSE,coalesce = TRUE,defines = NULL)
+1. image_read_svg(path, width = NULL, height = NULL)
+1. image_read_pdf(path, pages = NULL, density = 300, password = "")
+1. image_read_video(path, fps = 1, format = "png")
+
+
+```{r,fig.alt="magick包处理图片"}
+#加载magick包
+library("magick")
+#读取图片到R工作环境
+logo <- image_read("logo:")
+# 显示图片信息，比如格式、宽、高、大小等
+image_info(logo)
+# 按照等比例重新调整图片宽度为300像素
+logo<-image_scale(logo, "300")
+# 再看看更改后的图片信息
+image_info(logo)
+# 把图片在R中显示
+plot(logo)
+```
+
+```r
+# 把图片另存起来
+image_write(logo, path = "logo.png", format = "png")
+```
+可以更改图片的格式
+```{r}
+logo1 <- image_convert(logo, "jpg")
+image_info(logo1)
+```
+
+## 图片转换操作
+
+magick提供一系列函数对图片进行裁剪以及编辑，主要有以下函数：
+
+1. image_crop(logo, "100x150+50"): 从图片logo左侧50像素处开始裁剪出宽为100像素高位150像素 的图片
+1. image_scale(logo, "200"): 按照等比例重新调整图片宽度为200像素
+1. image_scale(logo, "x200"): 按照等比例重新调整图片高度为200像素
+1. image_fill(logo, "blue", "+100+200"): 从x:100像素，y:200像素点开始填充蓝色，这个功能有点鬼，如果你想在图片的某个部位涂色，从图片的左上角开始算起，看这个部位距离左上点横向距离（x）和纵向距离（y）分别有多少像素。
+1. image_border(logo, "red", "20x10"): 为图片添加左右为20像素、上下为10像素的边框
+1. image_frame(logo,geometry = "25x25+6+6"): 为图片增加相框
+1. image_shadow(logo): 为图片增加阴影
+
+
+```{r,fig.alt="magick包处理图片，科研作图"}
+# 从左侧80像素开始裁剪120像素宽90像素高的图片
+image_crop(logo, "150x90+30")
+# 按照等比例重新调整图片宽度为200像素
+image_scale(logo, "200")
+#按照等比例重新调整图片高度为200像素
+image_scale(logo, "x200")
+#图片添加白色背景
+logo <- image_background(logo, 'white')
+#从x:200，y:150开始填充粉红色
+image_fill(logo, "pink", point = "+200+150")
+#从x:200，y:130开始填充红色
+image_fill(logo, "red", point = "+200+130", fuzz = 25)
+# 为图片添加左右为20像素、上下为10像素的边框
+image_border(logo, "#000080", "20x10")
+# 旋转图片90度
+image_rotate(image_scale(logo,"x200"), 90)
+# 增加滤镜模糊效果
+image_blur(image_scale(logo,"x300"), 10, 5)
+# 增加噪点
+image_noise(image_blur(image_scale(logo,"x300"), 10, 5))
+# 去色
+image_charcoal(image_scale(logo,"x300"))
+```
+
+## 添加文字注释
+
+```r
+# 给图片添加文字注释
+image_annotate(image_scale(logo,"x300"), "This is logo picture includedin magick package", size=15, gravity = "southeast", color="red")
+
+# 你可以文字注释放到图片的任何地方
+image_annotate(image_scale(logo,"x300"), "logo image", size=30, color="red", boxcolor = "pink", degrees = 30, location = "+30+120")
+```
+
+## magick包支持管道操作符"%"
+```{r,fig.alt="magick包处理图片，科研作图"}
+# 等比例调整图片高度为300像素
+image_scale(logo,"x300")%>%
+# 填充头像的胡子为红色，需要先大概估算胡子的中心位置具体图片左上点的横向具体和纵向距离分别为多少，
+# 作者大概估计为250像素和190像素。
+  image_fill("red", point = "+250+190", fuzz = 30)%>%
+# 为图片增加左右上下都为10像素的边框
+  image_border("pink", "10x10")%>%
+# 为图片增加模糊效果
+  image_blur(10, 5)%>%
+# 为图片增加噪点
+  image_noise()
+```
+
+## 图片向量，magick还支持图层叠加、图片拼接、动图处理等功能。
+```{r,fig.alt="magick包处理图片，科研作图"}
+# 先把一个gif的图片读进来
+rabbit <- image_read("rabbit.gif")
+# 查看一下这个gif向量有多少元素组成，也就是有多少张图片组成的。
+length(rabbit)
+```
+
+从上面的信息可以看出，这个gif图片由22张子图组成，比较大。由于我们需要反复处理此图并展现在html中，可能造成页面加载的图片太大导致网页打开太慢，我们可以把部分的子图删掉以缩小gif的大小。
+
+```{r,fig.alt="magick包处理图片，科研作图"}
+# 我们可以截取这个gif图片中部分元素组成新的gif（间隔3张子图提取一个子图（8个子图），组成新的gif）
+rabbit2<-rabbit[c(1,4,7,10,13,16,19,22)]
+# 先看看这个图是什么
+print(rabbit2)
+
+```
+
+下面我们再来试试给gif格式的图片加上处理效果吧，我们不妨试试给这个gif图片的天空加点颜色，然后在图片上再加上一条文字注释。
+
+```r
+rev(rabbit2)%>% 
+  # 我们给左上角天空中增加一个红色的条带
+   image_fill("red", point = "+50+50", fuzz = 5)%>%
+    # 我们给右上角天空中增加一个紫色的条带
+   image_fill("purple", point = "+450+50", fuzz = 5)%>%
+  # 然后我们再给图片增加一条注释语句，放到图片的右下角
+  image_annotate("This gif image  has been modified by Dr. Chen", size = 15, color = "white",gravity = "southeast")
+```
+
+## 图层叠加
+我们可以实现把gif图里的各层提取出来重新组合，或者添加进去新的图层，然后把他们以纵向排列或者横向排列的方式罗列出来，也可以重新做成gif动图。当然，在这个过程中，前面所说的哪些图片处理功能仍然可以实现。
+
+```{r,fig.alt="magick包处理图片，科研作图"}
+# 把logo图片和rabbit2图片的前两层合并成新的图片向量
+img <-c(logo,rabbit2[1:2])
+# 把图片等比例调整为300像素宽
+img <- image_scale(img, "300")
+# 现在显示以下目前的图片信息
+image_info(img)
+
+# 把img图片各层等比例调整为200像素高，然后横向罗列出来 
+image_append(image_scale(img, "x200"))
+# 把img图片各层等比例调整为200像素宽，然后纵向堆积
+image_append(image_scale(img, "200"), stack = TRUE)
+# 把imge图片向量各层重重新做成动图，以每秒1帧的速度播放
+image_animate(image_scale(img, "x200"), fps = 1, dispose = "previous")
+```
+
+## 读取pdf文件，转换成图片
+
+magick包提供的image_read_pdf()函数可以读取pdf文件，当读取pdf文件后，pdf文件被转化为一个向量，而pdf的每一页被转化为该向量的每一个元素。由于pdf在被读取时进行渲染，所以需要在读取函数中设置density参数。下面我们来试一试吧：
+
+这个功能是借助pdftools包来实现的
+```r
+# 先安装pdftools包
+install.packages("pdftools")
+```
+
+```{r,fig.alt="magick包处理图片，科研作图"}
+# 读取一个pdf文件，设置density为72
+kidney <- image_read_pdf('https://www.chenq.site/papers/kidney2015.pdf', density = 72)
+# 看看这个pdf的基本信息
+image_info(kidney)
+# 查看一下第一页的内容
+kidney[1]
+```
+
+
+## 图片合成
+
+```{r,fig.alt="magick包处理图片，科研作图"}
+
+# 默认的叠加方式直接放到前图的上面
+image_composite(kidney[1],image_scale(logo,"x275"), operator = "atop")
+
+# 通过blend的方式叠加
+image_composite(image_scale(logo,"x275"),  kidney[1], operator = "blend", compose_args="50")
+
+```
+
+
+## 推荐学习列表
+
+由于篇幅有限，本篇文章没有把所有的功能在此展现出来，下面列出了一些网络资源共大家参考。
+
+1. [The magick package: Advanced Image-Processing in R](https://ropensci.r-universe.dev/articles/magick/intro.html)
+1. [The magick package: Advanced Image-Processing in R](https://docs.ropensci.org/magick/articles/intro.html)

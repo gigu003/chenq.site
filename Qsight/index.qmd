@@ -1,0 +1,26 @@
+---
+pagetitle: "Qsight"
+listing:
+  type: grid
+  contents: "."
+  sort: "date desc"
+  categories: true
+  image-placeholder: Qsightpic.jpeg
+  image-height: 10em
+  grid-item-border: true
+  grid-item-align: left
+  sort-ui: true
+  filter-ui: [date, title, author, details]
+  date-format: "YYYY-MM-DD"
+  page-size: 6
+  feed: true
+page-layout: article
+language:
+  listing-page-field-categories: "分类"
+  title-block-author-single: "作者"
+  title-block-published: "更新"
+---
+
+# Qsight 博客
+
+分享肿瘤登记、R语言、SAS、网页制作知识和技巧。

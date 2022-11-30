@@ -1,0 +1,193 @@
+---
+title: 利用%for宏程序实现在开放代码中循环执行SAS代码
+author: Qiong Chen
+date: '2022-02-18'
+slug: for-macro
+link: https://chenq.site/tech/2022-for-macro/
+categories: [SAS, 宏程序]
+keywords:
+- SAS MACRO
+- FOR
+- 开放代码循环
+summary: '我们今天介绍一个有用的SAS宏：%FOR宏，它能实现在SAS开放代码中循环执行指定的SAS语句，解决了SAS不能在数据步或程序步之外执行循环语句的缺陷。'
+---
+
+SAS的循环功能实现相比较R语言而言一直是个弱点或者是不太方便，SAS可以通过Do语句或While语句在数据步或程序步内部实现循环功能，但是要想实现在在开放代码的循环功能，也就是说把数据步或者程序步嵌入到循环里的话就比较困难了。
+
+本文给大家介绍的%FOR宏程序正是解决了这个问题，实现了在数据步或程序步之外的开放代码中的循环功能。它由[University of California San Francisco](https://www.ucsf.edu/)的[Jim Anderson](https://www.ucsfhealth.org/providers/dr-james-anderson)博士编写的一套SAS宏程序。程序实现了利用简单的语法在*数据集*、*值列表*、*数字范围*以及*宏数组*中循环。
+
+**%FOR宏程序**
+
+- **%FOR宏程序**，[点击这里下载](https://chenq.site/tech/2022-for-macro/for.sas)
+- **操作说明**，[点击这里下载](https://www.lexjansen.com/wuss/2008/app/app04.pdf)
+
+
+下面让我们来学习一下，它是如何实现循环的吧。为了演示SAS的运行记录，我们在R里安装了[SASmarkdown包](tech/2022/02/r-sas/)（本文采用R Blogdown来写），以实现调用SAS的运行日志。
+
+
+```r
+library(SASmarkdown)
+```
+
+## 安装方法
+
+%for宏程序的使用方法和其它宏程序一样，首先需要运行编译后才能使用，可以使用%include语句，也可以通过options调用编译过的宏程序。
+
+```sas
+# 编译宏程序
+%include "\存放路径\for.sas"
+```
+
+## 基本语法
+%for宏程序是迭代语句用来重复执行sas语句，%for宏程序的基本语法如下：
+宏程序有三个参数被两个","隔开，三个参数分别为:
+
+1. 宏变量列表，用来存储数据源的每条记录值
+1. 数据源
+1. 每次循环执行的SAS代码
+
+```sas
+%for( 
+参数1:宏变量列表 ,
+参数2:数据源 ,
+参数3:SAS语句 
+  ) 
+```
+
+**执行过程：**
+
+首先，宏程序读取数据源参数2，然后对于数据源的每个观测值，把相应的观测值赋值给参数1的列出的宏变量，然后执行参数3里的sas语句。每次执行代码时，都会在SAS代码中进行宏变量替换。
+
+**%for宏可以使用四种数据源：**
+
+1. SAS数据集，关键字参数标识: “data=”
+1. 值列表，关键字参数标识: “value=”
+1. 数字范围，关键字参数标识: “to=”
+1. 宏数组，关键字参数标识: “array=”
+
+每种数据源都由不同的关键字参数标识：“data=”、“value=”、“to=”和。
+“array=”。每次调用%for宏程序只允许一个数据源。
+
+SAS语句关键字参数：“do=”，用来指定用来循环重复执行的SAS代码，注意SAS代码要包含在%nrstr()函数内，由它调用，例如：do=%nrstr(proc print data=sashelp.class;run;)。
+
+你可以了解[%nrstr()](https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.5/mcrolref/p0pnc7p9n4h6g5n16g6js048nhfl.htm)的意义。
+
+## 利用**数据集**执行循环
+
+数据集是SAS编程中的主要数据源。%FOR宏使用“data=”参数指定数据集数据源。数据集可以用“WHERE”和“RENAME”子句限定。对于数据集数据源，宏变量列表必须仅包含数据集变量名称。对于%for循环的每次迭代，对于宏变量列表中的每个名称，具有该名称的宏变量被设置为该观测的同名数据集变量的值。
+
+举个例子，我们首先建一个数据集名为temp，数据集中只有一个变量，变量名为：dataset，值为：cx，cy和cz。然后我们把temp数据集作为%for宏的数据源，然后利用数据集进行循环，%for宏对数据集的每个观测进行迭代，把每个观测的变量值赋值给参数1的宏变量列表中的宏变量，然后在每次迭代中执行sas语句。
+```sas
+%include "Y:\Website\newnew\content\tech\2022-02-18-for-macro\for.sas";
+data temp;
+input dataset $2.;
+cards;
+cx
+cy
+cz
+;
+run;
+proc print data=temp;run;
+
+%for(dataset, data=temp, do=%nrstr( 
+      data &dataset;
+      name="Qiong Chen";
+      gender="Male";
+      run;
+  ))
+```
+我们从sas的运行日志中可以看出，%for宏已经建立了三个数据集。
+
+## 利用**值列表**进行循环
+
+%FOR宏在值列表中迭代利用关键字参数标识: “value=”，值列表的各值之间用空格分隔。
+
+举个例子，我们利用值列表作为数据源，值列表有 a b c 三个值，然后%FOR宏在这三个值中迭代，然后执行sas语句，每次迭代分别生成一个数据集，总共三次迭代，分别生成a b c 三个数据集。值得注意的是sas语句需要由 do=%nrstr(sas语句)包括。
+
+```sas
+%include "Y:\Website\newnew\content\tech\2022-02-18-for-macro\for.sas";
+%for(dataset, values= a b c, do=%nrstr( 
+      data &dataset;
+      name="Qiong Chen";
+      gender="Male";
+      height=170;
+      run;
+  ))
+```
+
+我们从上面的sas日志中可以看出，%FOR宏生成了三个数据集，数据集名分别为a,b,c，每个数据集的内容都是一样的。
+
+## 利用**数值范围**进行循环
+
+%FOR宏利用**数值范围**进行循环的时候，关键字标识参数为：“ from=1, to=3, by=1 ”三个，以“,”分隔，其中 from和by可以省略，当省略的时候，取默认值为1。当from=1,to=5,by=1 表示数值范围为从1到5，每次增加1，实际的取值为1,2,3,4,5；当from=1,to=6,by=2 表是数值范围为从1到6，每次增加2，实际的数值为1,3,5。
+
+举个例子，我们利用**数值范围**迭代循环，数值范围的关键字标识参数分别为“from=1, to=6, by=2”，实际取值为1, 3, 5，在每次迭代中，把数值范围里的每个值赋值为宏变量num，然后执行sas语句。数值范围总共有3个值，也就是循环执行3次，分别赋值1，3，5给宏变量num，然后执行3次sas语句。
+
+下面的语句会生成三个数据集，分别为dataset1，dataset3，dataset5。
+```sas
+%include "Y:\Website\newnew\content\tech\2022-02-18-for-macro\for.sas";
+%for(num, from=1, to=6, by=2 , do=%nrstr( 
+      data dataset&num;
+      name="Qiong Chen";
+      gender="Male";
+      height=170;
+      weight=75;
+      run;
+  ))
+```
+
+## 利用宏数组进行循环
+
+宏数组是反映数据步长数组实用程序的SAS编程约定。宏数组有一个名称，由一组宏变量表示。每个数组元素都是一个宏变量，其名称是宏数组名称，后跟元素的索引号。例如，宏数组ABC，具有三个元素ABC1、ABC2和ABC3。数组的长度包含在宏变量中，其名称为宏数组名称。
+后跟字母N。对于上例，宏变量ABCN的值为3。以下是创建宏数组“meas”的SAS代码：
+```sas
+*create macro array of measures; 
+  %let meas1=PSI06; 
+  %let meas2=PSI09; 
+  %let meas3=PSI11; 
+  %let meas4=PSI14; 
+  %let measN=4;
+```
+一个或多个宏数组可以用作带有“array=”关键字的宏数据源的%。当%for变量列表出现在%for调用中时，变量的数量必须与宏数组的数量相同。要执行的迭代次数由第一个宏数组的长度(或“length=”参数(如果存在))定义。当提供多个宏数组时，所有宏数组的长度必须至少与第一个数组(或。
+“Length=”参数(如果存在)。
+```sas
+*combine reference datasets into single dataset; 
+  data allrefs; 
+      set %for(psi, array=meas, do=%nrstr( refs_&psi(in=in_&psi) )); 
+      %for(psi, array=meas, do=%nrstr(  
+          if in_&psi then measure = "&psi";  
+      )) 
+  run;
+```
+上面的示例两次调用%FOR宏。第一个调用为“set”语句创建数据集列表。第二个调用设置变量“MEASURE”以指示“allrefs”数据集中每个观测的数据集源。省略带有“array=”数据源的宏变量列表是使宏变量列表与“array=”列表相同的快捷方式。
+
+
+```sas
+*combine reference datasets into single dataset; 
+  data allrefs; 
+      set %for(array=meas, do=%nrstr( refs_&meas(in=in_&meas) )); 
+      %for(array=meas, do=%nrstr(  
+          if in_&meas then measure = "&meas";  
+      )) 
+  run;
+```
+
+
+
+## %FOR宏嵌套循环
+
+我们可以调用%FOR宏嵌套调用进行循环。
+
+在下面的示例中，外部的%for循环将擦除旧的zip文件(如果存在)并执行内部循环。内部%for循环将一个或多个报告文件添加到当前系统的zip文件中。最终结果是,生成多个zip文件，每个压缩文件包含多个报告文件。
+
+```sas
+%for(system zipfilepath, data=systems, do=%nrstr( 
+      x "del ""&zipfilepath"" "; 
+      %for(hospreport, data=hospitals(where=(system="&system")), do=%nrstr( 
+          x "pkzipc –add ""&zipfilepath"" ""&hospreport"" "; 
+      )) 
+  )) 
+```
+## 总结
+
+利用%FOR宏可以很容易的实现在开放环境循环执行SAS代码，给我们的工作带来很大的效率提升。希望我们今天的分享对你有所帮助。

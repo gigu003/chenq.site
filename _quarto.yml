@@ -1,0 +1,69 @@
+project:
+  type: website
+  output-dir: chenq.site
+  preview:
+    port: 4200
+    browser: false
+  resources:
+    - "*.pdf"
+    - baidu_verify_code-aDCTvXezZP.html
+
+website:
+  title: "普癌新声"
+  description: "一个公共卫生医师的个人网站"
+  favicon: favicon.png
+  twitter-card: true
+  open-graph: true
+  site-url: https://chenq.site
+  reader-mode: true
+  repo-branch: master
+  repo-url: "https://gitee.com/gigu003/chenq.site"
+  repo-actions: [issue,edit]
+  navbar:
+    background: primary
+    search: true
+    left:
+      - icon: house
+        href: index.qmd
+        text: Home
+      - icon: tropical-storm
+        href: /Qsight/
+        text: Qsight
+      - icon: journal-medical
+        href: /publications
+        text: 出版作品
+      - icon: file-slides-fill
+        href: /slides
+        text: Slides
+      - href: about.qmd
+        text: 关于
+    right:
+      - icon: rss
+        href: /Qsight/index.xml
+        aria-label: RSS 
+
+  page-footer:
+    border: true
+    left: "Copyright@Qiong Chen"
+    right:
+      - icon: github
+        href: https://github.com/gigu003
+        aria-label: Qiong@GitHub
+      - icon: rss
+        href: /Qsight/index.xml
+        aria-label: RSS     
+freeze: auto  
+comments:
+  hypothesis:
+    theme: clean
+format:
+  html:
+    code-line-numbers: true
+    code-block-border-left: "#31BAE9"
+    toc: true
+    theme: flatly
+    css: styles.css
+    include-after-body: js.html
+
+
+

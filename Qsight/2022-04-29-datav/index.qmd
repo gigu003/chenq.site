@@ -1,0 +1,124 @@
+---
+title: 利用阿里云DataV可视化平台数据以及ggplot2包的geom_sf函数绘制统计地图
+author: 陈琼
+date: '2022-04-29'
+slug: datav
+link: https://chenq.site/tech/2022-datav/
+categories:
+  - R
+  - 科研作图
+tags:
+  - 科研作图
+soft: R
+keywords:
+  - R语言
+  - 阿里云DataV
+  - 统计地图
+  - ggplot2
+  - geom_sf
+abstract: '这篇文章介绍了如何利用阿里云DataV可视化平台的行政区划边界数据绘制统计地图，用到R包包括sf包、ggplot2包等'
+feature: true
+---
+
+## 什么是统计地图？
+
+统计地图是以地图为背景，运用各种线纹、色彩、几何图形或实物形象来显示被研究现象的指标数值的大小及其在各地区的分布状况的一种统计图形。又称空间数列图和地理数列图。主要用于说明某些现象在地域上的分布，进行不同地区间的比较，反映现象所处的地理位置，以及它们的密集和分散程度。
+
+## 制作统计地图的难点有哪些？
+在流行病学研究中，往往需要通过以统计地图的形式来展示数据的空间分布情况。然而，我们一般很难找到合适的用于绘制统计地图的地图边界数据。要么找到的地图行政区划边界数据太旧，实际的行政区划边界已经发生了改变，要么就是找不到相应的数据。
+
+目前还有一些制作统计地图的网站，可以提供绘制简单的统计地图的功能，但是基本上这些服务都是以收费为目的地，不符合互联网上开源自由的精神，但是如果同学不缺钱，那就可以去试试哈！
+
+## 如何利用阿里云DataV可视化平台地图数据?
+
+![](preview.png)
+
+```{r}
+#| echo: false
+knitr::include_graphics("preview.png")
+```
+
+利用**sf包**读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。
+
+```{r}
+#| message: false
+library(dplyr)
+#加载sf包
+library(sf)
+#加载ggplot2包
+library(ggplot2)
+rm(list = ls())
+#利用read_sf函数读取json格式边界数据
+china1 = read_sf("https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json")
+
+#利用ggplot2包geom_sf()函数绘制地图
+china1%>%ggplot()+
+  geom_sf(fill=NA,color="black")+
+  theme_void()
+```
+
+也可以利用**geojsonio包**读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。
+
+```{r}
+#| message: false
+#加载geojsonio包
+library(geojsonio)
+#利用geojsonio包读取json格式数据为sp数据
+states <- geojsonio::geojson_read("https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json", what = "sp")
+#将地理空间数据转换为sf数据
+states2<- st_as_sf(states)
+#利用ggplot2包geom_sf()函数绘制地图
+states2%>%ggplot()+
+  geom_sf(fill=NA,color="black")+
+  theme_void()
+```
+
+可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在[https://geo.datav.aliyun.com/areas_v3/bound/410000.json](https://geo.datav.aliyun.com/areas_v3/bound/410000.json)，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在[https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json](https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json)。
+
+```{r}
+#读取仅有河南省省界的json数据
+hn1 = read_sf("https://geo.datav.aliyun.com/areas_v3/bound/410000.json")
+#读取具有河南省各市区边界的json数据
+hn2 = read_sf("https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json")
+#利用ggplot2包geom_sf函数绘制河南省省界
+hn1%>%ggplot()+
+  geom_sf(fill=NA,color="black")+
+  theme_void()
+#利用geom_sf函数绘制河南省省界及各市区边界
+hn2%>%ggplot()+
+  geom_sf(fill=NA,color="black")+
+  theme_void()
+#读取洛阳市各区县边界数据，并绘制地图
+ly = read_sf("https://geo.datav.aliyun.com/areas_v3/bound/410300_full.json")
+ly%>%ggplot()+
+  geom_sf(fill=NA,color="black")+
+  theme_void()
+```
+
+
+## 如何绘制统计地图？
+
+可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。
+
+实现代码如下：
+
+```{r}
+library(RColorBrewer)
+data<-data.frame(adcode=c( "110000", "120000" ,"130000" ,"140000", "150000" ,"210000", "220000" ,"230000", "310000" ,"320000", "330000" ,"340000" ,"350000" ,"360000", "370000", "410000", "420000", "430000" ,"440000" ,"450000" ,"460000", "500000" ,"510000" ,"520000" ,"530000" ,"540000" ,"610000", "620000", "630000", "640000", "650000" ,"710000" ,"810000", "820000" ,"100000"),
+                 num=c(391,2,13,28,60,40,884,230,12988,30,609,7,50,220,70,36,4,26,169,23,15,5,74,0,27,0,1,0,20,0,8,13742,59661,500,0))
+data$num[35] <- sum(data$num[1:34])
+
+china2<-china1%>%
+  left_join(data,by="adcode")%>%
+  mutate(case=cut(num,c(0,10,100,500,1000,10000,50000),include.lowest=T,right=F))
+
+ggplot(china2)+
+  geom_sf()+
+  theme_void()+
+  geom_sf(aes(fill=case))+
+  scale_fill_manual(
+    name="现存病例数",
+    values = brewer.pal(7,"Reds"),
+    labels=c("0-10","10-100","100-500", "500-1000","1000-10000","10000-50000",">50000"))
+```
+

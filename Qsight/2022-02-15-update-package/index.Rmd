@@ -1,0 +1,66 @@
+---
+title: R如何安装并更新R包？
+author: Qiong Chen
+date: '2022-02-15'
+slug: update-package
+link: https://chenq.site/tech/2022-update-package/
+categories: [R, R基础知识]
+keywords: [R,更新R包]
+---
+
+
+## 什么是R包？
+R包是按照一个格式定义的R函数、数据和编译代码的集合。当你安装了一个包的时候，它允许您使用在基本R函数集中不可用的命令。存储软件包的目录称为库(library)。R附带一套标准的软件包。
+
+## 如何安装R包？
+在了解如何安装R包之前，你需要了解在哪里可以找到R包。R社区大部分的R包可以在**[CRAN](https://cran.r-project.org/)**上找到，也有部分R包由开发者共享到github上。CRAN上的R包储存在不同地区的CRAN镜像上，在安装R包的时候，你可以选择离自己较近的CRAN镜像进行安装，这样安装速度会快一些。
+
+如果想在安装CRAN上的R包，可以使用install.packages()命令
+
+```r
+# 安装流行的ggplot2包
+install.packages("ggplot2")
+```
+如果想安装开发者共享到github上的R包，则需要使用devtools进行安装
+
+```r
+# 首先安装devtools包
+install.packages("devtools")
+# 使用devtools安装github上的R包
+devtools::install_github("Hemken/SASmarkdown")
+# 或者另外一种方式
+library("devtools")
+install_github("Hemken/SASmarkdown")
+```
+如果提前从CRAN上下载的R包存储在本地，也可以通过install.packages命令从本地安装R包
+
+```r
+install.packages('ggplots', repos = "file:///tmp/ryantester")
+```
+## 如何使用R包？
+一旦R包被安装之后，每次使用的时候只需要把它加载到目前的工作空间即可。加载R包的命令的有两个library()和require()命令
+```{r}
+# 加载SASmarkdown包
+library("SASmarkdown")
+#
+require("SASmarkdown")
+```
+
+## 我都安装了哪些包？
+如果你想用一个包，但是不确定是否已经安装，你可以installed.packages()命令查看一下都安装了哪些包。
+```r
+# 查看安装了哪些包
+installed.packages()
+```
+## 更新R包
+
+```r
+# 可以利用old.packages() 查看哪些包有更新的内容
+old.packages()
+# 更新所有可以更新的R包
+update.packages()
+# 更新所有可以更新的R包强制更新
+update.packages(ask = FALSE)
+```
+
+

@@ -1,0 +1,64 @@
+---
+pagetitle: "Qiong Chen - Publications"
+lang: zh
+listing:
+  - id: firstauthor
+    contents: firstauthor
+    template: pubs.ejs
+    sort: "date desc"
+    categories: true
+    sort-ui: [title,date,author]
+    filter-ui: [date, title, author, details]
+    date-format: "YYYY-MM-DD"
+    page-size: 999
+    feed: true
+  - id: coauthor
+    contents: coauthor
+    template: pubs.ejs
+    sort: "date desc"
+    categories: true
+    sort-ui: [title,date,author]
+    filter-ui: [date, title, author, details]
+    date-format: "YYYY-MM-DD"
+    page-size: 999
+    feed: true
+language:
+  listing-page-field-categories: "文章类型"
+---
+
+# 出版作品
+[&nbsp;CNKI作者&nbsp;](https://kns.cnki.net/kcms/detail/knetsearch.aspx?sfield=au&skey=陈琼&code=000033286925&v=L99VyCTXNqM33Iuyy_4c1O5o_4zvwh6EMZ8EGPBPbRz3L2FSij4Nu8tOzs8xmWMq){.badge .badge-large}
+ &nbsp;&nbsp;&nbsp;&nbsp;    [&nbsp;Google Scholar&nbsp;](https://scholar.google.com/citations?user=KKgW5AwAAAAJ&hl=zh-CN){.badge .badge-large}
+
+## 参编书籍
+::: {layout-ncol=4}
+
+![](cover/2020.jpg)
+
+![](cover/2019.jpg)
+
+![](cover/2018.jpg)
+
+![](cover/2017.jpg)
+
+![](cover/2016.jpg)
+
+![](cover/2015.jpg)
+
+![](cover/2014.jpg)
+
+![](cover/2013.jpg)
+
+:::
+
+
+## 第一作者论文
+
+::: {#firstauthor}
+:::
+
+
+## 共同作者论文
+
+::: {#coauthor}
+:::

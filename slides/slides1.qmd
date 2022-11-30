@@ -1,0 +1,25 @@
+---
+title: "河南省肿瘤发病死亡情况"
+author:  Qiong Chen
+affiliation: Henan cancer hospital
+date: 2022-11-16
+categories: 
+  - 肿瘤登记
+format: 
+  revealjs:
+    smaller: true
+    code-fold: true
+abstract: "本幻灯介绍了淮河流域项目"
+---
+
+## jfkdajkldja
+
+- jfkda
+- jkdfjal
+- djkafjdals 
+![](2020.jpg)
+## 发病死亡情况
+
+1. 防静电看见啊
+1. 封疆大吏科技fd
+1. 讲课费打架了

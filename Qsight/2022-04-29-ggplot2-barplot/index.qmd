@@ -1,0 +1,152 @@
+---
+title: 利用ggplot2包绘制barplot简单条形图
+author: 陈琼
+date: '2022-04-29'
+slug: ggplot2-barplot
+link: https://chenq.site/tech/2022-ggplot2-barplot/
+categories:
+  - R
+  - 科研作图
+tags:
+  - 科研作图
+  - ggplot2
+soft: R
+keywords:
+  - 条形图
+  - barplot
+  - R语言
+  - ggplot2
+summary: '本篇文章介绍如何在R语言里利用ggplot2包绘制barplot条形图，使用到的函数为geom_bar()函数。'
+feature: true
+---
+
+## 什么是条形图？
+
+条形图（bar chart）是用宽度相同的条形的高度或长短来表示数据多少的图形。条形图可以横置或纵置，纵置时也称为柱形图（column chart）。此外，条形图有简单条形图、复式条形图等形式。
+
+
+## 条形图有哪些类型
+
+- 简单条形图：
+- 簇状条形图和三维簇状条形图：簇状条形图比较各个类别的值。在簇状条形图中，通常沿垂直轴组织类别，而沿水平轴组织数值。三维簇状条形图以三维格式显示水平矩形，而不以三维格式显示数据。
+- 堆积条形图和三维堆积条形图：堆积条形图显示单个项目与整体之间的关系。三维堆积条形图以三维格式显示水平矩形，而不以三维格式显示数据。
+- 百分比堆积条形图和三维百分比堆积条形图：此类型的图表比较各个类别的每一数值所占总数值的百分比大小。三维百分比堆积条形图表以三维格式显示水平矩形，而不以三维格式显示数据。
+
+## 如何绘制barplot条形图？
+
+### 绘制简单barplot条形图
+如果你还没有安装ggplot2包，那么请先安装此包，如果已经安装，请忽略此步骤。
+```r
+install.packages("ggplot2")
+```
+
+首先，准备一下绘制barplot条形图所需的数据，我们就拿[河南省前10位癌症发病率数据](https://chenq.site/report/2020/)来举例。
+```{r}
+data <- data.frame(
+  site=c("肺癌","乳腺癌","胃癌","食管癌","肝癌","宫颈癌","结直肠癌","子宫体癌","甲状腺癌","卵巢癌"),
+  incid=c(53.35,39.25,35.74,31.11,29.15,19.24,18.15,9.99,7.92,7.04))
+head(data)
+```
+
+利用ggplot2包的geom_bar()函数绘制简单条形图
+
+```{r}
+#| label: "feature"
+#| message: false
+#| fig-cap: "简单条形图"
+#| fig-alt: "简单条形图"
+library(ggplot2)
+library(dplyr)
+plot <- data %>%
+  # 通过reorder(site,-incid)来改变条形的顺序，按照incid值的大小排列条形
+  ggplot(aes(x=reorder(site,incid), y=incid)) +
+  # 输出条形图，并把条形填充为蓝色
+  geom_bar(stat="identity",fill="steelblue")+
+  theme(text=element_text(family="STKaiti",size=14))
+ggsave("plot.png")
+```
+
+![条形图](plot.png)
+
+把垂直条形图转换为水平条形图，通过coord_fip()坐标轴转换函数实现。
+
+```{r}
+#| fig-cap: "条形图：坐标轴转置"
+#| fig-alt: "简单条形图"
+plot + 
+  # 转置坐标轴
+  coord_flip()
+```
+ggplot2包里有一些自带的主题，我们可以应用这些主题来快速的调整图的样式。
+
+```{r}
+plot+coord_flip()+
+  # 使用classic主题
+  theme_classic()+
+    theme(text=element_text(family="STKaiti",size=14))
+```
+
+然后我们进一步对条形图进行修饰，比如更改坐标轴标题、把x轴由底部调整至顶部显示、添加条形图数据标签等等。
+```{r}
+plot+
+  # 对坐标轴进行转置
+  coord_flip()+
+  # 使用经典的科研作图主题
+  theme_classic()+
+  # 设置x轴标题
+  xlab("癌种")+
+  # 设置y轴标题
+  ylab("发病率(1/10万)")+
+  # 把转置后的x轴位置调整到顶部显示
+  scale_y_continuous(position="right")+
+  # 添加数据标签
+  geom_text(aes(label=incid), size=3.5)+
+ theme(text=element_text(family="STKaiti",size=14))
+```
+
+### 绘制分组barplot条形图
+准备绘制分组条形图的数据，我们可以添加不同癌种的死亡率数据，分为两组：发病率和死亡率。
+```{r}
+data2 <- data.frame(
+  site=c("肺癌","乳腺癌","胃癌","食管癌","肝癌","宫颈癌","结直肠癌","子宫体癌","甲状腺癌","卵巢癌","肺癌","乳腺癌","胃癌","食管癌","肝癌","宫颈癌","结直肠癌","子宫体癌","甲状腺癌","卵巢癌"),
+  type=c(rep("发病率",10),rep("死亡率",10)),
+  value=c(53.35,39.25,35.74,31.11,29.15,19.24,18.15,9.99,7.92,7.04,41.22,9.92,27.87,23.36,24.46,6.05,8.85,2.16,0.76,3.00))
+head(data)
+```
+ggplot2在使用fill添加分组选项时，会默认绘制堆积条形图，我们可以使用position_dodge() 函数来改变默认情况，绘制分组条形图。
+```{r}
+data2%>%
+  ggplot(aes(x=reorder(site,value), y=value, fill=type)) +
+  # 使用position=position_dodge()改变堆积条图为分组条图
+  geom_bar(stat="identity",position=position_dodge())+
+  coord_flip()+
+  theme_classic()+
+  scale_y_continuous(position = "right")+
+  xlab("癌种")+
+  ylab("率(1/10万)")+
+  geom_text(aes(label=value),size=2,position=position_dodge(0.9))+
+    theme(text=element_text(family="STKaiti",size=14))->plot2
+plot2
+```
+
+我们可以改变条形图条的颜色，也可以修改图例的位置、标题等等。
+
+```{r}
+plot2+
+  # 修改条的颜色为以下两个色号
+  scale_fill_manual(values=c('#999999','#E69F00'))
+
+# 我们也可以使用color palettes改变分组条图的颜色
+plot2+
+scale_fill_brewer(palette="Blues")
+
+# 我们可以利用theme()对图例进行修改
+plot2+
+  theme(
+    # 修改图例的位置
+    legend.position = c(0.8,0.2),
+    # 取消图例的标题
+    legend.title=element_blank()
+  )
+```
+
