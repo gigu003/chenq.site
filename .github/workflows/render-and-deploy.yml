@@ -42,8 +42,14 @@ jobs:
 
       - uses: r-lib/actions/setup-renv@v2
 
-      - name: Build site 🔧
-        run: Rscript scripts/build_website.R
+     # - name: Build site 🔧
+     #   run: Rscript scripts/build_website.R
+        
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          to: html # If set, it will be equivalent to `quarto render --to html`
+          path: chenq.site # By default, the current working dir is used i.e `quarto render .`  
 
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
