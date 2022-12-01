@@ -10,7 +10,42 @@
 <atom:link href="https://gigu003.github.io/chenq.site/Qsight/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
 <generator>quarto-1.3.14</generator>
-<lastBuildDate>Thu, 24 Nov 2022 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 01 Dec 2022 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>git 如何设置忽略文件.gitignore</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-12-01-gitignore/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="忽略.ds_store" class="level2">
+<h2 class="anchored" data-anchor-id="忽略.ds_store">忽略.DS_Store</h2>
+<p>git按照工作环境里的.gitignore文件设置去忽略相应的文件，如果你的git环境里还没有创建.gitignore文件,则需要首先创建该文件。</p>
+<p>在terminal里创建.gitignore文件，并用vim添加两行。</p>
+<ul>
+<li>.DS_Store</li>
+<li>*/.DS_Store</li>
+</ul>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource git number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1">touch .gitignore</span>
+<span id="cb1-2">vim .gitignore</span></code></pre></div>
+<p>如果发现修改中仍然有.DS_Store文件，则可能原因是在早期的提交中就已将.DS_Store文件提交到repository了。如果一个文件已经被提交，那么就算这个文件已经被写到gitignor文件中，它的修改仍然会被追踪到。 所以我们需要手动将repository中的.DS_Store文件移除，可以使用以下命令移除：</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource git number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1">git rm --cached .DS_Store </span>
+<span id="cb2-2">#移除当前文件夹下的.DS_Store</span>
+<span id="cb2-3">find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch</span>
+<span id="cb2-4">#移除文件夹下的所有.DS_Store文件</span></code></pre></div>
+
+
+</section>
+
+ ]]></description>
+  <category>quarto</category>
+  <category>git</category>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-12-01-gitignore/index.html</guid>
+  <pubDate>Thu, 01 Dec 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-12-01-gitignore/ignore.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Mermaid 绘制流程图</title>
   <dc:creator>陈琼</dc:creator>
@@ -1344,19 +1379,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan1.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan1.jpg" class="lightbox" title="钱串儿" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" data-gallery="flowers"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan2.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan2.jpg" class="lightbox" title="钱串儿" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" data-gallery="flowers"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan3.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan3.jpg" class="lightbox" title="钱串儿" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" data-gallery="flowers"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
@@ -1364,19 +1399,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/juhua.jpg" class="lightbox" title="菊花" data-gallery="flowers" data-description="商家说是可以过冬。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/juhua.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/juhua.jpg" class="lightbox" title="菊花" data-description="商家说是可以过冬。" data-gallery="flowers"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/juhua.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">菊花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/cherry.jpg" class="lightbox" title="看樱桃" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/cherry.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/cherry.jpg" class="lightbox" title="看樱桃" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/cherry.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">看樱桃</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0023.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0023.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1384,19 +1419,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0019.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0019.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0013.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0013.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0011.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0011.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1404,19 +1439,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0010.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0010.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0006.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0006.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0005.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0005.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1645,58 +1680,6 @@ font-style: italic;">## 建立for循环</span></span>
   <guid>https://gigu003.github.io/chenq.site/Qsight/2022-03-10-iarccrgtools/index.html</guid>
   <pubDate>Thu, 10 Mar 2022 00:00:00 GMT</pubDate>
   <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-03-10-iarccrgtools/cover.png" medium="image" type="image/png" height="109" width="144"/>
-</item>
-<item>
-  <title>肿瘤登记质量控制的四类指标</title>
-  <dc:creator>陈琼</dc:creator>
-  <link>https://gigu003.github.io/chenq.site/Qsight/2022-03-10-qualitycontrol/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>肿瘤登记工作的宗旨就是为覆盖地区提供全部恶性肿瘤发病、死亡、生存等信息，描述恶性肿瘤疾病负担，从而为肿瘤防控政策的制定、恶性肿瘤流行病学研究以及防控效果评估提供信息。</p>
-<p>质量控制在实现上述肿瘤登记工作宗旨中至关重要，因为不可靠的数据将会为肿瘤防控政策制定、科学研究等提供错误的方向，从而影响肿瘤防控效果。</p>
-<p>目前我国肿瘤登记在评估数据质量方面主要采用可比性、完整性、有效性和时效性四类指标。</p>
-<section id="可比性" class="level2">
-<h2 class="anchored" data-anchor-id="可比性">可比性</h2>
-<p>肿瘤登记资料的可比性是指不同肿瘤登记处之间恶性肿瘤发病率、死亡率、生存率等是真实可比的，不同登记处之间率的不同是由于数据本身不同而产生，不是因为标准或质量不同而产生。</p>
-<p>可比性的一个基础先决条件是不同登记处采用一套通用的标准或定义，同时，可比性也是登记处执行国际标准化的编码、分类和记录以及报告项目定义的程度。</p>
-<p>常用的可比性指标有：发病的定义、偶发病例的诊断、分类与编码、多原发肿瘤标准、死亡数据等</p>
-</section>
-<section id="完整性" class="level2">
-<h2 class="anchored" data-anchor-id="完整性">完整性</h2>
-<p>肿瘤登记资料的完整性是指在登记处覆盖地区目标人群中<em>发现</em>的肿瘤发病病例与本地区现实世界所有的肿瘤发病病例的符合程度。即登记处数据库中包含目标人群内发生肿瘤病例数的程度（以百分数表示）。</p>
-<p>完整性是肿瘤登记数据的重要属性。</p>
-<p>在实际中，没有一个登记处的数据完整性能够达到理想的100%，我们登记处所需要做的就是使完整性尽量接近100%，以达到完整性的最大化。</p>
-<p>完整性达到最大化时，所计算的肿瘤发病率、死亡率等指标与登记处覆盖地区目标人群肿瘤发病率、死亡率的<strong>真实值</strong>最接近。</p>
-<p>因此，完整性是肿瘤登记质量控制过程中的重要部分，完整性的评价标准有：</p>
-<ul>
-<li>一定时间内稳定的发病率</li>
-<li>不同地区人群可比较的发病率</li>
-<li>年龄别发病率曲线</li>
-<li>儿童肿瘤的发病率</li>
-<li>组织学诊断确认的比例（MV%）</li>
-<li>死亡发病比（M:I）</li>
-<li>死亡医学证明确认的比例。</li>
-</ul>
-</section>
-<section id="有效性" class="level2">
-<h2 class="anchored" data-anchor-id="有效性">有效性</h2>
-<p>有效性是评价肿瘤登记质量的一个基本内容，是指登记病例中具有给定特征（比如，肿瘤部位、年龄、性别、诊断、编码）的真正属性的病例所占的比例。</p>
-<p>常用的指标：MV%、DCO%、原发部位不详或未特指的病例所占的百分比（other and unspecified, O&amp;U%）,年龄不明的百分比等。</p>
-</section>
-<section id="时效性" class="level2">
-<h2 class="anchored" data-anchor-id="时效性">时效性</h2>
-<p>肿瘤登记资料的时效性是肿瘤登记处收集、处理、报告足够可靠和完整的肿瘤资料的<em>及时性</em>。常常需要平衡<em>及时报告</em>和获取<em>完整、准确的肿瘤信息</em>的关系。病例发生后，各级登记机构要及时向上报告。医疗机构应在患者出院后1周内收集病例信息并在规定时间内上报。在每年的年末发现的病例，更要及时收集、登记、报告。未能及时报告的病例可能影响到年度分析报告–相当于漏报。</p>
-
-
-</section>
-
- ]]></description>
-  <category>肿瘤登记</category>
-  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-03-10-qualitycontrol/index.html</guid>
-  <pubDate>Thu, 10 Mar 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
