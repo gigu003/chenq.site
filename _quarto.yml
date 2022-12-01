@@ -13,10 +13,10 @@ website:
   favicon: favicon.png
   twitter-card: true
   open-graph: true
-  site-url: https://chenq.site
+  site-url: https://gigu003.github.io/chenq.site/
   reader-mode: true
   repo-branch: master
-  repo-url: "https://gitee.com/gigu003/chenq.site"
+  repo-url: "https://github.com/gigu003/chenq.site"
   repo-actions: [issue,edit]
   navbar:
     background: primary
