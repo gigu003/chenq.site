@@ -4,6 +4,7 @@ date: "2022-12-01"
 slug: gitignore
 categories: [ quarto, git ]
 keywords: [github, git, quarto, DS_Store]
+image: ignore.png
 ---
 
 ## 忽略.DS_Store
