@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>普癌新声</title>
-<link>https://chenq.site/Qsight/index.html</link>
-<atom:link href="https://chenq.site/Qsight/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://gigu003.github.io/chenq.site/Qsight/index.html</link>
+<atom:link href="https://gigu003.github.io/chenq.site/Qsight/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
 <generator>quarto-1.3.14</generator>
 <lastBuildDate>Thu, 24 Nov 2022 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Mermaid 绘制流程图</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-11-24-mindmap/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-11-24-mindmap/index.html</link>
   <description><![CDATA[ 
 
 
@@ -74,14 +74,14 @@
  ]]></description>
   <category>Mermaid</category>
   <category>流程图</category>
-  <guid>https://chenq.site/Qsight/2022-11-24-mindmap/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-11-24-mindmap/index.html</guid>
   <pubDate>Thu, 24 Nov 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-11-24-mindmap/preview.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-11-24-mindmap/preview.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>R语言gganimate包和ggplot2包绘制进度线图(progressive line plot)</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-05-07-progressive-line-plot/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-05-07-progressive-line-plot/index.html</link>
   <description><![CDATA[ 
 
 
@@ -157,7 +157,7 @@
 <div class="cell-output-display">
 <div id="fig-plot2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://chenq.site/Qsight/2022-05-07-progressive-line-plot/index_files/figure-html/fig-plot2-1.gif" class="img-fluid figure-img" alt="进度线图 progressive line plot"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-05-07-progressive-line-plot/index_files/figure-html/fig-plot2-1.gif" class="img-fluid figure-img" alt="进度线图 progressive line plot"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1: 河南省肿瘤登记地区癌症年龄别发病率</figcaption><p></p>
 </figure>
 </div>
@@ -165,7 +165,7 @@
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/Qsight/2022-05-07-progressive-line-plot/px.gif" class="img-fluid figure-img"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-05-07-progressive-line-plot/px.gif" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">进度线图</figcaption><p></p>
 </figure>
 </div>
@@ -176,14 +176,14 @@
  ]]></description>
   <category>R</category>
   <category>科研作图</category>
-  <guid>https://chenq.site/Qsight/2022-05-07-progressive-line-plot/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-05-07-progressive-line-plot/index.html</guid>
   <pubDate>Sat, 07 May 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-05-07-progressive-line-plot/px.gif" medium="image" type="image/gif"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-05-07-progressive-line-plot/px.gif" medium="image" type="image/gif"/>
 </item>
 <item>
   <title>R语言wordcloud2包绘制词云图</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-05-06-r-wordcloud2/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-05-06-r-wordcloud2/index.html</link>
   <description><![CDATA[ 
 
 
@@ -191,7 +191,7 @@
 
 <section id="什么是词云图" class="level2">
 <h2 class="anchored" data-anchor-id="什么是词云图">什么是词云图？</h2>
-<p>词云图，也叫文字云，是对网络文本中出现频率较高的“关键词”予以视觉上的突出，出现越多，显示的字体越大，越突出，这个关键词也就越重要。让浏览者通过词云图一眼就可以快速感知最突出的文字，迅速抓住重点，了解主旨。 <img src="https://chenq.site/Qsight/2022-05-06-r-wordcloud2/cover.png" class="img-fluid" alt="词云图"></p>
+<p>词云图，也叫文字云，是对网络文本中出现频率较高的“关键词”予以视觉上的突出，出现越多，显示的字体越大，越突出，这个关键词也就越重要。让浏览者通过词云图一眼就可以快速感知最突出的文字，迅速抓住重点，了解主旨。 <img src="https://gigu003.github.io/chenq.site/Qsight/2022-05-06-r-wordcloud2/cover.png" class="img-fluid" alt="词云图"></p>
 </section>
 <section id="安装wordcloud2包以及主要参数介绍" class="level2">
 <h2 class="anchored" data-anchor-id="安装wordcloud2包以及主要参数介绍">安装wordcloud2包，以及主要参数介绍</h2>
@@ -301,14 +301,14 @@ the       the   26</code></pre>
  ]]></description>
   <category>R</category>
   <category>科研作图</category>
-  <guid>https://chenq.site/Qsight/2022-05-06-r-wordcloud2/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-05-06-r-wordcloud2/index.html</guid>
   <pubDate>Fri, 06 May 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-05-06-r-wordcloud2/cover.png" medium="image" type="image/png" height="131" width="144"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-05-06-r-wordcloud2/cover.png" medium="image" type="image/png" height="131" width="144"/>
 </item>
 <item>
   <title>R语言ggplot2包和gganimate包绘制动态追逐条形图(chasing barchart)</title>
   <dc:creator> 陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-05-04-chasing-barchart/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-05-04-chasing-barchart/index.html</link>
   <description><![CDATA[ 
 
 
@@ -403,14 +403,14 @@ the       the   26</code></pre>
 <span id="cb5-9"><span class="fu" style="color: #4758AB;">animate</span>(plot2, <span class="at" style="color: #657422;">width =</span> <span class="dv" style="color: #AD0000;">800</span>, <span class="at" style="color: #657422;">height =</span> <span class="dv" style="color: #AD0000;">500</span>, <span class="at" style="color: #657422;">fps =</span> <span class="dv" style="color: #AD0000;">25</span>, <span class="at" style="color: #657422;">duration =</span> <span class="dv" style="color: #AD0000;">15</span>, <span class="at" style="color: #657422;">rewind =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-05-04-chasing-barchart/index_files/figure-html/unnamed-chunk-3-1.gif" class="img-fluid"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-05-04-chasing-barchart/index_files/figure-html/unnamed-chunk-3-1.gif" class="img-fluid"></p>
 </div>
 <details>
 <summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">anim_save</span>(<span class="st" style="color: #20794D;">"pp.png"</span>)</span></code></pre></div>
 </details>
 </div>
-<p><img src="https://chenq.site/Qsight/2022-05-04-chasing-barchart/pp.png" class="img-fluid" alt="追逐条形图"> ## 小结 我们已经成功的绘制了全球gdp前10的国家在过去40年里动态变化的过程，而只要按照我们前面的准备的数据格式整理自己的数据，那么也很容易地能套用这个代码，从而实现自己的动态条形图。</p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-05-04-chasing-barchart/pp.png" class="img-fluid" alt="追逐条形图"> ## 小结 我们已经成功的绘制了全球gdp前10的国家在过去40年里动态变化的过程，而只要按照我们前面的准备的数据格式整理自己的数据，那么也很容易地能套用这个代码，从而实现自己的动态条形图。</p>
 
 
 </section>
@@ -418,14 +418,14 @@ the       the   26</code></pre>
  ]]></description>
   <category>R</category>
   <category>科研作图</category>
-  <guid>https://chenq.site/Qsight/2022-05-04-chasing-barchart/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-05-04-chasing-barchart/index.html</guid>
   <pubDate>Wed, 04 May 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-05-04-chasing-barchart/pp.gif" medium="image" type="image/gif"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-05-04-chasing-barchart/pp.gif" medium="image" type="image/gif"/>
 </item>
 <item>
   <title>利用阿里云DataV可视化平台数据以及ggplot2包的geom_sf函数绘制统计地图</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-04-29-datav/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-04-29-datav/index.html</link>
   <description><![CDATA[ 
 
 
@@ -444,7 +444,7 @@ the       the   26</code></pre>
 <h2 class="anchored" data-anchor-id="如何利用阿里云datav可视化平台地图数据">如何利用阿里云DataV可视化平台地图数据?</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-datav/preview.png" class="img-fluid" width="1086"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-datav/preview.png" class="img-fluid" width="1086"></p>
 </div>
 </div>
 <p>利用<strong>sf包</strong>读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。</p>
@@ -466,7 +466,7 @@ the       the   26</code></pre>
 <span id="cb1-13">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>也可以利用<strong>geojsonio包</strong>读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。</p>
@@ -485,7 +485,7 @@ the       the   26</code></pre>
 <span id="cb2-10">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000.json">https://geo.datav.aliyun.com/areas_v3/bound/410000.json</a>，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json">https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json</a>。</p>
@@ -502,7 +502,7 @@ the       the   26</code></pre>
 <span id="cb3-8">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>显示代码</summary>
@@ -512,7 +512,7 @@ the       the   26</code></pre>
 <span id="cb4-4">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>显示代码</summary>
@@ -523,7 +523,7 @@ the       the   26</code></pre>
 <span id="cb5-5">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -553,7 +553,7 @@ the       the   26</code></pre>
 <span id="cb6-17">    <span class="at" style="color: #657422;">labels=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"0-10"</span>,<span class="st" style="color: #20794D;">"10-100"</span>,<span class="st" style="color: #20794D;">"100-500"</span>, <span class="st" style="color: #20794D;">"500-1000"</span>,<span class="st" style="color: #20794D;">"1000-10000"</span>,<span class="st" style="color: #20794D;">"10000-50000"</span>,<span class="st" style="color: #20794D;">"&gt;50000"</span>))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
@@ -563,14 +563,14 @@ the       the   26</code></pre>
  ]]></description>
   <category>R</category>
   <category>科研作图</category>
-  <guid>https://chenq.site/Qsight/2022-04-29-datav/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-04-29-datav/index.html</guid>
   <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-04-29-datav/preview.png" medium="image" type="image/png" height="83" width="144"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-datav/preview.png" medium="image" type="image/png" height="83" width="144"/>
 </item>
 <item>
   <title>利用ggplot2包绘制barplot简单条形图</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-04-29-ggplot2-barplot/index.html</link>
   <description><![CDATA[ 
 
 
@@ -631,7 +631,7 @@ the       the   26</code></pre>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/plot.png" class="img-fluid figure-img"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-ggplot2-barplot/plot.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">条形图</figcaption><p></p>
 </figure>
 </div>
@@ -646,7 +646,7 @@ the       the   26</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="简单条形图" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="简单条形图" width="672"></p>
 <p></p><figcaption class="figure-caption">条形图：坐标轴转置</figcaption><p></p>
 </figure>
 </div>
@@ -662,7 +662,7 @@ the       the   26</code></pre>
 <span id="cb6-4">    <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>然后我们进一步对条形图进行修饰，比如更改坐标轴标题、把x轴由底部调整至顶部显示、添加条形图数据标签等等。</p>
@@ -685,7 +685,7 @@ the       the   26</code></pre>
 <span id="cb7-14"> <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -729,7 +729,7 @@ the       the   26</code></pre>
 <span id="cb10-12">plot2</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>我们可以改变条形图条的颜色，也可以修改图例的位置、标题等等。</p>
@@ -741,7 +741,7 @@ the       the   26</code></pre>
 <span id="cb11-3">  <span class="fu" style="color: #4758AB;">scale_fill_manual</span>(<span class="at" style="color: #657422;">values=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'#999999'</span>,<span class="st" style="color: #20794D;">'#E69F00'</span>))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>显示代码</summary>
@@ -750,7 +750,7 @@ the       the   26</code></pre>
 <span id="cb12-3"><span class="fu" style="color: #4758AB;">scale_fill_brewer</span>(<span class="at" style="color: #657422;">palette=</span><span class="st" style="color: #20794D;">"Blues"</span>)</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>显示代码</summary>
@@ -764,7 +764,7 @@ the       the   26</code></pre>
 <span id="cb13-8">  )</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
@@ -775,14 +775,14 @@ the       the   26</code></pre>
  ]]></description>
   <category>R</category>
   <category>科研作图</category>
-  <guid>https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-04-29-ggplot2-barplot/index.html</guid>
   <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/plot.png" medium="image" type="image/png" height="103" width="144"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-04-29-ggplot2-barplot/plot.png" medium="image" type="image/png" height="103" width="144"/>
 </item>
 <item>
   <title>利用R语言Rmd文档+blogdown包制作个人网站</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-04-26-website/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-04-26-website/index.html</link>
   <description><![CDATA[ 
 
 
@@ -828,7 +828,7 @@ the       the   26</code></pre>
 <p>如果你喜欢<a href="https://themes.gohugo.io/themes/mainroad/">MainRoad</a>的模板， 可以点击<strong>Download</strong>，会进入模板在github的存储页面，然后把模板的路径复制下来<strong>Vimux/Mainroad</strong>，后面会用到。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/Qsight/2022-04-26-website/theme.png" class="img-fluid figure-img"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-26-website/theme.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Hugo 主题</figcaption><p></p>
 </figure>
 </div>
@@ -840,7 +840,7 @@ the       the   26</code></pre>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-26-website/first.png" class="img-fluid" width="533"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-26-website/first.png" class="img-fluid" width="533"></p>
 </div>
 </div>
 <ul>
@@ -848,7 +848,7 @@ the       the   26</code></pre>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-26-website/second.png" class="img-fluid" width="532"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-26-website/second.png" class="img-fluid" width="532"></p>
 </div>
 </div>
 <ul>
@@ -862,7 +862,7 @@ the       the   26</code></pre>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-26-website/third.png" class="img-fluid" width="536"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-26-website/third.png" class="img-fluid" width="536"></p>
 </div>
 </div>
 <ul>
@@ -870,7 +870,7 @@ the       the   26</code></pre>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-26-website/preview.png" class="img-fluid" width="1128"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-26-website/preview.png" class="img-fluid" width="1128"></p>
 </div>
 </div>
 </section>
@@ -879,7 +879,7 @@ the       the   26</code></pre>
 <p>点击 Addins – New Post ，填入题目，作者，标签或者分类，在Format 选项里可以选择使用普通的markdown(不能运行R程序)、.Rmd和.Rmarkdown(可以运行R程序)。</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-26-website/newpost.png" class="img-fluid" width="621"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-26-website/newpost.png" class="img-fluid" width="621"></p>
 </div>
 </div>
 
@@ -890,14 +890,14 @@ the       the   26</code></pre>
  ]]></description>
   <category>R</category>
   <category>个人网站</category>
-  <guid>https://chenq.site/Qsight/2022-04-26-website/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-04-26-website/index.html</guid>
   <pubDate>Tue, 26 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-04-26-website/theme.png" medium="image" type="image/png" height="72" width="144"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-04-26-website/theme.png" medium="image" type="image/png" height="72" width="144"/>
 </item>
 <item>
   <title>利用Rmd代码选项输出动态金字塔图</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-04-25-rmd/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-04-25-rmd/index.html</link>
   <description><![CDATA[ 
 
 
@@ -999,7 +999,7 @@ font-style: italic;">## 建立for循环</span></span>
 ℹ Please use the `linewidth` argument instead.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-25-rmd/index_files/figure-html/unnamed-chunk-3-.gif" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-25-rmd/index_files/figure-html/unnamed-chunk-3-.gif" class="img-fluid" width="672"></p>
 </div>
 </div>
 
@@ -1009,14 +1009,14 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>R</category>
   <category>科研作图</category>
-  <guid>https://chenq.site/Qsight/2022-04-25-rmd/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-04-25-rmd/index.html</guid>
   <pubDate>Mon, 25 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-04-25-rmd/cover.png" medium="image" type="image/png" height="89" width="144"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-04-25-rmd/cover.png" medium="image" type="image/png" height="89" width="144"/>
 </item>
 <item>
   <title>如何利用病理诊断比例（MV%）指标评价人群肿瘤登记数据质量？</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-04-17-mv/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-04-17-mv/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1030,7 +1030,7 @@ font-style: italic;">## 建立for循环</span></span>
 <p>当肿瘤登记处的MV%值与区域标准（比如国家的平均水平）进行比较的时候，如果登记处MV%值与区域标准差距较大，并且该地区的医疗服务能力与水平以及病理诊断能力与区域平均水平没有很大差异的时候，则提示该登记处数据的有效性或者完整性可能存在问题。如果登记处MV%值小于区域标准值，并且差距较大，提示登记处收集的数据有效性较差；而如果登记处MV%值大于区域标准值，并且差距较大，则提示登记处数据的完整性可能存在问题。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/Qsight/2022-04-17-mv/namv.png" class="img-fluid figure-img"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-17-mv/namv.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">病理诊断比例</figcaption><p></p>
 </figure>
 </div>
@@ -1040,7 +1040,7 @@ font-style: italic;">## 建立for循环</span></span>
 <p>在多年的连续监测中，一个登记处的MV%应该是相对稳定的，不会出现大的波动，因为一个地区的医疗服务水平或者病理诊断能力是相对稳定的。如果多年份的MV%值出现跳跃性波动，则提示登记处数据的稳定性较差，相应存在波动年份的数据可能存在问题。</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-17-mv/yearmv.png" class="img-fluid" width="686"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-17-mv/yearmv.png" class="img-fluid" width="686"></p>
 </div>
 </div>
 
@@ -1050,14 +1050,14 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>肿瘤登记</category>
   <category>质量控制</category>
-  <guid>https://chenq.site/Qsight/2022-04-17-mv/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-04-17-mv/index.html</guid>
   <pubDate>Sun, 17 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-04-17-mv/namv.png" medium="image" type="image/png" height="104" width="144"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-04-17-mv/namv.png" medium="image" type="image/png" height="104" width="144"/>
 </item>
 <item>
   <title>我国发布首个肿瘤登记数据集标准</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-04-16-standard/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-04-16-standard/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1066,7 +1066,7 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <figure class="figure">
-<img src="https://chenq.site/Qsight/2022-04-16-standard/cover.png" title="中国肿瘤数据集标准" class="img-fluid figure-img">
+<img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-16-standard/cover.png" title="中国肿瘤数据集标准" class="img-fluid figure-img">
 </figure>
 <p></p><figcaption class="figure-caption">中国肿瘤数据集标准</figcaption><p></p>
 </figure>
@@ -1075,7 +1075,7 @@ font-style: italic;">## 建立for循环</span></span>
 <p>肿瘤登记工作也得到我国政府的高度重视，并在“健康中国行动-癌症防治行动”里对肿瘤登记工作提出了具体要求：实施癌症信息化行动，健全肿瘤登记制度，提高肿瘤登记覆盖范围，提升肿瘤登记数据质量，促进信息资源共享利用。</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-16-standard/author.png" class="img-fluid" width="790"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-16-standard/author.png" class="img-fluid" width="790"></p>
 </div>
 </div>
 <p>为了提高肿瘤登记数据收集的质量，国家癌症中心组织全国多家单位起草并发布了《中国人群肿瘤登记数据集标准》，河南省肿瘤医院是参与起草该标准的单位之一。该标准规定了中国肿瘤登记数据集的元数据属性和数据元属性，主要用于指导中国肿瘤登记基本信息的采集、存储、共享以及信息系统的开发。此标准实践性和可操作性极强，将为肿瘤登记数据的及时性、准确性、有效性，提供强有力的技术支撑。</p>
@@ -1086,14 +1086,14 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>肿瘤登记</category>
   <category>文件</category>
-  <guid>https://chenq.site/Qsight/2022-04-16-standard/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-04-16-standard/index.html</guid>
   <pubDate>Sat, 16 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-04-16-standard/cover.png " medium="image"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-04-16-standard/cover.png " medium="image"/>
 </item>
 <item>
   <title>制作《2021河南省肿瘤登记年报》科普视频</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-04-10-report-video/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-04-10-report-video/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1142,13 +1142,13 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>肿瘤登记</category>
   <category>肿瘤登记年报</category>
-  <guid>https://chenq.site/Qsight/2022-04-10-report-video/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-04-10-report-video/index.html</guid>
   <pubDate>Sun, 10 Apr 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>河南省癌症中心/河南省肿瘤医院发布《2021河南省肿瘤登记年报》</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-04-05-2021annualreport/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-04-05-2021annualreport/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1156,7 +1156,7 @@ font-style: italic;">## 建立for循环</span></span>
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/Qsight/2022-04-05-2021annualreport/2021.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-05-2021annualreport/2021.jpg" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">河南肿瘤登记年报</figcaption><p></p>
 </figure>
 </div>
@@ -1168,13 +1168,13 @@ font-style: italic;">## 建立for循环</span></span>
 <p>肺癌是男性最常见的恶性肿瘤，占男性全部诊断恶性肿瘤病例的25.18%；乳腺癌则位居女性恶性肿瘤发病的第一位，占全部女性肿瘤病例的17.01%；不管是男性还是女性，肺癌均位居全部恶性肿瘤死亡的第一位。发病前10位的恶性肿瘤分别为肺癌、乳腺癌、胃癌、食管癌、肝癌、子宫颈癌、结直肠癌、甲状腺癌、子宫体癌和卵巢癌，占全部恶性肿瘤发病数的78.60%。</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-05-2021annualreport/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-05-2021annualreport/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>癌症总体发病率和死亡率均随着年龄的增加而升高，均在85岁以上的年龄组中达到峰值。但是不同的癌种具有不同的年龄分布模式，比如肺癌在40岁之前发病率相对平稳而之后则快速上升；前列腺癌则从60岁开始快速上升；乳腺癌、宫颈癌、甲状腺癌的发病高峰则在50岁左右等。</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-05-2021annualreport/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="960"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-05-2021annualreport/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="960"></p>
 </div>
 </div>
 <p>在前10位恶性肿瘤发病中，消化系统肿瘤仍然占据主要地位，胃癌、食管癌、肝癌和结直肠癌等消化系统肿瘤病例占全部恶性肿瘤病例的39.68%，是影响河南省居民健康的主要肿瘤类型。</p>
@@ -1183,12 +1183,12 @@ font-style: italic;">## 建立for循环</span></span>
 <h2 class="anchored" data-anchor-id="提高年报覆盖人口比例提升数据全省代表性">提高《年报》覆盖人口比例，提升数据全省代表性</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-05-2021annualreport/map.png" class="img-fluid" style="float:right; padding:10px;width:40.0%"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-05-2021annualreport/map.png" class="img-fluid" style="float:right; padding:10px;width:40.0%"></p>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/Qsight/2022-04-05-2021annualreport/map.png" class="img-fluid figure-img"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-05-2021annualreport/map.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">河南省肿瘤登记处分布地图</figcaption><p></p>
 </figure>
 </div>
@@ -1204,7 +1204,7 @@ font-style: italic;">## 建立for循环</span></span>
 <p>为了能让癌症防治专业人员和普通大众更方便、快捷的了解河南省癌症疾病负担情况，在出版纸质年报之外，我们也制作了线上《年报》，在内容展示方式以及获取途径上进行了创新，从而促进大家更方便的利用《年报》数据。大家可以通过手机扫描二维码在手机端查看年报，也可以通过电脑端输入网址：<a href="https://chenq.site/report/2021/">https://chenq.site/report/2021/</a>进行查看。</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/Qsight/2022-04-05-2021annualreport/qrcode.png" class="img-fluid" style="width:25.0%"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-04-05-2021annualreport/qrcode.png" class="img-fluid" style="width:25.0%"></p>
 </div>
 </div>
 </section>
@@ -1218,14 +1218,14 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>肿瘤登记</category>
   <category>肿瘤登记年报</category>
-  <guid>https://chenq.site/Qsight/2022-04-05-2021annualreport/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-04-05-2021annualreport/index.html</guid>
   <pubDate>Tue, 05 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-04-05-2021annualreport/2021.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-04-05-2021annualreport/2021.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>诗歌学习</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-03-31-shige/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-03-31-shige/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1287,13 +1287,13 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>生活</category>
   <category>育儿</category>
-  <guid>https://chenq.site/Qsight/2022-03-31-shige/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-03-31-shige/index.html</guid>
   <pubDate>Thu, 31 Mar 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>ICD10编码里除了C开头编码和D开头编码是肿瘤专属分类编码外，还有哪些编码与肿瘤相关？</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-03-23-icd10-c-d/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-03-23-icd10-c-d/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1327,13 +1327,13 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>肿瘤登记</category>
   <category>编码</category>
-  <guid>https://chenq.site/Qsight/2022-03-23-icd10-c-d/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-03-23-icd10-c-d/index.html</guid>
   <pubDate>Wed, 23 Mar 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>我家养的那些花儿</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-03-19-picture/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1344,19 +1344,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan1.jpg" class="lightbox" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" title="钱串儿"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan1.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan2.jpg" class="lightbox" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" title="钱串儿"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan2.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan3.jpg" class="lightbox" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" title="钱串儿"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan3.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
@@ -1364,19 +1364,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/juhua.jpg" class="lightbox" data-gallery="flowers" data-description="商家说是可以过冬。" title="菊花"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/juhua.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/juhua.jpg" class="lightbox" title="菊花" data-gallery="flowers" data-description="商家说是可以过冬。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/juhua.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">菊花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/cherry.jpg" class="lightbox" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="看樱桃"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/cherry.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/cherry.jpg" class="lightbox" title="看樱桃" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/cherry.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">看樱桃</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0023.jpg" class="lightbox" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0023.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1384,19 +1384,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0019.jpg" class="lightbox" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0019.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0013.jpg" class="lightbox" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0013.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0011.jpg" class="lightbox" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0011.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1404,19 +1404,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0010.jpg" class="lightbox" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0010.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0006.jpg" class="lightbox" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0006.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0005.jpg" class="lightbox" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0005.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1428,14 +1428,14 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>生活</category>
   <category>摄影</category>
-  <guid>https://chenq.site/Qsight/2022-03-19-picture/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/index.html</guid>
   <pubDate>Sat, 19 Mar 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan1.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-03-19-picture/img/qianchuan1.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>河南省29个肿瘤登记处荣获国家癌症中心表彰</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-03-18-xianjin/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-03-18-xianjin/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1499,13 +1499,13 @@ font-style: italic;">## 建立for循环</span></span>
 
  ]]></description>
   <category>肿瘤登记</category>
-  <guid>https://chenq.site/Qsight/2022-03-18-xianjin/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-03-18-xianjin/index.html</guid>
   <pubDate>Fri, 18 Mar 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>中国肿瘤登记管理办法</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-03-18-file/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-03-18-file/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1545,13 +1545,13 @@ font-style: italic;">## 建立for循环</span></span>
 
  ]]></description>
   <category>肿瘤登记</category>
-  <guid>https://chenq.site/Qsight/2022-03-18-file/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-03-18-file/index.html</guid>
   <pubDate>Fri, 18 Mar 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>世界肿瘤登记发展简史</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-03-17-history/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-03-17-history/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1597,14 +1597,14 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>肿瘤登记</category>
   <category>历史</category>
-  <guid>https://chenq.site/Qsight/2022-03-17-history/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-03-17-history/index.html</guid>
   <pubDate>Thu, 17 Mar 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-03-17-history/历史.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-03-17-history/历史.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>IARCcrgtools肿瘤登记数据逻辑核查软件</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-03-10-iarccrgtools/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-03-10-iarccrgtools/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1612,7 +1612,7 @@ font-style: italic;">## 建立for循环</span></span>
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/Qsight/2022-03-10-iarccrgtools/cover.png" class="img-fluid figure-img"></p>
+<p><img src="https://gigu003.github.io/chenq.site/Qsight/2022-03-10-iarccrgtools/cover.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">iarccrgtool</figcaption><p></p>
 </figure>
 </div>
@@ -1642,14 +1642,14 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>肿瘤登记</category>
   <category>工具</category>
-  <guid>https://chenq.site/Qsight/2022-03-10-iarccrgtools/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-03-10-iarccrgtools/index.html</guid>
   <pubDate>Thu, 10 Mar 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-03-10-iarccrgtools/cover.png" medium="image" type="image/png" height="109" width="144"/>
+  <media:content url="https://gigu003.github.io/chenq.site/Qsight/2022-03-10-iarccrgtools/cover.png" medium="image" type="image/png" height="109" width="144"/>
 </item>
 <item>
   <title>肿瘤登记质量控制的四类指标</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/Qsight/2022-03-10-qualitycontrol/index.html</link>
+  <link>https://gigu003.github.io/chenq.site/Qsight/2022-03-10-qualitycontrol/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1695,7 +1695,7 @@ font-style: italic;">## 建立for循环</span></span>
 
  ]]></description>
   <category>肿瘤登记</category>
-  <guid>https://chenq.site/Qsight/2022-03-10-qualitycontrol/index.html</guid>
+  <guid>https://gigu003.github.io/chenq.site/Qsight/2022-03-10-qualitycontrol/index.html</guid>
   <pubDate>Thu, 10 Mar 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
