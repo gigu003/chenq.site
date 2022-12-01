@@ -1,0 +1,32 @@
+---
+title: "git 如何设置忽略文件.gitignore"
+date: "2022-12-01"
+slug: gitignore
+categories: [ quarto, git ]
+keywords: [github, git, quarto, DS_Store]
+---
+
+## 忽略.DS_Store
+
+git按照工作环境里的.gitignore文件设置去忽略相应的文件，如果你的git环境里还没有创建.gitignore文件,则需要首先创建该文件。
+
+在terminal里创建.gitignore文件，并用vim添加两行。 
+
+- .DS_Store 
+- */.DS_Store
+
+```git
+touch .gitignore
+vim .gitignore
+```
+
+如果发现修改中仍然有.DS_Store文件，则可能原因是在早期的提交中就已将.DS_Store文件提交到repository了。如果一个文件已经被提交，那么就算这个文件已经被写到gitignor文件中，它的修改仍然会被追踪到。
+所以我们需要手动将repository中的.DS_Store文件移除，可以使用以下命令移除：
+
+```git
+git rm --cached .DS_Store 
+#移除当前文件夹下的.DS_Store
+find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch
+#移除文件夹下的所有.DS_Store文件
+```
+
