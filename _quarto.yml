@@ -1,6 +1,5 @@
 project:
   type: website
-  output-dir: chenq.site
   preview:
     port: 4200
     browser: false
