@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.14">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="陈琼">
+<meta name="dcterms.date" content="2022-04-26">
+<meta name="keywords" content="R语言, 个人网站, 数据可视化, blogdown包, 静态网页">
+
+<title>普癌新声 - 利用R语言Rmd文档+blogdown包制作个人网站</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean"
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<style>
+    .quarto-title-block .quarto-title-banner {
+      color: #c8c8c8;
+    }
+    </style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="普癌新声 - 利用R语言Rmd文档+blogdown包制作个人网站">
+<meta property="og:description" content="本篇文章将介绍如何利用R语言blogdown包生成一个静态网站，从而用来展示个人信息、撰写博客、或者分享其他信息。">
+<meta property="og:image" content="https://chenq.site/Qsight/2022-04-26-website/preview.png">
+<meta property="og:site-name" content="普癌新声">
+<meta property="og:image:height" content="1504">
+<meta property="og:image:width" content="2256">
+<meta name="twitter:title" content="普癌新声 - 利用R语言Rmd文档+blogdown包制作个人网站">
+<meta name="twitter:description" content="本篇文章将介绍如何利用R语言blogdown包生成一个静态网站，从而用来展示个人信息、撰写博客、或者分享其他信息。">
+<meta name="twitter:image" content="https://chenq.site/Qsight/2022-04-26-website/preview.png">
+<meta name="twitter:image-height" content="1504">
+<meta name="twitter:image-width" content="2256">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">普癌新声</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel=""><i class="bi bi-house" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Qsight/" rel=""><i class="bi bi-tropical-storm" role="img">
+</i> 
+ <span class="menu-text">Qsight</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publications" rel=""><i class="bi bi-journal-medical" role="img">
+</i> 
+ <span class="menu-text">出版作品</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../slides" rel=""><i class="bi bi-file-slides-fill" role="img">
+</i> 
+ <span class="menu-text">Slides</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="">
+ <span class="menu-text">关于</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../Qsight/index.xml" rel=""><i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">利用R语言Rmd文档+blogdown包制作个人网站</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">个人网站</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>陈琼 </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 26, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#准备环境" id="toc-准备环境" class="nav-link active" data-scroll-target="#准备环境">准备环境</a>
+  <ul class="collapse">
+  <li><a href="#安装r和r-studio" id="toc-安装r和r-studio" class="nav-link" data-scroll-target="#安装r和r-studio">安装R和R studio</a></li>
+  <li><a href="#安装blogdown包" id="toc-安装blogdown包" class="nav-link" data-scroll-target="#安装blogdown包">安装blogdown包</a></li>
+  <li><a href="#安装hugo" id="toc-安装hugo" class="nav-link" data-scroll-target="#安装hugo">安装HUGO</a></li>
+  </ul></li>
+  <li><a href="#使用blogdown建立一个网站" id="toc-使用blogdown建立一个网站" class="nav-link" data-scroll-target="#使用blogdown建立一个网站">使用blogdown建立一个网站</a>
+  <ul class="collapse">
+  <li><a href="#选择一个hugo网站模板" id="toc-选择一个hugo网站模板" class="nav-link" data-scroll-target="#选择一个hugo网站模板">选择一个Hugo网站模板</a></li>
+  <li><a href="#使用blogdown生成一个新的网站项目" id="toc-使用blogdown生成一个新的网站项目" class="nav-link" data-scroll-target="#使用blogdown生成一个新的网站项目">使用blogdown生成一个新的网站项目</a></li>
+  <li><a href="#新建一篇博文" id="toc-新建一篇博文" class="nav-link" data-scroll-target="#新建一篇博文">新建一篇博文</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://gitee.com/gigu003/chenq.site/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://gitee.com/gigu003/chenq.site/edit/master/Qsight/2022-04-26-website/index.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>本篇文章将介绍如何利用R语言blogdown包生成一个静态网站，从而用来展示个人信息、撰写博客、或者分享其他信息。</p>
+<blockquote class="blockquote">
+<p>静态页面实际上说的是相对于相对于动态网页而言，它没有后台数据库、不含程序，是不能交互的网页。代码编的是什么它显示的就是什么、不会有任何改变。</p>
+</blockquote>
+<p>Blogdown生成静态网页的过程实际只是由Blogdown包把Rmd转化成普通的markdown文本，然后由Hugo把markdown文本生成静态网页。</p>
+<section id="准备环境" class="level2">
+<h2 class="anchored" data-anchor-id="准备环境">准备环境</h2>
+<p>本文将介绍如何在windows环境下，利用Blogdown生成静态网页。在介绍具体步骤之前，需要提前准备好相应的软件和环境。</p>
+<section id="安装r和r-studio" class="level3">
+<h3 class="anchored" data-anchor-id="安装r和r-studio">安装R和R studio</h3>
+<ul>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/windows/base/R-4.2.0-win.exe">下载</a>并安装R语言和<a href="https://download1.rstudio.org/desktop/windows/RStudio-2022.02.1-461.exe">R studio</a></li>
+</ul>
+</section>
+<section id="安装blogdown包" class="level3">
+<h3 class="anchored" data-anchor-id="安装blogdown包">安装blogdown包</h3>
+<p>安装稳定版本的blogdown</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">"blogdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>或者安装开发版本的blogdown</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'rstudio/blogdown'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="安装hugo" class="level3">
+<h3 class="anchored" data-anchor-id="安装hugo">安装HUGO</h3>
+<p>Hugo 是一个用 Go 编写的静态网站生成器，一般只需几秒钟就能生成一个网站（每页少于 1 毫秒），被称为“世界上最快的网站构建框架”，也使 Hugo大受欢迎，成为最热门的静态网站生成器之一，被广泛采用。你可以在这里<a href="https://github.com/gohugoio/hugo/releases">下载不同版本的HUGO</a></p>
+<p>在Windows环境下，你可以通过以下几种方式安装hugo，在上面的链接中找出对应的Windows版本下载到本地，然后解压缩。</p>
+<ol type="1">
+<li>第一种方式：直接双击 hugo.exe 可执行文件进行安装，自动安装就可以了。</li>
+<li>第二种方式：把解压后的hugo.exe的路径添加到系统环境变量中。</li>
+<li>第二种方式：在通过blogdown建立新的project的时候，勾选安装hugo选项，但是国内不建议采用这种方式，因为速度很慢，而且常常安装不成功，但是如果你在墙外，可以使用这种方法。</li>
+</ol>
+</section>
+</section>
+<section id="使用blogdown建立一个网站" class="level2">
+<h2 class="anchored" data-anchor-id="使用blogdown建立一个网站">使用blogdown建立一个网站</h2>
+<section id="选择一个hugo网站模板" class="level3">
+<h3 class="anchored" data-anchor-id="选择一个hugo网站模板">选择一个Hugo网站模板</h3>
+<p>使用hugo建立静态网站的优势不仅是速度快，而且因为它有着丰富的模板，模板的源代码都存储在github上，你可以<a href="https://themes.gohugo.io/">点击这里</a>选择一个适合自己的网站模板，然后把它在github上的地址复制下来。</p>
+<p>如果你喜欢<a href="https://themes.gohugo.io/themes/mainroad/">MainRoad</a>的模板， 可以点击<strong>Download</strong>，会进入模板在github的存储页面，然后把模板的路径复制下来<strong>Vimux/Mainroad</strong>，后面会用到。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="theme.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Hugo 主题</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="使用blogdown生成一个新的网站项目" class="level3">
+<h3 class="anchored" data-anchor-id="使用blogdown生成一个新的网站项目">使用blogdown生成一个新的网站项目</h3>
+<ul>
+<li>在R studio里点击 File–New Project，选择 <strong>New Directory</strong></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="first.png" class="img-fluid" width="533"></p>
+</div>
+</div>
+<ul>
+<li>然后，选择Website using blogdown</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="second.png" class="img-fluid" width="532"></p>
+</div>
+</div>
+<ul>
+<li>最后，在blogdown建立新项目的选项面板中，按照下面的选项填写完整，然后点击 Create Project 创建项目</li>
+</ul>
+<ol type="1">
+<li>Directory name: 填入你新建项目所在文件夹名称；</li>
+<li>Create project as subdirectory of：</li>
+<li>hugo theme： 填入前面步骤中复制的网站模板的github路径，以 “github账户名/仓库名称”的格式填入，我们想要创建网站的模板的存放路径为：Vimux/Mainroad</li>
+<li>最下面的复选框可以按照默认的选项选择，但是如果已经安装hugo的话，记得把Install Hugo if not installed前面的复选框取消掉。</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="third.png" class="img-fluid" width="536"></p>
+</div>
+</div>
+<ul>
+<li>完成后，在 R studio 中，点击 Addins – Serve site 可以在本地渲染网站，可以在 R studio 的右下栏中可以看到渲染的网站的样子。</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="preview.png" class="img-fluid" width="1128"></p>
+</div>
+</div>
+</section>
+<section id="新建一篇博文" class="level3">
+<h3 class="anchored" data-anchor-id="新建一篇博文">新建一篇博文</h3>
+<p>点击 Addins – New Post ，填入题目，作者，标签或者分类，在Format 选项里可以选择使用普通的markdown(不能运行R程序)、.Rmd和.Rmarkdown(可以运行R程序)。</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="newpost.png" class="img-fluid" width="621"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script type="text/javascript">
+
+// replace cmd keyboard shortcut w/ control on non-Mac platforms
+const kPlatformMac = typeof navigator !== 'undefined' ? /Mac/.test(navigator.platform) : false;
+if (!kPlatformMac) {
+   var kbds = document.querySelectorAll("kbd")
+   kbds.forEach(function(kbd) {
+      kbd.innerHTML = kbd.innerHTML.replace(/⌘/g, '⌃');
+   });
+}
+
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright@Qiong Chen</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gigu003">
+      <i class="bi bi-github" role="img" aria-label="Qiong@GitHub">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="../../Qsight/index.xml">
+      <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

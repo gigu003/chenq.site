@@ -1,0 +1,1702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>普癌新声</title>
+<link>https://chenq.site/Qsight/index.html</link>
+<atom:link href="https://chenq.site/Qsight/index.xml" rel="self" type="application/rss+xml"/>
+<description>一个公共卫生医师的个人网站</description>
+<generator>quarto-1.3.14</generator>
+<lastBuildDate>Thu, 24 Nov 2022 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Mermaid 绘制流程图</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-11-24-mindmap/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1">flowchart TD</span>
+<span id="cb1-2">    A[(职工居民医保)] --&gt;B(肿瘤登记处)</span>
+<span id="cb1-3">    C[各医疗机构数据] --&gt;B</span>
+<span id="cb1-4">    D[(公安统计人口)] --&gt;B</span>
+<span id="cb1-5">    E[(新农合)]--&gt;B</span>
+<span id="cb1-6">    B--&gt;G(建卡及编码)</span>
+<span id="cb1-7">    G--&gt;H(建立数据库)</span>
+<span id="cb1-8">    H--&gt;I(省级肿瘤登记中心)</span>
+<span id="cb1-9">    I--&gt;J(全国肿瘤登记中心)</span>
+<span id="cb1-10">    G--&gt;K{{是否重卡}}</span>
+<span id="cb1-11">    K--&gt;|重复| L(剔除重卡)</span>
+<span id="cb1-12">    K--&gt;|不重复| H</span>
+<span id="cb1-13">    R[(死因监测)]--&gt;B</span>
+<span id="cb1-14">    R--&gt;Q[发病遗漏]</span>
+<span id="cb1-15">    Q--&gt;G</span>
+<span id="cb1-16">    Q--&gt;W[死亡补发病]</span>
+<span id="cb1-17">    W--&gt;H</span>
+<span id="cb1-18">    W--&gt;G</span></code></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart TD
+    A[(职工居民医保)] --&gt;B(肿瘤登记处)
+    C[各医疗机构数据] --&gt;B
+    D[(公安统计人口)] --&gt;B
+    E[(新农合)]--&gt;B
+    B--&gt;G(建卡及编码)
+    G--&gt;H(建立数据库)
+    H--&gt;I(省级肿瘤登记中心)
+    I--&gt;J(全国肿瘤登记中心)
+    G--&gt;K{{是否重卡}}
+    K--&gt;|重复| L(剔除重卡)
+    K--&gt;|不重复| H
+    R[(死因监测)]--&gt;B
+    R--&gt;Q[发病遗漏]
+    Q--&gt;G
+    Q--&gt;W[死亡补发病]
+    W--&gt;H
+    W--&gt;G
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>Mermaid</category>
+  <category>流程图</category>
+  <guid>https://chenq.site/Qsight/2022-11-24-mindmap/index.html</guid>
+  <pubDate>Thu, 24 Nov 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-11-24-mindmap/preview.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>R语言gganimate包和ggplot2包绘制进度线图(progressive line plot)</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-05-07-progressive-line-plot/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>在利用R语言gganimate包绘制动态的进度线图之前，你需要先理解在R里利用ggplot2包绘制线图的过程。点击了解ggplot2绘制线图</p>
+<p>在理解了如何利用ggplot2包绘制线图之后，你可以利用gganimate包增加一个绘图函数transition_…()，从而绘制动态变化图形。给transition_…()函数提供一个frame变量，这个变量的值每变化一次，就会在图上绘制一次，从而实现图的动态变化。</p>
+<p>我们今天使用gganimate包的transition_reveal()函数，实现线图的动态显示过程。</p>
+<section id="准备数据" class="level2">
+<h2 class="anchored" data-anchor-id="准备数据">准备数据</h2>
+<p>我们还是利用制作<a href="https://chenq.site/tech/2022-ggplot2-lineplot/">普通线图</a>的年龄别癌症发病率数据，<a href="age_incidence.csv">点击链接，下载数据</a>。</p>
+<p>对数据进行简单的处理，把合计性别的数据剔除，只显示男性和女性的癌症发病率随年龄变化的趋势即可，这样图里的内容不至于过多而显得杂乱。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;">#加载dplyr包</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;"># 读取年龄别发病率数据</span></span>
+<span id="cb1-4">data <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read.csv</span>(<span class="st" style="color: #20794D;">"age_incidence.csv"</span>)</span>
+<span id="cb1-5">data <span class="ot" style="color: #003B4F;">&lt;-</span> data <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb1-6">  <span class="co" style="color: #5E5E5E;"># 剔除合计性别数据</span></span>
+<span id="cb1-7">  <span class="fu" style="color: #4758AB;">filter</span>(area<span class="sc" style="color: #5E5E5E;">==</span><span class="dv" style="color: #AD0000;">1</span>,<span class="sc" style="color: #5E5E5E;">!</span>(sex<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"合计"</span>))</span>
+<span id="cb1-8"><span class="co" style="color: #5E5E5E;">#查看前6条数据结构情况</span></span>
+<span id="cb1-9"><span class="fu" style="color: #4758AB;">head</span>(data)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  area  sex variable agegrp
+1    1 男性     9.42      0
+2    1 男性    10.75      1
+3    1 男性     9.53      5
+4    1 男性    10.75     10
+5    1 男性    10.67     15
+6    1 男性    11.78     20</code></pre>
+</div>
+</div>
+</section>
+<section id="绘制进度线图progressive-line-plot" class="level2">
+<h2 class="anchored" data-anchor-id="绘制进度线图progressive-line-plot">绘制进度线图(progressive line plot)</h2>
+<p>我们利用线图(line plot)展示了河南省年龄别癌症发病率数据，而我们想让年龄别发病率数据随着年龄的增加而逐渐显示出来，从而让线图动起来，这样，年龄别发病率数据随着年龄变化的特点就能更直观的显示出来。</p>
+<p>想要达到这种效果，其实就是在利用ggplot2制作普通线图的基础上，再利用gganimate包的transition_reveal()函数，从而让线图按照某个变量逐步显示，我们这个例子就是按照x轴变量agegrp逐步显示，transition_reveal(agegrp)。</p>
+<p>为了让线图更文艺或者更美观，我们可以使用ggthemes包里面绘图的主题来进行图的美化。Figure&nbsp;1</p>
+<p><strong>绘图代码如下：</strong></p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#加载包</span></span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;">library</span>(gganimate)</span>
+<span id="cb3-4"><span class="co" style="color: #5E5E5E;"># 绘制动图</span></span>
+<span id="cb3-5">data <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb3-6">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span><span class="fu" style="color: #4758AB;">factor</span>(agegrp), <span class="at" style="color: #657422;">y=</span>variable, <span class="at" style="color: #657422;">group=</span>sex, <span class="at" style="color: #657422;">color=</span>sex)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-7">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="at" style="color: #657422;">linewidth=</span><span class="fl" style="color: #AD0000;">1.5</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-8">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">linewidth=</span><span class="dv" style="color: #AD0000;">3</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-9">  <span class="co" style="color: #5E5E5E;"># 增加图标题</span></span>
+<span id="cb3-10">  <span class="co" style="color: #5E5E5E;"># 23rgvf ggrbthggtitle("河南省肿瘤登记地区癌症年龄别发病率") +</span></span>
+<span id="cb3-11">  <span class="co" style="color: #5E5E5E;">#annotate("text", x = 18, y = 0, label = "普癌新声")+</span></span>
+<span id="cb3-12">  <span class="co" style="color: #5E5E5E;"># 使用ggthemes包fivethirtyeight主题设置线图颜色</span></span>
+<span id="cb3-13">  <span class="co" style="color: #5E5E5E;">#scale_color_fivethirtyeight()+ </span></span>
+<span id="cb3-14">  <span class="co" style="color: #5E5E5E;"># 应用fivethirtyeight主题</span></span>
+<span id="cb3-15">  <span class="co" style="color: #5E5E5E;">#theme_fivethirtyeight()+</span></span>
+<span id="cb3-16">  <span class="co" style="color: #5E5E5E;"># 不显示图例标题</span></span>
+<span id="cb3-17">  <span class="fu" style="color: #4758AB;">theme_classic</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-18">  <span class="fu" style="color: #4758AB;">theme</span>(</span>
+<span id="cb3-19">    <span class="at" style="color: #657422;">legend.position =</span> <span class="fu" style="color: #4758AB;">c</span>(.<span class="dv" style="color: #AD0000;">1</span>,.<span class="dv" style="color: #AD0000;">9</span>),</span>
+<span id="cb3-20">    <span class="at" style="color: #657422;">legend.title =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb3-21">    <span class="at" style="color: #657422;">legend.text =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">20</span>),</span>
+<span id="cb3-22">    <span class="at" style="color: #657422;">text =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">'Kai'</span>))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-23">  <span class="co" style="color: #5E5E5E;"># 让线图按照agegrp变量逐步显示</span></span>
+<span id="cb3-24">    <span class="fu" style="color: #4758AB;">transition_reveal</span>(agegrp)</span>
+<span id="cb3-25"></span>
+<span id="cb3-26"><span class="fu" style="color: #4758AB;">anim_save</span>(<span class="st" style="color: #20794D;">"px.gif"</span>)</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-plot2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://chenq.site/Qsight/2022-05-07-progressive-line-plot/index_files/figure-html/fig-plot2-1.gif" class="img-fluid figure-img" alt="进度线图 progressive line plot"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: 河南省肿瘤登记地区癌症年龄别发病率</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://chenq.site/Qsight/2022-05-07-progressive-line-plot/px.gif" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">进度线图</figcaption><p></p>
+</figure>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>科研作图</category>
+  <guid>https://chenq.site/Qsight/2022-05-07-progressive-line-plot/index.html</guid>
+  <pubDate>Sat, 07 May 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-05-07-progressive-line-plot/px.gif" medium="image" type="image/gif"/>
+</item>
+<item>
+  <title>R语言wordcloud2包绘制词云图</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-05-06-r-wordcloud2/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="什么是词云图" class="level2">
+<h2 class="anchored" data-anchor-id="什么是词云图">什么是词云图？</h2>
+<p>词云图，也叫文字云，是对网络文本中出现频率较高的“关键词”予以视觉上的突出，出现越多，显示的字体越大，越突出，这个关键词也就越重要。让浏览者通过词云图一眼就可以快速感知最突出的文字，迅速抓住重点，了解主旨。 <img src="https://chenq.site/Qsight/2022-05-06-r-wordcloud2/cover.png" class="img-fluid" alt="词云图"></p>
+</section>
+<section id="安装wordcloud2包以及主要参数介绍" class="level2">
+<h2 class="anchored" data-anchor-id="安装wordcloud2包以及主要参数介绍">安装wordcloud2包，以及主要参数介绍</h2>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">install.packages</span>(<span class="st" style="color: #20794D;">"wordcloud2"</span>)</span></code></pre></div>
+<p>wordcloud2包里绘制词云图的函数是wordcloud2(),而它常用的参数有以下几种：</p>
+<ul>
+<li>data：词云生成数据，包含具体词语以及频率；</li>
+<li>size：字体大小，默认为1，一般来说该值越小，生成的形状轮廓越明显；</li>
+<li>fontFamily：字体，如‘微软雅黑’；</li>
+<li>fontWeight：字体粗细，包含‘normal’，‘bold’以及‘600’；；</li>
+<li>color：字体颜色，可以选择‘random-dark’以及‘random-light’，其实就是颜色色系；</li>
+<li>backgroundColor：背景颜色，支持R语言中的常用颜色，如‘gray’，‘blcak’，但是还支持不了更加具体的颜色选择，如‘gray20’；</li>
+<li>minRontatin与maxRontatin：字体旋转角度范围的最小值以及最大值，选定后，字体会在该范围内随机旋转；</li>
+<li>rotationRation：字体旋转比例，如设定为1，则全部词语都会发生旋转；</li>
+<li>shape：词云形状选择，默认是‘circle’，即圆形。还可以选择‘cardioid’（苹果形或心形），‘star’（星形），‘diamond’（钻石），‘triangle-forward’（三角形），‘triangle’（三角形），‘pentagon’（五边形）；</li>
+</ul>
+</section>
+<section id="准备数据" class="level2">
+<h2 class="anchored" data-anchor-id="准备数据">准备数据</h2>
+<p>wordcloud2包默认自带了一个<strong>英文词频</strong>数据框，包含了两个变量 word:字符，freq：字符的出现频率，我们可以利用这个数据来做词云图的示例。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;">library</span>(wordcloud2)</span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;">head</span>(demoFreq)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>         word freq
+oil       oil   85
+said     said   73
+prices prices   48
+opec     opec   42
+mln       mln   31
+the       the   26</code></pre>
+</div>
+</div>
+<p>还有一个中文词频数据框，包含两个变量 V2 词汇，V1词汇频率。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">head</span>(demoFreqC)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>        V2   V1
+1     数据 2304
+3     统计 1413
+4     用户  855
+5     模型  846
+7     分析  773
+8 数据分析  750</code></pre>
+</div>
+</div>
+</section>
+<section id="绘制词云图" class="level2">
+<h2 class="anchored" data-anchor-id="绘制词云图">绘制词云图</h2>
+<p>绘制星形词云图，字体大小设置为1</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">wordcloud2</span>(demoFreq, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">1</span>,<span class="at" style="color: #657422;">shape =</span> <span class="st" style="color: #20794D;">"star"</span>)  </span></code></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div id="htmlwidget-d6b9520a8f416c7ab945" style="width:100%;height:650px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d6b9520a8f416c7ab945">{"x":{"word":["oil","said","prices","opec","mln","the","last","bpd","dlrs","crude","market","reuter","saudi","will","one","barrel","kuwait","new","official","pct","price","barrels","government","production","sheikh","industry","meeting","minister","world","also","billion","futures","month","output","petroleum","quota","sources","accord","analysts","but","group","gulf","january","markets","report","today","december","demand","economic","economy","energy","help","international","may","nazer","nymex","posted","present","they","traders","158","ability","agreement","ali","april","arabia","budget","emergency","exchange","hold","imports","members","recent","riyals","says","sell","years","abdulaziz","agency","arab","ceiling","company","contract","daily","emirates","expected","expenditure","exports","growth","now","opecs","plans","qatar","quoted","research","reserve","reserves","states","study","united","way","week","west","year","150","according","added","among","asked","brings","buyers","can","change","corp","cut","day","development","effective","exploration","fall","february","fell","free","higher","increase","levels","meet","must","never","per","policy","power","problem","producing","protect","pumping","reduced","revenue","revenues","rise","saying","set","since","spa","strategic","texas","this","total","transaction","weak","yesterday","13nation","1985","198586","1986","1987","198788","address","agreed","alkhalifa","alqabas","alsabah","announced","appears","arabian","arabias","around","average","back","bank","bbl","boost","called","commitment","companies","compared","countrys","current","decrease","denied","dollars","domestic","due","efp","estimate","estimates","export","fixed","foreign","four","future","grade","guard","high","hisham","however","inc","indonesia","indonesias","intermediate","kingdoms","kuwaits","local","low","lower","lowered","made","main","march","mckiernan","measures","mizrahi","moves","much","named","next","officials","plant","position","president","pressure","producer","projected","published","real","refinery","reiterated","remain","rule","say","sector","several","sharp","ship","six","slightly","smaller","spokeswoman","state","sweet","texaco","three","trading","two","weeks","york","1518","198687","20s","285000","500","725","750","948000","activity","adhering","agriculture","along","apparently","appeared","approved","architect","areas","aspen","bankers","based","benchmark","benefits","canada","canadian","cash","changed","changes","circumstance","clearly","closed","coast","come","committee","commodity","consumption","countries","country","crossroads","crucial","cubic","currently","customers","deal","decembers","decline","deficit","deposits","deputy","diamond","differentials","difficulties","direction","discounted","dlr","early","ecuador","effect","embargo","embassy","entering","even","falling","feb","first","fiscal","fiscales","forced","fully","gcc","general","given","grades","halt","hit","hope","humanistic","impact","import","increased","increasing","instead","institute","interview","investment","jersey","june","keep","late","light","limit","limits","line","lost","louisiana","lowest","major","marketing","member","mid","million","ministers","mitigate","months","nearing","net","neutral","none","nuclear","organisation","organization","outlook","overseas","pact","pay","petroliferos","planned","port","positive","postings","predicted","press","pricing","private","probably","problems","pronounced","protected","public","put","quotes","raise","rate","reduction","referring","remarks","reports","return","review","risks","riyal","selfimposed","selling","share","shortfall","spot","steady","stick","strongly","studies","support","take","taken","techniques","throughput","trade","trust","trying","uncertainty","union","value","wam","wanted","weakness","winter","yacimientos","yanbu","zero","zone","100000","108","111","115","12217","1232","1381","13member","156","1600","1635","1650","1667","168","1685","1752","180000","200000","200foot","2226","24hour","2766","300","3749598","3750003","4133","534","5472","614","658","6745","678","718","738","able","abroad","accept","across","add","addressed","adherence","advantage","advisers","after","agricultural","aground","allocated","allocations","allow","almost","already","althani","although","alvite","amidst","analysis","analyst","annual","anything","apparent","aramco","argentine","arrangement","asia","asian","assesses","assign","assigned","associates","attract","available","averaging","aware","bahrain","bahrains","balance","baseless","basic","basis","because","beginning","bijan","bin","bit","bodys","briefly","broadened","brothers","buildings","burden","buy","buyer","calendar","cambridge","capacity","capozza","carrying","center","century","cera","certain","cftc","chairman","challenge","characterized","charging","cheap","cheating","chevron","chv","cited","citing","clever","close","closer","closes","coming","commission","communications","companys","completed","complex","condition","conditions","considered","construction","contacts","continuation","continue","continued","continues","contracted","contributed","control","cooperation","coordination","copany","corps","council","counter","coupled","covered","creek","critical","cts","currency","custom","cuts","cutting","cypriot","daniel","david","days","debtburdened","debut","decided","declared","declines","deemed","defence","delaware","delivered","delivering","departments","deregulate","deregulation","determination","devalue","device","differential","difficulty","dillard","director","discuss","discussing","distribution","distributions","divided","doha","dollar","drawbacks","drop","dropped","earlier","earnings","eastern","easy","ecuadors","editor","edmontonswann","education","eight","either","elaborate","elections","electricity","end","engineers","entitlements","environment","equally","estimated","european","exceed","exceeding","excess","excesses","excessive","exerted","exist","expanded","expansion","expartners","expectations","expects","explained","exporting","exxon","face","faced","faces","facilities","facing","failed","fallen","favours","fee","fernando","figure","figures","finance","firmer","floating","followed","for","forces","foremost","fourth","frank","full","fundamentals","gas","generally","geneva","get","globalization","glut","guaranteed","halting","harvard","heads","health","hedge","hedged","helped","hemisphere","highly","hills","hitting","hoped","housing","houston","immediately","implementation","improve","improvement","include","including","independent","indications","initiate","initiative","institutions","interbank","interest","investments","issue","jamaica","jan","juaymah","jubail","jump","just","khalifa","lack","largest","later","latest","launched","lead","leading","learn","least","lending","less","lesson","level","liberalised","lift","liftings","like","lines","liquidity","little","loan","lodged","longterm","ltd","lukman","lull","maintain","make","manager","manipulate","many","marathon","marathons","marker","mcfadden","means","mercantile","metrers","metres","mid1960s","mid1986","mideast","minus","mlotok","mob","mobil","momentum","money","monopolies","monthend","moussavarrahmani","movement","nation","natural","need","needs","negative","negotiate","neither","network","news","newspaper","nigerian","nine","nonoil","northern","notes","offset","onetwelfth","oneweek","open","opens","operations","opposite","optimism","optimistic","option","order","organiaation","our","outlining","outside","overproducing","part","parties","partly","party","past","paths","paul","paulsboro","payments","pegged","performance","period","pertains","pessimistic","philadelphia","physical","placed","plastics","platinum","point","policies","political","population","positions","postponed","pressures","previous","primarily","primary","principal","procedure","produce","produced","producers","product","products","program","projection","projects","prompted","proposed","proved","providing","provision","publish","purposes","quarter","quiet","quietly","quotas","rallied","ran","ranging","ras","rates","rationalise","readdress","reaffirmed","reasonable","recommending","recovering","recurrent","reference","refineries","refining","reflect","refloat","reform","reforms","regain","regard","regarding","region","regional","reiterate","relaxation","relieve","reluctant","remainder","remained","reported","request","resistance","resisting","resources","respectively","responsibilites","restored","restraint","restrictions","result","reuters","revealed","reviews","right","rilwanu","rising","river","rocks","rosemary","rumour","rushing","sales","salomon","santos","satisfied","saw","scheduled","scheme","seapride","season","secretary","security","seeing","seek","september","series","serve","services","session","sets","seven","severely","shamrock","sharply","shoulder","show","showed","shown","signed","signs","situation","sixmonth","slackens","slide","slump","social","sold","soon","sort","sour","south","southeast","spend","spill","spoke","spokesman","spotnext","spriggs","stabilise","stabilize","stable","start","statement","steel","steering","steps","stiff","storage","strong","subsequently","substitution","succeed","suffer","suffering","suhartos","sunday","sundays","supply","supporting","suppose","surrounding","swift","talks","tanker","tanurah","tapers","teach","telephone","terminals","test","there","third","thomas","though","thought","threemonth","tide","together","told","totalled","tower","trader","trades","traditional","traditionally","transacted","transmission","transport","trends","trusts","try","turmoil","twofold","uae","uncertain","unchanged","under","unions","unitholders","universitys","unlikely","unocal","unusually","urged","use","virtual","wants","water","wealth","wednesday","weekend","welcomed","when","whether","wishes","worldwide","xon","yergin","yesterdays"],"freq":[85,73,48,42,31,26,24,23,23,21,20,20,18,18,17,15,14,14,14,14,13,11,11,11,11,10,10,10,10,9,9,9,9,9,9,9,9,8,8,8,8,8,8,8,8,8,7,7,7,7,7,7,7,7,7,7,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":2.11764705882353,"backgroundColor":"white","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"star","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+</div>
+</div>
+<p>利用demoFreqC数据绘制中文词云图，设定字体为微软雅黑，设定颜色为random-light，背景色设为灰色。</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;">wordcloud2</span>(demoFreqC,<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">2</span>,<span class="at" style="color: #657422;">fontFamily =</span> <span class="st" style="color: #20794D;">"微软雅黑"</span>,<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"random-light"</span>, <span class="at" style="color: #657422;">backgroundColor =</span> <span class="st" style="color: #20794D;">"grey"</span>)  </span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="htmlwidget-2e0aefaf61fb783cfe85" style="width:100%;height:650px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2e0aefaf61fb783cfe85">{"x":{"word":["数据","统计","用户","模型","分析","数据分析","大数据","研究","信息","大学","语言","方法","问题","会议","数据科学","学习","可能","中国","科学","计算","网络","公司","预测","应用","变量","时间","选择","广告","主要","行业","关键","系统","影响","估计","北京","品牌","学院","城市","误差","处理","产品","分布","过程","相关","搜索","训练","方面","重要","函数","行为","技术","有限","户的","市场","提供","关系","工作","非常","利用","机器","可视","联网","COS","本文","业务","文本","比较","得到","推荐","样的","演讲","介绍","微博","计之","统计之都","实际","工具","现在","用户的","可视化","报告","关注","器学习","方式","样本","能够","情况","机器学习","沙龙","data","学家","已经","音乐","有限公司","中心","发展","算法","老师","表示","型的","概率","互联","管理","言会","互联网","语言会","客户","特征","结构","语言会议","一种","企业","喜欢","大的","的是","的分","社交","金融","到了","用的","先生","量的","参数","学生","具体","发现","实现","教授","包括","指标","分类","平均","mathbf","之间","博士","是一个","建模","聚类","领域","兴趣","这种","本次","回归","要的","告主","购买","会场","上的","广告主","的研","代码","矩阵","科技","销量","间的","的问","两个","的问题","天气","每个","内容","定义","的统","模型的","的研究","frac","作者","到的","并不","有一","的用","的统计","解决","面的","之后","平台","标签","简单","这一","多的","手机","是我","销售","文章","消费","软件","信用","开发","更多","http","一步","描述","是否","最后","的方法","认为","高端","同的","存在","的用户","评论","基础","深度","的信","代表","复杂","我的","获得","也是","挖掘","的工","程中","纪要","一定","主题","单位","广州","们可","来的","科学家","了解","展示","随机","效果","数学","线性","参会","学的","报名","行了","支持","有效","直接","mathcal","在这","对应","当时","的模","价值","基本","新的","目前","营销","论文","不同的","交易","我们可","指数","方向","获取","记录","都是","定的","每一","过程中","们可以","出现","数据科学家","知道","第二","策略","美国","考虑","这样的","业的","传统","希望","的时候","相对","程度","自己的","说明","进行了","采用","应的","时代","社交网","网站","这是","人员","在一","届中国","的预","目标","社交网络","是不","服务","的应","者的","觉得","评价","变化","建立","我们可以","更加","的应用","的模型","看到","风险","应该","的结","知识","竞争","结合","贝叶斯","产生","帮助","测试","理解","组织","经济","他的","具有","出了","容易","成为","用于","准确","的一个","能力","趋势","银行","性的","的基","商业","讨论","一下","世界","之间的","人的","包含","数的","最大","系数","是在","里面","专业","成本","计算机","财经","驾驶","一次","了一个","工程","我们的","理论","生成","的信息","的重","研究中","简历","项目","三个","上海","也可","分享","成功","有很","的关键","其实","医疗","快速","投资","最近","渠道","的大","规模","进一","违约","不能","优化","后的","影响力","推断","生物","的预测","预测误差","业界","以看","几个","嘉宾","程序","角度","训练集","进一步","需求","假设","可以看","深度学习","的时间","设计","功能","推广","案例","模型选","的可","的概","节点","行的","个数","之前","因素","模型选择","环境","的影","解释","起来","高端车","model","text","东西","以下","另一","形式","智能","的文","重要的","参考","增加","的发","的影响","背景","车险","分词","化的","学术","布的","核心","的变","经大","通常","介绍了","原因","可能也","控制","机构","法的","王小宁","生的","的相","自然","论坛","财经大学","车辆","验证","为一","导致","征信","析的","的主","的实","而不","速度","也喜欢","人群","分析的","大量","实验","年的","找到","抽样","统的","编辑","联系","cdot","spark","中山","例子","北京大","司机","就可","得分","提出","效率","数据挖","方差","无觅","是对","真实","下来","个问","北京大学","历史","图形","就可以","带来","您可能也喜欢","提高","数据挖掘","显示","本的","趣的","事情","地区","建议","成了","提升","数据可","数据时","日期","朋友","社会","观测","评估","量化","个问题","也可以","人民","保险","判断","对数","工业","文件","标准","的学","的工作","研究中心","神经","系列","让我","xgboost","下面","不会","体的","所示","提供了","汽车","的广","的特","经验","驱动","err","hat","医学","媒体","据中","的分析","的推","的最","ggtree","不断","个体","也不","人民大学","位置","出的","基金","大数据的","来越","消费者","爆发","的机","的高","益辉","编程","表现","alpha","下载","中文","们将","会有","商务","国人","学研究","完成","度的","数据中","每周","特别","的过","神经网络","第三","计分","词的","阶段","驶行为","做一","做的","分的","埃博拉","多个","是有","来源","现了","的关键词","越来越","驾驶行为","高的","中国人","会者","兴趣的","好友","我们将","挑战","数据进","有很多","气象","注意","统计分","语言的","超过","金额","一点","一起","下的","中国人民","举办","交流","他们的","向量","在的","大小","学统计","山大","总结","意义","数据进行","数量","未来","比例","沙龙第","的个","的发展","的情","的方式","的过程","示了","科技有","计的","资料","中国人民大学","中山大学","分为","参会者","发布","国内","家的","展现","感兴趣","扩展","抓取","损失","排名","最终","每周精选","游戏","生活","科技有限公司","质量","题的","也就","今天","基因","收集","改进","数据可视化","是这","模式","的不","的估","的广告","的标","目的","相应","类别","统计分析","谢益辉","CV","们在","力的","华南","引擎","新闻","是最","概念","欢迎","点击","的交","的概率","的重要","监测","给出","综合","规则","距离","autoplot","不可","了这","你的","做了","关的","制造","同样","增长","完全","接口","操作","数据时代","更多的","次会议","电子","的优","的行","移动","调整","酒精性饮料","重复","一方","一致","习的","似然","健康","准则","单的","博文","合理","大数据时","实践","对应的","属性","年龄","很大","很好","接下","提取","现的","百度","的东","的关系","的理","的结果","空间","线性模型","要求","达到","app","上面","个用","了很","值的","分布的","国际","在大","在线","地方","域的","基础上","大数据时代","学习的","忠诚","思考","接下来","效的","是很","曲线","条件","用了","界的","的目","的解","议的","识别","资源","UBI","个性","为我","国家","它的","性化","正态","毕业","流程","的东西","的估计","的第","种方","究的","重点","问题的","python","主办","也有","创意","发生","思路","整个","更好","有一个","有可","本科","来看","死亡","流行","理学","的各","相关的","研究的","红包","组合","结构化","网络中","自动","行业的","表明","这就","bootstrap","一直","个用户","了数","交通","以用","会议的","作用","做出","合作","天津","学科","对数据","就会","广东","拟合","整体","方面的","本次会议","每一个","注册","点的","疫情","的事","的内","的地","简单的","观察","访谈","这两","进行分","阅读","BIC","个性化","个方","交叉","吸引","完整","层面","巨大","态分布","投放","是什么","最小","本数","极大","涉及","深圳","的基础","真正","类似","编码","让我们","QQ","也就是","保证","保费","创业","前的","区域","国的","在中","对用户","感觉","所有的","拥有","探索","是因","最好","机会","正态分布","水平","独立","理的","的思","的成","的计","的语","研究院","类型"],"freq":[2304,1413,855,846,773,750,650,547,543,497,430,428,426,411,401,385,373,366,359,359,350,341,314,306,280,277,255,254,239,238,232,228,226,222,220,217,214,213,213,210,209,209,208,200,199,196,193,189,187,187,180,180,179,178,178,177,176,174,171,171,170,169,168,168,167,167,167,163,163,162,162,159,159,159,157,156,156,156,156,154,153,151,151,150,150,150,149,148,148,147,147,147,147,145,143,143,142,142,142,141,140,139,138,138,137,137,136,135,135,135,134,134,134,134,134,132,132,132,131,131,130,130,129,129,128,128,128,128,127,127,126,126,125,125,124,124,123,123,123,122,122,121,120,120,119,119,118,117,117,117,116,116,116,116,116,115,114,114,113,113,112,112,112,111,111,110,110,110,110,110,110,110,110,110,109,108,108,108,108,107,107,107,107,106,106,106,105,105,105,104,104,104,104,104,104,104,104,103,103,103,103,102,102,102,101,101,101,101,100,100,100,100,100,99,98,98,98,97,97,97,96,96,96,95,95,95,94,94,94,94,93,93,93,92,92,92,92,92,91,91,91,91,91,91,90,90,90,90,90,90,90,90,89,89,89,88,88,88,88,88,88,88,88,88,87,87,87,87,87,87,87,87,87,87,86,86,86,86,86,85,85,85,85,85,85,84,84,84,84,84,84,83,83,83,83,83,83,83,83,82,82,82,82,82,82,81,81,81,81,81,81,80,80,80,80,80,80,79,79,79,79,79,78,78,77,77,76,76,76,76,76,76,76,76,75,75,74,74,74,74,74,73,73,73,73,73,73,73,73,73,73,73,72,72,72,72,72,72,72,71,71,71,71,71,71,71,71,71,71,70,70,70,70,70,70,70,70,69,69,69,69,69,69,69,69,69,68,68,68,68,68,67,67,67,67,67,67,67,67,66,66,66,66,66,66,66,66,66,65,65,65,65,65,65,65,65,65,64,64,64,64,64,64,63,63,63,63,63,63,63,63,62,62,62,62,62,62,62,62,62,62,62,62,62,62,61,61,61,61,61,61,61,61,60,60,60,60,60,60,60,60,60,60,60,59,59,59,59,59,59,59,59,59,59,59,59,59,59,59,58,58,58,58,58,58,58,58,58,58,58,58,58,57,57,57,57,57,57,57,57,57,57,57,57,57,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,55,55,55,55,55,55,55,55,55,55,55,54,54,54,54,54,54,54,54,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,51,51,51,51,51,51,51,51,51,51,51,51,50,50,50,50,50,50,50,50,50,50,50,50,50,50,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38],"fontFamily":"微软雅黑","fontWeight":"bold","color":"random-light","minSize":0,"weightFactor":0.15625,"backgroundColor":"grey","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+</div>
+</div>
+<p>绘制默认词云图，字体大小设置为2，字体旋转最小和最大均设置为-pi/2。</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;">wordcloud2</span>(demoFreq, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="at" style="color: #657422;">minRotation =</span> <span class="sc" style="color: #5E5E5E;">-</span>pi<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">2</span>, <span class="at" style="color: #657422;">maxRotation =</span> <span class="sc" style="color: #5E5E5E;">-</span>pi<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">2</span>) </span></code></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div id="htmlwidget-b4d1bc7ebb52cd22fbe8" style="width:100%;height:650px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b4d1bc7ebb52cd22fbe8">{"x":{"word":["oil","said","prices","opec","mln","the","last","bpd","dlrs","crude","market","reuter","saudi","will","one","barrel","kuwait","new","official","pct","price","barrels","government","production","sheikh","industry","meeting","minister","world","also","billion","futures","month","output","petroleum","quota","sources","accord","analysts","but","group","gulf","january","markets","report","today","december","demand","economic","economy","energy","help","international","may","nazer","nymex","posted","present","they","traders","158","ability","agreement","ali","april","arabia","budget","emergency","exchange","hold","imports","members","recent","riyals","says","sell","years","abdulaziz","agency","arab","ceiling","company","contract","daily","emirates","expected","expenditure","exports","growth","now","opecs","plans","qatar","quoted","research","reserve","reserves","states","study","united","way","week","west","year","150","according","added","among","asked","brings","buyers","can","change","corp","cut","day","development","effective","exploration","fall","february","fell","free","higher","increase","levels","meet","must","never","per","policy","power","problem","producing","protect","pumping","reduced","revenue","revenues","rise","saying","set","since","spa","strategic","texas","this","total","transaction","weak","yesterday","13nation","1985","198586","1986","1987","198788","address","agreed","alkhalifa","alqabas","alsabah","announced","appears","arabian","arabias","around","average","back","bank","bbl","boost","called","commitment","companies","compared","countrys","current","decrease","denied","dollars","domestic","due","efp","estimate","estimates","export","fixed","foreign","four","future","grade","guard","high","hisham","however","inc","indonesia","indonesias","intermediate","kingdoms","kuwaits","local","low","lower","lowered","made","main","march","mckiernan","measures","mizrahi","moves","much","named","next","officials","plant","position","president","pressure","producer","projected","published","real","refinery","reiterated","remain","rule","say","sector","several","sharp","ship","six","slightly","smaller","spokeswoman","state","sweet","texaco","three","trading","two","weeks","york","1518","198687","20s","285000","500","725","750","948000","activity","adhering","agriculture","along","apparently","appeared","approved","architect","areas","aspen","bankers","based","benchmark","benefits","canada","canadian","cash","changed","changes","circumstance","clearly","closed","coast","come","committee","commodity","consumption","countries","country","crossroads","crucial","cubic","currently","customers","deal","decembers","decline","deficit","deposits","deputy","diamond","differentials","difficulties","direction","discounted","dlr","early","ecuador","effect","embargo","embassy","entering","even","falling","feb","first","fiscal","fiscales","forced","fully","gcc","general","given","grades","halt","hit","hope","humanistic","impact","import","increased","increasing","instead","institute","interview","investment","jersey","june","keep","late","light","limit","limits","line","lost","louisiana","lowest","major","marketing","member","mid","million","ministers","mitigate","months","nearing","net","neutral","none","nuclear","organisation","organization","outlook","overseas","pact","pay","petroliferos","planned","port","positive","postings","predicted","press","pricing","private","probably","problems","pronounced","protected","public","put","quotes","raise","rate","reduction","referring","remarks","reports","return","review","risks","riyal","selfimposed","selling","share","shortfall","spot","steady","stick","strongly","studies","support","take","taken","techniques","throughput","trade","trust","trying","uncertainty","union","value","wam","wanted","weakness","winter","yacimientos","yanbu","zero","zone","100000","108","111","115","12217","1232","1381","13member","156","1600","1635","1650","1667","168","1685","1752","180000","200000","200foot","2226","24hour","2766","300","3749598","3750003","4133","534","5472","614","658","6745","678","718","738","able","abroad","accept","across","add","addressed","adherence","advantage","advisers","after","agricultural","aground","allocated","allocations","allow","almost","already","althani","although","alvite","amidst","analysis","analyst","annual","anything","apparent","aramco","argentine","arrangement","asia","asian","assesses","assign","assigned","associates","attract","available","averaging","aware","bahrain","bahrains","balance","baseless","basic","basis","because","beginning","bijan","bin","bit","bodys","briefly","broadened","brothers","buildings","burden","buy","buyer","calendar","cambridge","capacity","capozza","carrying","center","century","cera","certain","cftc","chairman","challenge","characterized","charging","cheap","cheating","chevron","chv","cited","citing","clever","close","closer","closes","coming","commission","communications","companys","completed","complex","condition","conditions","considered","construction","contacts","continuation","continue","continued","continues","contracted","contributed","control","cooperation","coordination","copany","corps","council","counter","coupled","covered","creek","critical","cts","currency","custom","cuts","cutting","cypriot","daniel","david","days","debtburdened","debut","decided","declared","declines","deemed","defence","delaware","delivered","delivering","departments","deregulate","deregulation","determination","devalue","device","differential","difficulty","dillard","director","discuss","discussing","distribution","distributions","divided","doha","dollar","drawbacks","drop","dropped","earlier","earnings","eastern","easy","ecuadors","editor","edmontonswann","education","eight","either","elaborate","elections","electricity","end","engineers","entitlements","environment","equally","estimated","european","exceed","exceeding","excess","excesses","excessive","exerted","exist","expanded","expansion","expartners","expectations","expects","explained","exporting","exxon","face","faced","faces","facilities","facing","failed","fallen","favours","fee","fernando","figure","figures","finance","firmer","floating","followed","for","forces","foremost","fourth","frank","full","fundamentals","gas","generally","geneva","get","globalization","glut","guaranteed","halting","harvard","heads","health","hedge","hedged","helped","hemisphere","highly","hills","hitting","hoped","housing","houston","immediately","implementation","improve","improvement","include","including","independent","indications","initiate","initiative","institutions","interbank","interest","investments","issue","jamaica","jan","juaymah","jubail","jump","just","khalifa","lack","largest","later","latest","launched","lead","leading","learn","least","lending","less","lesson","level","liberalised","lift","liftings","like","lines","liquidity","little","loan","lodged","longterm","ltd","lukman","lull","maintain","make","manager","manipulate","many","marathon","marathons","marker","mcfadden","means","mercantile","metrers","metres","mid1960s","mid1986","mideast","minus","mlotok","mob","mobil","momentum","money","monopolies","monthend","moussavarrahmani","movement","nation","natural","need","needs","negative","negotiate","neither","network","news","newspaper","nigerian","nine","nonoil","northern","notes","offset","onetwelfth","oneweek","open","opens","operations","opposite","optimism","optimistic","option","order","organiaation","our","outlining","outside","overproducing","part","parties","partly","party","past","paths","paul","paulsboro","payments","pegged","performance","period","pertains","pessimistic","philadelphia","physical","placed","plastics","platinum","point","policies","political","population","positions","postponed","pressures","previous","primarily","primary","principal","procedure","produce","produced","producers","product","products","program","projection","projects","prompted","proposed","proved","providing","provision","publish","purposes","quarter","quiet","quietly","quotas","rallied","ran","ranging","ras","rates","rationalise","readdress","reaffirmed","reasonable","recommending","recovering","recurrent","reference","refineries","refining","reflect","refloat","reform","reforms","regain","regard","regarding","region","regional","reiterate","relaxation","relieve","reluctant","remainder","remained","reported","request","resistance","resisting","resources","respectively","responsibilites","restored","restraint","restrictions","result","reuters","revealed","reviews","right","rilwanu","rising","river","rocks","rosemary","rumour","rushing","sales","salomon","santos","satisfied","saw","scheduled","scheme","seapride","season","secretary","security","seeing","seek","september","series","serve","services","session","sets","seven","severely","shamrock","sharply","shoulder","show","showed","shown","signed","signs","situation","sixmonth","slackens","slide","slump","social","sold","soon","sort","sour","south","southeast","spend","spill","spoke","spokesman","spotnext","spriggs","stabilise","stabilize","stable","start","statement","steel","steering","steps","stiff","storage","strong","subsequently","substitution","succeed","suffer","suffering","suhartos","sunday","sundays","supply","supporting","suppose","surrounding","swift","talks","tanker","tanurah","tapers","teach","telephone","terminals","test","there","third","thomas","though","thought","threemonth","tide","together","told","totalled","tower","trader","trades","traditional","traditionally","transacted","transmission","transport","trends","trusts","try","turmoil","twofold","uae","uncertain","unchanged","under","unions","unitholders","universitys","unlikely","unocal","unusually","urged","use","virtual","wants","water","wealth","wednesday","weekend","welcomed","when","whether","wishes","worldwide","xon","yergin","yesterdays"],"freq":[85,73,48,42,31,26,24,23,23,21,20,20,18,18,17,15,14,14,14,14,13,11,11,11,11,10,10,10,10,9,9,9,9,9,9,9,9,8,8,8,8,8,8,8,8,8,7,7,7,7,7,7,7,7,7,7,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":4.23529411764706,"backgroundColor":"white","gridSize":0,"minRotation":-1.5707963267949,"maxRotation":-1.5707963267949,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+</div>
+</div>
+<p>绘制词云图，字体大小设置为2，字体旋转最大和最小角度均为-pi/6，旋转比例设置为0.5，一半的字体会旋转。</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;">wordcloud2</span>(demoFreq, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="at" style="color: #657422;">minRotation =</span> <span class="sc" style="color: #5E5E5E;">-</span>pi<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">6</span>, <span class="at" style="color: #657422;">maxRotation =</span> <span class="sc" style="color: #5E5E5E;">-</span>pi<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">6</span>,<span class="at" style="color: #657422;">rotateRatio =</span> <span class="fl" style="color: #AD0000;">0.5</span>)</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div id="htmlwidget-3148f1c8df2d7267f49a" style="width:100%;height:650px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3148f1c8df2d7267f49a">{"x":{"word":["oil","said","prices","opec","mln","the","last","bpd","dlrs","crude","market","reuter","saudi","will","one","barrel","kuwait","new","official","pct","price","barrels","government","production","sheikh","industry","meeting","minister","world","also","billion","futures","month","output","petroleum","quota","sources","accord","analysts","but","group","gulf","january","markets","report","today","december","demand","economic","economy","energy","help","international","may","nazer","nymex","posted","present","they","traders","158","ability","agreement","ali","april","arabia","budget","emergency","exchange","hold","imports","members","recent","riyals","says","sell","years","abdulaziz","agency","arab","ceiling","company","contract","daily","emirates","expected","expenditure","exports","growth","now","opecs","plans","qatar","quoted","research","reserve","reserves","states","study","united","way","week","west","year","150","according","added","among","asked","brings","buyers","can","change","corp","cut","day","development","effective","exploration","fall","february","fell","free","higher","increase","levels","meet","must","never","per","policy","power","problem","producing","protect","pumping","reduced","revenue","revenues","rise","saying","set","since","spa","strategic","texas","this","total","transaction","weak","yesterday","13nation","1985","198586","1986","1987","198788","address","agreed","alkhalifa","alqabas","alsabah","announced","appears","arabian","arabias","around","average","back","bank","bbl","boost","called","commitment","companies","compared","countrys","current","decrease","denied","dollars","domestic","due","efp","estimate","estimates","export","fixed","foreign","four","future","grade","guard","high","hisham","however","inc","indonesia","indonesias","intermediate","kingdoms","kuwaits","local","low","lower","lowered","made","main","march","mckiernan","measures","mizrahi","moves","much","named","next","officials","plant","position","president","pressure","producer","projected","published","real","refinery","reiterated","remain","rule","say","sector","several","sharp","ship","six","slightly","smaller","spokeswoman","state","sweet","texaco","three","trading","two","weeks","york","1518","198687","20s","285000","500","725","750","948000","activity","adhering","agriculture","along","apparently","appeared","approved","architect","areas","aspen","bankers","based","benchmark","benefits","canada","canadian","cash","changed","changes","circumstance","clearly","closed","coast","come","committee","commodity","consumption","countries","country","crossroads","crucial","cubic","currently","customers","deal","decembers","decline","deficit","deposits","deputy","diamond","differentials","difficulties","direction","discounted","dlr","early","ecuador","effect","embargo","embassy","entering","even","falling","feb","first","fiscal","fiscales","forced","fully","gcc","general","given","grades","halt","hit","hope","humanistic","impact","import","increased","increasing","instead","institute","interview","investment","jersey","june","keep","late","light","limit","limits","line","lost","louisiana","lowest","major","marketing","member","mid","million","ministers","mitigate","months","nearing","net","neutral","none","nuclear","organisation","organization","outlook","overseas","pact","pay","petroliferos","planned","port","positive","postings","predicted","press","pricing","private","probably","problems","pronounced","protected","public","put","quotes","raise","rate","reduction","referring","remarks","reports","return","review","risks","riyal","selfimposed","selling","share","shortfall","spot","steady","stick","strongly","studies","support","take","taken","techniques","throughput","trade","trust","trying","uncertainty","union","value","wam","wanted","weakness","winter","yacimientos","yanbu","zero","zone","100000","108","111","115","12217","1232","1381","13member","156","1600","1635","1650","1667","168","1685","1752","180000","200000","200foot","2226","24hour","2766","300","3749598","3750003","4133","534","5472","614","658","6745","678","718","738","able","abroad","accept","across","add","addressed","adherence","advantage","advisers","after","agricultural","aground","allocated","allocations","allow","almost","already","althani","although","alvite","amidst","analysis","analyst","annual","anything","apparent","aramco","argentine","arrangement","asia","asian","assesses","assign","assigned","associates","attract","available","averaging","aware","bahrain","bahrains","balance","baseless","basic","basis","because","beginning","bijan","bin","bit","bodys","briefly","broadened","brothers","buildings","burden","buy","buyer","calendar","cambridge","capacity","capozza","carrying","center","century","cera","certain","cftc","chairman","challenge","characterized","charging","cheap","cheating","chevron","chv","cited","citing","clever","close","closer","closes","coming","commission","communications","companys","completed","complex","condition","conditions","considered","construction","contacts","continuation","continue","continued","continues","contracted","contributed","control","cooperation","coordination","copany","corps","council","counter","coupled","covered","creek","critical","cts","currency","custom","cuts","cutting","cypriot","daniel","david","days","debtburdened","debut","decided","declared","declines","deemed","defence","delaware","delivered","delivering","departments","deregulate","deregulation","determination","devalue","device","differential","difficulty","dillard","director","discuss","discussing","distribution","distributions","divided","doha","dollar","drawbacks","drop","dropped","earlier","earnings","eastern","easy","ecuadors","editor","edmontonswann","education","eight","either","elaborate","elections","electricity","end","engineers","entitlements","environment","equally","estimated","european","exceed","exceeding","excess","excesses","excessive","exerted","exist","expanded","expansion","expartners","expectations","expects","explained","exporting","exxon","face","faced","faces","facilities","facing","failed","fallen","favours","fee","fernando","figure","figures","finance","firmer","floating","followed","for","forces","foremost","fourth","frank","full","fundamentals","gas","generally","geneva","get","globalization","glut","guaranteed","halting","harvard","heads","health","hedge","hedged","helped","hemisphere","highly","hills","hitting","hoped","housing","houston","immediately","implementation","improve","improvement","include","including","independent","indications","initiate","initiative","institutions","interbank","interest","investments","issue","jamaica","jan","juaymah","jubail","jump","just","khalifa","lack","largest","later","latest","launched","lead","leading","learn","least","lending","less","lesson","level","liberalised","lift","liftings","like","lines","liquidity","little","loan","lodged","longterm","ltd","lukman","lull","maintain","make","manager","manipulate","many","marathon","marathons","marker","mcfadden","means","mercantile","metrers","metres","mid1960s","mid1986","mideast","minus","mlotok","mob","mobil","momentum","money","monopolies","monthend","moussavarrahmani","movement","nation","natural","need","needs","negative","negotiate","neither","network","news","newspaper","nigerian","nine","nonoil","northern","notes","offset","onetwelfth","oneweek","open","opens","operations","opposite","optimism","optimistic","option","order","organiaation","our","outlining","outside","overproducing","part","parties","partly","party","past","paths","paul","paulsboro","payments","pegged","performance","period","pertains","pessimistic","philadelphia","physical","placed","plastics","platinum","point","policies","political","population","positions","postponed","pressures","previous","primarily","primary","principal","procedure","produce","produced","producers","product","products","program","projection","projects","prompted","proposed","proved","providing","provision","publish","purposes","quarter","quiet","quietly","quotas","rallied","ran","ranging","ras","rates","rationalise","readdress","reaffirmed","reasonable","recommending","recovering","recurrent","reference","refineries","refining","reflect","refloat","reform","reforms","regain","regard","regarding","region","regional","reiterate","relaxation","relieve","reluctant","remainder","remained","reported","request","resistance","resisting","resources","respectively","responsibilites","restored","restraint","restrictions","result","reuters","revealed","reviews","right","rilwanu","rising","river","rocks","rosemary","rumour","rushing","sales","salomon","santos","satisfied","saw","scheduled","scheme","seapride","season","secretary","security","seeing","seek","september","series","serve","services","session","sets","seven","severely","shamrock","sharply","shoulder","show","showed","shown","signed","signs","situation","sixmonth","slackens","slide","slump","social","sold","soon","sort","sour","south","southeast","spend","spill","spoke","spokesman","spotnext","spriggs","stabilise","stabilize","stable","start","statement","steel","steering","steps","stiff","storage","strong","subsequently","substitution","succeed","suffer","suffering","suhartos","sunday","sundays","supply","supporting","suppose","surrounding","swift","talks","tanker","tanurah","tapers","teach","telephone","terminals","test","there","third","thomas","though","thought","threemonth","tide","together","told","totalled","tower","trader","trades","traditional","traditionally","transacted","transmission","transport","trends","trusts","try","turmoil","twofold","uae","uncertain","unchanged","under","unions","unitholders","universitys","unlikely","unocal","unusually","urged","use","virtual","wants","water","wealth","wednesday","weekend","welcomed","when","whether","wishes","worldwide","xon","yergin","yesterdays"],"freq":[85,73,48,42,31,26,24,23,23,21,20,20,18,18,17,15,14,14,14,14,13,11,11,11,11,10,10,10,10,9,9,9,9,9,9,9,9,8,8,8,8,8,8,8,8,8,7,7,7,7,7,7,7,7,7,7,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":4.23529411764706,"backgroundColor":"white","gridSize":0,"minRotation":-0.523598775598299,"maxRotation":-0.523598775598299,"shuffle":true,"rotateRatio":0.5,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>科研作图</category>
+  <guid>https://chenq.site/Qsight/2022-05-06-r-wordcloud2/index.html</guid>
+  <pubDate>Fri, 06 May 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-05-06-r-wordcloud2/cover.png" medium="image" type="image/png" height="131" width="144"/>
+</item>
+<item>
+  <title>R语言ggplot2包和gganimate包绘制动态追逐条形图(chasing barchart)</title>
+  <dc:creator> 陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-05-04-chasing-barchart/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>最近动态条形图或者称之为追逐条形图在社交媒体上比较火，最常见的是世界各个国家的GDP排名随着时间（以年为单位）变化的情况，通过它可以明显的看到中国的GDP排名从前10名开外逐渐上升到全球第二名的位置。热爱数据可视化的小伙伴们也在想着如何制作这样酷炫的图呢？今天这篇文章的目的就是介绍如何利用R语言绘制这样的动态条形图。</p>
+<section id="用到哪些r包" class="level2">
+<h2 class="anchored" data-anchor-id="用到哪些r包">用到哪些R包？</h2>
+<ul>
+<li>ggplot2</li>
+<li>gganimate</li>
+</ul>
+<p>ggplot2包和gganimate包是两个主要用到的包，但是我们在数据整理过程中还用到了tidyverse、janitor和scales包。</p>
+</section>
+<section id="数据准备" class="level2">
+<h2 class="anchored" data-anchor-id="数据准备">数据准备</h2>
+<p>作者在互联网上收集了从1980年以来全球前10位国家的GDP数据，<a href="gdp.csv">数据，点击下载</a>以CSV的形式保存。</p>
+<p>我们把数据读入到R环境中，总共有4个变量，year年份、country国家、continent大洲、gdp，下面看下数据的结构，这个数据已经是ggplot2绘图所需要的<em>长数据</em>格式，所以不需要进行特别的转换了。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;">#读入gdp数据</span></span>
+<span id="cb1-3">data <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read.csv</span>(<span class="st" style="color: #20794D;">"gdp.csv"</span>)</span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;">#显示头6条数据</span></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">head</span>(data)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year  country continent         gdp
+1 1984 澳大利亚    大洋洲 1.93594e+11
+2 2019     巴西      美洲 1.87782e+12
+3 2018     巴西      美洲 1.91693e+12
+4 2017     巴西      美洲 2.06351e+12
+5 2016     巴西      美洲 1.79569e+12
+6 2015     巴西      美洲 1.80221e+12</code></pre>
+</div>
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1">data1<span class="ot" style="color: #003B4F;">&lt;-</span>data<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb3-2">  <span class="fu" style="color: #4758AB;">group_by</span>(year)<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;">arrange</span>(year,<span class="fu" style="color: #4758AB;">desc</span>(gdp))<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb3-4">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">ranking=</span><span class="fu" style="color: #4758AB;">row_number</span>())<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb3-5">  <span class="fu" style="color: #4758AB;">filter</span>(ranking<span class="sc" style="color: #5E5E5E;">&lt;=</span><span class="dv" style="color: #AD0000;">10</span>)</span></code></pre></div>
+</details>
+</div>
+</section>
+<section id="绘制动态条形图" class="level2">
+<h2 class="anchored" data-anchor-id="绘制动态条形图">绘制动态条形图</h2>
+<p>绘制动态条形图实际需要两个部分，</p>
+<ul>
+<li>利用ggplot2绘制历年的静态图</li>
+<li>利用gganimate包把静态图动起来</li>
+</ul>
+<p>前面我们已经准备好了绘图的数据，那么我们就先绘制动态条形图每个画面的静态图。我们准备基于GDP的排名展示位于全球前10位的国家，我们需要绘制每年的排名情况。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<span id="cb4-2">plot <span class="ot" style="color: #003B4F;">&lt;-</span> data1 <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;">ggplot</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;">geom_col</span>(<span class="fu" style="color: #4758AB;">aes</span>(ranking,gdp,<span class="at" style="color: #657422;">fill=</span>continent)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(ranking,gdp,<span class="at" style="color: #657422;">label=</span><span class="fu" style="color: #4758AB;">paste</span>(<span class="fu" style="color: #4758AB;">round</span>(gdp<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">1000000000000</span>,<span class="dv" style="color: #AD0000;">2</span>),<span class="st" style="color: #20794D;">"万亿"</span>)), <span class="at" style="color: #657422;">hjust=</span><span class="sc" style="color: #5E5E5E;">-</span><span class="fl" style="color: #AD0000;">0.1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-6">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(ranking,<span class="at" style="color: #657422;">y=</span><span class="dv" style="color: #AD0000;">0</span>,<span class="at" style="color: #657422;">label=</span>country), <span class="at" style="color: #657422;">hjust=</span><span class="fl" style="color: #AD0000;">1.1</span>) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb4-7">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span><span class="dv" style="color: #AD0000;">10</span>, <span class="at" style="color: #657422;">y=</span><span class="fu" style="color: #4758AB;">max</span>(gdp) , <span class="at" style="color: #657422;">label =</span> <span class="fu" style="color: #4758AB;">as.factor</span>(year)), <span class="at" style="color: #657422;">vjust =</span> <span class="fl" style="color: #AD0000;">0.2</span>, <span class="at" style="color: #657422;">alpha =</span> <span class="fl" style="color: #AD0000;">0.5</span>,  <span class="at" style="color: #657422;">col =</span> <span class="st" style="color: #20794D;">"gray"</span>, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">20</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-8">  <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">label=</span><span class="cf" style="color: #003B4F;">function</span>(x) <span class="fu" style="color: #4758AB;">paste</span>(<span class="fu" style="color: #4758AB;">round</span>(x<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">1000000000000</span>,<span class="dv" style="color: #AD0000;">2</span>),<span class="st" style="color: #20794D;">"万亿"</span>))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-9">  <span class="fu" style="color: #4758AB;">coord_flip</span>(<span class="at" style="color: #657422;">clip =</span> <span class="st" style="color: #20794D;">"off"</span>, <span class="at" style="color: #657422;">expand =</span> <span class="cn" style="color: #8f5902;">FALSE</span>) <span class="sc" style="color: #5E5E5E;">+</span> <span class="fu" style="color: #4758AB;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-10">  <span class="fu" style="color: #4758AB;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb4-11">  <span class="fu" style="color: #4758AB;">theme</span>(</span>
+<span id="cb4-12">    <span class="at" style="color: #657422;">panel.grid =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(), </span>
+<span id="cb4-13">    <span class="at" style="color: #657422;">legend.position =</span> <span class="st" style="color: #20794D;">"top"</span>,</span>
+<span id="cb4-14">    <span class="at" style="color: #657422;">legend.title=</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb4-15">    <span class="at" style="color: #657422;">axis.ticks.y =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb4-16">    <span class="at" style="color: #657422;">axis.title.y =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb4-17">    <span class="at" style="color: #657422;">axis.text.y =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb4-18">    <span class="at" style="color: #657422;">plot.margin =</span> <span class="fu" style="color: #4758AB;">margin</span>(<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">4</span>, <span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">3</span>, <span class="st" style="color: #20794D;">"cm"</span>),</span>
+<span id="cb4-19">    <span class="at" style="color: #657422;">text =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">'Kai'</span>)</span>
+<span id="cb4-20">  ) </span></code></pre></div>
+</details>
+</div>
+<p>上面的代码绘制了动态条形图的每一个画面，也就是每一年的全球GDP排名前10的国家的条形图。当然你也可以对上面的代码进行更改，从而使图更加美观。而进行动态化的关键步骤是使用gganimate包的transition_states()功能，下面的代码使绘制的图按照year这个变量动态变化。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;">library</span>(gganimate)</span>
+<span id="cb5-2">plot2<span class="ot" style="color: #003B4F;">&lt;-</span>plot<span class="sc" style="color: #5E5E5E;">+</span><span class="fu" style="color: #4758AB;">transition_states</span>(year, <span class="at" style="color: #657422;">state_length =</span> <span class="dv" style="color: #AD0000;">0</span>, <span class="at" style="color: #657422;">transition_length =</span> <span class="dv" style="color: #AD0000;">2</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">title =</span> <span class="st" style="color: #20794D;">'全球不同国家近40年GDP排名变化情况(前10位)'</span>,  </span>
+<span id="cb5-4">       <span class="at" style="color: #657422;">caption  =</span> <span class="st" style="color: #20794D;">"GDP in Billions USD | Data Source: World Bank Data"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;">enter_fade</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;">exit_fade</span>() <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb5-7">  <span class="fu" style="color: #4758AB;">ease_aes</span>(<span class="st" style="color: #20794D;">'quadratic-in-out'</span>) </span>
+<span id="cb5-8"></span>
+<span id="cb5-9"><span class="fu" style="color: #4758AB;">animate</span>(plot2, <span class="at" style="color: #657422;">width =</span> <span class="dv" style="color: #AD0000;">800</span>, <span class="at" style="color: #657422;">height =</span> <span class="dv" style="color: #AD0000;">500</span>, <span class="at" style="color: #657422;">fps =</span> <span class="dv" style="color: #AD0000;">25</span>, <span class="at" style="color: #657422;">duration =</span> <span class="dv" style="color: #AD0000;">15</span>, <span class="at" style="color: #657422;">rewind =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-05-04-chasing-barchart/index_files/figure-html/unnamed-chunk-3-1.gif" class="img-fluid"></p>
+</div>
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">anim_save</span>(<span class="st" style="color: #20794D;">"pp.png"</span>)</span></code></pre></div>
+</details>
+</div>
+<p><img src="https://chenq.site/Qsight/2022-05-04-chasing-barchart/pp.png" class="img-fluid" alt="追逐条形图"> ## 小结 我们已经成功的绘制了全球gdp前10的国家在过去40年里动态变化的过程，而只要按照我们前面的准备的数据格式整理自己的数据，那么也很容易地能套用这个代码，从而实现自己的动态条形图。</p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>科研作图</category>
+  <guid>https://chenq.site/Qsight/2022-05-04-chasing-barchart/index.html</guid>
+  <pubDate>Wed, 04 May 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-05-04-chasing-barchart/pp.gif" medium="image" type="image/gif"/>
+</item>
+<item>
+  <title>利用阿里云DataV可视化平台数据以及ggplot2包的geom_sf函数绘制统计地图</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-04-29-datav/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="什么是统计地图" class="level2">
+<h2 class="anchored" data-anchor-id="什么是统计地图">什么是统计地图？</h2>
+<p>统计地图是以地图为背景，运用各种线纹、色彩、几何图形或实物形象来显示被研究现象的指标数值的大小及其在各地区的分布状况的一种统计图形。又称空间数列图和地理数列图。主要用于说明某些现象在地域上的分布，进行不同地区间的比较，反映现象所处的地理位置，以及它们的密集和分散程度。</p>
+</section>
+<section id="制作统计地图的难点有哪些" class="level2">
+<h2 class="anchored" data-anchor-id="制作统计地图的难点有哪些">制作统计地图的难点有哪些？</h2>
+<p>在流行病学研究中，往往需要通过以统计地图的形式来展示数据的空间分布情况。然而，我们一般很难找到合适的用于绘制统计地图的地图边界数据。要么找到的地图行政区划边界数据太旧，实际的行政区划边界已经发生了改变，要么就是找不到相应的数据。</p>
+<p>目前还有一些制作统计地图的网站，可以提供绘制简单的统计地图的功能，但是基本上这些服务都是以收费为目的地，不符合互联网上开源自由的精神，但是如果同学不缺钱，那就可以去试试哈！</p>
+</section>
+<section id="如何利用阿里云datav可视化平台地图数据" class="level2">
+<h2 class="anchored" data-anchor-id="如何利用阿里云datav可视化平台地图数据">如何利用阿里云DataV可视化平台地图数据?</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-datav/preview.png" class="img-fluid" width="1086"></p>
+</div>
+</div>
+<p>利用<strong>sf包</strong>读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;">#加载sf包</span></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;">#加载ggplot2包</span></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;">rm</span>(<span class="at" style="color: #657422;">list =</span> <span class="fu" style="color: #4758AB;">ls</span>())</span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;">#利用read_sf函数读取json格式边界数据</span></span>
+<span id="cb1-8">china1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json"</span>)</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
+<span id="cb1-11">china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-12">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-13">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>也可以利用<strong>geojsonio包</strong>读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;">#加载geojsonio包</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;">library</span>(geojsonio)</span>
+<span id="cb2-3"><span class="co" style="color: #5E5E5E;">#利用geojsonio包读取json格式数据为sp数据</span></span>
+<span id="cb2-4">states <span class="ot" style="color: #003B4F;">&lt;-</span> geojsonio<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">geojson_read</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>, <span class="at" style="color: #657422;">what =</span> <span class="st" style="color: #20794D;">"sp"</span>)</span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;">#将地理空间数据转换为sf数据</span></span>
+<span id="cb2-6">states2<span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_as_sf</span>(states)</span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
+<span id="cb2-8">states2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-9">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-10">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000.json">https://geo.datav.aliyun.com/areas_v3/bound/410000.json</a>，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json">https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json</a>。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#读取仅有河南省省界的json数据</span></span>
+<span id="cb3-2">hn1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000.json"</span>)</span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;">#读取具有河南省各市区边界的json数据</span></span>
+<span id="cb3-4">hn2 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>)</span>
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf函数绘制河南省省界</span></span>
+<span id="cb3-6">hn1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-7">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-8">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;">#利用geom_sf函数绘制河南省省界及各市区边界</span></span>
+<span id="cb4-2">hn2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;">#读取洛阳市各区县边界数据，并绘制地图</span></span>
+<span id="cb5-2">ly <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410300_full.json"</span>)</span>
+<span id="cb5-3">ly<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="如何绘制统计地图" class="level2">
+<h2 class="anchored" data-anchor-id="如何绘制统计地图">如何绘制统计地图？</h2>
+<p>可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。</p>
+<p>实现代码如下：</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">library</span>(RColorBrewer)</span>
+<span id="cb6-2">data<span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">data.frame</span>(<span class="at" style="color: #657422;">adcode=</span><span class="fu" style="color: #4758AB;">c</span>( <span class="st" style="color: #20794D;">"110000"</span>, <span class="st" style="color: #20794D;">"120000"</span> ,<span class="st" style="color: #20794D;">"130000"</span> ,<span class="st" style="color: #20794D;">"140000"</span>, <span class="st" style="color: #20794D;">"150000"</span> ,<span class="st" style="color: #20794D;">"210000"</span>, <span class="st" style="color: #20794D;">"220000"</span> ,<span class="st" style="color: #20794D;">"230000"</span>, <span class="st" style="color: #20794D;">"310000"</span> ,<span class="st" style="color: #20794D;">"320000"</span>, <span class="st" style="color: #20794D;">"330000"</span> ,<span class="st" style="color: #20794D;">"340000"</span> ,<span class="st" style="color: #20794D;">"350000"</span> ,<span class="st" style="color: #20794D;">"360000"</span>, <span class="st" style="color: #20794D;">"370000"</span>, <span class="st" style="color: #20794D;">"410000"</span>, <span class="st" style="color: #20794D;">"420000"</span>, <span class="st" style="color: #20794D;">"430000"</span> ,<span class="st" style="color: #20794D;">"440000"</span> ,<span class="st" style="color: #20794D;">"450000"</span> ,<span class="st" style="color: #20794D;">"460000"</span>, <span class="st" style="color: #20794D;">"500000"</span> ,<span class="st" style="color: #20794D;">"510000"</span> ,<span class="st" style="color: #20794D;">"520000"</span> ,<span class="st" style="color: #20794D;">"530000"</span> ,<span class="st" style="color: #20794D;">"540000"</span> ,<span class="st" style="color: #20794D;">"610000"</span>, <span class="st" style="color: #20794D;">"620000"</span>, <span class="st" style="color: #20794D;">"630000"</span>, <span class="st" style="color: #20794D;">"640000"</span>, <span class="st" style="color: #20794D;">"650000"</span> ,<span class="st" style="color: #20794D;">"710000"</span> ,<span class="st" style="color: #20794D;">"810000"</span>, <span class="st" style="color: #20794D;">"820000"</span> ,<span class="st" style="color: #20794D;">"100000"</span>),</span>
+<span id="cb6-3">                 <span class="at" style="color: #657422;">num=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">391</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">13</span>,<span class="dv" style="color: #AD0000;">28</span>,<span class="dv" style="color: #AD0000;">60</span>,<span class="dv" style="color: #AD0000;">40</span>,<span class="dv" style="color: #AD0000;">884</span>,<span class="dv" style="color: #AD0000;">230</span>,<span class="dv" style="color: #AD0000;">12988</span>,<span class="dv" style="color: #AD0000;">30</span>,<span class="dv" style="color: #AD0000;">609</span>,<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">50</span>,<span class="dv" style="color: #AD0000;">220</span>,<span class="dv" style="color: #AD0000;">70</span>,<span class="dv" style="color: #AD0000;">36</span>,<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">26</span>,<span class="dv" style="color: #AD0000;">169</span>,<span class="dv" style="color: #AD0000;">23</span>,<span class="dv" style="color: #AD0000;">15</span>,<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">74</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">27</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">20</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">8</span>,<span class="dv" style="color: #AD0000;">13742</span>,<span class="dv" style="color: #AD0000;">59661</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">0</span>))</span>
+<span id="cb6-4">data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">35</span>] <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">sum</span>(data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">34</span>])</span>
+<span id="cb6-5"></span>
+<span id="cb6-6">china2<span class="ot" style="color: #003B4F;">&lt;-</span>china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-7">  <span class="fu" style="color: #4758AB;">left_join</span>(data,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"adcode"</span>)<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-8">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">case=</span><span class="fu" style="color: #4758AB;">cut</span>(num,<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">10</span>,<span class="dv" style="color: #AD0000;">100</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">1000</span>,<span class="dv" style="color: #AD0000;">10000</span>,<span class="dv" style="color: #AD0000;">50000</span>),<span class="at" style="color: #657422;">include.lowest=</span>T,<span class="at" style="color: #657422;">right=</span>F))</span>
+<span id="cb6-9"></span>
+<span id="cb6-10"><span class="fu" style="color: #4758AB;">ggplot</span>(china2)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-11">  <span class="fu" style="color: #4758AB;">geom_sf</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-12">  <span class="fu" style="color: #4758AB;">theme_void</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-13">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">fill=</span>case))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-14">  <span class="fu" style="color: #4758AB;">scale_fill_manual</span>(</span>
+<span id="cb6-15">    <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"现存病例数"</span>,</span>
+<span id="cb6-16">    <span class="at" style="color: #657422;">values =</span> <span class="fu" style="color: #4758AB;">brewer.pal</span>(<span class="dv" style="color: #AD0000;">7</span>,<span class="st" style="color: #20794D;">"Reds"</span>),</span>
+<span id="cb6-17">    <span class="at" style="color: #657422;">labels=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"0-10"</span>,<span class="st" style="color: #20794D;">"10-100"</span>,<span class="st" style="color: #20794D;">"100-500"</span>, <span class="st" style="color: #20794D;">"500-1000"</span>,<span class="st" style="color: #20794D;">"1000-10000"</span>,<span class="st" style="color: #20794D;">"10000-50000"</span>,<span class="st" style="color: #20794D;">"&gt;50000"</span>))</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>科研作图</category>
+  <guid>https://chenq.site/Qsight/2022-04-29-datav/index.html</guid>
+  <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-04-29-datav/preview.png" medium="image" type="image/png" height="83" width="144"/>
+</item>
+<item>
+  <title>利用ggplot2包绘制barplot简单条形图</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="什么是条形图" class="level2">
+<h2 class="anchored" data-anchor-id="什么是条形图">什么是条形图？</h2>
+<p>条形图（bar chart）是用宽度相同的条形的高度或长短来表示数据多少的图形。条形图可以横置或纵置，纵置时也称为柱形图（column chart）。此外，条形图有简单条形图、复式条形图等形式。</p>
+</section>
+<section id="条形图有哪些类型" class="level2">
+<h2 class="anchored" data-anchor-id="条形图有哪些类型">条形图有哪些类型</h2>
+<ul>
+<li>简单条形图：</li>
+<li>簇状条形图和三维簇状条形图：簇状条形图比较各个类别的值。在簇状条形图中，通常沿垂直轴组织类别，而沿水平轴组织数值。三维簇状条形图以三维格式显示水平矩形，而不以三维格式显示数据。</li>
+<li>堆积条形图和三维堆积条形图：堆积条形图显示单个项目与整体之间的关系。三维堆积条形图以三维格式显示水平矩形，而不以三维格式显示数据。</li>
+<li>百分比堆积条形图和三维百分比堆积条形图：此类型的图表比较各个类别的每一数值所占总数值的百分比大小。三维百分比堆积条形图表以三维格式显示水平矩形，而不以三维格式显示数据。</li>
+</ul>
+</section>
+<section id="如何绘制barplot条形图" class="level2">
+<h2 class="anchored" data-anchor-id="如何绘制barplot条形图">如何绘制barplot条形图？</h2>
+<section id="绘制简单barplot条形图" class="level3">
+<h3 class="anchored" data-anchor-id="绘制简单barplot条形图">绘制简单barplot条形图</h3>
+<p>如果你还没有安装ggplot2包，那么请先安装此包，如果已经安装，请忽略此步骤。</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">install.packages</span>(<span class="st" style="color: #20794D;">"ggplot2"</span>)</span></code></pre></div>
+<p>首先，准备一下绘制barplot条形图所需的数据，我们就拿<a href="https://chenq.site/report/2020/">河南省前10位癌症发病率数据</a>来举例。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1">data <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(</span>
+<span id="cb2-2">  <span class="at" style="color: #657422;">site=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"肺癌"</span>,<span class="st" style="color: #20794D;">"乳腺癌"</span>,<span class="st" style="color: #20794D;">"胃癌"</span>,<span class="st" style="color: #20794D;">"食管癌"</span>,<span class="st" style="color: #20794D;">"肝癌"</span>,<span class="st" style="color: #20794D;">"宫颈癌"</span>,<span class="st" style="color: #20794D;">"结直肠癌"</span>,<span class="st" style="color: #20794D;">"子宫体癌"</span>,<span class="st" style="color: #20794D;">"甲状腺癌"</span>,<span class="st" style="color: #20794D;">"卵巢癌"</span>),</span>
+<span id="cb2-3">  <span class="at" style="color: #657422;">incid=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="fl" style="color: #AD0000;">53.35</span>,<span class="fl" style="color: #AD0000;">39.25</span>,<span class="fl" style="color: #AD0000;">35.74</span>,<span class="fl" style="color: #AD0000;">31.11</span>,<span class="fl" style="color: #AD0000;">29.15</span>,<span class="fl" style="color: #AD0000;">19.24</span>,<span class="fl" style="color: #AD0000;">18.15</span>,<span class="fl" style="color: #AD0000;">9.99</span>,<span class="fl" style="color: #AD0000;">7.92</span>,<span class="fl" style="color: #AD0000;">7.04</span>))</span>
+<span id="cb2-4"><span class="fu" style="color: #4758AB;">head</span>(data)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    site incid
+1   肺癌 53.35
+2 乳腺癌 39.25
+3   胃癌 35.74
+4 食管癌 31.11
+5   肝癌 29.15
+6 宫颈癌 19.24</code></pre>
+</div>
+</div>
+<p>利用ggplot2包的geom_bar()函数绘制简单条形图</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<span id="cb4-2"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
+<span id="cb4-3">plot <span class="ot" style="color: #003B4F;">&lt;-</span> data <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb4-4">  <span class="co" style="color: #5E5E5E;"># 通过reorder(site,-incid)来改变条形的顺序，按照incid值的大小排列条形</span></span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span><span class="fu" style="color: #4758AB;">reorder</span>(site,incid), <span class="at" style="color: #657422;">y=</span>incid)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-6">  <span class="co" style="color: #5E5E5E;"># 输出条形图，并把条形填充为蓝色</span></span>
+<span id="cb4-7">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">stat=</span><span class="st" style="color: #20794D;">"identity"</span>,<span class="at" style="color: #657422;">fill=</span><span class="st" style="color: #20794D;">"steelblue"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-8">  <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))</span>
+<span id="cb4-9"><span class="fu" style="color: #4758AB;">ggsave</span>(<span class="st" style="color: #20794D;">"plot.png"</span>)</span></code></pre></div>
+</details>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/plot.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">条形图</figcaption><p></p>
+</figure>
+</div>
+<p>把垂直条形图转换为水平条形图，通过coord_fip()坐标轴转换函数实现。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1">plot <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb5-2">  <span class="co" style="color: #5E5E5E;"># 转置坐标轴</span></span>
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;">coord_flip</span>()</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="简单条形图" width="672"></p>
+<p></p><figcaption class="figure-caption">条形图：坐标轴转置</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>ggplot2包里有一些自带的主题，我们可以应用这些主题来快速的调整图的样式。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1">plot<span class="sc" style="color: #5E5E5E;">+</span><span class="fu" style="color: #4758AB;">coord_flip</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-2">  <span class="co" style="color: #5E5E5E;"># 使用classic主题</span></span>
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;">theme_classic</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-4">    <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>然后我们进一步对条形图进行修饰，比如更改坐标轴标题、把x轴由底部调整至顶部显示、添加条形图数据标签等等。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1">plot<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-2">  <span class="co" style="color: #5E5E5E;"># 对坐标轴进行转置</span></span>
+<span id="cb7-3">  <span class="fu" style="color: #4758AB;">coord_flip</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-4">  <span class="co" style="color: #5E5E5E;"># 使用经典的科研作图主题</span></span>
+<span id="cb7-5">  <span class="fu" style="color: #4758AB;">theme_classic</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-6">  <span class="co" style="color: #5E5E5E;"># 设置x轴标题</span></span>
+<span id="cb7-7">  <span class="fu" style="color: #4758AB;">xlab</span>(<span class="st" style="color: #20794D;">"癌种"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-8">  <span class="co" style="color: #5E5E5E;"># 设置y轴标题</span></span>
+<span id="cb7-9">  <span class="fu" style="color: #4758AB;">ylab</span>(<span class="st" style="color: #20794D;">"发病率(1/10万)"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-10">  <span class="co" style="color: #5E5E5E;"># 把转置后的x轴位置调整到顶部显示</span></span>
+<span id="cb7-11">  <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">position=</span><span class="st" style="color: #20794D;">"right"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-12">  <span class="co" style="color: #5E5E5E;"># 添加数据标签</span></span>
+<span id="cb7-13">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label=</span>incid), <span class="at" style="color: #657422;">size=</span><span class="fl" style="color: #AD0000;">3.5</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-14"> <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="绘制分组barplot条形图" class="level3">
+<h3 class="anchored" data-anchor-id="绘制分组barplot条形图">绘制分组barplot条形图</h3>
+<p>准备绘制分组条形图的数据，我们可以添加不同癌种的死亡率数据，分为两组：发病率和死亡率。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1">data2 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(</span>
+<span id="cb8-2">  <span class="at" style="color: #657422;">site=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"肺癌"</span>,<span class="st" style="color: #20794D;">"乳腺癌"</span>,<span class="st" style="color: #20794D;">"胃癌"</span>,<span class="st" style="color: #20794D;">"食管癌"</span>,<span class="st" style="color: #20794D;">"肝癌"</span>,<span class="st" style="color: #20794D;">"宫颈癌"</span>,<span class="st" style="color: #20794D;">"结直肠癌"</span>,<span class="st" style="color: #20794D;">"子宫体癌"</span>,<span class="st" style="color: #20794D;">"甲状腺癌"</span>,<span class="st" style="color: #20794D;">"卵巢癌"</span>,<span class="st" style="color: #20794D;">"肺癌"</span>,<span class="st" style="color: #20794D;">"乳腺癌"</span>,<span class="st" style="color: #20794D;">"胃癌"</span>,<span class="st" style="color: #20794D;">"食管癌"</span>,<span class="st" style="color: #20794D;">"肝癌"</span>,<span class="st" style="color: #20794D;">"宫颈癌"</span>,<span class="st" style="color: #20794D;">"结直肠癌"</span>,<span class="st" style="color: #20794D;">"子宫体癌"</span>,<span class="st" style="color: #20794D;">"甲状腺癌"</span>,<span class="st" style="color: #20794D;">"卵巢癌"</span>),</span>
+<span id="cb8-3">  <span class="at" style="color: #657422;">type=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="fu" style="color: #4758AB;">rep</span>(<span class="st" style="color: #20794D;">"发病率"</span>,<span class="dv" style="color: #AD0000;">10</span>),<span class="fu" style="color: #4758AB;">rep</span>(<span class="st" style="color: #20794D;">"死亡率"</span>,<span class="dv" style="color: #AD0000;">10</span>)),</span>
+<span id="cb8-4">  <span class="at" style="color: #657422;">value=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="fl" style="color: #AD0000;">53.35</span>,<span class="fl" style="color: #AD0000;">39.25</span>,<span class="fl" style="color: #AD0000;">35.74</span>,<span class="fl" style="color: #AD0000;">31.11</span>,<span class="fl" style="color: #AD0000;">29.15</span>,<span class="fl" style="color: #AD0000;">19.24</span>,<span class="fl" style="color: #AD0000;">18.15</span>,<span class="fl" style="color: #AD0000;">9.99</span>,<span class="fl" style="color: #AD0000;">7.92</span>,<span class="fl" style="color: #AD0000;">7.04</span>,<span class="fl" style="color: #AD0000;">41.22</span>,<span class="fl" style="color: #AD0000;">9.92</span>,<span class="fl" style="color: #AD0000;">27.87</span>,<span class="fl" style="color: #AD0000;">23.36</span>,<span class="fl" style="color: #AD0000;">24.46</span>,<span class="fl" style="color: #AD0000;">6.05</span>,<span class="fl" style="color: #AD0000;">8.85</span>,<span class="fl" style="color: #AD0000;">2.16</span>,<span class="fl" style="color: #AD0000;">0.76</span>,<span class="fl" style="color: #AD0000;">3.00</span>))</span>
+<span id="cb8-5"><span class="fu" style="color: #4758AB;">head</span>(data)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    site incid
+1   肺癌 53.35
+2 乳腺癌 39.25
+3   胃癌 35.74
+4 食管癌 31.11
+5   肝癌 29.15
+6 宫颈癌 19.24</code></pre>
+</div>
+</div>
+<p>ggplot2在使用fill添加分组选项时，会默认绘制堆积条形图，我们可以使用position_dodge() 函数来改变默认情况，绘制分组条形图。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1">data2<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb10-2">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span><span class="fu" style="color: #4758AB;">reorder</span>(site,value), <span class="at" style="color: #657422;">y=</span>value, <span class="at" style="color: #657422;">fill=</span>type)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-3">  <span class="co" style="color: #5E5E5E;"># 使用position=position_dodge()改变堆积条图为分组条图</span></span>
+<span id="cb10-4">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">stat=</span><span class="st" style="color: #20794D;">"identity"</span>,<span class="at" style="color: #657422;">position=</span><span class="fu" style="color: #4758AB;">position_dodge</span>())<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-5">  <span class="fu" style="color: #4758AB;">coord_flip</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-6">  <span class="fu" style="color: #4758AB;">theme_classic</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-7">  <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">position =</span> <span class="st" style="color: #20794D;">"right"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-8">  <span class="fu" style="color: #4758AB;">xlab</span>(<span class="st" style="color: #20794D;">"癌种"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-9">  <span class="fu" style="color: #4758AB;">ylab</span>(<span class="st" style="color: #20794D;">"率(1/10万)"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-10">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label=</span>value),<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">2</span>,<span class="at" style="color: #657422;">position=</span><span class="fu" style="color: #4758AB;">position_dodge</span>(<span class="fl" style="color: #AD0000;">0.9</span>))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-11">    <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))<span class="ot" style="color: #003B4F;">-&gt;</span>plot2</span>
+<span id="cb10-12">plot2</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>我们可以改变条形图条的颜色，也可以修改图例的位置、标题等等。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1">plot2<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb11-2">  <span class="co" style="color: #5E5E5E;"># 修改条的颜色为以下两个色号</span></span>
+<span id="cb11-3">  <span class="fu" style="color: #4758AB;">scale_fill_manual</span>(<span class="at" style="color: #657422;">values=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'#999999'</span>,<span class="st" style="color: #20794D;">'#E69F00'</span>))</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;"># 我们也可以使用color palettes改变分组条图的颜色</span></span>
+<span id="cb12-2">plot2<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-3"><span class="fu" style="color: #4758AB;">scale_fill_brewer</span>(<span class="at" style="color: #657422;">palette=</span><span class="st" style="color: #20794D;">"Blues"</span>)</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;"># 我们可以利用theme()对图例进行修改</span></span>
+<span id="cb13-2">plot2<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb13-3">  <span class="fu" style="color: #4758AB;">theme</span>(</span>
+<span id="cb13-4">    <span class="co" style="color: #5E5E5E;"># 修改图例的位置</span></span>
+<span id="cb13-5">    <span class="at" style="color: #657422;">legend.position =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="fl" style="color: #AD0000;">0.8</span>,<span class="fl" style="color: #AD0000;">0.2</span>),</span>
+<span id="cb13-6">    <span class="co" style="color: #5E5E5E;"># 取消图例的标题</span></span>
+<span id="cb13-7">    <span class="at" style="color: #657422;">legend.title=</span><span class="fu" style="color: #4758AB;">element_blank</span>()</span>
+<span id="cb13-8">  )</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>科研作图</category>
+  <guid>https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/index.html</guid>
+  <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-04-29-ggplot2-barplot/plot.png" medium="image" type="image/png" height="103" width="144"/>
+</item>
+<item>
+  <title>利用R语言Rmd文档+blogdown包制作个人网站</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-04-26-website/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>本篇文章将介绍如何利用R语言blogdown包生成一个静态网站，从而用来展示个人信息、撰写博客、或者分享其他信息。</p>
+<blockquote class="blockquote">
+<p>静态页面实际上说的是相对于相对于动态网页而言，它没有后台数据库、不含程序，是不能交互的网页。代码编的是什么它显示的就是什么、不会有任何改变。</p>
+</blockquote>
+<p>Blogdown生成静态网页的过程实际只是由Blogdown包把Rmd转化成普通的markdown文本，然后由Hugo把markdown文本生成静态网页。</p>
+<section id="准备环境" class="level2">
+<h2 class="anchored" data-anchor-id="准备环境">准备环境</h2>
+<p>本文将介绍如何在windows环境下，利用Blogdown生成静态网页。在介绍具体步骤之前，需要提前准备好相应的软件和环境。</p>
+<section id="安装r和r-studio" class="level3">
+<h3 class="anchored" data-anchor-id="安装r和r-studio">安装R和R studio</h3>
+<ul>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/windows/base/R-4.2.0-win.exe">下载</a>并安装R语言和<a href="https://download1.rstudio.org/desktop/windows/RStudio-2022.02.1-461.exe">R studio</a></li>
+</ul>
+</section>
+<section id="安装blogdown包" class="level3">
+<h3 class="anchored" data-anchor-id="安装blogdown包">安装blogdown包</h3>
+<p>安装稳定版本的blogdown</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">install.packages</span>(<span class="st" style="color: #20794D;">"blogdown"</span>)</span></code></pre></div>
+<p>或者安装开发版本的blogdown</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1">remotes<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">install_github</span>(<span class="st" style="color: #20794D;">'rstudio/blogdown'</span>)</span></code></pre></div>
+</section>
+<section id="安装hugo" class="level3">
+<h3 class="anchored" data-anchor-id="安装hugo">安装HUGO</h3>
+<p>Hugo 是一个用 Go 编写的静态网站生成器，一般只需几秒钟就能生成一个网站（每页少于 1 毫秒），被称为“世界上最快的网站构建框架”，也使 Hugo大受欢迎，成为最热门的静态网站生成器之一，被广泛采用。你可以在这里<a href="https://github.com/gohugoio/hugo/releases">下载不同版本的HUGO</a></p>
+<p>在Windows环境下，你可以通过以下几种方式安装hugo，在上面的链接中找出对应的Windows版本下载到本地，然后解压缩。</p>
+<ol type="1">
+<li>第一种方式：直接双击 hugo.exe 可执行文件进行安装，自动安装就可以了。</li>
+<li>第二种方式：把解压后的hugo.exe的路径添加到系统环境变量中。</li>
+<li>第二种方式：在通过blogdown建立新的project的时候，勾选安装hugo选项，但是国内不建议采用这种方式，因为速度很慢，而且常常安装不成功，但是如果你在墙外，可以使用这种方法。</li>
+</ol>
+</section>
+</section>
+<section id="使用blogdown建立一个网站" class="level2">
+<h2 class="anchored" data-anchor-id="使用blogdown建立一个网站">使用blogdown建立一个网站</h2>
+<section id="选择一个hugo网站模板" class="level3">
+<h3 class="anchored" data-anchor-id="选择一个hugo网站模板">选择一个Hugo网站模板</h3>
+<p>使用hugo建立静态网站的优势不仅是速度快，而且因为它有着丰富的模板，模板的源代码都存储在github上，你可以<a href="https://themes.gohugo.io/">点击这里</a>选择一个适合自己的网站模板，然后把它在github上的地址复制下来。</p>
+<p>如果你喜欢<a href="https://themes.gohugo.io/themes/mainroad/">MainRoad</a>的模板， 可以点击<strong>Download</strong>，会进入模板在github的存储页面，然后把模板的路径复制下来<strong>Vimux/Mainroad</strong>，后面会用到。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://chenq.site/Qsight/2022-04-26-website/theme.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Hugo 主题</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="使用blogdown生成一个新的网站项目" class="level3">
+<h3 class="anchored" data-anchor-id="使用blogdown生成一个新的网站项目">使用blogdown生成一个新的网站项目</h3>
+<ul>
+<li>在R studio里点击 File–New Project，选择 <strong>New Directory</strong></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-26-website/first.png" class="img-fluid" width="533"></p>
+</div>
+</div>
+<ul>
+<li>然后，选择Website using blogdown</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-26-website/second.png" class="img-fluid" width="532"></p>
+</div>
+</div>
+<ul>
+<li>最后，在blogdown建立新项目的选项面板中，按照下面的选项填写完整，然后点击 Create Project 创建项目</li>
+</ul>
+<ol type="1">
+<li>Directory name: 填入你新建项目所在文件夹名称；</li>
+<li>Create project as subdirectory of：</li>
+<li>hugo theme： 填入前面步骤中复制的网站模板的github路径，以 “github账户名/仓库名称”的格式填入，我们想要创建网站的模板的存放路径为：Vimux/Mainroad</li>
+<li>最下面的复选框可以按照默认的选项选择，但是如果已经安装hugo的话，记得把Install Hugo if not installed前面的复选框取消掉。</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-26-website/third.png" class="img-fluid" width="536"></p>
+</div>
+</div>
+<ul>
+<li>完成后，在 R studio 中，点击 Addins – Serve site 可以在本地渲染网站，可以在 R studio 的右下栏中可以看到渲染的网站的样子。</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-26-website/preview.png" class="img-fluid" width="1128"></p>
+</div>
+</div>
+</section>
+<section id="新建一篇博文" class="level3">
+<h3 class="anchored" data-anchor-id="新建一篇博文">新建一篇博文</h3>
+<p>点击 Addins – New Post ，填入题目，作者，标签或者分类，在Format 选项里可以选择使用普通的markdown(不能运行R程序)、.Rmd和.Rmarkdown(可以运行R程序)。</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-26-website/newpost.png" class="img-fluid" width="621"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>个人网站</category>
+  <guid>https://chenq.site/Qsight/2022-04-26-website/index.html</guid>
+  <pubDate>Tue, 26 Apr 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-04-26-website/theme.png" medium="image" type="image/png" height="72" width="144"/>
+</item>
+<item>
+  <title>利用Rmd代码选项输出动态金字塔图</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-04-25-rmd/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><strong><em>人口金字塔图</em></strong>可以形象的展示人口结构，而动态人口金字塔则可以直观的展示历年人口结构的变化情况，从而可以直观的对人口数据进行质量控制，本篇博文讲介绍如何利用R语言Rmd文档输出动态人口金字塔图。</p>
+<p>首先，我们先看一下需要准备的人口数据结构,数据集包含某个地区男性和女性每年的不同年龄组的人口数（5岁一组），年份变量为year，性别变量为sex，人口数据分别为r0、r1、r5、r10、… 、r85等。</p>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1">data<span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">read.csv</span>(<span class="st" style="color: #20794D;">"population.csv"</span>)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">head</span>(data)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year  sex   r0    r1    r5   r10   r15   r20   r25   r30   r35   r40   r45
+1 2009 男性 5992 22345 25843 26164 43929 54912 58033 47602 54539 50224 40894
+2 2009 女性 5857 22146 24908 25507 48444 47977 52270 46133 48743 44852 39429
+3 2010 男性 6583 39619 42627 39820 45037 54131 34227 34382 42964 47668 38828
+4 2010 女性 5484 30619 32323 31418 40701 56864 36506 34890 42224 48566 40392
+5 2011 男性 5798 33931 40512 38334 47433 49693 33125 34833 47700 50181 42654
+6 2011 女性 4983 29613 34439 33614 43799 51384 34154 35228 45182 47480 40500
+    r50   r55   r60   r65   r70  r75  r80  r85
+1 40855 29236 18125 13376 10564 6242 2369  577
+2 39600 28104 18908 14984 11186 6425 3363 1408
+3 28353 32932 24141 16239 11913 8333 4241 1970
+4 28425 32685 23329 16139 12245 9821 5835 3879
+5 33943 33498 22853 15307 12274 8428 4032 1694
+6 32253 32249 22456 15207 12998 9966 5459 3507</code></pre>
+</div>
+</div>
+<section id="作图思路" class="level2">
+<h2 class="anchored" data-anchor-id="作图思路">作图思路</h2>
+<p>首先把现有的数据从<strong>宽数据</strong>转换为<strong>长数据</strong>，然后对数据进行简单处理，最后利用for循环和ggplot2输出多个年份的人口金字塔图，然后利用code chunk 选项输出动态图片。</p>
+</section>
+<section id="数据处理" class="level2">
+<h2 class="anchored" data-anchor-id="数据处理">数据处理</h2>
+<div class="cell">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;">library</span>(tidyr)</span>
+<span id="cb3-3">data <span class="ot" style="color: #003B4F;">&lt;-</span> data <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb3-4">  <span class="do" style="color: #5E5E5E;
+font-style: italic;">## 把宽数据转换为长数据</span></span>
+<span id="cb3-5">  <span class="fu" style="color: #4758AB;">gather</span>(<span class="st" style="color: #20794D;">"agegrp"</span>,<span class="st" style="color: #20794D;">"rks"</span>,<span class="sc" style="color: #5E5E5E;">-</span>year,<span class="sc" style="color: #5E5E5E;">-</span>sex)<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb3-6">  <span class="do" style="color: #5E5E5E;
+font-style: italic;">## 整理年龄组变量，添加标签转换显示格式</span></span>
+<span id="cb3-7">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">agegrp=</span><span class="fu" style="color: #4758AB;">as.numeric</span>(<span class="fu" style="color: #4758AB;">gsub</span>(<span class="st" style="color: #20794D;">"[^0-9]"</span>, <span class="st" style="color: #20794D;">""</span>, agegrp)),</span>
+<span id="cb3-8">         <span class="at" style="color: #657422;">agegrp=</span><span class="fu" style="color: #4758AB;">factor</span>(agegrp,<span class="at" style="color: #657422;">labels =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"0"</span>,<span class="st" style="color: #20794D;">"1-4"</span>,<span class="st" style="color: #20794D;">"5-9"</span>,<span class="st" style="color: #20794D;">"10-14"</span>,<span class="st" style="color: #20794D;">"15-19"</span>,<span class="st" style="color: #20794D;">"20-24"</span>,<span class="st" style="color: #20794D;">"25-29"</span>,<span class="st" style="color: #20794D;">"30-34"</span>,<span class="st" style="color: #20794D;">"35-39"</span>,<span class="st" style="color: #20794D;">"40-44"</span>,<span class="st" style="color: #20794D;">"45-49"</span>,<span class="st" style="color: #20794D;">"50-54"</span>,<span class="st" style="color: #20794D;">"55-59"</span>,<span class="st" style="color: #20794D;">"60-64"</span>,<span class="st" style="color: #20794D;">"65-69"</span>,<span class="st" style="color: #20794D;">"70-74"</span>,<span class="st" style="color: #20794D;">"75-79"</span>,<span class="st" style="color: #20794D;">"80-84"</span>,<span class="st" style="color: #20794D;">"85+"</span>)))<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb3-9">  <span class="fu" style="color: #4758AB;">group_by</span>(year)<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb3-10">  <span class="do" style="color: #5E5E5E;
+font-style: italic;">## 把男性人口数转换为负值，以是条图显示在左侧</span></span>
+<span id="cb3-11">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">rks=</span><span class="fu" style="color: #4758AB;">round</span>(rks<span class="sc" style="color: #5E5E5E;">/</span><span class="fu" style="color: #4758AB;">sum</span>(rks),<span class="dv" style="color: #AD0000;">4</span>),</span>
+<span id="cb3-12">         <span class="at" style="color: #657422;">rks=</span><span class="fu" style="color: #4758AB;">ifelse</span>(sex<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"男性"</span>,<span class="sc" style="color: #5E5E5E;">-</span>rks,rks))</span></code></pre></div>
+</details>
+</div>
+</section>
+<section id="rmd-code-chunk-选项" class="level2">
+<h2 class="anchored" data-anchor-id="rmd-code-chunk-选项">Rmd code chunk 选项</h2>
+<p>利用Rmd文档可以输出成很多种格式的输出结果，比如word、ppt、网页、pdf等，本篇博文介绍的为输出到网页显示动态图片。</p>
+<p>在Rmd文档中插入r语言代码块，代码块的选项设置为fig.show=‘animate’,animation.hook=‘gifski’，当代码块内的语句生成多个图片的时候，会自动设置为动画播放。</p>
+</section>
+<section id="利用for循环和ggplot2制作金字塔图" class="level2">
+<h2 class="anchored" data-anchor-id="利用for循环和ggplot2制作金字塔图">利用for循环和ggplot2制作金字塔图</h2>
+<p>在代码块内部，使用for循环和ggplot2生成多个年份的人口金子塔图即可。</p>
+<div class="cell" data-animation.hook="gifski">
+<details>
+<summary>显示代码</summary>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 加载ggplot2包</span></span>
+<span id="cb4-2"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<span id="cb4-3"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 建立for循环</span></span>
+<span id="cb4-4"><span class="cf" style="color: #003B4F;">for</span> (i <span class="cf" style="color: #003B4F;">in</span> <span class="dv" style="color: #AD0000;">2011</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">2017</span>) {</span>
+<span id="cb4-5"> data <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb4-6">    <span class="fu" style="color: #4758AB;">filter</span>(year<span class="sc" style="color: #5E5E5E;">==</span>i) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb4-7">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span><span class="fu" style="color: #4758AB;">factor</span>(agegrp),<span class="at" style="color: #657422;">y=</span>rks,<span class="at" style="color: #657422;">fill=</span>sex)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-8">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">stat =</span> <span class="st" style="color: #20794D;">"identity"</span>,<span class="at" style="color: #657422;">position =</span> <span class="st" style="color: #20794D;">"identity"</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>,<span class="at" style="color: #657422;">linewidth=</span><span class="fl" style="color: #AD0000;">0.25</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-9">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label=</span><span class="fu" style="color: #4758AB;">paste0</span>(<span class="fu" style="color: #4758AB;">abs</span>(rks) <span class="sc" style="color: #5E5E5E;">*</span> <span class="dv" style="color: #AD0000;">100</span>, <span class="st" style="color: #20794D;">'%'</span>)))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-10">  <span class="fu" style="color: #4758AB;">coord_flip</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-11">  <span class="fu" style="color: #4758AB;">theme_classic</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-12">  <span class="fu" style="color: #4758AB;">xlab</span>(<span class="st" style="color: #20794D;">""</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-13">  <span class="fu" style="color: #4758AB;">ylab</span>(<span class="st" style="color: #20794D;">""</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-14">  <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">limits =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="sc" style="color: #5E5E5E;">-</span><span class="fl" style="color: #AD0000;">0.08</span>,<span class="fl" style="color: #AD0000;">0.08</span>),<span class="at" style="color: #657422;">breaks=</span><span class="fu" style="color: #4758AB;">seq</span>(<span class="sc" style="color: #5E5E5E;">-</span><span class="fl" style="color: #AD0000;">0.08</span>,<span class="fl" style="color: #AD0000;">0.08</span>,<span class="fl" style="color: #AD0000;">0.02</span>),<span class="at" style="color: #657422;">labels =</span> <span class="cf" style="color: #003B4F;">function</span>(x) <span class="fu" style="color: #4758AB;">paste0</span>(<span class="fu" style="color: #4758AB;">abs</span>(x) <span class="sc" style="color: #5E5E5E;">*</span> <span class="dv" style="color: #AD0000;">100</span>, <span class="st" style="color: #20794D;">'%'</span>))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-15">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">title=</span><span class="st" style="color: #20794D;">"历年人口金字塔变化情况"</span>,<span class="at" style="color: #657422;">subtitle=</span><span class="fu" style="color: #4758AB;">paste</span>(i))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-16">  <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">legend.position =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="fl" style="color: #AD0000;">0.1</span>,<span class="fl" style="color: #AD0000;">0.9</span>),</span>
+<span id="cb4-17">        <span class="at" style="color: #657422;">legend.title =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb4-18">        <span class="at" style="color: #657422;">strip.text =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">10</span>, <span class="at" style="color: #657422;">face=</span><span class="st" style="color: #20794D;">"bold.italic"</span>),</span>
+<span id="cb4-19">        <span class="at" style="color: #657422;">strip.background =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"white"</span>, <span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">0</span>),</span>
+<span id="cb4-20">        <span class="at" style="color: #657422;">axis.text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">10</span>),</span>
+<span id="cb4-21">        <span class="at" style="color: #657422;">axis.title=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">12</span>, <span class="at" style="color: #657422;">face=</span><span class="st" style="color: #20794D;">"bold"</span>),</span>
+<span id="cb4-22">        <span class="at" style="color: #657422;">plot.title =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">face=</span><span class="st" style="color: #20794D;">"bold"</span>, <span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>, <span class="at" style="color: #657422;">hjust =</span> <span class="fl" style="color: #AD0000;">0.5</span>),</span>
+<span id="cb4-23">        <span class="at" style="color: #657422;">plot.subtitle=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">face=</span><span class="st" style="color: #20794D;">"bold"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">20</span>,<span class="at" style="color: #657422;">hjust=</span><span class="fl" style="color: #AD0000;">0.8</span>))<span class="ot" style="color: #003B4F;">-&gt;</span>p</span>
+<span id="cb4-24">  <span class="fu" style="color: #4758AB;">plot</span>(p)</span>
+<span id="cb4-25">}</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
+ℹ Please use the `linewidth` argument instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-25-rmd/index_files/figure-html/unnamed-chunk-3-.gif" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>科研作图</category>
+  <guid>https://chenq.site/Qsight/2022-04-25-rmd/index.html</guid>
+  <pubDate>Mon, 25 Apr 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-04-25-rmd/cover.png" medium="image" type="image/png" height="89" width="144"/>
+</item>
+<item>
+  <title>如何利用病理诊断比例（MV%）指标评价人群肿瘤登记数据质量？</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-04-17-mv/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>肿瘤登记数据的质量控制对于产出高质量数据至关重要，以人群为基础的肿瘤登记数据一般从<a href="https://chenq.site/tech/2022-qualitycontrol/">四个方面</a>进行质量控制，具体包括可比性、完整性、有效性和时效性指标，而病理诊断比例(MV%)指标可以在完整性和有效性两个方面对肿瘤登记数据的质量进行评价。</p>
+<p>病理诊断比例(MV%)是指收集的全部病例中，经过形态学诊断（组织下、细胞学、血液学）确认的病例数占全部病例数的百分比，<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%E7%BB%8F%E7%97%85%E7%90%86%E5%AD%A6%E7%A1%AE%E8%AE%A4%E7%9A%84%E7%97%85%E4%BE%8B%E6%95%B0%7D%7B%E6%89%80%E6%9C%89%E7%97%85%E4%BE%8B%E6%95%B0%7D">，该指标的大小受到肿瘤的发病部位、肿瘤登记地区的病理诊断能力与水平、该地区的医疗服务能力与水平等因素的影响，因此，我们在利用该指标进行肿瘤登记数据质量评价时应该考虑这些因素。</p>
+<p>在质量评价方面，MV%的绝对指标意义有限，通常利用它与适当的标准比较,比如与相似的区域的MV%指标比较，或者与国家的平均水平进行比较，从而判断该肿瘤登记地区的数据的有效性和完整性。</p>
+<section id="与一定的区域标准mv值进行比较" class="level2">
+<h2 class="anchored" data-anchor-id="与一定的区域标准mv值进行比较">与一定的区域标准MV值%进行比较</h2>
+<p>当肿瘤登记处的MV%值与区域标准（比如国家的平均水平）进行比较的时候，如果登记处MV%值与区域标准差距较大，并且该地区的医疗服务能力与水平以及病理诊断能力与区域平均水平没有很大差异的时候，则提示该登记处数据的有效性或者完整性可能存在问题。如果登记处MV%值小于区域标准值，并且差距较大，提示登记处收集的数据有效性较差；而如果登记处MV%值大于区域标准值，并且差距较大，则提示登记处数据的完整性可能存在问题。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://chenq.site/Qsight/2022-04-17-mv/namv.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">病理诊断比例</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="与一定的区域标准mv值进行比较-1" class="level2">
+<h2 class="anchored" data-anchor-id="与一定的区域标准mv值进行比较-1">与一定的区域标准MV值%进行比较</h2>
+<p>在多年的连续监测中，一个登记处的MV%应该是相对稳定的，不会出现大的波动，因为一个地区的医疗服务水平或者病理诊断能力是相对稳定的。如果多年份的MV%值出现跳跃性波动，则提示登记处数据的稳定性较差，相应存在波动年份的数据可能存在问题。</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-17-mv/yearmv.png" class="img-fluid" width="686"></p>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>肿瘤登记</category>
+  <category>质量控制</category>
+  <guid>https://chenq.site/Qsight/2022-04-17-mv/index.html</guid>
+  <pubDate>Sun, 17 Apr 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-04-17-mv/namv.png" medium="image" type="image/png" height="104" width="144"/>
+</item>
+<item>
+  <title>我国发布首个肿瘤登记数据集标准</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-04-16-standard/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figure class="figure">
+<img src="https://chenq.site/Qsight/2022-04-16-standard/cover.png" title="中国肿瘤数据集标准" class="img-fluid figure-img">
+</figure>
+<p></p><figcaption class="figure-caption">中国肿瘤数据集标准</figcaption><p></p>
+</figure>
+</div>
+<p>我国恶性肿瘤疾病负担居高不下，防控形势严峻，而高质量的肿瘤登记数据是制定肿瘤防控政策、开展防控工作、评价防控效果的基础。20世纪50年代的林县开始了食管癌单病种的登记工作，来开了全国开展肿瘤登记工作的序幕。自2008年开始，中央转移支付地方项目经费开始对肿瘤登记工作进行经费支持，我国的肿瘤登记工作也开始进入迅速发展的时期，肿瘤登记覆盖的人口范围迅速增加。经过近60年的发展，肿瘤登记已经覆盖全国5.98亿人口，在肿瘤防控政策制定、防控效果评价等方面发挥越来越重要的作用。</p>
+<p>肿瘤登记工作也得到我国政府的高度重视，并在“健康中国行动-癌症防治行动”里对肿瘤登记工作提出了具体要求：实施癌症信息化行动，健全肿瘤登记制度，提高肿瘤登记覆盖范围，提升肿瘤登记数据质量，促进信息资源共享利用。</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-16-standard/author.png" class="img-fluid" width="790"></p>
+</div>
+</div>
+<p>为了提高肿瘤登记数据收集的质量，国家癌症中心组织全国多家单位起草并发布了《中国人群肿瘤登记数据集标准》，河南省肿瘤医院是参与起草该标准的单位之一。该标准规定了中国肿瘤登记数据集的元数据属性和数据元属性，主要用于指导中国肿瘤登记基本信息的采集、存储、共享以及信息系统的开发。此标准实践性和可操作性极强，将为肿瘤登记数据的及时性、准确性、有效性，提供强有力的技术支撑。</p>
+<p>下载链接：<a href="standard.pdf">肿瘤人群肿瘤登记数据集标准</a></p>
+
+
+
+ ]]></description>
+  <category>肿瘤登记</category>
+  <category>文件</category>
+  <guid>https://chenq.site/Qsight/2022-04-16-standard/index.html</guid>
+  <pubDate>Sat, 16 Apr 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-04-16-standard/cover.png " medium="image"/>
+</item>
+<item>
+  <title>制作《2021河南省肿瘤登记年报》科普视频</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-04-10-report-video/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>《2021河南省肿瘤登记年报》的发布为河南省癌症的防控工作提供了数据参考，对防控相关专业人员参考癌症负担数据具有重要意义。同时，为了使普通大众了解河南省癌症的发病死亡情况，我们将制作科普视频，相关工作整理记录如下。</p>
+<section id="科普视频知识点" class="level2">
+<h2 class="anchored" data-anchor-id="科普视频知识点">科普视频知识点</h2>
+<ul>
+<li>河南省癌症中心/河南省肿瘤医院发布《2021河南省肿瘤登记年报》；</li>
+<li>河南省居民癌症发病率为272.33/10万，死亡率为162.16/10万；河南省每年新诊断恶性肿瘤28.6万例，因恶性肿瘤死亡16.8万例；</li>
+<li>癌症发病和死亡的人群分布均以老年人为主，河南省癌症年龄发病率自40~岁组开始快速上升，在85岁组达到峰值，65岁以上诊断患者和死亡患者占全部发病和死亡患者的47.3%和65.3%；</li>
+<li>男性和女性发病谱存在差异，男性发病率和死亡率均高于女性，男女发病比为1.05，男女死亡比为1.51; 男性和女性高发癌种存在差异，男性发病前五位癌症分别为肺癌、胃癌、食管癌、肝癌和结直肠癌，而女性前五位癌种分别为乳腺癌、肺癌、食管癌、宫颈癌和胃癌；不管是男性还是女性，肺癌均位居癌症死因的首位，其次为胃癌、食管癌、肝癌和乳腺癌。</li>
+<li>河南居民癌症发病和死亡也存在地区差异，城市地区癌症发病率高于农村地区，而死亡率低于农村地区，常见癌种分布也存在一定差异，河南省北部太行山脉地区是食管癌和胃癌的高发地区，城市地区则肺癌、结直肠癌、甲状腺癌相对高发。</li>
+</ul>
+</section>
+<section id="科普视频脚本" class="level2">
+<h2 class="anchored" data-anchor-id="科普视频脚本">科普视频脚本</h2>
+<p>大家好，癌症是威胁居民健康和生命的主要问题，河南省癌症中心/河南省肿瘤医院在2022年肿瘤防治宣传周期间发布了《2021河南省肿瘤登记年报》，对河南省居民的癌症发病和死亡情况进行了详细介绍，下面跟随小编一块来了解一下吧。</p>
+<p>《年报》显示，2018年河南省癌症发病率为272.33/10万，每小时约有32例患者被诊断，共诊断28.6万例；癌症死亡率为162.16/10万，每小时约19例癌症患者死亡，共死亡16.8万例。</p>
+<p>河南省癌症的发病率和死亡率呈现如下变化特点：</p>
+<section id="癌症患者以老年人为主" class="level3">
+<h3 class="anchored" data-anchor-id="癌症患者以老年人为主">癌症患者以<strong>老年人</strong>为主</h3>
+<p>发病率和死亡率均随着年龄的增加而上升，在39岁之前处于相对降低且平稳的状态，而40岁之后则快速上升，在85岁年龄组达到峰值。癌症患者以老年人为主，新诊断患者中，65岁以上者占47.3%；死亡患者中，65岁以上者占65.3%。</p>
+</section>
+<section id="癌症患者存在性别差异" class="level3">
+<h3 class="anchored" data-anchor-id="癌症患者存在性别差异">癌症患者存在<strong>性别差异</strong></h3>
+<p>男性发病率和死亡率均高于女性，男女性别比分别为1.05和1.51。</p>
+<p>男性和女性的<strong>发病谱</strong>也有所不同，男性前5位癌种分别为肺癌、胃癌、食管癌、肝癌和结直肠癌；女性前5位癌种乳腺癌、肺癌、食管癌、宫颈癌和胃癌。</p>
+</section>
+<section id="癌症发病率和死亡呈现地区差异" class="level3">
+<h3 class="anchored" data-anchor-id="癌症发病率和死亡呈现地区差异">癌症发病率和死亡呈现<strong>地区差异</strong></h3>
+<p>城市地区癌症发病率高于农村地区，而死亡率则呈现农村高于城市的特点。</p>
+<p>在癌种的地区分布方面，结直肠癌和甲状腺癌在城市地区的顺位比农村地区靠前，食管癌和胃癌则在河南省北部的太行山脉地区和西部的伏牛山地区相对高发。</p>
+<p>癌症防治需要我们每一个人参与，生活中我们注意避开常见的癌症危险因素，注意定期体检，你我携手，共抗癌症吧！</p>
+<p>扫描二维码，了解更加详细的《年报》内容吧。</p>
+</section>
+</section>
+<section id="科普视频成片分享" class="level2">
+<h2 class="anchored" data-anchor-id="科普视频成片分享">科普视频成片分享</h2>
+<p>马上上线</p>
+
+
+</section>
+
+ ]]></description>
+  <category>肿瘤登记</category>
+  <category>肿瘤登记年报</category>
+  <guid>https://chenq.site/Qsight/2022-04-10-report-video/index.html</guid>
+  <pubDate>Sun, 10 Apr 2022 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>河南省癌症中心/河南省肿瘤医院发布《2021河南省肿瘤登记年报》</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-04-05-2021annualreport/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://chenq.site/Qsight/2022-04-05-2021annualreport/2021.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">河南肿瘤登记年报</figcaption><p></p>
+</figure>
+</div>
+<p>癌症是威胁河南省居民健康的一大类疾病，2022年4月，河南省癌症中心/河南省肿瘤医院重磅发布了《2021河南省肿瘤登记年报》（以下简称《年报》）。</p>
+<p>《年报》利用2018年肿瘤登记数据描述了河南省登记地区恶性肿瘤发病死亡情况，它的发布可以为肿瘤病因学研究、制定卫生工作规划和肿瘤防治计划、评价和考核肿瘤防治效果等工作提供基础数据。</p>
+<p>《年报》使用河南省39个合格肿瘤登记处的数据分析了2018年河南省登记地区的恶性肿瘤负担。数据显示，2018年，河南省肿瘤登记地区恶性肿瘤新发90609例，发病率为272.33/10万；恶性肿瘤死亡53592例，死亡率为162.16/10万。城乡分析结果显示，城市地区的恶性肿瘤发病率高于农村地区，而死亡率则为农村地区高于城市地区。</p>
+<section id="河南省恶性肿瘤发病死亡特征" class="level2">
+<h2 class="anchored" data-anchor-id="河南省恶性肿瘤发病死亡特征">河南省恶性肿瘤发病死亡特征</h2>
+<p>肺癌是男性最常见的恶性肿瘤，占男性全部诊断恶性肿瘤病例的25.18%；乳腺癌则位居女性恶性肿瘤发病的第一位，占全部女性肿瘤病例的17.01%；不管是男性还是女性，肺癌均位居全部恶性肿瘤死亡的第一位。发病前10位的恶性肿瘤分别为肺癌、乳腺癌、胃癌、食管癌、肝癌、子宫颈癌、结直肠癌、甲状腺癌、子宫体癌和卵巢癌，占全部恶性肿瘤发病数的78.60%。</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-05-2021annualreport/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>癌症总体发病率和死亡率均随着年龄的增加而升高，均在85岁以上的年龄组中达到峰值。但是不同的癌种具有不同的年龄分布模式，比如肺癌在40岁之前发病率相对平稳而之后则快速上升；前列腺癌则从60岁开始快速上升；乳腺癌、宫颈癌、甲状腺癌的发病高峰则在50岁左右等。</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-05-2021annualreport/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<p>在前10位恶性肿瘤发病中，消化系统肿瘤仍然占据主要地位，胃癌、食管癌、肝癌和结直肠癌等消化系统肿瘤病例占全部恶性肿瘤病例的39.68%，是影响河南省居民健康的主要肿瘤类型。</p>
+</section>
+<section id="提高年报覆盖人口比例提升数据全省代表性" class="level2">
+<h2 class="anchored" data-anchor-id="提高年报覆盖人口比例提升数据全省代表性">提高《年报》覆盖人口比例，提升数据全省代表性</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-05-2021annualreport/map.png" class="img-fluid" style="float:right; padding:10px;width:40.0%"></p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://chenq.site/Qsight/2022-04-05-2021annualreport/map.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">河南省肿瘤登记处分布地图</figcaption><p></p>
+</figure>
+</div>
+<p>河南省于1959年在林州市（原林县）建立第一个肿瘤登记处，开始进行食管癌的单病种登记工作，拉开了河南省肿瘤登记工作的序幕。之后，一些县区陆陆续续在全死因登记的基础上建立肿瘤登记处。2008年以后，中央转移支付地方项目对肿瘤登记工作进行经费支持，河南省肿瘤登记工作进入迅速发展期，肿瘤登记登记处的数量和数据质量都得到较大的提高。截至2021年底，河南省肿瘤登记地区覆盖全省人口的比例达到70%，形成了反映河南省城乡居民恶性肿瘤发病与死亡基本信息的肿瘤随访登记系统。自2013年起，河南省癌症中心/河南省肿瘤医院每年以年报的形式及时发布河南省肿瘤登记监测数据，《河南省肿瘤登记年报》成为河南省癌症预防控制的重要资料，也是河南省肿瘤登记监测工作的标志性成果之一。</p>
+<p>由于肿瘤登记工作存在3年的滞后性，2021年《年报》收录了39个肿瘤登记处的2018年肿瘤发病死亡数据，覆盖人口3300万人，约占河南省2018年人口总数的30.51%。</p>
+</section>
+<section id="多渠道开展质控工作稳步提升数据质量" class="level2">
+<h2 class="anchored" data-anchor-id="多渠道开展质控工作稳步提升数据质量">多渠道开展质控工作，稳步提升数据质量</h2>
+<p>河南省肿瘤医院作为省级肿瘤登记处，积极组织全省各县区肿瘤登记专业人员开展业务培训，开发质量控制工具，开展线上质控等多途径开展质控工作，河南省肿瘤医院作为省级肿瘤登记处荣获“省级单位杰出贡献奖”。在全省肿瘤登记专业人员的共同努力下，河南省各县区肿瘤登记处的数据质量得到不断的提升，也得到国家癌症中心的认可。2021年共有28个县区肿瘤登记处荣获国家癌症中心奖励，其中，1个登记处荣获“肿瘤登记工作杰出贡献奖”，16个肿瘤登记处荣获“肿瘤登记工作优秀奖”，11个登记处荣获“肿瘤登记工作进步奖”。</p>
+</section>
+<section id="创新年报形式促进数据共享利用" class="level2">
+<h2 class="anchored" data-anchor-id="创新年报形式促进数据共享利用">创新《年报》形式，促进数据共享利用</h2>
+<p>为了能让癌症防治专业人员和普通大众更方便、快捷的了解河南省癌症疾病负担情况，在出版纸质年报之外，我们也制作了线上《年报》，在内容展示方式以及获取途径上进行了创新，从而促进大家更方便的利用《年报》数据。大家可以通过手机扫描二维码在手机端查看年报，也可以通过电脑端输入网址：<a href="https://chenq.site/report/2021/">https://chenq.site/report/2021/</a>进行查看。</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://chenq.site/Qsight/2022-04-05-2021annualreport/qrcode.png" class="img-fluid" style="width:25.0%"></p>
+</div>
+</div>
+</section>
+<section id="积极建设全省癌症防治网络降低癌症疾病负担" class="level2">
+<h2 class="anchored" data-anchor-id="积极建设全省癌症防治网络降低癌症疾病负担">积极建设全省癌症防治网络，降低癌症疾病负担</h2>
+<p>为了应对居高不下的癌症负担，河南省肿瘤医院/河南省癌症中心积极响应“健康中国行动-癌症防治行动”的要求，实施癌症信息化行动，健全肿瘤登记制度，提高肿瘤登记覆盖范围，提升肿瘤登记数据质量，促进信息资源共享利用；实施早诊早治推广行动，在城市和农村地区开展相应高发癌种的筛查早诊早治，提高癌症患者生存率；实施癌症诊疗规范化行动，提升管理服务水平；与此同时，也正积极推进全省的癌症防治网络建设工作，促进癌症防控工作系统化、标准化、信息化和常态化，以降低癌症疾病负担，提高癌症患者生存率。</p>
+
+
+</section>
+
+ ]]></description>
+  <category>肿瘤登记</category>
+  <category>肿瘤登记年报</category>
+  <guid>https://chenq.site/Qsight/2022-04-05-2021annualreport/index.html</guid>
+  <pubDate>Tue, 05 Apr 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-04-05-2021annualreport/2021.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>诗歌学习</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-03-31-shige/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="春晓" class="level2">
+<h2 class="anchored" data-anchor-id="春晓">《春晓》</h2>
+<p>唐代：孟浩然</p>
+<p>春眠不觉晓，处处闻啼鸟。 夜来风雨声，花落知多少。</p>
+</section>
+<section id="登鹳雀楼" class="level2">
+<h2 class="anchored" data-anchor-id="登鹳雀楼">《登鹳雀楼》</h2>
+<p>唐代：王之涣</p>
+<p>百日依山尽，黄河入海流。 欲穷千里目，更上一层楼。</p>
+</section>
+<section id="静夜思" class="level2">
+<h2 class="anchored" data-anchor-id="静夜思">《静夜思》</h2>
+<p>唐代：李白</p>
+<p>床前明月光，疑是地上霜。 举头望明月，低头思故乡。</p>
+</section>
+<section id="绝句四首" class="level2">
+<h2 class="anchored" data-anchor-id="绝句四首">《绝句四首》</h2>
+<p>唐代：杜甫</p>
+<p>两只黄鹂鸣翠柳，一行白鹭上青天。 窗含西岭千秋雪，门泊东吴万里船。</p>
+</section>
+<section id="悯农" class="level2">
+<h2 class="anchored" data-anchor-id="悯农">《悯农》</h2>
+<p>李绅</p>
+<p>锄禾日当午，汗滴禾下土。 谁知盘中餐，粒粒皆辛苦。</p>
+</section>
+<section id="七步诗" class="level2">
+<h2 class="anchored" data-anchor-id="七步诗">《七步诗》</h2>
+<p>曹植</p>
+<p>煮豆燃豆萁，豆在釜中泣。 本是同根生，相煎何太急。</p>
+</section>
+<section id="题西林壁" class="level2">
+<h2 class="anchored" data-anchor-id="题西林壁">《题西林壁》</h2>
+<p>苏轼</p>
+<p>横看成岭侧成峰，远近高低各不同。 不识庐山真面目，只缘身在此山中。</p>
+</section>
+<section id="相思" class="level2">
+<h2 class="anchored" data-anchor-id="相思">《相思》</h2>
+<p>王维</p>
+<p>红豆生南国，春来发几枝。 愿君多采撷，此物最相思。</p>
+</section>
+<section id="咏鹅" class="level2">
+<h2 class="anchored" data-anchor-id="咏鹅">《咏鹅》</h2>
+<p>唐代：骆宾王</p>
+<p>鹅，鹅，鹅，曲项向天歌。 白毛浮绿水，红掌拨清波。</p>
+</section>
+<section id="咏柳柳枝词" class="level2">
+<h2 class="anchored" data-anchor-id="咏柳柳枝词">《咏柳/柳枝词》</h2>
+<p>唐代：贺知章</p>
+<p>碧玉妆成一树高，万条垂下绿丝绦。 不知细叶谁裁出，二月春风似剪刀。</p>
+
+
+</section>
+
+ ]]></description>
+  <category>生活</category>
+  <category>育儿</category>
+  <guid>https://chenq.site/Qsight/2022-03-31-shige/index.html</guid>
+  <pubDate>Thu, 31 Mar 2022 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>ICD10编码里除了C开头编码和D开头编码是肿瘤专属分类编码外，还有哪些编码与肿瘤相关？</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-03-23-icd10-c-d/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>在肿瘤登记工作中，我们经常与ICD10或者ICDO3打交道，但是ICD10编码里有一些编码值得我们注意。目前国内肿瘤登记工作要求上报的肿瘤病例范围为：所有恶性肿瘤病例+中枢神经系统良性肿瘤+原位癌，对应的ICD10编码为C00-C97+D32-D33,D35.2-4+D00-D09。然而其实ICD10编码里除了C编码和D编码外，还有一些编码与肿瘤相关。</p>
+<p>首先是”人类免疫缺陷病毒疾病导致的恶性肿瘤”这一类在ICD10编码里被归入到B21的分类里，它与肿瘤登记相关。具体包括人类免疫缺陷病毒疾病导致的卡波济肉瘤、Burkitt淋巴瘤、其他类型的非霍奇金淋巴瘤、淋巴组织和造血组织，以及有关组织的其他恶性肿瘤等。根据确定死因的规则，在死亡统计或诊断医院病史中这些恶性肿瘤将被归入ICD10的B21分类中，而不归入恶性肿瘤的C00-C97编码中。因此，肿瘤登记机构必须取得这些死亡证明或病例记录，否则容易被遗漏。</p>
+<p>ICD10中还有一个专门分类，是Z打头的其他肿瘤相关分类和编码，在医院编码实践中，对于以复诊为目的的恶性肿瘤患者，特别重视Z码的编制，而疏忽直至遗忘了同时编制C编码。在开展医院诊断病例漏报调查等质量控制过程中应该引起注意。与肿瘤相关的Z编码如下：</p>
+<ul>
+<li>Z08 恶性肿瘤治疗后的随诊检查</li>
+<li>Z12 肿瘤的特殊筛查</li>
+<li>Z40.0 与恶性肿瘤有关的危险因素的预防性手术</li>
+<li>Z51.0 肿瘤放疗疗程</li>
+<li>Z51.1 肿瘤化疗疗程</li>
+<li>Z80 恶性肿瘤的家族史</li>
+<li>Z85 恶性肿瘤的个人史</li>
+<li>Z86.0 其他肿瘤的个人史</li>
+<li>Z92.6 肿瘤化疗个人史</li>
+</ul>
+<p>除此之外，还有一部分ICD10编码容易被遗漏。2000年出版的ICD-O3中对ICD10和ICD-O2中的部分分类与编码做了较大修订，其中影响较大的是将一些ICD-10中的非恶性肿瘤，重新定义为恶性肿瘤。ICD-10在之后的修订版本中对这些分类和编码作了说明，但因为国内推广应用的主要是1992年的原版，专业人员如果对此了解不多的话，也容易被忽略。重新定义为恶性肿瘤的疾病如下列。</p>
+<ul>
+<li>D45(1992年) C94.1(修订后) 真性红细胞增多症</li>
+<li>D46(1992年) C92.7(修订后) 骨髓增生异常综合征MDS/顽固性贫血</li>
+<li>D47.1(1992年) C96.7(修订后) 慢性骨髓增生性疾病</li>
+<li>D47.3(1992年) C96.7(修订后) 特发性(出血性)血小板增多症</li>
+</ul>
+<p><strong>数据来源</strong>：中国肿瘤登记工作指导手册(2016)</p>
+
+
+
+ ]]></description>
+  <category>肿瘤登记</category>
+  <category>编码</category>
+  <guid>https://chenq.site/Qsight/2022-03-23-icd10-c-d/index.html</guid>
+  <pubDate>Wed, 23 Mar 2022 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>我家养的那些花儿</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-03-19-picture/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>以前养多肉，总是养着养着，仅剩下一个个花盆。卖花的大妈给传授的要点就是少浇水，但是养多肉的要点不仅仅只是少浇水，还有其它一些特点。现在又到了春暖花开的季节，我又耐不住躁动买了一盆盆的多肉，这一次要好好学习一下这些养多肉的知识和技巧，希望能养的好一些！</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="figure">
+<p><a href="img/qianchuan1.jpg" class="lightbox" data-gallery="flowers" title="钱串儿" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="figure">
+<p><a href="img/qianchuan2.jpg" class="lightbox" data-gallery="flowers" title="钱串儿" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="figure">
+<p><a href="img/qianchuan3.jpg" class="lightbox" data-gallery="flowers" title="钱串儿" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="figure">
+<p><a href="img/juhua.jpg" class="lightbox" data-gallery="flowers" title="菊花" data-description="商家说是可以过冬。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/juhua.jpg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">菊花</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="figure">
+<p><a href="img/cherry.jpg" class="lightbox" data-gallery="flowers" title="看樱桃" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/cherry.jpg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">看樱桃</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="figure">
+<p><a href="img/IMG_0023.jpg" class="lightbox" data-gallery="flowers" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="figure">
+<p><a href="img/IMG_0019.jpg" class="lightbox" data-gallery="flowers" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="figure">
+<p><a href="img/IMG_0013.jpg" class="lightbox" data-gallery="flowers" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="figure">
+<p><a href="img/IMG_0011.jpg" class="lightbox" data-gallery="flowers" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="figure">
+<p><a href="img/IMG_0010.jpg" class="lightbox" data-gallery="flowers" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="figure">
+<p><a href="img/IMG_0006.jpg" class="lightbox" data-gallery="flowers" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="figure">
+<p><a href="img/IMG_0005.jpg" class="lightbox" data-gallery="flowers" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>生活</category>
+  <category>摄影</category>
+  <guid>https://chenq.site/Qsight/2022-03-19-picture/index.html</guid>
+  <pubDate>Sat, 19 Mar 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan1.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>河南省29个肿瘤登记处荣获国家癌症中心表彰</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-03-18-xianjin/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>为贯彻落实《健康中国行动–癌症防治行动实施方案(2019-2022年)》及国家卫生健康委员会、国家中医药管理局《肿瘤登记管理办法》(国卫疾控发[2015]6号)文件精神，进一步做好肿瘤随访登记工作，加强我国肿瘤登记工作规范化管理，健全我国肿瘤监测信息系统，掌握我国恶性肿瘤的流行状况与疾病负担，充分发挥优秀肿瘤登记处的示范引领作用。国家癌症中心对全国肿瘤登记处进行综合考评，授予16个省级登记处“省级单位杰出贡献奖”；授予38个登记处“肿瘤登记工作杰出贡献奖”；授予178个登记处“肿瘤登记工作优秀奖”；授予120个登记处“肿瘤登记工作进步奖”。</p>
+<p>河南省2021年肿瘤登记工作共荣获29项奖励，具体获奖肿瘤登记处及荣获奖励如下：</p>
+<section id="省级单位杰出贡献奖" class="level2">
+<h2 class="anchored" data-anchor-id="省级单位杰出贡献奖">省级单位杰出贡献奖</h2>
+<p>河南省肿瘤医院荣获“省级单位杰出贡献奖”</p>
+</section>
+<section id="肿瘤登记工作杰出贡献奖" class="level2">
+<h2 class="anchored" data-anchor-id="肿瘤登记工作杰出贡献奖">肿瘤登记工作杰出贡献奖</h2>
+<p>林州市肿瘤医院荣获“肿瘤登记工作杰出贡献奖”</p>
+</section>
+<section id="肿瘤登记工作优秀奖" class="level2">
+<h2 class="anchored" data-anchor-id="肿瘤登记工作优秀奖">肿瘤登记工作优秀奖</h2>
+<p>共有16个肿瘤登记处荣获“肿瘤登记工作优秀奖”。</p>
+<ul>
+<li>偃师市疾病预防控制中心</li>
+<li>西平县疾病预防控制中心</li>
+<li>洛阳市疾病预防控制中心</li>
+<li>鲁山县疾病预防控制中心</li>
+<li>辉县市疾病预防控制中心</li>
+<li>禹州市疾病预防控制中心</li>
+<li>郾城区疾病预防控制中心</li>
+<li>源汇区疾病预防控制中心</li>
+<li>内乡县疾病预防控制中心</li>
+<li>罗山县疾病预防控制中心</li>
+<li>沈丘县疾病预防控制中心</li>
+<li>郸城县疾病预防控制中心</li>
+<li>济源市疾病预防控制中心</li>
+<li>开封市祥符区疾病预防控制中心</li>
+<li>鹤壁市人民医院</li>
+<li>睢县疾病预防控制中心</li>
+</ul>
+</section>
+<section id="肿瘤登记工作进步奖" class="level2">
+<h2 class="anchored" data-anchor-id="肿瘤登记工作进步奖">肿瘤登记工作进步奖</h2>
+<p>共有11个肿瘤登记荣获“肿瘤登记工作进步奖”。</p>
+<ul>
+<li>孟津县疾病预防控制中心</li>
+<li>新安县疾病预防控制中心</li>
+<li>栾川县疾病预防控制中心</li>
+<li>嵩县疾病预防控制中心</li>
+<li>汝阳县疾病预防控制中心</li>
+<li>召陵区疾病预防控制中心</li>
+<li>方城县疾病预防控制中心</li>
+<li>洛宁县疾病预防控制中心</li>
+<li>华龙区疾病预防控制中心</li>
+<li>濮阳县疾病预防控制中心</li>
+<li>浉河区疾病预防控制中心</li>
+</ul>
+</section>
+<section id="表彰文件下载" class="level2">
+<h2 class="anchored" data-anchor-id="表彰文件下载">表彰文件下载</h2>
+<p><a href="2021_xianjin.pdf">国家癌症中心便函[2021]第3号</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>肿瘤登记</category>
+  <guid>https://chenq.site/Qsight/2022-03-18-xianjin/index.html</guid>
+  <pubDate>Fri, 18 Mar 2022 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>中国肿瘤登记管理办法</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-03-18-file/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="起草背景" class="level2">
+<h2 class="anchored" data-anchor-id="起草背景">起草背景</h2>
+<p>肿瘤登记是系统性、经常性收集有关肿瘤及肿瘤病人信息的统计制度，是癌症防治工作的基础。为掌握我国癌症发病、死亡情况，2008年，中央财政支持开展肿瘤登记项目工作，项目覆盖面和覆盖人群不断扩大，到2014年全国肿瘤登记点已达308个，覆盖全国约3亿人。肿瘤登记项目工作为建立统一、规范的肿瘤登记报告制度与方法，动态收集我国恶性肿瘤的相关信息，奠定了坚实的基础。</p>
+<p>随着城镇化、老龄化、工业化、全球化快速发展，癌症等慢性病疾病负担日趋加重，肿瘤登记工作面临一些新情况、新问题。为了进一步加强全国肿瘤登记工作规范化管理，获得及时、统一、准确的肿瘤发病、死亡和生存信息，使肿瘤登记工作满足当前癌症防治工作需要，国家卫生计生委和国家中医药管理局组织有关专家，在广泛征求各方面意见的基础上，制定了《肿瘤登记管理办法》。</p>
+</section>
+<section id="主要内容" class="level2">
+<h2 class="anchored" data-anchor-id="主要内容">主要内容</h2>
+<p>《管理办法》包括总则、组织机构和职责、肿瘤登记内容和工作流程、质量控制与考核评价、保障措施、附则，共六章二十条。主要内容如下：</p>
+<section id="肿瘤登记的目的和意义以及适用范围" class="level3">
+<h3 class="anchored" data-anchor-id="肿瘤登记的目的和意义以及适用范围">肿瘤登记的目的和意义以及适用范围。</h3>
+<p>为建立常规报告制度，加强肿瘤随访登记工作规范化管理，健全我国以人群为基础的肿瘤随访登记信息系统，掌握我国城乡居民恶性肿瘤发病、死亡、生存情况及变化趋势，科学评价癌症防控效果,及时调整癌症防治策略，为我国肿瘤防治工作提供必要的信息。本办法适用于卫生计生行政部门、中医药管理部门、医疗卫生机构和疾病预防控制机构开展的肿瘤登记管理工作。</p>
+</section>
+<section id="各级组织机构和职责" class="level3">
+<h3 class="anchored" data-anchor-id="各级组织机构和职责">各级组织机构和职责。</h3>
+<p>各级卫生计生行政部门和中医药管理部门负责全国肿瘤登记体系建设、组织协调和监督管理全国肿瘤登记工作。国家癌症中心负责全国肿瘤登记工作的具体工作，包括制定全国肿瘤登记工作计划、实施方案、质量控制和评价标准，建立全国肿瘤登记信息系统和跨区域肿瘤登记病例数据交换制度，组织开展技术培训、督导检查和考核评估，负责肿瘤登记信息的数据收集、质量控制和统计分析等。各省（直辖市、自治区）卫生计生行政部门和中医药管理部门指定相关部门成立省级肿瘤登记中心，实施全省肿瘤登记工作。省会城市、地级市为城市肿瘤登记地区，指定相关部门设立肿瘤登记处，开展市辖区的肿瘤登记报告工作；县级市和县为农村肿瘤登记地区，指定相关部门设立肿瘤登记处，开展辖区内肿瘤登记报告工作。登记处所在的疾病预防控制中心负责提供死因数据。</p>
+</section>
+<section id="登记内容和工作流程" class="level3">
+<h3 class="anchored" data-anchor-id="登记内容和工作流程">登记内容和工作流程。</h3>
+<p>肿瘤登记处辖区内所有医疗机构需定期向肿瘤登记处报告所有恶性肿瘤（包括中枢神经系统良性肿瘤）病例的发病和死亡信息。肿瘤登记处对辖区工作进行指导、检查及培训、数据收集和质量控制工作并定期开展病例随访，按时将数据和工作总结上报省级肿瘤登记中心。省级肿瘤登记中心开展全省肿瘤登记报告资料的收集汇总、质量控制和统计分析，按时将数据和工作总结上报国家癌症中心。国家癌症中心定期汇总和分析登记资料、编制各种报表，形成年度肿瘤登记报告，按时上报国家卫生和计划生育委员会审核后发布。</p>
+</section>
+<section id="质量控制考核评价和保障措施" class="level3">
+<h3 class="anchored" data-anchor-id="质量控制考核评价和保障措施">质量控制、考核评价和保障措施。</h3>
+<p>国家癌症中心建立和实施评价机制，制订实施监测指标体系。明确各级登记系统的管理部门组织实施督导检查和考核评价。要求各级卫生计生行政部门和中医药管理部门加强组织领导和协调，建立目标责任制，实行绩效管理，提供政策、人员和经费保障，全面推进肿瘤登记工作实施。与公安、民政、统计等相关部门建立工作联系。加强人才培养，提高工作能力。保障信息安全，遵从国家法律、知识产权和伦理学准则，保证患者隐私。</p>
+</section>
+</section>
+<section id="文件下载" class="level2">
+<h2 class="anchored" data-anchor-id="文件下载">文件下载</h2>
+<p><a href="file_2015_6.pdf">中国肿瘤登记管理办法，国卫疾控发〔2015〕6号</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>肿瘤登记</category>
+  <guid>https://chenq.site/Qsight/2022-03-18-file/index.html</guid>
+  <pubDate>Fri, 18 Mar 2022 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>世界肿瘤登记发展简史</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-03-17-history/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>世界上第一个现代意义上的肿瘤登记处是德国汉堡肿瘤登记处。1926年，由个人成立了一个为癌症患者提供后续服务的组织，到1929年，它获得了汉堡公共卫生部门的授权，从而获得官方地位从事肿瘤治疗患者的随访服务。由三个护师定期访问汉堡的医院和医疗从业机构，她们记录新肿瘤患者的名字，并将数据传输到卫生部门，获得病例的索引。然后，每周将索引与官方的死因数据进行一次比较，这个流程也成了汉堡肿瘤登记的基础。</p>
+<p>以流行病学和生态学为目标的人群肿瘤登记处于1935年在美国康涅狄格州建立。当时的康涅狄格州卫生部门成立了一个癌症研究部门，对癌症及其预防和治疗以及由此导致的死亡率进行调查，并采取有助于降低死亡率的行动。康涅狄格州肿瘤登记处于1941年在全州范围内运作，登记的病例可以追溯到1935年。</p>
+<p>丹麦肿瘤登记处建立于1942年，是世界上第一个覆盖全国范围的肿瘤登记处。在丹麦医学会的支持下，医生在自愿的基础上进行病例报告工作，而国家卫生局则通过全面查阅死亡证明和所有死亡数据予以协助。当时肿瘤登记处的任务主要包括：（一）对患者个人进行随访；(B)提供可靠的发病率统计数据，以便准确估计治疗结果；(C)准确评估恶性肿瘤发病率的长期变化、地理变化以及职业变化等。</p>
+<p>从20世纪40年代中期开始，世界上一些国家陆续开始建立肿瘤登记处。1955年之前建立的人群肿瘤登记处如下：</p>
+<ul>
+<li>1929年，西德（汉堡）</li>
+<li>1940年，美国（纽约）</li>
+<li>1941年，美国（康涅狄格州）</li>
+<li>1942年，丹麦</li>
+<li>1944年，加拿大（萨斯喀彻温省）</li>
+<li>1945年，英格兰和威尔士（S.W. Region）</li>
+<li>1948年，英格兰和威尔士（利物浦）</li>
+<li>1948年，新西兰</li>
+<li>1950年，加拿大（马尼托巴省）</li>
+<li>1950年，南斯拉夫（斯洛文尼亚）</li>
+<li>1951年，加拿大（艾伯塔省）</li>
+<li>1951年，美国（埃尔帕索）</li>
+<li>1952年，匈牙利（）</li>
+<li>1952年，挪威</li>
+<li>1953年，德意志民主共和国</li>
+<li>1953年，芬兰</li>
+<li>1954年，冰岛</li>
+</ul>
+<p>1946年在哥本哈根举行的一次会议对于在全球建立肿瘤登记处至关重要，当时丹麦肿瘤登记处主任克莱姆梅森博士倡议在全球建立登记处。随后，国际上12名癌症防控领域知名专家联合向世界卫生组织建议在全球范围建立肿瘤登记处。他们建议如下：</p>
+<ul>
+<li>从尽可能多的不同国家收集有关肿瘤患者的数据将带来极大的好处；</li>
+<li>这种数据应该按照一定的计划进行收集，以便不同区域具有可比性；</li>
+<li>每个国家都应有一个国家肿瘤登记处，以安排记录和收集这类数据；</li>
+<li>应设立一个国际机构，其职责应是将在每个国家获得的数据和统计数据联系起来。</li>
+</ul>
+<p>四年后，世界卫生组织成立了一个关于肿瘤病例登记及其统计报告的小组委员会，该委员会制定了建立肿瘤登记处的建议(STOCKS，1959年)。在1950年由国际抗癌联盟(UICC)举办的具有里程碑意义的国际癌症地理病理学和人口学专题讨论会上，强调有必要在一个确定的区域内列举所有新的癌症病例(ClemMesen，1951)。根据专题讨论会的建议，UICC成立了地理病理学委员会。1965年，国际癌症研究机构(IARC)成立，作为世界卫生组织的一个专门的癌症研究中心。</p>
+<p>国际癌症登记协会(IACR)于1966年在东京成立。IACR是癌症登记处的成员组织，“负责收集和分析有关癌症发病率的数据和确定人群中癌症治疗的最终结果”。该协会与IARC密切合作。</p>
+<p><em>参考资料：</em></p>
+<p>G. Wagner. History of cancer registration.</p>
+
+
+
+ ]]></description>
+  <category>肿瘤登记</category>
+  <category>历史</category>
+  <guid>https://chenq.site/Qsight/2022-03-17-history/index.html</guid>
+  <pubDate>Thu, 17 Mar 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-03-17-history/历史.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>IARCcrgtools肿瘤登记数据逻辑核查软件</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-03-10-iarccrgtools/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://chenq.site/Qsight/2022-03-10-iarccrgtools/cover.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">iarccrgtool</figcaption><p></p>
+</figure>
+</div>
+<p>IARCcrgtools软件是IARC为了肿瘤登记开发的专用软件，用于<em>ICD不同版本编码的转换</em>和肿瘤登记数据的<em>逻辑错误检查</em>。</p>
+<p>肿瘤登记使用ICD-O-3编码体系收集肿瘤数据，为了转换或验证登记处收集到的这些数据，国际癌症研究中心开发了新的软件和程序，也就是我们今天介绍的IARCcrgtools，从而保证登记处收集的数据更准确或接近于真实。使从这些数据计算得来的流行病学相关指标如发病率、死亡率、生存率等更能真实的反映癌症发生的模式和趋势。</p>
+<p>IARCcrgtools使用了多种方法来检查登记处数据的有效性。其中一种广泛采用的方法就是所谓的内部一致性。肿瘤登记收集的不同变量之间存在一定的逻辑关系，比如年龄/发病部位、发病部位/形态学、性别/部位等，而IARCcrgtools则使用计算机算法来检测不可能或者不太可能的变量组合，以便登记处进一步核实这些数据。</p>
+<p>IARCcrgtools程序最初发表在癌症登记中的可比性和质量控制(Parkin等人，1994年)。最初创建这个程序是为了评估提交的五大洲癌症发病率数据(IARC Scientific Publications nos. 120, 143 and 155)。新程序是基于ICD-O-3的。</p>
+<p>目前最新版的程序则是基于ICD-O-3，考虑到ICD-O-3第一版的变化，发布了新的IARC/IACR检查程序。该程序为用户提供内部一致性检查，以检测不可能或不太可信的编码组合。</p>
+<section id="iarccrgtools软件的主要功能" class="level2">
+<h2 class="anchored" data-anchor-id="iarccrgtools软件的主要功能">IARCcrgtools软件的主要功能</h2>
+<p>IARCcrgtools软件的主要功能主要分为两类：（1）ICD9/10与ICD-O-2/ICD-O-3编码的相互转换；(2)用于肿瘤登记数据记录的逻辑核查功能。具体可打开软件查看相应菜单。</p>
+</section>
+<section id="使用教程" class="level2">
+<h2 class="anchored" data-anchor-id="使用教程">使用教程</h2>
+<p>作者在开展肿瘤登记工作的时候，对IARCcrgtools软件的技术文档进行了翻译，以及编写了相关的使用教程，从而方便肿瘤登记处的工作人员使用。 - <a href="http://www.iacr.com.fr/images/doc/TechRep42.pdf">技术文档下载地址(英文版)</a> - <a href="technical.pdf">技术文档下载地址(中文翻译版)</a> - <a href="tutor.pdf">IARCcrgtools使用教程</a></p>
+</section>
+<section id="软件下载" class="level2">
+<h2 class="anchored" data-anchor-id="软件下载">软件下载</h2>
+<p>目前软件的最新版本为2.10版，你可以从下面的链接中下载软件或者相关技术文档。</p>
+<ul>
+<li><a href="http://www.iacr.com.fr/files/IARCcrgToolsSetup213.zip">软件下载地址</a></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>肿瘤登记</category>
+  <category>工具</category>
+  <guid>https://chenq.site/Qsight/2022-03-10-iarccrgtools/index.html</guid>
+  <pubDate>Thu, 10 Mar 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/Qsight/2022-03-10-iarccrgtools/cover.png" medium="image" type="image/png" height="109" width="144"/>
+</item>
+<item>
+  <title>肿瘤登记质量控制的四类指标</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/Qsight/2022-03-10-qualitycontrol/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>肿瘤登记工作的宗旨就是为覆盖地区提供全部恶性肿瘤发病、死亡、生存等信息，描述恶性肿瘤疾病负担，从而为肿瘤防控政策的制定、恶性肿瘤流行病学研究以及防控效果评估提供信息。</p>
+<p>质量控制在实现上述肿瘤登记工作宗旨中至关重要，因为不可靠的数据将会为肿瘤防控政策制定、科学研究等提供错误的方向，从而影响肿瘤防控效果。</p>
+<p>目前我国肿瘤登记在评估数据质量方面主要采用可比性、完整性、有效性和时效性四类指标。</p>
+<section id="可比性" class="level2">
+<h2 class="anchored" data-anchor-id="可比性">可比性</h2>
+<p>肿瘤登记资料的可比性是指不同肿瘤登记处之间恶性肿瘤发病率、死亡率、生存率等是真实可比的，不同登记处之间率的不同是由于数据本身不同而产生，不是因为标准或质量不同而产生。</p>
+<p>可比性的一个基础先决条件是不同登记处采用一套通用的标准或定义，同时，可比性也是登记处执行国际标准化的编码、分类和记录以及报告项目定义的程度。</p>
+<p>常用的可比性指标有：发病的定义、偶发病例的诊断、分类与编码、多原发肿瘤标准、死亡数据等</p>
+</section>
+<section id="完整性" class="level2">
+<h2 class="anchored" data-anchor-id="完整性">完整性</h2>
+<p>肿瘤登记资料的完整性是指在登记处覆盖地区目标人群中<em>发现</em>的肿瘤发病病例与本地区现实世界所有的肿瘤发病病例的符合程度。即登记处数据库中包含目标人群内发生肿瘤病例数的程度（以百分数表示）。</p>
+<p>完整性是肿瘤登记数据的重要属性。</p>
+<p>在实际中，没有一个登记处的数据完整性能够达到理想的100%，我们登记处所需要做的就是使完整性尽量接近100%，以达到完整性的最大化。</p>
+<p>完整性达到最大化时，所计算的肿瘤发病率、死亡率等指标与登记处覆盖地区目标人群肿瘤发病率、死亡率的<strong>真实值</strong>最接近。</p>
+<p>因此，完整性是肿瘤登记质量控制过程中的重要部分，完整性的评价标准有：</p>
+<ul>
+<li>一定时间内稳定的发病率</li>
+<li>不同地区人群可比较的发病率</li>
+<li>年龄别发病率曲线</li>
+<li>儿童肿瘤的发病率</li>
+<li>组织学诊断确认的比例（MV%）</li>
+<li>死亡发病比（M:I）</li>
+<li>死亡医学证明确认的比例。</li>
+</ul>
+</section>
+<section id="有效性" class="level2">
+<h2 class="anchored" data-anchor-id="有效性">有效性</h2>
+<p>有效性是评价肿瘤登记质量的一个基本内容，是指登记病例中具有给定特征（比如，肿瘤部位、年龄、性别、诊断、编码）的真正属性的病例所占的比例。</p>
+<p>常用的指标：MV%、DCO%、原发部位不详或未特指的病例所占的百分比（other and unspecified, O&amp;U%）,年龄不明的百分比等。</p>
+</section>
+<section id="时效性" class="level2">
+<h2 class="anchored" data-anchor-id="时效性">时效性</h2>
+<p>肿瘤登记资料的时效性是肿瘤登记处收集、处理、报告足够可靠和完整的肿瘤资料的<em>及时性</em>。常常需要平衡<em>及时报告</em>和获取<em>完整、准确的肿瘤信息</em>的关系。病例发生后，各级登记机构要及时向上报告。医疗机构应在患者出院后1周内收集病例信息并在规定时间内上报。在每年的年末发现的病例，更要及时收集、登记、报告。未能及时报告的病例可能影响到年度分析报告–相当于漏报。</p>
+
+
+</section>
+
+ ]]></description>
+  <category>肿瘤登记</category>
+  <guid>https://chenq.site/Qsight/2022-03-10-qualitycontrol/index.html</guid>
+  <pubDate>Thu, 10 Mar 2022 00:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
