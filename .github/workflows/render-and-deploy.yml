@@ -9,9 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: "Install Quarto and render"
-        uses: pommevilla/quarto-render@main
+      
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.3.14
+          
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          to: html # If set, it will be equivalent to `quarto render --to html`
+          path: source-folder # By default, the current working dir is used i.e `quarto render .`
 
       - name: "Deploy to gh-pages"
         uses: peaceiris/actions-gh-pages@v3
