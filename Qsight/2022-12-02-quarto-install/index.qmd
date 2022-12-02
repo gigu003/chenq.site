@@ -1,0 +1,13 @@
+---
+title: "如何安装quarto运行环境"
+date: "2022-12-02"
+slug: quarto-install
+categories: [quarto]
+keywords: [quarto,install]
+image: quarto.png
+---
+
+## 测试
+
+
+
