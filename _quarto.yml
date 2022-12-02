@@ -13,7 +13,7 @@ website:
   favicon: favicon.png
   twitter-card: true
   open-graph: true
-  site-url: https://gigu003.github.io/chenq.site/
+  site-url: https://chenq.site
   reader-mode: true
   repo-branch: master
   repo-url: "https://github.com/gigu003/chenq.site"
