@@ -31,3 +31,4 @@ find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch
 #移除文件夹下的所有.DS_Store文件
 ```
 
+
