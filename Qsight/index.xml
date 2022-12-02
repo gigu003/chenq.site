@@ -12,7 +12,7 @@
 <generator>quarto-1.3.14</generator>
 <lastBuildDate>Fri, 02 Dec 2022 00:00:00 GMT</lastBuildDate>
 <item>
-  <title>如何安装quarto运行环境</title>
+  <title>如何安装quarto运行环境，并通过命令行建立简单的网站</title>
   <dc:creator>陈琼</dc:creator>
   <link>https://chenq.site/Qsight/2022-12-02-quarto-install/index.html</link>
   <description><![CDATA[ 
@@ -20,18 +20,46 @@
 
 
 
-<section id="测试" class="level2">
-<h2 class="anchored" data-anchor-id="测试">测试</h2>
-<p>就发了看大家射流风机拉科技发啦卡机就打算垃圾分类久啊三连发jfldkajlkfj</p>
+<p>Quarto考虑了各种运行环境，你可以直接用各类文本编辑器配合终端命令行直接运行quarto命令，可以用Rstudio运行，当然也可以用比较流行的vscode来运行。</p>
+<p>点击下面的链接，根据自己的系统环境下载相应的quarto版本。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://quarto.org/docs/get-started/index.html"><img src="https://chenq.site/Qsight/2022-12-02-quarto-install/quarto.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>安装完成后，测试一下，是否成功安装。</p>
+<p>如果是MacOS，打开终端，输入如下命令：quarto -v 显示quarto的版本号，如果在命令行下面显示相应的版本号，则证明正确安装。</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1">quarto -v </span></code></pre></div>
+<p>如果是windows操作系统，打开CMD，输入如下命令: quarto -v ，同样如果显示版本号，则证明已正确安装。</p>
+<p>可以用<code>quarto -h</code>命令来查看常见的quarto命令。</p>
+<p><img src="https://chenq.site/Qsight/2022-12-02-quarto-install/help.jpg" class="img-fluid" alt="常见quarto命令"> Quarto融合了Blogdown、Bookdown、xaringan等基于rmd包的优势，可以不用基于这些包，直接建立网站，博客，或者幻灯片。</p>
+<p>下面我们直接以网站为例，利用 create-project 命令建立一个website project。</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1">quarto create-project chen --type website</span></code></pre></div>
+<p>上面的命令在文件夹chen下面建立了一个类型为website的quarto project</p>
+<p>会生成如下几个文件：</p>
+<ul>
+<li>quarto.yaml</li>
+<li>about.qmd</li>
+<li>index.qmd</li>
+<li>styles.css</li>
+</ul>
+<p>我们可以用以下命令来看看这些文件是否已经生成:</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource terminal number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1">cd chen</span>
+<span id="cb3-2">ls</span></code></pre></div>
+<p>如果已经正常生成，则可以用preview 命令来预览一下，quarto建立的默认的网站的样子。</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1">quarto preview</span></code></pre></div>
+<p><img src="https://chenq.site/Qsight/2022-12-02-quarto-install/preview.jpg" class="img-fluid" alt="quarto preview"></p>
+<p>从上面的结果可以看出，preview把生成的网页配置到http://localhost:3070/,把该地址粘贴到浏览器地址栏中就可以看到，网页的样子了。 <img src="https://chenq.site/Qsight/2022-12-02-quarto-install/website.jpg" class="img-fluid" alt="preview website"></p>
+<p>通过上面的简单的命令，就通过命令行建立的一个简单的网站，你还可以通过设置_quarto.yml 来配置更为附在的网站。</p>
+<p>通过纯命令行只是建立quarto website的一种方式，还可以通过Rstudio的菜单，VScode来建立网站。</p>
 
 
-</section>
 
  ]]></description>
   <category>quarto</category>
   <guid>https://chenq.site/Qsight/2022-12-02-quarto-install/index.html</guid>
   <pubDate>Fri, 02 Dec 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/Qsight/2022-12-02-quarto-install/quarto.png" medium="image" type="image/png" height="35" width="144"/>
+  <media:content url="https://chenq.site/Qsight/2022-12-02-quarto-install/preview.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>git 如何设置忽略文件.gitignore</title>
@@ -1401,19 +1429,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan1.jpg" class="lightbox" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" title="钱串儿" data-gallery="flowers"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan1.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan2.jpg" class="lightbox" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" title="钱串儿" data-gallery="flowers"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan2.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan3.jpg" class="lightbox" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" title="钱串儿" data-gallery="flowers"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan3.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
@@ -1421,19 +1449,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/juhua.jpg" class="lightbox" data-description="商家说是可以过冬。" title="菊花" data-gallery="flowers"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/juhua.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/juhua.jpg" class="lightbox" title="菊花" data-gallery="flowers" data-description="商家说是可以过冬。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/juhua.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">菊花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/cherry.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="看樱桃" data-gallery="flowers"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/cherry.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/cherry.jpg" class="lightbox" title="看樱桃" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/cherry.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">看樱桃</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0023.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0023.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1441,19 +1469,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0019.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0019.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0013.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0013.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0011.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0011.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1461,19 +1489,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0010.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0010.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0006.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0006.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0005.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0005.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="https://chenq.site/Qsight/2022-03-19-picture/img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
