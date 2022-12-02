@@ -16,8 +16,6 @@ website:
   site-url: https://chenq.site
   reader-mode: true
   repo-branch: master
-  repo-url: "https://github.com/gigu003/chenq.site"
-  repo-actions: [issue,edit]
   navbar:
     background: primary
     search: true
@@ -29,10 +27,10 @@ website:
         href: /Qsight/
         text: Qsight
       - icon: journal-medical
-        href: /publications
+        href: /publications/
         text: 出版作品
       - icon: file-slides-fill
-        href: /slides
+        href: /slides/
         text: Slides
       - href: about.qmd
         text: 关于
