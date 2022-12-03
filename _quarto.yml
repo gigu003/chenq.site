@@ -1,8 +1,5 @@
 project:
   type: website
-  preview:
-    port: 4200
-    browser: false
   resources:
     - "*.pdf"
     - baidu_verify_code-aDCTvXezZP.html
