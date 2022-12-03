@@ -2,7 +2,7 @@
 lang: en
 # freeze computational output
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
-freeze: true
+freeze: auto
 author: 陈琼
 
 title-block-banner: true

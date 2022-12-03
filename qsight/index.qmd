@@ -5,7 +5,7 @@ listing:
   contents: "."
   sort: "date desc"
   categories: true
-  image-placeholder: Qsightpic.jpeg
+  image-placeholder: qsightpic.jpeg
   image-height: 10em
   grid-item-border: true
   grid-item-align: left
