@@ -15,7 +15,6 @@ website:
   open-graph: true
   site-url: https://chenq.site
   reader-mode: true
-  repo-branch: master
   navbar:
     background: primary
     search: true
@@ -24,10 +23,10 @@ website:
         href: index.qmd
         text: Home
       - icon: tropical-storm
-        href: /Qsight/
-        text: Qsight
+        href: /qsight/
+        text: Qsight博客
       - icon: journal-medical
-        href: /Publications/
+        href: /publications/
         text: 出版作品
       - icon: file-slides-fill
         href: /slides/
@@ -36,7 +35,7 @@ website:
         text: 关于
     right:
       - icon: rss
-        href: /Qsight/index.xml
+        href: /qsight/index.xml
         aria-label: RSS 
 
   page-footer:
@@ -47,7 +46,7 @@ website:
         href: https://github.com/gigu003
         aria-label: Qiong@GitHub
       - icon: rss
-        href: /Qsight/index.xml
+        href: /qsight/index.xml
         aria-label: RSS     
 freeze: auto  
 comments:
