@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="陈琼">
+<meta name="dcterms.date" content="2021-11-23">
+<meta name="keywords" content="肿瘤登记, 分类与编码, ICD-O3">
 
-<title>Slides</title>
+<title>普癌新声 - ICDO3编码规则五：对组织学等级和分化程度的编码</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +26,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../favicon.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,49 +62,28 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-details"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script type="application/json" class="js-hypothesis-config">
 {
   "theme": "clean"
 }
 </script>
 <script async="" src="https://hypothes.is/embed.js"></script>
+<style>
+    .quarto-title-block .quarto-title-banner {
+      color: #c8c8c8;
+    }
+    </style>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Slides">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="普癌新声 - ICDO3编码规则五：对组织学等级和分化程度的编码">
+<meta property="og:description" content="当诊断指出两个不同的等级或分化程度，应使用较大的编码作为等级编码。">
+<meta property="og:image" content="https://chenq.site/qsight/2021-11-21-ICDO3编码规则5/1.jpg">
 <meta property="og:site-name" content="普癌新声">
-<meta name="twitter:title" content="Slides">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="普癌新声 - ICDO3编码规则五：对组织学等级和分化程度的编码">
+<meta name="twitter:description" content="当诊断指出两个不同的等级或分化程度，应使用较大的编码作为等级编码。">
+<meta name="twitter:image" content="https://chenq.site/qsight/2021-11-21-ICDO3编码规则5/1.jpg">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -113,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
@@ -123,33 +103,33 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html" rel=""><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../qsight/" rel=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight/" rel=""><i class="bi bi-tropical-storm" role="img">
 </i> 
  <span class="menu-text">Qsight博客</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../publications/" rel=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../publications/" rel=""><i class="bi bi-journal-medical" role="img">
 </i> 
  <span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../slides/" rel=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="../../slides/" rel=""><i class="bi bi-file-slides-fill" role="img">
 </i> 
  <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="">
+    <a class="nav-link" href="../../about.html" rel="">
  <span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../qsight/index.xml" rel=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../qsight/index.xml" rel=""><i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -167,7 +147,39 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">ICDO3编码规则五：对组织学等级和分化程度的编码</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">肿瘤登记</div>
+                <div class="quarto-category">编码</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>陈琼 </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 23, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -175,65 +187,130 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#肿瘤登记" id="toc-肿瘤登记" class="nav-link active" data-scroll-target="#肿瘤登记">肿瘤登记</a></li>
+  <li><a href="#规则描述" id="toc-规则描述" class="nav-link active" data-scroll-target="#规则描述">规则描述</a></li>
+  <li><a href="#形态学编码第六位数" id="toc-形态学编码第六位数" class="nav-link" data-scroll-target="#形态学编码第六位数">形态学编码第六位数</a></li>
+  <li><a href="#常见未分化或间变分化恶性肿瘤形态学编码" id="toc-常见未分化或间变分化恶性肿瘤形态学编码" class="nav-link" data-scroll-target="#常见未分化或间变分化恶性肿瘤形态学编码">常见未分化或间变分化恶性肿瘤形态学编码</a></li>
+  <li><a href="#编码举例" id="toc-编码举例" class="nav-link" data-scroll-target="#编码举例">编码举例</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">分类</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="肿瘤登记">肿瘤登记 <span class="quarto-category-count">(1)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<section id="肿瘤登记" class="level2">
-<h2 class="anchored" data-anchor-id="肿瘤登记">肿瘤登记</h2>
 
+<section id="规则描述" class="level3">
+<h3 class="anchored" data-anchor-id="规则描述">规则描述</h3>
+<ol type="1">
+<li>诊断结果描述中涉及两个不同程度的登记或分化则指定最高等级或分化程度的编码。</li>
+<li>诊断结果描述未指出等级或分化程度的情况，则编码到“9”。</li>
+</ol>
+</section>
+<section id="形态学编码第六位数" class="level3">
+<h3 class="anchored" data-anchor-id="形态学编码第六位数">形态学编码第六位数</h3>
+<table class="table">
+<thead>
+<tr class="header">
+<th>ICDO3形态学编码第六位数</th>
+<th>等级</th>
+<th>分化程度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>I级</td>
+<td>高分化，已分化，NOS</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>II级</td>
+<td>中分化，已中等分化，中分化</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>III级</td>
+<td>低分化</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>IV级</td>
+<td>未分化/间变分化</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>—</td>
+<td>分级/分化/未确定、未指出或不适用的</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="常见未分化或间变分化恶性肿瘤形态学编码" class="level3">
+<h3 class="anchored" data-anchor-id="常见未分化或间变分化恶性肿瘤形态学编码">常见未分化或间变分化恶性肿瘤形态学编码</h3>
+<table class="table">
+<thead>
+<tr class="header">
+<th>形态学编码</th>
+<th>形态学描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>M8020/34、M8021/34</td>
+<td>未分化癌</td>
+</tr>
+<tr class="even">
+<td>M9062/34</td>
+<td>精原细胞瘤</td>
+</tr>
+<tr class="odd">
+<td>M9082/34</td>
+<td>恶性畸胎瘤</td>
+</tr>
+<tr class="even">
+<td>M9392/34</td>
+<td>室管膜瘤</td>
+</tr>
+<tr class="odd">
+<td>M9401/34</td>
+<td>星形细胞瘤</td>
+</tr>
+<tr class="even">
+<td>M9451/34</td>
+<td>少突神经胶质瘤</td>
+</tr>
+<tr class="odd">
+<td>M9505/34</td>
+<td>神经节神经胶质瘤</td>
+</tr>
+<tr class="even">
+<td>M9512/34</td>
+<td>视网膜母细胞瘤</td>
+</tr>
+<tr class="odd">
+<td>M9530/34</td>
+<td>脑（脊）膜瘤</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="编码举例" class="level3">
+<h3 class="anchored" data-anchor-id="编码举例">编码举例</h3>
+<ol type="1">
+<li>诊断描述：鳞状细胞癌Ⅱ级，编码到 M8070/32 。</li>
+<li>诊断描述：中分化的鳞状细胞癌，也编码到 M8070/32。</li>
+</ol>
+<p>当诊断指出两个不同的等级或分化程度，应使用较大的编码作为等级编码。</p>
+<ol type="1">
+<li>诊断描述：“中分化的鳞状细胞癌伴有低分化区”，中分化的编码或等级为2，而低分化的编码为3，按照规则应给予等级编码“3”，完整编码为：M80070/33。</li>
+<li>诊断描述：“食管上见溃疡肿物5*2cm，（食管）溃疡型中-高分化鳞癌，侵及外膜。 神经侵犯（-），脉管癌栓（+）。（各切缘）干净。（另送食管旁淋巴结）0/2。（另送下段食管旁淋巴结）0/1。（另送贲门淋巴结）0/3。（另送另送贲门淋巴结）0/1。（另送胃左淋巴结）0/1。（另送隆突淋巴结）0/3。” 完整编码：C15.9 M8070/32</li>
+</ol>
 
 
 </section>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="listing-actions-group">
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="肿瘤登记" data-listing-date-sort="1668556800000" data-listing-file-modified-sort="1670065096069" data-listing-reading-time-sort="0.045">
-<a href="../slides/slides1.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="../slides/2020.jpg" class="thumbnail-image card-img" style="height: 15em;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-河南省肿瘤发病死亡情况
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('肿瘤登记'); return false;">
-肿瘤登记
-</div>
-</div>
-<div class="card-text listing-description">
-本幻灯介绍了淮河流域项目
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Qiong Chen
-</div>
-<div class="listing-date">
-2022-11-16
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script type="text/javascript">
 
 // replace cmd keyboard shortcut w/ control on non-Mac platforms
@@ -392,7 +469,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="../qsight/index.xml">
+    <a class="nav-link" href="../../qsight/index.xml">
       <i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
     </a>
