@@ -10,7 +10,77 @@
 <atom:link href="https://chenq.site/qsight/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
 <generator>quarto-1.3.14</generator>
-<lastBuildDate>Fri, 02 Dec 2022 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 05 Dec 2022 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>可重复式研究报告:从blogdown,bookdown,pagedown到Quarto</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/qsight/2022-12-05-rmd-to-quarto/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="传统写作的困境" class="level2">
+<h2 class="anchored" data-anchor-id="传统写作的困境">传统写作的困境</h2>
+<p>研究项目立项–&gt;&gt;收集数据–&gt;&gt;整理数据–&gt;&gt;分析数据–&gt;&gt;撰写论文/报告</p>
+<p>这应该是很多研究者的开展研究工作的基本流程，但是研究工作并不总是一帆顺利地沿着这个方向进行。 我们可能已经撰写完成研究报告，但是收集的数据有了更新，或者需要纳入更多的研究对象，再或者原先某些缺失的数据通过其它渠道进行了补充，那么我们就<strong>需要更新研究报告/论</strong>，再重新分析数据，各种统计过程必须要重新来过，然后再把统计结果一点一点粘贴到word里，是不是想想这个过程就很头疼。</p>
+<p>这是我们在用office套件，比如word、excel、powerpoint等软件在撰写报告时非常常见的情形。</p>
+</section>
+<section id="可重复性报告" class="level2">
+<h2 class="anchored" data-anchor-id="可重复性报告">可重复性报告</h2>
+<p>但是Rmd/rmarkown文档及<a href="https://yihui.org/knitr/">knitr</a>的出现解决了这一问题，Rmd格式文档通过把通用的markdown和嵌入的R语言代码块结合起来，通过knitr包把rmd文档编译成统一的md文档，然后再通过pandoc转成各种格式，如html、PDF、Word、slides等。 <img src="https://chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-pipeline-pandoc.png" class="img-fluid" alt="rmd-pipeline-pandoc"></p>
+<p>这样我们在写研究报告的时候，就可以利用rmd把统计过程整合到统计报告的撰写中来，如果原始数据有变化，只需要重新执行一次编译过程就能更新整个研究报告了。 其实这个过程也就是我们所说的可重复性数据分析或者可重复性报告。</p>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+可重复性报告/可重复性数据分析
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>我们所说的可重复性报告是指利用代码把数据分析过程串起来，最终生成可重复性的报告。其实说到可重复性报告，应该首先说下<strong>文学编程</strong>，它是一种理念，强调以自然语言呈现计算逻辑，文本和代码相互混合的方式，并且从计算机代码的执行逻辑过渡到人的思维逻辑。我们现在使用的R Sweave，R markdown，以及J’upyter都是实现<strong>文学编程</strong>的具体方式。</p>
+</div>
+</div>
+</section>
+<section id="r-markdown" class="level2">
+<h2 class="anchored" data-anchor-id="r-markdown">R markdown</h2>
+<p>R markdown 是R实现可重复性数据分析/报告的主要生产力工具，自诞生以来，在Rstudio的加持下，其周边生态越来越完善，实现的功能也越来越多。比如做网站、博客、制作幻灯片、写书、写论文等。</p>
+<p><img src="https://chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-packages.png" class="img-fluid" alt="rmd-packages"></p>
+<p>blogdown包可以结合hugo生成比较漂亮的网站或博客网站，bookdown可以生成各种形式的书籍包括word,pdf,epub,html等，xaringan可以做出容易在网络分享的漂亮幻灯片。</p>
+<p>但是R markdown也存在一些缺点，虽然这些包能够实现非常强大的功能，但是各种包之间缺乏统一的语法，实现同一功能的语法各有不同，对于使用者来说，需要付出很大的时间成本在各种包之间切换并记住不同的语法去实现不同的功能。</p>
+</section>
+<section id="从r-markdown到quarto" class="level2">
+<h2 class="anchored" data-anchor-id="从r-markdown到quarto">从R markdown到Quarto</h2>
+<p>估计是看到文学编程的巨大潜力，在Rstudio的支持下，<strong>Quarto</strong>应运而生，官网给它的定义是：“基于pandoc的开源科学与技术出版系统”。</p>
+<blockquote class="blockquote">
+<p>Quarto® is an open-source scientific and technical publishing system built on Pandoc</p>
+</blockquote>
+<p><img src="https://chenq.site/qsight/2022-12-05-rmd-to-quarto/quarto.jpg" class="img-fluid" alt="quarto"></p>
+<p><strong>Quarto</strong>相比于R markdown具有如下特点：</p>
+<ul>
+<li>它<em>可以</em>独立于R、Rstudio或者其他软件如python等编程或统计软件，支持在Macos、Linux、Windows系统运行；</li>
+<li>Quarto继承了一些Rmd包的特点、如blogdown、bookdown、xaringan等；</li>
+<li>在生成website、blog、book、slides等各种格式中有了统一的语法，缩小了使用者的学习成本；</li>
+<li>支持的语言包括R、Python、Julia和Observable；</li>
+<li>quarto有了新的文档格式，文档扩展名为“.qmd”, 代码块选项的形式有了变化。</li>
+<li>支持科技写作的特征，如公式、引用、交叉引用、图、表等。</li>
+</ul>
+<p>对于本人来说，促使我从R markdown转换到Quarto的最主要的因素是<strong>统一的语法</strong>，在我使用Quarto进行内容创作输出website的时候，不必再学习一遍新的语法去生成幻灯片，这就大大缩小了使用的时间成本。</p>
+<p>首先，我把自己的个人网站从原来的Blogdown+Hugo的生成方式转换到单独利用Quarto的生成方式，这样我就可以利用上面所说的各种quarto的优点和新的特性了。但是相比与原来的blogdown+hugo的方式，quarto渲染网页的速度比hugo慢了不少，但是对于我来说，完全可以接受。</p>
+<p>Quarto 有一点比较好，就是对R markdown格式文档的支持，这样你就不必把以前编写的Rmd文档全部改写成.qmd文档。</p>
+<p>今天的总结到此为止吧，后面我会逐步把利用quarto进行科技写作或生成幻灯片中遇到的问题分享给大家。</p>
+
+
+</section>
+
+ ]]></description>
+  <category>quarto</category>
+  <guid>https://chenq.site/qsight/2022-12-05-rmd-to-quarto/index.html</guid>
+  <pubDate>Mon, 05 Dec 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-pipeline-pandoc.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
 <item>
   <title>如何安装quarto运行环境，并通过命令行建立简单的网站</title>
   <dc:creator>陈琼</dc:creator>
@@ -1425,19 +1495,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan1.jpg" class="lightbox" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" title="钱串儿" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan1.jpg" class="lightbox" title="钱串儿" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan2.jpg" class="lightbox" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" title="钱串儿" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan2.jpg" class="lightbox" title="钱串儿" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan3.jpg" class="lightbox" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" title="钱串儿" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan3.jpg" class="lightbox" title="钱串儿" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
@@ -1445,19 +1515,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/juhua.jpg" class="lightbox" data-description="商家说是可以过冬。" title="菊花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/juhua.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/juhua.jpg" class="lightbox" title="菊花" data-description="商家说是可以过冬。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/juhua.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">菊花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/cherry.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="看樱桃" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/cherry.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/cherry.jpg" class="lightbox" title="看樱桃" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/cherry.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">看樱桃</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0023.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0023.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1465,19 +1535,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0019.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0019.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0013.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0013.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0011.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0011.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1485,19 +1555,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0010.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0010.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0006.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0006.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0005.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0005.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1628,59 +1698,6 @@ font-style: italic;">## 建立for循环</span></span>
   <category>肿瘤登记</category>
   <guid>https://chenq.site/qsight/2022-03-18-file/index.html</guid>
   <pubDate>Fri, 18 Mar 2022 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>世界肿瘤登记发展简史</title>
-  <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-03-17-history/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>世界上第一个现代意义上的肿瘤登记处是德国汉堡肿瘤登记处。1926年，由个人成立了一个为癌症患者提供后续服务的组织，到1929年，它获得了汉堡公共卫生部门的授权，从而获得官方地位从事肿瘤治疗患者的随访服务。由三个护师定期访问汉堡的医院和医疗从业机构，她们记录新肿瘤患者的名字，并将数据传输到卫生部门，获得病例的索引。然后，每周将索引与官方的死因数据进行一次比较，这个流程也成了汉堡肿瘤登记的基础。</p>
-<p>以流行病学和生态学为目标的人群肿瘤登记处于1935年在美国康涅狄格州建立。当时的康涅狄格州卫生部门成立了一个癌症研究部门，对癌症及其预防和治疗以及由此导致的死亡率进行调查，并采取有助于降低死亡率的行动。康涅狄格州肿瘤登记处于1941年在全州范围内运作，登记的病例可以追溯到1935年。</p>
-<p>丹麦肿瘤登记处建立于1942年，是世界上第一个覆盖全国范围的肿瘤登记处。在丹麦医学会的支持下，医生在自愿的基础上进行病例报告工作，而国家卫生局则通过全面查阅死亡证明和所有死亡数据予以协助。当时肿瘤登记处的任务主要包括：（一）对患者个人进行随访；(B)提供可靠的发病率统计数据，以便准确估计治疗结果；(C)准确评估恶性肿瘤发病率的长期变化、地理变化以及职业变化等。</p>
-<p>从20世纪40年代中期开始，世界上一些国家陆续开始建立肿瘤登记处。1955年之前建立的人群肿瘤登记处如下：</p>
-<ul>
-<li>1929年，西德（汉堡）</li>
-<li>1940年，美国（纽约）</li>
-<li>1941年，美国（康涅狄格州）</li>
-<li>1942年，丹麦</li>
-<li>1944年，加拿大（萨斯喀彻温省）</li>
-<li>1945年，英格兰和威尔士（S.W. Region）</li>
-<li>1948年，英格兰和威尔士（利物浦）</li>
-<li>1948年，新西兰</li>
-<li>1950年，加拿大（马尼托巴省）</li>
-<li>1950年，南斯拉夫（斯洛文尼亚）</li>
-<li>1951年，加拿大（艾伯塔省）</li>
-<li>1951年，美国（埃尔帕索）</li>
-<li>1952年，匈牙利（）</li>
-<li>1952年，挪威</li>
-<li>1953年，德意志民主共和国</li>
-<li>1953年，芬兰</li>
-<li>1954年，冰岛</li>
-</ul>
-<p>1946年在哥本哈根举行的一次会议对于在全球建立肿瘤登记处至关重要，当时丹麦肿瘤登记处主任克莱姆梅森博士倡议在全球建立登记处。随后，国际上12名癌症防控领域知名专家联合向世界卫生组织建议在全球范围建立肿瘤登记处。他们建议如下：</p>
-<ul>
-<li>从尽可能多的不同国家收集有关肿瘤患者的数据将带来极大的好处；</li>
-<li>这种数据应该按照一定的计划进行收集，以便不同区域具有可比性；</li>
-<li>每个国家都应有一个国家肿瘤登记处，以安排记录和收集这类数据；</li>
-<li>应设立一个国际机构，其职责应是将在每个国家获得的数据和统计数据联系起来。</li>
-</ul>
-<p>四年后，世界卫生组织成立了一个关于肿瘤病例登记及其统计报告的小组委员会，该委员会制定了建立肿瘤登记处的建议(STOCKS，1959年)。在1950年由国际抗癌联盟(UICC)举办的具有里程碑意义的国际癌症地理病理学和人口学专题讨论会上，强调有必要在一个确定的区域内列举所有新的癌症病例(ClemMesen，1951)。根据专题讨论会的建议，UICC成立了地理病理学委员会。1965年，国际癌症研究机构(IARC)成立，作为世界卫生组织的一个专门的癌症研究中心。</p>
-<p>国际癌症登记协会(IACR)于1966年在东京成立。IACR是癌症登记处的成员组织，“负责收集和分析有关癌症发病率的数据和确定人群中癌症治疗的最终结果”。该协会与IARC密切合作。</p>
-<p><em>参考资料：</em></p>
-<p>G. Wagner. History of cancer registration.</p>
-
-
-
- ]]></description>
-  <category>肿瘤登记</category>
-  <category>历史</category>
-  <guid>https://chenq.site/qsight/2022-03-17-history/index.html</guid>
-  <pubDate>Thu, 17 Mar 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-03-17-history/历史.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
