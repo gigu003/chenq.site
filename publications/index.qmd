@@ -31,25 +31,21 @@ language:
  &nbsp;&nbsp;&nbsp;&nbsp; [&nbsp;&nbsp;万方作者&nbsp;&nbsp;](https://fx.wanfangdata.com.cn/scholartrends/detail?scholar_id=a0003863732&scholar_name=陈琼&org_name=河南省肿瘤医院%3B郑州大学附属肿瘤医院){.badge .badge-large}&nbsp;&nbsp;&nbsp;&nbsp;   [&nbsp;&nbsp;Google Scholar &nbsp;&nbsp;](https://scholar.google.com/citations?user=KKgW5AwAAAAJ&hl=zh-CN){.badge .badge-large}   
 
 ## 参编书籍
-::: {layout-ncol=4}
 
-![](cover/2020.jpg)
-
-![](cover/2019.jpg)
-
-![](cover/2018.jpg)
-
-![](cover/2017.jpg)
-
-![](cover/2016.jpg)
-
-![](cover/2015.jpg)
-
-![](cover/2014.jpg)
-
-![](cover/2013.jpg)
-
-:::
+<div class="imgrow">
+<div class="imgcolumn">
+<a href="https://OTexts.org/fpp3/"><img src="cover/2020.jpg" height=200 align="center"></a>
+</div>
+<div class="imgcolumn">
+<a href="/expsmooth/"><img src="cover/2019.jpg" height=200></a>
+</div>
+<div class="imgcolumn">
+<a href="/forecasting/"><img src="cover/2018.jpg" height=200></a>
+</div>
+<div class="imgcolumn">
+<a href="/unbelievable/"><img src="cover/2017.jpg" height=200></a>
+</div>
+</div>
 
 
 ## 第一作者论文
