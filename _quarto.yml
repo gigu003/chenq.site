@@ -3,7 +3,7 @@ project:
   resources:
     - "*.pdf"
     - baidu_verify_code-aDCTvXezZP.html
-    - “./report/*”
+    - /report/2021/
 
 website:
   title: "普癌新声"
