@@ -3787,10 +3787,101 @@
     "text": "I’m a Cancer Register working in Henan Cancer Hospital, and I earned my PhD from Department of Epidemiology in Shanxi Medical University. My current work often involves SAS and R coding, and cancer registration data report and visualization. I also have been invovled in the publication of the Cancer Registration Annual Report in Henan, China for several years, and I like sharing the experience, knowledge, and my life here. I have two daughters and they are the greatest achievement I have made.\n这是陈琼的个人主页。2011年，我从兰州大学流行病与卫生统计学专业毕业，就职于河南省肿瘤医院，之后一直从事肿瘤登记工作。 2015年中，我开始在山西医科大学攻读博士学位，于2018年顺利毕业，此后，继续从事肿瘤登记工作。 我在工作中经常会涉及SAS以及R的编程，以实现肿瘤登记数据统计报告和可视化等。我喜欢电子产品、喜欢编程、爱折腾网页，用Blog记录点滴。 我将在这里记录和分享一些工作、学习、生活相关的一些信息。\n了解更多\n \n  \n   \n  \n    \n     Gitee\n  \n  \n    \n     Github\n  \n  \n    \n     给我发邮件"
   },
   {
-    "objectID": "slides/slides1.html#jfkdajkldja",
-    "href": "slides/slides1.html#jfkdajkldja",
-    "title": "河南省肿瘤发病死亡情况",
-    "section": "jfkdajkldja",
-    "text": "jfkdajkldja\n\njfkda\njkdfjal\ndjkafjdals  ## 发病死亡情况\n\n\n防静电看见啊\n封疆大吏科技fd\n讲课费打架了"
+    "objectID": "slides/2022-12-what-is-quarto/index.html#你是怎么写论文的",
+    "href": "slides/2022-12-what-is-quarto/index.html#你是怎么写论文的",
+    "title": "为什么要用Quarto?",
+    "section": "你是怎么写论文的?",
+    "text": "你是怎么写论文的?\n\n用R/SAS/STATA计算统计结果\n把结果粘贴到Word里做表格\n然后在Word里写论文\n\n \n\n但是当你完成论文的撰写，突然发现原始数据有变化~"
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#section",
+    "href": "slides/2022-12-what-is-quarto/index.html#section",
+    "title": "为什么要用Quarto?",
+    "section": "",
+    "text": "是不是感觉要崩溃了？\n😭\n\n\n\n所有的统计工作和制表工作要重新来过！！！"
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#section-1",
+    "href": "slides/2022-12-what-is-quarto/index.html#section-1",
+    "title": "为什么要用Quarto?",
+    "section": "",
+    "text": "可重复性研究报告/可重复性数据分析\n\n\n是指利用代码把数据分析过程串起来，最终生成可重复性的报告。\n\n\n\n\n\nR sweave\nR markdown\nJupyter\n\n\n\n这些都是实现可重复性报告的具体方式"
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#rmarkdown",
+    "href": "slides/2022-12-what-is-quarto/index.html#rmarkdown",
+    "title": "为什么要用Quarto?",
+    "section": "Rmarkdown",
+    "text": "Rmarkdown\n\n\n\n\n\n\nTip\n\n\nRmd格式文档通过把通用的markdown和嵌入的R语言代码块结合起来，通过knitr包把rmd文档编译成统一的md文档，然后再通过pandoc转成各种格式，如html、PDF、Word、slides等。\n\n\n\n\n\n\nmarkdown负责报告文本\n嵌入的代码块负责统计分析过程\n\n\n\n完成的Rmd又knitr包转换为普通的md文档\n再通过pandoc把md渲染成我们需要报告"
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#section-2",
+    "href": "slides/2022-12-what-is-quarto/index.html#section-2",
+    "title": "为什么要用Quarto?",
+    "section": "",
+    "text": "支持Rmarkdown的包遍地开花\n\n\n\n\n网站/博客\n书籍\n论文\n幻灯片\n\n\n\n语法不兼容\n学习成本高🤣"
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#quarto-上线",
+    "href": "slides/2022-12-what-is-quarto/index.html#quarto-上线",
+    "title": "为什么要用Quarto?",
+    "section": "Quarto 上线",
+    "text": "Quarto 上线\n\nQuarto® is an open-source scientific and technical publishing system built on Pandoc\nRstudio把Quarto定义为“一个基于Pandoc的开源科学与技术出版系统。”"
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#video-slides",
+    "href": "slides/2022-12-what-is-quarto/index.html#video-slides",
+    "title": "为什么要用Quarto?",
+    "section": "video slides",
+    "text": "video slides\n\n\n\nSome additional commentary of more peripheral interest."
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#slide-title",
+    "href": "slides/2022-12-what-is-quarto/index.html#slide-title",
+    "title": "为什么要用Quarto?",
+    "section": "Slide Title",
+    "text": "Slide Title"
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#slide-title-1",
+    "href": "slides/2022-12-what-is-quarto/index.html#slide-title-1",
+    "title": "为什么要用Quarto?",
+    "section": "Slide Title",
+    "text": "Slide Title\n\n什么是文学编程？"
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#section-3",
+    "href": "slides/2022-12-what-is-quarto/index.html#section-3",
+    "title": "为什么要用Quarto?",
+    "section": "",
+    "text": "什么事实爱啊"
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#section-4",
+    "href": "slides/2022-12-what-is-quarto/index.html#section-4",
+    "title": "为什么要用Quarto?",
+    "section": "",
+    "text": "Animating content"
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#section-5",
+    "href": "slides/2022-12-what-is-quarto/index.html#section-5",
+    "title": "为什么要用Quarto?",
+    "section": "",
+    "text": "# Fill in the spot we created for a plot\noutput$phonePlot <- renderPlot({\n  # Render a barplot\n})"
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#section-6",
+    "href": "slides/2022-12-what-is-quarto/index.html#section-6",
+    "title": "为什么要用Quarto?",
+    "section": "",
+    "text": "# Fill in the spot we created for a plot\noutput$phonePlot <- renderPlot({\n  # Render a barplot\n  barplot(WorldPhones[,input$region]*1000, \n          main=input$region,\n          ylab=\"Number of Telephones\",\n          xlab=\"Year\")\n})"
+  },
+  {
+    "objectID": "slides/2022-12-what-is-quarto/index.html#section-7",
+    "href": "slides/2022-12-what-is-quarto/index.html#section-7",
+    "title": "为什么要用Quarto?",
+    "section": "",
+    "text": "Powered by Quarto"
   }
 ]
