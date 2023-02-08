@@ -19,6 +19,7 @@ description: "这篇博文描述了博主从利用blogdown、bookdown等基于rm
 ## 可重复性报告
 
 但是Rmd/rmarkown文档及[knitr](https://yihui.org/knitr/)的出现解决了这一问题，Rmd格式文档通过把通用的markdown和嵌入的R语言代码块结合起来，通过knitr包把rmd文档编译成统一的md文档，然后再通过pandoc转成各种格式，如html、PDF、Word、slides等。
+
 ![](rmd-pipeline-pandoc.png){fig-alt="rmd-pipeline-pandoc"}
 
 这样我们在写研究报告的时候，就可以利用rmd把统计过程整合到统计报告的撰写中来，如果原始数据有变化，只需要重新执行一次编译过程就能更新整个研究报告了。

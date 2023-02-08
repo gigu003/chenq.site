@@ -54,6 +54,10 @@ My current work often involves SAS and R coding, and cancer registration data re
 - 《中华肿瘤防治杂志》青年编委
 - 《河南省肿瘤登记年报》副主编
 
+### 荣誉
+- 《中国肿瘤》杂志颁发了--[**卓越论文奖**](/qsight/2023-02-08-paper-award/index.qmd)，获奖论文：2003~2007年中国结直肠癌发病与死亡分析（发表于：中国肿瘤，2012年第3期）
+- 全国肿瘤登记先进个人
+
 
 ## 关于本站
 
