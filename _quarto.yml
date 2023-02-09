@@ -50,6 +50,8 @@ freeze: auto
 comments:
   hypothesis:
     theme: clean
+  utterances:
+    repo: gigu003/chenq.site
 format:
   html:
     code-line-numbers: true
@@ -57,7 +59,9 @@ format:
     toc: true
     theme: flatly
     css: styles.css
-    include-after-body: js.html
+    include-after-body: 
+      - js.html
+
 
 
 
