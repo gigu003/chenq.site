@@ -59,9 +59,9 @@ format:
     toc: true
     theme: flatly
     css: styles.css
+    include-in-header: baidusta.html
     include-after-body: 
       - js.html
-      - utterances.html
 
 
 

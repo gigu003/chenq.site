@@ -34,7 +34,7 @@ language:
 
 <div class="imgrow">
 <div class="imgcolumn">
-<a href="https://OTexts.org/fpp3/"><img src="cover/2020.jpg" height=200 align="center"></a>
+<a href="http://www.anti-cancer.com.cn/Sites/ereport/2020/index.html"><img src="cover/2020.jpg" height=200 align="center"></a>
 </div>
 <div class="imgcolumn">
 <a href="/expsmooth/"><img src="cover/2019.jpg" height=200></a>
