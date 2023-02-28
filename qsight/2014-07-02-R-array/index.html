@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -253,43 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#一生成数组或矩阵" id="toc-一生成数组或矩阵" class="nav-link active" data-scroll-target="#一生成数组或矩阵">一、生成数组或矩阵</a>
-  <ul class="collapse">
-  <li><a href="#一将向量定义为数组" id="toc-一将向量定义为数组" class="nav-link" data-scroll-target="#一将向量定义为数组">（一）将向量定义为数组</a></li>
-  <li><a href="#二用array函数构造多维数组" id="toc-二用array函数构造多维数组" class="nav-link" data-scroll-target="#二用array函数构造多维数组">（二）用array（）函数构造多维数组</a></li>
-  <li><a href="#三用matrix函数构造矩阵" id="toc-三用matrix函数构造矩阵" class="nav-link" data-scroll-target="#三用matrix函数构造矩阵">（三）用matrix（）函数构造矩阵</a></li>
-  </ul></li>
-  <li><a href="#二数组的下标" id="toc-二数组的下标" class="nav-link" data-scroll-target="#二数组的下标">二、数组的下标</a>
-  <ul class="collapse">
-  <li><a href="#一数组的下标" id="toc-一数组的下标" class="nav-link" data-scroll-target="#一数组的下标">（一）数组的下标</a></li>
-  <li><a href="#二不规则的数组下标" id="toc-二不规则的数组下标" class="nav-link" data-scroll-target="#二不规则的数组下标">（二）不规则的数组下标</a></li>
-  </ul></li>
-  <li><a href="#三数组的四则运算" id="toc-三数组的四则运算" class="nav-link" data-scroll-target="#三数组的四则运算">三、数组的四则运算</a>
-  <ul class="collapse">
-  <li><a href="#一矩阵的乘法" id="toc-一矩阵的乘法" class="nav-link" data-scroll-target="#一矩阵的乘法">（一）矩阵的乘法</a></li>
-  </ul></li>
-  <li><a href="#四矩阵的运算" id="toc-四矩阵的运算" class="nav-link" data-scroll-target="#四矩阵的运算">四、矩阵的运算</a>
-  <ul class="collapse">
-  <li><a href="#一矩阵的乘法-1" id="toc-一矩阵的乘法-1" class="nav-link" data-scroll-target="#一矩阵的乘法-1">（一）矩阵的乘法</a></li>
-  <li><a href="#二矩阵的转置运算" id="toc-二矩阵的转置运算" class="nav-link" data-scroll-target="#二矩阵的转置运算">（二）矩阵的转置运算</a></li>
-  <li><a href="#三方阵的行列式" id="toc-三方阵的行列式" class="nav-link" data-scroll-target="#三方阵的行列式">（三）方阵的行列式</a></li>
-  <li><a href="#四生成对角矩阵和对矩阵取对角运算" id="toc-四生成对角矩阵和对矩阵取对角运算" class="nav-link" data-scroll-target="#四生成对角矩阵和对矩阵取对角运算">(四)生成对角矩阵和对矩阵取对角运算</a></li>
-  </ul></li>
-  <li><a href="#五与矩阵运算有关的函数" id="toc-五与矩阵运算有关的函数" class="nav-link" data-scroll-target="#五与矩阵运算有关的函数">五、与矩阵运算有关的函数</a>
-  <ul class="collapse">
-  <li><a href="#一去矩阵的维数" id="toc-一去矩阵的维数" class="nav-link" data-scroll-target="#一去矩阵的维数">（一）去矩阵的维数</a></li>
-  <li><a href="#二矩阵的合并" id="toc-二矩阵的合并" class="nav-link" data-scroll-target="#二矩阵的合并">（二）矩阵的合并</a></li>
-  <li><a href="#三矩阵的拉直把矩阵转化为向量" id="toc-三矩阵的拉直把矩阵转化为向量" class="nav-link" data-scroll-target="#三矩阵的拉直把矩阵转化为向量">（三）矩阵的拉直（把矩阵转化为向量）</a></li>
-  <li><a href="#四apply函数" id="toc-四apply函数" class="nav-link" data-scroll-target="#四apply函数">（四）apply函数</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -304,21 +268,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="一将向量定义为数组">（一）将向量定义为数组</h3>
 <p>向量可以直接看作为一个一维数组，但要将向量定义为二维以上的数组，需要定义维数向量（dim属性）。比如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_4522b90fd8bae137a22f644812141a53">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>z<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10 11 12</code></pre>
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_9827bafbf44a0d5eedb8108f726e08d6">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">dim</span>(z)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
 [1,]    1    4    7   10
@@ -328,11 +286,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>注意：矩阵的元素是按列存放的。也可以定义为三维数组。如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_f249b357790513a313720fb0bcc3b071">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">dim</span>(z)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , 1
 
@@ -356,11 +311,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>array(data=NA, dim=length(data) ,dimnames=NULL)</p>
 <p>其中data是一个向量数据，dim是数组各维的长度，缺省时为原向量的长度。dimnames是数组维的名字，缺省时为空。如： 产生一个4*5的二维数组（矩阵），即：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-4_36f84f852294d2760cba852218db11bd">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x<span class="ot">&lt;-</span><span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>))</span>
 <span id="cb7-2"><a href="#cb7-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4] [,5]
 [1,]    1    5    9   13   17
@@ -371,17 +323,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>利用该函数也可以产生三维及以上的数组，如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-5_c8e10f5ef8be5ed53e2ec75192f050fd">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>x<span class="ot">&lt;-</span><span class="fu">array</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>),<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>产生一个2<em>2</em>2的三维数组。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-6_6bdd89e430bff804080b1d64617a1f72">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , 1
 
@@ -398,11 +344,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>说明：如果数组每个元素相同，则array函数的data部分直接写成数字即可（与下面的matrix（）函数类似）如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-7_56d2ea61fbd23e37362953406d7378a4">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x<span class="ot">&lt;-</span><span class="fu">array</span>(<span class="dv">0</span>,<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>))</span>
 <span id="cb12-2"><a href="#cb12-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4] [,5]
 [1,]    0    0    0    0    0
@@ -419,11 +362,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>matrix(data=NA,nrow=1,ncol=1,byrow=FALSE,dimnames=NULL)</p>
 <p>其中data是一个向量数据，nrow是矩阵的行数，ncol是矩阵的列数。当byrow=TRUE时，生成矩阵的数据按行放置，缺省时，相当于byrow=FALSE，按列放置。dimnames是数组维的名字，缺省时为空。 比如，构造一个3*5阶的矩阵</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-8_2d6182855a9c8f98519f15b1d9e3f529">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">ncol=</span><span class="dv">5</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
 <span id="cb14-2"><a href="#cb14-2"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4] [,5]
 [1,]    1    2    3    4    5
@@ -433,11 +373,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>注意：下面两种方式与上述的格式是等价的。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-9_216dafa4f2f82c70c01520604f121d00">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a> A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
 <span id="cb16-2"><a href="#cb16-2"></a> A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,<span class="at">ncol=</span><span class="dv">5</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 </section>
@@ -447,22 +384,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="一数组的下标" class="level3">
 <h3 class="anchored" data-anchor-id="一数组的下标">（一）数组的下标</h3>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-10_5ad11fdc8f604fe02b5445d8f55349aa">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>  a<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">24</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a> <span class="fu">dim</span>(a)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
 <span id="cb17-3"><a href="#cb17-3"></a> a[<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8</code></pre>
 </div>
 </div>
 <p>要进一步还可以在每一个下标位置写一个下标向量，表示这一维取出所有指定下标的元素，如a[1,2:3,2:3]取出所有第一下标为1，第二下标为2或3，第三下标为2或3的元素，如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-11_44ea6d3984bfde715bf823c8cfa0ff2b">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>a[<span class="dv">1</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    9   15
@@ -475,11 +406,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="二不规则的数组下标">（二）不规则的数组下标</h3>
 <p>在R语言中，甚至可以把数组中的任意位置的元素作为数组访问，其方法就是用一个二维数组作为数组的下标，二维数组的每一行就是一个元素的下标，列数为数组的维数。例如要把上面的性状为3*3的矩阵A的第[1,1] [1,3] [2,1] [2,2]号元素作为一个整体访问，先定义一个包含这些下标作为行的二维数组。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-12_961b958d8b617af9570e74cfe5421f34">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>b<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>),<span class="at">ncol=</span><span class="dv">2</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
 <span id="cb21-2"><a href="#cb21-2"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    1    1
@@ -489,20 +417,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-13_c42717a45f22e032c9ec0abd5d0b1785">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>a[b]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 1 2 2 1 3 1 2</code></pre>
 </div>
 </div>
 <p>注意:取出的是一个向量，我们还可以对这几个元素赋值，如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-14_03174569bf8099bc05183ddb80839c8e">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , 1
 
@@ -530,11 +452,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-15_fdfed9e4fa2dfa72aa18d348b944507d">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>a[b]<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)</span>
 <span id="cb27-2"><a href="#cb27-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , 1
 
@@ -569,11 +488,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="一矩阵的乘法">（一）矩阵的乘法</h3>
 <p>可以对数组之间进行四则运算(+、-、*、/)，这时进行的是数组对应元素的四则运算，参加运算的数组一般应该是相同性状的（dim属性完全相同）例如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-16_d55c4f64b8b1403ba84a7d2c8e1cd042">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>,<span class="at">byrow=</span>T)</span>
 <span id="cb29-2"><a href="#cb29-2"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    2    3
@@ -581,11 +497,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-17_d098955cde015b658ed2ef5baf71c6d1">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>B<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
 <span id="cb31-2"><a href="#cb31-2"></a>B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    3    5
@@ -593,11 +506,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-18_b87c72003830192f0ea7d7963dad366d">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>C<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>),<span class="at">nrow=</span><span class="dv">2</span>)</span>
 <span id="cb33-2"><a href="#cb33-2"></a>C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    2    3
@@ -605,11 +515,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-19_c198b44890276b0efb6a224b817f6129">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>D<span class="ot">&lt;-</span><span class="dv">2</span><span class="sc">*</span>C<span class="sc">+</span>A<span class="sc">/</span>B</span>
 <span id="cb35-2"><a href="#cb35-2"></a>D</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1]     [,2] [,3]
 [1,]    3 4.666667  6.6
@@ -625,11 +532,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="一矩阵的乘法-1">（一）矩阵的乘法</h3>
 <p>如果矩阵A和B具有相同的维数，则A<em>B表示矩阵中对应的元素的乘积A%</em>%B表示通常意义下的两个矩阵的乘积（当然要求矩阵A的列数等于矩阵B的行数）。如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-20_cf4f66f2530512589214f5d4a3d37da4">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="at">nrow=</span><span class="dv">3</span>)</span>
 <span id="cb37-2"><a href="#cb37-2"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    4    7
@@ -638,11 +542,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-21_f0ddedc33416065308f438560b08448b">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>B<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">9</span><span class="sc">:</span><span class="dv">1</span>,<span class="at">nrow=</span><span class="dv">3</span>)</span>
 <span id="cb39-2"><a href="#cb39-2"></a>B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    9    6    3
@@ -651,10 +552,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-22_3f86456e52a4689fd7fe606eab61bfb6">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>C<span class="ot">&lt;-</span>A<span class="sc">*</span>B;C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    9   24   21
@@ -663,11 +561,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-23_03f0a510520d8202c211e1c0d8611bf7">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>D<span class="ot">&lt;-</span>A<span class="sc">%*%</span>B</span>
 <span id="cb43-2"><a href="#cb43-2"></a>D</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]   90   54   18
@@ -680,11 +575,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="二矩阵的转置运算">（二）矩阵的转置运算</h3>
 <p>对于矩阵A，函数t(A)表示矩阵A的转置，即AT 如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-24_ee63b85512d82eb663bcbdb916325523">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
 <span id="cb45-2"><a href="#cb45-2"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    3    5
@@ -692,10 +584,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-25_2fe2260c2b8ef86d1df2fec886225ad1">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">t</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    1    2
@@ -708,10 +597,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="三方阵的行列式">（三）方阵的行列式</h3>
 <p>函数det（）是用来求方阵行列式的值，如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-26_6a9378ee7ed3c085e3c5762bc03dc722">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">det</span>(<span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="at">ncol=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2</code></pre>
 </div>
@@ -721,11 +607,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="四生成对角矩阵和对矩阵取对角运算">(四)生成对角矩阵和对矩阵取对角运算</h3>
 <p>函数diag()依赖于它的变量，当v是一个向量时，diag(v)表示以v的元素为对角元素的对角阵。当M是一个矩阵时，则diag(M)表示的是取M对角线上的元素的向量。如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-27_5e26a695637f6044e222a135f3ce2da9">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>v<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
 <span id="cb51-2"><a href="#cb51-2"></a><span class="fu">diag</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    0    0
@@ -734,11 +617,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-28_b103044eb05a9e809658977c1671ad6e">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>m<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="at">nrow=</span><span class="dv">3</span>)</span>
 <span id="cb53-2"><a href="#cb53-2"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    4    7
@@ -747,10 +627,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-29_1bb6d963612aafa10deecff113729447">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a> <span class="fu">diag</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 5 9</code></pre>
 </div>
@@ -763,11 +640,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="一去矩阵的维数">（一）去矩阵的维数</h3>
 <p>函数dim（A）得到矩阵的维数，函数nrow(A)得到矩阵A的行数，函数ncol(A)得到矩阵A的列数。如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-30_764b14f55905e67f7799a3e61d5b111d">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
 <span id="cb57-2"><a href="#cb57-2"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    3    5
@@ -775,28 +649,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-31_b7f44ebcbed7420421c863974189d66e">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">dim</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 3</code></pre>
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-32_d8949a80702315f90dcb4bc7a1ecf235">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">nrow</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-33_95d1b18afe940e1be102f584cc7422b7">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="fu">ncol</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
@@ -807,11 +672,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>函数cbind()把其自变量横向拼成一个大矩阵，rbind()把其自变量纵向合拼成一个大矩阵。cbind()的自变量是矩阵或看做列向量的向量时，自变量的高度应该相等。rbind()的自变量是矩阵或看做行向量的向量时，自变量的宽度应该相等。</p>
 <p>如果参与合并的的自变量比其变量短，则循环补足后合并。如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-34_c666f0fa0db3b9c67b0b53eb6103c87c">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>x1<span class="ot">&lt;-</span><span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span>
 <span id="cb65-2"><a href="#cb65-2"></a>x1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    1    2
@@ -819,12 +681,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-35_c9bead8a6e6964a2070e6d68c9926f19">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>x2<span class="ot">&lt;-</span><span class="dv">10</span><span class="sc">+</span>x1</span>
 <span id="cb67-2"><a href="#cb67-2"></a>x3<span class="ot">&lt;-</span><span class="fu">cbind</span>(x1,x2)</span>
 <span id="cb67-3"><a href="#cb67-3"></a>x3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
 [1,]    1    2   11   12
@@ -832,11 +691,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-36_bf8acc35bb5f56eae5e144df8f63680f">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>x4<span class="ot">&lt;-</span><span class="fu">rbind</span>(x1,x2)</span>
 <span id="cb69-2"><a href="#cb69-2"></a>x4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    1    2
@@ -846,10 +702,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-37_10e342447c65705875fda073201b031b">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">cbind</span>(<span class="dv">1</span>,x1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    1    2
@@ -861,11 +714,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="三矩阵的拉直把矩阵转化为向量">（三）矩阵的拉直（把矩阵转化为向量）</h3>
 <p>设A是一个矩阵，则函数as.vector(A)可以将矩阵转化为向量，它是将矩阵A按列拉成向量。如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-38_01c602dd4080fe5ff98a1fbddba5a69d">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
 <span id="cb73-2"><a href="#cb73-2"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    3    5
@@ -873,11 +723,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-39_29de44f16ba3aa4fb874f0c06d3851e6">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
 <span id="cb75-2"><a href="#cb75-2"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    3    5
@@ -885,10 +732,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-40_4ed4904598cb66154624b865c53f5e47">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="fu">as.vector</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4 5 6</code></pre>
 </div>
@@ -900,11 +744,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>apply（A，MARGIN，FUN，…）</p>
 <p>其中A为一个矩阵（或数组），MARGIN取1，代表对行进行运算；MARGIN取2，代表队列进行运算，FUN是用来计算的函数。如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-41_444d09156ad9c1c6c84094f39a3308d8">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
 <span id="cb79-2"><a href="#cb79-2"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    3    5
@@ -912,19 +753,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-42_0be7416dea52e8e1ac99ebcbe77477a3">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a> <span class="fu">apply</span>(A,<span class="dv">1</span>,sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  9 12</code></pre>
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-43_3b7eea078c8e1c8ee1c11d2d849cc37c">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="fu">apply</span>(A,<span class="dv">2</span>,mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.5 3.5 5.5</code></pre>
 </div>

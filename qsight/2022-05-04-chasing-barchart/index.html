@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -253,17 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#用到哪些r包" id="toc-用到哪些r包" class="nav-link active" data-scroll-target="#用到哪些r包">用到哪些R包？</a></li>
-  <li><a href="#数据准备" id="toc-数据准备" class="nav-link" data-scroll-target="#数据准备">数据准备</a></li>
-  <li><a href="#绘制动态条形图" id="toc-绘制动态条形图" class="nav-link" data-scroll-target="#绘制动态条形图">绘制动态条形图</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -284,14 +274,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>作者在互联网上收集了从1980年以来全球前10位国家的GDP数据，<a href="gdp.csv">数据，点击下载</a>以CSV的形式保存。</p>
 <p>我们把数据读入到R环境中，总共有4个变量，year年份、country国家、continent大洲、gdp，下面看下数据的结构，这个数据已经是ggplot2绘图所需要的<em>长数据</em>格式，所以不需要进行特别的转换了。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_51a7a47f9c7fe8805145c6ca77ffeccc">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">#读入gdp数据</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"gdp.csv"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="co">#显示头6条数据</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  year  country continent         gdp
 1 1984 澳大利亚    大洋洲 1.93594e+11
@@ -301,14 +288,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 5 2016     巴西      美洲 1.79569e+12
 6 2015     巴西      美洲 1.80221e+12</code></pre>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>data1<span class="ot">&lt;-</span>data<span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">group_by</span>(year)<span class="sc">%&gt;%</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">arrange</span>(year,<span class="fu">desc</span>(gdp))<span class="sc">%&gt;%</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">mutate</span>(<span class="at">ranking=</span><span class="fu">row_number</span>())<span class="sc">%&gt;%</span></span>
 <span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">filter</span>(ranking<span class="sc">&lt;=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 <section id="绘制动态条形图" class="level2">
@@ -320,8 +304,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>前面我们已经准备好了绘图的数据，那么我们就先绘制动态条形图每个画面的静态图。我们准备基于GDP的排名展示位于全球前10位的国家，我们需要绘制每年的排名情况。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_fdcf37b103b85fbd82b1f4356b1d731b">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb4-2"><a href="#cb4-2"></a>plot <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -342,12 +324,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-18"><a href="#cb4-18"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="st">"cm"</span>),</span>
 <span id="cb4-19"><a href="#cb4-19"></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">'Kai'</span>)</span>
 <span id="cb4-20"><a href="#cb4-20"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>上面的代码绘制了动态条形图的每一个画面，也就是每一年的全球GDP排名前10的国家的条形图。当然你也可以对上面的代码进行更改，从而使图更加美观。而进行动态化的关键步骤是使用gganimate包的transition_states()功能，下面的代码使绘制的图按照year这个变量动态变化。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_332f085c3ac46c3ca9722ac6168d850b">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(gganimate)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>plot2<span class="ot">&lt;-</span>plot<span class="sc">+</span><span class="fu">transition_states</span>(year, <span class="at">state_length =</span> <span class="dv">0</span>, <span class="at">transition_length =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'全球不同国家近40年GDP排名变化情况(前10位)'</span>,  </span>
@@ -357,14 +336,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">ease_aes</span>(<span class="st">'quadratic-in-out'</span>) </span>
 <span id="cb5-8"><a href="#cb5-8"></a></span>
 <span id="cb5-9"><a href="#cb5-9"></a><span class="fu">animate</span>(plot2, <span class="at">width =</span> <span class="dv">800</span>, <span class="at">height =</span> <span class="dv">500</span>, <span class="at">fps =</span> <span class="dv">25</span>, <span class="at">duration =</span> <span class="dv">15</span>, <span class="at">rewind =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.gif" class="img-fluid"></p>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">anim_save</span>(<span class="st">"pp.gif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><img src="pp.gif" class="img-fluid" alt="追逐条形图"> ## 小结 我们已经成功的绘制了全球gdp前10的国家在过去40年里动态变化的过程，而只要按照我们前面的准备的数据格式整理自己的数据，那么也很容易地能套用这个代码，从而实现自己的动态条形图。</p>
 

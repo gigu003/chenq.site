@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.14">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="陈琼">
+<meta name="dcterms.date" content="2023-02-27">
+<meta name="keywords" content="R语言, logo, R包">
+
+<title>普癌新声 - 开发R包一定要有一个高逼格logo</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean"
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<style>
+    .quarto-title-block .quarto-title-banner {
+      color: #c8c8c8;
+    }
+    </style>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c07d97fb46a2cbcc09d408cf3a281e08";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="普癌新声 - 开发R包一定要有一个高逼格logo">
+<meta property="og:description" content="利用hexSticker包快速制作R包logo">
+<meta property="og:site-name" content="普癌新声">
+<meta name="twitter:title" content="普癌新声 - 开发R包一定要有一个高逼格logo">
+<meta name="twitter:description" content="利用hexSticker包快速制作R包logo">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">普癌新声</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel=""><i class="bi bi-house" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../qsight/" rel=""><i class="bi bi-tropical-storm" role="img">
+</i> 
+ <span class="menu-text">Qsight博客</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publications/" rel=""><i class="bi bi-journal-medical" role="img">
+</i> 
+ <span class="menu-text">出版作品</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../slides/" rel=""><i class="bi bi-file-slides-fill" role="img">
+</i> 
+ <span class="menu-text">Slides</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="">
+ <span class="menu-text">关于</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../qsight/index.xml" rel=""><i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">开发R包一定要有一个高逼格logo</h1>
+            <p class="subtitle lead">利用hexSticker包快速制作R包logo</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">logo</div>
+                <div class="quarto-category">R语言</div>
+                <div class="quarto-category">R包</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>陈琼 </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 27, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#制作癌症年龄别发病率折线图" id="toc-制作癌症年龄别发病率折线图" class="nav-link active" data-scroll-target="#制作癌症年龄别发病率折线图">制作癌症年龄别发病率折线图</a></li>
+  <li><a href="#把肿瘤细胞图片读入r中" id="toc-把肿瘤细胞图片读入r中" class="nav-link" data-scroll-target="#把肿瘤细胞图片读入r中">把肿瘤细胞图片读入R中</a></li>
+  <li><a href="#制作六角r包logo" id="toc-制作六角r包logo" class="nav-link" data-scroll-target="#制作六角r包logo">制作六角R包logo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="canregtools.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">canregtools</figcaption><p></p>
+</figure>
+</div>
+<p>自从我参加工作以来，一直使用SAS统计软件协助分析肿瘤登记数据。在这段时间内，我积累了大量的SAS宏和程序，对我的工作产生了很大的帮助。比如说，肿瘤数据的逻辑核查功能、报告数据生成功能、制作肿瘤登记年报等，这些程序在很大程度上提高了工作效率。但是，与R语言或Stata软件不同，SAS公司没有以包的形式分享相关的函数或功能，这也带来了很多不便。跟同事分享SAS分享程序时，可能因为系统环境或者其他因素的不同，造成程序不能执行。R包的制作有严格的流程和要求，能够很大程度上避免这种情况的发生。</p>
+<p>今年年初定下的目标就是利用休息时间把这个包付出实践，最近这几天制作了其中的一个函数classify_icd10()，以后有时间再逐步完善相关的功能。虽然现在只有这一个函数，但是麻雀虽小五脏俱全。包的名字从cnCanreg到PBCRtools，再到canregtools，已经换了三次了，最终采用canregtools。<a href="https://github.com/gigu003/canregtools">canregtools</a>的代码托管到了<a href="https://github.com/gigu003">github</a>上，以方便代码管理。制作了<a href="https://gigu003.github.io/canregtools/">canregtools网站</a>，方便使用者查找并使用相关功能。</p>
+<p>为了提高逼格，还制作了canregtools的logo，把一个癌细胞的图片和河南省癌症的年龄别发病率曲线整合到一块，最后制作成了六角的logo。</p>
+<p>下面跟大家分享一下制作这个logo的代码。</p>
+<section id="制作癌症年龄别发病率折线图" class="level2">
+<h2 class="anchored" data-anchor-id="制作癌症年龄别发病率折线图">制作癌症年龄别发病率折线图</h2>
+<p>首先，读入年龄别发病率的数据，然后，利用ggplot2制作折线图，重点是要把图片背景设置成透明。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 加载tidyverse包 </span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># 读取年龄别发病率数据</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   sex agegrp incidence
+1 Male      0     15.06
+2 Male      1     11.78
+3 Male      5     11.51
+4 Male     10     11.56
+5 Male     15     14.92
+6 Male     20     15.37</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#绘制癌症年龄别发病率折线图</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>pic <span class="ot">&lt;-</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  data <span class="sc">%&gt;%</span> </span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>agegrp,<span class="at">y=</span>incidence,<span class="at">color=</span>sex))<span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">ylab</span>(<span class="st">"Cancer Incidence"</span>)<span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="fu">xlab</span>(<span class="st">"Age groups (years)"</span>)<span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="fu">theme_void</span>()<span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10"></a>        <span class="at">plot.background =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb3-11"><a href="#cb3-11"></a>        )</span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="fu">plot</span>(pic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="把肿瘤细胞图片读入r中" class="level2">
+<h2 class="anchored" data-anchor-id="把肿瘤细胞图片读入r中">把肿瘤细胞图片读入R中</h2>
+<p>我从google上搜索了一张癌细胞的图片，并利用在线工具把这张图片的背景去除。然后，利用magick包读取图片进入R环境中，转化成ggplot2可识别的元素，最后，以注释的方式加入前面生成折线图中。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(magick)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to ImageMagick 6.9.12.3
+Enabled features: cairo, fontconfig, freetype, heic, lcms, pango, raw, rsvg, webp
+Disabled features: fftw, ghostscript, x11</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># 读取肿瘤细胞的图片</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>pcs <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">"cancer-cell.png"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>image <span class="ot">&lt;-</span> <span class="fu">image_fill</span>(pcs,<span class="st">"none"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>raster <span class="ot">&lt;-</span> <span class="fu">as.raster</span>(image)</span>
+<span id="cb6-5"><a href="#cb6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co"># 把肿瘤细胞的图片添加到ggplot2绘制的折线图上</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>myplot <span class="ot">&lt;-</span> pic <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="fu">annotation_raster</span>(<span class="at">raster =</span> raster, <span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">700</span>)</span>
+<span id="cb6-9"><a href="#cb6-9"></a>myplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="制作六角r包logo" class="level2">
+<h2 class="anchored" data-anchor-id="制作六角r包logo">制作六角R包logo</h2>
+<p>最后利用hexSticker包制作logo，具体语句如下。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(hexSticker)</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">sticker</span>(</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="at">subplot =</span> myplot,</span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="at">package =</span> <span class="st">"canregtools"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="at">s_width =</span> <span class="dv">1</span>,</span>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="at">s_height =</span> .<span class="dv">8</span>,</span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="at">s_x =</span> <span class="dv">1</span>,</span>
+<span id="cb7-9"><a href="#cb7-9"></a>  <span class="at">s_y =</span> .<span class="dv">75</span>,</span>
+<span id="cb7-10"><a href="#cb7-10"></a>  <span class="at">p_size =</span> <span class="dv">14</span>,</span>
+<span id="cb7-11"><a href="#cb7-11"></a>  <span class="at">p_color =</span> <span class="st">"purple"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12"></a>  <span class="at">p_fontface =</span> <span class="st">"bold"</span>,</span>
+<span id="cb7-13"><a href="#cb7-13"></a> <span class="co"># p_family = "Apple Braille",</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>  <span class="at">h_fill =</span> <span class="st">"gold"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15"></a>  <span class="at">h_color =</span> <span class="st">"hotpink"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16"></a>  <span class="at">h_size =</span> <span class="fl">1.5</span>,</span>
+<span id="cb7-17"><a href="#cb7-17"></a>  <span class="at">url =</span> <span class="st">"canregtools.chenq.site/canregtools"</span>,</span>
+<span id="cb7-18"><a href="#cb7-18"></a>  <span class="at">u_size =</span> <span class="dv">3</span>,</span>
+<span id="cb7-19"><a href="#cb7-19"></a>  <span class="at">u_color =</span> <span class="st">"violetred"</span>,</span>
+<span id="cb7-20"><a href="#cb7-20"></a>  <span class="at">spotlight =</span> T,</span>
+<span id="cb7-21"><a href="#cb7-21"></a>  <span class="at">l_y =</span> <span class="dv">1</span>,</span>
+<span id="cb7-22"><a href="#cb7-22"></a>  <span class="at">l_x =</span> <span class="dv">1</span>,</span>
+<span id="cb7-23"><a href="#cb7-23"></a>  <span class="at">l_width =</span> <span class="dv">3</span>,</span>
+<span id="cb7-24"><a href="#cb7-24"></a>  <span class="at">l_height =</span> <span class="dv">3</span>,</span>
+<span id="cb7-25"><a href="#cb7-25"></a>  <span class="at">l_alpha =</span> .<span class="dv">3</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a>) <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>效果怎么样？对于审美感不足的我来说，还算可以吧！</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="text/javascript">
+
+// replace cmd keyboard shortcut w/ control on non-Mac platforms
+const kPlatformMac = typeof navigator !== 'undefined' ? /Mac/.test(navigator.platform) : false;
+if (!kPlatformMac) {
+   var kbds = document.querySelectorAll("kbd")
+   kbds.forEach(function(kbd) {
+      kbd.innerHTML = kbd.innerHTML.replace(/⌘/g, '⌃');
+   });
+}
+
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="gigu003/chenq.site" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright@Qiong Chen</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gigu003">
+      <i class="bi bi-github" role="img" aria-label="Qiong@GitHub">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="../../qsight/index.xml">
+      <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

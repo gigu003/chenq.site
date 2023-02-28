@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -253,21 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#什么是条形图" id="toc-什么是条形图" class="nav-link active" data-scroll-target="#什么是条形图">什么是条形图？</a></li>
-  <li><a href="#条形图有哪些类型" id="toc-条形图有哪些类型" class="nav-link" data-scroll-target="#条形图有哪些类型">条形图有哪些类型</a></li>
-  <li><a href="#如何绘制barplot条形图" id="toc-如何绘制barplot条形图" class="nav-link" data-scroll-target="#如何绘制barplot条形图">如何绘制barplot条形图？</a>
-  <ul class="collapse">
-  <li><a href="#绘制简单barplot条形图" id="toc-绘制简单barplot条形图" class="nav-link" data-scroll-target="#绘制简单barplot条形图">绘制简单barplot条形图</a></li>
-  <li><a href="#绘制分组barplot条形图" id="toc-绘制分组barplot条形图" class="nav-link" data-scroll-target="#绘制分组barplot条形图">绘制分组barplot条形图</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -295,13 +281,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>首先，准备一下绘制barplot条形图所需的数据，我们就拿<a href="https://chenq.site/report/2020/">河南省前10位癌症发病率数据</a>来举例。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_d96433adea24f9b699e8910203fe381b">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb2-2"><a href="#cb2-2"></a>  <span class="at">site=</span><span class="fu">c</span>(<span class="st">"肺癌"</span>,<span class="st">"乳腺癌"</span>,<span class="st">"胃癌"</span>,<span class="st">"食管癌"</span>,<span class="st">"肝癌"</span>,<span class="st">"宫颈癌"</span>,<span class="st">"结直肠癌"</span>,<span class="st">"子宫体癌"</span>,<span class="st">"甲状腺癌"</span>,<span class="st">"卵巢癌"</span>),</span>
 <span id="cb2-3"><a href="#cb2-3"></a>  <span class="at">incid=</span><span class="fu">c</span>(<span class="fl">53.35</span>,<span class="fl">39.25</span>,<span class="fl">35.74</span>,<span class="fl">31.11</span>,<span class="fl">29.15</span>,<span class="fl">19.24</span>,<span class="fl">18.15</span>,<span class="fl">9.99</span>,<span class="fl">7.92</span>,<span class="fl">7.04</span>))</span>
 <span id="cb2-4"><a href="#cb2-4"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    site incid
 1   肺癌 53.35
@@ -314,8 +297,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>利用ggplot2包的geom_bar()函数绘制简单条形图</p>
 <div class="cell" data-hash="index_cache/html/feature_c8774708685bd9499de906fde8e62ea9">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb4-3"><a href="#cb4-3"></a>plot <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
@@ -325,7 +306,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">"steelblue"</span>)<span class="sc">+</span></span>
 <span id="cb4-8"><a href="#cb4-8"></a>  <span class="fu">theme</span>(<span class="at">text=</span><span class="fu">element_text</span>(<span class="at">family=</span><span class="st">"STKaiti"</span>,<span class="at">size=</span><span class="dv">14</span>))</span>
 <span id="cb4-9"><a href="#cb4-9"></a><span class="fu">ggsave</span>(<span class="st">"plot.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -335,12 +315,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>把垂直条形图转换为水平条形图，通过coord_fip()坐标轴转换函数实现。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_1e4b0c6888d0094b7f677a2c29afab50">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>plot <span class="sc">+</span> </span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="co"># 转置坐标轴</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -352,21 +329,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>ggplot2包里有一些自带的主题，我们可以应用这些主题来快速的调整图的样式。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-4_485d194a5fa5511272263e7de722f548">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>plot<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>  <span class="co"># 使用classic主题</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a>    <span class="fu">theme</span>(<span class="at">text=</span><span class="fu">element_text</span>(<span class="at">family=</span><span class="st">"STKaiti"</span>,<span class="at">size=</span><span class="dv">14</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>然后我们进一步对条形图进行修饰，比如更改坐标轴标题、把x轴由底部调整至顶部显示、添加条形图数据标签等等。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-5_5594bd68b8451d2d64b4017775abe1a9">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>plot<span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="co"># 对坐标轴进行转置</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
@@ -381,7 +353,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-12"><a href="#cb7-12"></a>  <span class="co"># 添加数据标签</span></span>
 <span id="cb7-13"><a href="#cb7-13"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>incid), <span class="at">size=</span><span class="fl">3.5</span>)<span class="sc">+</span></span>
 <span id="cb7-14"><a href="#cb7-14"></a> <span class="fu">theme</span>(<span class="at">text=</span><span class="fu">element_text</span>(<span class="at">family=</span><span class="st">"STKaiti"</span>,<span class="at">size=</span><span class="dv">14</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -391,14 +362,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="绘制分组barplot条形图">绘制分组barplot条形图</h3>
 <p>准备绘制分组条形图的数据，我们可以添加不同癌种的死亡率数据，分为两组：发病率和死亡率。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-6_b742624af3756c2316cf8fe67755ee21">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb8-2"><a href="#cb8-2"></a>  <span class="at">site=</span><span class="fu">c</span>(<span class="st">"肺癌"</span>,<span class="st">"乳腺癌"</span>,<span class="st">"胃癌"</span>,<span class="st">"食管癌"</span>,<span class="st">"肝癌"</span>,<span class="st">"宫颈癌"</span>,<span class="st">"结直肠癌"</span>,<span class="st">"子宫体癌"</span>,<span class="st">"甲状腺癌"</span>,<span class="st">"卵巢癌"</span>,<span class="st">"肺癌"</span>,<span class="st">"乳腺癌"</span>,<span class="st">"胃癌"</span>,<span class="st">"食管癌"</span>,<span class="st">"肝癌"</span>,<span class="st">"宫颈癌"</span>,<span class="st">"结直肠癌"</span>,<span class="st">"子宫体癌"</span>,<span class="st">"甲状腺癌"</span>,<span class="st">"卵巢癌"</span>),</span>
 <span id="cb8-3"><a href="#cb8-3"></a>  <span class="at">type=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"发病率"</span>,<span class="dv">10</span>),<span class="fu">rep</span>(<span class="st">"死亡率"</span>,<span class="dv">10</span>)),</span>
 <span id="cb8-4"><a href="#cb8-4"></a>  <span class="at">value=</span><span class="fu">c</span>(<span class="fl">53.35</span>,<span class="fl">39.25</span>,<span class="fl">35.74</span>,<span class="fl">31.11</span>,<span class="fl">29.15</span>,<span class="fl">19.24</span>,<span class="fl">18.15</span>,<span class="fl">9.99</span>,<span class="fl">7.92</span>,<span class="fl">7.04</span>,<span class="fl">41.22</span>,<span class="fl">9.92</span>,<span class="fl">27.87</span>,<span class="fl">23.36</span>,<span class="fl">24.46</span>,<span class="fl">6.05</span>,<span class="fl">8.85</span>,<span class="fl">2.16</span>,<span class="fl">0.76</span>,<span class="fl">3.00</span>))</span>
 <span id="cb8-5"><a href="#cb8-5"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    site incid
 1   肺癌 53.35
@@ -411,8 +379,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>ggplot2在使用fill添加分组选项时，会默认绘制堆积条形图，我们可以使用position_dodge() 函数来改变默认情况，绘制分组条形图。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-7_0d3aa959a912e46f76095838610b5e2c">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>data2<span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(site,value), <span class="at">y=</span>value, <span class="at">fill=</span>type)) <span class="sc">+</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a>  <span class="co"># 使用position=position_dodge()改变堆积条图为分组条图</span></span>
@@ -425,33 +391,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-10"><a href="#cb10-10"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>value),<span class="at">size=</span><span class="dv">2</span>,<span class="at">position=</span><span class="fu">position_dodge</span>(<span class="fl">0.9</span>))<span class="sc">+</span></span>
 <span id="cb10-11"><a href="#cb10-11"></a>    <span class="fu">theme</span>(<span class="at">text=</span><span class="fu">element_text</span>(<span class="at">family=</span><span class="st">"STKaiti"</span>,<span class="at">size=</span><span class="dv">14</span>))<span class="ot">-&gt;</span>plot2</span>
 <span id="cb10-12"><a href="#cb10-12"></a>plot2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>我们可以改变条形图条的颜色，也可以修改图例的位置、标题等等。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-8_607fb131b15483838c7464180a5d5396">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>plot2<span class="sc">+</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>  <span class="co"># 修改条的颜色为以下两个色号</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">'#999999'</span>,<span class="st">'#E69F00'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># 我们也可以使用color palettes改变分组条图的颜色</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>plot2<span class="sc">+</span></span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">"Blues"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># 我们可以利用theme()对图例进行修改</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>plot2<span class="sc">+</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">theme</span>(</span>
@@ -460,7 +417,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-6"><a href="#cb13-6"></a>    <span class="co"># 取消图例的标题</span></span>
 <span id="cb13-7"><a href="#cb13-7"></a>    <span class="at">legend.title=</span><span class="fu">element_blank</span>()</span>
 <span id="cb13-8"><a href="#cb13-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
 </div>

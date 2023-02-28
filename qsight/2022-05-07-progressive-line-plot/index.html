@@ -158,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -259,16 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#准备数据" id="toc-准备数据" class="nav-link active" data-scroll-target="#准备数据">准备数据</a></li>
-  <li><a href="#绘制进度线图progressive-line-plot" id="toc-绘制进度线图progressive-line-plot" class="nav-link" data-scroll-target="#绘制进度线图progressive-line-plot">绘制进度线图(progressive line plot)</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -283,8 +274,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>我们还是利用制作<a href="https://chenq.site/tech/2022-ggplot2-lineplot/">普通线图</a>的年龄别癌症发病率数据，<a href="age_incidence.csv">点击链接，下载数据</a>。</p>
 <p>对数据进行简单的处理，把合计性别的数据剔除，只显示男性和女性的癌症发病率随年龄变化的趋势即可，这样图里的内容不至于过多而显得杂乱。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_85c4779ed999b9258499a1e521894100">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#加载dplyr包</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># 读取年龄别发病率数据</span></span>
@@ -294,7 +283,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">filter</span>(area<span class="sc">==</span><span class="dv">1</span>,<span class="sc">!</span>(sex<span class="sc">==</span><span class="st">"合计"</span>))</span>
 <span id="cb1-8"><a href="#cb1-8"></a><span class="co">#查看前6条数据结构情况</span></span>
 <span id="cb1-9"><a href="#cb1-9"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  area  sex variable agegrp
 1    1 男性     9.42      0
@@ -313,8 +301,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>为了让线图更文艺或者更美观，我们可以使用ggthemes包里面绘图的主题来进行图的美化。<a href="#fig-plot2">Figure&nbsp;1</a></p>
 <p><strong>绘图代码如下：</strong></p>
 <div class="cell" data-layout-align="center" data-hash="index_cache/html/fig-plot2_365577a65750bd33da5643b4bc04bdc4">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#加载包</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(gganimate)</span>
@@ -341,7 +327,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-24"><a href="#cb3-24"></a>    <span class="fu">transition_reveal</span>(agegrp)</span>
 <span id="cb3-25"><a href="#cb3-25"></a></span>
 <span id="cb3-26"><a href="#cb3-26"></a><span class="fu">anim_save</span>(<span class="st">"px.gif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-plot2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">

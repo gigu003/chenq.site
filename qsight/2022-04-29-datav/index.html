@@ -163,7 +163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -265,18 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#什么是统计地图" id="toc-什么是统计地图" class="nav-link active" data-scroll-target="#什么是统计地图">什么是统计地图？</a></li>
-  <li><a href="#制作统计地图的难点有哪些" id="toc-制作统计地图的难点有哪些" class="nav-link" data-scroll-target="#制作统计地图的难点有哪些">制作统计地图的难点有哪些？</a></li>
-  <li><a href="#如何利用阿里云datav可视化平台地图数据" id="toc-如何利用阿里云datav可视化平台地图数据" class="nav-link" data-scroll-target="#如何利用阿里云datav可视化平台地图数据">如何利用阿里云DataV可视化平台地图数据?</a></li>
-  <li><a href="#如何绘制统计地图" id="toc-如何绘制统计地图" class="nav-link" data-scroll-target="#如何绘制统计地图">如何绘制统计地图？</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -302,8 +291,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>利用<strong>sf包</strong>读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_5151299f5cc0bad1a368dc27a1bfe8d6">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">#加载sf包</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(sf)</span>
@@ -317,15 +304,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-11"><a href="#cb1-11"></a>china1<span class="sc">%&gt;%</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
 <span id="cb1-12"><a href="#cb1-12"></a>  <span class="fu">geom_sf</span>(<span class="at">fill=</span><span class="cn">NA</span>,<span class="at">color=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
 <span id="cb1-13"><a href="#cb1-13"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>也可以利用<strong>geojsonio包</strong>读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_ae1cd812a76126ab626d9377e50fc81c">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#加载geojsonio包</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(geojsonio)</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co">#利用geojsonio包读取json格式数据为sp数据</span></span>
@@ -336,15 +320,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-8"><a href="#cb2-8"></a>states2<span class="sc">%&gt;%</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
 <span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">geom_sf</span>(<span class="at">fill=</span><span class="cn">NA</span>,<span class="at">color=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
 <span id="cb2-10"><a href="#cb2-10"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000.json">https://geo.datav.aliyun.com/areas_v3/bound/410000.json</a>，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json">https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json</a>。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-4_f46fb8ec6b13f84dda620aabf11352ed">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#读取仅有河南省省界的json数据</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>hn1 <span class="ot">=</span> <span class="fu">read_sf</span>(<span class="st">"https://geo.datav.aliyun.com/areas_v3/bound/410000.json"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co">#读取具有河南省各市区边界的json数据</span></span>
@@ -353,28 +334,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-6"><a href="#cb3-6"></a>hn1<span class="sc">%&gt;%</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
 <span id="cb3-7"><a href="#cb3-7"></a>  <span class="fu">geom_sf</span>(<span class="at">fill=</span><span class="cn">NA</span>,<span class="at">color=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
 <span id="cb3-8"><a href="#cb3-8"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#利用geom_sf函数绘制河南省省界及各市区边界</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>hn2<span class="sc">%&gt;%</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_sf</span>(<span class="at">fill=</span><span class="cn">NA</span>,<span class="at">color=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#读取洛阳市各区县边界数据，并绘制地图</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>ly <span class="ot">=</span> <span class="fu">read_sf</span>(<span class="st">"https://geo.datav.aliyun.com/areas_v3/bound/410300_full.json"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3"></a>ly<span class="sc">%&gt;%</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">geom_sf</span>(<span class="at">fill=</span><span class="cn">NA</span>,<span class="at">color=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
 <span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
 </div>
@@ -385,8 +359,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。</p>
 <p>实现代码如下：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-5_2ec9d7c7c20d81652ad0a03c60e35509">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(RColorBrewer)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">adcode=</span><span class="fu">c</span>( <span class="st">"110000"</span>, <span class="st">"120000"</span> ,<span class="st">"130000"</span> ,<span class="st">"140000"</span>, <span class="st">"150000"</span> ,<span class="st">"210000"</span>, <span class="st">"220000"</span> ,<span class="st">"230000"</span>, <span class="st">"310000"</span> ,<span class="st">"320000"</span>, <span class="st">"330000"</span> ,<span class="st">"340000"</span> ,<span class="st">"350000"</span> ,<span class="st">"360000"</span>, <span class="st">"370000"</span>, <span class="st">"410000"</span>, <span class="st">"420000"</span>, <span class="st">"430000"</span> ,<span class="st">"440000"</span> ,<span class="st">"450000"</span> ,<span class="st">"460000"</span>, <span class="st">"500000"</span> ,<span class="st">"510000"</span> ,<span class="st">"520000"</span> ,<span class="st">"530000"</span> ,<span class="st">"540000"</span> ,<span class="st">"610000"</span>, <span class="st">"620000"</span>, <span class="st">"630000"</span>, <span class="st">"640000"</span>, <span class="st">"650000"</span> ,<span class="st">"710000"</span> ,<span class="st">"810000"</span>, <span class="st">"820000"</span> ,<span class="st">"100000"</span>),</span>
 <span id="cb6-3"><a href="#cb6-3"></a>                 <span class="at">num=</span><span class="fu">c</span>(<span class="dv">391</span>,<span class="dv">2</span>,<span class="dv">13</span>,<span class="dv">28</span>,<span class="dv">60</span>,<span class="dv">40</span>,<span class="dv">884</span>,<span class="dv">230</span>,<span class="dv">12988</span>,<span class="dv">30</span>,<span class="dv">609</span>,<span class="dv">7</span>,<span class="dv">50</span>,<span class="dv">220</span>,<span class="dv">70</span>,<span class="dv">36</span>,<span class="dv">4</span>,<span class="dv">26</span>,<span class="dv">169</span>,<span class="dv">23</span>,<span class="dv">15</span>,<span class="dv">5</span>,<span class="dv">74</span>,<span class="dv">0</span>,<span class="dv">27</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">8</span>,<span class="dv">13742</span>,<span class="dv">59661</span>,<span class="dv">500</span>,<span class="dv">0</span>))</span>
@@ -404,7 +376,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-15"><a href="#cb6-15"></a>    <span class="at">name=</span><span class="st">"现存病例数"</span>,</span>
 <span id="cb6-16"><a href="#cb6-16"></a>    <span class="at">values =</span> <span class="fu">brewer.pal</span>(<span class="dv">7</span>,<span class="st">"Reds"</span>),</span>
 <span id="cb6-17"><a href="#cb6-17"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"0-10"</span>,<span class="st">"10-100"</span>,<span class="st">"100-500"</span>, <span class="st">"500-1000"</span>,<span class="st">"1000-10000"</span>,<span class="st">"10000-50000"</span>,<span class="st">"&gt;50000"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>

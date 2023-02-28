@@ -10,7 +10,133 @@
 <atom:link href="https://chenq.site/qsight/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
 <generator>quarto-1.3.14</generator>
-<lastBuildDate>Wed, 08 Feb 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 27 Feb 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>开发R包一定要有一个高逼格logo</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://chenq.site/qsight/2023-02-27-create-logo/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://chenq.site/qsight/2023-02-27-create-logo/canregtools.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">canregtools</figcaption><p></p>
+</figure>
+</div>
+<p>自从我参加工作以来，一直使用SAS统计软件协助分析肿瘤登记数据。在这段时间内，我积累了大量的SAS宏和程序，对我的工作产生了很大的帮助。比如说，肿瘤数据的逻辑核查功能、报告数据生成功能、制作肿瘤登记年报等，这些程序在很大程度上提高了工作效率。但是，与R语言或Stata软件不同，SAS公司没有以包的形式分享相关的函数或功能，这也带来了很多不便。跟同事分享SAS分享程序时，可能因为系统环境或者其他因素的不同，造成程序不能执行。R包的制作有严格的流程和要求，能够很大程度上避免这种情况的发生。</p>
+<p>今年年初定下的目标就是利用休息时间把这个包付出实践，最近这几天制作了其中的一个函数classify_icd10()，以后有时间再逐步完善相关的功能。虽然现在只有这一个函数，但是麻雀虽小五脏俱全。包的名字从cnCanreg到PBCRtools，再到canregtools，已经换了三次了，最终采用canregtools。<a href="https://github.com/gigu003/canregtools">canregtools</a>的代码托管到了<a href="https://github.com/gigu003">github</a>上，以方便代码管理。制作了<a href="https://gigu003.github.io/canregtools/">canregtools网站</a>，方便使用者查找并使用相关功能。</p>
+<p>为了提高逼格，还制作了canregtools的logo，把一个癌细胞的图片和河南省癌症的年龄别发病率曲线整合到一块，最后制作成了六角的logo。</p>
+<p>下面跟大家分享一下制作这个logo的代码。</p>
+<section id="制作癌症年龄别发病率折线图" class="level2">
+<h2 class="anchored" data-anchor-id="制作癌症年龄别发病率折线图">制作癌症年龄别发病率折线图</h2>
+<p>首先，读入年龄别发病率的数据，然后，利用ggplot2制作折线图，重点是要把图片背景设置成透明。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># 加载tidyverse包 </span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;"># 读取年龄别发病率数据</span></span>
+<span id="cb1-4">data <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read.csv</span>(<span class="st" style="color: #20794D;">"data.csv"</span>)</span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">head</span>(data)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   sex agegrp incidence
+1 Male      0     15.06
+2 Male      1     11.78
+3 Male      5     11.51
+4 Male     10     11.56
+5 Male     15     14.92
+6 Male     20     15.37</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#绘制癌症年龄别发病率折线图</span></span>
+<span id="cb3-2">pic <span class="ot" style="color: #003B4F;">&lt;-</span></span>
+<span id="cb3-3">  data <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-4">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span>agegrp,<span class="at" style="color: #657422;">y=</span>incidence,<span class="at" style="color: #657422;">color=</span>sex))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-5">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-6">  <span class="fu" style="color: #4758AB;">ylab</span>(<span class="st" style="color: #20794D;">"Cancer Incidence"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-7">  <span class="fu" style="color: #4758AB;">xlab</span>(<span class="st" style="color: #20794D;">"Age groups (years)"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-8">  <span class="fu" style="color: #4758AB;">theme_void</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-9">  <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">legend.position =</span> <span class="st" style="color: #20794D;">"none"</span>,</span>
+<span id="cb3-10">        <span class="at" style="color: #657422;">plot.background =</span> <span class="fu" style="color: #4758AB;">element_blank</span>()</span>
+<span id="cb3-11">        )</span>
+<span id="cb3-12"></span>
+<span id="cb3-13"><span class="fu" style="color: #4758AB;">plot</span>(pic)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/qsight/2023-02-27-create-logo/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="把肿瘤细胞图片读入r中" class="level2">
+<h2 class="anchored" data-anchor-id="把肿瘤细胞图片读入r中">把肿瘤细胞图片读入R中</h2>
+<p>我从google上搜索了一张癌细胞的图片，并利用在线工具把这张图片的背景去除。然后，利用magick包读取图片进入R环境中，转化成ggplot2可识别的元素，最后，以注释的方式加入前面生成折线图中。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">library</span>(magick)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to ImageMagick 6.9.12.3
+Enabled features: cairo, fontconfig, freetype, heic, lcms, pango, raw, rsvg, webp
+Disabled features: fftw, ghostscript, x11</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;"># 读取肿瘤细胞的图片</span></span>
+<span id="cb6-2">pcs <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">image_read</span>(<span class="st" style="color: #20794D;">"cancer-cell.png"</span>)</span>
+<span id="cb6-3">image <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">image_fill</span>(pcs,<span class="st" style="color: #20794D;">"none"</span>)</span>
+<span id="cb6-4">raster <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">as.raster</span>(image)</span>
+<span id="cb6-5"></span>
+<span id="cb6-6"><span class="co" style="color: #5E5E5E;"># 把肿瘤细胞的图片添加到ggplot2绘制的折线图上</span></span>
+<span id="cb6-7">myplot <span class="ot" style="color: #003B4F;">&lt;-</span> pic <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-8">  <span class="fu" style="color: #4758AB;">annotation_raster</span>(<span class="at" style="color: #657422;">raster =</span> raster, <span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">30</span>, <span class="dv" style="color: #AD0000;">100</span>, <span class="dv" style="color: #AD0000;">700</span>)</span>
+<span id="cb6-9">myplot</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/qsight/2023-02-27-create-logo/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="制作六角r包logo" class="level2">
+<h2 class="anchored" data-anchor-id="制作六角r包logo">制作六角R包logo</h2>
+<p>最后利用hexSticker包制作logo，具体语句如下。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;">library</span>(hexSticker)</span>
+<span id="cb7-2"></span>
+<span id="cb7-3"><span class="fu" style="color: #4758AB;">sticker</span>(</span>
+<span id="cb7-4">  <span class="at" style="color: #657422;">subplot =</span> myplot,</span>
+<span id="cb7-5">  <span class="at" style="color: #657422;">package =</span> <span class="st" style="color: #20794D;">"canregtools"</span>,</span>
+<span id="cb7-6">  <span class="at" style="color: #657422;">s_width =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb7-7">  <span class="at" style="color: #657422;">s_height =</span> .<span class="dv" style="color: #AD0000;">8</span>,</span>
+<span id="cb7-8">  <span class="at" style="color: #657422;">s_x =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb7-9">  <span class="at" style="color: #657422;">s_y =</span> .<span class="dv" style="color: #AD0000;">75</span>,</span>
+<span id="cb7-10">  <span class="at" style="color: #657422;">p_size =</span> <span class="dv" style="color: #AD0000;">14</span>,</span>
+<span id="cb7-11">  <span class="at" style="color: #657422;">p_color =</span> <span class="st" style="color: #20794D;">"purple"</span>,</span>
+<span id="cb7-12">  <span class="at" style="color: #657422;">p_fontface =</span> <span class="st" style="color: #20794D;">"bold"</span>,</span>
+<span id="cb7-13"> <span class="co" style="color: #5E5E5E;"># p_family = "Apple Braille",</span></span>
+<span id="cb7-14">  <span class="at" style="color: #657422;">h_fill =</span> <span class="st" style="color: #20794D;">"gold"</span>,</span>
+<span id="cb7-15">  <span class="at" style="color: #657422;">h_color =</span> <span class="st" style="color: #20794D;">"hotpink"</span>,</span>
+<span id="cb7-16">  <span class="at" style="color: #657422;">h_size =</span> <span class="fl" style="color: #AD0000;">1.5</span>,</span>
+<span id="cb7-17">  <span class="at" style="color: #657422;">url =</span> <span class="st" style="color: #20794D;">"canregtools.chenq.site/canregtools"</span>,</span>
+<span id="cb7-18">  <span class="at" style="color: #657422;">u_size =</span> <span class="dv" style="color: #AD0000;">3</span>,</span>
+<span id="cb7-19">  <span class="at" style="color: #657422;">u_color =</span> <span class="st" style="color: #20794D;">"violetred"</span>,</span>
+<span id="cb7-20">  <span class="at" style="color: #657422;">spotlight =</span> T,</span>
+<span id="cb7-21">  <span class="at" style="color: #657422;">l_y =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb7-22">  <span class="at" style="color: #657422;">l_x =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb7-23">  <span class="at" style="color: #657422;">l_width =</span> <span class="dv" style="color: #AD0000;">3</span>,</span>
+<span id="cb7-24">  <span class="at" style="color: #657422;">l_height =</span> <span class="dv" style="color: #AD0000;">3</span>,</span>
+<span id="cb7-25">  <span class="at" style="color: #657422;">l_alpha =</span> .<span class="dv" style="color: #AD0000;">3</span></span>
+<span id="cb7-26">) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">print</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://chenq.site/qsight/2023-02-27-create-logo/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>效果怎么样？对于审美感不足的我来说，还算可以吧！</p>
+
+
+</section>
+
+ ]]></description>
+  <category>logo</category>
+  <category>R语言</category>
+  <category>R包</category>
+  <guid>https://chenq.site/qsight/2023-02-27-create-logo/index.html</guid>
+  <pubDate>Mon, 27 Feb 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/qsight/2023-02-27-create-logo/canregtools.png" medium="image" type="image/png" height="167" width="144"/>
+</item>
 <item>
   <title>2023年给我的开年惊喜</title>
   <dc:creator>陈琼</dc:creator>
@@ -294,8 +420,6 @@
 <p>我们还是利用制作<a href="https://chenq.site/tech/2022-ggplot2-lineplot/">普通线图</a>的年龄别癌症发病率数据，<a href="age_incidence.csv">点击链接，下载数据</a>。</p>
 <p>对数据进行简单的处理，把合计性别的数据剔除，只显示男性和女性的癌症发病率随年龄变化的趋势即可，这样图里的内容不至于过多而显得杂乱。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_85c4779ed999b9258499a1e521894100">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;">#加载dplyr包</span></span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
 <span id="cb1-3"><span class="co" style="color: #5E5E5E;"># 读取年龄别发病率数据</span></span>
@@ -305,7 +429,6 @@
 <span id="cb1-7">  <span class="fu" style="color: #4758AB;">filter</span>(area<span class="sc" style="color: #5E5E5E;">==</span><span class="dv" style="color: #AD0000;">1</span>,<span class="sc" style="color: #5E5E5E;">!</span>(sex<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"合计"</span>))</span>
 <span id="cb1-8"><span class="co" style="color: #5E5E5E;">#查看前6条数据结构情况</span></span>
 <span id="cb1-9"><span class="fu" style="color: #4758AB;">head</span>(data)</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  area  sex variable agegrp
 1    1 男性     9.42      0
@@ -324,8 +447,6 @@
 <p>为了让线图更文艺或者更美观，我们可以使用ggthemes包里面绘图的主题来进行图的美化。Figure&nbsp;1</p>
 <p><strong>绘图代码如下：</strong></p>
 <div class="cell" data-layout-align="center" data-hash="index_cache/html/fig-plot2_365577a65750bd33da5643b4bc04bdc4">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#加载包</span></span>
 <span id="cb3-2"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
 <span id="cb3-3"><span class="fu" style="color: #4758AB;">library</span>(gganimate)</span>
@@ -352,7 +473,6 @@
 <span id="cb3-24">    <span class="fu" style="color: #4758AB;">transition_reveal</span>(agegrp)</span>
 <span id="cb3-25"></span>
 <span id="cb3-26"><span class="fu" style="color: #4758AB;">anim_save</span>(<span class="st" style="color: #20794D;">"px.gif"</span>)</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-plot2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -412,11 +532,8 @@
 <h2 class="anchored" data-anchor-id="准备数据">准备数据</h2>
 <p>wordcloud2包默认自带了一个<strong>英文词频</strong>数据框，包含了两个变量 word:字符，freq：字符的出现频率，我们可以利用这个数据来做词云图的示例。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_bb4b3c7c3764602352dc6a2921f51131">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;">library</span>(wordcloud2)</span>
 <span id="cb2-2"><span class="fu" style="color: #4758AB;">head</span>(demoFreq)</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>         word freq
 oil       oil   85
@@ -429,10 +546,7 @@ the       the   26</code></pre>
 </div>
 <p>还有一个中文词频数据框，包含两个变量 V2 词汇，V1词汇频率。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_318cb6582357bea463a77a67bb79d5a3">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">head</span>(demoFreqC)</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>        V2   V1
 1     数据 2304
@@ -448,10 +562,7 @@ the       the   26</code></pre>
 <h2 class="anchored" data-anchor-id="绘制词云图">绘制词云图</h2>
 <p>绘制星形词云图，字体大小设置为1</p>
 <div class="cell" data-layout-align="center" data-hash="index_cache/html/unnamed-chunk-3_801953077d13424063bb7fa2f31f5585">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">wordcloud2</span>(demoFreq, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">1</span>,<span class="at" style="color: #657422;">shape =</span> <span class="st" style="color: #20794D;">"star"</span>)  </span></code></pre></div>
-</details>
 <div class="cell-output-display">
 
 <div id="htmlwidget-2e72531e924c53e3e90a" style="width:100%;height:650px;" class="wordcloud2 html-widget"></div>
@@ -460,10 +571,7 @@ the       the   26</code></pre>
 </div>
 <p>利用demoFreqC数据绘制中文词云图，设定字体为微软雅黑，设定颜色为random-light，背景色设为灰色。</p>
 <div class="cell" data-layout-align="center" data-hash="index_cache/html/unnamed-chunk-4_b105bf53c57736bcba6b77d2e37ba3eb">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;">wordcloud2</span>(demoFreqC,<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">2</span>,<span class="at" style="color: #657422;">fontFamily =</span> <span class="st" style="color: #20794D;">"微软雅黑"</span>,<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"random-light"</span>, <span class="at" style="color: #657422;">backgroundColor =</span> <span class="st" style="color: #20794D;">"grey"</span>)  </span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <div id="htmlwidget-b8b067a763572b76d9a1" style="width:100%;height:650px;" class="wordcloud2 html-widget"></div>
 <script type="application/json" data-for="htmlwidget-b8b067a763572b76d9a1">{"x":{"word":["数据","统计","用户","模型","分析","数据分析","大数据","研究","信息","大学","语言","方法","问题","会议","数据科学","学习","可能","中国","科学","计算","网络","公司","预测","应用","变量","时间","选择","广告","主要","行业","关键","系统","影响","估计","北京","品牌","学院","城市","误差","处理","产品","分布","过程","相关","搜索","训练","方面","重要","函数","行为","技术","有限","户的","市场","提供","关系","工作","非常","利用","机器","可视","联网","COS","本文","业务","文本","比较","得到","推荐","样的","演讲","介绍","微博","计之","统计之都","实际","工具","现在","用户的","可视化","报告","关注","器学习","方式","样本","能够","情况","机器学习","沙龙","data","学家","已经","音乐","有限公司","中心","发展","算法","老师","表示","型的","概率","互联","管理","言会","互联网","语言会","客户","特征","结构","语言会议","一种","企业","喜欢","大的","的是","的分","社交","金融","到了","用的","先生","量的","参数","学生","具体","发现","实现","教授","包括","指标","分类","平均","mathbf","之间","博士","是一个","建模","聚类","领域","兴趣","这种","本次","回归","要的","告主","购买","会场","上的","广告主","的研","代码","矩阵","科技","销量","间的","的问","两个","的问题","天气","每个","内容","定义","的统","模型的","的研究","frac","作者","到的","并不","有一","的用","的统计","解决","面的","之后","平台","标签","简单","这一","多的","手机","是我","销售","文章","消费","软件","信用","开发","更多","http","一步","描述","是否","最后","的方法","认为","高端","同的","存在","的用户","评论","基础","深度","的信","代表","复杂","我的","获得","也是","挖掘","的工","程中","纪要","一定","主题","单位","广州","们可","来的","科学家","了解","展示","随机","效果","数学","线性","参会","学的","报名","行了","支持","有效","直接","mathcal","在这","对应","当时","的模","价值","基本","新的","目前","营销","论文","不同的","交易","我们可","指数","方向","获取","记录","都是","定的","每一","过程中","们可以","出现","数据科学家","知道","第二","策略","美国","考虑","这样的","业的","传统","希望","的时候","相对","程度","自己的","说明","进行了","采用","应的","时代","社交网","网站","这是","人员","在一","届中国","的预","目标","社交网络","是不","服务","的应","者的","觉得","评价","变化","建立","我们可以","更加","的应用","的模型","看到","风险","应该","的结","知识","竞争","结合","贝叶斯","产生","帮助","测试","理解","组织","经济","他的","具有","出了","容易","成为","用于","准确","的一个","能力","趋势","银行","性的","的基","商业","讨论","一下","世界","之间的","人的","包含","数的","最大","系数","是在","里面","专业","成本","计算机","财经","驾驶","一次","了一个","工程","我们的","理论","生成","的信息","的重","研究中","简历","项目","三个","上海","也可","分享","成功","有很","的关键","其实","医疗","快速","投资","最近","渠道","的大","规模","进一","违约","不能","优化","后的","影响力","推断","生物","的预测","预测误差","业界","以看","几个","嘉宾","程序","角度","训练集","进一步","需求","假设","可以看","深度学习","的时间","设计","功能","推广","案例","模型选","的可","的概","节点","行的","个数","之前","因素","模型选择","环境","的影","解释","起来","高端车","model","text","东西","以下","另一","形式","智能","的文","重要的","参考","增加","的发","的影响","背景","车险","分词","化的","学术","布的","核心","的变","经大","通常","介绍了","原因","可能也","控制","机构","法的","王小宁","生的","的相","自然","论坛","财经大学","车辆","验证","为一","导致","征信","析的","的主","的实","而不","速度","也喜欢","人群","分析的","大量","实验","年的","找到","抽样","统的","编辑","联系","cdot","spark","中山","例子","北京大","司机","就可","得分","提出","效率","数据挖","方差","无觅","是对","真实","下来","个问","北京大学","历史","图形","就可以","带来","您可能也喜欢","提高","数据挖掘","显示","本的","趣的","事情","地区","建议","成了","提升","数据可","数据时","日期","朋友","社会","观测","评估","量化","个问题","也可以","人民","保险","判断","对数","工业","文件","标准","的学","的工作","研究中心","神经","系列","让我","xgboost","下面","不会","体的","所示","提供了","汽车","的广","的特","经验","驱动","err","hat","医学","媒体","据中","的分析","的推","的最","ggtree","不断","个体","也不","人民大学","位置","出的","基金","大数据的","来越","消费者","爆发","的机","的高","益辉","编程","表现","alpha","下载","中文","们将","会有","商务","国人","学研究","完成","度的","数据中","每周","特别","的过","神经网络","第三","计分","词的","阶段","驶行为","做一","做的","分的","埃博拉","多个","是有","来源","现了","的关键词","越来越","驾驶行为","高的","中国人","会者","兴趣的","好友","我们将","挑战","数据进","有很多","气象","注意","统计分","语言的","超过","金额","一点","一起","下的","中国人民","举办","交流","他们的","向量","在的","大小","学统计","山大","总结","意义","数据进行","数量","未来","比例","沙龙第","的个","的发展","的情","的方式","的过程","示了","科技有","计的","资料","中国人民大学","中山大学","分为","参会者","发布","国内","家的","展现","感兴趣","扩展","抓取","损失","排名","最终","每周精选","游戏","生活","科技有限公司","质量","题的","也就","今天","基因","收集","改进","数据可视化","是这","模式","的不","的估","的广告","的标","目的","相应","类别","统计分析","谢益辉","CV","们在","力的","华南","引擎","新闻","是最","概念","欢迎","点击","的交","的概率","的重要","监测","给出","综合","规则","距离","autoplot","不可","了这","你的","做了","关的","制造","同样","增长","完全","接口","操作","数据时代","更多的","次会议","电子","的优","的行","移动","调整","酒精性饮料","重复","一方","一致","习的","似然","健康","准则","单的","博文","合理","大数据时","实践","对应的","属性","年龄","很大","很好","接下","提取","现的","百度","的东","的关系","的理","的结果","空间","线性模型","要求","达到","app","上面","个用","了很","值的","分布的","国际","在大","在线","地方","域的","基础上","大数据时代","学习的","忠诚","思考","接下来","效的","是很","曲线","条件","用了","界的","的目","的解","议的","识别","资源","UBI","个性","为我","国家","它的","性化","正态","毕业","流程","的东西","的估计","的第","种方","究的","重点","问题的","python","主办","也有","创意","发生","思路","整个","更好","有一个","有可","本科","来看","死亡","流行","理学","的各","相关的","研究的","红包","组合","结构化","网络中","自动","行业的","表明","这就","bootstrap","一直","个用户","了数","交通","以用","会议的","作用","做出","合作","天津","学科","对数据","就会","广东","拟合","整体","方面的","本次会议","每一个","注册","点的","疫情","的事","的内","的地","简单的","观察","访谈","这两","进行分","阅读","BIC","个性化","个方","交叉","吸引","完整","层面","巨大","态分布","投放","是什么","最小","本数","极大","涉及","深圳","的基础","真正","类似","编码","让我们","QQ","也就是","保证","保费","创业","前的","区域","国的","在中","对用户","感觉","所有的","拥有","探索","是因","最好","机会","正态分布","水平","独立","理的","的思","的成","的计","的语","研究院","类型"],"freq":[2304,1413,855,846,773,750,650,547,543,497,430,428,426,411,401,385,373,366,359,359,350,341,314,306,280,277,255,254,239,238,232,228,226,222,220,217,214,213,213,210,209,209,208,200,199,196,193,189,187,187,180,180,179,178,178,177,176,174,171,171,170,169,168,168,167,167,167,163,163,162,162,159,159,159,157,156,156,156,156,154,153,151,151,150,150,150,149,148,148,147,147,147,147,145,143,143,142,142,142,141,140,139,138,138,137,137,136,135,135,135,134,134,134,134,134,132,132,132,131,131,130,130,129,129,128,128,128,128,127,127,126,126,125,125,124,124,123,123,123,122,122,121,120,120,119,119,118,117,117,117,116,116,116,116,116,115,114,114,113,113,112,112,112,111,111,110,110,110,110,110,110,110,110,110,109,108,108,108,108,107,107,107,107,106,106,106,105,105,105,104,104,104,104,104,104,104,104,103,103,103,103,102,102,102,101,101,101,101,100,100,100,100,100,99,98,98,98,97,97,97,96,96,96,95,95,95,94,94,94,94,93,93,93,92,92,92,92,92,91,91,91,91,91,91,90,90,90,90,90,90,90,90,89,89,89,88,88,88,88,88,88,88,88,88,87,87,87,87,87,87,87,87,87,87,86,86,86,86,86,85,85,85,85,85,85,84,84,84,84,84,84,83,83,83,83,83,83,83,83,82,82,82,82,82,82,81,81,81,81,81,81,80,80,80,80,80,80,79,79,79,79,79,78,78,77,77,76,76,76,76,76,76,76,76,75,75,74,74,74,74,74,73,73,73,73,73,73,73,73,73,73,73,72,72,72,72,72,72,72,71,71,71,71,71,71,71,71,71,71,70,70,70,70,70,70,70,70,69,69,69,69,69,69,69,69,69,68,68,68,68,68,67,67,67,67,67,67,67,67,66,66,66,66,66,66,66,66,66,65,65,65,65,65,65,65,65,65,64,64,64,64,64,64,63,63,63,63,63,63,63,63,62,62,62,62,62,62,62,62,62,62,62,62,62,62,61,61,61,61,61,61,61,61,60,60,60,60,60,60,60,60,60,60,60,59,59,59,59,59,59,59,59,59,59,59,59,59,59,59,58,58,58,58,58,58,58,58,58,58,58,58,58,57,57,57,57,57,57,57,57,57,57,57,57,57,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,55,55,55,55,55,55,55,55,55,55,55,54,54,54,54,54,54,54,54,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,51,51,51,51,51,51,51,51,51,51,51,51,50,50,50,50,50,50,50,50,50,50,50,50,50,50,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,47,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,39,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38,38],"fontFamily":"微软雅黑","fontWeight":"bold","color":"random-light","minSize":0,"weightFactor":0.15625,"backgroundColor":"grey","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
@@ -471,10 +579,7 @@ the       the   26</code></pre>
 </div>
 <p>绘制默认词云图，字体大小设置为2，字体旋转最小和最大均设置为-pi/2。</p>
 <div class="cell" data-layout-align="center" data-hash="index_cache/html/unnamed-chunk-5_93317aa5faf6f79a90ab2bb1d498599d">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;">wordcloud2</span>(demoFreq, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="at" style="color: #657422;">minRotation =</span> <span class="sc" style="color: #5E5E5E;">-</span>pi<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">2</span>, <span class="at" style="color: #657422;">maxRotation =</span> <span class="sc" style="color: #5E5E5E;">-</span>pi<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">2</span>) </span></code></pre></div>
-</details>
 <div class="cell-output-display">
 
 <div id="htmlwidget-5cb4ba0a97e3b888263d" style="width:100%;height:650px;" class="wordcloud2 html-widget"></div>
@@ -483,10 +588,7 @@ the       the   26</code></pre>
 </div>
 <p>绘制词云图，字体大小设置为2，字体旋转最大和最小角度均为-pi/6，旋转比例设置为0.5，一半的字体会旋转。</p>
 <div class="cell" data-layout-align="center" data-hash="index_cache/html/unnamed-chunk-6_54a23a85a17611270ea253518ea2d40f">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;">wordcloud2</span>(demoFreq, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="at" style="color: #657422;">minRotation =</span> <span class="sc" style="color: #5E5E5E;">-</span>pi<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">6</span>, <span class="at" style="color: #657422;">maxRotation =</span> <span class="sc" style="color: #5E5E5E;">-</span>pi<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">6</span>,<span class="at" style="color: #657422;">rotateRatio =</span> <span class="fl" style="color: #AD0000;">0.5</span>)</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 
 <div id="htmlwidget-f856133a2d15523cc20f" style="width:100%;height:650px;" class="wordcloud2 html-widget"></div>
@@ -527,14 +629,11 @@ the       the   26</code></pre>
 <p>作者在互联网上收集了从1980年以来全球前10位国家的GDP数据，<a href="gdp.csv">数据，点击下载</a>以CSV的形式保存。</p>
 <p>我们把数据读入到R环境中，总共有4个变量，year年份、country国家、continent大洲、gdp，下面看下数据的结构，这个数据已经是ggplot2绘图所需要的<em>长数据</em>格式，所以不需要进行特别的转换了。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_51a7a47f9c7fe8805145c6ca77ffeccc">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
 <span id="cb1-2"><span class="co" style="color: #5E5E5E;">#读入gdp数据</span></span>
 <span id="cb1-3">data <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read.csv</span>(<span class="st" style="color: #20794D;">"gdp.csv"</span>)</span>
 <span id="cb1-4"><span class="co" style="color: #5E5E5E;">#显示头6条数据</span></span>
 <span id="cb1-5"><span class="fu" style="color: #4758AB;">head</span>(data)</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  year  country continent         gdp
 1 1984 澳大利亚    大洋洲 1.93594e+11
@@ -544,14 +643,11 @@ the       the   26</code></pre>
 5 2016     巴西      美洲 1.79569e+12
 6 2015     巴西      美洲 1.80221e+12</code></pre>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1">data1<span class="ot" style="color: #003B4F;">&lt;-</span>data<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
 <span id="cb3-2">  <span class="fu" style="color: #4758AB;">group_by</span>(year)<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
 <span id="cb3-3">  <span class="fu" style="color: #4758AB;">arrange</span>(year,<span class="fu" style="color: #4758AB;">desc</span>(gdp))<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
 <span id="cb3-4">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">ranking=</span><span class="fu" style="color: #4758AB;">row_number</span>())<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
 <span id="cb3-5">  <span class="fu" style="color: #4758AB;">filter</span>(ranking<span class="sc" style="color: #5E5E5E;">&lt;=</span><span class="dv" style="color: #AD0000;">10</span>)</span></code></pre></div>
-</details>
 </div>
 </section>
 <section id="绘制动态条形图" class="level2">
@@ -563,8 +659,6 @@ the       the   26</code></pre>
 </ul>
 <p>前面我们已经准备好了绘图的数据，那么我们就先绘制动态条形图每个画面的静态图。我们准备基于GDP的排名展示位于全球前10位的国家，我们需要绘制每年的排名情况。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_fdcf37b103b85fbd82b1f4356b1d731b">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
 <span id="cb4-2">plot <span class="ot" style="color: #003B4F;">&lt;-</span> data1 <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
 <span id="cb4-3">  <span class="fu" style="color: #4758AB;">ggplot</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
@@ -585,12 +679,9 @@ the       the   26</code></pre>
 <span id="cb4-18">    <span class="at" style="color: #657422;">plot.margin =</span> <span class="fu" style="color: #4758AB;">margin</span>(<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">4</span>, <span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">3</span>, <span class="st" style="color: #20794D;">"cm"</span>),</span>
 <span id="cb4-19">    <span class="at" style="color: #657422;">text =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">'Kai'</span>)</span>
 <span id="cb4-20">  ) </span></code></pre></div>
-</details>
 </div>
 <p>上面的代码绘制了动态条形图的每一个画面，也就是每一年的全球GDP排名前10的国家的条形图。当然你也可以对上面的代码进行更改，从而使图更加美观。而进行动态化的关键步骤是使用gganimate包的transition_states()功能，下面的代码使绘制的图按照year这个变量动态变化。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_332f085c3ac46c3ca9722ac6168d850b">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;">library</span>(gganimate)</span>
 <span id="cb5-2">plot2<span class="ot" style="color: #003B4F;">&lt;-</span>plot<span class="sc" style="color: #5E5E5E;">+</span><span class="fu" style="color: #4758AB;">transition_states</span>(year, <span class="at" style="color: #657422;">state_length =</span> <span class="dv" style="color: #AD0000;">0</span>, <span class="at" style="color: #657422;">transition_length =</span> <span class="dv" style="color: #AD0000;">2</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb5-3">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">title =</span> <span class="st" style="color: #20794D;">'全球不同国家近40年GDP排名变化情况(前10位)'</span>,  </span>
@@ -600,14 +691,10 @@ the       the   26</code></pre>
 <span id="cb5-7">  <span class="fu" style="color: #4758AB;">ease_aes</span>(<span class="st" style="color: #20794D;">'quadratic-in-out'</span>) </span>
 <span id="cb5-8"></span>
 <span id="cb5-9"><span class="fu" style="color: #4758AB;">animate</span>(plot2, <span class="at" style="color: #657422;">width =</span> <span class="dv" style="color: #AD0000;">800</span>, <span class="at" style="color: #657422;">height =</span> <span class="dv" style="color: #AD0000;">500</span>, <span class="at" style="color: #657422;">fps =</span> <span class="dv" style="color: #AD0000;">25</span>, <span class="at" style="color: #657422;">duration =</span> <span class="dv" style="color: #AD0000;">15</span>, <span class="at" style="color: #657422;">rewind =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-05-04-chasing-barchart/index_files/figure-html/unnamed-chunk-3-1.gif" class="img-fluid"></p>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">anim_save</span>(<span class="st" style="color: #20794D;">"pp.gif"</span>)</span></code></pre></div>
-</details>
 </div>
 <p><img src="https://chenq.site/qsight/2022-05-04-chasing-barchart/pp.gif" class="img-fluid" alt="追逐条形图"> ## 小结 我们已经成功的绘制了全球gdp前10的国家在过去40年里动态变化的过程，而只要按照我们前面的准备的数据格式整理自己的数据，那么也很容易地能套用这个代码，从而实现自己的动态条形图。</p>
 
@@ -651,13 +738,10 @@ the       the   26</code></pre>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">install.packages</span>(<span class="st" style="color: #20794D;">"ggplot2"</span>)</span></code></pre></div>
 <p>首先，准备一下绘制barplot条形图所需的数据，我们就拿<a href="https://chenq.site/report/2020/">河南省前10位癌症发病率数据</a>来举例。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_d96433adea24f9b699e8910203fe381b">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1">data <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(</span>
 <span id="cb2-2">  <span class="at" style="color: #657422;">site=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"肺癌"</span>,<span class="st" style="color: #20794D;">"乳腺癌"</span>,<span class="st" style="color: #20794D;">"胃癌"</span>,<span class="st" style="color: #20794D;">"食管癌"</span>,<span class="st" style="color: #20794D;">"肝癌"</span>,<span class="st" style="color: #20794D;">"宫颈癌"</span>,<span class="st" style="color: #20794D;">"结直肠癌"</span>,<span class="st" style="color: #20794D;">"子宫体癌"</span>,<span class="st" style="color: #20794D;">"甲状腺癌"</span>,<span class="st" style="color: #20794D;">"卵巢癌"</span>),</span>
 <span id="cb2-3">  <span class="at" style="color: #657422;">incid=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="fl" style="color: #AD0000;">53.35</span>,<span class="fl" style="color: #AD0000;">39.25</span>,<span class="fl" style="color: #AD0000;">35.74</span>,<span class="fl" style="color: #AD0000;">31.11</span>,<span class="fl" style="color: #AD0000;">29.15</span>,<span class="fl" style="color: #AD0000;">19.24</span>,<span class="fl" style="color: #AD0000;">18.15</span>,<span class="fl" style="color: #AD0000;">9.99</span>,<span class="fl" style="color: #AD0000;">7.92</span>,<span class="fl" style="color: #AD0000;">7.04</span>))</span>
 <span id="cb2-4"><span class="fu" style="color: #4758AB;">head</span>(data)</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    site incid
 1   肺癌 53.35
@@ -670,8 +754,6 @@ the       the   26</code></pre>
 </div>
 <p>利用ggplot2包的geom_bar()函数绘制简单条形图</p>
 <div class="cell" data-hash="index_cache/html/feature_c8774708685bd9499de906fde8e62ea9">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
 <span id="cb4-2"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
 <span id="cb4-3">plot <span class="ot" style="color: #003B4F;">&lt;-</span> data <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
@@ -681,7 +763,6 @@ the       the   26</code></pre>
 <span id="cb4-7">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">stat=</span><span class="st" style="color: #20794D;">"identity"</span>,<span class="at" style="color: #657422;">fill=</span><span class="st" style="color: #20794D;">"steelblue"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb4-8">  <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))</span>
 <span id="cb4-9"><span class="fu" style="color: #4758AB;">ggsave</span>(<span class="st" style="color: #20794D;">"plot.png"</span>)</span></code></pre></div>
-</details>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -691,12 +772,9 @@ the       the   26</code></pre>
 </div>
 <p>把垂直条形图转换为水平条形图，通过coord_fip()坐标轴转换函数实现。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_1e4b0c6888d0094b7f677a2c29afab50">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1">plot <span class="sc" style="color: #5E5E5E;">+</span> </span>
 <span id="cb5-2">  <span class="co" style="color: #5E5E5E;"># 转置坐标轴</span></span>
 <span id="cb5-3">  <span class="fu" style="color: #4758AB;">coord_flip</span>()</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -708,21 +786,16 @@ the       the   26</code></pre>
 </div>
 <p>ggplot2包里有一些自带的主题，我们可以应用这些主题来快速的调整图的样式。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-4_485d194a5fa5511272263e7de722f548">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1">plot<span class="sc" style="color: #5E5E5E;">+</span><span class="fu" style="color: #4758AB;">coord_flip</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb6-2">  <span class="co" style="color: #5E5E5E;"># 使用classic主题</span></span>
 <span id="cb6-3">  <span class="fu" style="color: #4758AB;">theme_classic</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb6-4">    <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>然后我们进一步对条形图进行修饰，比如更改坐标轴标题、把x轴由底部调整至顶部显示、添加条形图数据标签等等。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-5_5594bd68b8451d2d64b4017775abe1a9">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1">plot<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb7-2">  <span class="co" style="color: #5E5E5E;"># 对坐标轴进行转置</span></span>
 <span id="cb7-3">  <span class="fu" style="color: #4758AB;">coord_flip</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
@@ -737,7 +810,6 @@ the       the   26</code></pre>
 <span id="cb7-12">  <span class="co" style="color: #5E5E5E;"># 添加数据标签</span></span>
 <span id="cb7-13">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label=</span>incid), <span class="at" style="color: #657422;">size=</span><span class="fl" style="color: #AD0000;">3.5</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb7-14"> <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -747,14 +819,11 @@ the       the   26</code></pre>
 <h3 class="anchored" data-anchor-id="绘制分组barplot条形图">绘制分组barplot条形图</h3>
 <p>准备绘制分组条形图的数据，我们可以添加不同癌种的死亡率数据，分为两组：发病率和死亡率。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-6_b742624af3756c2316cf8fe67755ee21">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1">data2 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(</span>
 <span id="cb8-2">  <span class="at" style="color: #657422;">site=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"肺癌"</span>,<span class="st" style="color: #20794D;">"乳腺癌"</span>,<span class="st" style="color: #20794D;">"胃癌"</span>,<span class="st" style="color: #20794D;">"食管癌"</span>,<span class="st" style="color: #20794D;">"肝癌"</span>,<span class="st" style="color: #20794D;">"宫颈癌"</span>,<span class="st" style="color: #20794D;">"结直肠癌"</span>,<span class="st" style="color: #20794D;">"子宫体癌"</span>,<span class="st" style="color: #20794D;">"甲状腺癌"</span>,<span class="st" style="color: #20794D;">"卵巢癌"</span>,<span class="st" style="color: #20794D;">"肺癌"</span>,<span class="st" style="color: #20794D;">"乳腺癌"</span>,<span class="st" style="color: #20794D;">"胃癌"</span>,<span class="st" style="color: #20794D;">"食管癌"</span>,<span class="st" style="color: #20794D;">"肝癌"</span>,<span class="st" style="color: #20794D;">"宫颈癌"</span>,<span class="st" style="color: #20794D;">"结直肠癌"</span>,<span class="st" style="color: #20794D;">"子宫体癌"</span>,<span class="st" style="color: #20794D;">"甲状腺癌"</span>,<span class="st" style="color: #20794D;">"卵巢癌"</span>),</span>
 <span id="cb8-3">  <span class="at" style="color: #657422;">type=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="fu" style="color: #4758AB;">rep</span>(<span class="st" style="color: #20794D;">"发病率"</span>,<span class="dv" style="color: #AD0000;">10</span>),<span class="fu" style="color: #4758AB;">rep</span>(<span class="st" style="color: #20794D;">"死亡率"</span>,<span class="dv" style="color: #AD0000;">10</span>)),</span>
 <span id="cb8-4">  <span class="at" style="color: #657422;">value=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="fl" style="color: #AD0000;">53.35</span>,<span class="fl" style="color: #AD0000;">39.25</span>,<span class="fl" style="color: #AD0000;">35.74</span>,<span class="fl" style="color: #AD0000;">31.11</span>,<span class="fl" style="color: #AD0000;">29.15</span>,<span class="fl" style="color: #AD0000;">19.24</span>,<span class="fl" style="color: #AD0000;">18.15</span>,<span class="fl" style="color: #AD0000;">9.99</span>,<span class="fl" style="color: #AD0000;">7.92</span>,<span class="fl" style="color: #AD0000;">7.04</span>,<span class="fl" style="color: #AD0000;">41.22</span>,<span class="fl" style="color: #AD0000;">9.92</span>,<span class="fl" style="color: #AD0000;">27.87</span>,<span class="fl" style="color: #AD0000;">23.36</span>,<span class="fl" style="color: #AD0000;">24.46</span>,<span class="fl" style="color: #AD0000;">6.05</span>,<span class="fl" style="color: #AD0000;">8.85</span>,<span class="fl" style="color: #AD0000;">2.16</span>,<span class="fl" style="color: #AD0000;">0.76</span>,<span class="fl" style="color: #AD0000;">3.00</span>))</span>
 <span id="cb8-5"><span class="fu" style="color: #4758AB;">head</span>(data)</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    site incid
 1   肺癌 53.35
@@ -767,8 +836,6 @@ the       the   26</code></pre>
 </div>
 <p>ggplot2在使用fill添加分组选项时，会默认绘制堆积条形图，我们可以使用position_dodge() 函数来改变默认情况，绘制分组条形图。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-7_0d3aa959a912e46f76095838610b5e2c">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1">data2<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
 <span id="cb10-2">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span><span class="fu" style="color: #4758AB;">reorder</span>(site,value), <span class="at" style="color: #657422;">y=</span>value, <span class="at" style="color: #657422;">fill=</span>type)) <span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb10-3">  <span class="co" style="color: #5E5E5E;"># 使用position=position_dodge()改变堆积条图为分组条图</span></span>
@@ -781,33 +848,24 @@ the       the   26</code></pre>
 <span id="cb10-10">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label=</span>value),<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">2</span>,<span class="at" style="color: #657422;">position=</span><span class="fu" style="color: #4758AB;">position_dodge</span>(<span class="fl" style="color: #AD0000;">0.9</span>))<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb10-11">    <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))<span class="ot" style="color: #003B4F;">-&gt;</span>plot2</span>
 <span id="cb10-12">plot2</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>我们可以改变条形图条的颜色，也可以修改图例的位置、标题等等。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-8_607fb131b15483838c7464180a5d5396">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1">plot2<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb11-2">  <span class="co" style="color: #5E5E5E;"># 修改条的颜色为以下两个色号</span></span>
 <span id="cb11-3">  <span class="fu" style="color: #4758AB;">scale_fill_manual</span>(<span class="at" style="color: #657422;">values=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'#999999'</span>,<span class="st" style="color: #20794D;">'#E69F00'</span>))</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;"># 我们也可以使用color palettes改变分组条图的颜色</span></span>
 <span id="cb12-2">plot2<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb12-3"><span class="fu" style="color: #4758AB;">scale_fill_brewer</span>(<span class="at" style="color: #657422;">palette=</span><span class="st" style="color: #20794D;">"Blues"</span>)</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;"># 我们可以利用theme()对图例进行修改</span></span>
 <span id="cb13-2">plot2<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb13-3">  <span class="fu" style="color: #4758AB;">theme</span>(</span>
@@ -816,7 +874,6 @@ the       the   26</code></pre>
 <span id="cb13-6">    <span class="co" style="color: #5E5E5E;"># 取消图例的标题</span></span>
 <span id="cb13-7">    <span class="at" style="color: #657422;">legend.title=</span><span class="fu" style="color: #4758AB;">element_blank</span>()</span>
 <span id="cb13-8">  )</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
 </div>
@@ -861,8 +918,6 @@ the       the   26</code></pre>
 </div>
 <p>利用<strong>sf包</strong>读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_5151299f5cc0bad1a368dc27a1bfe8d6">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
 <span id="cb1-2"><span class="co" style="color: #5E5E5E;">#加载sf包</span></span>
 <span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
@@ -876,15 +931,12 @@ the       the   26</code></pre>
 <span id="cb1-11">china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb1-12">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb1-13">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>也可以利用<strong>geojsonio包</strong>读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_ae1cd812a76126ab626d9377e50fc81c">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;">#加载geojsonio包</span></span>
 <span id="cb2-2"><span class="fu" style="color: #4758AB;">library</span>(geojsonio)</span>
 <span id="cb2-3"><span class="co" style="color: #5E5E5E;">#利用geojsonio包读取json格式数据为sp数据</span></span>
@@ -895,15 +947,12 @@ the       the   26</code></pre>
 <span id="cb2-8">states2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb2-9">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb2-10">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000.json">https://geo.datav.aliyun.com/areas_v3/bound/410000.json</a>，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json">https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json</a>。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-4_f46fb8ec6b13f84dda620aabf11352ed">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#读取仅有河南省省界的json数据</span></span>
 <span id="cb3-2">hn1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000.json"</span>)</span>
 <span id="cb3-3"><span class="co" style="color: #5E5E5E;">#读取具有河南省各市区边界的json数据</span></span>
@@ -912,28 +961,21 @@ the       the   26</code></pre>
 <span id="cb3-6">hn1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb3-7">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb3-8">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;">#利用geom_sf函数绘制河南省省界及各市区边界</span></span>
 <span id="cb4-2">hn2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb4-3">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb4-4">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;">#读取洛阳市各区县边界数据，并绘制地图</span></span>
 <span id="cb5-2">ly <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410300_full.json"</span>)</span>
 <span id="cb5-3">ly<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb5-4">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb5-5">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
 </div>
@@ -944,8 +986,6 @@ the       the   26</code></pre>
 <p>可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。</p>
 <p>实现代码如下：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-5_2ec9d7c7c20d81652ad0a03c60e35509">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">library</span>(RColorBrewer)</span>
 <span id="cb6-2">data<span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">data.frame</span>(<span class="at" style="color: #657422;">adcode=</span><span class="fu" style="color: #4758AB;">c</span>( <span class="st" style="color: #20794D;">"110000"</span>, <span class="st" style="color: #20794D;">"120000"</span> ,<span class="st" style="color: #20794D;">"130000"</span> ,<span class="st" style="color: #20794D;">"140000"</span>, <span class="st" style="color: #20794D;">"150000"</span> ,<span class="st" style="color: #20794D;">"210000"</span>, <span class="st" style="color: #20794D;">"220000"</span> ,<span class="st" style="color: #20794D;">"230000"</span>, <span class="st" style="color: #20794D;">"310000"</span> ,<span class="st" style="color: #20794D;">"320000"</span>, <span class="st" style="color: #20794D;">"330000"</span> ,<span class="st" style="color: #20794D;">"340000"</span> ,<span class="st" style="color: #20794D;">"350000"</span> ,<span class="st" style="color: #20794D;">"360000"</span>, <span class="st" style="color: #20794D;">"370000"</span>, <span class="st" style="color: #20794D;">"410000"</span>, <span class="st" style="color: #20794D;">"420000"</span>, <span class="st" style="color: #20794D;">"430000"</span> ,<span class="st" style="color: #20794D;">"440000"</span> ,<span class="st" style="color: #20794D;">"450000"</span> ,<span class="st" style="color: #20794D;">"460000"</span>, <span class="st" style="color: #20794D;">"500000"</span> ,<span class="st" style="color: #20794D;">"510000"</span> ,<span class="st" style="color: #20794D;">"520000"</span> ,<span class="st" style="color: #20794D;">"530000"</span> ,<span class="st" style="color: #20794D;">"540000"</span> ,<span class="st" style="color: #20794D;">"610000"</span>, <span class="st" style="color: #20794D;">"620000"</span>, <span class="st" style="color: #20794D;">"630000"</span>, <span class="st" style="color: #20794D;">"640000"</span>, <span class="st" style="color: #20794D;">"650000"</span> ,<span class="st" style="color: #20794D;">"710000"</span> ,<span class="st" style="color: #20794D;">"810000"</span>, <span class="st" style="color: #20794D;">"820000"</span> ,<span class="st" style="color: #20794D;">"100000"</span>),</span>
 <span id="cb6-3">                 <span class="at" style="color: #657422;">num=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">391</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">13</span>,<span class="dv" style="color: #AD0000;">28</span>,<span class="dv" style="color: #AD0000;">60</span>,<span class="dv" style="color: #AD0000;">40</span>,<span class="dv" style="color: #AD0000;">884</span>,<span class="dv" style="color: #AD0000;">230</span>,<span class="dv" style="color: #AD0000;">12988</span>,<span class="dv" style="color: #AD0000;">30</span>,<span class="dv" style="color: #AD0000;">609</span>,<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">50</span>,<span class="dv" style="color: #AD0000;">220</span>,<span class="dv" style="color: #AD0000;">70</span>,<span class="dv" style="color: #AD0000;">36</span>,<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">26</span>,<span class="dv" style="color: #AD0000;">169</span>,<span class="dv" style="color: #AD0000;">23</span>,<span class="dv" style="color: #AD0000;">15</span>,<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">74</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">27</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">20</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">8</span>,<span class="dv" style="color: #AD0000;">13742</span>,<span class="dv" style="color: #AD0000;">59661</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">0</span>))</span>
@@ -963,7 +1003,6 @@ the       the   26</code></pre>
 <span id="cb6-15">    <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"现存病例数"</span>,</span>
 <span id="cb6-16">    <span class="at" style="color: #657422;">values =</span> <span class="fu" style="color: #4758AB;">brewer.pal</span>(<span class="dv" style="color: #AD0000;">7</span>,<span class="st" style="color: #20794D;">"Reds"</span>),</span>
 <span id="cb6-17">    <span class="at" style="color: #657422;">labels=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"0-10"</span>,<span class="st" style="color: #20794D;">"10-100"</span>,<span class="st" style="color: #20794D;">"100-500"</span>, <span class="st" style="color: #20794D;">"500-1000"</span>,<span class="st" style="color: #20794D;">"1000-10000"</span>,<span class="st" style="color: #20794D;">"10000-50000"</span>,<span class="st" style="color: #20794D;">"&gt;50000"</span>))</span></code></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="https://chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1106,11 +1145,8 @@ the       the   26</code></pre>
 <p><strong><em>人口金字塔图</em></strong>可以形象的展示人口结构，而动态人口金字塔则可以直观的展示历年人口结构的变化情况，从而可以直观的对人口数据进行质量控制，本篇博文讲介绍如何利用R语言Rmd文档输出动态人口金字塔图。</p>
 <p>首先，我们先看一下需要准备的人口数据结构,数据集包含某个地区男性和女性每年的不同年龄组的人口数（5岁一组），年份变量为year，性别变量为sex，人口数据分别为r0、r1、r5、r10、… 、r85等。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_15a4ce92de0c3e32b3b078d870defe58">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1">data<span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">read.csv</span>(<span class="st" style="color: #20794D;">"population.csv"</span>)</span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;">head</span>(data)</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  year  sex   r0    r1    r5   r10   r15   r20   r25   r30   r35   r40   r45
 1 2009 男性 5992 22345 25843 26164 43929 54912 58033 47602 54539 50224 40894
@@ -1135,8 +1171,6 @@ the       the   26</code></pre>
 <section id="数据处理" class="level2">
 <h2 class="anchored" data-anchor-id="数据处理">数据处理</h2>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_6b76efc4d074030518966fce8130c338">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
 <span id="cb3-2"><span class="fu" style="color: #4758AB;">library</span>(tidyr)</span>
 <span id="cb3-3">data <span class="ot" style="color: #003B4F;">&lt;-</span> data <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
@@ -1152,7 +1186,6 @@ font-style: italic;">## 整理年龄组变量，添加标签转换显示格式</
 font-style: italic;">## 把男性人口数转换为负值，以是条图显示在左侧</span></span>
 <span id="cb3-11">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">rks=</span><span class="fu" style="color: #4758AB;">round</span>(rks<span class="sc" style="color: #5E5E5E;">/</span><span class="fu" style="color: #4758AB;">sum</span>(rks),<span class="dv" style="color: #AD0000;">4</span>),</span>
 <span id="cb3-12">         <span class="at" style="color: #657422;">rks=</span><span class="fu" style="color: #4758AB;">ifelse</span>(sex<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"男性"</span>,<span class="sc" style="color: #5E5E5E;">-</span>rks,rks))</span></code></pre></div>
-</details>
 </div>
 </section>
 <section id="rmd-code-chunk-选项" class="level2">
@@ -1164,8 +1197,6 @@ font-style: italic;">## 把男性人口数转换为负值，以是条图显示�
 <h2 class="anchored" data-anchor-id="利用for循环和ggplot2制作金字塔图">利用for循环和ggplot2制作金字塔图</h2>
 <p>在代码块内部，使用for循环和ggplot2生成多个年份的人口金子塔图即可。</p>
 <div class="cell" data-animation.hook="gifski" data-hash="index_cache/html/unnamed-chunk-3_51368b6ae7040c1e61808bd0beff0a0a">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="do" style="color: #5E5E5E;
 font-style: italic;">## 加载ggplot2包</span></span>
 <span id="cb4-2"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
@@ -1193,7 +1224,6 @@ font-style: italic;">## 建立for循环</span></span>
 <span id="cb4-23">        <span class="at" style="color: #657422;">plot.subtitle=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">face=</span><span class="st" style="color: #20794D;">"bold"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">20</span>,<span class="at" style="color: #657422;">hjust=</span><span class="fl" style="color: #AD0000;">0.8</span>))<span class="ot" style="color: #003B4F;">-&gt;</span>p</span>
 <span id="cb4-24">  <span class="fu" style="color: #4758AB;">plot</span>(p)</span>
 <span id="cb4-25">}</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
 ℹ Please use the `linewidth` argument instead.</code></pre>
@@ -1539,19 +1569,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan1.jpg" class="lightbox" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" title="钱串儿" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan1.jpg" class="lightbox" title="钱串儿" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan2.jpg" class="lightbox" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" title="钱串儿" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan2.jpg" class="lightbox" title="钱串儿" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/qianchuan3.jpg" class="lightbox" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" title="钱串儿" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/qianchuan3.jpg" class="lightbox" title="钱串儿" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
 </figure>
 </div>
@@ -1559,19 +1589,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/juhua.jpg" class="lightbox" data-description="商家说是可以过冬。" title="菊花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/juhua.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/juhua.jpg" class="lightbox" title="菊花" data-description="商家说是可以过冬。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/juhua.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">菊花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/cherry.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="看樱桃" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/cherry.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/cherry.jpg" class="lightbox" title="看樱桃" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/cherry.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">看樱桃</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0023.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0023.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1579,19 +1609,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0019.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0019.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0013.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0013.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0011.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0011.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1599,19 +1629,19 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0010.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0010.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0006.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0006.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="img/IMG_0005.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" title="海棠花" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="img/IMG_0005.jpg" class="lightbox" title="海棠花" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
 </figure>
 </div>
@@ -1626,76 +1656,6 @@ font-style: italic;">## 建立for循环</span></span>
   <guid>https://chenq.site/qsight/2022-03-19-picture/index.html</guid>
   <pubDate>Sat, 19 Mar 2022 00:00:00 GMT</pubDate>
   <media:content url="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan1.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>河南省29个肿瘤登记处荣获国家癌症中心表彰</title>
-  <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-03-18-xianjin/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>为贯彻落实《健康中国行动–癌症防治行动实施方案(2019-2022年)》及国家卫生健康委员会、国家中医药管理局《肿瘤登记管理办法》(国卫疾控发[2015]6号)文件精神，进一步做好肿瘤随访登记工作，加强我国肿瘤登记工作规范化管理，健全我国肿瘤监测信息系统，掌握我国恶性肿瘤的流行状况与疾病负担，充分发挥优秀肿瘤登记处的示范引领作用。国家癌症中心对全国肿瘤登记处进行综合考评，授予16个省级登记处“省级单位杰出贡献奖”；授予38个登记处“肿瘤登记工作杰出贡献奖”；授予178个登记处“肿瘤登记工作优秀奖”；授予120个登记处“肿瘤登记工作进步奖”。</p>
-<p>河南省2021年肿瘤登记工作共荣获29项奖励，具体获奖肿瘤登记处及荣获奖励如下：</p>
-<section id="省级单位杰出贡献奖" class="level2">
-<h2 class="anchored" data-anchor-id="省级单位杰出贡献奖">省级单位杰出贡献奖</h2>
-<p>河南省肿瘤医院荣获“省级单位杰出贡献奖”</p>
-</section>
-<section id="肿瘤登记工作杰出贡献奖" class="level2">
-<h2 class="anchored" data-anchor-id="肿瘤登记工作杰出贡献奖">肿瘤登记工作杰出贡献奖</h2>
-<p>林州市肿瘤医院荣获“肿瘤登记工作杰出贡献奖”</p>
-</section>
-<section id="肿瘤登记工作优秀奖" class="level2">
-<h2 class="anchored" data-anchor-id="肿瘤登记工作优秀奖">肿瘤登记工作优秀奖</h2>
-<p>共有16个肿瘤登记处荣获“肿瘤登记工作优秀奖”。</p>
-<ul>
-<li>偃师市疾病预防控制中心</li>
-<li>西平县疾病预防控制中心</li>
-<li>洛阳市疾病预防控制中心</li>
-<li>鲁山县疾病预防控制中心</li>
-<li>辉县市疾病预防控制中心</li>
-<li>禹州市疾病预防控制中心</li>
-<li>郾城区疾病预防控制中心</li>
-<li>源汇区疾病预防控制中心</li>
-<li>内乡县疾病预防控制中心</li>
-<li>罗山县疾病预防控制中心</li>
-<li>沈丘县疾病预防控制中心</li>
-<li>郸城县疾病预防控制中心</li>
-<li>济源市疾病预防控制中心</li>
-<li>开封市祥符区疾病预防控制中心</li>
-<li>鹤壁市人民医院</li>
-<li>睢县疾病预防控制中心</li>
-</ul>
-</section>
-<section id="肿瘤登记工作进步奖" class="level2">
-<h2 class="anchored" data-anchor-id="肿瘤登记工作进步奖">肿瘤登记工作进步奖</h2>
-<p>共有11个肿瘤登记荣获“肿瘤登记工作进步奖”。</p>
-<ul>
-<li>孟津县疾病预防控制中心</li>
-<li>新安县疾病预防控制中心</li>
-<li>栾川县疾病预防控制中心</li>
-<li>嵩县疾病预防控制中心</li>
-<li>汝阳县疾病预防控制中心</li>
-<li>召陵区疾病预防控制中心</li>
-<li>方城县疾病预防控制中心</li>
-<li>洛宁县疾病预防控制中心</li>
-<li>华龙区疾病预防控制中心</li>
-<li>濮阳县疾病预防控制中心</li>
-<li>浉河区疾病预防控制中心</li>
-</ul>
-</section>
-<section id="表彰文件下载" class="level2">
-<h2 class="anchored" data-anchor-id="表彰文件下载">表彰文件下载</h2>
-<p><a href="2021_xianjin.pdf">国家癌症中心便函[2021]第3号</a></p>
-
-
-</section>
-
- ]]></description>
-  <category>肿瘤登记</category>
-  <guid>https://chenq.site/qsight/2022-03-18-xianjin/index.html</guid>
-  <pubDate>Fri, 18 Mar 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

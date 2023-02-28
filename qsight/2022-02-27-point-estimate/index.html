@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -253,9 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -267,10 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>首先，我们生成一组比值比可信区间数据，包含5个变量：group分组1,2,3,4分别代表Q1、Q2、Q3和Q4；type：指标类型，1代表PM10,2代表PM2.5；value代表OR值，lower和upper分别代表95%可信区间的下限和上限。</p>
 <p>然后，我们把group和type两个变量因子化，并添加相应的值标签，这样标签数据就可以显示到图上。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_c3bfab20daba0ac64f118a651575a8f5">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 载入程辑包：'dplyr'</code></pre>
@@ -285,8 +280,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="at">group=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>),</span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="at">type=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">4</span>)),</span>
@@ -297,12 +290,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-8"><a href="#cb5-8"></a></span>
 <span id="cb5-9"><a href="#cb5-9"></a>df<span class="ot">&lt;-</span>df<span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">group=</span><span class="fu">factor</span>(group,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Q1"</span>,<span class="st">"Q2"</span>,<span class="st">"Q3"</span>,<span class="st">"Q4"</span>)),</span>
 <span id="cb5-10"><a href="#cb5-10"></a>                <span class="at">type=</span><span class="fu">factor</span>(type,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"PM10"</span>,<span class="st">"PM2.5"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>我们可以利用ggplot2的geom_point函数绘制OR值的点，利用geom_errorbar函数绘制95%可信区间的上下限值，利用geom_hline函数绘制参考线，然后利用facet_wrap函数把两个指标的图绘制到一张图上。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_ad7d5f9571bbf3bab616a5afcfca0a11">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>df<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>group,<span class="at">y=</span>value))<span class="sc">+</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour=</span>type),<span class="at">shape=</span><span class="st">"square"</span>,<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
@@ -318,7 +308,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-13"><a href="#cb6-13"></a>    <span class="at">legend.title =</span>  <span class="fu">element_blank</span>()</span>
 <span id="cb6-14"><a href="#cb6-14"></a>  )<span class="ot">-&gt;</span>pp</span>
 <span id="cb6-15"><a href="#cb6-15"></a><span class="fu">ggsave</span>(<span class="st">"ratio.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Saving 7 x 5 in image</code></pre>
 </div>

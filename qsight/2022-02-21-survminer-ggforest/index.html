@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -253,22 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#什么是森林图" id="toc-什么是森林图" class="nav-link active" data-scroll-target="#什么是森林图">什么是森林图？</a></li>
-  <li><a href="#实现森林图的方法有哪些" id="toc-实现森林图的方法有哪些" class="nav-link" data-scroll-target="#实现森林图的方法有哪些">实现森林图的方法有哪些？</a></li>
-  <li><a href="#如何安装survminer包" id="toc-如何安装survminer包" class="nav-link" data-scroll-target="#如何安装survminer包">如何安装survminer包？</a></li>
-  <li><a href="#准备数据" id="toc-准备数据" class="nav-link" data-scroll-target="#准备数据">准备数据</a></li>
-  <li><a href="#首先我们对colon数据预处理一下" id="toc-首先我们对colon数据预处理一下" class="nav-link" data-scroll-target="#首先我们对colon数据预处理一下">首先我们对colon数据预处理一下</a></li>
-  <li><a href="#利用colon数据来拟合预后风险" id="toc-利用colon数据来拟合预后风险" class="nav-link" data-scroll-target="#利用colon数据来拟合预后风险">利用colon数据来拟合预后风险</a></li>
-  <li><a href="#利用ggforest函数输出森林图" id="toc-利用ggforest函数输出森林图" class="nav-link" data-scroll-target="#利用ggforest函数输出森林图">利用ggforest函数输出森林图</a></li>
-  <li><a href="#小结" id="toc-小结" class="nav-link" data-scroll-target="#小结">小结</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -301,11 +286,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>加载survival包时，自动加载了colon数据框，我们就可以利用这个数据来拟合预后风险。</p>
 <p>首先加载survival包，并查看一下colon数据框的基本情况</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_dbf5691a671872f28d5fe4aa1cc542ef">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 加载dplyr包进行数据处理</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 载入程辑包：'dplyr'</code></pre>
@@ -320,12 +302,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(survival)</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co"># 看下colon数据的结构</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="fu">head</span>(colon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id study      rx sex age obstruct perfor adhere nodes status differ extent
 1  1     1 Lev+5FU   1  43        0      0      0     5      1      2      3
@@ -349,8 +328,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>我们对sex变量和differ变量因子化，并增加中文值标签。</p>
 <p>如果我们想在森林图里显示交互作用项，那么就需要提前处理数据，比如我们想看surg和nodes的交互作用，我们可以把两者的相乘项加入模型里。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_a28c436ed65ba4e7d59c4bd8b63e5e25">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># 预处理colon数据框</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>colon <span class="ot">&lt;-</span> colon<span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">mutate</span>(<span class="at">sex=</span><span class="fu">factor</span>(sex, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"女性"</span>, <span class="st">"男性"</span>)),</span>
@@ -359,17 +336,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-6"><a href="#cb9-6"></a>         <span class="at">interaction=</span>surg<span class="sc">*</span>nodes,</span>
 <span id="cb9-7"><a href="#cb9-7"></a>         <span class="at">surg=</span> <span class="fu">factor</span>(surg,<span class="at">label=</span><span class="fu">c</span>(<span class="st">"非手术组"</span>,<span class="st">"手术组"</span>))</span>
 <span id="cb9-8"><a href="#cb9-8"></a>         )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 <section id="利用colon数据来拟合预后风险" class="level2">
 <h2 class="anchored" data-anchor-id="利用colon数据来拟合预后风险">利用colon数据来拟合预后风险</h2>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_475724c5d01301887c75141c24d2b205">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>model <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> sex <span class="sc">+</span>  differ <span class="sc">+</span> surg <span class="sc">+</span> nodes <span class="sc">+</span> interaction, <span class="at">data =</span> colon )</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 coxph(formula = Surv(time, status) ~ sex + differ + surg + nodes + 
@@ -416,10 +389,7 @@ Score (logrank) test = 214.7  on 6 df,   p=&lt;2e-16</code></pre>
 <li>main=“图标的标题”，设置图的标题。</li>
 </ol>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-4_272e361d0c1203eae915b40f10a1b80a">
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">library</span>(survminer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>载入需要的程辑包：ggplot2</code></pre>
 </div>
@@ -435,8 +405,6 @@ Score (logrank) test = 214.7  on 6 df,   p=&lt;2e-16</code></pre>
 
     myeloma</code></pre>
 </div>
-<details>
-<summary>显示代码</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">ggforest</span>(<span class="at">model =</span> model,</span>
 <span id="cb17-2"><a href="#cb17-2"></a>         <span class="at">data =</span> colon,</span>
 <span id="cb17-3"><a href="#cb17-3"></a>         <span class="at">cpositions =</span> <span class="fu">c</span>(<span class="fl">0.01</span>,<span class="fl">0.1</span>,<span class="fl">0.3</span>),</span>
@@ -445,7 +413,6 @@ Score (logrank) test = 214.7  on 6 df,   p=&lt;2e-16</code></pre>
 <span id="cb17-6"><a href="#cb17-6"></a>         <span class="at">noDigits=</span><span class="dv">2</span>,</span>
 <span id="cb17-7"><a href="#cb17-7"></a>         <span class="at">main =</span> <span class="st">"预后因素回归分析"</span>)<span class="ot">-&gt;</span>pp</span>
 <span id="cb17-8"><a href="#cb17-8"></a><span class="fu">ggsave</span>(<span class="st">"forest.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Saving 7 x 5 in image</code></pre>
 </div>
