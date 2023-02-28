@@ -56,7 +56,7 @@ format:
   html:
     code-line-numbers: true
     code-block-border-left: "#31BAE9"
-    toc: true
+    toc: false
     theme: flatly
     css: styles.css
     include-in-header: baidusta.html

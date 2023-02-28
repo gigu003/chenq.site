@@ -11,7 +11,7 @@ title-block-categories: true
 
 format:
   html:
-    code-fold: true
+    code-fold: false
     code-summary: "显示代码"
     pagelayout: full
 

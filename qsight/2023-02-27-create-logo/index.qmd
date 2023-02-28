@@ -1,0 +1,105 @@
+---
+title: 开发R包一定要有一个高逼格logo
+subtitle: 利用hexSticker包快速制作R包logo
+date: "2023-02-27"
+slug: create-r-logo
+categories: [logo, R语言, R包]
+keywords: [R语言, logo, R包]
+toc: true
+---
+
+![canregtools](canregtools.png)
+
+自从我参加工作以来，一直使用SAS统计软件协助分析肿瘤登记数据。在这段时间内，我积累了大量的SAS宏和程序，对我的工作产生了很大的帮助。比如说，肿瘤数据的逻辑核查功能、报告数据生成功能、制作肿瘤登记年报等，这些程序在很大程度上提高了工作效率。但是，与R语言或Stata软件不同，SAS公司没有以包的形式分享相关的函数或功能，这也带来了很多不便。跟同事分享SAS分享程序时，可能因为系统环境或者其他因素的不同，造成程序不能执行。R包的制作有严格的流程和要求，能够很大程度上避免这种情况的发生。
+
+今年年初定下的目标就是利用休息时间把这个包付出实践，最近这几天制作了其中的一个函数classify_icd10()，以后有时间再逐步完善相关的功能。虽然现在只有这一个函数，但是麻雀虽小五脏俱全。包的名字从cnCanreg到PBCRtools，再到canregtools，已经换了三次了，最终采用canregtools。[canregtools](https://github.com/gigu003/canregtools)的代码托管到了[github](https://github.com/gigu003)上，以方便代码管理。制作了[canregtools网站](https://gigu003.github.io/canregtools/)，方便使用者查找并使用相关功能。
+
+为了提高逼格，还制作了canregtools的logo，把一个癌细胞的图片和河南省癌症的年龄别发病率曲线整合到一块，最后制作成了六角的logo。
+
+下面跟大家分享一下制作这个logo的代码。
+
+##  制作癌症年龄别发病率折线图
+
+首先，读入年龄别发病率的数据，然后，利用ggplot2制作折线图，重点是要把图片背景设置成透明。
+
+```{r}
+#| message: false
+#| warning: false
+
+# 加载tidyverse包 
+library(tidyverse)
+# 读取年龄别发病率数据
+data <- read.csv("data.csv")
+head(data)
+
+#绘制癌症年龄别发病率折线图
+pic <-
+  data %>% 
+  ggplot(aes(x=agegrp,y=incidence,color=sex))+
+  geom_line(size=1) +
+  ylab("Cancer Incidence")+
+  xlab("Age groups (years)")+
+  theme_void()+
+  theme(legend.position = "none",
+        plot.background = element_blank()
+        )
+
+plot(pic)
+```
+
+
+
+## 把肿瘤细胞图片读入R中
+
+我从google上搜索了一张癌细胞的图片，并利用在线工具把这张图片的背景去除。然后，利用magick包读取图片进入R环境中，转化成ggplot2可识别的元素，最后，以注释的方式加入前面生成折线图中。
+
+
+```{r}
+library(magick)
+# 读取肿瘤细胞的图片
+pcs <- image_read("cancer-cell.png")
+image <- image_fill(pcs,"none")
+raster <- as.raster(image)
+
+# 把肿瘤细胞的图片添加到ggplot2绘制的折线图上
+myplot <- pic +
+  annotation_raster(raster = raster, 0, 30, 100, 700)
+myplot
+```
+
+
+## 制作六角R包logo
+
+最后利用hexSticker包制作logo，具体语句如下。
+
+```{r}
+#| warning: false
+library(hexSticker)
+
+sticker(
+  subplot = myplot,
+  package = "canregtools",
+  s_width = 1,
+  s_height = .8,
+  s_x = 1,
+  s_y = .75,
+  p_size = 14,
+  p_color = "purple",
+  p_fontface = "bold",
+ # p_family = "Apple Braille",
+  h_fill = "gold",
+  h_color = "hotpink",
+  h_size = 1.5,
+  url = "canregtools.chenq.site/canregtools",
+  u_size = 3,
+  u_color = "violetred",
+  spotlight = T,
+  l_y = 1,
+  l_x = 1,
+  l_width = 3,
+  l_height = 3,
+  l_alpha = .3
+) %>% print()
+```
+
+效果怎么样？对于审美感不足的我来说，还算可以吧！
