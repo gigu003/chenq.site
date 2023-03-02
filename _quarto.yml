@@ -23,6 +23,9 @@ website:
       - icon: tropical-storm
         href: /qsight/
         text: Qsight博客
+      - icon: package
+        href: https://gigu003.github.io/canregtools
+        text: Packages
       - icon: journal-medical
         href: /publications/
         text: 出版作品
