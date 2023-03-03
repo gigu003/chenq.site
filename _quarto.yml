@@ -13,10 +13,7 @@ website:
   open-graph: true
   site-url: https://chenq.site
   reader-mode: false
-  cookie-consent:
-    type: express
-    style: headline
-    palette: dark
+
   navbar:
     background: primary
     search: true
