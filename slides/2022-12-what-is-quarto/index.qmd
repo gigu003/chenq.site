@@ -1,8 +1,9 @@
 ---
-title: "为什么要用Quarto?"
+title: "科技写作，我选择使用Quarto?"
 subtitle: 从 markdown 到 Rmarkdown 再到 quarto
 author: "Qiong Chen"
 date: 2022-12-10
+categories: ["R语言基础"]
 from: markdown+emoji
 title-slide-attributes:
     data-background-image: ../theme-images/slides-body-hospital.jpeg

@@ -22,30 +22,30 @@ listing:
     date-format: "YYYY-MM-DD"
     page-size: 999
     feed: true
+  - id: books
+    contents: books
+    type: grid
+    fields: [image]
+    grid-columns: 6
+    grid-item-align: left
+    grid-item-border: true
+    image-height: 200 em
+    page-size: 6
+    
 language:
   listing-page-field-categories: "文章类型"
 ---
 
-# 出版作品
+## 出版作品
 [&nbsp;&nbsp;CNKI作者&nbsp;&nbsp;](https://kns.cnki.net/kcms/detail/knetsearch.aspx?sfield=au&skey=陈琼&code=000033286925&v=L99VyCTXNqM33Iuyy_4c1O5o_4zvwh6EMZ8EGPBPbRz3L2FSij4Nu8tOzs8xmWMq){.badge .badge-large}
  &nbsp;&nbsp;&nbsp;&nbsp; [&nbsp;&nbsp;万方作者&nbsp;&nbsp;](https://fx.wanfangdata.com.cn/scholartrends/detail?scholar_id=a0003863732&scholar_name=陈琼&org_name=河南省肿瘤医院%3B郑州大学附属肿瘤医院){.badge .badge-large}&nbsp;&nbsp;&nbsp;&nbsp;   [&nbsp;&nbsp;Google Scholar &nbsp;&nbsp;](https://scholar.google.com/citations?user=KKgW5AwAAAAJ&hl=zh-CN){.badge .badge-large}   
 
 ## 参编书籍
 
-<div class="imgrow">
-<div class="imgcolumn">
-<a href="http://www.anti-cancer.com.cn/Sites/ereport/2020/index.html"><img src="cover/2020.jpg" height=200 align="center"></a>
-</div>
-<div class="imgcolumn">
-<a href="/expsmooth/"><img src="cover/2019.jpg" height=200></a>
-</div>
-<div class="imgcolumn">
-<a href="/forecasting/"><img src="cover/2018.jpg" height=200></a>
-</div>
-<div class="imgcolumn">
-<a href="/unbelievable/"><img src="cover/2017.jpg" height=200></a>
-</div>
-</div>
+::: {#books}
+:::
+
+
 
 
 ## 第一作者论文

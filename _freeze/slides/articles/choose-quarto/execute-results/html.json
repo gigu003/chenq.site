@@ -1,0 +1,14 @@
+{
+  "hash": "1acb7e6f4eba239e9cdb9232efeaf7bd",
+  "result": {
+    "markdown": "---\ntitle: 科技写作，我选择使用quarto\ndate: 2023-03-02\ncategories: [\"R语言基础\"]\ntags: [\"安装\"]\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nknitr::include_url(\"https://www.chenq.site/slides/2022-12-what-is-quarto/#/title-slide\")\n```\n\n<iframe src=\"https://www.chenq.site/slides/2022-12-what-is-quarto/#/title-slide\" width=\"672\" height=\"400px\" data-external=\"1\"></iframe>\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
