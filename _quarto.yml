@@ -4,6 +4,7 @@ project:
     - "*.pdf"
     - baidu_verify_code-aDCTvXezZP.html
     - /report/2021/
+    - /fonts/
 
 website:
   title: "普癌新声"
