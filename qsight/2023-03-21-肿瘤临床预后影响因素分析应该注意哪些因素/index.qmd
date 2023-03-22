@@ -8,6 +8,7 @@ keywords:
   - 肿瘤预后分析
 date: 2023-03-21
 draft: false
+image: preview.jpg
 ---
 
 :::{.callout-tip collapse="true" }
