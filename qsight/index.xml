@@ -6,15 +6,69 @@
       version="2.0">
 <channel>
 <title>普癌新声</title>
-<link>https://chenq.site/qsight/index.html</link>
-<atom:link href="https://chenq.site/qsight/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://www.chenq.site/qsight/index.html</link>
+<atom:link href="https://www.chenq.site/qsight/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
 <generator>quarto-1.3.14</generator>
-<lastBuildDate>Mon, 27 Feb 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 21 Mar 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>肿瘤临床预后影响因素分析应该注意哪些因素?</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://www.chenq.site/qsight/2023-03-21-肿瘤临床预后影响因素分析应该注意哪些因素/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+肿瘤预后影响因素分析，下面这些问题你考虑过吗？
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>怎样才能确定因素是否为预后独立影响因素？</li>
+<li>如何筛选潜在的混杂因素？</li>
+<li>如何判断模型拟合效果？</li>
+<li>需要使用哪个统计模型？</li>
+<li>结果数据该如何展现？</li>
+</ul>
+</div>
+</div>
+</div>
+<p>今天我所审读的这篇论文题目是“淋巴瘤临床流行病学特点及利妥昔单抗和BTK抑制剂应用对预后影响”的文章，由于该文章正处于投稿阶段，不能把文章展示出来，但是这篇文章存在的一些问题是目前肿瘤预后分析时一些常见的问题，也是一些共性的问题，今天在这里分享一下我的一些观点和看法，如果刚好你也在进行相关的研究或者数据分析，不妨停下来看一看，说不定对你有所帮助。</p>
+<p>临床上肿瘤预后影响因素分析的文章有很多，大多为分析治疗因素对预后的影响，预后的指标多为总体生存和无进展生存。我看过一些临床的论文，得出的最后结论提示某某因素是某癌症预后的<strong>独立</strong>影响因素，那你有没有想过什么是独立的预后影响因素？达到什么样的条件才能成为独立的预后影响因素？</p>
+<p>我们先把这个问题放到一边，先从临床的角度想一想，癌症的预后可能与哪些因素有关系？除了治疗因素之外，癌症诊断时的临床分期、病理类型、患者的基础状态以及其他的一些流行病学因素可能均与癌症的预后有关系，这些因素可能在一定程度上影响着患者的总体生存（OS）或者无进展生存（PFS），但是它们对预后影响的效应可能大小不一。</p>
+<p>当我们把焦点聚焦到某一个因素上时，比如治疗因素时，我们想通过收集的数据分析一下治疗因素对预后影响的效应大小，那么我们就需要把其他可能影响因素效应排除在外，即把治疗因素以外因素的效应调整之后，才能显示出来治疗因素对预后影响的真实效应。</p>
+<p>那从流行病学的角度来讲的话，上面所说的过程就是<strong>去除混杂因素</strong>的过程，简单的说，所研究因素之外，可能对研究结局产生影响的因素就是混杂因素。那在实际数据分析的过程中，怎么判断哪些因素是混杂因素需要调整，而哪些因素不是混杂因素而不需要调整呢？</p>
+<p>我觉得可以从两个方面来判断，首先是从专业方面，我们可以通过阅读文献来了解目前证据所支持的所研究结局的影响因素有哪些？这些可能都是<strong>潜在</strong>的混杂因素。我们知道了这些因素之后，在数据收集阶段应该尽可能的把这些因素收集上来，以备后面的分析来用；第二个方面，就是利用自己研究所收集的数据来探索分析，通常按照<em>研究因素分层</em>来看其他不同的因素在不同层间是否分布均衡，如果不均衡的话，那么就需要这些层间不均衡分布的因素，也列入潜在的混杂因素清单，需要纳入调整模型进行校正。</p>
+<p>那我们再从统计的角度来说，临床上常用的预后影响因素分析的统计学方法为Cox比例风险回归模型。这个阶段已经数据分析的最后阶段了，我们把所研究因素（治疗方法）作为自变量，把潜在的混杂因素作为协变量，把结局因素（生存状态，生存时间）作为因变量纳入Cox比例风险回归模型进行模型的拟合。调整了协变量的影响之后，研究因素与结局之间的关系，通常用HR来表示，才是真正的研究因素对研究结局的效应大小。</p>
+<p>当然在这一步骤里，有人会问：“所有这些潜在的混杂因素最终都要放入模型吗，有没有一些潜在的混杂因素会剔除出模型？”</p>
+<p>答案是会的，有一些潜在混杂因素会剔除出模型，主要还是要看模型拟合的情况。如果研究样本量不大，而潜在的混杂因素又很多的时候，我们就需要评估纳入哪些变量以使模型的拟合效果更好(R^2)。或者通过把这个变量纳入和剔除模型前后对研究因素对结局变量效应值的影响大小来判断，如果变化超过10%，那么我们可以考虑纳入模型，反之则剔除出模型。</p>
+<p>现在再回到前面第二段的问题，什么样的因素才是癌症预后独立的影响因素呢？</p>
+<p>如果你认真看完了上面的几段，我想答案应该显而易见了，所谓癌症预后的独立影响因素应该是排除了研究因素与研究结局之间除了研究因素以外的所有干扰因素之后，研究因素仍然对结局有影响，那么我们可以成为这个研究因素是结局的独立影响因素。</p>
+<p>以上的过程是我所理解的肿瘤临床预后影响因素分析的大概过程，这个过程虽然听起来挺简单的，但是总会有各种各样的问题出现。比如统计方法的使用是否合适、该展示的数据没有展示出来等等。</p>
+<p>数据分析完成之后，我们就需要以论文或者报告的形式把分析的结果展示出来。我们都知道任何一项研究都不可能做到非常完美，但是我们所能做的就是尽可能得调整混杂因素，去伪存真，展示真实的结局。</p>
+<p>在论文撰写的时候，我们要向读者展示出来，所有可能影响结果的地方，我都已经考虑了，而且进行了调整，而有些内容确实没有办法做，我们可以把它列入研究存在的不足和限制方面。如果能做到这一点，我相信你的论文应该是一篇质量很高的论文，还愁发表吗？</p>
+<p>这就是我对临床肿瘤预后分析的一点理解，如果你有不同的见解请告诉我，将不胜感激！</p>
+
+
+
+ ]]></description>
+  <category>数据分析</category>
+  <guid>https://www.chenq.site/qsight/2023-03-21-肿瘤临床预后影响因素分析应该注意哪些因素/index.html</guid>
+  <pubDate>Tue, 21 Mar 2023 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>开发R包一定要有一个高逼格logo</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2023-02-27-create-logo/index.html</link>
+  <link>https://www.chenq.site/qsight/2023-02-27-create-logo/index.html</link>
   <description><![CDATA[ 
 
 
@@ -22,7 +76,7 @@
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/qsight/2023-02-27-create-logo/canregtools.png" class="img-fluid figure-img"></p>
+<p><img src="https://www.chenq.site/qsight/2023-02-27-create-logo/canregtools.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">canregtools</figcaption><p></p>
 </figure>
 </div>
@@ -62,7 +116,7 @@
 <span id="cb3-12"></span>
 <span id="cb3-13"><span class="fu" style="color: #4758AB;">plot</span>(pic)</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2023-02-27-create-logo/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://www.chenq.site/qsight/2023-02-27-create-logo/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -86,7 +140,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <span id="cb6-8">  <span class="fu" style="color: #4758AB;">annotation_raster</span>(<span class="at" style="color: #657422;">raster =</span> raster, <span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">30</span>, <span class="dv" style="color: #AD0000;">100</span>, <span class="dv" style="color: #AD0000;">700</span>)</span>
 <span id="cb6-9">myplot</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2023-02-27-create-logo/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://www.chenq.site/qsight/2023-02-27-create-logo/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -121,7 +175,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <span id="cb7-25">  <span class="at" style="color: #657422;">l_alpha =</span> .<span class="dv" style="color: #AD0000;">3</span></span>
 <span id="cb7-26">) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">print</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2023-02-27-create-logo/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://www.chenq.site/qsight/2023-02-27-create-logo/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>效果怎么样？对于审美感不足的我来说，还算可以吧！</p>
@@ -130,17 +184,15 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </section>
 
  ]]></description>
-  <category>logo</category>
-  <category>R语言</category>
-  <category>R包</category>
-  <guid>https://chenq.site/qsight/2023-02-27-create-logo/index.html</guid>
+  <category>个人网站</category>
+  <guid>https://www.chenq.site/qsight/2023-02-27-create-logo/index.html</guid>
   <pubDate>Mon, 27 Feb 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2023-02-27-create-logo/canregtools.png" medium="image" type="image/png" height="167" width="144"/>
+  <media:content url="https://www.chenq.site/qsight/2023-02-27-create-logo/canregtools.png" medium="image" type="image/png" height="167" width="144"/>
 </item>
 <item>
   <title>2023年给我的开年惊喜</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2023-02-08-paper-award/index.html</link>
+  <link>https://www.chenq.site/qsight/2023-02-08-paper-award/index.html</link>
   <description><![CDATA[ 
 
 
@@ -151,7 +203,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/qsight/2023-02-08-paper-award/images/award.png" class="img-fluid figure-img"></p>
+<p><img src="https://www.chenq.site/qsight/2023-02-08-paper-award/images/award.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption"><strong>2012-2021年中国肿瘤杂志-卓越论文奖励证书</strong></figcaption><p></p>
 </figure>
 </div>
@@ -162,7 +214,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/qsight/2023-02-08-paper-award/images/email.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://www.chenq.site/qsight/2023-02-08-paper-award/images/email.jpg" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption"><strong>中国肿瘤杂志编辑部来信</strong></figcaption><p></p>
 </figure>
 </div>
@@ -176,14 +228,14 @@ Disabled features: fftw, ghostscript, x11</code></pre>
  ]]></description>
   <category>生活</category>
   <category>论文写作</category>
-  <guid>https://chenq.site/qsight/2023-02-08-paper-award/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2023-02-08-paper-award/index.html</guid>
   <pubDate>Wed, 08 Feb 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2023-02-08-paper-award/images/award.png" medium="image" type="image/png" height="101" width="144"/>
+  <media:content url="https://www.chenq.site/qsight/2023-02-08-paper-award/images/award.png" medium="image" type="image/png" height="101" width="144"/>
 </item>
 <item>
   <title>可重复式研究报告:从blogdown,bookdown,pagedown到Quarto</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-12-05-rmd-to-quarto/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-12-05-rmd-to-quarto/index.html</link>
   <description><![CDATA[ 
 
 
@@ -198,7 +250,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <section id="可重复性报告" class="level2">
 <h2 class="anchored" data-anchor-id="可重复性报告">可重复性报告</h2>
 <p>但是Rmd/rmarkown文档及<a href="https://yihui.org/knitr/">knitr</a>的出现解决了这一问题，Rmd格式文档通过把通用的markdown和嵌入的R语言代码块结合起来，通过knitr包把rmd文档编译成统一的md文档，然后再通过pandoc转成各种格式，如html、PDF、Word、slides等。</p>
-<p><img src="https://chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-pipeline-pandoc.png" class="img-fluid" alt="rmd-pipeline-pandoc"></p>
+<p><img src="https://www.chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-pipeline-pandoc.png" class="img-fluid" alt="rmd-pipeline-pandoc"></p>
 <p>这样我们在写研究报告的时候，就可以利用rmd把统计过程整合到统计报告的撰写中来，如果原始数据有变化，只需要重新执行一次编译过程就能更新整个研究报告了。 其实这个过程也就是我们所说的可重复性数据分析或者可重复性报告。</p>
 <div class="callout-note callout callout-style-simple callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -217,7 +269,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <section id="r-markdown" class="level2">
 <h2 class="anchored" data-anchor-id="r-markdown">R markdown</h2>
 <p>R markdown 是R实现可重复性数据分析/报告的主要生产力工具，自诞生以来，在Rstudio的加持下，其周边生态越来越完善，实现的功能也越来越多。比如做网站、博客、制作幻灯片、写书、写论文等。</p>
-<p><img src="https://chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-packages.png" class="img-fluid" alt="rmd-packages"></p>
+<p><img src="https://www.chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-packages.png" class="img-fluid" alt="rmd-packages"></p>
 <p>blogdown包可以结合hugo生成比较漂亮的网站或博客网站，bookdown可以生成各种形式的书籍包括word,pdf,epub,html等，xaringan可以做出容易在网络分享的漂亮幻灯片。</p>
 <p>但是R markdown也存在一些缺点，虽然这些包能够实现非常强大的功能，但是各种包之间缺乏统一的语法，实现同一功能的语法各有不同，对于使用者来说，需要付出很大的时间成本在各种包之间切换并记住不同的语法去实现不同的功能。</p>
 </section>
@@ -227,7 +279,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <blockquote class="blockquote">
 <p>Quarto® is an open-source scientific and technical publishing system built on Pandoc</p>
 </blockquote>
-<p><img src="https://chenq.site/qsight/2022-12-05-rmd-to-quarto/quarto.jpg" class="img-fluid" alt="quarto"></p>
+<p><img src="https://www.chenq.site/qsight/2022-12-05-rmd-to-quarto/quarto.jpg" class="img-fluid" alt="quarto"></p>
 <p><strong>Quarto</strong>相比于R markdown具有如下特点：</p>
 <ul>
 <li>它<em>可以</em>独立于R、Rstudio或者其他软件如python等编程或统计软件，支持在Macos、Linux、Windows系统运行；</li>
@@ -247,14 +299,14 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 
  ]]></description>
   <category>quarto</category>
-  <guid>https://chenq.site/qsight/2022-12-05-rmd-to-quarto/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-12-05-rmd-to-quarto/index.html</guid>
   <pubDate>Mon, 05 Dec 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-pipeline-pandoc.png" medium="image" type="image/png" height="90" width="144"/>
+  <media:content url="https://www.chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-pipeline-pandoc.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
   <title>如何安装quarto运行环境，并通过命令行建立简单的网站</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-12-02-quarto-install/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-12-02-quarto-install/index.html</link>
   <description><![CDATA[ 
 
 
@@ -264,7 +316,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <p>点击下面的链接，根据自己的系统环境下载相应的quarto版本。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://quarto.org/docs/get-started/index.html"><img src="https://chenq.site/qsight/2022-12-02-quarto-install/quarto.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="https://quarto.org/docs/get-started/index.html"><img src="https://www.chenq.site/qsight/2022-12-02-quarto-install/quarto.jpg" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 <p>安装完成后，测试一下，是否成功安装。</p>
@@ -272,7 +324,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1">quarto -v </span></code></pre></div>
 <p>如果是windows操作系统，打开CMD，输入如下命令: quarto -v ，同样如果显示版本号，则证明已正确安装。</p>
 <p>可以用<code>quarto -h</code>命令来查看常见的quarto命令。</p>
-<p><img src="https://chenq.site/qsight/2022-12-02-quarto-install/help.jpg" class="img-fluid" alt="常见quarto命令"> Quarto融合了Blogdown、Bookdown、xaringan等基于rmd包的优势，可以不用基于这些包，直接建立网站，博客，或者幻灯片。</p>
+<p><img src="https://www.chenq.site/qsight/2022-12-02-quarto-install/help.jpg" class="img-fluid" alt="常见quarto命令"> Quarto融合了Blogdown、Bookdown、xaringan等基于rmd包的优势，可以不用基于这些包，直接建立网站，博客，或者幻灯片。</p>
 <p>下面我们直接以网站为例，利用 create-project 命令建立一个website project。</p>
 <div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1">quarto create-project chen --type website</span></code></pre></div>
 <p>上面的命令在文件夹chen下面建立了一个类型为website的quarto project</p>
@@ -288,8 +340,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <span id="cb3-2">ls</span></code></pre></div>
 <p>如果已经正常生成，则可以用preview 命令来预览一下，quarto建立的默认的网站的样子。</p>
 <div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1">quarto preview</span></code></pre></div>
-<p><img src="https://chenq.site/qsight/2022-12-02-quarto-install/preview.jpg" class="img-fluid" alt="quarto preview"></p>
-<p>从上面的结果可以看出，preview把生成的网页配置到http://localhost:3070/,把该地址粘贴到浏览器地址栏中就可以看到，网页的样子了。 <img src="https://chenq.site/qsight/2022-12-02-quarto-install/website.jpg" class="img-fluid" alt="preview website"></p>
+<p><img src="https://www.chenq.site/qsight/2022-12-02-quarto-install/preview.jpg" class="img-fluid" alt="quarto preview"></p>
+<p>从上面的结果可以看出，preview把生成的网页配置到http://localhost:3070/,把该地址粘贴到浏览器地址栏中就可以看到，网页的样子了。 <img src="https://www.chenq.site/qsight/2022-12-02-quarto-install/website.jpg" class="img-fluid" alt="preview website"></p>
 <p>通过上面的简单的命令，就通过命令行建立的一个简单的网站，你还可以通过设置_quarto.yml 来配置更为附在的网站。</p>
 <p>通过纯命令行只是建立quarto website的一种方式，还可以通过Rstudio的菜单，VScode来建立网站。</p>
 
@@ -297,14 +349,14 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 
  ]]></description>
   <category>quarto</category>
-  <guid>https://chenq.site/qsight/2022-12-02-quarto-install/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-12-02-quarto-install/index.html</guid>
   <pubDate>Fri, 02 Dec 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-12-02-quarto-install/preview.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://www.chenq.site/qsight/2022-12-02-quarto-install/preview.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>git 如何设置忽略文件.gitignore</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-12-01-gitignore/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-12-01-gitignore/index.html</link>
   <description><![CDATA[ 
 
 
@@ -332,14 +384,14 @@ Disabled features: fftw, ghostscript, x11</code></pre>
  ]]></description>
   <category>quarto</category>
   <category>git</category>
-  <guid>https://chenq.site/qsight/2022-12-01-gitignore/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-12-01-gitignore/index.html</guid>
   <pubDate>Thu, 01 Dec 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-12-01-gitignore/ignore.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://www.chenq.site/qsight/2022-12-01-gitignore/ignore.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>Mermaid 绘制流程图</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-11-24-mindmap/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-11-24-mindmap/index.html</link>
   <description><![CDATA[ 
 
 
@@ -397,16 +449,15 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 
 
  ]]></description>
-  <category>Mermaid</category>
-  <category>流程图</category>
-  <guid>https://chenq.site/qsight/2022-11-24-mindmap/index.html</guid>
+  <category>quarto</category>
+  <guid>https://www.chenq.site/qsight/2022-11-24-mindmap/index.html</guid>
   <pubDate>Thu, 24 Nov 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-11-24-mindmap/preview.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://www.chenq.site/qsight/2022-11-24-mindmap/preview.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>R语言gganimate包和ggplot2包绘制进度线图(progressive line plot)</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-05-07-progressive-line-plot/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/index.html</link>
   <description><![CDATA[ 
 
 
@@ -476,7 +527,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="cell-output-display">
 <div id="fig-plot2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://chenq.site/qsight/2022-05-07-progressive-line-plot/index_files/figure-html/fig-plot2-1.gif" class="img-fluid figure-img" alt="进度线图 progressive line plot"></p>
+<p><img src="https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/index_files/figure-html/fig-plot2-1.gif" class="img-fluid figure-img" alt="进度线图 progressive line plot"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1: 河南省肿瘤登记地区癌症年龄别发病率</figcaption><p></p>
 </figure>
 </div>
@@ -484,7 +535,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/qsight/2022-05-07-progressive-line-plot/px.gif" class="img-fluid figure-img"></p>
+<p><img src="https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/px.gif" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">进度线图</figcaption><p></p>
 </figure>
 </div>
@@ -495,14 +546,14 @@ Disabled features: fftw, ghostscript, x11</code></pre>
  ]]></description>
   <category>R</category>
   <category>科研作图</category>
-  <guid>https://chenq.site/qsight/2022-05-07-progressive-line-plot/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/index.html</guid>
   <pubDate>Sat, 07 May 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-05-07-progressive-line-plot/px.gif" medium="image" type="image/gif"/>
+  <media:content url="https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/px.gif" medium="image" type="image/gif"/>
 </item>
 <item>
   <title>R语言wordcloud2包绘制词云图</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-05-06-r-wordcloud2/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-05-06-r-wordcloud2/index.html</link>
   <description><![CDATA[ 
 
 
@@ -510,7 +561,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 
 <section id="什么是词云图" class="level2">
 <h2 class="anchored" data-anchor-id="什么是词云图">什么是词云图？</h2>
-<p>词云图，也叫文字云，是对网络文本中出现频率较高的“关键词”予以视觉上的突出，出现越多，显示的字体越大，越突出，这个关键词也就越重要。让浏览者通过词云图一眼就可以快速感知最突出的文字，迅速抓住重点，了解主旨。 <img src="https://chenq.site/qsight/2022-05-06-r-wordcloud2/cover.png" class="img-fluid" alt="词云图"></p>
+<p>词云图，也叫文字云，是对网络文本中出现频率较高的“关键词”予以视觉上的突出，出现越多，显示的字体越大，越突出，这个关键词也就越重要。让浏览者通过词云图一眼就可以快速感知最突出的文字，迅速抓住重点，了解主旨。 <img src="https://www.chenq.site/qsight/2022-05-06-r-wordcloud2/cover.png" class="img-fluid" alt="词云图"></p>
 </section>
 <section id="安装wordcloud2包以及主要参数介绍" class="level2">
 <h2 class="anchored" data-anchor-id="安装wordcloud2包以及主要参数介绍">安装wordcloud2包，以及主要参数介绍</h2>
@@ -602,14 +653,14 @@ the       the   26</code></pre>
  ]]></description>
   <category>R</category>
   <category>科研作图</category>
-  <guid>https://chenq.site/qsight/2022-05-06-r-wordcloud2/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-05-06-r-wordcloud2/index.html</guid>
   <pubDate>Fri, 06 May 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-05-06-r-wordcloud2/cover.png" medium="image" type="image/png" height="131" width="144"/>
+  <media:content url="https://www.chenq.site/qsight/2022-05-06-r-wordcloud2/cover.png" medium="image" type="image/png" height="131" width="144"/>
 </item>
 <item>
   <title>R语言ggplot2包和gganimate包绘制动态追逐条形图(chasing barchart)</title>
   <dc:creator> 陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-05-04-chasing-barchart/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-05-04-chasing-barchart/index.html</link>
   <description><![CDATA[ 
 
 
@@ -692,11 +743,11 @@ the       the   26</code></pre>
 <span id="cb5-8"></span>
 <span id="cb5-9"><span class="fu" style="color: #4758AB;">animate</span>(plot2, <span class="at" style="color: #657422;">width =</span> <span class="dv" style="color: #AD0000;">800</span>, <span class="at" style="color: #657422;">height =</span> <span class="dv" style="color: #AD0000;">500</span>, <span class="at" style="color: #657422;">fps =</span> <span class="dv" style="color: #AD0000;">25</span>, <span class="at" style="color: #657422;">duration =</span> <span class="dv" style="color: #AD0000;">15</span>, <span class="at" style="color: #657422;">rewind =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-05-04-chasing-barchart/index_files/figure-html/unnamed-chunk-3-1.gif" class="img-fluid"></p>
+<p><img src="https://www.chenq.site/qsight/2022-05-04-chasing-barchart/index_files/figure-html/unnamed-chunk-3-1.gif" class="img-fluid"></p>
 </div>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">anim_save</span>(<span class="st" style="color: #20794D;">"pp.gif"</span>)</span></code></pre></div>
 </div>
-<p><img src="https://chenq.site/qsight/2022-05-04-chasing-barchart/pp.gif" class="img-fluid" alt="追逐条形图"> ## 小结 我们已经成功的绘制了全球gdp前10的国家在过去40年里动态变化的过程，而只要按照我们前面的准备的数据格式整理自己的数据，那么也很容易地能套用这个代码，从而实现自己的动态条形图。</p>
+<p><img src="https://www.chenq.site/qsight/2022-05-04-chasing-barchart/pp.gif" class="img-fluid" alt="追逐条形图"> ## 小结 我们已经成功的绘制了全球gdp前10的国家在过去40年里动态变化的过程，而只要按照我们前面的准备的数据格式整理自己的数据，那么也很容易地能套用这个代码，从而实现自己的动态条形图。</p>
 
 
 </section>
@@ -704,14 +755,142 @@ the       the   26</code></pre>
  ]]></description>
   <category>R</category>
   <category>科研作图</category>
-  <guid>https://chenq.site/qsight/2022-05-04-chasing-barchart/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-05-04-chasing-barchart/index.html</guid>
   <pubDate>Wed, 04 May 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-05-04-chasing-barchart/pp.gif" medium="image" type="image/gif"/>
+  <media:content url="https://www.chenq.site/qsight/2022-05-04-chasing-barchart/pp.gif" medium="image" type="image/gif"/>
+</item>
+<item>
+  <title>利用阿里云DataV可视化平台数据以及ggplot2包的geom_sf函数绘制统计地图</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://www.chenq.site/qsight/2022-04-29-datav/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="什么是统计地图" class="level2">
+<h2 class="anchored" data-anchor-id="什么是统计地图">什么是统计地图？</h2>
+<p>统计地图是以地图为背景，运用各种线纹、色彩、几何图形或实物形象来显示被研究现象的指标数值的大小及其在各地区的分布状况的一种统计图形。又称空间数列图和地理数列图。主要用于说明某些现象在地域上的分布，进行不同地区间的比较，反映现象所处的地理位置，以及它们的密集和分散程度。</p>
+</section>
+<section id="制作统计地图的难点有哪些" class="level2">
+<h2 class="anchored" data-anchor-id="制作统计地图的难点有哪些">制作统计地图的难点有哪些？</h2>
+<p>在流行病学研究中，往往需要通过以统计地图的形式来展示数据的空间分布情况。然而，我们一般很难找到合适的用于绘制统计地图的地图边界数据。要么找到的地图行政区划边界数据太旧，实际的行政区划边界已经发生了改变，要么就是找不到相应的数据。</p>
+<p>目前还有一些制作统计地图的网站，可以提供绘制简单的统计地图的功能，但是基本上这些服务都是以收费为目的地，不符合互联网上开源自由的精神，但是如果同学不缺钱，那就可以去试试哈！</p>
+</section>
+<section id="如何利用阿里云datav可视化平台地图数据" class="level2">
+<h2 class="anchored" data-anchor-id="如何利用阿里云datav可视化平台地图数据">如何利用阿里云DataV可视化平台地图数据?</h2>
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid"></p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_5b195a6e6b025514837cea829491c303">
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid" width="1086"></p>
+</div>
+</div>
+<p>利用<strong>sf包</strong>读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_5151299f5cc0bad1a368dc27a1bfe8d6">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;">#加载sf包</span></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;">#加载ggplot2包</span></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;">rm</span>(<span class="at" style="color: #657422;">list =</span> <span class="fu" style="color: #4758AB;">ls</span>())</span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;">#利用read_sf函数读取json格式边界数据</span></span>
+<span id="cb1-8">china1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json"</span>)</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
+<span id="cb1-11">china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-12">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-13">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>也可以利用<strong>geojsonio包</strong>读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_ae1cd812a76126ab626d9377e50fc81c">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;">#加载geojsonio包</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;">library</span>(geojsonio)</span>
+<span id="cb2-3"><span class="co" style="color: #5E5E5E;">#利用geojsonio包读取json格式数据为sp数据</span></span>
+<span id="cb2-4">states <span class="ot" style="color: #003B4F;">&lt;-</span> geojsonio<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">geojson_read</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>, <span class="at" style="color: #657422;">what =</span> <span class="st" style="color: #20794D;">"sp"</span>)</span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;">#将地理空间数据转换为sf数据</span></span>
+<span id="cb2-6">states2<span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_as_sf</span>(states)</span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
+<span id="cb2-8">states2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-9">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-10">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000.json">https://geo.datav.aliyun.com/areas_v3/bound/410000.json</a>，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json">https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json</a>。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_f46fb8ec6b13f84dda620aabf11352ed">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#读取仅有河南省省界的json数据</span></span>
+<span id="cb3-2">hn1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000.json"</span>)</span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;">#读取具有河南省各市区边界的json数据</span></span>
+<span id="cb3-4">hn2 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>)</span>
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf函数绘制河南省省界</span></span>
+<span id="cb3-6">hn1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-7">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-8">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;">#利用geom_sf函数绘制河南省省界及各市区边界</span></span>
+<span id="cb4-2">hn2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;">#读取洛阳市各区县边界数据，并绘制地图</span></span>
+<span id="cb5-2">ly <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410300_full.json"</span>)</span>
+<span id="cb5-3">ly<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="如何绘制统计地图" class="level2">
+<h2 class="anchored" data-anchor-id="如何绘制统计地图">如何绘制统计地图？</h2>
+<p>可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。</p>
+<p>实现代码如下：</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_2ec9d7c7c20d81652ad0a03c60e35509">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">library</span>(RColorBrewer)</span>
+<span id="cb6-2">data<span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">data.frame</span>(<span class="at" style="color: #657422;">adcode=</span><span class="fu" style="color: #4758AB;">c</span>( <span class="st" style="color: #20794D;">"110000"</span>, <span class="st" style="color: #20794D;">"120000"</span> ,<span class="st" style="color: #20794D;">"130000"</span> ,<span class="st" style="color: #20794D;">"140000"</span>, <span class="st" style="color: #20794D;">"150000"</span> ,<span class="st" style="color: #20794D;">"210000"</span>, <span class="st" style="color: #20794D;">"220000"</span> ,<span class="st" style="color: #20794D;">"230000"</span>, <span class="st" style="color: #20794D;">"310000"</span> ,<span class="st" style="color: #20794D;">"320000"</span>, <span class="st" style="color: #20794D;">"330000"</span> ,<span class="st" style="color: #20794D;">"340000"</span> ,<span class="st" style="color: #20794D;">"350000"</span> ,<span class="st" style="color: #20794D;">"360000"</span>, <span class="st" style="color: #20794D;">"370000"</span>, <span class="st" style="color: #20794D;">"410000"</span>, <span class="st" style="color: #20794D;">"420000"</span>, <span class="st" style="color: #20794D;">"430000"</span> ,<span class="st" style="color: #20794D;">"440000"</span> ,<span class="st" style="color: #20794D;">"450000"</span> ,<span class="st" style="color: #20794D;">"460000"</span>, <span class="st" style="color: #20794D;">"500000"</span> ,<span class="st" style="color: #20794D;">"510000"</span> ,<span class="st" style="color: #20794D;">"520000"</span> ,<span class="st" style="color: #20794D;">"530000"</span> ,<span class="st" style="color: #20794D;">"540000"</span> ,<span class="st" style="color: #20794D;">"610000"</span>, <span class="st" style="color: #20794D;">"620000"</span>, <span class="st" style="color: #20794D;">"630000"</span>, <span class="st" style="color: #20794D;">"640000"</span>, <span class="st" style="color: #20794D;">"650000"</span> ,<span class="st" style="color: #20794D;">"710000"</span> ,<span class="st" style="color: #20794D;">"810000"</span>, <span class="st" style="color: #20794D;">"820000"</span> ,<span class="st" style="color: #20794D;">"100000"</span>),</span>
+<span id="cb6-3">                 <span class="at" style="color: #657422;">num=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">391</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">13</span>,<span class="dv" style="color: #AD0000;">28</span>,<span class="dv" style="color: #AD0000;">60</span>,<span class="dv" style="color: #AD0000;">40</span>,<span class="dv" style="color: #AD0000;">884</span>,<span class="dv" style="color: #AD0000;">230</span>,<span class="dv" style="color: #AD0000;">12988</span>,<span class="dv" style="color: #AD0000;">30</span>,<span class="dv" style="color: #AD0000;">609</span>,<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">50</span>,<span class="dv" style="color: #AD0000;">220</span>,<span class="dv" style="color: #AD0000;">70</span>,<span class="dv" style="color: #AD0000;">36</span>,<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">26</span>,<span class="dv" style="color: #AD0000;">169</span>,<span class="dv" style="color: #AD0000;">23</span>,<span class="dv" style="color: #AD0000;">15</span>,<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">74</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">27</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">20</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">8</span>,<span class="dv" style="color: #AD0000;">13742</span>,<span class="dv" style="color: #AD0000;">59661</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">0</span>))</span>
+<span id="cb6-4">data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">35</span>] <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">sum</span>(data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">34</span>])</span>
+<span id="cb6-5"></span>
+<span id="cb6-6">china2<span class="ot" style="color: #003B4F;">&lt;-</span>china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-7">  <span class="fu" style="color: #4758AB;">left_join</span>(data,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"adcode"</span>)<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-8">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">case=</span><span class="fu" style="color: #4758AB;">cut</span>(num,<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">10</span>,<span class="dv" style="color: #AD0000;">100</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">1000</span>,<span class="dv" style="color: #AD0000;">10000</span>,<span class="dv" style="color: #AD0000;">50000</span>),<span class="at" style="color: #657422;">include.lowest=</span>T,<span class="at" style="color: #657422;">right=</span>F))</span>
+<span id="cb6-9"></span>
+<span id="cb6-10"><span class="fu" style="color: #4758AB;">ggplot</span>(china2)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-11">  <span class="fu" style="color: #4758AB;">geom_sf</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-12">  <span class="fu" style="color: #4758AB;">theme_void</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-13">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">fill=</span>case))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-14">  <span class="fu" style="color: #4758AB;">scale_fill_manual</span>(</span>
+<span id="cb6-15">    <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"现存病例数"</span>,</span>
+<span id="cb6-16">    <span class="at" style="color: #657422;">values =</span> <span class="fu" style="color: #4758AB;">brewer.pal</span>(<span class="dv" style="color: #AD0000;">7</span>,<span class="st" style="color: #20794D;">"Reds"</span>),</span>
+<span id="cb6-17">    <span class="at" style="color: #657422;">labels=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"0-10"</span>,<span class="st" style="color: #20794D;">"10-100"</span>,<span class="st" style="color: #20794D;">"100-500"</span>, <span class="st" style="color: #20794D;">"500-1000"</span>,<span class="st" style="color: #20794D;">"1000-10000"</span>,<span class="st" style="color: #20794D;">"10000-50000"</span>,<span class="st" style="color: #20794D;">"&gt;50000"</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>科研作图</category>
+  <guid>https://www.chenq.site/qsight/2022-04-29-datav/index.html</guid>
+  <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" medium="image" type="image/png" height="83" width="144"/>
 </item>
 <item>
   <title>利用ggplot2包绘制barplot简单条形图</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index.html</link>
   <description><![CDATA[ 
 
 
@@ -766,7 +945,7 @@ the       the   26</code></pre>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/plot.png" class="img-fluid figure-img"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/plot.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">条形图</figcaption><p></p>
 </figure>
 </div>
@@ -778,7 +957,7 @@ the       the   26</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="简单条形图" width="672"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="简单条形图" width="672"></p>
 <p></p><figcaption class="figure-caption">条形图：坐标轴转置</figcaption><p></p>
 </figure>
 </div>
@@ -791,7 +970,7 @@ the       the   26</code></pre>
 <span id="cb6-3">  <span class="fu" style="color: #4758AB;">theme_classic</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb6-4">    <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>然后我们进一步对条形图进行修饰，比如更改坐标轴标题、把x轴由底部调整至顶部显示、添加条形图数据标签等等。</p>
@@ -811,7 +990,7 @@ the       the   26</code></pre>
 <span id="cb7-13">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label=</span>incid), <span class="at" style="color: #657422;">size=</span><span class="fl" style="color: #AD0000;">3.5</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb7-14"> <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -849,7 +1028,7 @@ the       the   26</code></pre>
 <span id="cb10-11">    <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"STKaiti"</span>,<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">14</span>))<span class="ot" style="color: #003B4F;">-&gt;</span>plot2</span>
 <span id="cb10-12">plot2</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>我们可以改变条形图条的颜色，也可以修改图例的位置、标题等等。</p>
@@ -858,13 +1037,13 @@ the       the   26</code></pre>
 <span id="cb11-2">  <span class="co" style="color: #5E5E5E;"># 修改条的颜色为以下两个色号</span></span>
 <span id="cb11-3">  <span class="fu" style="color: #4758AB;">scale_fill_manual</span>(<span class="at" style="color: #657422;">values=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'#999999'</span>,<span class="st" style="color: #20794D;">'#E69F00'</span>))</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;"># 我们也可以使用color palettes改变分组条图的颜色</span></span>
 <span id="cb12-2">plot2<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb12-3"><span class="fu" style="color: #4758AB;">scale_fill_brewer</span>(<span class="at" style="color: #657422;">palette=</span><span class="st" style="color: #20794D;">"Blues"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;"># 我们可以利用theme()对图例进行修改</span></span>
 <span id="cb13-2">plot2<span class="sc" style="color: #5E5E5E;">+</span></span>
@@ -875,7 +1054,7 @@ the       the   26</code></pre>
 <span id="cb13-7">    <span class="at" style="color: #657422;">legend.title=</span><span class="fu" style="color: #4758AB;">element_blank</span>()</span>
 <span id="cb13-8">  )</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
@@ -886,142 +1065,14 @@ the       the   26</code></pre>
  ]]></description>
   <category>R</category>
   <category>科研作图</category>
-  <guid>https://chenq.site/qsight/2022-04-29-ggplot2-barplot/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index.html</guid>
   <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-04-29-ggplot2-barplot/plot.png" medium="image" type="image/png" height="103" width="144"/>
-</item>
-<item>
-  <title>利用阿里云DataV可视化平台数据以及ggplot2包的geom_sf函数绘制统计地图</title>
-  <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-04-29-datav/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="什么是统计地图" class="level2">
-<h2 class="anchored" data-anchor-id="什么是统计地图">什么是统计地图？</h2>
-<p>统计地图是以地图为背景，运用各种线纹、色彩、几何图形或实物形象来显示被研究现象的指标数值的大小及其在各地区的分布状况的一种统计图形。又称空间数列图和地理数列图。主要用于说明某些现象在地域上的分布，进行不同地区间的比较，反映现象所处的地理位置，以及它们的密集和分散程度。</p>
-</section>
-<section id="制作统计地图的难点有哪些" class="level2">
-<h2 class="anchored" data-anchor-id="制作统计地图的难点有哪些">制作统计地图的难点有哪些？</h2>
-<p>在流行病学研究中，往往需要通过以统计地图的形式来展示数据的空间分布情况。然而，我们一般很难找到合适的用于绘制统计地图的地图边界数据。要么找到的地图行政区划边界数据太旧，实际的行政区划边界已经发生了改变，要么就是找不到相应的数据。</p>
-<p>目前还有一些制作统计地图的网站，可以提供绘制简单的统计地图的功能，但是基本上这些服务都是以收费为目的地，不符合互联网上开源自由的精神，但是如果同学不缺钱，那就可以去试试哈！</p>
-</section>
-<section id="如何利用阿里云datav可视化平台地图数据" class="level2">
-<h2 class="anchored" data-anchor-id="如何利用阿里云datav可视化平台地图数据">如何利用阿里云DataV可视化平台地图数据?</h2>
-<p><img src="https://chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid"></p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_5b195a6e6b025514837cea829491c303">
-<div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid" width="1086"></p>
-</div>
-</div>
-<p>利用<strong>sf包</strong>读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_5151299f5cc0bad1a368dc27a1bfe8d6">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
-<span id="cb1-2"><span class="co" style="color: #5E5E5E;">#加载sf包</span></span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;">#加载ggplot2包</span></span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
-<span id="cb1-6"><span class="fu" style="color: #4758AB;">rm</span>(<span class="at" style="color: #657422;">list =</span> <span class="fu" style="color: #4758AB;">ls</span>())</span>
-<span id="cb1-7"><span class="co" style="color: #5E5E5E;">#利用read_sf函数读取json格式边界数据</span></span>
-<span id="cb1-8">china1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json"</span>)</span>
-<span id="cb1-9"></span>
-<span id="cb1-10"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
-<span id="cb1-11">china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-12">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-13">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>也可以利用<strong>geojsonio包</strong>读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_ae1cd812a76126ab626d9377e50fc81c">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;">#加载geojsonio包</span></span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;">library</span>(geojsonio)</span>
-<span id="cb2-3"><span class="co" style="color: #5E5E5E;">#利用geojsonio包读取json格式数据为sp数据</span></span>
-<span id="cb2-4">states <span class="ot" style="color: #003B4F;">&lt;-</span> geojsonio<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">geojson_read</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>, <span class="at" style="color: #657422;">what =</span> <span class="st" style="color: #20794D;">"sp"</span>)</span>
-<span id="cb2-5"><span class="co" style="color: #5E5E5E;">#将地理空间数据转换为sf数据</span></span>
-<span id="cb2-6">states2<span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_as_sf</span>(states)</span>
-<span id="cb2-7"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
-<span id="cb2-8">states2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-9">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-10">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000.json">https://geo.datav.aliyun.com/areas_v3/bound/410000.json</a>，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json">https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json</a>。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_f46fb8ec6b13f84dda620aabf11352ed">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#读取仅有河南省省界的json数据</span></span>
-<span id="cb3-2">hn1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000.json"</span>)</span>
-<span id="cb3-3"><span class="co" style="color: #5E5E5E;">#读取具有河南省各市区边界的json数据</span></span>
-<span id="cb3-4">hn2 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>)</span>
-<span id="cb3-5"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf函数绘制河南省省界</span></span>
-<span id="cb3-6">hn1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb3-7">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb3-8">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;">#利用geom_sf函数绘制河南省省界及各市区边界</span></span>
-<span id="cb4-2">hn2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb4-3">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb4-4">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;">#读取洛阳市各区县边界数据，并绘制地图</span></span>
-<span id="cb5-2">ly <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410300_full.json"</span>)</span>
-<span id="cb5-3">ly<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb5-4">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb5-5">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="如何绘制统计地图" class="level2">
-<h2 class="anchored" data-anchor-id="如何绘制统计地图">如何绘制统计地图？</h2>
-<p>可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。</p>
-<p>实现代码如下：</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_2ec9d7c7c20d81652ad0a03c60e35509">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">library</span>(RColorBrewer)</span>
-<span id="cb6-2">data<span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">data.frame</span>(<span class="at" style="color: #657422;">adcode=</span><span class="fu" style="color: #4758AB;">c</span>( <span class="st" style="color: #20794D;">"110000"</span>, <span class="st" style="color: #20794D;">"120000"</span> ,<span class="st" style="color: #20794D;">"130000"</span> ,<span class="st" style="color: #20794D;">"140000"</span>, <span class="st" style="color: #20794D;">"150000"</span> ,<span class="st" style="color: #20794D;">"210000"</span>, <span class="st" style="color: #20794D;">"220000"</span> ,<span class="st" style="color: #20794D;">"230000"</span>, <span class="st" style="color: #20794D;">"310000"</span> ,<span class="st" style="color: #20794D;">"320000"</span>, <span class="st" style="color: #20794D;">"330000"</span> ,<span class="st" style="color: #20794D;">"340000"</span> ,<span class="st" style="color: #20794D;">"350000"</span> ,<span class="st" style="color: #20794D;">"360000"</span>, <span class="st" style="color: #20794D;">"370000"</span>, <span class="st" style="color: #20794D;">"410000"</span>, <span class="st" style="color: #20794D;">"420000"</span>, <span class="st" style="color: #20794D;">"430000"</span> ,<span class="st" style="color: #20794D;">"440000"</span> ,<span class="st" style="color: #20794D;">"450000"</span> ,<span class="st" style="color: #20794D;">"460000"</span>, <span class="st" style="color: #20794D;">"500000"</span> ,<span class="st" style="color: #20794D;">"510000"</span> ,<span class="st" style="color: #20794D;">"520000"</span> ,<span class="st" style="color: #20794D;">"530000"</span> ,<span class="st" style="color: #20794D;">"540000"</span> ,<span class="st" style="color: #20794D;">"610000"</span>, <span class="st" style="color: #20794D;">"620000"</span>, <span class="st" style="color: #20794D;">"630000"</span>, <span class="st" style="color: #20794D;">"640000"</span>, <span class="st" style="color: #20794D;">"650000"</span> ,<span class="st" style="color: #20794D;">"710000"</span> ,<span class="st" style="color: #20794D;">"810000"</span>, <span class="st" style="color: #20794D;">"820000"</span> ,<span class="st" style="color: #20794D;">"100000"</span>),</span>
-<span id="cb6-3">                 <span class="at" style="color: #657422;">num=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">391</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">13</span>,<span class="dv" style="color: #AD0000;">28</span>,<span class="dv" style="color: #AD0000;">60</span>,<span class="dv" style="color: #AD0000;">40</span>,<span class="dv" style="color: #AD0000;">884</span>,<span class="dv" style="color: #AD0000;">230</span>,<span class="dv" style="color: #AD0000;">12988</span>,<span class="dv" style="color: #AD0000;">30</span>,<span class="dv" style="color: #AD0000;">609</span>,<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">50</span>,<span class="dv" style="color: #AD0000;">220</span>,<span class="dv" style="color: #AD0000;">70</span>,<span class="dv" style="color: #AD0000;">36</span>,<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">26</span>,<span class="dv" style="color: #AD0000;">169</span>,<span class="dv" style="color: #AD0000;">23</span>,<span class="dv" style="color: #AD0000;">15</span>,<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">74</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">27</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">20</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">8</span>,<span class="dv" style="color: #AD0000;">13742</span>,<span class="dv" style="color: #AD0000;">59661</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">0</span>))</span>
-<span id="cb6-4">data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">35</span>] <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">sum</span>(data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">34</span>])</span>
-<span id="cb6-5"></span>
-<span id="cb6-6">china2<span class="ot" style="color: #003B4F;">&lt;-</span>china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
-<span id="cb6-7">  <span class="fu" style="color: #4758AB;">left_join</span>(data,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"adcode"</span>)<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
-<span id="cb6-8">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">case=</span><span class="fu" style="color: #4758AB;">cut</span>(num,<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">10</span>,<span class="dv" style="color: #AD0000;">100</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">1000</span>,<span class="dv" style="color: #AD0000;">10000</span>,<span class="dv" style="color: #AD0000;">50000</span>),<span class="at" style="color: #657422;">include.lowest=</span>T,<span class="at" style="color: #657422;">right=</span>F))</span>
-<span id="cb6-9"></span>
-<span id="cb6-10"><span class="fu" style="color: #4758AB;">ggplot</span>(china2)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-11">  <span class="fu" style="color: #4758AB;">geom_sf</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-12">  <span class="fu" style="color: #4758AB;">theme_void</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-13">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">fill=</span>case))<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-14">  <span class="fu" style="color: #4758AB;">scale_fill_manual</span>(</span>
-<span id="cb6-15">    <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"现存病例数"</span>,</span>
-<span id="cb6-16">    <span class="at" style="color: #657422;">values =</span> <span class="fu" style="color: #4758AB;">brewer.pal</span>(<span class="dv" style="color: #AD0000;">7</span>,<span class="st" style="color: #20794D;">"Reds"</span>),</span>
-<span id="cb6-17">    <span class="at" style="color: #657422;">labels=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"0-10"</span>,<span class="st" style="color: #20794D;">"10-100"</span>,<span class="st" style="color: #20794D;">"100-500"</span>, <span class="st" style="color: #20794D;">"500-1000"</span>,<span class="st" style="color: #20794D;">"1000-10000"</span>,<span class="st" style="color: #20794D;">"10000-50000"</span>,<span class="st" style="color: #20794D;">"&gt;50000"</span>))</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>科研作图</category>
-  <guid>https://chenq.site/qsight/2022-04-29-datav/index.html</guid>
-  <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-04-29-datav/preview.png" medium="image" type="image/png" height="83" width="144"/>
+  <media:content url="https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/plot.png" medium="image" type="image/png" height="103" width="144"/>
 </item>
 <item>
   <title>利用R语言Rmd文档+blogdown包制作个人网站</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-04-26-website/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-04-26-website/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1067,7 +1118,7 @@ the       the   26</code></pre>
 <p>如果你喜欢<a href="https://themes.gohugo.io/themes/mainroad/">MainRoad</a>的模板， 可以点击<strong>Download</strong>，会进入模板在github的存储页面，然后把模板的路径复制下来<strong>Vimux/Mainroad</strong>，后面会用到。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/qsight/2022-04-26-website/theme.png" class="img-fluid figure-img"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-26-website/theme.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Hugo 主题</figcaption><p></p>
 </figure>
 </div>
@@ -1079,7 +1130,7 @@ the       the   26</code></pre>
 </ul>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_fa1af5079eea91e47a141f45b6872211">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-26-website/first.png" class="img-fluid" width="533"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-26-website/first.png" class="img-fluid" width="533"></p>
 </div>
 </div>
 <ul>
@@ -1087,7 +1138,7 @@ the       the   26</code></pre>
 </ul>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_2ce758f5e2f657b518002eda70a7af76">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-26-website/second.png" class="img-fluid" width="532"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-26-website/second.png" class="img-fluid" width="532"></p>
 </div>
 </div>
 <ul>
@@ -1101,7 +1152,7 @@ the       the   26</code></pre>
 </ol>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_2a037534cce41db5b2655beed070a74d">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-26-website/third.png" class="img-fluid" width="536"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-26-website/third.png" class="img-fluid" width="536"></p>
 </div>
 </div>
 <ul>
@@ -1109,7 +1160,7 @@ the       the   26</code></pre>
 </ul>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-4_282657f09e3ae83f94bad6850451ad09">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-26-website/preview.png" class="img-fluid" width="1128"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-26-website/preview.png" class="img-fluid" width="1128"></p>
 </div>
 </div>
 </section>
@@ -1118,7 +1169,7 @@ the       the   26</code></pre>
 <p>点击 Addins – New Post ，填入题目，作者，标签或者分类，在Format 选项里可以选择使用普通的markdown(不能运行R程序)、.Rmd和.Rmarkdown(可以运行R程序)。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-5_376ddb90f1e1d9aab86dd1dc94438d3f">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-26-website/newpost.png" class="img-fluid" width="621"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-26-website/newpost.png" class="img-fluid" width="621"></p>
 </div>
 </div>
 
@@ -1129,14 +1180,14 @@ the       the   26</code></pre>
  ]]></description>
   <category>R</category>
   <category>个人网站</category>
-  <guid>https://chenq.site/qsight/2022-04-26-website/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-04-26-website/index.html</guid>
   <pubDate>Tue, 26 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-04-26-website/theme.png" medium="image" type="image/png" height="72" width="144"/>
+  <media:content url="https://www.chenq.site/qsight/2022-04-26-website/theme.png" medium="image" type="image/png" height="72" width="144"/>
 </item>
 <item>
   <title>利用Rmd代码选项输出动态金字塔图</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-04-25-rmd/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-04-25-rmd/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1229,7 +1280,7 @@ font-style: italic;">## 建立for循环</span></span>
 ℹ Please use the `linewidth` argument instead.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-25-rmd/index_files/figure-html/unnamed-chunk-3-.gif" class="img-fluid" width="672"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-25-rmd/index_files/figure-html/unnamed-chunk-3-.gif" class="img-fluid" width="672"></p>
 </div>
 </div>
 
@@ -1239,14 +1290,14 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>R</category>
   <category>科研作图</category>
-  <guid>https://chenq.site/qsight/2022-04-25-rmd/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-04-25-rmd/index.html</guid>
   <pubDate>Mon, 25 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-04-25-rmd/cover.png" medium="image" type="image/png" height="89" width="144"/>
+  <media:content url="https://www.chenq.site/qsight/2022-04-25-rmd/cover.png" medium="image" type="image/png" height="89" width="144"/>
 </item>
 <item>
   <title>如何利用病理诊断比例（MV%）指标评价人群肿瘤登记数据质量？</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-04-17-mv/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-04-17-mv/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1260,7 +1311,7 @@ font-style: italic;">## 建立for循环</span></span>
 <p>当肿瘤登记处的MV%值与区域标准（比如国家的平均水平）进行比较的时候，如果登记处MV%值与区域标准差距较大，并且该地区的医疗服务能力与水平以及病理诊断能力与区域平均水平没有很大差异的时候，则提示该登记处数据的有效性或者完整性可能存在问题。如果登记处MV%值小于区域标准值，并且差距较大，提示登记处收集的数据有效性较差；而如果登记处MV%值大于区域标准值，并且差距较大，则提示登记处数据的完整性可能存在问题。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/qsight/2022-04-17-mv/namv.png" class="img-fluid figure-img"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-17-mv/namv.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">病理诊断比例</figcaption><p></p>
 </figure>
 </div>
@@ -1270,7 +1321,7 @@ font-style: italic;">## 建立for循环</span></span>
 <p>在多年的连续监测中，一个登记处的MV%应该是相对稳定的，不会出现大的波动，因为一个地区的医疗服务水平或者病理诊断能力是相对稳定的。如果多年份的MV%值出现跳跃性波动，则提示登记处数据的稳定性较差，相应存在波动年份的数据可能存在问题。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_b871f9777f04c621f70da5275303c7e2">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-17-mv/yearmv.png" class="img-fluid" width="686"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-17-mv/yearmv.png" class="img-fluid" width="686"></p>
 </div>
 </div>
 
@@ -1280,14 +1331,14 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>肿瘤登记</category>
   <category>质量控制</category>
-  <guid>https://chenq.site/qsight/2022-04-17-mv/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-04-17-mv/index.html</guid>
   <pubDate>Sun, 17 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-04-17-mv/namv.png" medium="image" type="image/png" height="104" width="144"/>
+  <media:content url="https://www.chenq.site/qsight/2022-04-17-mv/namv.png" medium="image" type="image/png" height="104" width="144"/>
 </item>
 <item>
   <title>我国发布首个肿瘤登记数据集标准</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-04-16-standard/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-04-16-standard/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1296,7 +1347,7 @@ font-style: italic;">## 建立for循环</span></span>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <figure class="figure">
-<img src="https://chenq.site/qsight/2022-04-16-standard/cover.png" title="中国肿瘤数据集标准" class="img-fluid figure-img">
+<img src="https://www.chenq.site/qsight/2022-04-16-standard/cover.png" title="中国肿瘤数据集标准" class="img-fluid figure-img">
 </figure>
 <p></p><figcaption class="figure-caption">中国肿瘤数据集标准</figcaption><p></p>
 </figure>
@@ -1305,7 +1356,7 @@ font-style: italic;">## 建立for循环</span></span>
 <p>肿瘤登记工作也得到我国政府的高度重视，并在“健康中国行动-癌症防治行动”里对肿瘤登记工作提出了具体要求：实施癌症信息化行动，健全肿瘤登记制度，提高肿瘤登记覆盖范围，提升肿瘤登记数据质量，促进信息资源共享利用。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_e735d2b2ea28ae03d9c5f3e11274588f">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-16-standard/author.png" class="img-fluid" width="790"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-16-standard/author.png" class="img-fluid" width="790"></p>
 </div>
 </div>
 <p>为了提高肿瘤登记数据收集的质量，国家癌症中心组织全国多家单位起草并发布了《中国人群肿瘤登记数据集标准》，河南省肿瘤医院是参与起草该标准的单位之一。该标准规定了中国肿瘤登记数据集的元数据属性和数据元属性，主要用于指导中国肿瘤登记基本信息的采集、存储、共享以及信息系统的开发。此标准实践性和可操作性极强，将为肿瘤登记数据的及时性、准确性、有效性，提供强有力的技术支撑。</p>
@@ -1316,14 +1367,14 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>肿瘤登记</category>
   <category>文件</category>
-  <guid>https://chenq.site/qsight/2022-04-16-standard/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-04-16-standard/index.html</guid>
   <pubDate>Sat, 16 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-04-16-standard/cover.png " medium="image"/>
+  <media:content url="https://www.chenq.site/qsight/2022-04-16-standard/cover.png " medium="image"/>
 </item>
 <item>
   <title>制作《2021河南省肿瘤登记年报》科普视频</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-04-10-report-video/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-04-10-report-video/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1372,13 +1423,13 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>肿瘤登记</category>
   <category>肿瘤登记年报</category>
-  <guid>https://chenq.site/qsight/2022-04-10-report-video/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-04-10-report-video/index.html</guid>
   <pubDate>Sun, 10 Apr 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>河南省癌症中心/河南省肿瘤医院发布《2021河南省肿瘤登记年报》</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-04-05-2021annualreport/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-04-05-2021annualreport/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1386,7 +1437,7 @@ font-style: italic;">## 建立for循环</span></span>
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/qsight/2022-04-05-2021annualreport/2021.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-05-2021annualreport/2021.jpg" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">河南肿瘤登记年报</figcaption><p></p>
 </figure>
 </div>
@@ -1398,13 +1449,13 @@ font-style: italic;">## 建立for循环</span></span>
 <p>肺癌是男性最常见的恶性肿瘤，占男性全部诊断恶性肿瘤病例的25.18%；乳腺癌则位居女性恶性肿瘤发病的第一位，占全部女性肿瘤病例的17.01%；不管是男性还是女性，肺癌均位居全部恶性肿瘤死亡的第一位。发病前10位的恶性肿瘤分别为肺癌、乳腺癌、胃癌、食管癌、肝癌、子宫颈癌、结直肠癌、甲状腺癌、子宫体癌和卵巢癌，占全部恶性肿瘤发病数的78.60%。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_ab49ae9e47d1402e7d0f2d1c9cf532e9">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-05-2021annualreport/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-05-2021annualreport/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>癌症总体发病率和死亡率均随着年龄的增加而升高，均在85岁以上的年龄组中达到峰值。但是不同的癌种具有不同的年龄分布模式，比如肺癌在40岁之前发病率相对平稳而之后则快速上升；前列腺癌则从60岁开始快速上升；乳腺癌、宫颈癌、甲状腺癌的发病高峰则在50岁左右等。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_6664be4f6c39ea3aec8e027106303e8d">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-05-2021annualreport/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="960"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-05-2021annualreport/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="960"></p>
 </div>
 </div>
 <p>在前10位恶性肿瘤发病中，消化系统肿瘤仍然占据主要地位，胃癌、食管癌、肝癌和结直肠癌等消化系统肿瘤病例占全部恶性肿瘤病例的39.68%，是影响河南省居民健康的主要肿瘤类型。</p>
@@ -1413,7 +1464,7 @@ font-style: italic;">## 建立for循环</span></span>
 <h2 class="anchored" data-anchor-id="提高年报覆盖人口比例提升数据全省代表性">提高《年报》覆盖人口比例，提升数据全省代表性</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chenq.site/qsight/2022-04-05-2021annualreport/map.png" class="img-fluid figure-img"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-05-2021annualreport/map.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">河南省肿瘤登记处分布地图</figcaption><p></p>
 </figure>
 </div>
@@ -1429,7 +1480,7 @@ font-style: italic;">## 建立for循环</span></span>
 <p>为了能让癌症防治专业人员和普通大众更方便、快捷的了解河南省癌症疾病负担情况，在出版纸质年报之外，我们也制作了线上《年报》，在内容展示方式以及获取途径上进行了创新，从而促进大家更方便的利用《年报》数据。大家可以通过手机扫描二维码在手机端查看年报，也可以通过电脑端输入网址：<a href="https://chenq.site/report/2021/">https://chenq.site/report/2021/</a>进行查看。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-4_743cb522c2c4c81e17dcbdb9ba2beb74">
 <div class="cell-output-display">
-<p><img src="https://chenq.site/qsight/2022-04-05-2021annualreport/qrcode.png" class="img-fluid" style="width:25.0%"></p>
+<p><img src="https://www.chenq.site/qsight/2022-04-05-2021annualreport/qrcode.png" class="img-fluid" style="width:25.0%"></p>
 </div>
 </div>
 </section>
@@ -1443,14 +1494,14 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>肿瘤登记</category>
   <category>肿瘤登记年报</category>
-  <guid>https://chenq.site/qsight/2022-04-05-2021annualreport/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-04-05-2021annualreport/index.html</guid>
   <pubDate>Tue, 05 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-04-05-2021annualreport/2021.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://www.chenq.site/qsight/2022-04-05-2021annualreport/2021.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>诗歌学习</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-03-31-shige/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-03-31-shige/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1512,13 +1563,13 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>生活</category>
   <category>育儿</category>
-  <guid>https://chenq.site/qsight/2022-03-31-shige/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-03-31-shige/index.html</guid>
   <pubDate>Thu, 31 Mar 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>ICD10编码里除了C开头编码和D开头编码是肿瘤专属分类编码外，还有哪些编码与肿瘤相关？</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-03-23-icd10-c-d/index.html</link>
+  <link>https://www.chenq.site/qsight/2022-03-23-icd10-c-d/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1552,110 +1603,8 @@ font-style: italic;">## 建立for循环</span></span>
  ]]></description>
   <category>肿瘤登记</category>
   <category>编码</category>
-  <guid>https://chenq.site/qsight/2022-03-23-icd10-c-d/index.html</guid>
+  <guid>https://www.chenq.site/qsight/2022-03-23-icd10-c-d/index.html</guid>
   <pubDate>Wed, 23 Mar 2022 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>我家养的那些花儿</title>
-  <dc:creator>陈琼</dc:creator>
-  <link>https://chenq.site/qsight/2022-03-19-picture/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>以前养多肉，总是养着养着，仅剩下一个个花盆。卖花的大妈给传授的要点就是少浇水，但是养多肉的要点不仅仅只是少浇水，还有其它一些特点。现在又到了春暖花开的季节，我又耐不住躁动买了一盆盆的多肉，这一次要好好学习一下这些养多肉的知识和技巧，希望能养的好一些！</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/qianchuan1.jpg" class="lightbox" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" data-gallery="flowers" title="钱串儿"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/qianchuan2.jpg" class="lightbox" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" data-gallery="flowers" title="钱串儿"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/qianchuan3.jpg" class="lightbox" data-description="这是过年的时候采购的一批多肉，希望撑过一年。" data-gallery="flowers" title="钱串儿"><img src="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/juhua.jpg" class="lightbox" data-description="商家说是可以过冬。" data-gallery="flowers" title="菊花"><img src="https://chenq.site/qsight/2022-03-19-picture/img/juhua.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">菊花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/cherry.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers" title="看樱桃"><img src="https://chenq.site/qsight/2022-03-19-picture/img/cherry.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">看樱桃</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0023.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers" title="海棠花"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0019.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers" title="海棠花"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0013.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers" title="海棠花"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0011.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers" title="海棠花"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0010.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers" title="海棠花"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0006.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers" title="海棠花"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0005.jpg" class="lightbox" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。" data-gallery="flowers" title="海棠花"><img src="https://chenq.site/qsight/2022-03-19-picture/img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-
-
-
- ]]></description>
-  <category>生活</category>
-  <category>摄影</category>
-  <guid>https://chenq.site/qsight/2022-03-19-picture/index.html</guid>
-  <pubDate>Sat, 19 Mar 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://chenq.site/qsight/2022-03-19-picture/img/qianchuan1.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
