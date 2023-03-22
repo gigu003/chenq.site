@@ -14,7 +14,7 @@ listing:
   date-format: "YYYY-MM-DD"
   page-size: 6
   feed: true
-page-layout: article
+page-layout: full
 language:
   listing-page-field-categories: "分类"
   title-block-author-single: "作者"
