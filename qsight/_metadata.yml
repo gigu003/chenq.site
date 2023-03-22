@@ -4,7 +4,7 @@
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
 freeze: auto
 author: 陈琼
-
+page-layout: article
 title-block-banner: true
 title-block-banner-color: "#c8c8c8"
 title-block-categories: true
