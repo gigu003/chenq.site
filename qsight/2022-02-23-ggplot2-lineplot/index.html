@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.14">
@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Qiong Chen">
-<meta name="dcterms.date" content="2022-02-23">
 <meta name="keywords" content="ggplot2, 折线图, 趋势图">
 
 <title>普癌新声 - 利用ggplot2制作折线图或者趋势图，反映变化趋势</title>
@@ -114,15 +113,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交"
   }
 }</script>
 <script type="application/json" class="js-hypothesis-config">
@@ -245,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">发表时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 23, 2022</p>
+        <p class="date">2022年2月23日</p>
       </div>
     </div>
     
@@ -279,12 +278,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># 安装cowplot包</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="fu">install.packages</span>(<span class="st">"cowplot"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="co"># 安装dplyr包</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>把这些要用到的R包加载到工作环境中</p>
 <div class="cell" data-hash="index_cache/html/warning==FALSE_35caec7672a1eaccd1fba23c50a92df5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(cowplot)</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">library</span>(dplyr)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 载入程辑包：'dplyr'</code></pre>
@@ -305,11 +304,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="数据处理">数据处理</h2>
 <p>我们把需要用到的数据读取到向量中，我们的数据以csv的格式存放，我们可以基础包的read.csv函数来读取。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_abec4469562fb752a80a91cd9245a3cc">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"age_incidence.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"age_incidence.csv"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>我们再来看看数据结构是什么样的</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_c71f9f62b0e37ee2526731e1eeed7419">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">head</span>(data)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  area  sex variable agegrp
 1    1 合计    11.48      0
@@ -325,7 +324,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_a5d6d7dd32b9f001c9dbaa80688df9e6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>data <span class="ot">&lt;-</span> data<span class="sc">%&gt;%</span><span class="fu">mutate</span>(</span>
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="at">area=</span><span class="fu">factor</span>(area,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"全省合计"</span>,<span class="st">"城市地区"</span>,<span class="st">"农村地区"</span>)),</span>
-<span id="cb9-3"><a href="#cb9-3"></a>  <span class="at">agegrp=</span><span class="fu">factor</span>(agegrp,<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0~"</span>,<span class="st">"1~"</span>,<span class="st">"5~"</span>,<span class="st">"10~"</span>,<span class="st">"15~"</span>,<span class="st">"20~"</span>,<span class="st">"25~"</span>,<span class="st">"30~"</span>,<span class="st">"35~"</span>,<span class="st">"40~"</span>,<span class="st">"45~"</span>,<span class="st">"50~"</span>,<span class="st">"55~"</span>,<span class="st">"60~"</span>,<span class="st">"65~"</span>,<span class="st">"70~"</span>,<span class="st">"75~"</span>,<span class="st">"80~"</span>,<span class="st">"85~"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="at">agegrp=</span><span class="fu">factor</span>(agegrp,<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0~"</span>,<span class="st">"1~"</span>,<span class="st">"5~"</span>,<span class="st">"10~"</span>,<span class="st">"15~"</span>,<span class="st">"20~"</span>,<span class="st">"25~"</span>,<span class="st">"30~"</span>,<span class="st">"35~"</span>,<span class="st">"40~"</span>,<span class="st">"45~"</span>,<span class="st">"50~"</span>,<span class="st">"55~"</span>,<span class="st">"60~"</span>,<span class="st">"65~"</span>,<span class="st">"70~"</span>,<span class="st">"75~"</span>,<span class="st">"80~"</span>,<span class="st">"85~"</span>)))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="利用ggplot2作图" class="level2">
@@ -362,13 +361,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-28"><a href="#cb10-28"></a>    <span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
 <span id="cb10-29"><a href="#cb10-29"></a>    <span class="co"># 设置轴标题文字大小和文字加粗</span></span>
 <span id="cb10-30"><a href="#cb10-30"></a>    <span class="at">axis.title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>,<span class="at">face=</span><span class="st">"bold"</span>)</span>
-<span id="cb10-31"><a href="#cb10-31"></a>    )<span class="ot">-&gt;</span>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-31"><a href="#cb10-31"></a>    )<span class="ot">-&gt;</span>p1</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ℹ Please use `linewidth` instead.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># 把作好的图存入向量p1</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">ggsave</span>(<span class="st">"lineplot.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">ggsave</span>(<span class="st">"lineplot.png"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Saving 7 x 5 in image</code></pre>
 </div>
@@ -396,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb14-16"><a href="#cb14-16"></a>        <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">color=</span><span class="st">"white"</span>,<span class="at">size=</span><span class="dv">0</span>),</span>
 <span id="cb14-17"><a href="#cb14-17"></a>        <span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
 <span id="cb14-18"><a href="#cb14-18"></a>        <span class="at">axis.title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>,<span class="at">face=</span><span class="st">"bold"</span>)</span>
-<span id="cb14-19"><a href="#cb14-19"></a>        )<span class="ot">-&gt;</span>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-19"><a href="#cb14-19"></a>        )<span class="ot">-&gt;</span>p2</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
 ℹ Please use the `linewidth` argument instead.</code></pre>
@@ -404,7 +403,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>现在不同地区的年龄别发病率图已经存入向量p2，现在我们p2展示出来，看看是什么样的？</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-6_9fcd36342f867f524cae8e4e2c0ee049">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>p2</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" alt="科研作图，折线图" width="672"></p>
 </div>
@@ -433,7 +432,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-18"><a href="#cb17-18"></a>        <span class="at">axis.title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>,<span class="at">face=</span><span class="st">"bold"</span>)</span>
 <span id="cb17-19"><a href="#cb17-19"></a>        )<span class="ot">-&gt;</span>p3</span>
 <span id="cb17-20"><a href="#cb17-20"></a><span class="co"># 直接显示p3向量</span></span>
-<span id="cb17-21"><a href="#cb17-21"></a>p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-21"><a href="#cb17-21"></a>p3</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" alt="科研作图，折线图" width="672"></p>
 </div>
@@ -500,12 +499,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "已复制");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "已复制");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

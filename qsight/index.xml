@@ -64,6 +64,7 @@
   <category>数据分析</category>
   <guid>https://www.chenq.site/qsight/2023-03-21-肿瘤临床预后影响因素分析应该注意哪些因素/index.html</guid>
   <pubDate>Tue, 21 Mar 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://www.chenq.site/qsight/2023-03-21-肿瘤临床预后影响因素分析应该注意哪些因素/preview.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>开发R包一定要有一个高逼格logo</title>
@@ -495,7 +496,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <h2 class="anchored" data-anchor-id="绘制进度线图progressive-line-plot">绘制进度线图(progressive line plot)</h2>
 <p>我们利用线图(line plot)展示了河南省年龄别癌症发病率数据，而我们想让年龄别发病率数据随着年龄的增加而逐渐显示出来，从而让线图动起来，这样，年龄别发病率数据随着年龄变化的特点就能更直观的显示出来。</p>
 <p>想要达到这种效果，其实就是在利用ggplot2制作普通线图的基础上，再利用gganimate包的transition_reveal()函数，从而让线图按照某个变量逐步显示，我们这个例子就是按照x轴变量agegrp逐步显示，transition_reveal(agegrp)。</p>
-<p>为了让线图更文艺或者更美观，我们可以使用ggthemes包里面绘图的主题来进行图的美化。Figure&nbsp;1</p>
+<p>为了让线图更文艺或者更美观，我们可以使用ggthemes包里面绘图的主题来进行图的美化。图&nbsp;1</p>
 <p><strong>绘图代码如下：</strong></p>
 <div class="cell" data-layout-align="center" data-hash="index_cache/html/fig-plot2_365577a65750bd33da5643b4bc04bdc4">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#加载包</span></span>
@@ -528,7 +529,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div id="fig-plot2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/index_files/figure-html/fig-plot2-1.gif" class="img-fluid figure-img" alt="进度线图 progressive line plot"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: 河南省肿瘤登记地区癌症年龄别发病率</figcaption><p></p>
+<p></p><figcaption class="figure-caption">图&nbsp;1: 河南省肿瘤登记地区癌症年龄别发病率</figcaption><p></p>
 </figure>
 </div>
 </div>

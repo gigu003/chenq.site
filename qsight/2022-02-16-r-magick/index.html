@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.14">
@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="陈琼">
-<meta name="dcterms.date" content="2022-02-16">
 <meta name="keywords" content="R, magick, 图片处理, photoshop">
 
 <title>普癌新声 - 用过R magick包处理图片，你还会用PS来P图吗？</title>
@@ -114,15 +113,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交"
   }
 }</script>
 <script type="application/json" class="js-hypothesis-config">
@@ -247,7 +246,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">发表时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 16, 2022</p>
+        <p class="date">2022年2月16日</p>
       </div>
     </div>
     
@@ -269,9 +268,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="安装magick包" class="level2">
 <h2 class="anchored" data-anchor-id="安装magick包">安装magick包</h2>
 <p>可以从CRAN上安装magick包</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">"magick"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">"magick"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>当然也可以从github上安装</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'ropensci/magick'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'ropensci/magick'</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="使用magick包读取和存储图片或视频" class="level2">
 <h2 class="anchored" data-anchor-id="使用magick包读取和存储图片或视频">使用magick包读取和存储图片或视频</h2>
@@ -284,7 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_c22288c5aa872dfbc82849a0df235359">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#加载magick包</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(<span class="st">"magick"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(<span class="st">"magick"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Linking to ImageMagick 6.9.12.3
 Enabled features: cairo, fontconfig, freetype, heic, lcms, pango, raw, rsvg, webp
@@ -293,7 +292,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#读取图片到R工作环境</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>logo <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">"logo:"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co"># 显示图片信息，比如格式、宽、高、大小等</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">image_info</span>(logo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">image_info</span>(logo)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  format width height colorspace matte filesize density
 1    GIF   640    480       sRGB FALSE    28576   72x72</code></pre>
@@ -301,23 +300,23 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># 按照等比例重新调整图片宽度为300像素</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>logo<span class="ot">&lt;-</span><span class="fu">image_scale</span>(logo, <span class="st">"300"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co"># 再看看更改后的图片信息</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">image_info</span>(logo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">image_info</span>(logo)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  format width height colorspace matte filesize density
 1    GIF   300    225       sRGB FALSE        0   72x72</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># 把图片在R中显示</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">plot</span>(logo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">plot</span>(logo)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" alt="magick包处理图片" width="672"></p>
 </div>
 </div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 把图片另存起来</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">image_write</span>(logo, <span class="at">path =</span> <span class="st">"logo.png"</span>, <span class="at">format =</span> <span class="st">"png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">image_write</span>(logo, <span class="at">path =</span> <span class="st">"logo.png"</span>, <span class="at">format =</span> <span class="st">"png"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>可以更改图片的格式</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_2c3c5ca9f338cd9e15ff557e6535afce">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>logo1 <span class="ot">&lt;-</span> <span class="fu">image_convert</span>(logo, <span class="st">"jpg"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">image_info</span>(logo1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">image_info</span>(logo1)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  format width height colorspace matte filesize density
 1    JPG   300    225       sRGB FALSE        0   72x72</code></pre>
@@ -338,54 +337,54 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </ol>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_adadadd956116146774875091a210244">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># 从左侧80像素开始裁剪120像素宽90像素高的图片</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">image_crop</span>(logo, <span class="st">"150x90+30"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">image_crop</span>(logo, <span class="st">"150x90+30"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># 按照等比例重新调整图片宽度为200像素</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">image_scale</span>(logo, <span class="st">"200"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">image_scale</span>(logo, <span class="st">"200"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-2.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#按照等比例重新调整图片高度为200像素</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">image_scale</span>(logo, <span class="st">"x200"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">image_scale</span>(logo, <span class="st">"x200"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-3.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">#图片添加白色背景</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>logo <span class="ot">&lt;-</span> <span class="fu">image_background</span>(logo, <span class="st">'white'</span>)</span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="co">#从x:200，y:150开始填充粉红色</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="fu">image_fill</span>(logo, <span class="st">"pink"</span>, <span class="at">point =</span> <span class="st">"+200+150"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="fu">image_fill</span>(logo, <span class="st">"pink"</span>, <span class="at">point =</span> <span class="st">"+200+150"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-4.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#从x:200，y:130开始填充红色</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">image_fill</span>(logo, <span class="st">"red"</span>, <span class="at">point =</span> <span class="st">"+200+130"</span>, <span class="at">fuzz =</span> <span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">image_fill</span>(logo, <span class="st">"red"</span>, <span class="at">point =</span> <span class="st">"+200+130"</span>, <span class="at">fuzz =</span> <span class="dv">25</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-5.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># 为图片添加左右为20像素、上下为10像素的边框</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">image_border</span>(logo, <span class="st">"#000080"</span>, <span class="st">"20x10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">image_border</span>(logo, <span class="st">"#000080"</span>, <span class="st">"20x10"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-6.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># 旋转图片90度</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">image_rotate</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x200"</span>), <span class="dv">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">image_rotate</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x200"</span>), <span class="dv">90</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-7.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># 增加滤镜模糊效果</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">image_blur</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>), <span class="dv">10</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">image_blur</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>), <span class="dv">10</span>, <span class="dv">5</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-8.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># 增加噪点</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">image_noise</span>(<span class="fu">image_blur</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>), <span class="dv">10</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">image_noise</span>(<span class="fu">image_blur</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>), <span class="dv">10</span>, <span class="dv">5</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-9.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># 去色</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">image_charcoal</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">image_charcoal</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-10.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
@@ -397,7 +396,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="fu">image_annotate</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>), <span class="st">"This is logo picture includedin magick package"</span>, <span class="at">size=</span><span class="dv">15</span>, <span class="at">gravity =</span> <span class="st">"southeast"</span>, <span class="at">color=</span><span class="st">"red"</span>)</span>
 <span id="cb23-3"><a href="#cb23-3"></a></span>
 <span id="cb23-4"><a href="#cb23-4"></a><span class="co"># 你可以文字注释放到图片的任何地方</span></span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="fu">image_annotate</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>), <span class="st">"logo image"</span>, <span class="at">size=</span><span class="dv">30</span>, <span class="at">color=</span><span class="st">"red"</span>, <span class="at">boxcolor =</span> <span class="st">"pink"</span>, <span class="at">degrees =</span> <span class="dv">30</span>, <span class="at">location =</span> <span class="st">"+30+120"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="fu">image_annotate</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>), <span class="st">"logo image"</span>, <span class="at">size=</span><span class="dv">30</span>, <span class="at">color=</span><span class="st">"red"</span>, <span class="at">boxcolor =</span> <span class="st">"pink"</span>, <span class="at">degrees =</span> <span class="dv">30</span>, <span class="at">location =</span> <span class="st">"+30+120"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="magick包支持管道操作符" class="level2">
 <h2 class="anchored" data-anchor-id="magick包支持管道操作符">magick包支持管道操作符”%”</h2>
@@ -412,7 +411,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <span id="cb24-8"><a href="#cb24-8"></a><span class="co"># 为图片增加模糊效果</span></span>
 <span id="cb24-9"><a href="#cb24-9"></a>  <span class="fu">image_blur</span>(<span class="dv">10</span>, <span class="dv">5</span>)<span class="sc">%&gt;%</span></span>
 <span id="cb24-10"><a href="#cb24-10"></a><span class="co"># 为图片增加噪点</span></span>
-<span id="cb24-11"><a href="#cb24-11"></a>  <span class="fu">image_noise</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-11"><a href="#cb24-11"></a>  <span class="fu">image_noise</span>()</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
@@ -424,7 +423,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># 先把一个gif的图片读进来</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a>rabbit <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">"rabbit.gif"</span>)</span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="co"># 查看一下这个gif向量有多少元素组成，也就是有多少张图片组成的。</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="fu">length</span>(rabbit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="fu">length</span>(rabbit)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 22</code></pre>
 </div>
@@ -434,7 +433,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># 我们可以截取这个gif图片中部分元素组成新的gif（间隔3张子图提取一个子图（8个子图），组成新的gif）</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a>rabbit2<span class="ot">&lt;-</span>rabbit[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">13</span>,<span class="dv">16</span>,<span class="dv">19</span>,<span class="dv">22</span>)]</span>
 <span id="cb27-3"><a href="#cb27-3"></a><span class="co"># 先看看这个图是什么</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a><span class="fu">print</span>(rabbit2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="fu">print</span>(rabbit2)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  format width height colorspace matte filesize density
 1    GIF   480    264       sRGB  TRUE        0   72x72
@@ -457,7 +456,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <span id="cb29-4"><a href="#cb29-4"></a>    <span class="co"># 我们给右上角天空中增加一个紫色的条带</span></span>
 <span id="cb29-5"><a href="#cb29-5"></a>   <span class="fu">image_fill</span>(<span class="st">"purple"</span>, <span class="at">point =</span> <span class="st">"+450+50"</span>, <span class="at">fuzz =</span> <span class="dv">5</span>)<span class="sc">%&gt;%</span></span>
 <span id="cb29-6"><a href="#cb29-6"></a>  <span class="co"># 然后我们再给图片增加一条注释语句，放到图片的右下角</span></span>
-<span id="cb29-7"><a href="#cb29-7"></a>  <span class="fu">image_annotate</span>(<span class="st">"This gif image  has been modified by Dr. Chen"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">color =</span> <span class="st">"white"</span>,<span class="at">gravity =</span> <span class="st">"southeast"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-7"><a href="#cb29-7"></a>  <span class="fu">image_annotate</span>(<span class="st">"This gif image  has been modified by Dr. Chen"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">color =</span> <span class="st">"white"</span>,<span class="at">gravity =</span> <span class="st">"southeast"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="图层叠加" class="level2">
 <h2 class="anchored" data-anchor-id="图层叠加">图层叠加</h2>
@@ -468,7 +467,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <span id="cb30-3"><a href="#cb30-3"></a><span class="co"># 把图片等比例调整为300像素宽</span></span>
 <span id="cb30-4"><a href="#cb30-4"></a>img <span class="ot">&lt;-</span> <span class="fu">image_scale</span>(img, <span class="st">"300"</span>)</span>
 <span id="cb30-5"><a href="#cb30-5"></a><span class="co"># 现在显示以下目前的图片信息</span></span>
-<span id="cb30-6"><a href="#cb30-6"></a><span class="fu">image_info</span>(img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-6"><a href="#cb30-6"></a><span class="fu">image_info</span>(img)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  format width height colorspace matte filesize density
 1    GIF   300    225       sRGB FALSE        0   72x72
@@ -476,17 +475,17 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 3    GIF   300    165       sRGB  TRUE        0   72x72</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># 把img图片各层等比例调整为200像素高，然后横向罗列出来 </span></span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">image_append</span>(<span class="fu">image_scale</span>(img, <span class="st">"x200"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">image_append</span>(<span class="fu">image_scale</span>(img, <span class="st">"x200"</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-7-1.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># 把img图片各层等比例调整为200像素宽，然后纵向堆积</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">image_append</span>(<span class="fu">image_scale</span>(img, <span class="st">"200"</span>), <span class="at">stack =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">image_append</span>(<span class="fu">image_scale</span>(img, <span class="st">"200"</span>), <span class="at">stack =</span> <span class="cn">TRUE</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-7-2.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># 把imge图片向量各层重重新做成动图，以每秒1帧的速度播放</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">image_animate</span>(<span class="fu">image_scale</span>(img, <span class="st">"x200"</span>), <span class="at">fps =</span> <span class="dv">1</span>, <span class="at">dispose =</span> <span class="st">"previous"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">image_animate</span>(<span class="fu">image_scale</span>(img, <span class="st">"x200"</span>), <span class="at">fps =</span> <span class="dv">1</span>, <span class="at">dispose =</span> <span class="st">"previous"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-7-3.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
@@ -497,12 +496,12 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <p>magick包提供的image_read_pdf()函数可以读取pdf文件，当读取pdf文件后，pdf文件被转化为一个向量，而pdf的每一页被转化为该向量的每一个元素。由于pdf在被读取时进行渲染，所以需要在读取函数中设置density参数。下面我们来试一试吧：</p>
 <p>这个功能是借助pdftools包来实现的</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># 先安装pdftools包</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a><span class="fu">install.packages</span>(<span class="st">"pdftools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="fu">install.packages</span>(<span class="st">"pdftools"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-8_a49cb235f1cacc968e89c83a36a0b4f3">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># 读取一个pdf文件，设置density为72</span></span>
 <span id="cb36-2"><a href="#cb36-2"></a>kidney <span class="ot">&lt;-</span> <span class="fu">image_read_pdf</span>(<span class="st">'https://www.chenq.site/papers/kidney2015.pdf'</span>, <span class="at">density =</span> <span class="dv">72</span>)</span>
 <span id="cb36-3"><a href="#cb36-3"></a><span class="co"># 看看这个pdf的基本信息</span></span>
-<span id="cb36-4"><a href="#cb36-4"></a><span class="fu">image_info</span>(kidney)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-4"><a href="#cb36-4"></a><span class="fu">image_info</span>(kidney)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  format width height colorspace matte filesize density
 1    PNG   502    731       sRGB  TRUE        0   72x72
@@ -513,7 +512,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 6    PNG   502    731       sRGB  TRUE        0   72x72</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># 查看一下第一页的内容</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a>kidney[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-2"><a href="#cb38-2"></a>kidney[<span class="dv">1</span>]</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" alt="magick包处理图片，科研作图" width="251"></p>
 </div>
@@ -523,12 +522,12 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <h2 class="anchored" data-anchor-id="图片合成">图片合成</h2>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-9_201e06d2c4602eafe55142c1ae5703ae">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># 默认的叠加方式直接放到前图的上面</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">image_composite</span>(kidney[<span class="dv">1</span>],<span class="fu">image_scale</span>(logo,<span class="st">"x275"</span>), <span class="at">operator =</span> <span class="st">"atop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">image_composite</span>(kidney[<span class="dv">1</span>],<span class="fu">image_scale</span>(logo,<span class="st">"x275"</span>), <span class="at">operator =</span> <span class="st">"atop"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" alt="magick包处理图片，科研作图" width="251"></p>
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># 通过blend的方式叠加</span></span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">image_composite</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x275"</span>),  kidney[<span class="dv">1</span>], <span class="at">operator =</span> <span class="st">"blend"</span>, <span class="at">compose_args=</span><span class="st">"50"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">image_composite</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x275"</span>),  kidney[<span class="dv">1</span>], <span class="at">operator =</span> <span class="st">"blend"</span>, <span class="at">compose_args=</span><span class="st">"50"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-9-2.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
 </div>
@@ -598,12 +597,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "已复制");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "已复制");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
