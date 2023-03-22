@@ -1,0 +1,12 @@
+---
+title: "网站时间轴"
+#page-layout: full
+listing:
+  contents: 
+    - "qsight/***/*.qmd"
+    - "publications/*/*.md"
+  type: default
+  fields: [date, title]
+  sort: 'date desc'
+  categories: true
+---

@@ -12,9 +12,7 @@ title-block-tags: true
 
 format:
   html:
-    code-fold: false
-    code-summary: "显示代码"
-    pagelayout: full
+    include-after-body: js.html
 
 language: 
   title-block-published: "发表时间"

@@ -56,20 +56,17 @@ website:
         aria-label: RSS     
 freeze: auto  
 comments:
-  hypothesis:
-    theme: clean
   utterances:
     repo: gigu003/chenq.site
 format:
   html:
     code-line-numbers: true
-    code-block-border-left: "#31BAE9"
+    #code-block-border-left: "#31BAE9"
     toc: false
     theme: flatly
     css: styles.css
     include-in-header: baidusta.html
-    include-after-body: 
-      - js.html
+
 
 
 
