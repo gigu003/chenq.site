@@ -62,7 +62,7 @@ format:
   html:
     code-line-numbers: true
     #code-block-border-left: "#31BAE9"
-    page-layout: full
+    #page-layout: article
     toc: false
     theme: flatly
     css: styles.css
