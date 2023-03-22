@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.14">
@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Qiong Chen">
+<meta name="dcterms.date" content="2022-02-18">
 <meta name="keywords" content="SAS MACRO, FOR, 开放代码循环">
 
 <title>普癌新声 - 利用%for宏程序实现在开放代码中循环执行SAS代码</title>
@@ -113,15 +114,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "没有结果",
-    "search-matching-documents-text": "匹配的文档",
-    "search-copy-link-title": "复制搜索链接",
-    "search-hide-matches-text": "隐藏其它匹配结果",
-    "search-more-match-text": "更多匹配结果",
-    "search-more-matches-text": "更多匹配结果",
-    "search-clear-button-title": "清除",
-    "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "提交"
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
   }
 }</script>
 <style>
@@ -150,7 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -216,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
+    <div class="quarto-title column-body">
       <h1 class="title">利用%for宏程序实现在开放代码中循环执行SAS代码</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">SAS</div>
@@ -238,7 +239,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">发表时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">2022年2月18日</p>
+        <p class="date">February 18, 2022</p>
       </div>
     </div>
     
@@ -246,12 +247,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
@@ -264,12 +265,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>操作说明</strong>，<a href="https://www.lexjansen.com/wuss/2008/app/app04.pdf">点击这里下载</a></li>
 </ul>
 <p>下面让我们来学习一下，它是如何实现循环的吧。为了演示SAS的运行记录，我们在R里安装了<a href="tech/2022/02/r-sas/">SASmarkdown包</a>（本文采用R Blogdown来写），以实现调用SAS的运行日志。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(SASmarkdown)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(SASmarkdown)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="安装方法" class="level2">
 <h2 class="anchored" data-anchor-id="安装方法">安装方法</h2>
 <p>%for宏程序的使用方法和其它宏程序一样，首先需要运行编译后才能使用，可以使用%include语句，也可以通过options调用编译过的宏程序。</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource sas number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a># 编译宏程序</span>
-<span id="cb2-2"><a href="#cb2-2"></a>%include "\存放路径\for.sas"</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2"></a>%include "\存放路径\for.sas"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="基本语法" class="level2">
 <h2 class="anchored" data-anchor-id="基本语法">基本语法</h2>
@@ -283,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-2"><a href="#cb3-2"></a>参数1:宏变量列表 ,</span>
 <span id="cb3-3"><a href="#cb3-3"></a>参数2:数据源 ,</span>
 <span id="cb3-4"><a href="#cb3-4"></a>参数3:SAS语句 </span>
-<span id="cb3-5"><a href="#cb3-5"></a>  ) </span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>执行过程：</strong></p>
 <p>首先，宏程序读取数据源参数2，然后对于数据源的每个观测值，把相应的观测值赋值给参数1的列出的宏变量，然后执行参数3里的sas语句。每次执行代码时，都会在SAS代码中进行宏变量替换。</p>
 <p><strong>%for宏可以使用四种数据源：</strong></p>
@@ -317,7 +318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-14"><a href="#cb4-14"></a>      name="Qiong Chen";</span>
 <span id="cb4-15"><a href="#cb4-15"></a>      gender="Male";</span>
 <span id="cb4-16"><a href="#cb4-16"></a>      run;</span>
-<span id="cb4-17"><a href="#cb4-17"></a>  ))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-17"><a href="#cb4-17"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>我们从sas的运行日志中可以看出，%for宏已经建立了三个数据集。</p>
 </section>
 <section id="利用值列表进行循环" class="level2">
@@ -331,7 +332,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-5"><a href="#cb5-5"></a>      gender="Male";</span>
 <span id="cb5-6"><a href="#cb5-6"></a>      height=170;</span>
 <span id="cb5-7"><a href="#cb5-7"></a>      run;</span>
-<span id="cb5-8"><a href="#cb5-8"></a>  ))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a href="#cb5-8"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>我们从上面的sas日志中可以看出，%FOR宏生成了三个数据集，数据集名分别为a,b,c，每个数据集的内容都是一样的。</p>
 </section>
 <section id="利用数值范围进行循环" class="level2">
@@ -347,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-6"><a href="#cb6-6"></a>      height=170;</span>
 <span id="cb6-7"><a href="#cb6-7"></a>      weight=75;</span>
 <span id="cb6-8"><a href="#cb6-8"></a>      run;</span>
-<span id="cb6-9"><a href="#cb6-9"></a>  ))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-9"><a href="#cb6-9"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="利用宏数组进行循环" class="level2">
 <h2 class="anchored" data-anchor-id="利用宏数组进行循环">利用宏数组进行循环</h2>
@@ -357,7 +358,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-3"><a href="#cb7-3"></a>  %let meas2=PSI09; </span>
 <span id="cb7-4"><a href="#cb7-4"></a>  %let meas3=PSI11; </span>
 <span id="cb7-5"><a href="#cb7-5"></a>  %let meas4=PSI14; </span>
-<span id="cb7-6"><a href="#cb7-6"></a>  %let measN=4;</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-6"><a href="#cb7-6"></a>  %let measN=4;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>一个或多个宏数组可以用作带有“array=”关键字的宏数据源的%。当%for变量列表出现在%for调用中时，变量的数量必须与宏数组的数量相同。要执行的迭代次数由第一个宏数组的长度(或“length=”参数(如果存在))定义。当提供多个宏数组时，所有宏数组的长度必须至少与第一个数组(或。 “Length=”参数(如果存在)。</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource sas number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href="#cb8-1"></a>*combine reference datasets into single dataset; </span>
 <span id="cb8-2"><a href="#cb8-2"></a>  data allrefs; </span>
@@ -365,7 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-4"><a href="#cb8-4"></a>      %for(psi, array=meas, do=%nrstr(  </span>
 <span id="cb8-5"><a href="#cb8-5"></a>          if in_&amp;psi then measure = "&amp;psi";  </span>
 <span id="cb8-6"><a href="#cb8-6"></a>      )) </span>
-<span id="cb8-7"><a href="#cb8-7"></a>  run;</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-7"><a href="#cb8-7"></a>  run;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>上面的示例两次调用%FOR宏。第一个调用为“set”语句创建数据集列表。第二个调用设置变量“MEASURE”以指示“allrefs”数据集中每个观测的数据集源。省略带有“array=”数据源的宏变量列表是使宏变量列表与“array=”列表相同的快捷方式。</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource sas number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href="#cb9-1"></a>*combine reference datasets into single dataset; </span>
 <span id="cb9-2"><a href="#cb9-2"></a>  data allrefs; </span>
@@ -373,7 +374,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-4"><a href="#cb9-4"></a>      %for(array=meas, do=%nrstr(  </span>
 <span id="cb9-5"><a href="#cb9-5"></a>          if in_&amp;meas then measure = "&amp;meas";  </span>
 <span id="cb9-6"><a href="#cb9-6"></a>      )) </span>
-<span id="cb9-7"><a href="#cb9-7"></a>  run;</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-7"><a href="#cb9-7"></a>  run;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="for宏嵌套循环" class="level2">
 <h2 class="anchored" data-anchor-id="for宏嵌套循环">%FOR宏嵌套循环</h2>
@@ -384,7 +385,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-3"><a href="#cb10-3"></a>      %for(hospreport, data=hospitals(where=(system="&amp;system")), do=%nrstr( </span>
 <span id="cb10-4"><a href="#cb10-4"></a>          x "pkzipc –add ""&amp;zipfilepath"" ""&amp;hospreport"" "; </span>
 <span id="cb10-5"><a href="#cb10-5"></a>      )) </span>
-<span id="cb10-6"><a href="#cb10-6"></a>  )) </span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-6"><a href="#cb10-6"></a>  )) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="总结" class="level2">
 <h2 class="anchored" data-anchor-id="总结">总结</h2>
@@ -446,12 +447,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "已复制");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "已复制");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

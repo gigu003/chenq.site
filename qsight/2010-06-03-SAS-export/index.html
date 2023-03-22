@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.14">
@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="陈琼">
+<meta name="dcterms.date" content="2010-06-03">
 <meta name="keywords" content="文件存取">
 
 <title>普癌新声 - SAS访问外部数据文件</title>
@@ -113,15 +114,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "没有结果",
-    "search-matching-documents-text": "匹配的文档",
-    "search-copy-link-title": "复制搜索链接",
-    "search-hide-matches-text": "隐藏其它匹配结果",
-    "search-more-match-text": "更多匹配结果",
-    "search-more-matches-text": "更多匹配结果",
-    "search-clear-button-title": "清除",
-    "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "提交"
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
   }
 }</script>
 <style>
@@ -150,7 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -216,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
+    <div class="quarto-title column-body">
       <h1 class="title">SAS访问外部数据文件</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">SAS</div>
@@ -238,7 +239,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">发表时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">2010年6月3日</p>
+        <p class="date">June 3, 2010</p>
       </div>
     </div>
     
@@ -246,12 +247,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
@@ -272,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-13"><a href="#cb1-13"></a>USEDATE=YES | NO; *使用日期变量。USEDATE=NO时，默认输入的将是日期时间变量，时间为该日的0点0分0秒.</span>
 <span id="cb1-14"><a href="#cb1-14"></a>SCANTIME=YES | NO;</span>
 <span id="cb1-15"><a href="#cb1-15"></a>TEXTSIZE=x;      *1&lt;x&lt;32767,当TEXTSIZE与SCANTEXT=YES同时出现时，字符变量的宽度有SCANTEXT决定，即扫描该列所有数据得到，但是，其宽度不超过TEXTSIZE的最大值。eg.如有一个字符串为"ABC1234567890"，其宽度为13，但是我设置的TEXTSIZE=10，那么该列的宽度为10，只能导入左侧10位，剩余右侧的将丢失。所以，一般优先使用SCANTEXT=YES，而不适用TEXTSIZE。.</span>
-<span id="cb1-16"><a href="#cb1-16"></a>RUN;</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-16"><a href="#cb1-16"></a>RUN;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="导入access数据库" class="level3">
 <h3 class="anchored" data-anchor-id="导入access数据库">导入ACCESS数据库</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource sas number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>proc import out=work.dists 　　*读取ACCESS数据库，输入数据集work.dists.</span>
@@ -281,7 +282,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-4"><a href="#cb2-4"></a>database="d:\data\cyst.mdb";   *规定要读入外部文件的地址和名称为"d:\data\cyst.mdb".</span>
 <span id="cb2-5"><a href="#cb2-5"></a>uid='***';                    *指定数据库用户名.</span>
 <span id="cb2-6"><a href="#cb2-6"></a>pwd='***';                    *规定ACCESS密码.</span>
-<span id="cb2-7"><a href="#cb2-7"></a>run;</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a href="#cb2-7"></a>run;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="access过程" class="level2">
 <h2 class="anchored" data-anchor-id="access过程">ACCESS过程：</h2>
@@ -293,7 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-2"><a href="#cb3-2"></a>create libref.membername.access;</span>
 <span id="cb3-3"><a href="#cb3-3"></a>required database description statements;</span>
 <span id="cb3-4"><a href="#cb3-4"></a>optional editing statements;</span>
-<span id="cb3-5"><a href="#cb3-5"></a>run;</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5"></a>run;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>实例：</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource sas number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>proc access dbms=xls;</span>
 <span id="cb4-2"><a href="#cb4-2"></a>create work.cyst.access;</span>
@@ -301,19 +302,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-4"><a href="#cb4-4"></a>getnames=yes;</span>
 <span id="cb4-5"><a href="#cb4-5"></a>scantype=yes;</span>
 <span id="cb4-6"><a href="#cb4-6"></a>list all;</span>
-<span id="cb4-7"><a href="#cb4-7"></a>run;</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a href="#cb4-7"></a>run;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>创建数据视窗view：</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource sas number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>proc access dbms=dbf | xls  accdesc=libref.access-descriptor;</span>
 <span id="cb5-2"><a href="#cb5-2"></a>create   libref.membername.view;</span>
 <span id="cb5-3"><a href="#cb5-3"></a>select    column-list;</span>
 <span id="cb5-4"><a href="#cb5-4"></a>optional editing statements;</span>
-<span id="cb5-5"><a href="#cb5-5"></a>run;</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href="#cb5-5"></a>run;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>实例：</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource sas number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a>proc access dbms=xls   accdesc=work.cyst;</span>
 <span id="cb6-2"><a href="#cb6-2"></a>create work.aaa.view;</span>
 <span id="cb6-3"><a href="#cb6-3"></a>select all;</span>
 <span id="cb6-4"><a href="#cb6-4"></a>list view;</span>
-<span id="cb6-5"><a href="#cb6-5"></a>run;</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5"></a>run;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -371,12 +372,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "已复制");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "已复制");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

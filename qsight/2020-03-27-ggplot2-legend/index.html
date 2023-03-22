@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.14">
@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Qiong Chen">
+<meta name="dcterms.date" content="2020-03-27">
 <meta name="keywords" content="R基础知识, R语言, ggplot2">
 
 <title>普癌新声 - 修改ggplot2图例相关设置</title>
@@ -113,15 +114,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "没有结果",
-    "search-matching-documents-text": "匹配的文档",
-    "search-copy-link-title": "复制搜索链接",
-    "search-hide-matches-text": "隐藏其它匹配结果",
-    "search-more-match-text": "更多匹配结果",
-    "search-more-matches-text": "更多匹配结果",
-    "search-clear-button-title": "清除",
-    "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "提交"
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
   }
 }</script>
 <style>
@@ -150,7 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -216,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
+    <div class="quarto-title column-body">
       <h1 class="title">修改ggplot2图例相关设置</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">R</div>
@@ -238,7 +239,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">发表时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">2020年3月27日</p>
+        <p class="date">March 27, 2020</p>
       </div>
     </div>
     
@@ -246,35 +247,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 <p>ggplot2中的legend包括四个部分: legend.tittle, legend.text, legend.key, legend.backgroud。针对每一部分有四种处理方式： element_text()绘制标签和标题，可控制字体的family, face, colour, size, hjust, vjust, angle, lineheight,当改变角度时，序将hjust调整至0或1. element_rect()绘制主要供背景使用的矩形，你可以控制颜色的填充（fill）和边界的colour, size, linetype element_blank()表示空主题，即对元素不分配相应的绘图空间。该函数可以山区我们不感兴趣的绘图元素。使用之前的colour=NA，fill=NA,让某些元素不可见，但仍然占绘图空间。 element_get()可得到当前主题的设置。 theme()可在一幅图中对某些元素进行局部性修改，theme_update()可为后面图形的绘制进行全局性的修改。</p>
 <p>不加Legend</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">'none'</span>);</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">'none'</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>删除legend.tittle</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.title=</span><span class="fu">element_blank</span>())</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.title=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>图例（legend）的位置 图例（legend）的位置和对齐使用的主题设置legend.position来控制，其值可为right,left,top,bottom,none(不加图例，或是一个表示位置的数值。这个数值型位置由legend.justfication给定的相对边角位置表示（取0和1之间的值），它是一个长度为2的数值型向量：右上角为c(1,1),左下角为c(0,0)</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position=</span>”left”)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position=</span>”left”)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>修改legend.tittle内容</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>p<span class="sc">+</span><span class="fu">scale_colour_hue</span>(<span class="st">"what does it eat?"</span>,<span class="at">breaks=</span><span class="fu">c</span>(<span class="st">"herbi"</span>,<span class="st">"carni"</span>,<span class="st">"omni"</span>,<span class="cn">NA</span>),<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"plants"</span>,<span class="st">"meat"</span>,<span class="st">"both"</span>,<span class="st">"don't know"</span>));</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>p<span class="sc">+</span><span class="fu">scale_colour_hue</span>(<span class="st">"what does it eat?"</span>,<span class="at">breaks=</span><span class="fu">c</span>(<span class="st">"herbi"</span>,<span class="st">"carni"</span>,<span class="st">"omni"</span>,<span class="cn">NA</span>),<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"plants"</span>,<span class="st">"meat"</span>,<span class="st">"both"</span>,<span class="st">"don't know"</span>));</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>修改尺寸大小</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.background=</span><span class="fu">element_rect</span>(<span class="at">colour=</span><span class="st">"purple"</span>,<span class="at">fill=</span><span class="st">"pink"</span>,<span class="at">size=</span><span class="dv">3</span>,<span class="at">linetype=</span><span class="st">"dashed"</span>));</span>
 <span id="cb5-2"><a href="#cb5-2"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.key.size=</span><span class="fu">unit</span>(<span class="dv">2</span>,<span class="st">'cm'</span>));</span>
 <span id="cb5-3"><a href="#cb5-3"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.key.width=</span><span class="fu">unit</span>(<span class="dv">5</span>,<span class="st">'cm'</span>));</span>
-<span id="cb5-4"><a href="#cb5-4"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">colour =</span> <span class="st">'red'</span>, <span class="at">angle =</span> <span class="dv">45</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">hjust =</span> <span class="dv">3</span>, <span class="at">vjust =</span> <span class="dv">3</span>, <span class="at">face =</span> <span class="st">'bold'</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">colour =</span> <span class="st">'red'</span>, <span class="at">angle =</span> <span class="dv">45</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">hjust =</span> <span class="dv">3</span>, <span class="at">vjust =</span> <span class="dv">3</span>, <span class="at">face =</span> <span class="st">'bold'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>颜色的修改以及一致性：</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(RColorBrewer);</span>
 <span id="cb6-2"><a href="#cb6-2"></a>newpalette<span class="ot">&lt;-</span><span class="fu">colorRampPalette</span>(<span class="fu">brewer.pal</span>(<span class="dv">12</span>,<span class="st">"Set3"</span>))(<span class="fu">length</span>(<span class="fu">unique</span>(eee<span class="sc">$</span>name)));</span>
 <span id="cb6-3"><a href="#cb6-3"></a>p<span class="sc">+</span><span class="fu">scale_fill_manual</span>(<span class="at">values=</span>newpalette);</span>
-<span id="cb6-4"><a href="#cb6-4"></a>p<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">"stack"</span>,<span class="fu">aes</span>(<span class="at">order=</span><span class="fu">desc</span>(name)))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a href="#cb6-4"></a>p<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">"stack"</span>,<span class="fu">aes</span>(<span class="at">order=</span><span class="fu">desc</span>(name)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 
@@ -331,12 +332,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "已复制");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "已复制");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
