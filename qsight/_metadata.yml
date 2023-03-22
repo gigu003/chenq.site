@@ -12,7 +12,6 @@ title-block-categories: true
 format:
   html:
     include-after-body: js.html
-
 language: 
   title-block-published: "发表时间"
   toc-title-document: "目录"
