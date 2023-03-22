@@ -37,9 +37,9 @@ h5 {
 }
 
 h1 {
-  font-size: 1.7em;
-  padding-bottom: 0.8em;
-  line-height: 1.8em;
+  font-size: 1.6em;
+  padding-bottom: 0em;
+  line-height: 1.6em;
 }
 
 h2 {
@@ -305,13 +305,13 @@ div.quarto-about-trestles .about-entity .about-link:hover {
 .quarto-category,
 .listing-category {
   line-height: 1.8em !important;
-  padding: 1px 5px 0 5px;
+  padding: 20px 5px 0 5px;
   margin-left: -5px;
   margin-right: 5px;
 }
 
 div.quarto-post .metadata {
-  font-size: .9em;
+  font-size: 1.1em;
 }
 div.quarto-post .listing-categories .listing-category {
   background: #e9e9e9;

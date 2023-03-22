@@ -3,7 +3,7 @@ title: 开发R包一定要有一个高逼格logo
 subtitle: 利用hexSticker包快速制作R包logo
 date: "2023-02-27"
 slug: create-r-logo
-categories: [logo, R语言, R包]
+categories: [个人网站]
 keywords: [R语言, logo, R包]
 toc: true
 ---

@@ -3,7 +3,7 @@ title: "Mermaid 绘制流程图"
 author: "陈琼"
 date: "2022-11-24"
 date-format: short
-categories: [Mermaid, 流程图]
+categories: [ quarto ]
 keywords: [Mermaid, 流程图, 肿瘤登记]
 image: preview.jpg
 ---

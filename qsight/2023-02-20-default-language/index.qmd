@@ -2,7 +2,7 @@
 title: MAC OS 中使用ggplot2作图无法显示中文
 date: "2023-02-20"
 slug: default-language-R
-categories: [作图,R语言,MAC OS]
+categories: [R基础知识]
 keywords: [R语言,MACOS]
 draft: true
 ---

@@ -11,7 +11,7 @@ website:
   favicon: favicon.png
   twitter-card: true
   open-graph: true
-  site-url: https://chenq.site
+  site-url: https://www.chenq.site
   reader-mode: false
 
   navbar:

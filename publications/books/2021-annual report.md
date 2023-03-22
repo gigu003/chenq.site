@@ -14,5 +14,5 @@ details: <em>河南科学技术出版社</em>,郑州
 online: https://chenq.site/report/2021/
 ---
 
-![](cover/2021.jpg)
+![](cover/2021.jpeg)
 
