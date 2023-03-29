@@ -19,7 +19,7 @@ image: writing.jpg
 我相信除了不需要进行统计分析的综述类文章类型之外，大部分论文类型的论文写作流程是下面这个样子的：
 
 ```{mermaid}
-flowchart LR
+flowchart TD
   A[(数据清洗)] --> B(统计分析)
   B --> C{结果初步评估}
   C --> B
