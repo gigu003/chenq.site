@@ -377,18 +377,6 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </section>
 
 </main> <!-- /main -->
-<script type="text/javascript">
-
-// replace cmd keyboard shortcut w/ control on non-Mac platforms
-const kPlatformMac = typeof navigator !== 'undefined' ? /Mac/.test(navigator.platform) : false;
-if (!kPlatformMac) {
-   var kbds = document.querySelectorAll("kbd")
-   kbds.forEach(function(kbd) {
-      kbd.innerHTML = kbd.innerHTML.replace(/⌘/g, '⌃');
-   });
-}
-
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -522,7 +510,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://utteranc.es/client.js" repo="gigu003/chenq.site" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+<script src="https://utteranc.es/client.js" repo="gigu003/chenqcomments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 <footer class="footer">

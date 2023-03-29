@@ -151,7 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -250,7 +250,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -321,18 +323,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 </main> <!-- /main -->
-<script type="text/javascript">
-
-// replace cmd keyboard shortcut w/ control on non-Mac platforms
-const kPlatformMac = typeof navigator !== 'undefined' ? /Mac/.test(navigator.platform) : false;
-if (!kPlatformMac) {
-   var kbds = document.querySelectorAll("kbd")
-   kbds.forEach(function(kbd) {
-      kbd.innerHTML = kbd.innerHTML.replace(/⌘/g, '⌃');
-   });
-}
-
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -466,7 +456,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://utteranc.es/client.js" repo="gigu003/chenq.site" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+<script src="https://utteranc.es/client.js" repo="gigu003/chenqcomments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 <footer class="footer">

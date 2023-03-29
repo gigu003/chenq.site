@@ -256,6 +256,9 @@ div.quarto-about-trestles .about-entity .about-link:hover {
   color: #ebebeb;
 }
 
+.quarto-category {
+  color: white;
+}
 .badge-grey:hover, .quarto-category:hover,
 .listing-category:hover {
   background-color: #536878;

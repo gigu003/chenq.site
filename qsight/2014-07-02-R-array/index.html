@@ -151,7 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -250,7 +250,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页内容</h2>
+   
+  <ul>
+  <li><a href="#一生成数组或矩阵" id="toc-一生成数组或矩阵" class="nav-link active" data-scroll-target="#一生成数组或矩阵">一、生成数组或矩阵</a>
+  <ul class="collapse">
+  <li><a href="#一将向量定义为数组" id="toc-一将向量定义为数组" class="nav-link" data-scroll-target="#一将向量定义为数组">（一）将向量定义为数组</a></li>
+  <li><a href="#二用array函数构造多维数组" id="toc-二用array函数构造多维数组" class="nav-link" data-scroll-target="#二用array函数构造多维数组">（二）用array（）函数构造多维数组</a></li>
+  <li><a href="#三用matrix函数构造矩阵" id="toc-三用matrix函数构造矩阵" class="nav-link" data-scroll-target="#三用matrix函数构造矩阵">（三）用matrix（）函数构造矩阵</a></li>
+  </ul></li>
+  <li><a href="#二数组的下标" id="toc-二数组的下标" class="nav-link" data-scroll-target="#二数组的下标">二、数组的下标</a>
+  <ul class="collapse">
+  <li><a href="#一数组的下标" id="toc-一数组的下标" class="nav-link" data-scroll-target="#一数组的下标">（一）数组的下标</a></li>
+  <li><a href="#二不规则的数组下标" id="toc-二不规则的数组下标" class="nav-link" data-scroll-target="#二不规则的数组下标">（二）不规则的数组下标</a></li>
+  </ul></li>
+  <li><a href="#三数组的四则运算" id="toc-三数组的四则运算" class="nav-link" data-scroll-target="#三数组的四则运算">三、数组的四则运算</a>
+  <ul class="collapse">
+  <li><a href="#一矩阵的乘法" id="toc-一矩阵的乘法" class="nav-link" data-scroll-target="#一矩阵的乘法">（一）矩阵的乘法</a></li>
+  </ul></li>
+  <li><a href="#四矩阵的运算" id="toc-四矩阵的运算" class="nav-link" data-scroll-target="#四矩阵的运算">四、矩阵的运算</a>
+  <ul class="collapse">
+  <li><a href="#一矩阵的乘法-1" id="toc-一矩阵的乘法-1" class="nav-link" data-scroll-target="#一矩阵的乘法-1">（一）矩阵的乘法</a></li>
+  <li><a href="#二矩阵的转置运算" id="toc-二矩阵的转置运算" class="nav-link" data-scroll-target="#二矩阵的转置运算">（二）矩阵的转置运算</a></li>
+  <li><a href="#三方阵的行列式" id="toc-三方阵的行列式" class="nav-link" data-scroll-target="#三方阵的行列式">（三）方阵的行列式</a></li>
+  <li><a href="#四生成对角矩阵和对矩阵取对角运算" id="toc-四生成对角矩阵和对矩阵取对角运算" class="nav-link" data-scroll-target="#四生成对角矩阵和对矩阵取对角运算">(四)生成对角矩阵和对矩阵取对角运算</a></li>
+  </ul></li>
+  <li><a href="#五与矩阵运算有关的函数" id="toc-五与矩阵运算有关的函数" class="nav-link" data-scroll-target="#五与矩阵运算有关的函数">五、与矩阵运算有关的函数</a>
+  <ul class="collapse">
+  <li><a href="#一去矩阵的维数" id="toc-一去矩阵的维数" class="nav-link" data-scroll-target="#一去矩阵的维数">（一）去矩阵的维数</a></li>
+  <li><a href="#二矩阵的合并" id="toc-二矩阵的合并" class="nav-link" data-scroll-target="#二矩阵的合并">（二）矩阵的合并</a></li>
+  <li><a href="#三矩阵的拉直把矩阵转化为向量" id="toc-三矩阵的拉直把矩阵转化为向量" class="nav-link" data-scroll-target="#三矩阵的拉直把矩阵转化为向量">（三）矩阵的拉直（把矩阵转化为向量）</a></li>
+  <li><a href="#四apply函数" id="toc-四apply函数" class="nav-link" data-scroll-target="#四apply函数">（四）apply函数</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -768,18 +804,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 
 </main> <!-- /main -->
-<script type="text/javascript">
-
-// replace cmd keyboard shortcut w/ control on non-Mac platforms
-const kPlatformMac = typeof navigator !== 'undefined' ? /Mac/.test(navigator.platform) : false;
-if (!kPlatformMac) {
-   var kbds = document.querySelectorAll("kbd")
-   kbds.forEach(function(kbd) {
-      kbd.innerHTML = kbd.innerHTML.replace(/⌘/g, '⌃');
-   });
-}
-
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -913,7 +937,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://utteranc.es/client.js" repo="gigu003/chenq.site" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+<script src="https://utteranc.es/client.js" repo="gigu003/chenqcomments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 <footer class="footer">

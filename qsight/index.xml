@@ -10,7 +10,798 @@
 <atom:link href="https://www.chenq.site/qsight/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
 <generator>quarto-1.3.14</generator>
-<lastBuildDate>Tue, 21 Mar 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 25 Mar 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>论文写作效率神器：Quarto出版系统</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://www.chenq.site/qsight/2023-3-25-quarto-writing/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="传统论文写作中的常见问题" class="level2">
+<h2 class="anchored" data-anchor-id="传统论文写作中的常见问题">传统论文写作中的常见问题</h2>
+<p>我相信除了不需要进行统计分析的综述类文章类型之外，大部分论文类型的论文写作流程是下面这个样子的：</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+  A[(数据清洗)] --&gt; B(统计分析)
+  B --&gt; C{结果初步评估}
+  C --&gt; B
+  C --&gt; D(统计制表)
+  D --&gt; E[论文撰写]
+  E -- 发现不合理结果 --&gt; B
+  E --&gt; F[论文投稿]
+  F --&gt; G[专家意见]
+  G -- 建议重新统计 --&gt; B
+  G -- 不需要重新统计 --&gt; E
+  G --&gt; H[发表见刊]
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+什么是传统科技论文写作？
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>我想你在进行科技论文写作的过程中，数据分析和结果展现是割裂的过程，需要在不同的文字编辑软件里手动调整格式(比如参考文献的标注和更新、图表的交叉引用和更新、段落格式的设定等)，那么我觉这些都属于传统科技论文的写作。</p>
+</div>
+</div>
+<p>在执行上面流程的过程中可能在论文写作及发表过程中出现很多问题，我们在各个环节都可能发现我们论文结果中存在或这或那的问题，这个是非常正常的，也是一个必然的过程，我们需要在这个过程中不断打磨数据的统计结果，使之更有说服力，更能真实展现研究的主要结果。</p>
+<p>但是如果<em>需要重新进行统计分析</em>的问题在论文撰写的时候被发现或者在专家审稿的时候被发现，那意味着后面统计制表、论文撰写中相关的数据均需要更新，如果你还是在word里以复制粘贴的方式从统计软件里往word进行结果输出的话，可以想像，这个过程必定的非常痛苦的。</p>
+<ul>
+<li>需要付出大量时间进行复制粘贴这样没有意义的事</li>
+<li>重复操作的过程中可能会出现偶尔的数据错误</li>
+</ul>
+</section>
+<section id="quarto开源科学技术出版系统介绍" class="level2">
+<h2 class="anchored" data-anchor-id="quarto开源科学技术出版系统介绍">Quarto开源科学技术出版系统介绍</h2>
+<p><a href="https://quarto.org">Quarto</a>可以解决上面出现的问题，能把数据分析的过程融合进论文写作的过程中来，以<a href="https://www.markdown.xyz/basic-syntax/"><em>markdown</em></a>的格式进行文字编辑和创作，通过插入<a href="https://quarto.org/docs/reference/cells/cells-knitr.html"><em>代码段</em></a>的形式进行统计分析相关的输出，同时它可以实现参考文献的插入和应用、图表的交叉引用；在报告输出方面，它可以输出成PDF、WORD、PPT、HTML、ePub等多种格式，可以用来制作网页、书籍、科技论文、幻灯片等内容。</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Quarto
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://quarto.org">Quarto</a>是一个基于Pandoc的开源科学和技术出版系统，是下一代的R markdown，它以.qmd为文件后缀，quarto把内容通过knitr转化为markdown，再通过Pandoc转化为各种指定的格式。</p>
+<p><img src="https://www.chenq.site/qsight/2023-3-25-quarto-writing/https:/quarto.org/docs/get-started/hello/images/rstudio-qmd-how-it-works.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="quarto的主要特点" class="level2">
+<h2 class="anchored" data-anchor-id="quarto的主要特点">Quarto的主要特点</h2>
+<ul>
+<li>它主要用来生成不同格式的报告</li>
+<li>能把R、Python、Julia和Observable等代码与文本报告整合起来，生成基于不同代码运行结果的动态报告</li>
+<li>它基于markdown和pandoc进行内容的转换</li>
+<li>它使用.qmd文件后缀，相对于Rmd在进行内容创作生成不同格式输出时具有统一的语法</li>
+<li>它可以不依赖上面所说的软件独立运行，当你的内容创作不涉及的上面的软件时，那你只需要单独安装Quarto环境即可</li>
+<li>可以与不同的代码编辑软件结合使用，<a href="https://quarto.org/docs/get-started/">Rstudio、Terminal、Vscode</a>等</li>
+</ul>
+</section>
+<section id="quarto安装" class="level2">
+<h2 class="anchored" data-anchor-id="quarto安装">Quarto安装</h2>
+<p>如果你使用Rstudio的话，<a href="https://posit.co/download/rstudio-desktop/">下载最新的版本</a>，该版本内置有quarto。</p>
+<p>如果你需要在R 代码进行文档渲染的话，可以安装R quarto包</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">install.packages</span>(<span class="st" style="color: #20794D;">"quarto"</span>)</span>
+<span id="cb1-2">quarto<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">quarto_render</span>(<span class="st" style="color: #20794D;">"hello.qmd"</span>)</span></code></pre></div>
+<p>如果你需要在Vscode或者终端中使用quarto的话，可以参考<a href="https://quarto.org/docs/get-started/">不同运行环境quarto的安装与配置</a>，进行相应的配置，本篇博客将使用Rstudio进行相应的操作和介绍。</p>
+</section>
+<section id="新建quarto文件" class="level2">
+<h2 class="anchored" data-anchor-id="新建quarto文件">新建quarto文件</h2>
+<p>在Rstudio里，点击 <em>File</em> –&gt; New Files –&gt; Quarto Document 新建一个quarto文件，该文件以.qmd为文件后缀</p>
+<div class="quarto-figure quarto-figure-center aside">
+<figure class="figure">
+<p><img src="https://www.chenq.site/qsight/2023-3-25-quarto-writing/newfile.jpg" class="aside img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="quarto语法介绍" class="level2">
+<h2 class="anchored" data-anchor-id="quarto语法介绍">Quarto语法介绍</h2>
+<section id="yaml-信息设置" class="level3">
+<h3 class="anchored" data-anchor-id="yaml-信息设置">YAML 信息设置</h3>
+<p>Quarto通过yaml设置一些变量信息，比如作者、日期、标题等，YAML以”---“单独一行开头，然后以”---“单独一行结尾，中间可以设置一些变量信息。</p>
+<p>变量设定格式：</p>
+<p>变量名: 变量值</p>
+<p>输出格式也在YAML里面设置，设定输出格式的变量名为：format，变量值为：html、pdf、word等。</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="pp" style="color: #AD0000;">---</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;">title</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> </span><span class="st" style="color: #20794D;">"河南省肿瘤登记地区恶性肿瘤2017-2019年期间5年相对生存率"</span></span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;">author</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> 陈琼</span></span>
+<span id="cb2-4"><span class="fu" style="color: #4758AB;">date</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> 2022-03-28</span></span>
+<span id="cb2-5"><span class="fu" style="color: #4758AB;">categories</span><span class="kw" style="color: #003B4F;">:</span></span>
+<span id="cb2-6"><span class="at" style="color: #657422;">  </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> 论文</span></span>
+<span id="cb2-7"><span class="at" style="color: #657422;">  </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> 生存分析</span></span>
+<span id="cb2-8"><span class="fu" style="color: #4758AB;">keywords</span><span class="kw" style="color: #003B4F;">:</span></span>
+<span id="cb2-9"><span class="at" style="color: #657422;">  </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> 河南省</span></span>
+<span id="cb2-10"><span class="at" style="color: #657422;">  </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> 恶性肿瘤</span></span>
+<span id="cb2-11"><span class="at" style="color: #657422;">  </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> 现时生存分析</span></span>
+<span id="cb2-12"><span class="at" style="color: #657422;">  </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> 相对生存率</span></span>
+<span id="cb2-13"><span class="fu" style="color: #4758AB;">format</span><span class="kw" style="color: #003B4F;">:</span></span>
+<span id="cb2-14"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">html</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> default</span></span>
+<span id="cb2-15"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">docx</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> default</span></span>
+<span id="cb2-16"><span class="pp" style="color: #AD0000;">---</span></span></code></pre></div>
+</section>
+<section id="代码块" class="level3">
+<h3 class="anchored" data-anchor-id="代码块">代码块</h3>
+<p>quarto文档中可以插入代码块，在代码块中可以进行编写相应语言的代码，进行统计分析或结果展现。目前quarto支持的代码块包括R语言、Python等，下面的R语言代码块，利用gtsummary包制作了论文中常用的表1，结果可见 Table&nbsp;1 。</p>
+<div class="cell tbl-cap-location-top">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><span class="in" style="color: #5E5E5E;">```{r}</span></span>
+<span id="cb3-2"><span class="co" style="color: #5E5E5E;">#| label: tbl-table1</span></span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;">#| tbl-cap-location: top</span></span>
+<span id="cb3-4"><span class="co" style="color: #5E5E5E;">#| tbl-cap: "接受不同药物治疗人群基本特征分析"</span></span>
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;">#| warning: false</span></span>
+<span id="cb3-6"><span class="co" style="color: #5E5E5E;">#| message: false</span></span>
+<span id="cb3-7"></span>
+<span id="cb3-8"><span class="fu" style="color: #4758AB;">library</span>(gtsummary)</span>
+<span id="cb3-9"></span>
+<span id="cb3-10">trial <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">select</span>(age, grade, response, trt) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-11">  <span class="fu" style="color: #4758AB;">tbl_summary</span>(<span class="at" style="color: #657422;">by=</span>trt) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-12">  <span class="fu" style="color: #4758AB;">add_p</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-13">  <span class="fu" style="color: #4758AB;">add_overall</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-14">  <span class="fu" style="color: #4758AB;">add_n</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-15">  <span class="fu" style="color: #4758AB;">bold_labels</span>() </span>
+<span id="cb3-16"><span class="in" style="color: #5E5E5E;">```</span></span></code></pre></div>
+<div class="cell-output-display">
+<div id="tbl-table1" class="anchored">
+
+<div id="dkttmuaitc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#dkttmuaitc) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#dkttmuaitc) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#dkttmuaitc) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#dkttmuaitc) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#dkttmuaitc) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#dkttmuaitc) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#dkttmuaitc) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#dkttmuaitc) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#dkttmuaitc) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#dkttmuaitc) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#dkttmuaitc) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#dkttmuaitc) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#dkttmuaitc) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+:where(#dkttmuaitc) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#dkttmuaitc) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#dkttmuaitc) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#dkttmuaitc) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#dkttmuaitc) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#dkttmuaitc) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#dkttmuaitc) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#dkttmuaitc) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#dkttmuaitc) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#dkttmuaitc) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#dkttmuaitc) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#dkttmuaitc) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#dkttmuaitc) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#dkttmuaitc) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#dkttmuaitc) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#dkttmuaitc) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#dkttmuaitc) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#dkttmuaitc) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#dkttmuaitc) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#dkttmuaitc) .gt_left {
+  text-align: left;
+}
+
+:where(#dkttmuaitc) .gt_center {
+  text-align: center;
+}
+
+:where(#dkttmuaitc) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#dkttmuaitc) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#dkttmuaitc) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#dkttmuaitc) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#dkttmuaitc) .gt_super {
+  font-size: 65%;
+}
+
+:where(#dkttmuaitc) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#dkttmuaitc) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#dkttmuaitc) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#dkttmuaitc) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#dkttmuaitc) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#dkttmuaitc) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#dkttmuaitc) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table"><caption>Table&nbsp;1:  接受不同药物治疗人群基本特征分析 </caption>
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Characteristic</strong>"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>N</strong>"><strong>N</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Overall</strong>, N = 200<sup class=&quot;gt_footnote_marks&quot;>1</sup>"><strong>Overall</strong>, N = 200<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Drug A</strong>, N = 98<sup class=&quot;gt_footnote_marks&quot;>1</sup>"><strong>Drug A</strong>, N = 98<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Drug B</strong>, N = 102<sup class=&quot;gt_footnote_marks&quot;>1</sup>"><strong>Drug B</strong>, N = 102<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>p-value</strong><sup class=&quot;gt_footnote_marks&quot;>2</sup>"><strong>p-value</strong><sup class="gt_footnote_marks">2</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Age</td>
+<td headers="n" class="gt_row gt_center">189</td>
+<td headers="stat_0" class="gt_row gt_center">47 (38, 57)</td>
+<td headers="stat_1" class="gt_row gt_center">46 (37, 59)</td>
+<td headers="stat_2" class="gt_row gt_center">48 (39, 56)</td>
+<td headers="p.value" class="gt_row gt_center">0.7</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Unknown</td>
+<td headers="n" class="gt_row gt_center"></td>
+<td headers="stat_0" class="gt_row gt_center">11</td>
+<td headers="stat_1" class="gt_row gt_center">7</td>
+<td headers="stat_2" class="gt_row gt_center">4</td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Grade</td>
+<td headers="n" class="gt_row gt_center">200</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="p.value" class="gt_row gt_center">0.9</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;I</td>
+<td headers="n" class="gt_row gt_center"></td>
+<td headers="stat_0" class="gt_row gt_center">68 (34%)</td>
+<td headers="stat_1" class="gt_row gt_center">35 (36%)</td>
+<td headers="stat_2" class="gt_row gt_center">33 (32%)</td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;II</td>
+<td headers="n" class="gt_row gt_center"></td>
+<td headers="stat_0" class="gt_row gt_center">68 (34%)</td>
+<td headers="stat_1" class="gt_row gt_center">32 (33%)</td>
+<td headers="stat_2" class="gt_row gt_center">36 (35%)</td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;III</td>
+<td headers="n" class="gt_row gt_center"></td>
+<td headers="stat_0" class="gt_row gt_center">64 (32%)</td>
+<td headers="stat_1" class="gt_row gt_center">31 (32%)</td>
+<td headers="stat_2" class="gt_row gt_center">33 (32%)</td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Tumor Response</td>
+<td headers="n" class="gt_row gt_center">193</td>
+<td headers="stat_0" class="gt_row gt_center">61 (32%)</td>
+<td headers="stat_1" class="gt_row gt_center">28 (29%)</td>
+<td headers="stat_2" class="gt_row gt_center">33 (34%)</td>
+<td headers="p.value" class="gt_row gt_center">0.5</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Unknown</td>
+<td headers="n" class="gt_row gt_center"></td>
+<td headers="stat_0" class="gt_row gt_center">7</td>
+<td headers="stat_1" class="gt_row gt_center">3</td>
+<td headers="stat_2" class="gt_row gt_center">4</td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="6"><sup class="gt_footnote_marks">1</sup> Median (IQR); n (%)</td>
+    </tr>
+    <tr>
+      <td class="gt_footnote" colspan="6"><sup class="gt_footnote_marks">2</sup> Wilcoxon rank sum test; Pearson's Chi-squared test</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="markdown文本" class="level3">
+<h3 class="anchored" data-anchor-id="markdown文本">Markdown文本</h3>
+<p>Rstudio提供两种模式进行文本编辑，一种是source模式，quarto参考使用markdown的基本语法，比如一级标题使用”#“，二级标题使用”##“等，具体可见<a href="https://www.markdown.xyz/basic-syntax/">markdown基本语法</a>。另一种是Visual模式，可见模式下，你不用学习许多markdown的基本语法，可以使用菜单或者快捷键进行添加标题、加粗文本、添加表格、添加图片等操作。</p>
+<p>在Rstudio打开的qmd文档中，左上角可以选择source或者visual模式。</p>
+<p><em>Source模式下是这样的</em> <img src="https://www.chenq.site/qsight/2023-3-25-quarto-writing/source.jpg" class="img-fluid"></p>
+<p><em>Visual模式下是这样的</em> <img src="https://www.chenq.site/qsight/2023-3-25-quarto-writing/visual.jpg" class="img-fluid"></p>
+</section>
+</section>
+<section id="输出word格式" class="level2">
+<h2 class="anchored" data-anchor-id="输出word格式">输出Word格式</h2>
+<p>虽然quarto支持的输出格式很多，比如html格式、pdf格式以及word格式，你现在所浏览的网页就是用quarto来生成的。</p>
+<p>回到我们今天讲的主题是“<em>科技论文的写作效率</em>”，我们撰写完成论文初稿后是需要进入投稿流程的，目前不同期刊所接受的投稿格式还是以word为多，下面就展开来讲一下quarto如何输出word格式。</p>
+<section id="利用word模板文件" class="level3">
+<h3 class="anchored" data-anchor-id="利用word模板文件">利用word模板文件</h3>
+<p>在quarto文档的YAML部分，通过format设置为输出word格式，还可以设置word模板文件，输出结果会按照word模板的格式对各个部分进行设置。</p>
+<p>YAML设置部分代码如下：</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><span class="pp" style="color: #AD0000;">---</span></span>
+<span id="cb4-2"><span class="fu" style="color: #4758AB;">title</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> </span><span class="st" style="color: #20794D;">"河南省肿瘤登记地区恶性肿瘤2017-2019年期间5年相对生存率"</span></span>
+<span id="cb4-3"><span class="fu" style="color: #4758AB;">format</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> </span></span>
+<span id="cb4-4"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">docx</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> </span></span>
+<span id="cb4-5"><span class="co" style="color: #5E5E5E;">  #reference-doc制定word模板文件</span></span>
+<span id="cb4-6"><span class="at" style="color: #657422;">    </span><span class="fu" style="color: #4758AB;">reference-doc</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> chinese.docx</span></span>
+<span id="cb4-7"><span class="pp" style="color: #AD0000;">---</span></span></code></pre></div>
+</section>
+<section id="图表交叉引用的相关设置" class="level3">
+<h3 class="anchored" data-anchor-id="图表交叉引用的相关设置">图表交叉引用的相关设置</h3>
+<p>通过crossref设置交叉引用图表的格式，fig-title设置的是图标题前显示字符，tbl-title设置表格标题前的显示字符，title-delim设置图表序号和显示字符之间的连接符号。</p>
+<p>tbl-frefix设置在文本中引用时的显示格式：如表1、表2，图1、图2</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><span class="pp" style="color: #AD0000;">---</span></span>
+<span id="cb5-2"><span class="fu" style="color: #4758AB;">title</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> </span><span class="st" style="color: #20794D;">"河南省肿瘤登记地区恶性肿瘤2017-2019年期间5年相对生存率"</span></span>
+<span id="cb5-3"><span class="fu" style="color: #4758AB;">crossref</span><span class="kw" style="color: #003B4F;">:</span></span>
+<span id="cb5-4"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">fig-title</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> 图     </span></span>
+<span id="cb5-5"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">tbl-title</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> 表     </span></span>
+<span id="cb5-6"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">title-delim</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> —  </span></span>
+<span id="cb5-7"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">tbl-prefix</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> 表</span></span>
+<span id="cb5-8"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">fig-prefix</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> 图</span></span>
+<span id="cb5-9"><span class="pp" style="color: #AD0000;">---</span></span></code></pre></div>
+</section>
+<section id="设置参考文献引用格式" class="level3">
+<h3 class="anchored" data-anchor-id="设置参考文献引用格式">设置参考文献引用格式</h3>
+<p>参考文献的引用时论文写作时候的一个大问题，我们在使用quarto进行科技论文写作的时候，需要在YAML里进行两个设置才能进行参考文献的引用和格式的设置。</p>
+<ul>
+<li>通过 bibliography: 指定bibtex格式文献的存放位置</li>
+<li>通过csl: 指定参考文献的引用格式</li>
+</ul>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><span class="pp" style="color: #AD0000;">---</span></span>
+<span id="cb6-2"><span class="fu" style="color: #4758AB;">title</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> </span><span class="st" style="color: #20794D;">"河南省肿瘤登记地区恶性肿瘤2017-2019年期间5年相对生存率"</span></span>
+<span id="cb6-3"><span class="fu" style="color: #4758AB;">bibliography</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> survival17-19.bib</span></span>
+<span id="cb6-4"><span class="fu" style="color: #4758AB;">csl</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> </span><span class="st" style="color: #20794D;">"/Users/qc0824/zotero/styles/chinese-gb7714-2005-numeric.csl"</span></span>
+<span id="cb6-5"><span class="pp" style="color: #AD0000;">---</span></span></code></pre></div>
+<p>在文本编辑时，通过[“<span class="citation" data-cites="refid">@refid</span>”]的形式进行参考文献的文内引用，如果同一位置引用多篇文献，[“<span class="citation" data-cites="refid1">@refid1</span>;<span class="citation" data-cites="refid2">@refid2</span>”]，可以在文献之间添加”;“。</p>
+</section>
+<section id="设置作者列表和单位信息" class="level3">
+<h3 class="anchored" data-anchor-id="设置作者列表和单位信息">设置作者列表和单位信息</h3>
+<p>在论文投稿时，需要在标题下方列出各位作者的信息，包括姓名，作者单位，通讯作者等，姓名上标标注作者的单位信息。</p>
+<p>quarto里可以通过安装一个<strong>authors-block</strong>插件来实现。</p>
+<section id="安装方法" class="level5">
+<h5 class="anchored" data-anchor-id="安装方法">安装方法</h5>
+<p>在qmd文档所在的quarto项目之下，在terminal运行如下命令：</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1">quarto add kapsner/authors-block</span></code></pre></div>
+</section>
+<section id="authors-block使用方法" class="level5">
+<h5 class="anchored" data-anchor-id="authors-block使用方法">authors-block使用方法</h5>
+<p>安装好authos-block插件之后，需要在YAML里设置相应的元数据，具体如下。</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+authors-block设置方法
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1">---</span>
+<span id="cb8-2">title: "河南省恶性肿瘤2017-2019年5年相对生存率"</span>
+<span id="cb8-3">authors:</span>
+<span id="cb8-4">  - name: 陈琼</span>
+<span id="cb8-5">    affiliations:</span>
+<span id="cb8-6">      - ref: zlyy</span>
+<span id="cb8-7">    email: chenqiong@hnccr.org.cn</span>
+<span id="cb8-8">  - name: 张明霞</span>
+<span id="cb8-9">    affiliations:</span>
+<span id="cb8-10">      - ref: lzu</span>
+<span id="cb8-11">  - name: 郭兰伟</span>
+<span id="cb8-12">    affiliaitons:</span>
+<span id="cb8-13">      - ref: zlyy</span>
+<span id="cb8-14">  - name: 刘纯亚</span>
+<span id="cb8-15">    affiliations:</span>
+<span id="cb8-16">      - ref: zlyy</span>
+<span id="cb8-17">  - name: 刘茵</span>
+<span id="cb8-18">    affiliations:</span>
+<span id="cb8-19">      - ref: zlyy</span>
+<span id="cb8-20">  - name: 徐慧芳</span>
+<span id="cb8-21">    affiliations:</span>
+<span id="cb8-22">      - ref: zlyy</span>
+<span id="cb8-23">  - name: 王潇杨</span>
+<span id="cb8-24">    affiliations:</span>
+<span id="cb8-25">      - ref: zlyy</span>
+<span id="cb8-26">  - name: 刘曙正</span>
+<span id="cb8-27">    affiliations:</span>
+<span id="cb8-28">      - ref: zlyy</span>
+<span id="cb8-29">  - name: 张韶凯</span>
+<span id="cb8-30">    affiliations:</span>
+<span id="cb8-31">      - ref: zlyy</span>
+<span id="cb8-32">    coresponding: true</span>
+<span id="cb8-33">affiliations:</span>
+<span id="cb8-34">  - id: zlyy</span>
+<span id="cb8-35">    name: 郑州大学附属肿瘤医院(河南省肿瘤医院)，疾病预防控制科</span>
+<span id="cb8-36">  - id: lzu</span>
+<span id="cb8-37">    name: 兰州大学公共卫生学院</span>
+<span id="cb8-38">filters:</span>
+<span id="cb8-39">  - authors-block</span>
+<span id="cb8-40">---</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><img src="https://www.chenq.site/qsight/2023-3-25-quarto-writing/authors-block.jpg" class="img-fluid"></p>
+</section>
+</section>
+</section>
+<section id="渲染输出格式" class="level2">
+<h2 class="anchored" data-anchor-id="渲染输出格式">渲染输出格式</h2>
+<p><img src="https://www.chenq.site/qsight/2023-3-25-quarto-writing/render.jpg" class="img-fluid"></p>
+<p>在完成以上步骤之后，只需要点击上图标注的render按钮即可，然后一篇word格式的，随时可以进行投稿论文初稿就完成了。</p>
+<p>如果你在撰写讨论部分的时候，发现统计的某个指标可能存在异常，那么我们只需要在相应的代码块里更新相应的统计代码，更新完成之后，再次点击render，那么你的统计表格就会跟着更新，再次生成基于新结果的论文初稿。</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+什么是render？
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>其实就是quarto运行的过程，通过kintr包把qmd转化为普通的markdown，在通过pandoc转化为word格式的过程。</p>
+</div>
+</div>
+<p>如果你看完以上内容，有没有想试一试Quarto系统的冲动？本篇博客只是介绍了Quarto应用于论文写作方面，它还有其他很多的应用方式，比如做幻灯、写书稿等等，如果你还有一些闲暇时间，不妨来试试！</p>
+
+
+</section>
+
+ ]]></description>
+  <category>quarto</category>
+  <category>论文写作</category>
+  <guid>https://www.chenq.site/qsight/2023-3-25-quarto-writing/index.html</guid>
+  <pubDate>Sat, 25 Mar 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://www.chenq.site/qsight/2023-3-25-quarto-writing/writing.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>肿瘤临床预后影响因素分析应该注意哪些因素?</title>
   <dc:creator>陈琼</dc:creator>
@@ -1566,46 +2357,6 @@ font-style: italic;">## 建立for循环</span></span>
   <category>育儿</category>
   <guid>https://www.chenq.site/qsight/2022-03-31-shige/index.html</guid>
   <pubDate>Thu, 31 Mar 2022 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>ICD10编码里除了C开头编码和D开头编码是肿瘤专属分类编码外，还有哪些编码与肿瘤相关？</title>
-  <dc:creator>陈琼</dc:creator>
-  <link>https://www.chenq.site/qsight/2022-03-23-icd10-c-d/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>在肿瘤登记工作中，我们经常与ICD10或者ICDO3打交道，但是ICD10编码里有一些编码值得我们注意。目前国内肿瘤登记工作要求上报的肿瘤病例范围为：所有恶性肿瘤病例+中枢神经系统良性肿瘤+原位癌，对应的ICD10编码为C00-C97+D32-D33,D35.2-4+D00-D09。然而其实ICD10编码里除了C编码和D编码外，还有一些编码与肿瘤相关。</p>
-<p>首先是”人类免疫缺陷病毒疾病导致的恶性肿瘤”这一类在ICD10编码里被归入到B21的分类里，它与肿瘤登记相关。具体包括人类免疫缺陷病毒疾病导致的卡波济肉瘤、Burkitt淋巴瘤、其他类型的非霍奇金淋巴瘤、淋巴组织和造血组织，以及有关组织的其他恶性肿瘤等。根据确定死因的规则，在死亡统计或诊断医院病史中这些恶性肿瘤将被归入ICD10的B21分类中，而不归入恶性肿瘤的C00-C97编码中。因此，肿瘤登记机构必须取得这些死亡证明或病例记录，否则容易被遗漏。</p>
-<p>ICD10中还有一个专门分类，是Z打头的其他肿瘤相关分类和编码，在医院编码实践中，对于以复诊为目的的恶性肿瘤患者，特别重视Z码的编制，而疏忽直至遗忘了同时编制C编码。在开展医院诊断病例漏报调查等质量控制过程中应该引起注意。与肿瘤相关的Z编码如下：</p>
-<ul>
-<li>Z08 恶性肿瘤治疗后的随诊检查</li>
-<li>Z12 肿瘤的特殊筛查</li>
-<li>Z40.0 与恶性肿瘤有关的危险因素的预防性手术</li>
-<li>Z51.0 肿瘤放疗疗程</li>
-<li>Z51.1 肿瘤化疗疗程</li>
-<li>Z80 恶性肿瘤的家族史</li>
-<li>Z85 恶性肿瘤的个人史</li>
-<li>Z86.0 其他肿瘤的个人史</li>
-<li>Z92.6 肿瘤化疗个人史</li>
-</ul>
-<p>除此之外，还有一部分ICD10编码容易被遗漏。2000年出版的ICD-O3中对ICD10和ICD-O2中的部分分类与编码做了较大修订，其中影响较大的是将一些ICD-10中的非恶性肿瘤，重新定义为恶性肿瘤。ICD-10在之后的修订版本中对这些分类和编码作了说明，但因为国内推广应用的主要是1992年的原版，专业人员如果对此了解不多的话，也容易被忽略。重新定义为恶性肿瘤的疾病如下列。</p>
-<ul>
-<li>D45(1992年) C94.1(修订后) 真性红细胞增多症</li>
-<li>D46(1992年) C92.7(修订后) 骨髓增生异常综合征MDS/顽固性贫血</li>
-<li>D47.1(1992年) C96.7(修订后) 慢性骨髓增生性疾病</li>
-<li>D47.3(1992年) C96.7(修订后) 特发性(出血性)血小板增多症</li>
-</ul>
-<p><strong>数据来源</strong>：中国肿瘤登记工作指导手册(2016)</p>
-
-
-
- ]]></description>
-  <category>肿瘤登记</category>
-  <category>编码</category>
-  <guid>https://www.chenq.site/qsight/2022-03-23-icd10-c-d/index.html</guid>
-  <pubDate>Wed, 23 Mar 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

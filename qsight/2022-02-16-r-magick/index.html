@@ -153,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -252,7 +252,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页内容</h2>
+   
+  <ul>
+  <li><a href="#安装magick包" id="toc-安装magick包" class="nav-link active" data-scroll-target="#安装magick包">安装magick包</a></li>
+  <li><a href="#使用magick包读取和存储图片或视频" id="toc-使用magick包读取和存储图片或视频" class="nav-link" data-scroll-target="#使用magick包读取和存储图片或视频">使用magick包读取和存储图片或视频</a></li>
+  <li><a href="#图片转换操作" id="toc-图片转换操作" class="nav-link" data-scroll-target="#图片转换操作">图片转换操作</a></li>
+  <li><a href="#添加文字注释" id="toc-添加文字注释" class="nav-link" data-scroll-target="#添加文字注释">添加文字注释</a></li>
+  <li><a href="#magick包支持管道操作符" id="toc-magick包支持管道操作符" class="nav-link" data-scroll-target="#magick包支持管道操作符">magick包支持管道操作符”%”</a></li>
+  <li><a href="#图片向量magick还支持图层叠加图片拼接动图处理等功能" id="toc-图片向量magick还支持图层叠加图片拼接动图处理等功能" class="nav-link" data-scroll-target="#图片向量magick还支持图层叠加图片拼接动图处理等功能">图片向量，magick还支持图层叠加、图片拼接、动图处理等功能。</a></li>
+  <li><a href="#图层叠加" id="toc-图层叠加" class="nav-link" data-scroll-target="#图层叠加">图层叠加</a></li>
+  <li><a href="#读取pdf文件转换成图片" id="toc-读取pdf文件转换成图片" class="nav-link" data-scroll-target="#读取pdf文件转换成图片">读取pdf文件，转换成图片</a></li>
+  <li><a href="#图片合成" id="toc-图片合成" class="nav-link" data-scroll-target="#图片合成">图片合成</a></li>
+  <li><a href="#推荐学习列表" id="toc-推荐学习列表" class="nav-link" data-scroll-target="#推荐学习列表">推荐学习列表</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -540,18 +557,6 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </section>
 
 </main> <!-- /main -->
-<script type="text/javascript">
-
-// replace cmd keyboard shortcut w/ control on non-Mac platforms
-const kPlatformMac = typeof navigator !== 'undefined' ? /Mac/.test(navigator.platform) : false;
-if (!kPlatformMac) {
-   var kbds = document.querySelectorAll("kbd")
-   kbds.forEach(function(kbd) {
-      kbd.innerHTML = kbd.innerHTML.replace(/⌘/g, '⌃');
-   });
-}
-
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -685,7 +690,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://utteranc.es/client.js" repo="gigu003/chenq.site" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+<script src="https://utteranc.es/client.js" repo="gigu003/chenqcomments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 <footer class="footer">
