@@ -8,13 +8,18 @@ author: 陈琼
 title-block-banner: true
 title-block-banner-color: "#c8c8c8"
 title-block-categories: true
-
+page-layout: article
 format:
   html:
-    include-after-body: js.html
-    page-layout: article
+    toc: true
+    toc-location: right
+    
+comments:
+  utterances:
+    repo: gigu003/chenqcomments
 language: 
   title-block-published: "发表时间"
+  title-block-modified: "更新时间"
   toc-title-document: "目录"
   toc-title-website: "本页内容"
   title-block-author-single: "作者"

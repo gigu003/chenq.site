@@ -55,9 +55,7 @@ website:
         href: /qsight/index.xml
         aria-label: RSS     
 freeze: auto  
-comments:
-  utterances:
-    repo: gigu003/chenq.site
+
 format:
   html:
     code-line-numbers: true

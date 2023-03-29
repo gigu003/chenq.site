@@ -6,7 +6,7 @@ format:
     toc-location: right
     template: publication.html
     template-partials: title-metadata.html
-    
+page-layout: full   
 language: 
   title-block-published: "发表时间"
   toc-title-document: "目录"
