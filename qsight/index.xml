@@ -349,7 +349,7 @@ Rstudio项目
 </section>
 <section id="rsession.conf和repos.conf" class="level3">
 <h3 class="anchored" data-anchor-id="rsession.conf和repos.conf">rsession.conf和repos.conf</h3>
-<p>RStudio Workbench和RStudio Server允许服务器管理员通过rsession.conf和repos.conf文件配置特定的服务器范围内的R包存储库。rsession.conf中只能配置一个存储库。如果需要多个存储库，应该使用repos.conf。有关如何使用这些文件配置RStudio Workbench和RStudio Server的详细信息，请参见此支持文章。</p>
+<p>RStudio Workbench和RStudio Server允许服务器管理员通过rsession.conf和repos.conf文件配置特定的服务器范围内的R包存储库。rsession.conf中只能配置一个存储库。如果需要多个存储库，应该使用repos.conf。</p>
 
 
 </section>
