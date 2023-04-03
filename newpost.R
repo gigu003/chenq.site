@@ -2,9 +2,9 @@ new_post <- function(
     title, 
     file = "index.qmd",
     description = "",
-    author = "Qiong Chen", 
+    author = "陈琼", 
     date = Sys.Date(), 
-    draft = FALSE, 
+    draft = TRUE, 
     title_limit = 40,
     open_file = TRUE
 ){

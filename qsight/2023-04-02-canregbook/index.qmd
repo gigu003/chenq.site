@@ -1,0 +1,45 @@
+---
+title: "肿瘤登记数据分析和R语言实践--书籍写作计划和进度"
+description: |
+  我有计划写一本关于利用R语言进行肿瘤登记数据分析的书，这篇博客将把这本书的大纲及写作进度与大家分享，也希望通过这样一种方式督促和鞭策我不断前行！
+author: 陈琼
+date: 2023-04-02
+date-modified: last-modified
+categories:
+  - 数据分析
+  - 肿瘤登记
+  - R
+keywords: 
+  - 数据分析
+  - 肿瘤登记
+  - R
+  - 书籍
+draft: true
+---
+
+
+:::{.column-screen}
+
+
+
+```{mermaid}
+gantt
+    title 肿瘤登记数据分析及结果报告实践撰写计划
+    dateFormat  YYYY-MM
+    section 序言
+    初衷           :a1, 2014-01-01, 1m
+    肿瘤登记背景及意义     :after a1, 1m
+    肿瘤登记数据的特点和应用 :1m
+    section 肿瘤登记数据基础描述
+    肿瘤登记数据内容      :2014-01-12, 1m
+    数据来源      : 1m
+    数据收集流程和规范 :1m
+    数据质量及质量控制 :m
+    肿瘤的分类 :1m
+```
+
+
+:::
+
+
+
