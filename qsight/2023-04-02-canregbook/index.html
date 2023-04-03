@@ -7,9 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="陈琼">
-<meta name="dcterms.date" content="2022-03-19">
+<meta name="dcterms.date" content="2023-04-02">
+<meta name="keywords" content="数据分析, 肿瘤登记, R, 书籍">
+<meta name="description" content="我有计划写一本关于利用R语言进行肿瘤登记数据分析的书，这篇博客将把这本书的大纲及写作进度与大家分享，也希望通过这样一种方式督促和鞭策我不断前行！">
 
-<title>普癌新声 - 我家养的那些花儿</title>
+<title>普癌新声 - 肿瘤登记数据分析和R语言实践–书籍写作计划和进度</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -42,9 +44,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,14 +78,17 @@ ul.task-list li input[type="checkbox"] {
     })();
     </script>
     
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="普癌新声 - 我家养的那些花儿">
-<meta property="og:description" content="以前养多肉，总是养着养着，仅剩下一个个花盆。卖花的大妈给传授的要点就是少浇水，但是养多肉的要点不仅仅只是少浇水，还有其它一些特点。现在又到了春暖花开的季节，我又耐不住躁动买了一盆盆的多肉，这一次要好好学习一下这些养多肉的知识和技巧，希望能养的好一些！">
+<meta property="og:title" content="普癌新声 - 肿瘤登记数据分析和R语言实践–书籍写作计划和进度">
+<meta property="og:description" content="我有计划写一本关于利用R语言进行肿瘤登记数据分析的书，这篇博客将把这本书的大纲及写作进度与大家分享，也希望通过这样一种方式督促和鞭策我不断前行！">
 <meta property="og:site-name" content="普癌新声">
-<meta name="twitter:title" content="普癌新声 - 我家养的那些花儿">
-<meta name="twitter:description" content="以前养多肉，总是养着养着，仅剩下一个个花盆。卖花的大妈给传授的要点就是少浇水，但是养多肉的要点不仅仅只是少浇水，还有其它一些特点。现在又到了春暖花开的季节，我又耐不住躁动买了一盆盆的多肉，这一次要好好学习一下这些养多肉的知识和技巧，希望能养的好一些！">
+<meta name="twitter:title" content="普癌新声 - 肿瘤登记数据分析和R语言实践–书籍写作计划和进度">
+<meta name="twitter:description" content="我有计划写一本关于利用R语言进行肿瘤登记数据分析的书，这篇博客将把这本书的大纲及写作进度与大家分享，也希望通过这样一种方式督促和鞭策我不断前行！">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -157,10 +159,16 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">我家养的那些花儿</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">生活</div>
-                <div class="quarto-category">摄影</div>
+      <h1 class="title">肿瘤登记数据分析和R语言实践–书籍写作计划和进度</h1>
+                  <div>
+        <div class="description">
+          <p>我有计划写一本关于利用R语言进行肿瘤登记数据分析的书，这篇博客将把这本书的大纲及写作进度与大家分享，也希望通过这样一种方式督促和鞭策我不断前行！</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">数据分析</div>
+                <div class="quarto-category">肿瘤登记</div>
+                <div class="quarto-category">R</div>
               </div>
                   </div>
   </div>
@@ -178,10 +186,16 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">发表时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 19, 2022</p>
+        <p class="date">April 2, 2023</p>
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">更新时间</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">April 3, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -193,91 +207,35 @@ ul.task-list li input[type="checkbox"] {
         
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
 
 
 
 
-<p>以前养多肉，总是养着养着，仅剩下一个个花盆。卖花的大妈给传授的要点就是少浇水，但是养多肉的要点不仅仅只是少浇水，还有其它一些特点。现在又到了春暖花开的季节，我又耐不住躁动买了一盆盆的多肉，这一次要好好学习一下这些养多肉的知识和技巧，希望能养的好一些！</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/qianchuan1.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
-</figure>
+<div class="column-screen">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">gantt
+    title 肿瘤登记数据分析及结果报告实践撰写计划
+    dateFormat  YYYY-MM
+    section 序言
+    初衷           :a1, 2014-01-01, 1m
+    肿瘤登记背景及意义     :after a1, 1m
+    肿瘤登记数据的特点和应用 :1m
+    section 肿瘤登记数据基础描述
+    肿瘤登记数据内容      :2014-01-12, 1m
+    数据来源      : 1m
+    数据收集流程和规范 :1m
+    数据质量及质量控制 :m
+    肿瘤的分类 :1m
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
 </div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/qianchuan2.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
-</figure>
+<p></p>
 </div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/qianchuan3.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/juhua.jpg" class="lightbox" title="菊花" data-gallery="flowers" data-description="商家说是可以过冬。"><img src="img/juhua.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">菊花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/cherry.jpg" class="lightbox" title="看樱桃" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/cherry.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">看樱桃</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0023.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0019.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0013.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0011.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0010.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0006.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0005.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
 </div>
 </div>
 </div>
@@ -442,7 +400,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":true});</script>
 
 
 
