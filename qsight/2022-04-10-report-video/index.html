@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.14">
+<meta name="generator" content="quarto-1.3.238">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,7 +20,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -63,7 +63,14 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-    .quarto-title-block .quarto-title-banner {
+    .quarto-title-block .quarto-title-banner,
+    .quarto-title-block .quarto-title-banner h1,
+    .quarto-title-block .quarto-title-banner h2,
+    .quarto-title-block .quarto-title-banner h3,
+    .quarto-title-block .quarto-title-banner h4,
+    .quarto-title-block .quarto-title-banner h5,
+    .quarto-title-block .quarto-title-banner h6
+    {
       color: #c8c8c8;
     }
     </style>
@@ -81,10 +88,10 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="普癌新声 - 制作《2021河南省肿瘤登记年报》科普视频">
-<meta property="og:description" content="《2021河南省肿瘤登记年报》的发布为河南省癌症的防控工作提供了数据参考，对防控相关专业人员参考癌症负担数据具有重要意义。同时，为了使普通大众了解河南省癌症的发病死亡情况，我们将制作科普视频，相关工作整理记录如下。">
+<meta property="og:description" content="">
 <meta property="og:site-name" content="普癌新声">
 <meta name="twitter:title" content="普癌新声 - 制作《2021河南省肿瘤登记年报》科普视频">
-<meta name="twitter:description" content="《2021河南省肿瘤登记年报》的发布为河南省癌症的防控工作提供了数据参考，对防控相关专业人员参考癌症负担数据具有重要意义。同时，为了使普通大众了解河南省癌症的发病死亡情况，我们将制作科普视频，相关工作整理记录如下。">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -99,54 +106,56 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../qsight/" rel=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
 </i> 
  <span class="menu-text">Qsight博客</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://diary.chenq.site" rel=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://diary.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
 </i> 
  <span class="menu-text">随笔录</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel=""><i class="bi bi-hexagon" role="img">
+    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel="" target=""><i class="bi bi-hexagon" role="img">
 </i> 
  <span class="menu-text">Packages</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications/" rel=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
 </i> 
  <span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../slides/" rel=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="../../slides/" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
 </i> 
  <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../qsight/index.xml" rel=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -180,6 +189,12 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">更新时间</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">April 4, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -192,14 +207,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">本页内容</h2>
    
   <ul>
-  <li><a href="#科普视频知识点" id="toc-科普视频知识点" class="nav-link active" data-scroll-target="#科普视频知识点">科普视频知识点</a></li>
-  <li><a href="#科普视频脚本" id="toc-科普视频脚本" class="nav-link" data-scroll-target="#科普视频脚本">科普视频脚本</a>
+  <li><a href="#科普视频知识点" id="toc-科普视频知识点" class="nav-link active" data-scroll-target="#科普视频知识点"><span class="header-section-number">1</span> 科普视频知识点</a></li>
+  <li><a href="#科普视频脚本" id="toc-科普视频脚本" class="nav-link" data-scroll-target="#科普视频脚本"><span class="header-section-number">2</span> 科普视频脚本</a>
   <ul class="collapse">
-  <li><a href="#癌症患者以老年人为主" id="toc-癌症患者以老年人为主" class="nav-link" data-scroll-target="#癌症患者以老年人为主">癌症患者以<strong>老年人</strong>为主</a></li>
-  <li><a href="#癌症患者存在性别差异" id="toc-癌症患者存在性别差异" class="nav-link" data-scroll-target="#癌症患者存在性别差异">癌症患者存在<strong>性别差异</strong></a></li>
-  <li><a href="#癌症发病率和死亡呈现地区差异" id="toc-癌症发病率和死亡呈现地区差异" class="nav-link" data-scroll-target="#癌症发病率和死亡呈现地区差异">癌症发病率和死亡呈现<strong>地区差异</strong></a></li>
+  <li><a href="#癌症患者以老年人为主" id="toc-癌症患者以老年人为主" class="nav-link" data-scroll-target="#癌症患者以老年人为主"><span class="header-section-number">2.1</span> 癌症患者以<strong>老年人</strong>为主</a></li>
+  <li><a href="#癌症患者存在性别差异" id="toc-癌症患者存在性别差异" class="nav-link" data-scroll-target="#癌症患者存在性别差异"><span class="header-section-number">2.2</span> 癌症患者存在<strong>性别差异</strong></a></li>
+  <li><a href="#癌症发病率和死亡呈现地区差异" id="toc-癌症发病率和死亡呈现地区差异" class="nav-link" data-scroll-target="#癌症发病率和死亡呈现地区差异"><span class="header-section-number">2.3</span> 癌症发病率和死亡呈现<strong>地区差异</strong></a></li>
   </ul></li>
-  <li><a href="#科普视频成片分享" id="toc-科普视频成片分享" class="nav-link" data-scroll-target="#科普视频成片分享">科普视频成片分享</a></li>
+  <li><a href="#科普视频成片分享" id="toc-科普视频成片分享" class="nav-link" data-scroll-target="#科普视频成片分享"><span class="header-section-number">3</span> 科普视频成片分享</a></li>
   </ul>
 </nav>
     </div>
@@ -210,8 +225,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>《2021河南省肿瘤登记年报》的发布为河南省癌症的防控工作提供了数据参考，对防控相关专业人员参考癌症负担数据具有重要意义。同时，为了使普通大众了解河南省癌症的发病死亡情况，我们将制作科普视频，相关工作整理记录如下。</p>
-<section id="科普视频知识点" class="level2">
-<h2 class="anchored" data-anchor-id="科普视频知识点">科普视频知识点</h2>
+<section id="科普视频知识点" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="科普视频知识点"><span class="header-section-number">1</span> 科普视频知识点</h2>
 <ul>
 <li>河南省癌症中心/河南省肿瘤医院发布《2021河南省肿瘤登记年报》；</li>
 <li>河南省居民癌症发病率为272.33/10万，死亡率为162.16/10万；河南省每年新诊断恶性肿瘤28.6万例，因恶性肿瘤死亡16.8万例；</li>
@@ -220,30 +235,30 @@ ul.task-list li input[type="checkbox"] {
 <li>河南居民癌症发病和死亡也存在地区差异，城市地区癌症发病率高于农村地区，而死亡率低于农村地区，常见癌种分布也存在一定差异，河南省北部太行山脉地区是食管癌和胃癌的高发地区，城市地区则肺癌、结直肠癌、甲状腺癌相对高发。</li>
 </ul>
 </section>
-<section id="科普视频脚本" class="level2">
-<h2 class="anchored" data-anchor-id="科普视频脚本">科普视频脚本</h2>
+<section id="科普视频脚本" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="科普视频脚本"><span class="header-section-number">2</span> 科普视频脚本</h2>
 <p>大家好，癌症是威胁居民健康和生命的主要问题，河南省癌症中心/河南省肿瘤医院在2022年肿瘤防治宣传周期间发布了《2021河南省肿瘤登记年报》，对河南省居民的癌症发病和死亡情况进行了详细介绍，下面跟随小编一块来了解一下吧。</p>
 <p>《年报》显示，2018年河南省癌症发病率为272.33/10万，每小时约有32例患者被诊断，共诊断28.6万例；癌症死亡率为162.16/10万，每小时约19例癌症患者死亡，共死亡16.8万例。</p>
 <p>河南省癌症的发病率和死亡率呈现如下变化特点：</p>
-<section id="癌症患者以老年人为主" class="level3">
-<h3 class="anchored" data-anchor-id="癌症患者以老年人为主">癌症患者以<strong>老年人</strong>为主</h3>
+<section id="癌症患者以老年人为主" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="癌症患者以老年人为主"><span class="header-section-number">2.1</span> 癌症患者以<strong>老年人</strong>为主</h3>
 <p>发病率和死亡率均随着年龄的增加而上升，在39岁之前处于相对降低且平稳的状态，而40岁之后则快速上升，在85岁年龄组达到峰值。癌症患者以老年人为主，新诊断患者中，65岁以上者占47.3%；死亡患者中，65岁以上者占65.3%。</p>
 </section>
-<section id="癌症患者存在性别差异" class="level3">
-<h3 class="anchored" data-anchor-id="癌症患者存在性别差异">癌症患者存在<strong>性别差异</strong></h3>
+<section id="癌症患者存在性别差异" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="癌症患者存在性别差异"><span class="header-section-number">2.2</span> 癌症患者存在<strong>性别差异</strong></h3>
 <p>男性发病率和死亡率均高于女性，男女性别比分别为1.05和1.51。</p>
 <p>男性和女性的<strong>发病谱</strong>也有所不同，男性前5位癌种分别为肺癌、胃癌、食管癌、肝癌和结直肠癌；女性前5位癌种乳腺癌、肺癌、食管癌、宫颈癌和胃癌。</p>
 </section>
-<section id="癌症发病率和死亡呈现地区差异" class="level3">
-<h3 class="anchored" data-anchor-id="癌症发病率和死亡呈现地区差异">癌症发病率和死亡呈现<strong>地区差异</strong></h3>
+<section id="癌症发病率和死亡呈现地区差异" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="癌症发病率和死亡呈现地区差异"><span class="header-section-number">2.3</span> 癌症发病率和死亡呈现<strong>地区差异</strong></h3>
 <p>城市地区癌症发病率高于农村地区，而死亡率则呈现农村高于城市的特点。</p>
 <p>在癌种的地区分布方面，结直肠癌和甲状腺癌在城市地区的顺位比农村地区靠前，食管癌和胃癌则在河南省北部的太行山脉地区和西部的伏牛山地区相对高发。</p>
 <p>癌症防治需要我们每一个人参与，生活中我们注意避开常见的癌症危险因素，注意定期体检，你我携手，共抗癌症吧！</p>
 <p>扫描二维码，了解更加详细的《年报》内容吧。</p>
 </section>
 </section>
-<section id="科普视频成片分享" class="level2">
-<h2 class="anchored" data-anchor-id="科普视频成片分享">科普视频成片分享</h2>
+<section id="科普视频成片分享" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="科普视频成片分享"><span class="header-section-number">3</span> 科普视频成片分享</h2>
 <p>马上上线</p>
 
 
@@ -277,9 +292,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -344,6 +373,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -389,6 +504,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Copyright@Qiong Chen</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

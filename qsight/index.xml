@@ -9,8 +9,134 @@
 <link>https://www.chenq.site/qsight/index.html</link>
 <atom:link href="https://www.chenq.site/qsight/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
-<generator>quarto-1.3.14</generator>
-<lastBuildDate>Fri, 31 Mar 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.3.238</generator>
+<lastBuildDate>Tue, 04 Apr 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Quarto支持多格式同时输出</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://www.chenq.site/qsight/2023-04-04-quartomultiformat/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="功能介绍" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="功能介绍"><span class="header-section-number">1</span> 功能介绍</h2>
+<p>Quarto自1.3版本之后，quartoHTML页面（独立或网站中）可以支持自动包含元数据中指定 的其他输出格式的链接。例如，如果在quarto文档中指定下面的元数据：</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+元数据设置
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1">---</span>
+<span id="cb1-2">title: "Quarto支持多格式同时输出"</span>
+<span id="cb1-3">subtitle: "多种输出格式，网页中自动加入其他格式链接"</span>
+<span id="cb1-4">description: |</span>
+<span id="cb1-5">  Quarto自1.3以后的版本中将支持网页输出中包含其他输出格式（PDF、MS Word等）的链接，这对于多种格式的内容分享很重要。</span>
+<span id="cb1-6">categories:</span>
+<span id="cb1-7">  - quarto</span>
+<span id="cb1-8">  - 个人网站</span>
+<span id="cb1-9">date: 2023-04-04</span>
+<span id="cb1-10">date-modified: last-modified</span>
+<span id="cb1-11">draft: false</span>
+<span id="cb1-12">toc: true</span>
+<span id="cb1-13">mainfont: "Hiragino Sans GB"</span>
+<span id="cb1-14">format:</span>
+<span id="cb1-15">  html: default</span>
+<span id="cb1-16">  docx: default</span>
+<span id="cb1-17">  pdf:</span>
+<span id="cb1-18">    documentclass: scrartcl</span>
+<span id="cb1-19">---</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>在网页的输出结果中会包含一个链接指向指定的除HTML以外的其他格式输出结果，这个链接会放在网页的右边栏中，放在边栏目录内容下面。</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2023-04-04-quartomultiformat/formats.jpg" class="img-fluid" width="793"></p>
+</div>
+</div>
+</section>
+<section id="指定显示链接的格式" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="指定显示链接的格式"><span class="header-section-number">2</span> 指定显示链接的格式</h2>
+<p>显示<strong>链接到其他格式</strong>是默认的，但是我们可以通过在YAML里设置<strong>format-links</strong>来控制它是否显示，甚至可以指定哪种具体的格式可以显示出来。</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1">format:</span>
+<span id="cb2-2">  html: default</span>
+<span id="cb2-3">  docx: default</span>
+<span id="cb2-4">  pdf:</span>
+<span id="cb2-5">    documentclass: scrartcl</span>
+<span id="cb2-6">format-links: [docx]</span></code></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2023-04-04-quartomultiformat/formats2.jpg" class="img-fluid" width="980"></p>
+</div>
+</div>
+</section>
+<section id="隐藏所有链接" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="隐藏所有链接"><span class="header-section-number">3</span> 隐藏所有链接</h2>
+<p>如果我们只想输出多种格式，但是不想在右侧边栏中显示他们的链接，可以通过下面的设定来实现。</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><span class="fu" style="color: #4758AB;">fomat-links</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> </span><span class="ch" style="color: #20794D;">false</span></span></code></pre></div>
+</section>
+<section id="在项目水平上控制显示格式" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="在项目水平上控制显示格式"><span class="header-section-number">4</span> 在项目水平上控制显示格式</h2>
+<p>在一个Quarto项目中，为了控制其中一个文件夹内所有quarto文档的显示格式，我们可以在这个文件夹的根目录下的_metadata.yml文件中设置format或format-links选项，如果该文件夹中没有_metadata.yml文件，我们可以新建一个该名称的文件。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+_metadata.yml
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>format:
+  html:
+    toc: true
+  docx: default
+  pdf: default</code></pre>
+</div>
+</div>
+<p>如果你想在整个Quarto项目中设置统一的显示格式，那么我们就可以在Quarto项目的根目录下的_quarto.yml文件中设置format和format-links选项，从而在项目水平上设置输出格式以及链接的格式内容。如果你选择在_quarto.yml文件中设置输出格式，那么也意味着这个Quarto项目内的所有quarto文档均输出你所指定的格式。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+_quarto.yml
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>format:
+  html:
+    toc: true
+  docx: default
+  pdf: default</code></pre>
+</div>
+</div>
+</section>
+<section id="预览版本的quarto" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="预览版本的quarto"><span class="header-section-number">5</span> 预览版本的Quarto</h2>
+<p>预览版本的Quarto可以在下面的链接中进行下载使用<a href="https://quarto.org/docs/download/">https://quarto.org/docs/download/</a>，这个链接中也列出了最新版本Quarto的一些新的特性，如果你想试试最新Quarto支持的功能，可以尝试下载使用哈。</p>
+
+
+</section>
+
+ ]]></description>
+  <category>quarto</category>
+  <category>个人网站</category>
+  <guid>https://www.chenq.site/qsight/2023-04-04-quartomultiformat/index.html</guid>
+  <pubDate>Tue, 04 Apr 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://www.chenq.site/qsight/2023-04-04-quartomultiformat/formats.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>提高Rstudio和Quarto使用效率的一些方法和配置</title>
   <dc:creator>陈琼</dc:creator>
@@ -20,11 +146,11 @@
 
 
 
-<section id="提高quarto效率的常见配置" class="level2">
-<h2 class="anchored" data-anchor-id="提高quarto效率的常见配置">提高Quarto效率的常见配置</h2>
+<section id="提高quarto效率的常见配置" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="提高quarto效率的常见配置"><span class="header-section-number">1</span> 提高Quarto效率的常见配置</h2>
 <p>Quarto是基于Pandoc的开源科技出版系统，我们可以利用Quarto把常规文本以及基于不同语言的数据分析过程（R、Python等）混合格式转化为静态网页、PDF、WORD文档、网站以及其他更多的格式。我也写过一篇博文介绍了<a href="https://www.chenq.site/qsight/2023-3-25-quarto-writing/">如何利用Quarto提高科技论文效率</a>，今天在这个段落介绍一下提高Quarto撰写效率的方法。</p>
-<section id="利用snippets自动插入divs和spans" class="level3">
-<h3 class="anchored" data-anchor-id="利用snippets自动插入divs和spans">利用snippets自动插入Divs和Spans</h3>
+<section id="利用snippets自动插入divs和spans" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="利用snippets自动插入divs和spans"><span class="header-section-number">1.1</span> 利用snippets自动插入Divs和Spans</h3>
 <p>Quarto支持利用Divs和Spans来给特定的内容增加一些属性。比如，我们可以给一段话增加边框，语句如下：</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1">::: {.border}</span>
 <span id="cb1-2">这是具有边框样式的一段话。</span>
@@ -38,12 +164,12 @@
 <span id="cb2-2">这是一段warning类型callout段落。</span>
 <span id="cb2-3">:::</span></code></pre></div>
 <p>具体显示效果如下：</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Warning
 </div>
 </div>
@@ -81,8 +207,8 @@ Warning
 <span id="cb3-26">    ::::</span></code></pre></div>
 <p>我们在在使用的时候，在Quarto文档里输入snippet名称，然后按Shift+Tab键就可以按照设定的片段录入代码了。比如，我们可以将将内容进行分栏，可以录入column，然后按Shift+Tab键，然后相应的代码块会自动填充。</p>
 </section>
-<section id="善于使用echo-fenced选项" class="level3">
-<h3 class="anchored" data-anchor-id="善于使用echo-fenced选项">善于使用echo: fenced选项</h3>
+<section id="善于使用echo-fenced选项" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="善于使用echo-fenced选项"><span class="header-section-number">1.2</span> 善于使用echo: fenced选项</h3>
 <p>Quarto支持插入代码块从而实现一些相应的功能，而我们在利用Quarto进行写作时，有时需要把代码显示出来，从而让其他人知道相应的部分的内容的原始代码是什么样的，而在代码块的echo选项设定为fenced之后，可以把包括选项部分的设置一块显示出来。</p>
 <p>在没有这是 echo: fenced时，代码块的显示是下面这样的。</p>
 <div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1">data <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
@@ -97,15 +223,15 @@ Warning
 <span id="cb5-6">  <span class="fu" style="color: #4758AB;">kable</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
 <span id="cb5-7">  <span class="fu" style="color: #4758AB;">kable_stylling</span>()</span></code></pre></div>
 </section>
-<section id="利用shortcode方便地插入内容" class="level3">
-<h3 class="anchored" data-anchor-id="利用shortcode方便地插入内容">利用shortcode方便地插入内容</h3>
+<section id="利用shortcode方便地插入内容" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="利用shortcode方便地插入内容"><span class="header-section-number">1.3</span> 利用shortcode方便地插入内容</h3>
 <p>通常我们可以在quarto文档中添加HTML内容，比如通过添加视频内容等，shortcode可以使我们很方便地插入我们想插入的内容。Quarto原生支持一些shortcode，比如运行下面的代码。</p>
 <div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1">这篇博客的标题是`提高Rstudio和Quarto使用效率的一些方法和配置`。</span></code></pre></div>
 <p>显示的内容如下：</p>
 <p>这篇博客的标题是提高Rstudio和Quarto使用效率的一些方法和配置。</p>
 </section>
-<section id="在不同文档间重复利用内容" class="level3">
-<h3 class="anchored" data-anchor-id="在不同文档间重复利用内容">在不同文档间重复利用内容</h3>
+<section id="在不同文档间重复利用内容" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="在不同文档间重复利用内容"><span class="header-section-number">1.4</span> 在不同文档间重复利用内容</h3>
 <p><code>{{&lt; include &gt;}}</code>是一个quarto的shortcode使我们能够重复利用不同quarto文档的内容，而不用复制和粘贴。在你想插入内容的地方，添加shortcode <code>{{&lt; include &gt;}}</code> include后面放入想添加的文档名称，记得在名称前添加下划线。</p>
 <div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1">{{&lt; incldue _content.qmd &gt;}}</span></code></pre></div>
 <p>也可以按照一定的条件纳入内容，比如，只在渲染为特定格式时显示内容，用.content-visible 或者 .content-hidden</p>
@@ -114,8 +240,8 @@ Warning
 <span id="cb8-3">:::</span></code></pre></div>
 </section>
 </section>
-<section id="善于使用快捷键" class="level2">
-<h2 class="anchored" data-anchor-id="善于使用快捷键">善于使用快捷键</h2>
+<section id="善于使用快捷键" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="善于使用快捷键"><span class="header-section-number">2</span> 善于使用快捷键</h2>
 <p>我们在使用Rstudio在进行统计分析时，有些使用频率非常高的操作，比如添加或者取消注释、赋值号、管道操作符、运行当前行代码、运行有所代码，从代码界面切换到Console界面，切换到Terminal界面等等，如果记住一些键盘快捷键将会大大提高操作效率，就不用在写着代码的时候到桌面上找鼠标了。下面的表格中列出了我比较常用的键盘快捷键，我们在使用的时候可以参考借鉴。</p>
 <p>我们在数据分析的过程中也要保持良好的习惯，比如记得<strong>添加代码注释</strong>，通过添加注释可以使我们的代码具有更高的可读性，使代码更易于维护，帮助我们更好的理解代码的含义。</p>
 <table class="table">
@@ -197,12 +323,12 @@ Warning
 </tr>
 </tbody>
 </table>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 记住快捷键的小技巧
 </div>
 </div>
@@ -211,8 +337,8 @@ Warning
 </div>
 </div>
 </section>
-<section id="不要保存工作环境变量" class="level2">
-<h2 class="anchored" data-anchor-id="不要保存工作环境变量">不要保存工作环境变量</h2>
+<section id="不要保存工作环境变量" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="不要保存工作环境变量"><span class="header-section-number">3</span> 不要保存工作环境变量</h2>
 <p>尽量不要保存Rstudio工作环境，如果您创建了值得保存的 R 对象，请将生成该对象的 R 代码保存到一个 R 脚本文件中。保存 R 脚本，但不要保存对象生成时的环境或工作空间。</p>
 <p>为防止 RStudio 保存您的工作空间，请打开”首选项 &gt; 通用”并取消选择将 .RData 在启动时恢复到工作空间的选项。请确保指定您永不想保存工作空间，如下所示：</p>
 <div class="cell">
@@ -221,15 +347,15 @@ Warning
 </div>
 </div>
 </section>
-<section id="用项目projects组织管理工作" class="level2">
-<h2 class="anchored" data-anchor-id="用项目projects组织管理工作">用项目(Projects)组织管理工作</h2>
+<section id="用项目projects组织管理工作" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="用项目projects组织管理工作"><span class="header-section-number">4</span> 用项目(Projects)组织管理工作</h2>
 <p>如果我们使用Rstudio进行数据分析时，一定要有<strong>项目</strong>的概念，当我们处理多个分析时，时常需要在多个分析之间来回切换，使用了项目的概念之后，我们各个分析会更有组织性。</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Rstudio项目
 </div>
 </div>
@@ -247,8 +373,8 @@ Rstudio项目
 <p>通过导航到 RStudio 中的”文件”选项卡并选择”新建项目”来创建新项目。您可以选择在新目录或现有目录中创建新项目。</p>
 <p>但是，如果您想实现无缝协作，可能需要将软件包管理引入工作流程。幸运的是，RStudio 提供了一个有用的软件包管理工具 renv，现在与 RStudio Projects 兼容。</p>
 </section>
-<section id="利用renv管理r包的版本" class="level2">
-<h2 class="anchored" data-anchor-id="利用renv管理r包的版本">利用renv管理R包的版本</h2>
+<section id="利用renv管理r包的版本" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="利用renv管理r包的版本"><span class="header-section-number">5</span> 利用renv管理R包的版本</h2>
 <p>因为R语言的开源使用，越来越多的数据科学家使用R语言来进行了数据分析和数据管理，近年来有大量的R包被上传到CRAN上，这大大方便了我们使用R语言进行数据分析，同时也加大了我们R包管理的难度。</p>
 <p>使用renv来管理R包版本是一种有效的方式，以确保在不同计算机上运行R代码时的一致性和可重复性。以下是使用renv管理R包版本的步骤：</p>
 <ol type="1">
@@ -261,8 +387,8 @@ Rstudio项目
 </ol>
 <p>通过使用renv管理R包版本，您可以确保您的项目在不同计算机上具有相同的R包版本，从而使得您的分析结果更加可靠和可重复。<i class="fa-solid fa-thumbs-up" aria-label="thumbs-up"></i></p>
 </section>
-<section id="配置r和rstudio启动文件" class="level2">
-<h2 class="anchored" data-anchor-id="配置r和rstudio启动文件">配置R和Rstudio启动文件</h2>
+<section id="配置r和rstudio启动文件" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="配置r和rstudio启动文件"><span class="header-section-number">6</span> 配置R和Rstudio启动文件</h2>
 <p>在启动Rstudio和R时，软件会自动寻找几个文件，这些文件分别为.Rprofile, .Renviron, Rprofile.site, Renviron.site, rsession.conf 和 repos.conf，可以通过这些文件设置一些选项和环境变量。这一部分将介绍如何在R启动时设置特定选项。</p>
 <p>下面一个表格总结了如何在启动时控制R选项和环境变量。</p>
 <table class="table">
@@ -328,27 +454,27 @@ Rstudio项目
 </tr>
 </tbody>
 </table>
-<section id="rprofile" class="level3">
-<h3 class="anchored" data-anchor-id="rprofile">.Rprofile</h3>
+<section id="rprofile" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="rprofile"><span class="header-section-number">6.1</span> .Rprofile</h3>
 <p>.Rprofile文件是用户可控的文件，用于设置选项和环境变量。.Rprofile文件可以是用户级别或项目级别。用户级别的.Rprofile文件位于用户主目录的根目录中，项目级别的.Rprofile文件位于项目目录的根目录中。</p>
 <p>R只会使用一个.Rprofile文件。因此，如果您既有一个特定于项目的.Rprofile文件，又有一个用户.Rprofile文件需要使用，则必须在项目级.Rprofile的顶部显式调用用户级.Rprofile，使用source(“~/.Rprofile”)。</p>
 <p>.Rprofile文件作为常规的R代码进行调用，因此设置环境变量必须在Sys.setenv(key = “value”)调用内完成。</p>
 <p>编辑.Rprofile文件的一种简单方法是在R会话中使用usethis::edit_r_profile()函数。您可以指定要编辑的用户或项目级.Rprofile。</p>
 </section>
-<section id="renviron" class="level3">
-<h3 class="anchored" data-anchor-id="renviron">.Renviron</h3>
+<section id="renviron" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="renviron"><span class="header-section-number">6.2</span> .Renviron</h3>
 <p>.Renviron是一个可由用户控制的文件，可用于创建环境变量。这对于避免在R脚本中包含凭据（如API密钥）特别有用。该文件采用键值格式编写，因此环境变量的创建格式为：</p>
 <p>Key1=value1 Key2=value2 ... 然后，在R会话中使用Sys.getenv(“Key1”)将返回”value1”。</p>
 <p>与.Rprofile文件一样，.Renviron文件可以是用户级别或项目级别。如果有项目级别的.Renviron文件，则不会加载用户级别的文件。usethis包中包含一个帮助函数，可以使用usethis::edit_r_environ()从R会话中编辑.Renviron文件。</p>
 </section>
-<section id="rprofile.site-和renviron.site" class="level3">
-<h3 class="anchored" data-anchor-id="rprofile.site-和renviron.site">Rprofile.site 和Renviron.site</h3>
+<section id="rprofile.site-和renviron.site" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="rprofile.site-和renviron.site"><span class="header-section-number">6.3</span> Rprofile.site 和Renviron.site</h3>
 <p>.Rprofile和.Renviron文件都有服务器范围内的等效文件。Rprofile.site和Renviron.site（没有前导点）文件由RStudio Workbench或RStudio Server上的管理员管理，并且特定于特定版本的R。这些文件的最常见设置涉及对软件包存储库的访问。例如，通常使用共享基线软件包管理策略是从Rprofile.site中完成的。</p>
 <p>用户可以使用其个人.Rprofile文件覆盖这些文件中的设置。</p>
 <p>这些文件针对每个版本的R进行设置，应位于R_HOME / etc /中。您可以通过在该版本的R会话中运行命令R.home（component =“home”）来找到R_HOME。因此，例如，如果您发现R_HOME是/opt/R/3.6.2/lib/R，则R 3.6.2的Rprofile.site将位于/opt/R/3.6.2/lib/R/etc/Rprofile.site中。</p>
 </section>
-<section id="rsession.conf和repos.conf" class="level3">
-<h3 class="anchored" data-anchor-id="rsession.conf和repos.conf">rsession.conf和repos.conf</h3>
+<section id="rsession.conf和repos.conf" class="level3" data-number="6.4">
+<h3 data-number="6.4" class="anchored" data-anchor-id="rsession.conf和repos.conf"><span class="header-section-number">6.4</span> rsession.conf和repos.conf</h3>
 <p>RStudio Workbench和RStudio Server允许服务器管理员通过rsession.conf和repos.conf文件配置特定的服务器范围内的R包存储库。rsession.conf中只能配置一个存储库。如果需要多个存储库，应该使用repos.conf。</p>
 
 
@@ -372,15 +498,15 @@ Rstudio项目
 
 
 
-<section id="传统论文写作中的常见问题" class="level2">
-<h2 class="anchored" data-anchor-id="传统论文写作中的常见问题">传统论文写作中的常见问题</h2>
+<section id="传统论文写作中的常见问题" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="传统论文写作中的常见问题"><span class="header-section-number">1</span> 传统论文写作中的常见问题</h2>
 <p>我相信除了不需要进行统计分析的综述类文章类型之外，大部分论文类型的论文写作流程是下面 Figure&nbsp;1 这个样子的：</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart TD
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-1">flowchart TD
   A[(数据清洗)] --&gt; B(统计分析)
   B --&gt; C{结果初步评估}
   C --&gt; B
@@ -393,21 +519,18 @@ Rstudio项目
   G -- 不需要重新统计 --&gt; E
   G --&gt; H[发表见刊]
 </pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
 </div>
-<p></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1: 论文写作流程</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 什么是传统科技论文写作？
 </div>
 </div>
@@ -422,15 +545,15 @@ Rstudio项目
 <li>重复操作的过程中可能会出现偶尔的数据错误</li>
 </ul>
 </section>
-<section id="quarto开源科学技术出版系统介绍" class="level2">
-<h2 class="anchored" data-anchor-id="quarto开源科学技术出版系统介绍">Quarto开源科学技术出版系统介绍</h2>
+<section id="quarto开源科学技术出版系统介绍" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="quarto开源科学技术出版系统介绍"><span class="header-section-number">2</span> Quarto开源科学技术出版系统介绍</h2>
 <p><a href="https://quarto.org">Quarto</a>可以解决上面出现的问题，能把数据分析的过程融合进论文写作的过程中来，以<a href="https://www.markdown.xyz/basic-syntax/"><em>markdown</em></a>的格式进行文字编辑和创作，通过插入<a href="https://quarto.org/docs/reference/cells/cells-knitr.html"><em>代码段</em></a>的形式进行统计分析相关的输出，同时它可以实现参考文献的插入和应用、图表的交叉引用；在报告输出方面，它可以输出成PDF、WORD、PPT、HTML、ePub等多种格式，可以用来制作网页、书籍、科技论文、幻灯片等内容。</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Quarto
 </div>
 </div>
@@ -440,8 +563,8 @@ Quarto
 </div>
 </div>
 </section>
-<section id="quarto的主要特点" class="level2">
-<h2 class="anchored" data-anchor-id="quarto的主要特点">Quarto的主要特点</h2>
+<section id="quarto的主要特点" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="quarto的主要特点"><span class="header-section-number">3</span> Quarto的主要特点</h2>
 <ul>
 <li>它主要用来生成不同格式的报告</li>
 <li>能把R、Python、Julia和Observable等代码与文本报告整合起来，生成基于不同代码运行结果的动态报告</li>
@@ -451,16 +574,16 @@ Quarto
 <li>可以与不同的代码编辑软件结合使用，<a href="https://quarto.org/docs/get-started/">Rstudio、Terminal、Vscode</a>等</li>
 </ul>
 </section>
-<section id="quarto安装" class="level2">
-<h2 class="anchored" data-anchor-id="quarto安装">Quarto安装</h2>
+<section id="quarto安装" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="quarto安装"><span class="header-section-number">4</span> Quarto安装</h2>
 <p>如果你使用Rstudio的话，<a href="https://posit.co/download/rstudio-desktop/">下载最新的版本</a>，该版本内置有quarto。</p>
 <p>如果你需要在R 代码进行文档渲染的话，可以安装R quarto包</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">install.packages</span>(<span class="st" style="color: #20794D;">"quarto"</span>)</span>
 <span id="cb1-2">quarto<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">quarto_render</span>(<span class="st" style="color: #20794D;">"hello.qmd"</span>)</span></code></pre></div>
 <p>如果你需要在Vscode或者终端中使用quarto的话，可以参考<a href="https://quarto.org/docs/get-started/">不同运行环境quarto的安装与配置</a>，进行相应的配置，本篇博客将使用Rstudio进行相应的操作和介绍。</p>
 </section>
-<section id="新建quarto文件" class="level2">
-<h2 class="anchored" data-anchor-id="新建quarto文件">新建quarto文件</h2>
+<section id="新建quarto文件" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="新建quarto文件"><span class="header-section-number">5</span> 新建quarto文件</h2>
 <p>在Rstudio里，点击 <em>File</em> –&gt; New Files –&gt; Quarto Document 新建一个quarto文件，该文件以.qmd为文件后缀</p>
 <div class="quarto-figure quarto-figure-center aside">
 <figure class="figure">
@@ -468,10 +591,10 @@ Quarto
 </figure>
 </div>
 </section>
-<section id="quarto语法介绍" class="level2">
-<h2 class="anchored" data-anchor-id="quarto语法介绍">Quarto语法介绍</h2>
-<section id="yaml-信息设置" class="level3">
-<h3 class="anchored" data-anchor-id="yaml-信息设置">YAML 信息设置</h3>
+<section id="quarto语法介绍" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="quarto语法介绍"><span class="header-section-number">6</span> Quarto语法介绍</h2>
+<section id="yaml-信息设置" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="yaml-信息设置"><span class="header-section-number">6.1</span> YAML 信息设置</h3>
 <p>Quarto通过yaml设置一些变量信息，比如作者、日期、标题等，YAML以”---“单独一行开头，然后以”---“单独一行结尾，中间可以设置一些变量信息。</p>
 <p>变量设定格式：</p>
 <p>变量名: 变量值</p>
@@ -493,8 +616,8 @@ Quarto
 <span id="cb2-15"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">docx</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> default</span></span>
 <span id="cb2-16"><span class="pp" style="color: #AD0000;">---</span></span></code></pre></div>
 </section>
-<section id="代码块" class="level3">
-<h3 class="anchored" data-anchor-id="代码块">代码块</h3>
+<section id="代码块" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="代码块"><span class="header-section-number">6.2</span> 代码块</h3>
 <p>quarto文档中可以插入代码块，在代码块中可以进行编写相应语言的代码，进行统计分析或结果展现。目前quarto支持的代码块包括R语言、Python等，下面的R语言代码块，利用gtsummary包制作了论文中常用的表1，结果可见 Table&nbsp;1 。</p>
 <div class="cell tbl-cap-location-top">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><span class="in" style="color: #5E5E5E;">```{r}</span></span>
@@ -514,14 +637,13 @@ Quarto
 <span id="cb3-15">  <span class="fu" style="color: #4758AB;">bold_labels</span>() </span>
 <span id="cb3-16"><span class="in" style="color: #5E5E5E;">```</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="tbl-table1" class="anchored">
 
 <div id="ygvsmomafr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-:where(#ygvsmomafr) .gt_table {
+#ygvsmomafr .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -546,7 +668,7 @@ Quarto
   border-left-color: #D3D3D3;
 }
 
-:where(#ygvsmomafr) .gt_heading {
+#ygvsmomafr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -558,12 +680,12 @@ Quarto
   border-right-color: #D3D3D3;
 }
 
-:where(#ygvsmomafr) .gt_caption {
+#ygvsmomafr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-:where(#ygvsmomafr) .gt_title {
+#ygvsmomafr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -575,7 +697,7 @@ Quarto
   border-bottom-width: 0;
 }
 
-:where(#ygvsmomafr) .gt_subtitle {
+#ygvsmomafr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -587,13 +709,13 @@ Quarto
   border-top-width: 0;
 }
 
-:where(#ygvsmomafr) .gt_bottom_border {
+#ygvsmomafr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-:where(#ygvsmomafr) .gt_col_headings {
+#ygvsmomafr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -608,7 +730,7 @@ Quarto
   border-right-color: #D3D3D3;
 }
 
-:where(#ygvsmomafr) .gt_col_heading {
+#ygvsmomafr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -628,7 +750,7 @@ Quarto
   overflow-x: hidden;
 }
 
-:where(#ygvsmomafr) .gt_column_spanner_outer {
+#ygvsmomafr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -640,15 +762,15 @@ Quarto
   padding-right: 4px;
 }
 
-:where(#ygvsmomafr) .gt_column_spanner_outer:first-child {
+#ygvsmomafr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-:where(#ygvsmomafr) .gt_column_spanner_outer:last-child {
+#ygvsmomafr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-:where(#ygvsmomafr) .gt_column_spanner {
+#ygvsmomafr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -660,7 +782,7 @@ Quarto
   width: 100%;
 }
 
-:where(#ygvsmomafr) .gt_group_heading {
+#ygvsmomafr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -686,7 +808,7 @@ Quarto
   text-align: left;
 }
 
-:where(#ygvsmomafr) .gt_empty_group_heading {
+#ygvsmomafr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -701,15 +823,15 @@ Quarto
   vertical-align: middle;
 }
 
-:where(#ygvsmomafr) .gt_from_md > :first-child {
+#ygvsmomafr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-:where(#ygvsmomafr) .gt_from_md > :last-child {
+#ygvsmomafr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-:where(#ygvsmomafr) .gt_row {
+#ygvsmomafr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -728,7 +850,7 @@ Quarto
   overflow-x: hidden;
 }
 
-:where(#ygvsmomafr) .gt_stub {
+#ygvsmomafr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -741,7 +863,7 @@ Quarto
   padding-right: 5px;
 }
 
-:where(#ygvsmomafr) .gt_stub_row_group {
+#ygvsmomafr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -755,11 +877,11 @@ Quarto
   vertical-align: top;
 }
 
-:where(#ygvsmomafr) .gt_row_group_first td {
+#ygvsmomafr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-:where(#ygvsmomafr) .gt_summary_row {
+#ygvsmomafr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -769,16 +891,16 @@ Quarto
   padding-right: 5px;
 }
 
-:where(#ygvsmomafr) .gt_first_summary_row {
+#ygvsmomafr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-:where(#ygvsmomafr) .gt_first_summary_row.thick {
+#ygvsmomafr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-:where(#ygvsmomafr) .gt_last_summary_row {
+#ygvsmomafr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -788,7 +910,7 @@ Quarto
   border-bottom-color: #D3D3D3;
 }
 
-:where(#ygvsmomafr) .gt_grand_summary_row {
+#ygvsmomafr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -798,7 +920,7 @@ Quarto
   padding-right: 5px;
 }
 
-:where(#ygvsmomafr) .gt_first_grand_summary_row {
+#ygvsmomafr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -808,11 +930,11 @@ Quarto
   border-top-color: #D3D3D3;
 }
 
-:where(#ygvsmomafr) .gt_striped {
+#ygvsmomafr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-:where(#ygvsmomafr) .gt_table_body {
+#ygvsmomafr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -821,7 +943,7 @@ Quarto
   border-bottom-color: #D3D3D3;
 }
 
-:where(#ygvsmomafr) .gt_footnotes {
+#ygvsmomafr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -835,7 +957,7 @@ Quarto
   border-right-color: #D3D3D3;
 }
 
-:where(#ygvsmomafr) .gt_footnote {
+#ygvsmomafr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -844,7 +966,7 @@ Quarto
   padding-right: 5px;
 }
 
-:where(#ygvsmomafr) .gt_sourcenotes {
+#ygvsmomafr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -858,7 +980,7 @@ Quarto
   border-right-color: #D3D3D3;
 }
 
-:where(#ygvsmomafr) .gt_sourcenote {
+#ygvsmomafr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -866,158 +988,176 @@ Quarto
   padding-right: 5px;
 }
 
-:where(#ygvsmomafr) .gt_left {
+#ygvsmomafr .gt_left {
   text-align: left;
 }
 
-:where(#ygvsmomafr) .gt_center {
+#ygvsmomafr .gt_center {
   text-align: center;
 }
 
-:where(#ygvsmomafr) .gt_right {
+#ygvsmomafr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-:where(#ygvsmomafr) .gt_font_normal {
+#ygvsmomafr .gt_font_normal {
   font-weight: normal;
 }
 
-:where(#ygvsmomafr) .gt_font_bold {
+#ygvsmomafr .gt_font_bold {
   font-weight: bold;
 }
 
-:where(#ygvsmomafr) .gt_font_italic {
+#ygvsmomafr .gt_font_italic {
   font-style: italic;
 }
 
-:where(#ygvsmomafr) .gt_super {
+#ygvsmomafr .gt_super {
   font-size: 65%;
 }
 
-:where(#ygvsmomafr) .gt_footnote_marks {
+#ygvsmomafr .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-:where(#ygvsmomafr) .gt_asterisk {
+#ygvsmomafr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-:where(#ygvsmomafr) .gt_indent_1 {
+#ygvsmomafr .gt_indent_1 {
   text-indent: 5px;
 }
 
-:where(#ygvsmomafr) .gt_indent_2 {
+#ygvsmomafr .gt_indent_2 {
   text-indent: 10px;
 }
 
-:where(#ygvsmomafr) .gt_indent_3 {
+#ygvsmomafr .gt_indent_3 {
   text-indent: 15px;
 }
 
-:where(#ygvsmomafr) .gt_indent_4 {
+#ygvsmomafr .gt_indent_4 {
   text-indent: 20px;
 }
 
-:where(#ygvsmomafr) .gt_indent_5 {
+#ygvsmomafr .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table"><caption>Table&nbsp;1:  接受不同药物治疗人群基本特征分析 </caption>
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Characteristic</strong>"><strong>Characteristic</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>N</strong>"><strong>N</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Overall</strong>, N = 200<sup class=&quot;gt_footnote_marks&quot;>1</sup>"><strong>Overall</strong>, N = 200<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Drug A</strong>, N = 98<sup class=&quot;gt_footnote_marks&quot;>1</sup>"><strong>Drug A</strong>, N = 98<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Drug B</strong>, N = 102<sup class=&quot;gt_footnote_marks&quot;>1</sup>"><strong>Drug B</strong>, N = 102<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>p-value</strong><sup class=&quot;gt_footnote_marks&quot;>2</sup>"><strong>p-value</strong><sup class="gt_footnote_marks">2</sup></th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Age</td>
-<td headers="n" class="gt_row gt_center">189</td>
-<td headers="stat_0" class="gt_row gt_center">47 (38, 57)</td>
-<td headers="stat_1" class="gt_row gt_center">46 (37, 59)</td>
-<td headers="stat_2" class="gt_row gt_center">48 (39, 56)</td>
-<td headers="p.value" class="gt_row gt_center">0.7</td></tr>
-    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Unknown</td>
-<td headers="n" class="gt_row gt_center"></td>
-<td headers="stat_0" class="gt_row gt_center">11</td>
-<td headers="stat_1" class="gt_row gt_center">7</td>
-<td headers="stat_2" class="gt_row gt_center">4</td>
-<td headers="p.value" class="gt_row gt_center"></td></tr>
-    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Grade</td>
-<td headers="n" class="gt_row gt_center">200</td>
-<td headers="stat_0" class="gt_row gt_center"></td>
-<td headers="stat_1" class="gt_row gt_center"></td>
-<td headers="stat_2" class="gt_row gt_center"></td>
-<td headers="p.value" class="gt_row gt_center">0.9</td></tr>
-    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;I</td>
-<td headers="n" class="gt_row gt_center"></td>
-<td headers="stat_0" class="gt_row gt_center">68 (34%)</td>
-<td headers="stat_1" class="gt_row gt_center">35 (36%)</td>
-<td headers="stat_2" class="gt_row gt_center">33 (32%)</td>
-<td headers="p.value" class="gt_row gt_center"></td></tr>
-    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;II</td>
-<td headers="n" class="gt_row gt_center"></td>
-<td headers="stat_0" class="gt_row gt_center">68 (34%)</td>
-<td headers="stat_1" class="gt_row gt_center">32 (33%)</td>
-<td headers="stat_2" class="gt_row gt_center">36 (35%)</td>
-<td headers="p.value" class="gt_row gt_center"></td></tr>
-    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;III</td>
-<td headers="n" class="gt_row gt_center"></td>
-<td headers="stat_0" class="gt_row gt_center">64 (32%)</td>
-<td headers="stat_1" class="gt_row gt_center">31 (32%)</td>
-<td headers="stat_2" class="gt_row gt_center">33 (32%)</td>
-<td headers="p.value" class="gt_row gt_center"></td></tr>
-    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Tumor Response</td>
-<td headers="n" class="gt_row gt_center">193</td>
-<td headers="stat_0" class="gt_row gt_center">61 (32%)</td>
-<td headers="stat_1" class="gt_row gt_center">28 (29%)</td>
-<td headers="stat_2" class="gt_row gt_center">33 (34%)</td>
-<td headers="p.value" class="gt_row gt_center">0.5</td></tr>
-    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Unknown</td>
-<td headers="n" class="gt_row gt_center"></td>
-<td headers="stat_0" class="gt_row gt_center">7</td>
-<td headers="stat_1" class="gt_row gt_center">3</td>
-<td headers="stat_2" class="gt_row gt_center">4</td>
-<td headers="p.value" class="gt_row gt_center"></td></tr>
-  </tbody>
-  
-  <tfoot class="gt_footnotes">
-    <tr>
-      <td class="gt_footnote" colspan="6"><sup class="gt_footnote_marks">1</sup> Median (IQR); n (%)</td>
-    </tr>
-    <tr>
-      <td class="gt_footnote" colspan="6"><sup class="gt_footnote_marks">2</sup> Wilcoxon rank sum test; Pearson's Chi-squared test</td>
-    </tr>
-  </tfoot>
+
+<div id="tbl-table1" class="anchored">
+<table class="gt_table table table-sm table-striped" data-quarto-postprocess="true">
+<caption>Table&nbsp;1: 接受不同药物治疗人群基本特征分析</caption>
+<thead class="gt_col_headings">
+<tr class="header">
+<th id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
+<th id="<strong>N</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>N</strong></th>
+<th id="<strong>Overall</strong>, N = 200<sup class=&quot;gt_footnote_marks&quot;>1</sup>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Overall</strong>, N = 200<sup>1</sup></th>
+<th id="<strong>Drug A</strong>, N = 98<sup class=&quot;gt_footnote_marks&quot;>1</sup>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Drug A</strong>, N = 98<sup>1</sup></th>
+<th id="<strong>Drug B</strong>, N = 102<sup class=&quot;gt_footnote_marks&quot;>1</sup>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Drug B</strong>, N = 102<sup>1</sup></th>
+<th id="<strong>p-value</strong><sup class=&quot;gt_footnote_marks&quot;>2</sup>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><sup>2</sup></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Age</td>
+<td class="gt_row gt_center" headers="n">189</td>
+<td class="gt_row gt_center" headers="stat_0">47 (38, 57)</td>
+<td class="gt_row gt_center" headers="stat_1">46 (37, 59)</td>
+<td class="gt_row gt_center" headers="stat_2">48 (39, 56)</td>
+<td class="gt_row gt_center" headers="p.value">0.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Unknown</td>
+<td class="gt_row gt_center" headers="n"></td>
+<td class="gt_row gt_center" headers="stat_0">11</td>
+<td class="gt_row gt_center" headers="stat_1">7</td>
+<td class="gt_row gt_center" headers="stat_2">4</td>
+<td class="gt_row gt_center" headers="p.value"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Grade</td>
+<td class="gt_row gt_center" headers="n">200</td>
+<td class="gt_row gt_center" headers="stat_0"></td>
+<td class="gt_row gt_center" headers="stat_1"></td>
+<td class="gt_row gt_center" headers="stat_2"></td>
+<td class="gt_row gt_center" headers="p.value">0.9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;I</td>
+<td class="gt_row gt_center" headers="n"></td>
+<td class="gt_row gt_center" headers="stat_0">68 (34%)</td>
+<td class="gt_row gt_center" headers="stat_1">35 (36%)</td>
+<td class="gt_row gt_center" headers="stat_2">33 (32%)</td>
+<td class="gt_row gt_center" headers="p.value"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;II</td>
+<td class="gt_row gt_center" headers="n"></td>
+<td class="gt_row gt_center" headers="stat_0">68 (34%)</td>
+<td class="gt_row gt_center" headers="stat_1">32 (33%)</td>
+<td class="gt_row gt_center" headers="stat_2">36 (35%)</td>
+<td class="gt_row gt_center" headers="p.value"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;III</td>
+<td class="gt_row gt_center" headers="n"></td>
+<td class="gt_row gt_center" headers="stat_0">64 (32%)</td>
+<td class="gt_row gt_center" headers="stat_1">31 (32%)</td>
+<td class="gt_row gt_center" headers="stat_2">33 (32%)</td>
+<td class="gt_row gt_center" headers="p.value"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Tumor Response</td>
+<td class="gt_row gt_center" headers="n">193</td>
+<td class="gt_row gt_center" headers="stat_0">61 (32%)</td>
+<td class="gt_row gt_center" headers="stat_1">28 (29%)</td>
+<td class="gt_row gt_center" headers="stat_2">33 (34%)</td>
+<td class="gt_row gt_center" headers="p.value">0.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Unknown</td>
+<td class="gt_row gt_center" headers="n"></td>
+<td class="gt_row gt_center" headers="stat_0">7</td>
+<td class="gt_row gt_center" headers="stat_1">3</td>
+<td class="gt_row gt_center" headers="stat_2">4</td>
+<td class="gt_row gt_center" headers="p.value"></td>
+</tr>
+</tbody><tfoot class="gt_footnotes">
+<tr class="odd">
+<td colspan="6" class="gt_footnote"><sup>1</sup> Median (IQR); n (%)</td>
+</tr>
+<tr class="even">
+<td colspan="6" class="gt_footnote"><sup>2</sup> Wilcoxon rank sum test; Pearson's Chi-squared test</td>
+</tr>
+</tfoot>
+
 </table>
 </div>
+
 </div>
 </div>
 </div>
 </section>
-<section id="markdown文本" class="level3">
-<h3 class="anchored" data-anchor-id="markdown文本">Markdown文本</h3>
+<section id="markdown文本" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="markdown文本"><span class="header-section-number">6.3</span> Markdown文本</h3>
 <p>Rstudio提供两种模式进行文本编辑，一种是source模式，quarto参考使用markdown的基本语法，比如一级标题使用”#“，二级标题使用”##“等，具体可见<a href="https://www.markdown.xyz/basic-syntax/">markdown基本语法</a>。另一种是Visual模式，可见模式下，你不用学习许多markdown的基本语法，可以使用菜单或者快捷键进行添加标题、加粗文本、添加表格、添加图片等操作。</p>
 <p>在Rstudio打开的qmd文档中，左上角可以选择source或者visual模式。</p>
 <p><em>Source模式下是这样的</em> <img src="https://www.chenq.site/qsight/2023-3-25-quarto-writing/source.jpg" class="img-fluid"></p>
 <p><em>Visual模式下是这样的</em> <img src="https://www.chenq.site/qsight/2023-3-25-quarto-writing/visual.jpg" class="img-fluid"></p>
 </section>
 </section>
-<section id="输出word格式" class="level2">
-<h2 class="anchored" data-anchor-id="输出word格式">输出Word格式</h2>
+<section id="输出word格式" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="输出word格式"><span class="header-section-number">7</span> 输出Word格式</h2>
 <p>虽然quarto支持的输出格式很多，比如html格式、pdf格式以及word格式，你现在所浏览的网页就是用quarto来生成的。</p>
 <p>回到我们今天讲的主题是“<em>科技论文的写作效率</em>”，我们撰写完成论文初稿后是需要进入投稿流程的，目前不同期刊所接受的投稿格式还是以word为多，下面就展开来讲一下quarto如何输出word格式。</p>
-<section id="利用word模板文件" class="level3">
-<h3 class="anchored" data-anchor-id="利用word模板文件">利用word模板文件</h3>
+<section id="利用word模板文件" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="利用word模板文件"><span class="header-section-number">7.1</span> 利用word模板文件</h3>
 <p>在quarto文档的YAML部分，通过format设置为输出word格式，还可以设置word模板文件，输出结果会按照word模板的格式对各个部分进行设置。</p>
 <p>YAML设置部分代码如下：</p>
 <div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><span class="pp" style="color: #AD0000;">---</span></span>
@@ -1028,8 +1168,8 @@ Quarto
 <span id="cb4-6"><span class="at" style="color: #657422;">    </span><span class="fu" style="color: #4758AB;">reference-doc</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> chinese.docx</span></span>
 <span id="cb4-7"><span class="pp" style="color: #AD0000;">---</span></span></code></pre></div>
 </section>
-<section id="图表交叉引用的相关设置" class="level3">
-<h3 class="anchored" data-anchor-id="图表交叉引用的相关设置">图表交叉引用的相关设置</h3>
+<section id="图表交叉引用的相关设置" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="图表交叉引用的相关设置"><span class="header-section-number">7.2</span> 图表交叉引用的相关设置</h3>
 <p>通过crossref设置交叉引用图表的格式，fig-title设置的是图标题前显示字符，tbl-title设置表格标题前的显示字符，title-delim设置图表序号和显示字符之间的连接符号。</p>
 <p>tbl-frefix设置在文本中引用时的显示格式：如表1、表2，图1、图2</p>
 <div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><span class="pp" style="color: #AD0000;">---</span></span>
@@ -1042,8 +1182,8 @@ Quarto
 <span id="cb5-8"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">fig-prefix</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> 图</span></span>
 <span id="cb5-9"><span class="pp" style="color: #AD0000;">---</span></span></code></pre></div>
 </section>
-<section id="设置参考文献引用格式" class="level3">
-<h3 class="anchored" data-anchor-id="设置参考文献引用格式">设置参考文献引用格式</h3>
+<section id="设置参考文献引用格式" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="设置参考文献引用格式"><span class="header-section-number">7.3</span> 设置参考文献引用格式</h3>
 <p>参考文献的引用时论文写作时候的一个大问题，我们在使用quarto进行科技论文写作的时候，需要在YAML里进行两个设置才能进行参考文献的引用和格式的设置。</p>
 <ul>
 <li>通过 bibliography: 指定bibtex格式文献的存放位置</li>
@@ -1056,24 +1196,24 @@ Quarto
 <span id="cb6-5"><span class="pp" style="color: #AD0000;">---</span></span></code></pre></div>
 <p>在文本编辑时，通过[“<span class="citation" data-cites="refid">@refid</span>”]的形式进行参考文献的文内引用，如果同一位置引用多篇文献，[“<span class="citation" data-cites="refid1">@refid1</span>;<span class="citation" data-cites="refid2">@refid2</span>”]，可以在文献之间添加”;“。</p>
 </section>
-<section id="设置作者列表和单位信息" class="level3">
-<h3 class="anchored" data-anchor-id="设置作者列表和单位信息">设置作者列表和单位信息</h3>
+<section id="设置作者列表和单位信息" class="level3" data-number="7.4">
+<h3 data-number="7.4" class="anchored" data-anchor-id="设置作者列表和单位信息"><span class="header-section-number">7.4</span> 设置作者列表和单位信息</h3>
 <p>在论文投稿时，需要在标题下方列出各位作者的信息，包括姓名，作者单位，通讯作者等，姓名上标标注作者的单位信息。</p>
 <p>quarto里可以通过安装一个<strong>authors-block</strong>插件来实现。</p>
-<section id="安装方法" class="level5">
-<h5 class="anchored" data-anchor-id="安装方法">安装方法</h5>
+<section id="安装方法" class="level5" data-number="7.4.0.1">
+<h5 data-number="7.4.0.1" class="anchored" data-anchor-id="安装方法"><span class="header-section-number">7.4.0.1</span> 安装方法</h5>
 <p>在qmd文档所在的quarto项目之下，在terminal运行如下命令：</p>
 <div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1">quarto add kapsner/authors-block</span></code></pre></div>
 </section>
-<section id="authors-block使用方法" class="level5">
-<h5 class="anchored" data-anchor-id="authors-block使用方法">authors-block使用方法</h5>
+<section id="authors-block使用方法" class="level5" data-number="7.4.0.2">
+<h5 data-number="7.4.0.2" class="anchored" data-anchor-id="authors-block使用方法"><span class="header-section-number">7.4.0.2</span> authors-block使用方法</h5>
 <p>安装好authos-block插件之后，需要在YAML里设置相应的元数据，具体如下。</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 authors-block设置方法
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1127,17 +1267,17 @@ authors-block设置方法
 </section>
 </section>
 </section>
-<section id="渲染输出格式" class="level2">
-<h2 class="anchored" data-anchor-id="渲染输出格式">渲染输出格式</h2>
+<section id="渲染输出格式" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="渲染输出格式"><span class="header-section-number">8</span> 渲染输出格式</h2>
 <p><img src="https://www.chenq.site/qsight/2023-3-25-quarto-writing/render.jpg" class="img-fluid"></p>
 <p>在完成以上步骤之后，只需要点击上图标注的render按钮即可，然后一篇word格式的，随时可以进行投稿论文初稿就完成了。</p>
 <p>如果你在撰写讨论部分的时候，发现统计的某个指标可能存在异常，那么我们只需要在相应的代码块里更新相应的统计代码，更新完成之后，再次点击render，那么你的统计表格就会跟着更新，再次生成基于新结果的论文初稿。</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 什么是render？
 </div>
 </div>
@@ -1166,12 +1306,12 @@ authors-block设置方法
 
 
 
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 肿瘤预后影响因素分析，下面这些问题你考虑过吗？
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1231,8 +1371,8 @@ authors-block设置方法
 <p>今年年初定下的目标就是利用休息时间把这个包付出实践，最近这几天制作了其中的一个函数classify_icd10()，以后有时间再逐步完善相关的功能。虽然现在只有这一个函数，但是麻雀虽小五脏俱全。包的名字从cnCanreg到PBCRtools，再到canregtools，已经换了三次了，最终采用canregtools。<a href="https://github.com/gigu003/canregtools">canregtools</a>的代码托管到了<a href="https://github.com/gigu003">github</a>上，以方便代码管理。制作了<a href="https://gigu003.github.io/canregtools/">canregtools网站</a>，方便使用者查找并使用相关功能。</p>
 <p>为了提高逼格，还制作了canregtools的logo，把一个癌细胞的图片和河南省癌症的年龄别发病率曲线整合到一块，最后制作成了六角的logo。</p>
 <p>下面跟大家分享一下制作这个logo的代码。</p>
-<section id="制作癌症年龄别发病率折线图" class="level2">
-<h2 class="anchored" data-anchor-id="制作癌症年龄别发病率折线图">制作癌症年龄别发病率折线图</h2>
+<section id="制作癌症年龄别发病率折线图" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="制作癌症年龄别发病率折线图"><span class="header-section-number">1</span> 制作癌症年龄别发病率折线图</h2>
 <p>首先，读入年龄别发病率的数据，然后，利用ggplot2制作折线图，重点是要把图片背景设置成透明。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># 加载tidyverse包 </span></span>
@@ -1267,8 +1407,8 @@ authors-block设置方法
 </div>
 </div>
 </section>
-<section id="把肿瘤细胞图片读入r中" class="level2">
-<h2 class="anchored" data-anchor-id="把肿瘤细胞图片读入r中">把肿瘤细胞图片读入R中</h2>
+<section id="把肿瘤细胞图片读入r中" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="把肿瘤细胞图片读入r中"><span class="header-section-number">2</span> 把肿瘤细胞图片读入R中</h2>
 <p>我从google上搜索了一张癌细胞的图片，并利用在线工具把这张图片的背景去除。然后，利用magick包读取图片进入R环境中，转化成ggplot2可识别的元素，最后，以注释的方式加入前面生成折线图中。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">library</span>(magick)</span></code></pre></div>
@@ -1291,8 +1431,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 </div>
 </section>
-<section id="制作六角r包logo" class="level2">
-<h2 class="anchored" data-anchor-id="制作六角r包logo">制作六角R包logo</h2>
+<section id="制作六角r包logo" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="制作六角r包logo"><span class="header-section-number">3</span> 制作六角R包logo</h2>
 <p>最后利用hexSticker包制作logo，具体语句如下。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;">library</span>(hexSticker)</span>
@@ -1334,7 +1474,6 @@ Disabled features: fftw, ghostscript, x11</code></pre>
   <category>个人网站</category>
   <guid>https://www.chenq.site/qsight/2023-02-27-create-logo/index.html</guid>
   <pubDate>Mon, 27 Feb 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2023-02-27-create-logo/canregtools.png" medium="image" type="image/png" height="167" width="144"/>
 </item>
 <item>
   <title>2023年给我的开年惊喜</title>
@@ -1377,7 +1516,6 @@ Disabled features: fftw, ghostscript, x11</code></pre>
   <category>论文写作</category>
   <guid>https://www.chenq.site/qsight/2023-02-08-paper-award/index.html</guid>
   <pubDate>Wed, 08 Feb 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2023-02-08-paper-award/images/award.png" medium="image" type="image/png" height="101" width="144"/>
 </item>
 <item>
   <title>可重复式研究报告:从blogdown,bookdown,pagedown到Quarto</title>
@@ -1388,23 +1526,23 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 
 
 
-<section id="传统写作的困境" class="level2">
-<h2 class="anchored" data-anchor-id="传统写作的困境">传统写作的困境</h2>
+<section id="传统写作的困境" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="传统写作的困境"><span class="header-section-number">1</span> 传统写作的困境</h2>
 <p>研究项目立项–&gt;&gt;收集数据–&gt;&gt;整理数据–&gt;&gt;分析数据–&gt;&gt;撰写论文/报告</p>
 <p>这应该是很多研究者的开展研究工作的基本流程，但是研究工作并不总是一帆顺利地沿着这个方向进行。 我们可能已经撰写完成研究报告，但是收集的数据有了更新，或者需要纳入更多的研究对象，再或者原先某些缺失的数据通过其它渠道进行了补充，那么我们就<strong>需要更新研究报告/论</strong>，再重新分析数据，各种统计过程必须要重新来过，然后再把统计结果一点一点粘贴到word里，是不是想想这个过程就很头疼。</p>
 <p>这是我们在用office套件，比如word、excel、powerpoint等软件在撰写报告时非常常见的情形。</p>
 </section>
-<section id="可重复性报告" class="level2">
-<h2 class="anchored" data-anchor-id="可重复性报告">可重复性报告</h2>
+<section id="可重复性报告" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="可重复性报告"><span class="header-section-number">2</span> 可重复性报告</h2>
 <p>但是Rmd/rmarkown文档及<a href="https://yihui.org/knitr/">knitr</a>的出现解决了这一问题，Rmd格式文档通过把通用的markdown和嵌入的R语言代码块结合起来，通过knitr包把rmd文档编译成统一的md文档，然后再通过pandoc转成各种格式，如html、PDF、Word、slides等。</p>
 <p><img src="https://www.chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-pipeline-pandoc.png" class="img-fluid" alt="rmd-pipeline-pandoc"></p>
 <p>这样我们在写研究报告的时候，就可以利用rmd把统计过程整合到统计报告的撰写中来，如果原始数据有变化，只需要重新执行一次编译过程就能更新整个研究报告了。 其实这个过程也就是我们所说的可重复性数据分析或者可重复性报告。</p>
-<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 可重复性报告/可重复性数据分析
 </div>
 </div>
@@ -1413,15 +1551,15 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 </div>
 </section>
-<section id="r-markdown" class="level2">
-<h2 class="anchored" data-anchor-id="r-markdown">R markdown</h2>
+<section id="r-markdown" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="r-markdown"><span class="header-section-number">3</span> R markdown</h2>
 <p>R markdown 是R实现可重复性数据分析/报告的主要生产力工具，自诞生以来，在Rstudio的加持下，其周边生态越来越完善，实现的功能也越来越多。比如做网站、博客、制作幻灯片、写书、写论文等。</p>
 <p><img src="https://www.chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-packages.png" class="img-fluid" alt="rmd-packages"></p>
 <p>blogdown包可以结合hugo生成比较漂亮的网站或博客网站，bookdown可以生成各种形式的书籍包括word,pdf,epub,html等，xaringan可以做出容易在网络分享的漂亮幻灯片。</p>
 <p>但是R markdown也存在一些缺点，虽然这些包能够实现非常强大的功能，但是各种包之间缺乏统一的语法，实现同一功能的语法各有不同，对于使用者来说，需要付出很大的时间成本在各种包之间切换并记住不同的语法去实现不同的功能。</p>
 </section>
-<section id="从r-markdown到quarto" class="level2">
-<h2 class="anchored" data-anchor-id="从r-markdown到quarto">从R markdown到Quarto</h2>
+<section id="从r-markdown到quarto" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="从r-markdown到quarto"><span class="header-section-number">4</span> 从R markdown到Quarto</h2>
 <p>估计是看到文学编程的巨大潜力，在Rstudio的支持下，<strong>Quarto</strong>应运而生，官网给它的定义是：“基于pandoc的开源科学与技术出版系统”。</p>
 <blockquote class="blockquote">
 <p>Quarto® is an open-source scientific and technical publishing system built on Pandoc</p>
@@ -1448,7 +1586,6 @@ Disabled features: fftw, ghostscript, x11</code></pre>
   <category>quarto</category>
   <guid>https://www.chenq.site/qsight/2022-12-05-rmd-to-quarto/index.html</guid>
   <pubDate>Mon, 05 Dec 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-pipeline-pandoc.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
   <title>如何安装quarto运行环境，并通过命令行建立简单的网站</title>
@@ -1498,7 +1635,6 @@ Disabled features: fftw, ghostscript, x11</code></pre>
   <category>quarto</category>
   <guid>https://www.chenq.site/qsight/2022-12-02-quarto-install/index.html</guid>
   <pubDate>Fri, 02 Dec 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-12-02-quarto-install/preview.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>git 如何设置忽略文件.gitignore</title>
@@ -1509,8 +1645,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 
 
 
-<section id="忽略.ds_store" class="level2">
-<h2 class="anchored" data-anchor-id="忽略.ds_store">忽略.DS_Store</h2>
+<section id="忽略.ds_store" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="忽略.ds_store"><span class="header-section-number">1</span> 忽略.DS_Store</h2>
 <p>git按照工作环境里的.gitignore文件设置去忽略相应的文件，如果你的git环境里还没有创建.gitignore文件,则需要首先创建该文件。</p>
 <p>在terminal里创建.gitignore文件，并用vim添加两行。</p>
 <ul>
@@ -1565,8 +1701,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart TD
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
     A[(职工居民医保)] --&gt;B(肿瘤登记处)
     C[各医疗机构数据] --&gt;B
     D[(公安统计人口)] --&gt;B
@@ -1585,10 +1721,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
     W--&gt;H
     W--&gt;G
 </pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
 </div>
-<p></p>
 </div>
 </div>
 </div>
@@ -1613,8 +1746,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <p>在利用R语言gganimate包绘制动态的进度线图之前，你需要先理解在R里利用ggplot2包绘制线图的过程。点击了解ggplot2绘制线图</p>
 <p>在理解了如何利用ggplot2包绘制线图之后，你可以利用gganimate包增加一个绘图函数transition_…()，从而绘制动态变化图形。给transition_…()函数提供一个frame变量，这个变量的值每变化一次，就会在图上绘制一次，从而实现图的动态变化。</p>
 <p>我们今天使用gganimate包的transition_reveal()函数，实现线图的动态显示过程。</p>
-<section id="准备数据" class="level2">
-<h2 class="anchored" data-anchor-id="准备数据">准备数据</h2>
+<section id="准备数据" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="准备数据"><span class="header-section-number">1</span> 准备数据</h2>
 <p>我们还是利用制作<a href="https://chenq.site/tech/2022-ggplot2-lineplot/">普通线图</a>的年龄别癌症发病率数据，<a href="age_incidence.csv">点击链接，下载数据</a>。</p>
 <p>对数据进行简单的处理，把合计性别的数据剔除，只显示男性和女性的癌症发病率随年龄变化的趋势即可，这样图里的内容不至于过多而显得杂乱。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_85c4779ed999b9258499a1e521894100">
@@ -1638,8 +1771,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 </div>
 </section>
-<section id="绘制进度线图progressive-line-plot" class="level2">
-<h2 class="anchored" data-anchor-id="绘制进度线图progressive-line-plot">绘制进度线图(progressive line plot)</h2>
+<section id="绘制进度线图progressive-line-plot" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="绘制进度线图progressive-line-plot"><span class="header-section-number">2</span> 绘制进度线图(progressive line plot)</h2>
 <p>我们利用线图(line plot)展示了河南省年龄别癌症发病率数据，而我们想让年龄别发病率数据随着年龄的增加而逐渐显示出来，从而让线图动起来，这样，年龄别发病率数据随着年龄变化的特点就能更直观的显示出来。</p>
 <p>想要达到这种效果，其实就是在利用ggplot2制作普通线图的基础上，再利用gganimate包的transition_reveal()函数，从而让线图按照某个变量逐步显示，我们这个例子就是按照x轴变量agegrp逐步显示，transition_reveal(agegrp)。</p>
 <p>为了让线图更文艺或者更美观，我们可以使用ggthemes包里面绘图的主题来进行图的美化。Figure&nbsp;1</p>
@@ -1695,7 +1828,6 @@ Disabled features: fftw, ghostscript, x11</code></pre>
   <category>科研作图</category>
   <guid>https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/index.html</guid>
   <pubDate>Sat, 07 May 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/px.gif" medium="image" type="image/gif"/>
 </item>
 <item>
   <title>R语言wordcloud2包绘制词云图</title>
@@ -1706,12 +1838,12 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 
 
 
-<section id="什么是词云图" class="level2">
-<h2 class="anchored" data-anchor-id="什么是词云图">什么是词云图？</h2>
+<section id="什么是词云图" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="什么是词云图"><span class="header-section-number">1</span> 什么是词云图？</h2>
 <p>词云图，也叫文字云，是对网络文本中出现频率较高的“关键词”予以视觉上的突出，出现越多，显示的字体越大，越突出，这个关键词也就越重要。让浏览者通过词云图一眼就可以快速感知最突出的文字，迅速抓住重点，了解主旨。 <img src="https://www.chenq.site/qsight/2022-05-06-r-wordcloud2/cover.png" class="img-fluid" alt="词云图"></p>
 </section>
-<section id="安装wordcloud2包以及主要参数介绍" class="level2">
-<h2 class="anchored" data-anchor-id="安装wordcloud2包以及主要参数介绍">安装wordcloud2包，以及主要参数介绍</h2>
+<section id="安装wordcloud2包以及主要参数介绍" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="安装wordcloud2包以及主要参数介绍"><span class="header-section-number">2</span> 安装wordcloud2包，以及主要参数介绍</h2>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">install.packages</span>(<span class="st" style="color: #20794D;">"wordcloud2"</span>)</span></code></pre></div>
 <p>wordcloud2包里绘制词云图的函数是wordcloud2(),而它常用的参数有以下几种：</p>
 <ul>
@@ -1726,8 +1858,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <li>shape：词云形状选择，默认是‘circle’，即圆形。还可以选择‘cardioid’（苹果形或心形），‘star’（星形），‘diamond’（钻石），‘triangle-forward’（三角形），‘triangle’（三角形），‘pentagon’（五边形）；</li>
 </ul>
 </section>
-<section id="准备数据" class="level2">
-<h2 class="anchored" data-anchor-id="准备数据">准备数据</h2>
+<section id="准备数据" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="准备数据"><span class="header-section-number">3</span> 准备数据</h2>
 <p>wordcloud2包默认自带了一个<strong>英文词频</strong>数据框，包含了两个变量 word:字符，freq：字符的出现频率，我们可以利用这个数据来做词云图的示例。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_bb4b3c7c3764602352dc6a2921f51131">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;">library</span>(wordcloud2)</span>
@@ -1756,8 +1888,8 @@ the       the   26</code></pre>
 </div>
 </div>
 </section>
-<section id="绘制词云图" class="level2">
-<h2 class="anchored" data-anchor-id="绘制词云图">绘制词云图</h2>
+<section id="绘制词云图" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="绘制词云图"><span class="header-section-number">4</span> 绘制词云图</h2>
 <p>绘制星形词云图，字体大小设置为1</p>
 <div class="cell" data-layout-align="center" data-hash="index_cache/html/unnamed-chunk-3_801953077d13424063bb7fa2f31f5585">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">wordcloud2</span>(demoFreq, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">1</span>,<span class="at" style="color: #657422;">shape =</span> <span class="st" style="color: #20794D;">"star"</span>)  </span></code></pre></div>
@@ -1802,7 +1934,6 @@ the       the   26</code></pre>
   <category>科研作图</category>
   <guid>https://www.chenq.site/qsight/2022-05-06-r-wordcloud2/index.html</guid>
   <pubDate>Fri, 06 May 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-05-06-r-wordcloud2/cover.png" medium="image" type="image/png" height="131" width="144"/>
 </item>
 <item>
   <title>R语言ggplot2包和gganimate包绘制动态追逐条形图(chasing barchart)</title>
@@ -1814,16 +1945,16 @@ the       the   26</code></pre>
 
 
 <p>最近动态条形图或者称之为追逐条形图在社交媒体上比较火，最常见的是世界各个国家的GDP排名随着时间（以年为单位）变化的情况，通过它可以明显的看到中国的GDP排名从前10名开外逐渐上升到全球第二名的位置。热爱数据可视化的小伙伴们也在想着如何制作这样酷炫的图呢？今天这篇文章的目的就是介绍如何利用R语言绘制这样的动态条形图。</p>
-<section id="用到哪些r包" class="level2">
-<h2 class="anchored" data-anchor-id="用到哪些r包">用到哪些R包？</h2>
+<section id="用到哪些r包" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="用到哪些r包"><span class="header-section-number">1</span> 用到哪些R包？</h2>
 <ul>
 <li>ggplot2</li>
 <li>gganimate</li>
 </ul>
 <p>ggplot2包和gganimate包是两个主要用到的包，但是我们在数据整理过程中还用到了tidyverse、janitor和scales包。</p>
 </section>
-<section id="数据准备" class="level2">
-<h2 class="anchored" data-anchor-id="数据准备">数据准备</h2>
+<section id="数据准备" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="数据准备"><span class="header-section-number">2</span> 数据准备</h2>
 <p>作者在互联网上收集了从1980年以来全球前10位国家的GDP数据，<a href="gdp.csv">数据，点击下载</a>以CSV的形式保存。</p>
 <p>我们把数据读入到R环境中，总共有4个变量，year年份、country国家、continent大洲、gdp，下面看下数据的结构，这个数据已经是ggplot2绘图所需要的<em>长数据</em>格式，所以不需要进行特别的转换了。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_51a7a47f9c7fe8805145c6ca77ffeccc">
@@ -1848,8 +1979,8 @@ the       the   26</code></pre>
 <span id="cb3-5">  <span class="fu" style="color: #4758AB;">filter</span>(ranking<span class="sc" style="color: #5E5E5E;">&lt;=</span><span class="dv" style="color: #AD0000;">10</span>)</span></code></pre></div>
 </div>
 </section>
-<section id="绘制动态条形图" class="level2">
-<h2 class="anchored" data-anchor-id="绘制动态条形图">绘制动态条形图</h2>
+<section id="绘制动态条形图" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="绘制动态条形图"><span class="header-section-number">3</span> 绘制动态条形图</h2>
 <p>绘制动态条形图实际需要两个部分，</p>
 <ul>
 <li>利用ggplot2绘制历年的静态图</li>
@@ -1904,7 +2035,6 @@ the       the   26</code></pre>
   <category>科研作图</category>
   <guid>https://www.chenq.site/qsight/2022-05-04-chasing-barchart/index.html</guid>
   <pubDate>Wed, 04 May 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-05-04-chasing-barchart/pp.gif" medium="image" type="image/gif"/>
 </item>
 <item>
   <title>利用阿里云DataV可视化平台数据以及ggplot2包的geom_sf函数绘制统计地图</title>
@@ -1915,17 +2045,17 @@ the       the   26</code></pre>
 
 
 
-<section id="什么是统计地图" class="level2">
-<h2 class="anchored" data-anchor-id="什么是统计地图">什么是统计地图？</h2>
+<section id="什么是统计地图" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="什么是统计地图"><span class="header-section-number">1</span> 什么是统计地图？</h2>
 <p>统计地图是以地图为背景，运用各种线纹、色彩、几何图形或实物形象来显示被研究现象的指标数值的大小及其在各地区的分布状况的一种统计图形。又称空间数列图和地理数列图。主要用于说明某些现象在地域上的分布，进行不同地区间的比较，反映现象所处的地理位置，以及它们的密集和分散程度。</p>
 </section>
-<section id="制作统计地图的难点有哪些" class="level2">
-<h2 class="anchored" data-anchor-id="制作统计地图的难点有哪些">制作统计地图的难点有哪些？</h2>
+<section id="制作统计地图的难点有哪些" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="制作统计地图的难点有哪些"><span class="header-section-number">2</span> 制作统计地图的难点有哪些？</h2>
 <p>在流行病学研究中，往往需要通过以统计地图的形式来展示数据的空间分布情况。然而，我们一般很难找到合适的用于绘制统计地图的地图边界数据。要么找到的地图行政区划边界数据太旧，实际的行政区划边界已经发生了改变，要么就是找不到相应的数据。</p>
 <p>目前还有一些制作统计地图的网站，可以提供绘制简单的统计地图的功能，但是基本上这些服务都是以收费为目的地，不符合互联网上开源自由的精神，但是如果同学不缺钱，那就可以去试试哈！</p>
 </section>
-<section id="如何利用阿里云datav可视化平台地图数据" class="level2">
-<h2 class="anchored" data-anchor-id="如何利用阿里云datav可视化平台地图数据">如何利用阿里云DataV可视化平台地图数据?</h2>
+<section id="如何利用阿里云datav可视化平台地图数据" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="如何利用阿里云datav可视化平台地图数据"><span class="header-section-number">3</span> 如何利用阿里云DataV可视化平台地图数据?</h2>
 <p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid"></p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_5b195a6e6b025514837cea829491c303">
 <div class="cell-output-display">
@@ -1997,8 +2127,8 @@ the       the   26</code></pre>
 </div>
 </div>
 </section>
-<section id="如何绘制统计地图" class="level2">
-<h2 class="anchored" data-anchor-id="如何绘制统计地图">如何绘制统计地图？</h2>
+<section id="如何绘制统计地图" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="如何绘制统计地图"><span class="header-section-number">4</span> 如何绘制统计地图？</h2>
 <p>可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。</p>
 <p>实现代码如下：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-5_2ec9d7c7c20d81652ad0a03c60e35509">
@@ -2032,7 +2162,6 @@ the       the   26</code></pre>
   <category>科研作图</category>
   <guid>https://www.chenq.site/qsight/2022-04-29-datav/index.html</guid>
   <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" medium="image" type="image/png" height="83" width="144"/>
 </item>
 <item>
   <title>利用ggplot2包绘制barplot简单条形图</title>
@@ -2043,12 +2172,12 @@ the       the   26</code></pre>
 
 
 
-<section id="什么是条形图" class="level2">
-<h2 class="anchored" data-anchor-id="什么是条形图">什么是条形图？</h2>
+<section id="什么是条形图" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="什么是条形图"><span class="header-section-number">1</span> 什么是条形图？</h2>
 <p>条形图（bar chart）是用宽度相同的条形的高度或长短来表示数据多少的图形。条形图可以横置或纵置，纵置时也称为柱形图（column chart）。此外，条形图有简单条形图、复式条形图等形式。</p>
 </section>
-<section id="条形图有哪些类型" class="level2">
-<h2 class="anchored" data-anchor-id="条形图有哪些类型">条形图有哪些类型</h2>
+<section id="条形图有哪些类型" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="条形图有哪些类型"><span class="header-section-number">2</span> 条形图有哪些类型</h2>
 <ul>
 <li>简单条形图：</li>
 <li>簇状条形图和三维簇状条形图：簇状条形图比较各个类别的值。在簇状条形图中，通常沿垂直轴组织类别，而沿水平轴组织数值。三维簇状条形图以三维格式显示水平矩形，而不以三维格式显示数据。</li>
@@ -2056,10 +2185,10 @@ the       the   26</code></pre>
 <li>百分比堆积条形图和三维百分比堆积条形图：此类型的图表比较各个类别的每一数值所占总数值的百分比大小。三维百分比堆积条形图表以三维格式显示水平矩形，而不以三维格式显示数据。</li>
 </ul>
 </section>
-<section id="如何绘制barplot条形图" class="level2">
-<h2 class="anchored" data-anchor-id="如何绘制barplot条形图">如何绘制barplot条形图？</h2>
-<section id="绘制简单barplot条形图" class="level3">
-<h3 class="anchored" data-anchor-id="绘制简单barplot条形图">绘制简单barplot条形图</h3>
+<section id="如何绘制barplot条形图" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="如何绘制barplot条形图"><span class="header-section-number">3</span> 如何绘制barplot条形图？</h2>
+<section id="绘制简单barplot条形图" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="绘制简单barplot条形图"><span class="header-section-number">3.1</span> 绘制简单barplot条形图</h3>
 <p>如果你还没有安装ggplot2包，那么请先安装此包，如果已经安装，请忽略此步骤。</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">install.packages</span>(<span class="st" style="color: #20794D;">"ggplot2"</span>)</span></code></pre></div>
 <p>首先，准备一下绘制barplot条形图所需的数据，我们就拿<a href="https://chenq.site/report/2020/">河南省前10位癌症发病率数据</a>来举例。</p>
@@ -2141,8 +2270,8 @@ the       the   26</code></pre>
 </div>
 </div>
 </section>
-<section id="绘制分组barplot条形图" class="level3">
-<h3 class="anchored" data-anchor-id="绘制分组barplot条形图">绘制分组barplot条形图</h3>
+<section id="绘制分组barplot条形图" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="绘制分组barplot条形图"><span class="header-section-number">3.2</span> 绘制分组barplot条形图</h3>
 <p>准备绘制分组条形图的数据，我们可以添加不同癌种的死亡率数据，分为两组：发病率和死亡率。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-6_b742624af3756c2316cf8fe67755ee21">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1">data2 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(</span>
@@ -2214,7 +2343,6 @@ the       the   26</code></pre>
   <category>科研作图</category>
   <guid>https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index.html</guid>
   <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/plot.png" medium="image" type="image/png" height="103" width="144"/>
 </item>
 <item>
   <title>利用R语言Rmd文档+blogdown包制作个人网站</title>
@@ -2230,24 +2358,24 @@ the       the   26</code></pre>
 <p>静态页面实际上说的是相对于相对于动态网页而言，它没有后台数据库、不含程序，是不能交互的网页。代码编的是什么它显示的就是什么、不会有任何改变。</p>
 </blockquote>
 <p>Blogdown生成静态网页的过程实际只是由Blogdown包把Rmd转化成普通的markdown文本，然后由Hugo把markdown文本生成静态网页。</p>
-<section id="准备环境" class="level2">
-<h2 class="anchored" data-anchor-id="准备环境">准备环境</h2>
+<section id="准备环境" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="准备环境"><span class="header-section-number">1</span> 准备环境</h2>
 <p>本文将介绍如何在windows环境下，利用Blogdown生成静态网页。在介绍具体步骤之前，需要提前准备好相应的软件和环境。</p>
-<section id="安装r和r-studio" class="level3">
-<h3 class="anchored" data-anchor-id="安装r和r-studio">安装R和R studio</h3>
+<section id="安装r和r-studio" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="安装r和r-studio"><span class="header-section-number">1.1</span> 安装R和R studio</h3>
 <ul>
 <li><a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/windows/base/R-4.2.0-win.exe">下载</a>并安装R语言和<a href="https://download1.rstudio.org/desktop/windows/RStudio-2022.02.1-461.exe">R studio</a></li>
 </ul>
 </section>
-<section id="安装blogdown包" class="level3">
-<h3 class="anchored" data-anchor-id="安装blogdown包">安装blogdown包</h3>
+<section id="安装blogdown包" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="安装blogdown包"><span class="header-section-number">1.2</span> 安装blogdown包</h3>
 <p>安装稳定版本的blogdown</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">install.packages</span>(<span class="st" style="color: #20794D;">"blogdown"</span>)</span></code></pre></div>
 <p>或者安装开发版本的blogdown</p>
 <div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1">remotes<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">install_github</span>(<span class="st" style="color: #20794D;">'rstudio/blogdown'</span>)</span></code></pre></div>
 </section>
-<section id="安装hugo" class="level3">
-<h3 class="anchored" data-anchor-id="安装hugo">安装HUGO</h3>
+<section id="安装hugo" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="安装hugo"><span class="header-section-number">1.3</span> 安装HUGO</h3>
 <p>Hugo 是一个用 Go 编写的静态网站生成器，一般只需几秒钟就能生成一个网站（每页少于 1 毫秒），被称为“世界上最快的网站构建框架”，也使 Hugo大受欢迎，成为最热门的静态网站生成器之一，被广泛采用。你可以在这里<a href="https://github.com/gohugoio/hugo/releases">下载不同版本的HUGO</a></p>
 <p>在Windows环境下，你可以通过以下几种方式安装hugo，在上面的链接中找出对应的Windows版本下载到本地，然后解压缩。</p>
 <ol type="1">
@@ -2257,10 +2385,10 @@ the       the   26</code></pre>
 </ol>
 </section>
 </section>
-<section id="使用blogdown建立一个网站" class="level2">
-<h2 class="anchored" data-anchor-id="使用blogdown建立一个网站">使用blogdown建立一个网站</h2>
-<section id="选择一个hugo网站模板" class="level3">
-<h3 class="anchored" data-anchor-id="选择一个hugo网站模板">选择一个Hugo网站模板</h3>
+<section id="使用blogdown建立一个网站" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="使用blogdown建立一个网站"><span class="header-section-number">2</span> 使用blogdown建立一个网站</h2>
+<section id="选择一个hugo网站模板" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="选择一个hugo网站模板"><span class="header-section-number">2.1</span> 选择一个Hugo网站模板</h3>
 <p>使用hugo建立静态网站的优势不仅是速度快，而且因为它有着丰富的模板，模板的源代码都存储在github上，你可以<a href="https://themes.gohugo.io/">点击这里</a>选择一个适合自己的网站模板，然后把它在github上的地址复制下来。</p>
 <p>如果你喜欢<a href="https://themes.gohugo.io/themes/mainroad/">MainRoad</a>的模板， 可以点击<strong>Download</strong>，会进入模板在github的存储页面，然后把模板的路径复制下来<strong>Vimux/Mainroad</strong>，后面会用到。</p>
 <div class="quarto-figure quarto-figure-center">
@@ -2270,8 +2398,8 @@ the       the   26</code></pre>
 </figure>
 </div>
 </section>
-<section id="使用blogdown生成一个新的网站项目" class="level3">
-<h3 class="anchored" data-anchor-id="使用blogdown生成一个新的网站项目">使用blogdown生成一个新的网站项目</h3>
+<section id="使用blogdown生成一个新的网站项目" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="使用blogdown生成一个新的网站项目"><span class="header-section-number">2.2</span> 使用blogdown生成一个新的网站项目</h3>
 <ul>
 <li>在R studio里点击 File–New Project，选择 <strong>New Directory</strong></li>
 </ul>
@@ -2311,8 +2439,8 @@ the       the   26</code></pre>
 </div>
 </div>
 </section>
-<section id="新建一篇博文" class="level3">
-<h3 class="anchored" data-anchor-id="新建一篇博文">新建一篇博文</h3>
+<section id="新建一篇博文" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="新建一篇博文"><span class="header-section-number">2.3</span> 新建一篇博文</h3>
 <p>点击 Addins – New Post ，填入题目，作者，标签或者分类，在Format 选项里可以选择使用普通的markdown(不能运行R程序)、.Rmd和.Rmarkdown(可以运行R程序)。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-5_376ddb90f1e1d9aab86dd1dc94438d3f">
 <div class="cell-output-display">
@@ -2329,7 +2457,6 @@ the       the   26</code></pre>
   <category>个人网站</category>
   <guid>https://www.chenq.site/qsight/2022-04-26-website/index.html</guid>
   <pubDate>Tue, 26 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-04-26-website/theme.png" medium="image" type="image/png" height="72" width="144"/>
 </item>
 <item>
   <title>利用Rmd代码选项输出动态金字塔图</title>
@@ -2362,12 +2489,12 @@ the       the   26</code></pre>
 6 32253 32249 22456 15207 12998 9966 5459 3507</code></pre>
 </div>
 </div>
-<section id="作图思路" class="level2">
-<h2 class="anchored" data-anchor-id="作图思路">作图思路</h2>
+<section id="作图思路" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="作图思路"><span class="header-section-number">1</span> 作图思路</h2>
 <p>首先把现有的数据从<strong>宽数据</strong>转换为<strong>长数据</strong>，然后对数据进行简单处理，最后利用for循环和ggplot2输出多个年份的人口金字塔图，然后利用code chunk 选项输出动态图片。</p>
 </section>
-<section id="数据处理" class="level2">
-<h2 class="anchored" data-anchor-id="数据处理">数据处理</h2>
+<section id="数据处理" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="数据处理"><span class="header-section-number">2</span> 数据处理</h2>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_6b76efc4d074030518966fce8130c338">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
 <span id="cb3-2"><span class="fu" style="color: #4758AB;">library</span>(tidyr)</span>
@@ -2386,13 +2513,13 @@ font-style: italic;">## 把男性人口数转换为负值，以是条图显示�
 <span id="cb3-12">         <span class="at" style="color: #657422;">rks=</span><span class="fu" style="color: #4758AB;">ifelse</span>(sex<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"男性"</span>,<span class="sc" style="color: #5E5E5E;">-</span>rks,rks))</span></code></pre></div>
 </div>
 </section>
-<section id="rmd-code-chunk-选项" class="level2">
-<h2 class="anchored" data-anchor-id="rmd-code-chunk-选项">Rmd code chunk 选项</h2>
+<section id="rmd-code-chunk-选项" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="rmd-code-chunk-选项"><span class="header-section-number">3</span> Rmd code chunk 选项</h2>
 <p>利用Rmd文档可以输出成很多种格式的输出结果，比如word、ppt、网页、pdf等，本篇博文介绍的为输出到网页显示动态图片。</p>
 <p>在Rmd文档中插入r语言代码块，代码块的选项设置为fig.show=‘animate’,animation.hook=‘gifski’，当代码块内的语句生成多个图片的时候，会自动设置为动画播放。</p>
 </section>
-<section id="利用for循环和ggplot2制作金字塔图" class="level2">
-<h2 class="anchored" data-anchor-id="利用for循环和ggplot2制作金字塔图">利用for循环和ggplot2制作金字塔图</h2>
+<section id="利用for循环和ggplot2制作金字塔图" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="利用for循环和ggplot2制作金字塔图"><span class="header-section-number">4</span> 利用for循环和ggplot2制作金字塔图</h2>
 <p>在代码块内部，使用for循环和ggplot2生成多个年份的人口金子塔图即可。</p>
 <div class="cell" data-animation.hook="gifski" data-hash="index_cache/html/unnamed-chunk-3_51368b6ae7040c1e61808bd0beff0a0a">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="do" style="color: #5E5E5E;
@@ -2453,8 +2580,8 @@ font-style: italic;">## 建立for循环</span></span>
 <p>肿瘤登记数据的质量控制对于产出高质量数据至关重要，以人群为基础的肿瘤登记数据一般从<a href="https://chenq.site/tech/2022-qualitycontrol/">四个方面</a>进行质量控制，具体包括可比性、完整性、有效性和时效性指标，而病理诊断比例(MV%)指标可以在完整性和有效性两个方面对肿瘤登记数据的质量进行评价。</p>
 <p>病理诊断比例(MV%)是指收集的全部病例中，经过形态学诊断（组织下、细胞学、血液学）确认的病例数占全部病例数的百分比，<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%E7%BB%8F%E7%97%85%E7%90%86%E5%AD%A6%E7%A1%AE%E8%AE%A4%E7%9A%84%E7%97%85%E4%BE%8B%E6%95%B0%7D%7B%E6%89%80%E6%9C%89%E7%97%85%E4%BE%8B%E6%95%B0%7D">，该指标的大小受到肿瘤的发病部位、肿瘤登记地区的病理诊断能力与水平、该地区的医疗服务能力与水平等因素的影响，因此，我们在利用该指标进行肿瘤登记数据质量评价时应该考虑这些因素。</p>
 <p>在质量评价方面，MV%的绝对指标意义有限，通常利用它与适当的标准比较,比如与相似的区域的MV%指标比较，或者与国家的平均水平进行比较，从而判断该肿瘤登记地区的数据的有效性和完整性。</p>
-<section id="与一定的区域标准mv值进行比较" class="level2">
-<h2 class="anchored" data-anchor-id="与一定的区域标准mv值进行比较">与一定的区域标准MV值%进行比较</h2>
+<section id="与一定的区域标准mv值进行比较" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="与一定的区域标准mv值进行比较"><span class="header-section-number">1</span> 与一定的区域标准MV值%进行比较</h2>
 <p>当肿瘤登记处的MV%值与区域标准（比如国家的平均水平）进行比较的时候，如果登记处MV%值与区域标准差距较大，并且该地区的医疗服务能力与水平以及病理诊断能力与区域平均水平没有很大差异的时候，则提示该登记处数据的有效性或者完整性可能存在问题。如果登记处MV%值小于区域标准值，并且差距较大，提示登记处收集的数据有效性较差；而如果登记处MV%值大于区域标准值，并且差距较大，则提示登记处数据的完整性可能存在问题。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -2463,8 +2590,8 @@ font-style: italic;">## 建立for循环</span></span>
 </figure>
 </div>
 </section>
-<section id="与一定的区域标准mv值进行比较-1" class="level2">
-<h2 class="anchored" data-anchor-id="与一定的区域标准mv值进行比较-1">与一定的区域标准MV值%进行比较</h2>
+<section id="与一定的区域标准mv值进行比较-1" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="与一定的区域标准mv值进行比较-1"><span class="header-section-number">2</span> 与一定的区域标准MV值%进行比较</h2>
 <p>在多年的连续监测中，一个登记处的MV%应该是相对稳定的，不会出现大的波动，因为一个地区的医疗服务水平或者病理诊断能力是相对稳定的。如果多年份的MV%值出现跳跃性波动，则提示登记处数据的稳定性较差，相应存在波动年份的数据可能存在问题。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_b871f9777f04c621f70da5275303c7e2">
 <div class="cell-output-display">
@@ -2480,7 +2607,6 @@ font-style: italic;">## 建立for循环</span></span>
   <category>质量控制</category>
   <guid>https://www.chenq.site/qsight/2022-04-17-mv/index.html</guid>
   <pubDate>Sun, 17 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-04-17-mv/namv.png" medium="image" type="image/png" height="104" width="144"/>
 </item>
 <item>
   <title>我国发布首个肿瘤登记数据集标准</title>
@@ -2493,9 +2619,7 @@ font-style: italic;">## 建立for循环</span></span>
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<figure class="figure">
-<img src="https://www.chenq.site/qsight/2022-04-16-standard/cover.png" title="中国肿瘤数据集标准" class="img-fluid figure-img">
-</figure>
+<p><img src="https://www.chenq.site/qsight/2022-04-16-standard/cover.png" title="中国肿瘤数据集标准" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">中国肿瘤数据集标准</figcaption><p></p>
 </figure>
 </div>
@@ -2516,7 +2640,6 @@ font-style: italic;">## 建立for循环</span></span>
   <category>文件</category>
   <guid>https://www.chenq.site/qsight/2022-04-16-standard/index.html</guid>
   <pubDate>Sat, 16 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-04-16-standard/cover.png " medium="image"/>
 </item>
 <item>
   <title>制作《2021河南省肿瘤登记年报》科普视频</title>
@@ -2528,8 +2651,8 @@ font-style: italic;">## 建立for循环</span></span>
 
 
 <p>《2021河南省肿瘤登记年报》的发布为河南省癌症的防控工作提供了数据参考，对防控相关专业人员参考癌症负担数据具有重要意义。同时，为了使普通大众了解河南省癌症的发病死亡情况，我们将制作科普视频，相关工作整理记录如下。</p>
-<section id="科普视频知识点" class="level2">
-<h2 class="anchored" data-anchor-id="科普视频知识点">科普视频知识点</h2>
+<section id="科普视频知识点" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="科普视频知识点"><span class="header-section-number">1</span> 科普视频知识点</h2>
 <ul>
 <li>河南省癌症中心/河南省肿瘤医院发布《2021河南省肿瘤登记年报》；</li>
 <li>河南省居民癌症发病率为272.33/10万，死亡率为162.16/10万；河南省每年新诊断恶性肿瘤28.6万例，因恶性肿瘤死亡16.8万例；</li>
@@ -2538,30 +2661,30 @@ font-style: italic;">## 建立for循环</span></span>
 <li>河南居民癌症发病和死亡也存在地区差异，城市地区癌症发病率高于农村地区，而死亡率低于农村地区，常见癌种分布也存在一定差异，河南省北部太行山脉地区是食管癌和胃癌的高发地区，城市地区则肺癌、结直肠癌、甲状腺癌相对高发。</li>
 </ul>
 </section>
-<section id="科普视频脚本" class="level2">
-<h2 class="anchored" data-anchor-id="科普视频脚本">科普视频脚本</h2>
+<section id="科普视频脚本" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="科普视频脚本"><span class="header-section-number">2</span> 科普视频脚本</h2>
 <p>大家好，癌症是威胁居民健康和生命的主要问题，河南省癌症中心/河南省肿瘤医院在2022年肿瘤防治宣传周期间发布了《2021河南省肿瘤登记年报》，对河南省居民的癌症发病和死亡情况进行了详细介绍，下面跟随小编一块来了解一下吧。</p>
 <p>《年报》显示，2018年河南省癌症发病率为272.33/10万，每小时约有32例患者被诊断，共诊断28.6万例；癌症死亡率为162.16/10万，每小时约19例癌症患者死亡，共死亡16.8万例。</p>
 <p>河南省癌症的发病率和死亡率呈现如下变化特点：</p>
-<section id="癌症患者以老年人为主" class="level3">
-<h3 class="anchored" data-anchor-id="癌症患者以老年人为主">癌症患者以<strong>老年人</strong>为主</h3>
+<section id="癌症患者以老年人为主" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="癌症患者以老年人为主"><span class="header-section-number">2.1</span> 癌症患者以<strong>老年人</strong>为主</h3>
 <p>发病率和死亡率均随着年龄的增加而上升，在39岁之前处于相对降低且平稳的状态，而40岁之后则快速上升，在85岁年龄组达到峰值。癌症患者以老年人为主，新诊断患者中，65岁以上者占47.3%；死亡患者中，65岁以上者占65.3%。</p>
 </section>
-<section id="癌症患者存在性别差异" class="level3">
-<h3 class="anchored" data-anchor-id="癌症患者存在性别差异">癌症患者存在<strong>性别差异</strong></h3>
+<section id="癌症患者存在性别差异" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="癌症患者存在性别差异"><span class="header-section-number">2.2</span> 癌症患者存在<strong>性别差异</strong></h3>
 <p>男性发病率和死亡率均高于女性，男女性别比分别为1.05和1.51。</p>
 <p>男性和女性的<strong>发病谱</strong>也有所不同，男性前5位癌种分别为肺癌、胃癌、食管癌、肝癌和结直肠癌；女性前5位癌种乳腺癌、肺癌、食管癌、宫颈癌和胃癌。</p>
 </section>
-<section id="癌症发病率和死亡呈现地区差异" class="level3">
-<h3 class="anchored" data-anchor-id="癌症发病率和死亡呈现地区差异">癌症发病率和死亡呈现<strong>地区差异</strong></h3>
+<section id="癌症发病率和死亡呈现地区差异" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="癌症发病率和死亡呈现地区差异"><span class="header-section-number">2.3</span> 癌症发病率和死亡呈现<strong>地区差异</strong></h3>
 <p>城市地区癌症发病率高于农村地区，而死亡率则呈现农村高于城市的特点。</p>
 <p>在癌种的地区分布方面，结直肠癌和甲状腺癌在城市地区的顺位比农村地区靠前，食管癌和胃癌则在河南省北部的太行山脉地区和西部的伏牛山地区相对高发。</p>
 <p>癌症防治需要我们每一个人参与，生活中我们注意避开常见的癌症危险因素，注意定期体检，你我携手，共抗癌症吧！</p>
 <p>扫描二维码，了解更加详细的《年报》内容吧。</p>
 </section>
 </section>
-<section id="科普视频成片分享" class="level2">
-<h2 class="anchored" data-anchor-id="科普视频成片分享">科普视频成片分享</h2>
+<section id="科普视频成片分享" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="科普视频成片分享"><span class="header-section-number">3</span> 科普视频成片分享</h2>
 <p>马上上线</p>
 
 
@@ -2572,78 +2695,6 @@ font-style: italic;">## 建立for循环</span></span>
   <category>肿瘤登记年报</category>
   <guid>https://www.chenq.site/qsight/2022-04-10-report-video/index.html</guid>
   <pubDate>Sun, 10 Apr 2022 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>河南省癌症中心/河南省肿瘤医院发布《2021河南省肿瘤登记年报》</title>
-  <dc:creator>陈琼</dc:creator>
-  <link>https://www.chenq.site/qsight/2022-04-05-2021annualreport/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.chenq.site/qsight/2022-04-05-2021annualreport/2021.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">河南肿瘤登记年报</figcaption><p></p>
-</figure>
-</div>
-<p>癌症是威胁河南省居民健康的一大类疾病，2022年4月，河南省癌症中心/河南省肿瘤医院重磅发布了《2021河南省肿瘤登记年报》（以下简称《年报》）。</p>
-<p>《年报》利用2018年肿瘤登记数据描述了河南省登记地区恶性肿瘤发病死亡情况，它的发布可以为肿瘤病因学研究、制定卫生工作规划和肿瘤防治计划、评价和考核肿瘤防治效果等工作提供基础数据。</p>
-<p>《年报》使用河南省39个合格肿瘤登记处的数据分析了2018年河南省登记地区的恶性肿瘤负担。数据显示，2018年，河南省肿瘤登记地区恶性肿瘤新发90609例，发病率为272.33/10万；恶性肿瘤死亡53592例，死亡率为162.16/10万。城乡分析结果显示，城市地区的恶性肿瘤发病率高于农村地区，而死亡率则为农村地区高于城市地区。</p>
-<section id="河南省恶性肿瘤发病死亡特征" class="level2">
-<h2 class="anchored" data-anchor-id="河南省恶性肿瘤发病死亡特征">河南省恶性肿瘤发病死亡特征</h2>
-<p>肺癌是男性最常见的恶性肿瘤，占男性全部诊断恶性肿瘤病例的25.18%；乳腺癌则位居女性恶性肿瘤发病的第一位，占全部女性肿瘤病例的17.01%；不管是男性还是女性，肺癌均位居全部恶性肿瘤死亡的第一位。发病前10位的恶性肿瘤分别为肺癌、乳腺癌、胃癌、食管癌、肝癌、子宫颈癌、结直肠癌、甲状腺癌、子宫体癌和卵巢癌，占全部恶性肿瘤发病数的78.60%。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_ab49ae9e47d1402e7d0f2d1c9cf532e9">
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-05-2021annualreport/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>癌症总体发病率和死亡率均随着年龄的增加而升高，均在85岁以上的年龄组中达到峰值。但是不同的癌种具有不同的年龄分布模式，比如肺癌在40岁之前发病率相对平稳而之后则快速上升；前列腺癌则从60岁开始快速上升；乳腺癌、宫颈癌、甲状腺癌的发病高峰则在50岁左右等。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_6664be4f6c39ea3aec8e027106303e8d">
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-05-2021annualreport/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="960"></p>
-</div>
-</div>
-<p>在前10位恶性肿瘤发病中，消化系统肿瘤仍然占据主要地位，胃癌、食管癌、肝癌和结直肠癌等消化系统肿瘤病例占全部恶性肿瘤病例的39.68%，是影响河南省居民健康的主要肿瘤类型。</p>
-</section>
-<section id="提高年报覆盖人口比例提升数据全省代表性" class="level2">
-<h2 class="anchored" data-anchor-id="提高年报覆盖人口比例提升数据全省代表性">提高《年报》覆盖人口比例，提升数据全省代表性</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.chenq.site/qsight/2022-04-05-2021annualreport/map.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">河南省肿瘤登记处分布地图</figcaption><p></p>
-</figure>
-</div>
-<p>河南省于1959年在林州市（原林县）建立第一个肿瘤登记处，开始进行食管癌的单病种登记工作，拉开了河南省肿瘤登记工作的序幕。之后，一些县区陆陆续续在全死因登记的基础上建立肿瘤登记处。2008年以后，中央转移支付地方项目对肿瘤登记工作进行经费支持，河南省肿瘤登记工作进入迅速发展期，肿瘤登记登记处的数量和数据质量都得到较大的提高。截至2021年底，河南省肿瘤登记地区覆盖全省人口的比例达到70%，形成了反映河南省城乡居民恶性肿瘤发病与死亡基本信息的肿瘤随访登记系统。自2013年起，河南省癌症中心/河南省肿瘤医院每年以年报的形式及时发布河南省肿瘤登记监测数据，《河南省肿瘤登记年报》成为河南省癌症预防控制的重要资料，也是河南省肿瘤登记监测工作的标志性成果之一。</p>
-<p>由于肿瘤登记工作存在3年的滞后性，2021年《年报》收录了39个肿瘤登记处的2018年肿瘤发病死亡数据，覆盖人口3300万人，约占河南省2018年人口总数的30.51%。</p>
-</section>
-<section id="多渠道开展质控工作稳步提升数据质量" class="level2">
-<h2 class="anchored" data-anchor-id="多渠道开展质控工作稳步提升数据质量">多渠道开展质控工作，稳步提升数据质量</h2>
-<p>河南省肿瘤医院作为省级肿瘤登记处，积极组织全省各县区肿瘤登记专业人员开展业务培训，开发质量控制工具，开展线上质控等多途径开展质控工作，河南省肿瘤医院作为省级肿瘤登记处荣获“省级单位杰出贡献奖”。在全省肿瘤登记专业人员的共同努力下，河南省各县区肿瘤登记处的数据质量得到不断的提升，也得到国家癌症中心的认可。2021年共有28个县区肿瘤登记处荣获国家癌症中心奖励，其中，1个登记处荣获“肿瘤登记工作杰出贡献奖”，16个肿瘤登记处荣获“肿瘤登记工作优秀奖”，11个登记处荣获“肿瘤登记工作进步奖”。</p>
-</section>
-<section id="创新年报形式促进数据共享利用" class="level2">
-<h2 class="anchored" data-anchor-id="创新年报形式促进数据共享利用">创新《年报》形式，促进数据共享利用</h2>
-<p>为了能让癌症防治专业人员和普通大众更方便、快捷的了解河南省癌症疾病负担情况，在出版纸质年报之外，我们也制作了线上《年报》，在内容展示方式以及获取途径上进行了创新，从而促进大家更方便的利用《年报》数据。大家可以通过手机扫描二维码在手机端查看年报，也可以通过电脑端输入网址：<a href="https://chenq.site/report/2021/">https://chenq.site/report/2021/</a>进行查看。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_743cb522c2c4c81e17dcbdb9ba2beb74">
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-05-2021annualreport/qrcode.png" class="img-fluid" style="width:25.0%"></p>
-</div>
-</div>
-</section>
-<section id="积极建设全省癌症防治网络降低癌症疾病负担" class="level2">
-<h2 class="anchored" data-anchor-id="积极建设全省癌症防治网络降低癌症疾病负担">积极建设全省癌症防治网络，降低癌症疾病负担</h2>
-<p>为了应对居高不下的癌症负担，河南省肿瘤医院/河南省癌症中心积极响应“健康中国行动-癌症防治行动”的要求，实施癌症信息化行动，健全肿瘤登记制度，提高肿瘤登记覆盖范围，提升肿瘤登记数据质量，促进信息资源共享利用；实施早诊早治推广行动，在城市和农村地区开展相应高发癌种的筛查早诊早治，提高癌症患者生存率；实施癌症诊疗规范化行动，提升管理服务水平；与此同时，也正积极推进全省的癌症防治网络建设工作，促进癌症防控工作系统化、标准化、信息化和常态化，以降低癌症疾病负担，提高癌症患者生存率。</p>
-
-
-</section>
-
- ]]></description>
-  <category>肿瘤登记</category>
-  <category>肿瘤登记年报</category>
-  <guid>https://www.chenq.site/qsight/2022-04-05-2021annualreport/index.html</guid>
-  <pubDate>Tue, 05 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-04-05-2021annualreport/2021.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

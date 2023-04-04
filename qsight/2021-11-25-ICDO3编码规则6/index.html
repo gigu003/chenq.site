@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.14">
+<meta name="generator" content="quarto-1.3.238">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,7 +20,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -63,7 +63,14 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-    .quarto-title-block .quarto-title-banner {
+    .quarto-title-block .quarto-title-banner,
+    .quarto-title-block .quarto-title-banner h1,
+    .quarto-title-block .quarto-title-banner h2,
+    .quarto-title-block .quarto-title-banner h3,
+    .quarto-title-block .quarto-title-banner h4,
+    .quarto-title-block .quarto-title-banner h5,
+    .quarto-title-block .quarto-title-banner h6
+    {
       color: #c8c8c8;
     }
     </style>
@@ -101,54 +108,56 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../qsight/" rel=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
 </i> 
  <span class="menu-text">Qsight博客</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://diary.chenq.site" rel=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://diary.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
 </i> 
  <span class="menu-text">随笔录</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel=""><i class="bi bi-hexagon" role="img">
+    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel="" target=""><i class="bi bi-hexagon" role="img">
 </i> 
  <span class="menu-text">Packages</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications/" rel=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
 </i> 
  <span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../slides/" rel=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="../../slides/" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
 </i> 
  <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../qsight/index.xml" rel=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -182,6 +191,12 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">更新时间</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">April 4, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -200,21 +215,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">本页内容</h2>
    
   <ul>
-  <li><a href="#与部位相关的形态学术语" id="toc-与部位相关的形态学术语" class="nav-link active" data-scroll-target="#与部位相关的形态学术语">与部位相关的形态学术语</a>
+  <li><a href="#与部位相关的形态学术语" id="toc-与部位相关的形态学术语" class="nav-link active" data-scroll-target="#与部位相关的形态学术语"><span class="header-section-number">1</span> 与部位相关的形态学术语</a>
   <ul class="collapse">
-  <li><a href="#规则描述" id="toc-规则描述" class="nav-link" data-scroll-target="#规则描述">规则描述</a></li>
-  <li><a href="#常见与部位相关的形态学术语" id="toc-常见与部位相关的形态学术语" class="nav-link" data-scroll-target="#常见与部位相关的形态学术语">常见与部位相关的形态学术语</a></li>
-  <li><a href="#容易混淆的解剖学部位" id="toc-容易混淆的解剖学部位" class="nav-link" data-scroll-target="#容易混淆的解剖学部位">容易混淆的解剖学部位</a></li>
+  <li><a href="#规则描述" id="toc-规则描述" class="nav-link" data-scroll-target="#规则描述"><span class="header-section-number">1.1</span> 规则描述</a></li>
+  <li><a href="#常见与部位相关的形态学术语" id="toc-常见与部位相关的形态学术语" class="nav-link" data-scroll-target="#常见与部位相关的形态学术语"><span class="header-section-number">1.2</span> 常见与部位相关的形态学术语</a></li>
+  <li><a href="#容易混淆的解剖学部位" id="toc-容易混淆的解剖学部位" class="nav-link" data-scroll-target="#容易混淆的解剖学部位"><span class="header-section-number">1.3</span> 容易混淆的解剖学部位</a></li>
   </ul></li>
-  <li><a href="#复合性形态学诊断" id="toc-复合性形态学诊断" class="nav-link" data-scroll-target="#复合性形态学诊断">复合性形态学诊断</a>
+  <li><a href="#复合性形态学诊断" id="toc-复合性形态学诊断" class="nav-link" data-scroll-target="#复合性形态学诊断"><span class="header-section-number">2</span> 复合性形态学诊断</a>
   <ul class="collapse">
-  <li><a href="#规则描述-1" id="toc-规则描述-1" class="nav-link" data-scroll-target="#规则描述-1">规则描述</a></li>
-  <li><a href="#常用且已经被列入icdo3中的复合组织学类型" id="toc-常用且已经被列入icdo3中的复合组织学类型" class="nav-link" data-scroll-target="#常用且已经被列入icdo3中的复合组织学类型">常用且已经被列入ICDO3中的复合组织学类型</a></li>
+  <li><a href="#规则描述-1" id="toc-规则描述-1" class="nav-link" data-scroll-target="#规则描述-1"><span class="header-section-number">2.1</span> 规则描述</a></li>
+  <li><a href="#常用且已经被列入icdo3中的复合组织学类型" id="toc-常用且已经被列入icdo3中的复合组织学类型" class="nav-link" data-scroll-target="#常用且已经被列入icdo3中的复合组织学类型"><span class="header-section-number">2.2</span> 常用且已经被列入ICDO3中的复合组织学类型</a></li>
   </ul></li>
-  <li><a href="#对具有多个形态学术语的诊断进行编码" id="toc-对具有多个形态学术语的诊断进行编码" class="nav-link" data-scroll-target="#对具有多个形态学术语的诊断进行编码">对具有多个形态学术语的诊断进行编码</a>
+  <li><a href="#对具有多个形态学术语的诊断进行编码" id="toc-对具有多个形态学术语的诊断进行编码" class="nav-link" data-scroll-target="#对具有多个形态学术语的诊断进行编码"><span class="header-section-number">3</span> 对具有多个形态学术语的诊断进行编码</a>
   <ul class="collapse">
-  <li><a href="#规则描述-2" id="toc-规则描述-2" class="nav-link" data-scroll-target="#规则描述-2">规则描述</a></li>
-  <li><a href="#案例分析" id="toc-案例分析" class="nav-link" data-scroll-target="#案例分析">案例分析</a></li>
+  <li><a href="#规则描述-2" id="toc-规则描述-2" class="nav-link" data-scroll-target="#规则描述-2"><span class="header-section-number">3.1</span> 规则描述</a></li>
+  <li><a href="#案例分析" id="toc-案例分析" class="nav-link" data-scroll-target="#案例分析"><span class="header-section-number">3.2</span> 案例分析</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -225,14 +240,14 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="与部位相关的形态学术语" class="level2">
-<h2 class="anchored" data-anchor-id="与部位相关的形态学术语">与部位相关的形态学术语</h2>
-<section id="规则描述" class="level3">
-<h3 class="anchored" data-anchor-id="规则描述">规则描述</h3>
+<section id="与部位相关的形态学术语" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="与部位相关的形态学术语"><span class="header-section-number">1</span> 与部位相关的形态学术语</h2>
+<section id="规则描述" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="规则描述"><span class="header-section-number">1.1</span> 规则描述</h3>
 <p>如果在诊断描述中没有指出解剖学部位时，则使用形态学默认的解剖学部位编码。如果已知肿瘤发生在另一个部位，则忽略这个默认的解剖学编码。</p>
 </section>
-<section id="常见与部位相关的形态学术语" class="level3">
-<h3 class="anchored" data-anchor-id="常见与部位相关的形态学术语">常见与部位相关的形态学术语</h3>
+<section id="常见与部位相关的形态学术语" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="常见与部位相关的形态学术语"><span class="header-section-number">1.2</span> 常见与部位相关的形态学术语</h3>
 <p>在董景五编写的ICDO3编码一书以及中国肿瘤登记指导手册（2016）一书中列出的形态学术语后面的括号里列出了这些形态学编码对应的部位编码，这形态学的肿瘤通常发生在这些部位中。例如：诊断描述”视网膜母细胞瘤” M9510/3（C69.2），诊断中没有指出具体部位，则使用建议的部位编码C69.2。</p>
 <table class="table">
 <colgroup>
@@ -277,8 +292,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="容易混淆的解剖学部位" class="level3">
-<h3 class="anchored" data-anchor-id="容易混淆的解剖学部位">容易混淆的解剖学部位</h3>
+<section id="容易混淆的解剖学部位" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="容易混淆的解剖学部位"><span class="header-section-number">1.3</span> 容易混淆的解剖学部位</h3>
 <p>某些肿瘤的名称暗示了一个解剖学部位，但是这些肿瘤其实不必编码到这个部位。例如”胆管癌”通常发生在肝脏的肝内胆管肿瘤，（胆管的ICDO3的解剖学编码分两种：肝内胆管（C22.1）和肝外胆管（C24.0））。因此，面对这些容易混淆部位的肿瘤时，需要编码人员熟悉病案以明确诊断，常见的容易混淆的部位见下表。</p>
 <table class="table">
 <colgroup>
@@ -378,15 +393,15 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 </section>
-<section id="复合性形态学诊断" class="level2">
-<h2 class="anchored" data-anchor-id="复合性形态学诊断">复合性形态学诊断</h2>
-<section id="规则描述-1" class="level3">
-<h3 class="anchored" data-anchor-id="规则描述-1">规则描述</h3>
+<section id="复合性形态学诊断" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="复合性形态学诊断"><span class="header-section-number">2</span> 复合性形态学诊断</h2>
+<section id="规则描述-1" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="规则描述-1"><span class="header-section-number">2.1</span> 规则描述</h3>
 <p>在一个复合性术语中，如果术语未在ICDO3中列出，则可以改变词根的次序。</p>
 <p>不是所有的复合性词都被列出。例如，在ICD-O-3中没有列出”粘液纤维肉瘤” ，但列出了”纤维粘液肉瘤”。如果第一个词根没有找到,可以查找词根各种不同的排列。再比如，脂肪纤维瘤和纤维脂肪瘤均可编码至为M8851/0。</p>
 </section>
-<section id="常用且已经被列入icdo3中的复合组织学类型" class="level3">
-<h3 class="anchored" data-anchor-id="常用且已经被列入icdo3中的复合组织学类型">常用且已经被列入ICDO3中的复合组织学类型</h3>
+<section id="常用且已经被列入icdo3中的复合组织学类型" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="常用且已经被列入icdo3中的复合组织学类型"><span class="header-section-number">2.2</span> 常用且已经被列入ICDO3中的复合组织学类型</h3>
 <table class="table">
 <thead>
 <tr class="header">
@@ -411,14 +426,14 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 </section>
-<section id="对具有多个形态学术语的诊断进行编码" class="level2">
-<h2 class="anchored" data-anchor-id="对具有多个形态学术语的诊断进行编码">对具有多个形态学术语的诊断进行编码</h2>
-<section id="规则描述-2" class="level3">
-<h3 class="anchored" data-anchor-id="规则描述-2">规则描述</h3>
+<section id="对具有多个形态学术语的诊断进行编码" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="对具有多个形态学术语的诊断进行编码"><span class="header-section-number">3</span> 对具有多个形态学术语的诊断进行编码</h2>
+<section id="规则描述-2" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="规则描述-2"><span class="header-section-number">3.1</span> 规则描述</h3>
 <p>当诊断描述包含多个形态学术语，而且没有单一的编码可以包括所有的形态学术语时，也就是说，如果肿瘤诊断的形态学描述编码到两个或两个以上编码号，则使用在数值上更高的编码号。</p>
 </section>
-<section id="案例分析" class="level3">
-<h3 class="anchored" data-anchor-id="案例分析">案例分析</h3>
+<section id="案例分析" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="案例分析"><span class="header-section-number">3.2</span> 案例分析</h3>
 <p>诊断描述为”移行细胞上皮样癌”，诊断描述包括了两种细胞类型的成分，第一种：移行细胞癌，编码为M8120/3，第二种：上皮样癌，编码到 M8070/3。</p>
 <p>当没有单一编码能够包括全部诊断性成份时，编码者应使用数码较高的编码号，在本例使用<strong>M8120/3</strong>的编码，因为通常数值高的编码往往意味着更具有特异性。</p>
 
@@ -454,9 +469,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -521,6 +550,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -566,6 +681,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Copyright@Qiong Chen</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

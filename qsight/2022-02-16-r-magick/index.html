@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.14">
+<meta name="generator" content="quarto-1.3.238">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,9 +20,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -126,7 +127,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 <style>
-    .quarto-title-block .quarto-title-banner {
+    .quarto-title-block .quarto-title-banner,
+    .quarto-title-block .quarto-title-banner h1,
+    .quarto-title-block .quarto-title-banner h2,
+    .quarto-title-block .quarto-title-banner h3,
+    .quarto-title-block .quarto-title-banner h4,
+    .quarto-title-block .quarto-title-banner h5,
+    .quarto-title-block .quarto-title-banner h6
+    {
       color: #c8c8c8;
     }
     </style>
@@ -144,11 +152,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="普癌新声 - 用过R magick包处理图片，你还会用PS来P图吗？">
-<meta property="og:description" content="R magick包在R中提供了一套简单而有效的图片处理工具，让你可以直接在R程序中进行相应的图片操作，比如更改大小、图片格式，以及一些滤镜效果等。">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://www.chenq.site/qsight/2022-02-16-r-magick/rabbit.gif">
 <meta property="og:site-name" content="普癌新声">
 <meta name="twitter:title" content="普癌新声 - 用过R magick包处理图片，你还会用PS来P图吗？">
-<meta name="twitter:description" content="R magick包在R中提供了一套简单而有效的图片处理工具，让你可以直接在R程序中进行相应的图片操作，比如更改大小、图片格式，以及一些滤镜效果等。">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://www.chenq.site/qsight/2022-02-16-r-magick/rabbit.gif">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -164,54 +172,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../qsight/" rel=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
 </i> 
  <span class="menu-text">Qsight博客</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://diary.chenq.site" rel=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://diary.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
 </i> 
  <span class="menu-text">随笔录</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel=""><i class="bi bi-hexagon" role="img">
+    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel="" target=""><i class="bi bi-hexagon" role="img">
 </i> 
  <span class="menu-text">Packages</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications/" rel=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
 </i> 
  <span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../slides/" rel=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="../../slides/" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
 </i> 
  <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../qsight/index.xml" rel=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -245,6 +255,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">更新时间</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">April 4, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -257,16 +273,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">本页内容</h2>
    
   <ul>
-  <li><a href="#安装magick包" id="toc-安装magick包" class="nav-link active" data-scroll-target="#安装magick包">安装magick包</a></li>
-  <li><a href="#使用magick包读取和存储图片或视频" id="toc-使用magick包读取和存储图片或视频" class="nav-link" data-scroll-target="#使用magick包读取和存储图片或视频">使用magick包读取和存储图片或视频</a></li>
-  <li><a href="#图片转换操作" id="toc-图片转换操作" class="nav-link" data-scroll-target="#图片转换操作">图片转换操作</a></li>
-  <li><a href="#添加文字注释" id="toc-添加文字注释" class="nav-link" data-scroll-target="#添加文字注释">添加文字注释</a></li>
-  <li><a href="#magick包支持管道操作符" id="toc-magick包支持管道操作符" class="nav-link" data-scroll-target="#magick包支持管道操作符">magick包支持管道操作符”%”</a></li>
-  <li><a href="#图片向量magick还支持图层叠加图片拼接动图处理等功能" id="toc-图片向量magick还支持图层叠加图片拼接动图处理等功能" class="nav-link" data-scroll-target="#图片向量magick还支持图层叠加图片拼接动图处理等功能">图片向量，magick还支持图层叠加、图片拼接、动图处理等功能。</a></li>
-  <li><a href="#图层叠加" id="toc-图层叠加" class="nav-link" data-scroll-target="#图层叠加">图层叠加</a></li>
-  <li><a href="#读取pdf文件转换成图片" id="toc-读取pdf文件转换成图片" class="nav-link" data-scroll-target="#读取pdf文件转换成图片">读取pdf文件，转换成图片</a></li>
-  <li><a href="#图片合成" id="toc-图片合成" class="nav-link" data-scroll-target="#图片合成">图片合成</a></li>
-  <li><a href="#推荐学习列表" id="toc-推荐学习列表" class="nav-link" data-scroll-target="#推荐学习列表">推荐学习列表</a></li>
+  <li><a href="#安装magick包" id="toc-安装magick包" class="nav-link active" data-scroll-target="#安装magick包"><span class="header-section-number">1</span> 安装magick包</a></li>
+  <li><a href="#使用magick包读取和存储图片或视频" id="toc-使用magick包读取和存储图片或视频" class="nav-link" data-scroll-target="#使用magick包读取和存储图片或视频"><span class="header-section-number">2</span> 使用magick包读取和存储图片或视频</a></li>
+  <li><a href="#图片转换操作" id="toc-图片转换操作" class="nav-link" data-scroll-target="#图片转换操作"><span class="header-section-number">3</span> 图片转换操作</a></li>
+  <li><a href="#添加文字注释" id="toc-添加文字注释" class="nav-link" data-scroll-target="#添加文字注释"><span class="header-section-number">4</span> 添加文字注释</a></li>
+  <li><a href="#magick包支持管道操作符" id="toc-magick包支持管道操作符" class="nav-link" data-scroll-target="#magick包支持管道操作符"><span class="header-section-number">5</span> magick包支持管道操作符”%”</a></li>
+  <li><a href="#图片向量magick还支持图层叠加图片拼接动图处理等功能" id="toc-图片向量magick还支持图层叠加图片拼接动图处理等功能" class="nav-link" data-scroll-target="#图片向量magick还支持图层叠加图片拼接动图处理等功能"><span class="header-section-number">6</span> 图片向量，magick还支持图层叠加、图片拼接、动图处理等功能。</a></li>
+  <li><a href="#图层叠加" id="toc-图层叠加" class="nav-link" data-scroll-target="#图层叠加"><span class="header-section-number">7</span> 图层叠加</a></li>
+  <li><a href="#读取pdf文件转换成图片" id="toc-读取pdf文件转换成图片" class="nav-link" data-scroll-target="#读取pdf文件转换成图片"><span class="header-section-number">8</span> 读取pdf文件，转换成图片</a></li>
+  <li><a href="#图片合成" id="toc-图片合成" class="nav-link" data-scroll-target="#图片合成"><span class="header-section-number">9</span> 图片合成</a></li>
+  <li><a href="#推荐学习列表" id="toc-推荐学习列表" class="nav-link" data-scroll-target="#推荐学习列表"><span class="header-section-number">10</span> 推荐学习列表</a></li>
   </ul>
 </nav>
     </div>
@@ -277,15 +293,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <p>R magick包在R中提供了一套简单而有效的图片处理工具，让你可以直接在R程序中进行相应的图片操作，比如更改大小、图片格式，以及一些滤镜效果等。</p>
-<section id="安装magick包" class="level2">
-<h2 class="anchored" data-anchor-id="安装magick包">安装magick包</h2>
+<section id="安装magick包" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="安装magick包"><span class="header-section-number">1</span> 安装magick包</h2>
 <p>可以从CRAN上安装magick包</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">"magick"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>当然也可以从github上安装</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'ropensci/magick'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="使用magick包读取和存储图片或视频" class="level2">
-<h2 class="anchored" data-anchor-id="使用magick包读取和存储图片或视频">使用magick包读取和存储图片或视频</h2>
+<section id="使用magick包读取和存储图片或视频" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="使用magick包读取和存储图片或视频"><span class="header-section-number">2</span> 使用magick包读取和存储图片或视频</h2>
 <p>magick读取文件图片文件、pdf文件以及视频文件，读取文件的函数有以下几种：</p>
 <ol type="1">
 <li>image_read( path,density = NULL,depth = NULL,strip = FALSE,coalesce = TRUE,defines = NULL)</li>
@@ -335,8 +351,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 </div>
 </section>
-<section id="图片转换操作" class="level2">
-<h2 class="anchored" data-anchor-id="图片转换操作">图片转换操作</h2>
+<section id="图片转换操作" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="图片转换操作"><span class="header-section-number">3</span> 图片转换操作</h2>
 <p>magick提供一系列函数对图片进行裁剪以及编辑，主要有以下函数：</p>
 <ol type="1">
 <li>image_crop(logo, “100x150+50”): 从图片logo左侧50像素处开始裁剪出宽为100像素高位150像素 的图片</li>
@@ -402,16 +418,16 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 </div>
 </section>
-<section id="添加文字注释" class="level2">
-<h2 class="anchored" data-anchor-id="添加文字注释">添加文字注释</h2>
+<section id="添加文字注释" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="添加文字注释"><span class="header-section-number">4</span> 添加文字注释</h2>
 <div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># 给图片添加文字注释</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="fu">image_annotate</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>), <span class="st">"This is logo picture includedin magick package"</span>, <span class="at">size=</span><span class="dv">15</span>, <span class="at">gravity =</span> <span class="st">"southeast"</span>, <span class="at">color=</span><span class="st">"red"</span>)</span>
 <span id="cb23-3"><a href="#cb23-3"></a></span>
 <span id="cb23-4"><a href="#cb23-4"></a><span class="co"># 你可以文字注释放到图片的任何地方</span></span>
 <span id="cb23-5"><a href="#cb23-5"></a><span class="fu">image_annotate</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>), <span class="st">"logo image"</span>, <span class="at">size=</span><span class="dv">30</span>, <span class="at">color=</span><span class="st">"red"</span>, <span class="at">boxcolor =</span> <span class="st">"pink"</span>, <span class="at">degrees =</span> <span class="dv">30</span>, <span class="at">location =</span> <span class="st">"+30+120"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="magick包支持管道操作符" class="level2">
-<h2 class="anchored" data-anchor-id="magick包支持管道操作符">magick包支持管道操作符”%”</h2>
+<section id="magick包支持管道操作符" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="magick包支持管道操作符"><span class="header-section-number">5</span> magick包支持管道操作符”%”</h2>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-4_6c77a4906d5462510e9bd16fb24054c7">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># 等比例调整图片高度为300像素</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>)<span class="sc">%&gt;%</span></span>
@@ -429,8 +445,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 </div>
 </section>
-<section id="图片向量magick还支持图层叠加图片拼接动图处理等功能" class="level2">
-<h2 class="anchored" data-anchor-id="图片向量magick还支持图层叠加图片拼接动图处理等功能">图片向量，magick还支持图层叠加、图片拼接、动图处理等功能。</h2>
+<section id="图片向量magick还支持图层叠加图片拼接动图处理等功能" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="图片向量magick还支持图层叠加图片拼接动图处理等功能"><span class="header-section-number">6</span> 图片向量，magick还支持图层叠加、图片拼接、动图处理等功能。</h2>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-5_8562aa362abd4ba9567f3b33e9557301">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># 先把一个gif的图片读进来</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a>rabbit <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">"rabbit.gif"</span>)</span>
@@ -470,8 +486,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <span id="cb29-6"><a href="#cb29-6"></a>  <span class="co"># 然后我们再给图片增加一条注释语句，放到图片的右下角</span></span>
 <span id="cb29-7"><a href="#cb29-7"></a>  <span class="fu">image_annotate</span>(<span class="st">"This gif image  has been modified by Dr. Chen"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">color =</span> <span class="st">"white"</span>,<span class="at">gravity =</span> <span class="st">"southeast"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="图层叠加" class="level2">
-<h2 class="anchored" data-anchor-id="图层叠加">图层叠加</h2>
+<section id="图层叠加" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="图层叠加"><span class="header-section-number">7</span> 图层叠加</h2>
 <p>我们可以实现把gif图里的各层提取出来重新组合，或者添加进去新的图层，然后把他们以纵向排列或者横向排列的方式罗列出来，也可以重新做成gif动图。当然，在这个过程中，前面所说的哪些图片处理功能仍然可以实现。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-7_c8cec239565966929247cd2b9f337d1b">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># 把logo图片和rabbit2图片的前两层合并成新的图片向量</span></span>
@@ -503,8 +519,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 </div>
 </section>
-<section id="读取pdf文件转换成图片" class="level2">
-<h2 class="anchored" data-anchor-id="读取pdf文件转换成图片">读取pdf文件，转换成图片</h2>
+<section id="读取pdf文件转换成图片" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="读取pdf文件转换成图片"><span class="header-section-number">8</span> 读取pdf文件，转换成图片</h2>
 <p>magick包提供的image_read_pdf()函数可以读取pdf文件，当读取pdf文件后，pdf文件被转化为一个向量，而pdf的每一页被转化为该向量的每一个元素。由于pdf在被读取时进行渲染，所以需要在读取函数中设置density参数。下面我们来试一试吧：</p>
 <p>这个功能是借助pdftools包来实现的</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># 先安装pdftools包</span></span>
@@ -530,8 +546,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 </div>
 </section>
-<section id="图片合成" class="level2">
-<h2 class="anchored" data-anchor-id="图片合成">图片合成</h2>
+<section id="图片合成" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="图片合成"><span class="header-section-number">9</span> 图片合成</h2>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-9_201e06d2c4602eafe55142c1ae5703ae">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># 默认的叠加方式直接放到前图的上面</span></span>
 <span id="cb39-2"><a href="#cb39-2"></a><span class="fu">image_composite</span>(kidney[<span class="dv">1</span>],<span class="fu">image_scale</span>(logo,<span class="st">"x275"</span>), <span class="at">operator =</span> <span class="st">"atop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -545,8 +561,8 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 </div>
 </section>
-<section id="推荐学习列表" class="level2">
-<h2 class="anchored" data-anchor-id="推荐学习列表">推荐学习列表</h2>
+<section id="推荐学习列表" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="推荐学习列表"><span class="header-section-number">10</span> 推荐学习列表</h2>
 <p>由于篇幅有限，本篇文章没有把所有的功能在此展现出来，下面列出了一些网络资源共大家参考。</p>
 <ol type="1">
 <li><a href="https://ropensci.r-universe.dev/articles/magick/intro.html">The magick package: Advanced Image-Processing in R</a></li>
@@ -584,9 +600,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -651,6 +681,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -696,6 +812,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Copyright@Qiong Chen</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

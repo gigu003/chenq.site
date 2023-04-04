@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.14">
+<meta name="generator" content="quarto-1.3.238">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,9 +20,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -126,7 +127,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 <style>
-    .quarto-title-block .quarto-title-banner {
+    .quarto-title-block .quarto-title-banner,
+    .quarto-title-block .quarto-title-banner h1,
+    .quarto-title-block .quarto-title-banner h2,
+    .quarto-title-block .quarto-title-banner h3,
+    .quarto-title-block .quarto-title-banner h4,
+    .quarto-title-block .quarto-title-banner h5,
+    .quarto-title-block .quarto-title-banner h6
+    {
       color: #c8c8c8;
     }
     </style>
@@ -144,10 +152,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="普癌新声 - 利用survminer包ggforest函数制作用森林图，直观化展示比值比数据！">
-<meta property="og:description" content="森林图是在平面直角坐标系中，以一条垂直的无效线（横坐标刻度为1或0）为中心，用平行于横轴的多条线段描述了每个被纳入研究的效应量和可信区间（confidence interval，CI），用一个棱形（或其它图形）描述了多个研究合并的效应量及可信区间。它非常简单和直观地描述了Meta分析的统计结果，是Meta分析中最常用的结果表达形式。">
+<meta property="og:description" content="">
 <meta property="og:site-name" content="普癌新声">
 <meta name="twitter:title" content="普癌新声 - 利用survminer包ggforest函数制作用森林图，直观化展示比值比数据！">
-<meta name="twitter:description" content="森林图是在平面直角坐标系中，以一条垂直的无效线（横坐标刻度为1或0）为中心，用平行于横轴的多条线段描述了每个被纳入研究的效应量和可信区间（confidence interval，CI），用一个棱形（或其它图形）描述了多个研究合并的效应量及可信区间。它非常简单和直观地描述了Meta分析的统计结果，是Meta分析中最常用的结果表达形式。">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -162,54 +170,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../qsight/" rel=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
 </i> 
  <span class="menu-text">Qsight博客</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://diary.chenq.site" rel=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://diary.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
 </i> 
  <span class="menu-text">随笔录</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel=""><i class="bi bi-hexagon" role="img">
+    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel="" target=""><i class="bi bi-hexagon" role="img">
 </i> 
  <span class="menu-text">Packages</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications/" rel=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
 </i> 
  <span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../slides/" rel=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="../../slides/" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
 </i> 
  <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../qsight/index.xml" rel=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -243,6 +253,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">更新时间</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">April 4, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -255,14 +271,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">本页内容</h2>
    
   <ul>
-  <li><a href="#什么是森林图" id="toc-什么是森林图" class="nav-link active" data-scroll-target="#什么是森林图">什么是森林图？</a></li>
-  <li><a href="#实现森林图的方法有哪些" id="toc-实现森林图的方法有哪些" class="nav-link" data-scroll-target="#实现森林图的方法有哪些">实现森林图的方法有哪些？</a></li>
-  <li><a href="#如何安装survminer包" id="toc-如何安装survminer包" class="nav-link" data-scroll-target="#如何安装survminer包">如何安装survminer包？</a></li>
-  <li><a href="#准备数据" id="toc-准备数据" class="nav-link" data-scroll-target="#准备数据">准备数据</a></li>
-  <li><a href="#首先我们对colon数据预处理一下" id="toc-首先我们对colon数据预处理一下" class="nav-link" data-scroll-target="#首先我们对colon数据预处理一下">首先我们对colon数据预处理一下</a></li>
-  <li><a href="#利用colon数据来拟合预后风险" id="toc-利用colon数据来拟合预后风险" class="nav-link" data-scroll-target="#利用colon数据来拟合预后风险">利用colon数据来拟合预后风险</a></li>
-  <li><a href="#利用ggforest函数输出森林图" id="toc-利用ggforest函数输出森林图" class="nav-link" data-scroll-target="#利用ggforest函数输出森林图">利用ggforest函数输出森林图</a></li>
-  <li><a href="#小结" id="toc-小结" class="nav-link" data-scroll-target="#小结">小结</a></li>
+  <li><a href="#什么是森林图" id="toc-什么是森林图" class="nav-link active" data-scroll-target="#什么是森林图"><span class="header-section-number">1</span> 什么是森林图？</a></li>
+  <li><a href="#实现森林图的方法有哪些" id="toc-实现森林图的方法有哪些" class="nav-link" data-scroll-target="#实现森林图的方法有哪些"><span class="header-section-number">2</span> 实现森林图的方法有哪些？</a></li>
+  <li><a href="#如何安装survminer包" id="toc-如何安装survminer包" class="nav-link" data-scroll-target="#如何安装survminer包"><span class="header-section-number">3</span> 如何安装survminer包？</a></li>
+  <li><a href="#准备数据" id="toc-准备数据" class="nav-link" data-scroll-target="#准备数据"><span class="header-section-number">4</span> 准备数据</a></li>
+  <li><a href="#首先我们对colon数据预处理一下" id="toc-首先我们对colon数据预处理一下" class="nav-link" data-scroll-target="#首先我们对colon数据预处理一下"><span class="header-section-number">5</span> 首先我们对colon数据预处理一下</a></li>
+  <li><a href="#利用colon数据来拟合预后风险" id="toc-利用colon数据来拟合预后风险" class="nav-link" data-scroll-target="#利用colon数据来拟合预后风险"><span class="header-section-number">6</span> 利用colon数据来拟合预后风险</a></li>
+  <li><a href="#利用ggforest函数输出森林图" id="toc-利用ggforest函数输出森林图" class="nav-link" data-scroll-target="#利用ggforest函数输出森林图"><span class="header-section-number">7</span> 利用ggforest函数输出森林图</a></li>
+  <li><a href="#小结" id="toc-小结" class="nav-link" data-scroll-target="#小结"><span class="header-section-number">8</span> 小结</a></li>
   </ul>
 </nav>
     </div>
@@ -272,18 +288,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="什么是森林图" class="level2">
-<h2 class="anchored" data-anchor-id="什么是森林图">什么是森林图？</h2>
+<section id="什么是森林图" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="什么是森林图"><span class="header-section-number">1</span> 什么是森林图？</h2>
 <p>森林图是在平面直角坐标系中，以一条垂直的无效线（横坐标刻度为1或0）为中心，用平行于横轴的多条线段描述了每个被纳入研究的效应量和可信区间（confidence interval，CI），用一个棱形（或其它图形）描述了多个研究合并的效应量及可信区间。它非常简单和直观地描述了Meta分析的统计结果，是Meta分析中最常用的结果表达形式。</p>
 </section>
-<section id="实现森林图的方法有哪些" class="level2">
-<h2 class="anchored" data-anchor-id="实现森林图的方法有哪些">实现森林图的方法有哪些？</h2>
+<section id="实现森林图的方法有哪些" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="实现森林图的方法有哪些"><span class="header-section-number">2</span> 实现森林图的方法有哪些？</h2>
 <p>在R语言里，实现森林图的方法有很多，比如forestplot包，ggforestplot包，以及survminer包等都可以，当然也可以利用ggplot2包实现更自由的绘制森林图。</p>
 <p>今天我们主要讲讲利用survminer包的ggforest函数绘制森林图</p>
 <p>这个包有个优势就是可以直接利用模型拟合输出的结果直接输出森林图，不用另外单独准备数据。比如我们可以用survival包来做预后的影响因素分析，然后利用survminer包里的ggforest函数读取survival包拟合的模型结果绘制森林图。</p>
 </section>
-<section id="如何安装survminer包" class="level2">
-<h2 class="anchored" data-anchor-id="如何安装survminer包">如何安装survminer包？</h2>
+<section id="如何安装survminer包" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="如何安装survminer包"><span class="header-section-number">3</span> 如何安装survminer包？</h2>
 <p>照例两种方式，要么从R CRAN的不同镜像上安装，要么从github上安装。</p>
 <p>第一种方式：从CRAN镜像上安装</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">"survminer"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -293,8 +309,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co"># 利用devtools从github上安装survminer包</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"kassambara/survminer"</span>, <span class="at">build_vignettes =</span> <span class="cn">FALSE</span>)<span class="er">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="准备数据" class="level2">
-<h2 class="anchored" data-anchor-id="准备数据">准备数据</h2>
+<section id="准备数据" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="准备数据"><span class="header-section-number">4</span> 准备数据</h2>
 <p>加载survival包时，自动加载了colon数据框，我们就可以利用这个数据来拟合预后风险。</p>
 <p>首先加载survival包，并查看一下colon数据框的基本情况</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_dbf5691a671872f28d5fe4aa1cc542ef">
@@ -335,8 +351,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="首先我们对colon数据预处理一下" class="level2">
-<h2 class="anchored" data-anchor-id="首先我们对colon数据预处理一下">首先我们对colon数据预处理一下</h2>
+<section id="首先我们对colon数据预处理一下" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="首先我们对colon数据预处理一下"><span class="header-section-number">5</span> 首先我们对colon数据预处理一下</h2>
 <p>我们对sex变量和differ变量因子化，并增加中文值标签。</p>
 <p>如果我们想在森林图里显示交互作用项，那么就需要提前处理数据，比如我们想看surg和nodes的交互作用，我们可以把两者的相乘项加入模型里。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_a28c436ed65ba4e7d59c4bd8b63e5e25">
@@ -350,8 +366,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-8"><a href="#cb9-8"></a>         )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="利用colon数据来拟合预后风险" class="level2">
-<h2 class="anchored" data-anchor-id="利用colon数据来拟合预后风险">利用colon数据来拟合预后风险</h2>
+<section id="利用colon数据来拟合预后风险" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="利用colon数据来拟合预后风险"><span class="header-section-number">6</span> 利用colon数据来拟合预后风险</h2>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_475724c5d01301887c75141c24d2b205">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>model <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> sex <span class="sc">+</span>  differ <span class="sc">+</span> surg <span class="sc">+</span> nodes <span class="sc">+</span> interaction, <span class="at">data =</span> colon )</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -388,8 +404,8 @@ Score (logrank) test = 214.7  on 6 df,   p=&lt;2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="利用ggforest函数输出森林图" class="level2">
-<h2 class="anchored" data-anchor-id="利用ggforest函数输出森林图">利用ggforest函数输出森林图</h2>
+<section id="利用ggforest函数输出森林图" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="利用ggforest函数输出森林图"><span class="header-section-number">7</span> 利用ggforest函数输出森林图</h2>
 <p>ggforest函数可以自由定义的参数不多，主要有以下几个:</p>
 <ol type="1">
 <li>model= modeldata，指定ggforest函数读取的模型拟合数据</li>
@@ -431,8 +447,8 @@ Score (logrank) test = 214.7  on 6 df,   p=&lt;2e-16</code></pre>
 </div>
 <p><img src="forest.png" class="img-fluid" alt="森林图"> 好了，森林图出来了，如果你想对输出的图进一步处理的话，可以用本站前面介绍的magick包或者其它包进行更加个性化的调整和处理。</p>
 </section>
-<section id="小结" class="level2">
-<h2 class="anchored" data-anchor-id="小结">小结</h2>
+<section id="小结" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="小结"><span class="header-section-number">8</span> 小结</h2>
 <p>利用survminer包ggforest函数制作森林图既有优势也有缺点，优势是可以利用前期拟合的模型输出结果，不用再专门整理数据，当然有优势也就有劣势，就是可以调整的参数较少，缺少更个性化的调整参数。</p>
 
 
@@ -466,9 +482,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -533,6 +563,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -578,6 +694,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Copyright@Qiong Chen</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

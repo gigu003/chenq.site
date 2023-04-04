@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.14">
+<meta name="generator" content="quarto-1.3.238">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,7 +20,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -63,7 +63,14 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-    .quarto-title-block .quarto-title-banner {
+    .quarto-title-block .quarto-title-banner,
+    .quarto-title-block .quarto-title-banner h1,
+    .quarto-title-block .quarto-title-banner h2,
+    .quarto-title-block .quarto-title-banner h3,
+    .quarto-title-block .quarto-title-banner h4,
+    .quarto-title-block .quarto-title-banner h5,
+    .quarto-title-block .quarto-title-banner h6
+    {
       color: #c8c8c8;
     }
     </style>
@@ -81,10 +88,10 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="普癌新声 - 推荐一个适合临床医生的统计软件-Jamovi">
-<meta property="og:description" content="今天，我想给大家推荐一款统计软件，如果你是一名临床医生，如果你不太懂编程，不会使用R或SAS，如果你嫌SPSS菜单太复杂，那么你一定要看完这篇文章。">
+<meta property="og:description" content="">
 <meta property="og:site-name" content="普癌新声">
 <meta name="twitter:title" content="普癌新声 - 推荐一个适合临床医生的统计软件-Jamovi">
-<meta name="twitter:description" content="今天，我想给大家推荐一款统计软件，如果你是一名临床医生，如果你不太懂编程，不会使用R或SAS，如果你嫌SPSS菜单太复杂，那么你一定要看完这篇文章。">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -99,54 +106,56 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../qsight/" rel=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
 </i> 
  <span class="menu-text">Qsight博客</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://diary.chenq.site" rel=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://diary.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
 </i> 
  <span class="menu-text">随笔录</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel=""><i class="bi bi-hexagon" role="img">
+    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel="" target=""><i class="bi bi-hexagon" role="img">
 </i> 
  <span class="menu-text">Packages</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications/" rel=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
 </i> 
  <span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../slides/" rel=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="../../slides/" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
 </i> 
  <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../qsight/index.xml" rel=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -176,6 +185,12 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">更新时间</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">April 4, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -188,14 +203,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">本页内容</h2>
    
   <ul>
-  <li><a href="#免费开源" id="toc-免费开源" class="nav-link active" data-scroll-target="#免费开源">免费、开源</a></li>
-  <li><a href="#多平台使用" id="toc-多平台使用" class="nav-link" data-scroll-target="#多平台使用">多平台使用</a></li>
-  <li><a href="#友好的操作界面" id="toc-友好的操作界面" class="nav-link" data-scroll-target="#友好的操作界面">友好的操作界面</a></li>
-  <li><a href="#灵活安装模块避免模块灾难" id="toc-灵活安装模块避免模块灾难" class="nav-link" data-scroll-target="#灵活安装模块避免模块灾难">灵活安装模块，避免“模块灾难”</a></li>
-  <li><a href="#集成r的庞大功能" id="toc-集成r的庞大功能" class="nav-link" data-scroll-target="#集成r的庞大功能">集成R的庞大功能</a></li>
-  <li><a href="#软件下载" id="toc-软件下载" class="nav-link" data-scroll-target="#软件下载">软件下载</a></li>
-  <li><a href="#官方博客" id="toc-官方博客" class="nav-link" data-scroll-target="#官方博客">官方博客</a></li>
-  <li><a href="#小结" id="toc-小结" class="nav-link" data-scroll-target="#小结">小结</a></li>
+  <li><a href="#免费开源" id="toc-免费开源" class="nav-link active" data-scroll-target="#免费开源"><span class="header-section-number">1</span> 免费、开源</a></li>
+  <li><a href="#多平台使用" id="toc-多平台使用" class="nav-link" data-scroll-target="#多平台使用"><span class="header-section-number">2</span> 多平台使用</a></li>
+  <li><a href="#友好的操作界面" id="toc-友好的操作界面" class="nav-link" data-scroll-target="#友好的操作界面"><span class="header-section-number">3</span> 友好的操作界面</a></li>
+  <li><a href="#灵活安装模块避免模块灾难" id="toc-灵活安装模块避免模块灾难" class="nav-link" data-scroll-target="#灵活安装模块避免模块灾难"><span class="header-section-number">4</span> 灵活安装模块，避免“模块灾难”</a></li>
+  <li><a href="#集成r的庞大功能" id="toc-集成r的庞大功能" class="nav-link" data-scroll-target="#集成r的庞大功能"><span class="header-section-number">5</span> 集成R的庞大功能</a></li>
+  <li><a href="#软件下载" id="toc-软件下载" class="nav-link" data-scroll-target="#软件下载"><span class="header-section-number">6</span> 软件下载</a></li>
+  <li><a href="#官方博客" id="toc-官方博客" class="nav-link" data-scroll-target="#官方博客"><span class="header-section-number">7</span> 官方博客</a></li>
+  <li><a href="#小结" id="toc-小结" class="nav-link" data-scroll-target="#小结"><span class="header-section-number">8</span> 小结</a></li>
   </ul>
 </nav>
     </div>
@@ -213,36 +228,36 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>今天，我想给大家推荐一款统计软件，如果你是一名临床医生，如果你不太懂编程，不会使用R或SAS，如果你嫌SPSS菜单太复杂，那么你一定要看完这篇文章。</p>
 <p>我想要推荐的统计软件名称是<strong>jamovi</strong>，它是一种新的第三代统计软件，<strong>易于使用</strong>，<strong>免费开源</strong>，<strong>灵活安装模块</strong>，<strong>可以集成R语言</strong>等这些特征是笔者推荐的主要理由，下面我们来了解下具体内容。</p>
-<section id="免费开源" class="level2">
-<h2 class="anchored" data-anchor-id="免费开源">免费、开源</h2>
+<section id="免费开源" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="免费开源"><span class="header-section-number">1</span> 免费、开源</h2>
 <p>目前一些比较流行的统计软件比如SAS、SPSS、Stata等都是需要付费的，而免费的R语言则需要使用者具备一些编程能力，使用门槛比较高。而jamovi的出现刚好填补了<em>免费</em>且<em>易于使用</em>的市场缺口，同时也给使用者带来了福利。</p>
 </section>
-<section id="多平台使用" class="level2">
-<h2 class="anchored" data-anchor-id="多平台使用">多平台使用</h2>
+<section id="多平台使用" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="多平台使用"><span class="header-section-number">2</span> 多平台使用</h2>
 <p>jamovi能够在windows、macOS、Linux和ChromeOS上使用，可以说是全平台通用哈，不管你用的什么设备，都可以用了。</p>
 </section>
-<section id="友好的操作界面" class="level2">
-<h2 class="anchored" data-anchor-id="友好的操作界面">友好的操作界面</h2>
+<section id="友好的操作界面" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="友好的操作界面"><span class="header-section-number">3</span> 友好的操作界面</h2>
 <p>Jamovi的操作界面与SPSS类似，直观易懂、操作便利。使用jamovi对数据进行统计分析，只需要通过选择菜单、填写对话框和点击按钮等简单操作即可完成，免去了复杂的程序编辑环节。分析过程中，不仅可以同步得到标准数字表格，还可产生美观、高清的统计图；而且，所得图表均可便捷地导出或复制、粘贴。此外，jamovi可以实现数据的实时编辑与管理，相应的统计分析结果也会在输出窗口及时更新，极大地提高了工作效率。</p>
 </section>
-<section id="灵活安装模块避免模块灾难" class="level2">
-<h2 class="anchored" data-anchor-id="灵活安装模块避免模块灾难">灵活安装模块，避免“模块灾难”</h2>
+<section id="灵活安装模块避免模块灾难" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="灵活安装模块避免模块灾难"><span class="header-section-number">4</span> 灵活安装模块，避免“模块灾难”</h2>
 <p>Jamovi软件具有可扩充性，主菜单栏包含了常用的统计分析模块，若想实现更多的统计分析如元分析、功效分析、中介与调节模型分析、贝叶斯方法等可通过加载模块(Modules)的方式实现方法扩充，这种方式很好的规避了过多的模块使得主菜单或模块列表里过于拥挤而造成分析模块选择和操作的不便。 <img src="library.png" class="img-fluid" alt="jamovi library软件介绍"></p>
 </section>
-<section id="集成r的庞大功能" class="level2">
-<h2 class="anchored" data-anchor-id="集成r的庞大功能">集成R的庞大功能</h2>
+<section id="集成r的庞大功能" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="集成r的庞大功能"><span class="header-section-number">5</span> 集成R的庞大功能</h2>
 <p>Jamovi是基于R语言开发的，可以与R软件无缝对接，加载Rj模块后，可通过Rj Editor实现所有R软件的数据处理功能。</p>
 </section>
-<section id="软件下载" class="level2">
-<h2 class="anchored" data-anchor-id="软件下载">软件下载</h2>
+<section id="软件下载" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="软件下载"><span class="header-section-number">6</span> 软件下载</h2>
 <p><a href="https://www.jamovi.org/download.html">点击此处下载<strong>Jamovi</strong></a>，快把jamovi安装到电脑上试着用用吧，反正也不要钱。</p>
 </section>
-<section id="官方博客" class="level2">
-<h2 class="anchored" data-anchor-id="官方博客">官方博客</h2>
+<section id="官方博客" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="官方博客"><span class="header-section-number">7</span> 官方博客</h2>
 <p><a href="https://blog.jamovi.org/">官方blog</a>，没事儿来这里逛逛，看看有哪些新的功能出现！</p>
 </section>
-<section id="小结" class="level2">
-<h2 class="anchored" data-anchor-id="小结">小结</h2>
+<section id="小结" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="小结"><span class="header-section-number">8</span> 小结</h2>
 <p>Jamovi软件开源免费、易于使用、能扩展功能、能集成R语言实现R的所有功能，有以上这些理由，值得你来试试！</p>
 
 
@@ -276,9 +291,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -343,6 +372,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -388,6 +503,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Copyright@Qiong Chen</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

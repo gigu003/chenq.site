@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.14">
+<meta name="generator" content="quarto-1.3.238">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,7 +20,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -63,7 +63,14 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-    .quarto-title-block .quarto-title-banner {
+    .quarto-title-block .quarto-title-banner,
+    .quarto-title-block .quarto-title-banner h1,
+    .quarto-title-block .quarto-title-banner h2,
+    .quarto-title-block .quarto-title-banner h3,
+    .quarto-title-block .quarto-title-banner h4,
+    .quarto-title-block .quarto-title-banner h5,
+    .quarto-title-block .quarto-title-banner h6
+    {
       color: #c8c8c8;
     }
     </style>
@@ -81,10 +88,10 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="普癌新声 - ICDO3模糊查询工具">
-<meta property="og:description" content="在全球大多数的国家都有全国或地区性肿瘤登记处，肿瘤登记已经成为肿瘤预防与控制的一个重要组成部分。ICD国际肿瘤学编码是必用工具之一。但在使用中，编码繁杂，记忆困难。在此中需求下，天津医科大学肿瘤医院预防医学中心王庆生教授与全国肿瘤登记中心陈万青副主任联合开发此软件。此软件基本使用对象是肿瘤登记网络单位和各级肿瘤医院病案室的工作人员。">
+<meta property="og:description" content="">
 <meta property="og:site-name" content="普癌新声">
 <meta name="twitter:title" content="普癌新声 - ICDO3模糊查询工具">
-<meta name="twitter:description" content="在全球大多数的国家都有全国或地区性肿瘤登记处，肿瘤登记已经成为肿瘤预防与控制的一个重要组成部分。ICD国际肿瘤学编码是必用工具之一。但在使用中，编码繁杂，记忆困难。在此中需求下，天津医科大学肿瘤医院预防医学中心王庆生教授与全国肿瘤登记中心陈万青副主任联合开发此软件。此软件基本使用对象是肿瘤登记网络单位和各级肿瘤医院病案室的工作人员。">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -99,54 +106,56 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../qsight/" rel=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
 </i> 
  <span class="menu-text">Qsight博客</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://diary.chenq.site" rel=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://diary.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
 </i> 
  <span class="menu-text">随笔录</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel=""><i class="bi bi-hexagon" role="img">
+    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel="" target=""><i class="bi bi-hexagon" role="img">
 </i> 
  <span class="menu-text">Packages</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications/" rel=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
 </i> 
  <span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../slides/" rel=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="../../slides/" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
 </i> 
  <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../qsight/index.xml" rel=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -180,6 +189,12 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">更新时间</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">April 4, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -192,9 +207,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">本页内容</h2>
    
   <ul>
-  <li><a href="#软件相关信息" id="toc-软件相关信息" class="nav-link active" data-scroll-target="#软件相关信息">软件相关信息</a></li>
-  <li><a href="#软件相关功能" id="toc-软件相关功能" class="nav-link" data-scroll-target="#软件相关功能">软件相关功能</a></li>
-  <li><a href="#软件下载" id="toc-软件下载" class="nav-link" data-scroll-target="#软件下载">软件下载</a></li>
+  <li><a href="#软件相关信息" id="toc-软件相关信息" class="nav-link active" data-scroll-target="#软件相关信息"><span class="header-section-number">1</span> 软件相关信息</a></li>
+  <li><a href="#软件相关功能" id="toc-软件相关功能" class="nav-link" data-scroll-target="#软件相关功能"><span class="header-section-number">2</span> 软件相关功能</a></li>
+  <li><a href="#软件下载" id="toc-软件下载" class="nav-link" data-scroll-target="#软件下载"><span class="header-section-number">3</span> 软件下载</a></li>
   </ul>
 </nav>
     </div>
@@ -205,8 +220,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><img src="1.png" class="img-fluid" alt="ICDO3模糊查询工具"> 在全球大多数的国家都有全国或地区性肿瘤登记处，肿瘤登记已经成为肿瘤预防与控制的一个重要组成部分。ICD国际肿瘤学编码是必用工具之一。但在使用中，编码繁杂，记忆困难。在此中需求下，天津医科大学肿瘤医院预防医学中心王庆生教授与全国肿瘤登记中心陈万青副主任联合开发此软件。此软件基本使用对象是肿瘤登记网络单位和各级肿瘤医院病案室的工作人员。</p>
-<section id="软件相关信息" class="level2">
-<h2 class="anchored" data-anchor-id="软件相关信息">软件相关信息</h2>
+<section id="软件相关信息" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="软件相关信息"><span class="header-section-number">1</span> 软件相关信息</h2>
 <ul>
 <li>ICDFuzzyquery, 2.0.1 2013年4月。</li>
 <li>此软件的编程语言为visual basic 2010。</li>
@@ -215,12 +230,12 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>为了推广国际通用的肿瘤编码，此软件免费提供大家使用，没有功能限制，没有木马漏洞等隐患。</p>
 </section>
-<section id="软件相关功能" class="level2">
-<h2 class="anchored" data-anchor-id="软件相关功能">软件相关功能</h2>
+<section id="软件相关功能" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="软件相关功能"><span class="header-section-number">2</span> 软件相关功能</h2>
 <p>此软件主要实现ICD-O3以及ICD10编码的模糊查询，通过输入关键词即可查找相应的编码。</p>
 </section>
-<section id="软件下载" class="level2">
-<h2 class="anchored" data-anchor-id="软件下载">软件下载</h2>
+<section id="软件下载" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="软件下载"><span class="header-section-number">3</span> 软件下载</h2>
 <p>下载链接：<a href="https://pan.baidu.com/s/15DzpWVetmu7E1kQqk6H-hw?pwd=mmwj">ICDFuzzyquery</a> ，提取码：mmwj</p>
 
 
@@ -254,9 +269,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -321,6 +350,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -366,6 +481,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Copyright@Qiong Chen</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

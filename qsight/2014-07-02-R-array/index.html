@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.14">
+<meta name="generator" content="quarto-1.3.238">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,9 +20,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -126,7 +127,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 <style>
-    .quarto-title-block .quarto-title-banner {
+    .quarto-title-block .quarto-title-banner,
+    .quarto-title-block .quarto-title-banner h1,
+    .quarto-title-block .quarto-title-banner h2,
+    .quarto-title-block .quarto-title-banner h3,
+    .quarto-title-block .quarto-title-banner h4,
+    .quarto-title-block .quarto-title-banner h5,
+    .quarto-title-block .quarto-title-banner h6
+    {
       color: #c8c8c8;
     }
     </style>
@@ -144,10 +152,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="普癌新声 - 多维数组与矩阵">
-<meta property="og:description" content="数组（array）可以看成是带多个下标的类型相同的集合，常用的是数值型的数组如矩阵（数值型二维数组），也可以有其它类型（如字符型、逻辑性、复数型）。R软件可以很容易地生成和处理数组，特别是矩阵。">
+<meta property="og:description" content="">
 <meta property="og:site-name" content="普癌新声">
 <meta name="twitter:title" content="普癌新声 - 多维数组与矩阵">
-<meta name="twitter:description" content="数组（array）可以看成是带多个下标的类型相同的集合，常用的是数值型的数组如矩阵（数值型二维数组），也可以有其它类型（如字符型、逻辑性、复数型）。R软件可以很容易地生成和处理数组，特别是矩阵。">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -162,54 +170,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../qsight/" rel=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
 </i> 
  <span class="menu-text">Qsight博客</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://diary.chenq.site" rel=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://diary.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
 </i> 
  <span class="menu-text">随笔录</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel=""><i class="bi bi-hexagon" role="img">
+    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel="" target=""><i class="bi bi-hexagon" role="img">
 </i> 
  <span class="menu-text">Packages</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications/" rel=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
 </i> 
  <span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../slides/" rel=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="../../slides/" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
 </i> 
  <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../qsight/index.xml" rel=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -243,6 +253,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">更新时间</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">April 4, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -255,34 +271,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">本页内容</h2>
    
   <ul>
-  <li><a href="#一生成数组或矩阵" id="toc-一生成数组或矩阵" class="nav-link active" data-scroll-target="#一生成数组或矩阵">一、生成数组或矩阵</a>
+  <li><a href="#一生成数组或矩阵" id="toc-一生成数组或矩阵" class="nav-link active" data-scroll-target="#一生成数组或矩阵"><span class="header-section-number">1</span> 一、生成数组或矩阵</a>
   <ul class="collapse">
-  <li><a href="#一将向量定义为数组" id="toc-一将向量定义为数组" class="nav-link" data-scroll-target="#一将向量定义为数组">（一）将向量定义为数组</a></li>
-  <li><a href="#二用array函数构造多维数组" id="toc-二用array函数构造多维数组" class="nav-link" data-scroll-target="#二用array函数构造多维数组">（二）用array（）函数构造多维数组</a></li>
-  <li><a href="#三用matrix函数构造矩阵" id="toc-三用matrix函数构造矩阵" class="nav-link" data-scroll-target="#三用matrix函数构造矩阵">（三）用matrix（）函数构造矩阵</a></li>
+  <li><a href="#一将向量定义为数组" id="toc-一将向量定义为数组" class="nav-link" data-scroll-target="#一将向量定义为数组"><span class="header-section-number">1.1</span> （一）将向量定义为数组</a></li>
+  <li><a href="#二用array函数构造多维数组" id="toc-二用array函数构造多维数组" class="nav-link" data-scroll-target="#二用array函数构造多维数组"><span class="header-section-number">1.2</span> （二）用array（）函数构造多维数组</a></li>
+  <li><a href="#三用matrix函数构造矩阵" id="toc-三用matrix函数构造矩阵" class="nav-link" data-scroll-target="#三用matrix函数构造矩阵"><span class="header-section-number">1.3</span> （三）用matrix（）函数构造矩阵</a></li>
   </ul></li>
-  <li><a href="#二数组的下标" id="toc-二数组的下标" class="nav-link" data-scroll-target="#二数组的下标">二、数组的下标</a>
+  <li><a href="#二数组的下标" id="toc-二数组的下标" class="nav-link" data-scroll-target="#二数组的下标"><span class="header-section-number">2</span> 二、数组的下标</a>
   <ul class="collapse">
-  <li><a href="#一数组的下标" id="toc-一数组的下标" class="nav-link" data-scroll-target="#一数组的下标">（一）数组的下标</a></li>
-  <li><a href="#二不规则的数组下标" id="toc-二不规则的数组下标" class="nav-link" data-scroll-target="#二不规则的数组下标">（二）不规则的数组下标</a></li>
+  <li><a href="#一数组的下标" id="toc-一数组的下标" class="nav-link" data-scroll-target="#一数组的下标"><span class="header-section-number">2.1</span> （一）数组的下标</a></li>
+  <li><a href="#二不规则的数组下标" id="toc-二不规则的数组下标" class="nav-link" data-scroll-target="#二不规则的数组下标"><span class="header-section-number">2.2</span> （二）不规则的数组下标</a></li>
   </ul></li>
-  <li><a href="#三数组的四则运算" id="toc-三数组的四则运算" class="nav-link" data-scroll-target="#三数组的四则运算">三、数组的四则运算</a>
+  <li><a href="#三数组的四则运算" id="toc-三数组的四则运算" class="nav-link" data-scroll-target="#三数组的四则运算"><span class="header-section-number">3</span> 三、数组的四则运算</a>
   <ul class="collapse">
-  <li><a href="#一矩阵的乘法" id="toc-一矩阵的乘法" class="nav-link" data-scroll-target="#一矩阵的乘法">（一）矩阵的乘法</a></li>
+  <li><a href="#一矩阵的乘法" id="toc-一矩阵的乘法" class="nav-link" data-scroll-target="#一矩阵的乘法"><span class="header-section-number">3.1</span> （一）矩阵的乘法</a></li>
   </ul></li>
-  <li><a href="#四矩阵的运算" id="toc-四矩阵的运算" class="nav-link" data-scroll-target="#四矩阵的运算">四、矩阵的运算</a>
+  <li><a href="#四矩阵的运算" id="toc-四矩阵的运算" class="nav-link" data-scroll-target="#四矩阵的运算"><span class="header-section-number">4</span> 四、矩阵的运算</a>
   <ul class="collapse">
-  <li><a href="#一矩阵的乘法-1" id="toc-一矩阵的乘法-1" class="nav-link" data-scroll-target="#一矩阵的乘法-1">（一）矩阵的乘法</a></li>
-  <li><a href="#二矩阵的转置运算" id="toc-二矩阵的转置运算" class="nav-link" data-scroll-target="#二矩阵的转置运算">（二）矩阵的转置运算</a></li>
-  <li><a href="#三方阵的行列式" id="toc-三方阵的行列式" class="nav-link" data-scroll-target="#三方阵的行列式">（三）方阵的行列式</a></li>
-  <li><a href="#四生成对角矩阵和对矩阵取对角运算" id="toc-四生成对角矩阵和对矩阵取对角运算" class="nav-link" data-scroll-target="#四生成对角矩阵和对矩阵取对角运算">(四)生成对角矩阵和对矩阵取对角运算</a></li>
+  <li><a href="#一矩阵的乘法-1" id="toc-一矩阵的乘法-1" class="nav-link" data-scroll-target="#一矩阵的乘法-1"><span class="header-section-number">4.1</span> （一）矩阵的乘法</a></li>
+  <li><a href="#二矩阵的转置运算" id="toc-二矩阵的转置运算" class="nav-link" data-scroll-target="#二矩阵的转置运算"><span class="header-section-number">4.2</span> （二）矩阵的转置运算</a></li>
+  <li><a href="#三方阵的行列式" id="toc-三方阵的行列式" class="nav-link" data-scroll-target="#三方阵的行列式"><span class="header-section-number">4.3</span> （三）方阵的行列式</a></li>
+  <li><a href="#四生成对角矩阵和对矩阵取对角运算" id="toc-四生成对角矩阵和对矩阵取对角运算" class="nav-link" data-scroll-target="#四生成对角矩阵和对矩阵取对角运算"><span class="header-section-number">4.4</span> (四)生成对角矩阵和对矩阵取对角运算</a></li>
   </ul></li>
-  <li><a href="#五与矩阵运算有关的函数" id="toc-五与矩阵运算有关的函数" class="nav-link" data-scroll-target="#五与矩阵运算有关的函数">五、与矩阵运算有关的函数</a>
+  <li><a href="#五与矩阵运算有关的函数" id="toc-五与矩阵运算有关的函数" class="nav-link" data-scroll-target="#五与矩阵运算有关的函数"><span class="header-section-number">5</span> 五、与矩阵运算有关的函数</a>
   <ul class="collapse">
-  <li><a href="#一去矩阵的维数" id="toc-一去矩阵的维数" class="nav-link" data-scroll-target="#一去矩阵的维数">（一）去矩阵的维数</a></li>
-  <li><a href="#二矩阵的合并" id="toc-二矩阵的合并" class="nav-link" data-scroll-target="#二矩阵的合并">（二）矩阵的合并</a></li>
-  <li><a href="#三矩阵的拉直把矩阵转化为向量" id="toc-三矩阵的拉直把矩阵转化为向量" class="nav-link" data-scroll-target="#三矩阵的拉直把矩阵转化为向量">（三）矩阵的拉直（把矩阵转化为向量）</a></li>
-  <li><a href="#四apply函数" id="toc-四apply函数" class="nav-link" data-scroll-target="#四apply函数">（四）apply函数</a></li>
+  <li><a href="#一去矩阵的维数" id="toc-一去矩阵的维数" class="nav-link" data-scroll-target="#一去矩阵的维数"><span class="header-section-number">5.1</span> （一）去矩阵的维数</a></li>
+  <li><a href="#二矩阵的合并" id="toc-二矩阵的合并" class="nav-link" data-scroll-target="#二矩阵的合并"><span class="header-section-number">5.2</span> （二）矩阵的合并</a></li>
+  <li><a href="#三矩阵的拉直把矩阵转化为向量" id="toc-三矩阵的拉直把矩阵转化为向量" class="nav-link" data-scroll-target="#三矩阵的拉直把矩阵转化为向量"><span class="header-section-number">5.3</span> （三）矩阵的拉直（把矩阵转化为向量）</a></li>
+  <li><a href="#四apply函数" id="toc-四apply函数" class="nav-link" data-scroll-target="#四apply函数"><span class="header-section-number">5.4</span> （四）apply函数</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -293,12 +309,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="一生成数组或矩阵" class="level2">
-<h2 class="anchored" data-anchor-id="一生成数组或矩阵">一、生成数组或矩阵</h2>
+<section id="一生成数组或矩阵" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="一生成数组或矩阵"><span class="header-section-number">1</span> 一、生成数组或矩阵</h2>
 <p>数组（array）可以看成是带多个下标的类型相同的集合，常用的是数值型的数组如矩阵（数值型二维数组），也可以有其它类型（如字符型、逻辑性、复数型）。R软件可以很容易地生成和处理数组，特别是矩阵。</p>
 <p>数组有一个特征属性叫做维数向量（dim属性），维数向量是一个元素取正整数的向量，其长度是数组的维数，比如维数向量有两个元素时数组为二维数组（如矩阵）。维数向量的每一个元素指定了该下标的上界，下标的下界总为1.</p>
-<section id="一将向量定义为数组" class="level3">
-<h3 class="anchored" data-anchor-id="一将向量定义为数组">（一）将向量定义为数组</h3>
+<section id="一将向量定义为数组" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="一将向量定义为数组"><span class="header-section-number">1.1</span> （一）将向量定义为数组</h3>
 <p>向量可以直接看作为一个一维数组，但要将向量定义为二维以上的数组，需要定义维数向量（dim属性）。比如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_4522b90fd8bae137a22f644812141a53">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>z<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span>
@@ -338,8 +354,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="二用array函数构造多维数组" class="level3">
-<h3 class="anchored" data-anchor-id="二用array函数构造多维数组">（二）用array（）函数构造多维数组</h3>
+<section id="二用array函数构造多维数组" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="二用array函数构造多维数组"><span class="header-section-number">1.2</span> （二）用array（）函数构造多维数组</h3>
 <p>R软件可以用array（）函数直接构造数组，其构造形式为：</p>
 <p>array(data=NA, dim=length(data) ,dimnames=NULL)</p>
 <p>其中data是一个向量数据，dim是数组各维的长度，缺省时为原向量的长度。dimnames是数组维的名字，缺省时为空。如： 产生一个4*5的二维数组（矩阵），即：</p>
@@ -389,8 +405,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>产生一个4*5零矩阵。</p>
 </section>
-<section id="三用matrix函数构造矩阵" class="level3">
-<h3 class="anchored" data-anchor-id="三用matrix函数构造矩阵">（三）用matrix（）函数构造矩阵</h3>
+<section id="三用matrix函数构造矩阵" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="三用matrix函数构造矩阵"><span class="header-section-number">1.3</span> （三）用matrix（）函数构造矩阵</h3>
 <p>函数matrix（）是专门用来构造矩阵（二维数组）的函数，其构造形式为</p>
 <p>matrix(data=NA,nrow=1,ncol=1,byrow=FALSE,dimnames=NULL)</p>
 <p>其中data是一个向量数据，nrow是矩阵的行数，ncol是矩阵的列数。当byrow=TRUE时，生成矩阵的数据按行放置，缺省时，相当于byrow=FALSE，按列放置。dimnames是数组维的名字，缺省时为空。 比如，构造一个3*5阶的矩阵</p>
@@ -411,11 +427,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 </section>
-<section id="二数组的下标" class="level2">
-<h2 class="anchored" data-anchor-id="二数组的下标">二、数组的下标</h2>
+<section id="二数组的下标" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="二数组的下标"><span class="header-section-number">2</span> 二、数组的下标</h2>
 <p>要访问数组的某个元素，只要写出数组名和方括号内的用逗号分开的下标即可，或进行运算。</p>
-<section id="一数组的下标" class="level3">
-<h3 class="anchored" data-anchor-id="一数组的下标">（一）数组的下标</h3>
+<section id="一数组的下标" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="一数组的下标"><span class="header-section-number">2.1</span> （一）数组的下标</h3>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-10_5ad11fdc8f604fe02b5445d8f55349aa">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>  a<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">24</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a> <span class="fu">dim</span>(a)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
@@ -435,8 +451,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>注意：因为第一维只有一个下标，所以退化了，得到一个维数向量为2*2的数组。 另外,如果略写某一维的下标，则表示该维全选，例如：</p>
 </section>
-<section id="二不规则的数组下标" class="level3">
-<h3 class="anchored" data-anchor-id="二不规则的数组下标">（二）不规则的数组下标</h3>
+<section id="二不规则的数组下标" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="二不规则的数组下标"><span class="header-section-number">2.2</span> （二）不规则的数组下标</h3>
 <p>在R语言中，甚至可以把数组中的任意位置的元素作为数组访问，其方法就是用一个二维数组作为数组的下标，二维数组的每一行就是一个元素的下标，列数为数组的维数。例如要把上面的性状为3*3的矩阵A的第[1,1] [1,3] [2,1] [2,2]号元素作为一个整体访问，先定义一个包含这些下标作为行的二维数组。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-12_961b958d8b617af9570e74cfe5421f34">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>b<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>),<span class="at">ncol=</span><span class="dv">2</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
@@ -515,10 +531,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 </section>
-<section id="三数组的四则运算" class="level2">
-<h2 class="anchored" data-anchor-id="三数组的四则运算">三、数组的四则运算</h2>
-<section id="一矩阵的乘法" class="level3">
-<h3 class="anchored" data-anchor-id="一矩阵的乘法">（一）矩阵的乘法</h3>
+<section id="三数组的四则运算" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="三数组的四则运算"><span class="header-section-number">3</span> 三、数组的四则运算</h2>
+<section id="一矩阵的乘法" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="一矩阵的乘法"><span class="header-section-number">3.1</span> （一）矩阵的乘法</h3>
 <p>可以对数组之间进行四则运算(+、-、*、/)，这时进行的是数组对应元素的四则运算，参加运算的数组一般应该是相同性状的（dim属性完全相同）例如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-16_d55c4f64b8b1403ba84a7d2c8e1cd042">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>,<span class="at">byrow=</span>T)</span>
@@ -559,10 +575,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>从这个例子可以看出，数组的加、减运算和数乘运算满足原矩阵运算的性质，但数组的乘、除法运算实际上是数组中对应位置的元素作运算。</p>
 </section>
 </section>
-<section id="四矩阵的运算" class="level2">
-<h2 class="anchored" data-anchor-id="四矩阵的运算">四、矩阵的运算</h2>
-<section id="一矩阵的乘法-1" class="level3">
-<h3 class="anchored" data-anchor-id="一矩阵的乘法-1">（一）矩阵的乘法</h3>
+<section id="四矩阵的运算" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="四矩阵的运算"><span class="header-section-number">4</span> 四、矩阵的运算</h2>
+<section id="一矩阵的乘法-1" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="一矩阵的乘法-1"><span class="header-section-number">4.1</span> （一）矩阵的乘法</h3>
 <p>如果矩阵A和B具有相同的维数，则A<em>B表示矩阵中对应的元素的乘积A%</em>%B表示通常意义下的两个矩阵的乘积（当然要求矩阵A的列数等于矩阵B的行数）。如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-20_cf4f66f2530512589214f5d4a3d37da4">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="at">nrow=</span><span class="dv">3</span>)</span>
@@ -604,8 +620,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="二矩阵的转置运算" class="level3">
-<h3 class="anchored" data-anchor-id="二矩阵的转置运算">（二）矩阵的转置运算</h3>
+<section id="二矩阵的转置运算" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="二矩阵的转置运算"><span class="header-section-number">4.2</span> （二）矩阵的转置运算</h3>
 <p>对于矩阵A，函数t(A)表示矩阵A的转置，即AT 如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-24_ee63b85512d82eb663bcbdb916325523">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
@@ -626,8 +642,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="三方阵的行列式" class="level3">
-<h3 class="anchored" data-anchor-id="三方阵的行列式">（三）方阵的行列式</h3>
+<section id="三方阵的行列式" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="三方阵的行列式"><span class="header-section-number">4.3</span> （三）方阵的行列式</h3>
 <p>函数det（）是用来求方阵行列式的值，如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-26_6a9378ee7ed3c085e3c5762bc03dc722">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">det</span>(<span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="at">ncol=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -636,8 +652,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="四生成对角矩阵和对矩阵取对角运算" class="level3">
-<h3 class="anchored" data-anchor-id="四生成对角矩阵和对矩阵取对角运算">(四)生成对角矩阵和对矩阵取对角运算</h3>
+<section id="四生成对角矩阵和对矩阵取对角运算" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="四生成对角矩阵和对矩阵取对角运算"><span class="header-section-number">4.4</span> (四)生成对角矩阵和对矩阵取对角运算</h3>
 <p>函数diag()依赖于它的变量，当v是一个向量时，diag(v)表示以v的元素为对角元素的对角阵。当M是一个矩阵时，则diag(M)表示的是取M对角线上的元素的向量。如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-27_5e26a695637f6044e222a135f3ce2da9">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>v<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
@@ -667,10 +683,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 </section>
-<section id="五与矩阵运算有关的函数" class="level2">
-<h2 class="anchored" data-anchor-id="五与矩阵运算有关的函数">五、与矩阵运算有关的函数</h2>
-<section id="一去矩阵的维数" class="level3">
-<h3 class="anchored" data-anchor-id="一去矩阵的维数">（一）去矩阵的维数</h3>
+<section id="五与矩阵运算有关的函数" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="五与矩阵运算有关的函数"><span class="header-section-number">5</span> 五、与矩阵运算有关的函数</h2>
+<section id="一去矩阵的维数" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="一去矩阵的维数"><span class="header-section-number">5.1</span> （一）去矩阵的维数</h3>
 <p>函数dim（A）得到矩阵的维数，函数nrow(A)得到矩阵A的行数，函数ncol(A)得到矩阵A的列数。如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-30_764b14f55905e67f7799a3e61d5b111d">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
@@ -700,8 +716,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="二矩阵的合并" class="level3">
-<h3 class="anchored" data-anchor-id="二矩阵的合并">（二）矩阵的合并</h3>
+<section id="二矩阵的合并" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="二矩阵的合并"><span class="header-section-number">5.2</span> （二）矩阵的合并</h3>
 <p>函数cbind()把其自变量横向拼成一个大矩阵，rbind()把其自变量纵向合拼成一个大矩阵。cbind()的自变量是矩阵或看做列向量的向量时，自变量的高度应该相等。rbind()的自变量是矩阵或看做行向量的向量时，自变量的宽度应该相等。</p>
 <p>如果参与合并的的自变量比其变量短，则循环补足后合并。如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-34_c666f0fa0db3b9c67b0b53eb6103c87c">
@@ -743,8 +759,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="三矩阵的拉直把矩阵转化为向量" class="level3">
-<h3 class="anchored" data-anchor-id="三矩阵的拉直把矩阵转化为向量">（三）矩阵的拉直（把矩阵转化为向量）</h3>
+<section id="三矩阵的拉直把矩阵转化为向量" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="三矩阵的拉直把矩阵转化为向量"><span class="header-section-number">5.3</span> （三）矩阵的拉直（把矩阵转化为向量）</h3>
 <p>设A是一个矩阵，则函数as.vector(A)可以将矩阵转化为向量，它是将矩阵A按列拉成向量。如：</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-38_01c602dd4080fe5ff98a1fbddba5a69d">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
@@ -771,8 +787,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="四apply函数" class="level3">
-<h3 class="anchored" data-anchor-id="四apply函数">（四）apply函数</h3>
+<section id="四apply函数" class="level3" data-number="5.4">
+<h3 data-number="5.4" class="anchored" data-anchor-id="四apply函数"><span class="header-section-number">5.4</span> （四）apply函数</h3>
 <p>对于想对矩阵的各行或各列进行某种计算，可用apply函数，其一般形式为：</p>
 <p>apply（A，MARGIN，FUN，…）</p>
 <p>其中A为一个矩阵（或数组），MARGIN取1，代表对行进行运算；MARGIN取2，代表队列进行运算，FUN是用来计算的函数。如：</p>
@@ -831,9 +847,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -898,6 +928,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -943,6 +1059,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Copyright@Qiong Chen</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

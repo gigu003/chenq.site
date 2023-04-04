@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.14">
+<meta name="generator" content="quarto-1.3.238">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,7 +20,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -63,7 +63,14 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-    .quarto-title-block .quarto-title-banner {
+    .quarto-title-block .quarto-title-banner,
+    .quarto-title-block .quarto-title-banner h1,
+    .quarto-title-block .quarto-title-banner h2,
+    .quarto-title-block .quarto-title-banner h3,
+    .quarto-title-block .quarto-title-banner h4,
+    .quarto-title-block .quarto-title-banner h5,
+    .quarto-title-block .quarto-title-banner h6
+    {
       color: #c8c8c8;
     }
     </style>
@@ -99,54 +106,56 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../qsight/" rel=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
 </i> 
  <span class="menu-text">Qsight博客</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://diary.chenq.site" rel=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://diary.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
 </i> 
  <span class="menu-text">随笔录</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel=""><i class="bi bi-hexagon" role="img">
+    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel="" target=""><i class="bi bi-hexagon" role="img">
 </i> 
  <span class="menu-text">Packages</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications/" rel=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
 </i> 
  <span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../slides/" rel=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="../../slides/" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
 </i> 
  <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../qsight/index.xml" rel=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -180,6 +189,12 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">更新时间</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">April 4, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -192,9 +207,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">本页内容</h2>
    
   <ul>
-  <li><a href="#全球宫颈癌消除计划" id="toc-全球宫颈癌消除计划" class="nav-link active" data-scroll-target="#全球宫颈癌消除计划">全球宫颈癌消除计划</a></li>
-  <li><a href="#中国宫颈癌的疾病负担" id="toc-中国宫颈癌的疾病负担" class="nav-link" data-scroll-target="#中国宫颈癌的疾病负担">中国宫颈癌的疾病负担</a></li>
-  <li><a href="#目前存在问题" id="toc-目前存在问题" class="nav-link" data-scroll-target="#目前存在问题">目前存在问题</a></li>
+  <li><a href="#全球宫颈癌消除计划" id="toc-全球宫颈癌消除计划" class="nav-link active" data-scroll-target="#全球宫颈癌消除计划"><span class="header-section-number">1</span> 全球宫颈癌消除计划</a></li>
+  <li><a href="#中国宫颈癌的疾病负担" id="toc-中国宫颈癌的疾病负担" class="nav-link" data-scroll-target="#中国宫颈癌的疾病负担"><span class="header-section-number">2</span> 中国宫颈癌的疾病负担</a></li>
+  <li><a href="#目前存在问题" id="toc-目前存在问题" class="nav-link" data-scroll-target="#目前存在问题"><span class="header-section-number">3</span> 目前存在问题</a></li>
   </ul>
 </nav>
     </div>
@@ -204,8 +219,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="全球宫颈癌消除计划" class="level2">
-<h2 class="anchored" data-anchor-id="全球宫颈癌消除计划">全球宫颈癌消除计划</h2>
+<section id="全球宫颈癌消除计划" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="全球宫颈癌消除计划"><span class="header-section-number">1</span> 全球宫颈癌消除计划</h2>
 <p>全球宫颈癌消除计划（Global Cervical Cancer Elimination Initiative，简称CCCI）是由世界卫生组织（WHO）和国际癌症研究机构（IARC）于2018年联合发起的一个全球性项目，旨在推动全球范围内宫颈癌的消除工作，实现2030年前宫颈癌发病率和死亡率的显著降低。</p>
 <p>该计划制定了以下目标，从而促进全球范围内宫颈癌防治工作的整体推进。</p>
 <ul>
@@ -222,15 +237,15 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>中国于2018年宣布加入“全球消除宫颈癌计划”，这对于推动中国宫颈癌的防治工作，提高全民的宫颈癌认识和防范意识，具有重要的意义。</p>
 </section>
-<section id="中国宫颈癌的疾病负担" class="level2">
-<h2 class="anchored" data-anchor-id="中国宫颈癌的疾病负担">中国宫颈癌的疾病负担</h2>
+<section id="中国宫颈癌的疾病负担" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="中国宫颈癌的疾病负担"><span class="header-section-number">2</span> 中国宫颈癌的疾病负担</h2>
 <p>中国女性宫颈癌的疾病负担较重，中国肿瘤登记数据显示，2016年宫颈癌粗发病率和粗死亡率分别为17.69/10万和5.52/10万，其标化率分别为11.34/10万和3.36/10万。中国宫颈癌的发病率和死亡率在全球不同国家和地区之中处于中等偏下，略低于全球平均的宫颈癌的发病率和死亡率分（13.3/10万和7.3/10万）以及非洲、南美和南亚地区，而高于欧洲，北美及西亚等地区。</p>
 <p>虽然中国宫颈癌的发病率和死亡率处于全球平均水平偏下，但是每年的新发宫颈癌发病例数和死亡病例数分别达到了11.93万例和3.72万例，占全球宫颈癌发病和死亡病例数的19.75%和10.88%。</p>
 <p>在中国的不同地区之间，宫颈癌发病率呈现农村高于城市，中西部地区高于东部地区的特点。</p>
 <p>中国在承受宫颈癌较高的疾病负担的同时，其发病率和死亡率也呈现明显的上升趋势，在2000年至2016年期间，宫颈癌发病率以平均每年8.5%和5.4%的速度上升。</p>
 </section>
-<section id="目前存在问题" class="level2">
-<h2 class="anchored" data-anchor-id="目前存在问题">目前存在问题</h2>
+<section id="目前存在问题" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="目前存在问题"><span class="header-section-number">3</span> 目前存在问题</h2>
 <p>HPV疫苗确实能阻断HPV的感染，而效果</p>
 
 
@@ -264,9 +279,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -331,6 +360,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -376,6 +491,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Copyright@Qiong Chen</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
