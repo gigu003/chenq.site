@@ -14,16 +14,7 @@ mainfont: "Hiragino Sans GB"
 format:
   html: default
   docx: default
-  pdf: 
-    documentclass: report
-    lof: true
-    lot: true
-    geometry:
-      - top=30mm
-      - left=20mm
-      - heightrounded
-    colorlinks: true
-format-links: [pdf,docx]
+format-links: [docx]
 image: formats.jpg
 ---
 
