@@ -4,6 +4,7 @@
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
 freeze: auto
 author: 陈琼
+date-modified: last-modified
 
 title-block-banner: true
 title-block-banner-color: "#c8c8c8"
@@ -13,6 +14,7 @@ format:
   html:
     toc: true
     toc-location: right
+    number-sections: true
     
 comments:
   utterances:
