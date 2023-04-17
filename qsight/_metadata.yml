@@ -6,6 +6,11 @@ freeze: auto
 author: 陈琼
 date-modified: last-modified
 
+editor:
+  markdown:
+    wrap: 72
+    canonical: true
+
 title-block-banner: true
 title-block-banner-color: "#c8c8c8"
 title-block-categories: true
@@ -15,6 +20,7 @@ format:
     toc: true
     toc-location: right
     number-sections: true
+
     
 comments:
   utterances:
