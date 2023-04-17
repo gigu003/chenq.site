@@ -10,7 +10,643 @@
 <atom:link href="https://www.chenq.site/qsight/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
 <generator>quarto-1.3.238</generator>
-<lastBuildDate>Tue, 04 Apr 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 09 Apr 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>基于”periodR”包利用现时生存分析法计算人群癌症5年相对生存率</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://www.chenq.site/qsight/2023-04-09-relativesurvival/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<blockquote class="blockquote">
+<p>人群癌症5年生存率是评估包括癌症筛查、诊断、治疗以及管理等癌症综合防治效果的关键指标，是制定和优化癌症防控政策和措施的重要参考数据，它与一个地区的基础医疗水平、诊断设备的可及性等多种因素相关。 本篇博文将介绍如何利用人群肿瘤登记数据进行癌症5年相对生存率的数据分析过程。</p>
+</blockquote>
+<section id="基本概念" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="基本概念"><span class="header-section-number">1</span> 基本概念</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+什么是5年生存率
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>通俗的讲，5年生存率是就是诊断癌症后，生存期满5年的病人所占的比例。</p>
+</div>
+</div>
+<section id="相对生存率" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="相对生存率"><span class="header-section-number">1.1</span> 相对生存率</h3>
+<p>根据死因竞争风险分析理论，癌症病人的死亡危险分别来自两个相互独立的方面:病人所患疾病(癌症)和除此之外的其它方面。后者指不同性别、年龄、种族和年代的人群本身所存在的基础死亡危险。它们分别可由研究人群的<strong>观察生存率</strong>和相应的一般人群的<strong>期望生存率</strong>来反映。</p>
+<p><strong>相对生存率</strong>定义为研究人群的<strong>观察生存率</strong>与假定其为一般人群时的<strong>期望生存率</strong>之比,校正了诸如性别、年龄、种族和年代等因素对病人生存情况的影响。因而用<strong>相对生存率</strong>作为地区或人群间生存率水平的比较指标,比观察生存率能更好地说明问题。</p>
+<p><strong>观察生存率</strong>反映的是研究人群的总的死亡危险,而<strong>相对生存率</strong>反映的是肿瘤的超额死亡危险。如果相对生存率越接近于 100%,则表明研究人群的预后越好,反之越差。所以它既可以象观察生存率一样用于描述研究人群的生存水平或预后优劣, 也可以作为观察生存率的标化指标。</p>
+</section>
+<section id="感兴趣时期" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="感兴趣时期"><span class="header-section-number">1.2</span> 感兴趣时期</h3>
+<p>我们在分析癌症生存率之前，首先要确定一段时间范围作为<em>“感兴趣时期”</em>，本篇博文的分析将把<em>“2017-2019年”</em>作为感兴趣时期，我们要计算这个时期癌症病例的5年生存率，最真实准确的方法是将<em>2017-2019年</em>的确诊的癌症病例分别随访至<em>2022-2024年</em>，然后计算活满5年的人数所占的比例。在当前的时间（2023年），很显然无法得到全部癌症病例的5年随访数据来计算真实生存率，我们就需要采用其他方法进行估算。</p>
+</section>
+<section id="完全数据" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="完全数据"><span class="header-section-number">1.3</span> 完全数据</h3>
+<p>在癌症病例的随访过程中，能够明确观察记录到病例的生存时间，或者发生终点事件的具体时间，这样的数据为完全数据。生存时间是指从规定的起始观察事件到发生特定的终点事件之间的经历的时间跨度。在人群肿瘤登记数据的生存分析中，起始事件一般为明确诊断为癌症，而终止事件一般为因癌症死亡。</p>
+</section>
+<section id="不完全数据" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="不完全数据"><span class="header-section-number">1.4</span> 不完全数据</h3>
+<p>与完全数据相反，研究结束时，研究对象发生了研究设定的终点事件之外的其他事件，从而导致无法明确记录从起始观察到发生终点事件之间的生存时间，这类数据称之为不完全数据。</p>
+<p>在人群肿瘤登记数据中，在癌症病例随访过程的截止不是由“癌症死亡”引起的，而是由其他原因引起。</p>
+<p>不完全数据分为：删失数据和截尾数据。</p>
+<p>不完全数据的主要原因有：</p>
+<ul>
+<li>失访： 失去联系</li>
+<li>退出： 死于非研究因素或非处理因素而退出研究。对于人群肿瘤登记数据来说，如果癌症患者死于癌症以外的其他原因，如意外、交通事故等，也是退出。</li>
+<li>终止： 因为已经到研究设定的<strong>随访截止日期</strong>而终止随访观察，但是研究对象仍然存活。</li>
+</ul>
+</section>
+<section id="删失和截尾" class="level3" data-number="1.5">
+<h3 data-number="1.5" class="anchored" data-anchor-id="删失和截尾"><span class="header-section-number">1.5</span> 删失和截尾</h3>
+<p><strong>删失的分类</strong></p>
+<ul>
+<li><em>左删失：</em>研究对象在某一时刻开始接受观察，但是在该时间点之前，研究所感兴趣的事件已经发生，无法明确具体时间。</li>
+<li><em>右删失：</em>在进行随访观察中，研究对象观察的起始时间已知，但终点事件发生的时间未知，无法获取具体的生存时间，只知道生存时间大于观察时间。</li>
+</ul>
+<p>截尾是所有样本的综合特性，指的是观察的总体是有偏的，只有当事件的失效时间出现在观测区间内，我们才能知道这个事件及其观测数据的存在。</p>
+<ul>
+<li>左截尾（left truncation）：只能观测到一个时间点之后发生的失效事件。左截尾时间点之前发生的失效事件不知情/不关心（如样本来自退休中心，都是&gt;60岁的老人）。</li>
+<li>右截尾（right truncation）：只能观测到一个时间点之前发生的失效事件。右截尾时间点之后发生的失效事件不知情/不关心</li>
+</ul>
+</section>
+</section>
+<section id="现时生存分析方法介绍" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="现时生存分析方法介绍"><span class="header-section-number">2</span> 现时生存分析方法介绍</h2>
+<section id="不同生存率估计方法比较" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="不同生存率估计方法比较"><span class="header-section-number">2.1</span> 不同生存率估计方法比较</h3>
+<p><strong>相对生存率</strong>的估计方法有<em>队列法</em>（cohort method）、<em>完全法</em>（complete method）、<em>现时生存分析法</em>（period survival analysis）、<em>混合法</em>（hybrid method）和<em>预测法</em>（projection method），不同的生存率估计方法纳入的确诊病例和随访时间有所不同，具体不同可以见下图<span class="citation" data-cites="张华2014">(张华 et al. 2014)</span>。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_fd7e9a7fbaa63140322f64db114d415a">
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2023-04-09-relativesurvival/followup.jpg" class="img-fluid" width="756"></p>
+</div>
+</div>
+<p>以上不同的方法具有不同的优缺点，传统的队列法和完全法由于纳入的病例中均包含了感兴趣时期之前确诊的病例，因此不能反映最新最及时的生存情况。</p>
+</section>
+<section id="现时生存分析" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="现时生存分析"><span class="header-section-number">2.2</span> 现时生存分析</h3>
+<p>现时生存分析由德国流行病学家 Hermann Brenner于1996年首先提出，至2002年逐渐发展成熟。</p>
+<p>现时生存分析（period survival analysis）纳入的研究对象分为两部分，一部分是感兴趣时期新确诊的所有病例，另一部分是感兴趣时期之前确诊而且在感兴趣时期仍然存活的病例。本研究的感兴趣时期设定为<em>2017-2019年</em>，那研究对象就需要纳入2017-2019年期间所有新确诊癌症病例以及2017-2019年之前确诊并在2017-2019年期间仍存活的癌症病例。</p>
+<p>现时生存分析在感兴趣时期纳入了新确诊癌症病例数据和随访数据，因此该方法更接近真实生存率。</p>
+</section>
+<section id="现时生存分析的估计精度" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="现时生存分析的估计精度"><span class="header-section-number">2.3</span> 现时生存分析的估计精度</h3>
+<p>由于现时生存分析方法纳入的病例数相对于<em>完全法</em>来说要少，因此，该方法估计生存率的精确度和稳健度比其他方法偏低，估计生存率的方差也偏大一些，因此，我们在利用该方法估计生存率的时候应注意把握估计精确度和时效性之间的平衡。</p>
+<p>但是对于省级人群肿瘤登记数据来说，数据样本量较大，生存率估计的精度能够得到保证，因此，评估的时效性成为优先考虑的问题，现时生存分析成为评估人群癌症生存率的优先选项。</p>
+</section>
+</section>
+<section id="统计软件包的安装" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="统计软件包的安装"><span class="header-section-number">3</span> 统计软件包的安装</h2>
+<p>本篇博文介绍利用现时法统计模型估计癌症5年生存率，这种方法能够提高生存率估计的时效性。我们将使用Brenner等编写的R包“periodR”进行相对生存率的估计，你可以<a href="https://krebsregister.saarland.de/daten-auswertungen-veroeffentlichungen/software/periodr-english/">在这里下载R包</a>，并安装使用。</p>
+<p>点开链接之后，可以根据自己使用的操作系统和R语言版本选择相应的安装包。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_d3158a34884419afa391d818dbd27101">
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2023-04-09-relativesurvival/periodR.jpg" class="img-fluid" width="692"></p>
+</div>
+</div>
+<p>下载之后，我们可以看到一个名为<strong>periodR_1.0-6.tar.gz</strong>的压缩包，使用下面的R语言安装所下载的R包。</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">install.packages</span>(<span class="st" style="color: #20794D;">'periodR_1.0-6.tar.gz'</span>, <span class="at" style="color: #657422;">repos=</span><span class="cn" style="color: #8f5902;">NULL</span>, <span class="at" style="color: #657422;">type=</span><span class="st" style="color: #20794D;">'source'</span>)</span></code></pre></div>
+</section>
+<section id="数据准备" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="数据准备"><span class="header-section-number">4</span> 数据准备</h2>
+<section id="数据来源" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="数据来源"><span class="header-section-number">4.1</span> 数据来源</h3>
+<p>本篇博文拟分析河南省肿瘤登记处覆盖地区的癌症患者5年相对生存率，数据来源分为两部分，第一部分为肿瘤登记地区癌症患者生存信息用于计算观察生存率，另一部分来源于各肿瘤登记处上报的寿命表数据用于计算一般人群的期望生存率。</p>
+</section>
+<section id="肿瘤登记处的筛选" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="肿瘤登记处的筛选"><span class="header-section-number">4.2</span> 肿瘤登记处的筛选</h3>
+<p>我们要使用河南省肿瘤登记数据估计河南省癌症5年相对生存率，首先要做的是选择使用哪些登记处的数据进行生存分析，河南省肿瘤登记已经覆盖全省人口的90%以上，但是数据质量差异很大。</p>
+<p>为了使生存分析的结果能够真实反映河南省癌症人群的真实生存情况，我们选择纳入分析的登记处必须满足下面的条件，即其2014年肿瘤登记数据被纳入《河南省肿瘤登记年报》，这样纳入的癌症病例能够基本反映登记地区的癌症病人总体的发病、死亡及生存情况。</p>
+<p>提前加载数据分析相关的R包</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;">library</span>(haven)</span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;">library</span>(Hmisc)</span>
+<span id="cb2-4"><span class="fu" style="color: #4758AB;">library</span>(canregtools)</span>
+<span id="cb2-5"><span class="fu" style="color: #4758AB;">library</span>(lubridate)</span>
+<span id="cb2-6"><span class="fu" style="color: #4758AB;">library</span>(periodR)</span>
+<span id="cb2-7"><span class="fu" style="color: #4758AB;">library</span>(flextable)</span>
+<span id="cb2-8"><span class="fu" style="color: #4758AB;">library</span>(kableExtra)</span>
+<span id="cb2-9"><span class="fu" style="color: #4758AB;">library</span>(gtsummary)</span></code></pre></div>
+<p>筛选入选河南省肿瘤登记年报的登记处数据</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_0309a36ee0aa364dad5a5450dc8572e7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 从code字典里筛选出2014年年报纳入的登记处</span></span>
+<span id="cb3-2">registrys <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">mdb.get</span>(<span class="st" style="color: #20794D;">"code.mdb"</span>,<span class="at" style="color: #657422;">tables =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"registry"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;">filter</span>(report2014<span class="sc" style="color: #5E5E5E;">==</span><span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-4">  <span class="fu" style="color: #4758AB;">select</span>(areacode,city,county)</span>
+<span id="cb3-5">areacodes <span class="ot" style="color: #003B4F;">&lt;-</span> registrys<span class="sc" style="color: #5E5E5E;">$</span>areacode</span>
+<span id="cb3-6"></span>
+<span id="cb3-7">registrys<span class="sc" style="color: #5E5E5E;">$</span>areacode <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">as.character</span>(registrys<span class="sc" style="color: #5E5E5E;">$</span>areacode)</span>
+<span id="cb3-8"></span>
+<span id="cb3-9"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 读取肿瘤登记数据</span></span>
+<span id="cb3-10">canreg <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read_sas</span>(<span class="st" style="color: #20794D;">"tumorinfo.sas7bdat.zip"</span>)</span>
+<span id="cb3-11">canreg <span class="ot" style="color: #003B4F;">&lt;-</span> canreg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-12">  <span class="co" style="color: #5E5E5E;">#把入选2014年年报的登记处筛选出来</span></span>
+<span id="cb3-13">  <span class="fu" style="color: #4758AB;">filter</span>(areacode <span class="sc" style="color: #5E5E5E;">%in%</span> areacodes)</span></code></pre></div>
+</details>
+</div>
+</section>
+<section id="按照现时生存分析筛选病例" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="按照现时生存分析筛选病例"><span class="header-section-number">4.3</span> 按照现时生存分析筛选病例</h3>
+<p>考虑到我们设定的“感兴趣时期”为2017-2019年，按照<strong>现时生存分析</strong>方法纳入病例的原则，我们需要纳入2017-2019年期间新诊断的所有癌症患者以及在这个时期之前诊断且在2017-2019年期间内仍存活的癌症病例。</p>
+<p>按照上面的筛选标准，继续对上一步输出的数据进行范围筛查</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_333f4d8534c43755482bcb088df88a47">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1">canreg <span class="ot" style="color: #003B4F;">&lt;-</span> canreg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb4-2"><span class="fu" style="color: #4758AB;">rename_all</span>(tolower) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">dy =</span> <span class="fu" style="color: #4758AB;">year</span>(inciden),</span>
+<span id="cb4-4">    <span class="at" style="color: #657422;">dm =</span> <span class="fu" style="color: #4758AB;">month</span>(inciden),</span>
+<span id="cb4-5">    <span class="at" style="color: #657422;">dyear =</span> <span class="fu" style="color: #4758AB;">year</span>(deathda)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb4-6">  <span class="fu" style="color: #4758AB;">filter</span>((dy<span class="sc" style="color: #5E5E5E;">&gt;=</span><span class="dv" style="color: #AD0000;">2014</span> <span class="sc" style="color: #5E5E5E;">&amp;</span> dy<span class="sc" style="color: #5E5E5E;">&lt;=</span><span class="dv" style="color: #AD0000;">2019</span>)<span class="sc" style="color: #5E5E5E;">|</span>(dy<span class="sc" style="color: #5E5E5E;">&lt;</span><span class="dv" style="color: #AD0000;">2014</span> <span class="sc" style="color: #5E5E5E;">&amp;</span> (<span class="fu" style="color: #4758AB;">is.na</span>(dyear)<span class="sc" style="color: #5E5E5E;">|</span>dyear<span class="sc" style="color: #5E5E5E;">&gt;</span><span class="dv" style="color: #AD0000;">2019</span>)),dy<span class="sc" style="color: #5E5E5E;">&gt;=</span><span class="dv" style="color: #AD0000;">2010</span>)</span></code></pre></div>
+</details>
+</div>
+</section>
+<section id="限制生存分析的癌种范围" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="限制生存分析的癌种范围"><span class="header-section-number">4.4</span> 限制生存分析的癌种范围</h3>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_cb4370f28bd3887db3cf93d6694ae7d3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范围之内</span></span>
+<span id="cb5-2">analysis <span class="ot" style="color: #003B4F;">&lt;-</span> canreg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">autoicd10=</span><span class="fu" style="color: #4758AB;">toupper</span>(autoicd10),</span>
+<span id="cb5-4">         <span class="at" style="color: #657422;">type=</span><span class="fu" style="color: #4758AB;">substr</span>(autoicd10,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">1</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">icd_number =</span> <span class="fu" style="color: #4758AB;">as.numeric</span>(<span class="fu" style="color: #4758AB;">gsub</span>(<span class="st" style="color: #20794D;">"[^0-9</span><span class="sc" style="color: #5E5E5E;">\\</span><span class="st" style="color: #20794D;">.]"</span>, <span class="st" style="color: #20794D;">""</span>, autoicd10))) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;">filter</span>((type<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"C"</span> <span class="sc" style="color: #5E5E5E;">&amp;</span> <span class="fu" style="color: #4758AB;">between</span>(icd_number,<span class="dv" style="color: #AD0000;">0</span>,<span class="fl" style="color: #AD0000;">98.9</span>))<span class="sc" style="color: #5E5E5E;">|</span></span>
+<span id="cb5-7">        (type<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"D"</span> <span class="sc" style="color: #5E5E5E;">&amp;</span> <span class="fu" style="color: #4758AB;">between</span>(icd_number,<span class="dv" style="color: #AD0000;">32</span>,<span class="fl" style="color: #AD0000;">33.9</span>))<span class="sc" style="color: #5E5E5E;">|</span></span>
+<span id="cb5-8">        (type<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"D"</span> <span class="sc" style="color: #5E5E5E;">&amp;</span> <span class="fu" style="color: #4758AB;">between</span>(icd_number,<span class="dv" style="color: #AD0000;">42</span>,<span class="fl" style="color: #AD0000;">43.9</span>))<span class="sc" style="color: #5E5E5E;">|</span></span>
+<span id="cb5-9">        (type<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"D"</span> <span class="sc" style="color: #5E5E5E;">&amp;</span> <span class="fu" style="color: #4758AB;">between</span>(icd_number,<span class="dv" style="color: #AD0000;">45</span>,<span class="fl" style="color: #AD0000;">47.9</span>))) </span></code></pre></div>
+</details>
+</div>
+</section>
+<section id="对删失数据进行处理" class="level3" data-number="4.5">
+<h3 data-number="4.5" class="anchored" data-anchor-id="对删失数据进行处理"><span class="header-section-number">4.5</span> 对删失数据进行处理</h3>
+<p>本研究的随访截止日期设定为2019年12月31日，我们按照这个截止日期进行结尾数据的手工处理。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-6_537e5c76a64bfa234e6bca0a2383b31e">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1">analysis <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span>  </span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">diagage =</span> <span class="fu" style="color: #4758AB;">trunc</span>((birthda <span class="sc" style="color: #5E5E5E;">%--%</span> inciden) <span class="sc" style="color: #5E5E5E;">/</span> <span class="fu" style="color: #4758AB;">years</span>(<span class="dv" style="color: #AD0000;">1</span>)),</span>
+<span id="cb6-3">         <span class="at" style="color: #657422;">icdd=</span> <span class="fu" style="color: #4758AB;">classify_icd10</span>(autoicd10),</span>
+<span id="cb6-4">         <span class="at" style="color: #657422;">follow =</span> <span class="fu" style="color: #4758AB;">case_when</span>(</span>
+<span id="cb6-5">           <span class="sc" style="color: #5E5E5E;">!</span><span class="fu" style="color: #4758AB;">is.na</span>(deathda) <span class="sc" style="color: #5E5E5E;">&amp;</span> dy <span class="sc" style="color: #5E5E5E;">&lt;=</span> <span class="dv" style="color: #AD0000;">2019</span> <span class="sc" style="color: #5E5E5E;">~</span> deathda,</span>
+<span id="cb6-6">           <span class="sc" style="color: #5E5E5E;">!</span><span class="fu" style="color: #4758AB;">is.na</span>(deathda) <span class="sc" style="color: #5E5E5E;">&amp;</span> dy <span class="sc" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">2019</span> <span class="sc" style="color: #5E5E5E;">~</span> <span class="fu" style="color: #4758AB;">ymd</span>(<span class="st" style="color: #20794D;">"2019-12-31"</span>),</span>
+<span id="cb6-7">           <span class="fu" style="color: #4758AB;">is.na</span>(deathda) <span class="sc" style="color: #5E5E5E;">~</span> <span class="fu" style="color: #4758AB;">ymd</span>(<span class="st" style="color: #20794D;">"2019-12-31"</span>)),</span>
+<span id="cb6-8">         <span class="at" style="color: #657422;">vitstat =</span> <span class="fu" style="color: #4758AB;">case_when</span>(</span>
+<span id="cb6-9">           <span class="sc" style="color: #5E5E5E;">!</span><span class="fu" style="color: #4758AB;">is.na</span>(deathda) <span class="sc" style="color: #5E5E5E;">&amp;</span> dy <span class="sc" style="color: #5E5E5E;">&lt;=</span> <span class="dv" style="color: #AD0000;">2019</span> <span class="sc" style="color: #5E5E5E;">~</span> <span class="dv" style="color: #AD0000;">2</span>,</span>
+<span id="cb6-10">           <span class="sc" style="color: #5E5E5E;">!</span><span class="fu" style="color: #4758AB;">is.na</span>(deathda) <span class="sc" style="color: #5E5E5E;">&amp;</span> dy <span class="sc" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">2019</span> <span class="sc" style="color: #5E5E5E;">~</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb6-11">           <span class="fu" style="color: #4758AB;">is.na</span>(deathda) <span class="sc" style="color: #5E5E5E;">~</span> <span class="dv" style="color: #AD0000;">1</span>),</span>
+<span id="cb6-12">         <span class="at" style="color: #657422;">fm =</span> <span class="fu" style="color: #4758AB;">month</span>(follow),</span>
+<span id="cb6-13">         <span class="at" style="color: #657422;">fy =</span> <span class="fu" style="color: #4758AB;">year</span>(follow))</span></code></pre></div>
+</details>
+</div>
+</section>
+<section id="对待分析的分组变量进行处理" class="level3" data-number="4.6">
+<h3 data-number="4.6" class="anchored" data-anchor-id="对待分析的分组变量进行处理"><span class="header-section-number">4.6</span> 对待分析的分组变量进行处理</h3>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-7_2623b6f9bea6d781b97cbe8bc0224916">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1">analysis <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span>  </span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;">mutate</span>(</span>
+<span id="cb7-3">         <span class="at" style="color: #657422;">area_type =</span><span class="fu" style="color: #4758AB;">ifelse</span>(areacode <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"410302"</span>,<span class="st" style="color: #20794D;">"410303"</span>,<span class="st" style="color: #20794D;">"410304"</span>,<span class="st" style="color: #20794D;">"410305"</span>,</span>
+<span id="cb7-4">                                           <span class="st" style="color: #20794D;">"410602"</span>,<span class="st" style="color: #20794D;">"410603"</span>,<span class="st" style="color: #20794D;">"410611"</span>,</span>
+<span id="cb7-5">                                           <span class="st" style="color: #20794D;">"411102"</span>,<span class="st" style="color: #20794D;">"411103"</span>,<span class="st" style="color: #20794D;">"411104"</span>,</span>
+<span id="cb7-6">                                           <span class="st" style="color: #20794D;">"411202"</span>,<span class="st" style="color: #20794D;">"411303"</span>),<span class="st" style="color: #20794D;">"Urban"</span>,<span class="st" style="color: #20794D;">"Rural"</span>),</span>
+<span id="cb7-7">         <span class="at" style="color: #657422;">agegrp =</span> <span class="fu" style="color: #4758AB;">cut</span>(diagage, </span>
+<span id="cb7-8">                      <span class="at" style="color: #657422;">breaks =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">15</span>, <span class="dv" style="color: #AD0000;">40</span>, <span class="dv" style="color: #AD0000;">65</span>, <span class="dv" style="color: #AD0000;">85</span>, <span class="cn" style="color: #8f5902;">Inf</span>),</span>
+<span id="cb7-9">                      <span class="at" style="color: #657422;">labels =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"0-14 岁"</span>,<span class="st" style="color: #20794D;">"15-39 岁"</span>,</span>
+<span id="cb7-10">                                 <span class="st" style="color: #20794D;">"40-64 岁"</span>,<span class="st" style="color: #20794D;">"65-84 岁"</span>,</span>
+<span id="cb7-11">                                 <span class="st" style="color: #20794D;">"&gt;84 岁"</span>),</span>
+<span id="cb7-12">                      <span class="at" style="color: #657422;">right =</span> <span class="cn" style="color: #8f5902;">FALSE</span>),</span>
+<span id="cb7-13">         <span class="at" style="color: #657422;">agegrp2 =</span> <span class="fu" style="color: #4758AB;">findInterval</span>(diagage,<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">15</span>,<span class="dv" style="color: #AD0000;">40</span>,<span class="dv" style="color: #AD0000;">65</span>,<span class="dv" style="color: #AD0000;">85</span>)),</span>
+<span id="cb7-14">         <span class="at" style="color: #657422;">period =</span> <span class="fu" style="color: #4758AB;">case_when</span>(</span>
+<span id="cb7-15">           dy <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">2010</span>,<span class="dv" style="color: #AD0000;">2011</span>,<span class="dv" style="color: #AD0000;">2012</span>,<span class="dv" style="color: #AD0000;">2013</span>)<span class="sc" style="color: #5E5E5E;">~</span> <span class="st" style="color: #20794D;">"2010-2013"</span>,</span>
+<span id="cb7-16">           dy <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">2014</span>,<span class="dv" style="color: #AD0000;">2015</span>,<span class="dv" style="color: #AD0000;">2016</span>) <span class="sc" style="color: #5E5E5E;">~</span> <span class="st" style="color: #20794D;">"2014-2016"</span>,</span>
+<span id="cb7-17">           dy <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">2017</span>,<span class="dv" style="color: #AD0000;">2018</span>,<span class="dv" style="color: #AD0000;">2019</span>) <span class="sc" style="color: #5E5E5E;">~</span> <span class="st" style="color: #20794D;">"2017-2019"</span>)</span>
+<span id="cb7-18">         ) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb7-19">  <span class="fu" style="color: #4758AB;">filter</span>(<span class="sc" style="color: #5E5E5E;">!</span>(sex<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"1"</span><span class="sc" style="color: #5E5E5E;">&amp;</span>icdd<span class="sc" style="color: #5E5E5E;">%in%</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"子宫体"</span>,<span class="st" style="color: #20794D;">"子宫颈"</span>,<span class="st" style="color: #20794D;">"乳房"</span>,<span class="st" style="color: #20794D;">"卵巢"</span>))) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb7-20">  <span class="fu" style="color: #4758AB;">filter</span>(<span class="sc" style="color: #5E5E5E;">!</span>(sex<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"2"</span><span class="sc" style="color: #5E5E5E;">&amp;</span>icdd<span class="sc" style="color: #5E5E5E;">%in%</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"前列腺"</span>,<span class="st" style="color: #20794D;">"睾丸"</span>))) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb7-21">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">areacode2 =</span> <span class="fu" style="color: #4758AB;">case_when</span>(</span>
+<span id="cb7-22">    areacode <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"410302"</span>,<span class="st" style="color: #20794D;">"410303"</span>,<span class="st" style="color: #20794D;">"410304"</span>,<span class="st" style="color: #20794D;">"410305"</span>)<span class="sc" style="color: #5E5E5E;">~</span> <span class="st" style="color: #20794D;">"410300"</span>,</span>
+<span id="cb7-23">    areacode <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"410602"</span>,<span class="st" style="color: #20794D;">"410603"</span>,<span class="st" style="color: #20794D;">"410611"</span>) <span class="sc" style="color: #5E5E5E;">~</span> <span class="st" style="color: #20794D;">"410600"</span>,</span>
+<span id="cb7-24">    areacode <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"411102"</span>,<span class="st" style="color: #20794D;">"411103"</span>,<span class="st" style="color: #20794D;">"411104"</span>) <span class="sc" style="color: #5E5E5E;">~</span> <span class="st" style="color: #20794D;">"411100"</span>,</span>
+<span id="cb7-25">    <span class="at" style="color: #657422;">.default =</span> areacode )) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb7-26">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">basi2=</span><span class="fu" style="color: #4758AB;">ifelse</span>(inciden<span class="sc" style="color: #5E5E5E;">==</span>deathda<span class="sc" style="color: #5E5E5E;">&amp;!</span><span class="fu" style="color: #4758AB;">is.na</span>(deathda),<span class="dv" style="color: #AD0000;">0</span>,basi)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb7-27">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">state=</span><span class="fu" style="color: #4758AB;">ifelse</span>(areacode2<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"410300"</span> <span class="sc" style="color: #5E5E5E;">&amp;</span> state<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"9"</span>, <span class="st" style="color: #20794D;">"1"</span>, state))</span></code></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="质量控制" class="level2 page-columns page-full" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="质量控制"><span class="header-section-number">5</span> 质量控制</h2>
+<p>在进行5年相对生存率的计算之前，我们需要先评估一下各个登记处的随访的质量情况，包括DCO数据的比例、失访的情况、最终纳入分析数据的病理诊断比例等来对数据质量进行评估。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-8_d30677c9de16c177fb9ebeaf43de0112">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1">submit <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">count</span>(areacode2)</span>
+<span id="cb8-2">dco <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb8-3">  <span class="fu" style="color: #4758AB;">filter</span>(basi2<span class="sc" style="color: #5E5E5E;">==</span><span class="dv" style="color: #AD0000;">0</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-4">  <span class="fu" style="color: #4758AB;">count</span>(areacode2)</span>
+<span id="cb8-5"></span>
+<span id="cb8-6">status <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-7">  <span class="fu" style="color: #4758AB;">filter</span>(<span class="sc" style="color: #5E5E5E;">!</span>basi2<span class="sc" style="color: #5E5E5E;">==</span><span class="dv" style="color: #AD0000;">0</span>,<span class="sc" style="color: #5E5E5E;">!</span>(state <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"1"</span>,<span class="st" style="color: #20794D;">"2"</span>))) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb8-8">  <span class="fu" style="color: #4758AB;">count</span>(areacode2) </span>
+<span id="cb8-9"></span>
+<span id="cb8-10">final <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-11">  <span class="fu" style="color: #4758AB;">filter</span>(<span class="sc" style="color: #5E5E5E;">!</span>basi2<span class="sc" style="color: #5E5E5E;">==</span><span class="dv" style="color: #AD0000;">0</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-12">  <span class="fu" style="color: #4758AB;">filter</span>((state <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"1"</span>,<span class="st" style="color: #20794D;">"2"</span>)))</span>
+<span id="cb8-13"></span>
+<span id="cb8-14">selected <span class="ot" style="color: #003B4F;">&lt;-</span> final <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">count</span>(areacode2)</span>
+<span id="cb8-15"></span>
+<span id="cb8-16">mv <span class="ot" style="color: #003B4F;">&lt;-</span> final <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">filter</span>(basi <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"5"</span>,<span class="st" style="color: #20794D;">"6"</span>,<span class="st" style="color: #20794D;">"7"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">count</span>(areacode2)</span>
+<span id="cb8-17">mp <span class="ot" style="color: #003B4F;">&lt;-</span> final <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">filter</span>(reco <span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"3"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">count</span>(areacode2)</span>
+<span id="cb8-18">result <span class="ot" style="color: #003B4F;">&lt;-</span> submit <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-19">  <span class="fu" style="color: #4758AB;">left_join</span>(dco,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"areacode2"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-20">  <span class="fu" style="color: #4758AB;">left_join</span>(status,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"areacode2"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-21">  <span class="fu" style="color: #4758AB;">left_join</span>(selected,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"areacode2"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-22">  <span class="fu" style="color: #4758AB;">left_join</span>(mv,<span class="at" style="color: #657422;">by=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"areacode2"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-23">  <span class="fu" style="color: #4758AB;">left_join</span>(mp,<span class="at" style="color: #657422;">by=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"areacode2"</span>)) </span>
+<span id="cb8-24"><span class="fu" style="color: #4758AB;">colnames</span>(result) <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>( <span class="st" style="color: #20794D;">"areacode"</span>,<span class="st" style="color: #20794D;">"submit"</span>,<span class="st" style="color: #20794D;">"dco"</span>,<span class="st" style="color: #20794D;">"missfol"</span>,<span class="st" style="color: #20794D;">"analysis"</span>,<span class="st" style="color: #20794D;">"mv"</span>,<span class="st" style="color: #20794D;">"mp"</span>)</span>
+<span id="cb8-25"></span>
+<span id="cb8-26">result <span class="ot" style="color: #003B4F;">&lt;-</span> result <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-27">  <span class="fu" style="color: #4758AB;">replace_na</span>(<span class="fu" style="color: #4758AB;">list</span>(<span class="at" style="color: #657422;">missfol=</span><span class="dv" style="color: #AD0000;">0</span>,<span class="at" style="color: #657422;">mp=</span><span class="dv" style="color: #AD0000;">0</span>))</span>
+<span id="cb8-28">result1 <span class="ot" style="color: #003B4F;">&lt;-</span> result <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-29">  <span class="fu" style="color: #4758AB;">summarise</span>(<span class="fu" style="color: #4758AB;">across</span>(<span class="fu" style="color: #4758AB;">c</span>(submit,dco,missfol,analysis,mv,mp),sum)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-30">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">areacode=</span><span class="st" style="color: #20794D;">"合计"</span>)</span>
+<span id="cb8-31"></span>
+<span id="cb8-32">result <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">rbind</span>(result,result1) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-33">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">dco_p=</span><span class="fu" style="color: #4758AB;">round</span>(dco<span class="sc" style="color: #5E5E5E;">/</span>submit<span class="sc" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">100</span>,<span class="dv" style="color: #AD0000;">1</span>),</span>
+<span id="cb8-34">         <span class="at" style="color: #657422;">missfol_p=</span><span class="fu" style="color: #4758AB;">round</span>(missfol<span class="sc" style="color: #5E5E5E;">/</span>submit<span class="sc" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">100</span>,<span class="dv" style="color: #AD0000;">1</span>),</span>
+<span id="cb8-35">         <span class="at" style="color: #657422;">mv_p=</span><span class="fu" style="color: #4758AB;">round</span>(mv<span class="sc" style="color: #5E5E5E;">/</span>analysis<span class="sc" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">100</span>,<span class="dv" style="color: #AD0000;">1</span>),</span>
+<span id="cb8-36">         <span class="at" style="color: #657422;">mp_p=</span><span class="fu" style="color: #4758AB;">round</span>(mp<span class="sc" style="color: #5E5E5E;">/</span>analysis<span class="sc" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">100</span>,<span class="dv" style="color: #AD0000;">1</span>))</span>
+<span id="cb8-37">urban <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"410300"</span>,<span class="st" style="color: #20794D;">"410600"</span>,<span class="st" style="color: #20794D;">"411100"</span>,<span class="st" style="color: #20794D;">"411202"</span>,<span class="st" style="color: #20794D;">"411303"</span>)</span></code></pre></div>
+</details>
+</div>
+<p>把上面计算的结果绘制成可以展现的表格，从下面 Table&nbsp;1 中可以看出入选登记处的数据质量情况，包括DCO、失访情况、以及最终纳入分析的病例数、多原发比例、以病理诊断比例等。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-9_ca6d461f61a056ae6d655ed850233b51">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1">t1 <span class="ot" style="color: #003B4F;">&lt;-</span> result <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb9-2">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">a=</span><span class="fu" style="color: #4758AB;">paste0</span>(dco,<span class="st" style="color: #20794D;">"("</span>,dco_p,<span class="st" style="color: #20794D;">"%)"</span>),</span>
+<span id="cb9-3">         <span class="at" style="color: #657422;">b=</span><span class="fu" style="color: #4758AB;">paste0</span>(missfol,<span class="st" style="color: #20794D;">"("</span>,missfol_p,<span class="st" style="color: #20794D;">"%)"</span>),</span>
+<span id="cb9-4">         <span class="at" style="color: #657422;">c=</span><span class="fu" style="color: #4758AB;">paste0</span>(mp,<span class="st" style="color: #20794D;">"("</span>,mp_p,<span class="st" style="color: #20794D;">"%)"</span>),</span>
+<span id="cb9-5">         <span class="at" style="color: #657422;">d=</span><span class="fu" style="color: #4758AB;">paste0</span>(mv,<span class="st" style="color: #20794D;">"("</span>,mv_p,<span class="st" style="color: #20794D;">"%)"</span>),</span>
+<span id="cb9-6">         <span class="at" style="color: #657422;">type=</span><span class="fu" style="color: #4758AB;">ifelse</span>(areacode <span class="sc" style="color: #5E5E5E;">%in%</span> urban,<span class="st" style="color: #20794D;">"城市"</span>,<span class="st" style="color: #20794D;">"农村"</span>),</span>
+<span id="cb9-7">         <span class="at" style="color: #657422;">type=</span><span class="fu" style="color: #4758AB;">ifelse</span>(areacode <span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"合计"</span>,<span class="st" style="color: #20794D;">"--"</span>,type)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb9-8">  <span class="fu" style="color: #4758AB;">left_join</span>(registrys,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"areacode"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb9-9">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">county=</span><span class="fu" style="color: #4758AB;">case_when</span>(</span>
+<span id="cb9-10">    areacode<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"410300"</span><span class="sc" style="color: #5E5E5E;">~</span><span class="st" style="color: #20794D;">"洛阳市"</span>,</span>
+<span id="cb9-11">    areacode<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"410600"</span><span class="sc" style="color: #5E5E5E;">~</span><span class="st" style="color: #20794D;">"鹤壁市"</span>,</span>
+<span id="cb9-12">    areacode<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"411100"</span><span class="sc" style="color: #5E5E5E;">~</span> <span class="st" style="color: #20794D;">"漯河市"</span>,</span>
+<span id="cb9-13">    areacode<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"合计"</span><span class="sc" style="color: #5E5E5E;">~</span><span class="st" style="color: #20794D;">"合计"</span>,</span>
+<span id="cb9-14">    <span class="at" style="color: #657422;">.default =</span> county</span>
+<span id="cb9-15">  )) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb9-16">  <span class="fu" style="color: #4758AB;">select</span>(county,type,submit,a,b,analysis,c,d) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb9-17">  <span class="fu" style="color: #4758AB;">kbl</span>(<span class="at" style="color: #657422;">col.names =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"登记处"</span>,<span class="st" style="color: #20794D;">"类型"</span>,<span class="st" style="color: #20794D;">"病例数"</span>,<span class="st" style="color: #20794D;">"DCO,n(%)"</span>,<span class="st" style="color: #20794D;">"失访,n(%)"</span>,</span>
+<span id="cb9-18">                    <span class="st" style="color: #20794D;">"病例数"</span>,<span class="st" style="color: #20794D;">"多原发,n(%)"</span>,<span class="st" style="color: #20794D;">"病理诊断,n(%)"</span>),</span>
+<span id="cb9-19">      <span class="at" style="color: #657422;">align =</span> <span class="st" style="color: #20794D;">"c"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb9-20">  <span class="fu" style="color: #4758AB;">kable_styling</span>(<span class="at" style="color: #657422;">font_size =</span> <span class="dv" style="color: #AD0000;">8</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb9-21">  <span class="fu" style="color: #4758AB;">kable_classic</span>(<span class="at" style="color: #657422;">full_width =</span> T, <span class="at" style="color: #657422;">html_font =</span> <span class="st" style="color: #20794D;">"Cambria"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb9-22">  <span class="fu" style="color: #4758AB;">add_header_above</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">" "</span> <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">3</span>, <span class="st" style="color: #20794D;">"剔除"</span> <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="st" style="color: #20794D;">"纳入分析"</span> <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">3</span>),</span>
+<span id="cb9-23">                   <span class="at" style="color: #657422;">bold =</span> T,<span class="at" style="color: #657422;">border_left =</span> T) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb9-24">  <span class="fu" style="color: #4758AB;">row_spec</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="at" style="color: #657422;">bold=</span>T,<span class="at" style="color: #657422;">italic=</span>T) </span></code></pre></div>
+</details>
+</div>
+<div class="cell page-columns page-full" data-hash="index_cache/html/tbl-t1_b0dc1e79f8c390cdb305b0761f36b46b">
+<div class="cell-output-display column-page">
+<div id="tbl-t1" class="anchored">
+<table class="table lightable-classic table-sm table-striped" data-quarto-postprocess="true">
+<caption>Table&nbsp;1: 纳入分析肿瘤登记处随访质量情况</caption>
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="3" data-quarto-table-cell-role="th" style="text-align: center; empty-cells: hide;"></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; padding-bottom: 0; padding-left: 3px; padding-right: 3px; font-weight: bold;"><div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+剔除
+</div></th>
+<th colspan="3" data-quarto-table-cell-role="th" style="text-align: center; padding-bottom: 0; padding-left: 3px; padding-right: 3px; font-weight: bold;"><div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+纳入分析
+</div></th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">登记处</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">类型</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">病例数</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">DCO,n(%)</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">失访,n(%)</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">病例数</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">多原发,n(%)</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">病理诊断,n(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">洛阳市</td>
+<td style="text-align: center;">城市</td>
+<td style="text-align: center;">23750</td>
+<td style="text-align: center;">1079(4.5%)</td>
+<td style="text-align: center;">1993(8.4%)</td>
+<td style="text-align: center;">20678</td>
+<td style="text-align: center;">182(0.9%)</td>
+<td style="text-align: center;">15901(76.9%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">孟津县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">9688</td>
+<td style="text-align: center;">337(3.5%)</td>
+<td style="text-align: center;">311(3.2%)</td>
+<td style="text-align: center;">9040</td>
+<td style="text-align: center;">23(0.3%)</td>
+<td style="text-align: center;">6168(68.2%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">新安县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">8815</td>
+<td style="text-align: center;">170(1.9%)</td>
+<td style="text-align: center;">67(0.8%)</td>
+<td style="text-align: center;">8578</td>
+<td style="text-align: center;">15(0.2%)</td>
+<td style="text-align: center;">5587(65.1%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">栾川县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">5766</td>
+<td style="text-align: center;">206(3.6%)</td>
+<td style="text-align: center;">257(4.5%)</td>
+<td style="text-align: center;">5303</td>
+<td style="text-align: center;">8(0.2%)</td>
+<td style="text-align: center;">3969(74.8%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">嵩县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">10091</td>
+<td style="text-align: center;">219(2.2%)</td>
+<td style="text-align: center;">56(0.6%)</td>
+<td style="text-align: center;">9816</td>
+<td style="text-align: center;">7(0.1%)</td>
+<td style="text-align: center;">7092(72.2%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">汝阳县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">7771</td>
+<td style="text-align: center;">275(3.5%)</td>
+<td style="text-align: center;">6(0.1%)</td>
+<td style="text-align: center;">7490</td>
+<td style="text-align: center;">0(0%)</td>
+<td style="text-align: center;">5786(77.2%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">宜阳县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">11723</td>
+<td style="text-align: center;">206(1.8%)</td>
+<td style="text-align: center;">115(1%)</td>
+<td style="text-align: center;">11402</td>
+<td style="text-align: center;">19(0.2%)</td>
+<td style="text-align: center;">8147(71.5%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">偃师市</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">11615</td>
+<td style="text-align: center;">211(1.8%)</td>
+<td style="text-align: center;">157(1.4%)</td>
+<td style="text-align: center;">11247</td>
+<td style="text-align: center;">213(1.9%)</td>
+<td style="text-align: center;">8350(74.2%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">鲁山县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">16226</td>
+<td style="text-align: center;">439(2.7%)</td>
+<td style="text-align: center;">17(0.1%)</td>
+<td style="text-align: center;">15770</td>
+<td style="text-align: center;">212(1.3%)</td>
+<td style="text-align: center;">12528(79.4%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">林州市</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">25727</td>
+<td style="text-align: center;">259(1%)</td>
+<td style="text-align: center;">1(0%)</td>
+<td style="text-align: center;">25467</td>
+<td style="text-align: center;">475(1.9%)</td>
+<td style="text-align: center;">20861(81.9%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">鹤壁市</td>
+<td style="text-align: center;">城市</td>
+<td style="text-align: center;">11707</td>
+<td style="text-align: center;">251(2.1%)</td>
+<td style="text-align: center;">267(2.3%)</td>
+<td style="text-align: center;">11189</td>
+<td style="text-align: center;">119(1.1%)</td>
+<td style="text-align: center;">7706(68.9%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">辉县市</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">16596</td>
+<td style="text-align: center;">90(0.5%)</td>
+<td style="text-align: center;">792(4.8%)</td>
+<td style="text-align: center;">15714</td>
+<td style="text-align: center;">24(0.2%)</td>
+<td style="text-align: center;">11220(71.4%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">禹州市</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">18484</td>
+<td style="text-align: center;">654(3.5%)</td>
+<td style="text-align: center;">23(0.1%)</td>
+<td style="text-align: center;">17807</td>
+<td style="text-align: center;">18(0.1%)</td>
+<td style="text-align: center;">13155(73.9%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">漯河市</td>
+<td style="text-align: center;">城市</td>
+<td style="text-align: center;">23074</td>
+<td style="text-align: center;">905(3.9%)</td>
+<td style="text-align: center;">558(2.4%)</td>
+<td style="text-align: center;">21611</td>
+<td style="text-align: center;">46(0.2%)</td>
+<td style="text-align: center;">15431(71.4%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">三门峡市湖滨区</td>
+<td style="text-align: center;">城市</td>
+<td style="text-align: center;">5945</td>
+<td style="text-align: center;">73(1.2%)</td>
+<td style="text-align: center;">224(3.8%)</td>
+<td style="text-align: center;">5648</td>
+<td style="text-align: center;">5(0.1%)</td>
+<td style="text-align: center;">4498(79.6%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">南阳市卧龙区</td>
+<td style="text-align: center;">城市</td>
+<td style="text-align: center;">15196</td>
+<td style="text-align: center;">1575(10.4%)</td>
+<td style="text-align: center;">66(0.4%)</td>
+<td style="text-align: center;">13555</td>
+<td style="text-align: center;">66(0.5%)</td>
+<td style="text-align: center;">9895(73%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">方城县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">16024</td>
+<td style="text-align: center;">423(2.6%)</td>
+<td style="text-align: center;">70(0.4%)</td>
+<td style="text-align: center;">15531</td>
+<td style="text-align: center;">41(0.3%)</td>
+<td style="text-align: center;">11534(74.3%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">内乡县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">12722</td>
+<td style="text-align: center;">155(1.2%)</td>
+<td style="text-align: center;">0(0%)</td>
+<td style="text-align: center;">12567</td>
+<td style="text-align: center;">84(0.7%)</td>
+<td style="text-align: center;">9372(74.6%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">睢县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">14534</td>
+<td style="text-align: center;">98(0.7%)</td>
+<td style="text-align: center;">510(3.5%)</td>
+<td style="text-align: center;">13926</td>
+<td style="text-align: center;">22(0.2%)</td>
+<td style="text-align: center;">9818(70.5%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">虞城县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">15607</td>
+<td style="text-align: center;">106(0.7%)</td>
+<td style="text-align: center;">3(0%)</td>
+<td style="text-align: center;">15498</td>
+<td style="text-align: center;">42(0.3%)</td>
+<td style="text-align: center;">11036(71.2%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">罗山县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">13046</td>
+<td style="text-align: center;">161(1.2%)</td>
+<td style="text-align: center;">5(0%)</td>
+<td style="text-align: center;">12880</td>
+<td style="text-align: center;">191(1.5%)</td>
+<td style="text-align: center;">8716(67.7%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">沈丘县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">22220</td>
+<td style="text-align: center;">628(2.8%)</td>
+<td style="text-align: center;">139(0.6%)</td>
+<td style="text-align: center;">21453</td>
+<td style="text-align: center;">12(0.1%)</td>
+<td style="text-align: center;">14877(69.3%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">郸城县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">23826</td>
+<td style="text-align: center;">597(2.5%)</td>
+<td style="text-align: center;">0(0%)</td>
+<td style="text-align: center;">23229</td>
+<td style="text-align: center;">0(0%)</td>
+<td style="text-align: center;">16073(69.2%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">西平县</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">14952</td>
+<td style="text-align: center;">361(2.4%)</td>
+<td style="text-align: center;">134(0.9%)</td>
+<td style="text-align: center;">14457</td>
+<td style="text-align: center;">41(0.3%)</td>
+<td style="text-align: center;">10808(74.8%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">济源市</td>
+<td style="text-align: center;">农村</td>
+<td style="text-align: center;">13396</td>
+<td style="text-align: center;">423(3.2%)</td>
+<td style="text-align: center;">593(4.4%)</td>
+<td style="text-align: center;">12380</td>
+<td style="text-align: center;">13(0.1%)</td>
+<td style="text-align: center;">8716(70.4%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">合计</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">368501</td>
+<td style="text-align: center;">9901(2.7%)</td>
+<td style="text-align: center;">6364(1.7%)</td>
+<td style="text-align: center;">352236</td>
+<td style="text-align: center;">1878(0.5%)</td>
+<td style="text-align: center;">257244(73%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</div>
+</div>
+</section>
+<section id="计算一般人群期望生存概率" class="level2" data-number="6">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">6 计算一般人群期望生存概率</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-张华2014" class="csl-entry">
+张华, 曹志刚, 柳光宇, 莫淼, 王春芳, 张志杰, 邵志敏, 朱骥, and 徐望红. 2014. <span>“<span>队列法、完全法和现时生存分析方法在乳腺癌随访研究中的应用</span>.”</span> <em>肿瘤</em> 34 (6): 550–56.
+</div>
+</div></section></div> ]]></description>
+  <category>肿瘤登记</category>
+  <category>数据分析</category>
+  <category>R</category>
+  <guid>https://www.chenq.site/qsight/2023-04-09-relativesurvival/index.html</guid>
+  <pubDate>Sun, 09 Apr 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://www.chenq.site/qsight/2023-04-09-relativesurvival/periodR.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Quarto支持多格式同时输出</title>
   <dc:creator>陈琼</dc:creator>
@@ -2037,133 +2673,6 @@ the       the   26</code></pre>
   <pubDate>Wed, 04 May 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>利用阿里云DataV可视化平台数据以及ggplot2包的geom_sf函数绘制统计地图</title>
-  <dc:creator>陈琼</dc:creator>
-  <link>https://www.chenq.site/qsight/2022-04-29-datav/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="什么是统计地图" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="什么是统计地图"><span class="header-section-number">1</span> 什么是统计地图？</h2>
-<p>统计地图是以地图为背景，运用各种线纹、色彩、几何图形或实物形象来显示被研究现象的指标数值的大小及其在各地区的分布状况的一种统计图形。又称空间数列图和地理数列图。主要用于说明某些现象在地域上的分布，进行不同地区间的比较，反映现象所处的地理位置，以及它们的密集和分散程度。</p>
-</section>
-<section id="制作统计地图的难点有哪些" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="制作统计地图的难点有哪些"><span class="header-section-number">2</span> 制作统计地图的难点有哪些？</h2>
-<p>在流行病学研究中，往往需要通过以统计地图的形式来展示数据的空间分布情况。然而，我们一般很难找到合适的用于绘制统计地图的地图边界数据。要么找到的地图行政区划边界数据太旧，实际的行政区划边界已经发生了改变，要么就是找不到相应的数据。</p>
-<p>目前还有一些制作统计地图的网站，可以提供绘制简单的统计地图的功能，但是基本上这些服务都是以收费为目的地，不符合互联网上开源自由的精神，但是如果同学不缺钱，那就可以去试试哈！</p>
-</section>
-<section id="如何利用阿里云datav可视化平台地图数据" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="如何利用阿里云datav可视化平台地图数据"><span class="header-section-number">3</span> 如何利用阿里云DataV可视化平台地图数据?</h2>
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid"></p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_5b195a6e6b025514837cea829491c303">
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid" width="1086"></p>
-</div>
-</div>
-<p>利用<strong>sf包</strong>读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_5151299f5cc0bad1a368dc27a1bfe8d6">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
-<span id="cb1-2"><span class="co" style="color: #5E5E5E;">#加载sf包</span></span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;">#加载ggplot2包</span></span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
-<span id="cb1-6"><span class="fu" style="color: #4758AB;">rm</span>(<span class="at" style="color: #657422;">list =</span> <span class="fu" style="color: #4758AB;">ls</span>())</span>
-<span id="cb1-7"><span class="co" style="color: #5E5E5E;">#利用read_sf函数读取json格式边界数据</span></span>
-<span id="cb1-8">china1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json"</span>)</span>
-<span id="cb1-9"></span>
-<span id="cb1-10"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
-<span id="cb1-11">china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-12">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-13">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>也可以利用<strong>geojsonio包</strong>读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_ae1cd812a76126ab626d9377e50fc81c">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;">#加载geojsonio包</span></span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;">library</span>(geojsonio)</span>
-<span id="cb2-3"><span class="co" style="color: #5E5E5E;">#利用geojsonio包读取json格式数据为sp数据</span></span>
-<span id="cb2-4">states <span class="ot" style="color: #003B4F;">&lt;-</span> geojsonio<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">geojson_read</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>, <span class="at" style="color: #657422;">what =</span> <span class="st" style="color: #20794D;">"sp"</span>)</span>
-<span id="cb2-5"><span class="co" style="color: #5E5E5E;">#将地理空间数据转换为sf数据</span></span>
-<span id="cb2-6">states2<span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_as_sf</span>(states)</span>
-<span id="cb2-7"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
-<span id="cb2-8">states2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-9">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-10">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000.json">https://geo.datav.aliyun.com/areas_v3/bound/410000.json</a>，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json">https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json</a>。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_f46fb8ec6b13f84dda620aabf11352ed">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#读取仅有河南省省界的json数据</span></span>
-<span id="cb3-2">hn1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000.json"</span>)</span>
-<span id="cb3-3"><span class="co" style="color: #5E5E5E;">#读取具有河南省各市区边界的json数据</span></span>
-<span id="cb3-4">hn2 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>)</span>
-<span id="cb3-5"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf函数绘制河南省省界</span></span>
-<span id="cb3-6">hn1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb3-7">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb3-8">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;">#利用geom_sf函数绘制河南省省界及各市区边界</span></span>
-<span id="cb4-2">hn2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb4-3">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb4-4">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;">#读取洛阳市各区县边界数据，并绘制地图</span></span>
-<span id="cb5-2">ly <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410300_full.json"</span>)</span>
-<span id="cb5-3">ly<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb5-4">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb5-5">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="如何绘制统计地图" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="如何绘制统计地图"><span class="header-section-number">4</span> 如何绘制统计地图？</h2>
-<p>可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。</p>
-<p>实现代码如下：</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_2ec9d7c7c20d81652ad0a03c60e35509">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">library</span>(RColorBrewer)</span>
-<span id="cb6-2">data<span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">data.frame</span>(<span class="at" style="color: #657422;">adcode=</span><span class="fu" style="color: #4758AB;">c</span>( <span class="st" style="color: #20794D;">"110000"</span>, <span class="st" style="color: #20794D;">"120000"</span> ,<span class="st" style="color: #20794D;">"130000"</span> ,<span class="st" style="color: #20794D;">"140000"</span>, <span class="st" style="color: #20794D;">"150000"</span> ,<span class="st" style="color: #20794D;">"210000"</span>, <span class="st" style="color: #20794D;">"220000"</span> ,<span class="st" style="color: #20794D;">"230000"</span>, <span class="st" style="color: #20794D;">"310000"</span> ,<span class="st" style="color: #20794D;">"320000"</span>, <span class="st" style="color: #20794D;">"330000"</span> ,<span class="st" style="color: #20794D;">"340000"</span> ,<span class="st" style="color: #20794D;">"350000"</span> ,<span class="st" style="color: #20794D;">"360000"</span>, <span class="st" style="color: #20794D;">"370000"</span>, <span class="st" style="color: #20794D;">"410000"</span>, <span class="st" style="color: #20794D;">"420000"</span>, <span class="st" style="color: #20794D;">"430000"</span> ,<span class="st" style="color: #20794D;">"440000"</span> ,<span class="st" style="color: #20794D;">"450000"</span> ,<span class="st" style="color: #20794D;">"460000"</span>, <span class="st" style="color: #20794D;">"500000"</span> ,<span class="st" style="color: #20794D;">"510000"</span> ,<span class="st" style="color: #20794D;">"520000"</span> ,<span class="st" style="color: #20794D;">"530000"</span> ,<span class="st" style="color: #20794D;">"540000"</span> ,<span class="st" style="color: #20794D;">"610000"</span>, <span class="st" style="color: #20794D;">"620000"</span>, <span class="st" style="color: #20794D;">"630000"</span>, <span class="st" style="color: #20794D;">"640000"</span>, <span class="st" style="color: #20794D;">"650000"</span> ,<span class="st" style="color: #20794D;">"710000"</span> ,<span class="st" style="color: #20794D;">"810000"</span>, <span class="st" style="color: #20794D;">"820000"</span> ,<span class="st" style="color: #20794D;">"100000"</span>),</span>
-<span id="cb6-3">                 <span class="at" style="color: #657422;">num=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">391</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">13</span>,<span class="dv" style="color: #AD0000;">28</span>,<span class="dv" style="color: #AD0000;">60</span>,<span class="dv" style="color: #AD0000;">40</span>,<span class="dv" style="color: #AD0000;">884</span>,<span class="dv" style="color: #AD0000;">230</span>,<span class="dv" style="color: #AD0000;">12988</span>,<span class="dv" style="color: #AD0000;">30</span>,<span class="dv" style="color: #AD0000;">609</span>,<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">50</span>,<span class="dv" style="color: #AD0000;">220</span>,<span class="dv" style="color: #AD0000;">70</span>,<span class="dv" style="color: #AD0000;">36</span>,<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">26</span>,<span class="dv" style="color: #AD0000;">169</span>,<span class="dv" style="color: #AD0000;">23</span>,<span class="dv" style="color: #AD0000;">15</span>,<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">74</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">27</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">20</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">8</span>,<span class="dv" style="color: #AD0000;">13742</span>,<span class="dv" style="color: #AD0000;">59661</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">0</span>))</span>
-<span id="cb6-4">data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">35</span>] <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">sum</span>(data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">34</span>])</span>
-<span id="cb6-5"></span>
-<span id="cb6-6">china2<span class="ot" style="color: #003B4F;">&lt;-</span>china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
-<span id="cb6-7">  <span class="fu" style="color: #4758AB;">left_join</span>(data,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"adcode"</span>)<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
-<span id="cb6-8">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">case=</span><span class="fu" style="color: #4758AB;">cut</span>(num,<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">10</span>,<span class="dv" style="color: #AD0000;">100</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">1000</span>,<span class="dv" style="color: #AD0000;">10000</span>,<span class="dv" style="color: #AD0000;">50000</span>),<span class="at" style="color: #657422;">include.lowest=</span>T,<span class="at" style="color: #657422;">right=</span>F))</span>
-<span id="cb6-9"></span>
-<span id="cb6-10"><span class="fu" style="color: #4758AB;">ggplot</span>(china2)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-11">  <span class="fu" style="color: #4758AB;">geom_sf</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-12">  <span class="fu" style="color: #4758AB;">theme_void</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-13">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">fill=</span>case))<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-14">  <span class="fu" style="color: #4758AB;">scale_fill_manual</span>(</span>
-<span id="cb6-15">    <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"现存病例数"</span>,</span>
-<span id="cb6-16">    <span class="at" style="color: #657422;">values =</span> <span class="fu" style="color: #4758AB;">brewer.pal</span>(<span class="dv" style="color: #AD0000;">7</span>,<span class="st" style="color: #20794D;">"Reds"</span>),</span>
-<span id="cb6-17">    <span class="at" style="color: #657422;">labels=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"0-10"</span>,<span class="st" style="color: #20794D;">"10-100"</span>,<span class="st" style="color: #20794D;">"100-500"</span>, <span class="st" style="color: #20794D;">"500-1000"</span>,<span class="st" style="color: #20794D;">"1000-10000"</span>,<span class="st" style="color: #20794D;">"10000-50000"</span>,<span class="st" style="color: #20794D;">"&gt;50000"</span>))</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>科研作图</category>
-  <guid>https://www.chenq.site/qsight/2022-04-29-datav/index.html</guid>
-  <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
-</item>
-<item>
   <title>利用ggplot2包绘制barplot简单条形图</title>
   <dc:creator>陈琼</dc:creator>
   <link>https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index.html</link>
@@ -2342,6 +2851,133 @@ the       the   26</code></pre>
   <category>R</category>
   <category>科研作图</category>
   <guid>https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index.html</guid>
+  <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>利用阿里云DataV可视化平台数据以及ggplot2包的geom_sf函数绘制统计地图</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://www.chenq.site/qsight/2022-04-29-datav/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="什么是统计地图" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="什么是统计地图"><span class="header-section-number">1</span> 什么是统计地图？</h2>
+<p>统计地图是以地图为背景，运用各种线纹、色彩、几何图形或实物形象来显示被研究现象的指标数值的大小及其在各地区的分布状况的一种统计图形。又称空间数列图和地理数列图。主要用于说明某些现象在地域上的分布，进行不同地区间的比较，反映现象所处的地理位置，以及它们的密集和分散程度。</p>
+</section>
+<section id="制作统计地图的难点有哪些" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="制作统计地图的难点有哪些"><span class="header-section-number">2</span> 制作统计地图的难点有哪些？</h2>
+<p>在流行病学研究中，往往需要通过以统计地图的形式来展示数据的空间分布情况。然而，我们一般很难找到合适的用于绘制统计地图的地图边界数据。要么找到的地图行政区划边界数据太旧，实际的行政区划边界已经发生了改变，要么就是找不到相应的数据。</p>
+<p>目前还有一些制作统计地图的网站，可以提供绘制简单的统计地图的功能，但是基本上这些服务都是以收费为目的地，不符合互联网上开源自由的精神，但是如果同学不缺钱，那就可以去试试哈！</p>
+</section>
+<section id="如何利用阿里云datav可视化平台地图数据" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="如何利用阿里云datav可视化平台地图数据"><span class="header-section-number">3</span> 如何利用阿里云DataV可视化平台地图数据?</h2>
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid"></p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_5b195a6e6b025514837cea829491c303">
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid" width="1086"></p>
+</div>
+</div>
+<p>利用<strong>sf包</strong>读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_5151299f5cc0bad1a368dc27a1bfe8d6">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;">#加载sf包</span></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;">#加载ggplot2包</span></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;">rm</span>(<span class="at" style="color: #657422;">list =</span> <span class="fu" style="color: #4758AB;">ls</span>())</span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;">#利用read_sf函数读取json格式边界数据</span></span>
+<span id="cb1-8">china1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json"</span>)</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
+<span id="cb1-11">china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-12">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-13">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>也可以利用<strong>geojsonio包</strong>读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_ae1cd812a76126ab626d9377e50fc81c">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;">#加载geojsonio包</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;">library</span>(geojsonio)</span>
+<span id="cb2-3"><span class="co" style="color: #5E5E5E;">#利用geojsonio包读取json格式数据为sp数据</span></span>
+<span id="cb2-4">states <span class="ot" style="color: #003B4F;">&lt;-</span> geojsonio<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">geojson_read</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>, <span class="at" style="color: #657422;">what =</span> <span class="st" style="color: #20794D;">"sp"</span>)</span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;">#将地理空间数据转换为sf数据</span></span>
+<span id="cb2-6">states2<span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_as_sf</span>(states)</span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
+<span id="cb2-8">states2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-9">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-10">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000.json">https://geo.datav.aliyun.com/areas_v3/bound/410000.json</a>，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json">https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json</a>。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_f46fb8ec6b13f84dda620aabf11352ed">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#读取仅有河南省省界的json数据</span></span>
+<span id="cb3-2">hn1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000.json"</span>)</span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;">#读取具有河南省各市区边界的json数据</span></span>
+<span id="cb3-4">hn2 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>)</span>
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf函数绘制河南省省界</span></span>
+<span id="cb3-6">hn1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-7">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-8">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;">#利用geom_sf函数绘制河南省省界及各市区边界</span></span>
+<span id="cb4-2">hn2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;">#读取洛阳市各区县边界数据，并绘制地图</span></span>
+<span id="cb5-2">ly <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410300_full.json"</span>)</span>
+<span id="cb5-3">ly<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="如何绘制统计地图" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="如何绘制统计地图"><span class="header-section-number">4</span> 如何绘制统计地图？</h2>
+<p>可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。</p>
+<p>实现代码如下：</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_2ec9d7c7c20d81652ad0a03c60e35509">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">library</span>(RColorBrewer)</span>
+<span id="cb6-2">data<span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">data.frame</span>(<span class="at" style="color: #657422;">adcode=</span><span class="fu" style="color: #4758AB;">c</span>( <span class="st" style="color: #20794D;">"110000"</span>, <span class="st" style="color: #20794D;">"120000"</span> ,<span class="st" style="color: #20794D;">"130000"</span> ,<span class="st" style="color: #20794D;">"140000"</span>, <span class="st" style="color: #20794D;">"150000"</span> ,<span class="st" style="color: #20794D;">"210000"</span>, <span class="st" style="color: #20794D;">"220000"</span> ,<span class="st" style="color: #20794D;">"230000"</span>, <span class="st" style="color: #20794D;">"310000"</span> ,<span class="st" style="color: #20794D;">"320000"</span>, <span class="st" style="color: #20794D;">"330000"</span> ,<span class="st" style="color: #20794D;">"340000"</span> ,<span class="st" style="color: #20794D;">"350000"</span> ,<span class="st" style="color: #20794D;">"360000"</span>, <span class="st" style="color: #20794D;">"370000"</span>, <span class="st" style="color: #20794D;">"410000"</span>, <span class="st" style="color: #20794D;">"420000"</span>, <span class="st" style="color: #20794D;">"430000"</span> ,<span class="st" style="color: #20794D;">"440000"</span> ,<span class="st" style="color: #20794D;">"450000"</span> ,<span class="st" style="color: #20794D;">"460000"</span>, <span class="st" style="color: #20794D;">"500000"</span> ,<span class="st" style="color: #20794D;">"510000"</span> ,<span class="st" style="color: #20794D;">"520000"</span> ,<span class="st" style="color: #20794D;">"530000"</span> ,<span class="st" style="color: #20794D;">"540000"</span> ,<span class="st" style="color: #20794D;">"610000"</span>, <span class="st" style="color: #20794D;">"620000"</span>, <span class="st" style="color: #20794D;">"630000"</span>, <span class="st" style="color: #20794D;">"640000"</span>, <span class="st" style="color: #20794D;">"650000"</span> ,<span class="st" style="color: #20794D;">"710000"</span> ,<span class="st" style="color: #20794D;">"810000"</span>, <span class="st" style="color: #20794D;">"820000"</span> ,<span class="st" style="color: #20794D;">"100000"</span>),</span>
+<span id="cb6-3">                 <span class="at" style="color: #657422;">num=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">391</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">13</span>,<span class="dv" style="color: #AD0000;">28</span>,<span class="dv" style="color: #AD0000;">60</span>,<span class="dv" style="color: #AD0000;">40</span>,<span class="dv" style="color: #AD0000;">884</span>,<span class="dv" style="color: #AD0000;">230</span>,<span class="dv" style="color: #AD0000;">12988</span>,<span class="dv" style="color: #AD0000;">30</span>,<span class="dv" style="color: #AD0000;">609</span>,<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">50</span>,<span class="dv" style="color: #AD0000;">220</span>,<span class="dv" style="color: #AD0000;">70</span>,<span class="dv" style="color: #AD0000;">36</span>,<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">26</span>,<span class="dv" style="color: #AD0000;">169</span>,<span class="dv" style="color: #AD0000;">23</span>,<span class="dv" style="color: #AD0000;">15</span>,<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">74</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">27</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">20</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">8</span>,<span class="dv" style="color: #AD0000;">13742</span>,<span class="dv" style="color: #AD0000;">59661</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">0</span>))</span>
+<span id="cb6-4">data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">35</span>] <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">sum</span>(data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">34</span>])</span>
+<span id="cb6-5"></span>
+<span id="cb6-6">china2<span class="ot" style="color: #003B4F;">&lt;-</span>china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-7">  <span class="fu" style="color: #4758AB;">left_join</span>(data,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"adcode"</span>)<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-8">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">case=</span><span class="fu" style="color: #4758AB;">cut</span>(num,<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">10</span>,<span class="dv" style="color: #AD0000;">100</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">1000</span>,<span class="dv" style="color: #AD0000;">10000</span>,<span class="dv" style="color: #AD0000;">50000</span>),<span class="at" style="color: #657422;">include.lowest=</span>T,<span class="at" style="color: #657422;">right=</span>F))</span>
+<span id="cb6-9"></span>
+<span id="cb6-10"><span class="fu" style="color: #4758AB;">ggplot</span>(china2)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-11">  <span class="fu" style="color: #4758AB;">geom_sf</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-12">  <span class="fu" style="color: #4758AB;">theme_void</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-13">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">fill=</span>case))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-14">  <span class="fu" style="color: #4758AB;">scale_fill_manual</span>(</span>
+<span id="cb6-15">    <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"现存病例数"</span>,</span>
+<span id="cb6-16">    <span class="at" style="color: #657422;">values =</span> <span class="fu" style="color: #4758AB;">brewer.pal</span>(<span class="dv" style="color: #AD0000;">7</span>,<span class="st" style="color: #20794D;">"Reds"</span>),</span>
+<span id="cb6-17">    <span class="at" style="color: #657422;">labels=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"0-10"</span>,<span class="st" style="color: #20794D;">"10-100"</span>,<span class="st" style="color: #20794D;">"100-500"</span>, <span class="st" style="color: #20794D;">"500-1000"</span>,<span class="st" style="color: #20794D;">"1000-10000"</span>,<span class="st" style="color: #20794D;">"10000-50000"</span>,<span class="st" style="color: #20794D;">"&gt;50000"</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>科研作图</category>
+  <guid>https://www.chenq.site/qsight/2022-04-29-datav/index.html</guid>
   <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -2640,61 +3276,6 @@ font-style: italic;">## 建立for循环</span></span>
   <category>文件</category>
   <guid>https://www.chenq.site/qsight/2022-04-16-standard/index.html</guid>
   <pubDate>Sat, 16 Apr 2022 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>制作《2021河南省肿瘤登记年报》科普视频</title>
-  <dc:creator>陈琼</dc:creator>
-  <link>https://www.chenq.site/qsight/2022-04-10-report-video/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>《2021河南省肿瘤登记年报》的发布为河南省癌症的防控工作提供了数据参考，对防控相关专业人员参考癌症负担数据具有重要意义。同时，为了使普通大众了解河南省癌症的发病死亡情况，我们将制作科普视频，相关工作整理记录如下。</p>
-<section id="科普视频知识点" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="科普视频知识点"><span class="header-section-number">1</span> 科普视频知识点</h2>
-<ul>
-<li>河南省癌症中心/河南省肿瘤医院发布《2021河南省肿瘤登记年报》；</li>
-<li>河南省居民癌症发病率为272.33/10万，死亡率为162.16/10万；河南省每年新诊断恶性肿瘤28.6万例，因恶性肿瘤死亡16.8万例；</li>
-<li>癌症发病和死亡的人群分布均以老年人为主，河南省癌症年龄发病率自40~岁组开始快速上升，在85岁组达到峰值，65岁以上诊断患者和死亡患者占全部发病和死亡患者的47.3%和65.3%；</li>
-<li>男性和女性发病谱存在差异，男性发病率和死亡率均高于女性，男女发病比为1.05，男女死亡比为1.51; 男性和女性高发癌种存在差异，男性发病前五位癌症分别为肺癌、胃癌、食管癌、肝癌和结直肠癌，而女性前五位癌种分别为乳腺癌、肺癌、食管癌、宫颈癌和胃癌；不管是男性还是女性，肺癌均位居癌症死因的首位，其次为胃癌、食管癌、肝癌和乳腺癌。</li>
-<li>河南居民癌症发病和死亡也存在地区差异，城市地区癌症发病率高于农村地区，而死亡率低于农村地区，常见癌种分布也存在一定差异，河南省北部太行山脉地区是食管癌和胃癌的高发地区，城市地区则肺癌、结直肠癌、甲状腺癌相对高发。</li>
-</ul>
-</section>
-<section id="科普视频脚本" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="科普视频脚本"><span class="header-section-number">2</span> 科普视频脚本</h2>
-<p>大家好，癌症是威胁居民健康和生命的主要问题，河南省癌症中心/河南省肿瘤医院在2022年肿瘤防治宣传周期间发布了《2021河南省肿瘤登记年报》，对河南省居民的癌症发病和死亡情况进行了详细介绍，下面跟随小编一块来了解一下吧。</p>
-<p>《年报》显示，2018年河南省癌症发病率为272.33/10万，每小时约有32例患者被诊断，共诊断28.6万例；癌症死亡率为162.16/10万，每小时约19例癌症患者死亡，共死亡16.8万例。</p>
-<p>河南省癌症的发病率和死亡率呈现如下变化特点：</p>
-<section id="癌症患者以老年人为主" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="癌症患者以老年人为主"><span class="header-section-number">2.1</span> 癌症患者以<strong>老年人</strong>为主</h3>
-<p>发病率和死亡率均随着年龄的增加而上升，在39岁之前处于相对降低且平稳的状态，而40岁之后则快速上升，在85岁年龄组达到峰值。癌症患者以老年人为主，新诊断患者中，65岁以上者占47.3%；死亡患者中，65岁以上者占65.3%。</p>
-</section>
-<section id="癌症患者存在性别差异" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="癌症患者存在性别差异"><span class="header-section-number">2.2</span> 癌症患者存在<strong>性别差异</strong></h3>
-<p>男性发病率和死亡率均高于女性，男女性别比分别为1.05和1.51。</p>
-<p>男性和女性的<strong>发病谱</strong>也有所不同，男性前5位癌种分别为肺癌、胃癌、食管癌、肝癌和结直肠癌；女性前5位癌种乳腺癌、肺癌、食管癌、宫颈癌和胃癌。</p>
-</section>
-<section id="癌症发病率和死亡呈现地区差异" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="癌症发病率和死亡呈现地区差异"><span class="header-section-number">2.3</span> 癌症发病率和死亡呈现<strong>地区差异</strong></h3>
-<p>城市地区癌症发病率高于农村地区，而死亡率则呈现农村高于城市的特点。</p>
-<p>在癌种的地区分布方面，结直肠癌和甲状腺癌在城市地区的顺位比农村地区靠前，食管癌和胃癌则在河南省北部的太行山脉地区和西部的伏牛山地区相对高发。</p>
-<p>癌症防治需要我们每一个人参与，生活中我们注意避开常见的癌症危险因素，注意定期体检，你我携手，共抗癌症吧！</p>
-<p>扫描二维码，了解更加详细的《年报》内容吧。</p>
-</section>
-</section>
-<section id="科普视频成片分享" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="科普视频成片分享"><span class="header-section-number">3</span> 科普视频成片分享</h2>
-<p>马上上线</p>
-
-
-</section>
-
- ]]></description>
-  <category>肿瘤登记</category>
-  <category>肿瘤登记年报</category>
-  <guid>https://www.chenq.site/qsight/2022-04-10-report-video/index.html</guid>
-  <pubDate>Sun, 10 Apr 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
