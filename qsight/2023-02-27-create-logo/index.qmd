@@ -6,6 +6,7 @@ slug: create-r-logo
 categories: [个人网站]
 keywords: [R语言, logo, R包]
 toc: true
+image: "00005b.png"
 ---
 
 ![canregtools](canregtools.png)

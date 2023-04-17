@@ -4,6 +4,7 @@ date: "2022-12-02"
 slug: quarto-install
 categories: [quarto]
 keywords: [quarto,install]
+image: "quarto.jpg"
 ---
 
 Quarto考虑了各种运行环境，你可以直接用各类文本编辑器配合终端命令行直接运行quarto命令，可以用Rstudio运行，当然也可以用比较流行的vscode来运行。

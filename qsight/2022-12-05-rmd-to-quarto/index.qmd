@@ -5,6 +5,7 @@ slug: rmd-to-quarto
 categories: [quarto]
 keywords: [quarto,literature programming,blogdown,bookdown,pagedown]
 description: "这篇博文描述了博主从利用blogdown、bookdown等基于rmd的包实现可重复性研究报告到利用quarto实现的过程。"
+image: "quarto.jpg"
 ---
 
 ## 传统写作的困境 
