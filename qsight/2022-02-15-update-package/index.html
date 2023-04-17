@@ -309,14 +309,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="如何使用r包" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="如何使用r包"><span class="header-section-number">3</span> 如何使用R包？</h2>
 <p>一旦R包被安装之后，每次使用的时候只需要把它加载到目前的工作空间即可。加载R包的命令的有两个library()和require()命令</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_2a2924ab2b027ca245fd9a281a799038">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># 加载SASmarkdown包</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(<span class="st">"SASmarkdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Specify the location of your SAS executable with `knitr::opts_chunk$set`.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>In SAS, issue the command ` %put %sysget(SASROOT); ` to find this.</code></pre>
+<pre><code>Specify the location of your SAS executable with `knitr::opts_chunk$set`.
+In SAS, issue the command ` %put %sysget(SASROOT); ` to find this.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>The SAS executable was not found.FALSE</code></pre>
@@ -324,24 +322,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-stderr">
 <pre><code>SAS engines are now ready to use.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">require</span>(<span class="st">"SASmarkdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">require</span>(<span class="st">"SASmarkdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="我都安装了哪些包" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="我都安装了哪些包"><span class="header-section-number">4</span> 我都安装了哪些包？</h2>
 <p>如果你想用一个包，但是不确定是否已经安装，你可以installed.packages()命令查看一下都安装了哪些包。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 查看安装了哪些包</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">installed.packages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># 查看安装了哪些包</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">installed.packages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="更新r包" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="更新r包"><span class="header-section-number">5</span> 更新R包</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># 可以利用old.packages() 查看哪些包有更新的内容</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">old.packages</span>()</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="co"># 更新所有可以更新的R包</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">update.packages</span>()</span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="co"># 更新所有可以更新的R包强制更新</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="fu">update.packages</span>(<span class="at">ask =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 可以利用old.packages() 查看哪些包有更新的内容</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">old.packages</span>()</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co"># 更新所有可以更新的R包</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">update.packages</span>()</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="co"># 更新所有可以更新的R包强制更新</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="fu">update.packages</span>(<span class="at">ask =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

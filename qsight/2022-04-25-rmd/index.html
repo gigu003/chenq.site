@@ -292,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p><strong><em>人口金字塔图</em></strong>可以形象的展示人口结构，而动态人口金字塔则可以直观的展示历年人口结构的变化情况，从而可以直观的对人口数据进行质量控制，本篇博文讲介绍如何利用R语言Rmd文档输出动态人口金字塔图。</p>
 <p>首先，我们先看一下需要准备的人口数据结构,数据集包含某个地区男性和女性每年的不同年龄组的人口数（5岁一组），年份变量为year，性别变量为sex，人口数据分别为r0、r1、r5、r10、… 、r85等。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_15a4ce92de0c3e32b3b078d870defe58">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"population.csv"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -318,7 +318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="数据处理" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="数据处理"><span class="header-section-number">2</span> 数据处理</h2>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_6b76efc4d074030518966fce8130c338">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb3-3"><a href="#cb3-3"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
@@ -341,7 +341,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="利用for循环和ggplot2制作金字塔图" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="利用for循环和ggplot2制作金字塔图"><span class="header-section-number">4</span> 利用for循环和ggplot2制作金字塔图</h2>
 <p>在代码块内部，使用for循环和ggplot2生成多个年份的人口金子塔图即可。</p>
-<div class="cell" data-animation.hook="gifski" data-hash="index_cache/html/unnamed-chunk-3_51368b6ae7040c1e61808bd0beff0a0a">
+<div class="cell" data-animation.hook="gifski">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="do">## 加载ggplot2包</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="do">## 建立for循环</span></span>

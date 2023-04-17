@@ -298,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="加载这些r包" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="加载这些r包"><span class="header-section-number">3</span> 加载这些R包</h2>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_2919c4d0bfffd4177eb09a7ddb6496f6">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
@@ -323,7 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="4" class="anchored" data-anchor-id="数据处理"><span class="header-section-number">4</span> 数据处理</h2>
 <p>首先需要把我们手里的现有数据读取到R工作环境，然后把数据调整为ggplot2包绘图所需要的格式。</p>
 <p>我们看一下，我们目前的数据结构和变量基本信息吧，目前我们有一个数据框，数据框里有20列数据，第一列为性别(sex),其余分别为0<sub>，1</sub>，4~，…，85+岁组各年龄组的人口数据。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_2cecb5de7c9d681e2516d41e57b65258">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>pop  <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"pop.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
@@ -344,7 +344,7 @@ incomplete final line found by readTableHeader on 'pop.csv'</code></pre>
 </div>
 <p>但是，ggplot2绘图需要读取纵向格式的数据，也就是说我们需要把目前的数据格式转换成两列，一列为性别，另一列为人口数。因此，我们需要把目前的数据转换成纵向结构数据。</p>
 <p>reshape2包的melt函数可以把横向数据转换为纵向数据，id.vars参数指定保留的变量名称，其余的变量都转职置为纵向结构，转换为两列，一列存放变量名，一列存放变量值。variable.name指定存放变量名的那一列的变量名，value.name指定存放变量值的那一列的变量名。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_3ee3674e58e1550dcaffa840c1c6640f">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 对横向数据进行转置，然后存入pop数据框</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="co"># reshape2包的melt函数转置横向数据</span></span>
@@ -353,7 +353,7 @@ incomplete final line found by readTableHeader on 'pop.csv'</code></pre>
 <span id="cb10-6"><a href="#cb10-6"></a>       <span class="at">value.name =</span> <span class="st">"pop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>现在来看看转置后的数据吧</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_01230694d53edce0d1719cb9750c3069">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">head</span>(pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   sex age     pop
@@ -366,13 +366,13 @@ incomplete final line found by readTableHeader on 'pop.csv'</code></pre>
 </div>
 </div>
 <p>然后把目前pop数据框的age变量值进行转换，因为它的值就是人口金字塔中显示的年龄组的值。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_668824e9a6a238105d3ab5b362c3acd1">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>pop<span class="ot">&lt;-</span>pop<span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">mutate</span>(<span class="at">age=</span><span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">"r"</span>,<span class="st">""</span>,age)),</span>
 <span id="cb13-3"><a href="#cb13-3"></a>         <span class="at">pop=</span><span class="fu">ifelse</span>(sex<span class="sc">==</span><span class="st">"男性"</span>,<span class="sc">-</span>pop,pop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>绘制人口金字塔的时候，横条的长度采用跟年龄组人口数占相应人口的百分比来表示，因此计算人口百分比数据。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-6_62fa430b3e19785ea9b6b03fd5ea65e6">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>age_label<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"0"</span>,<span class="st">"1-4"</span>,<span class="st">"5-9"</span>,<span class="st">"10-14"</span>,<span class="st">"15-19"</span>,<span class="st">"20-24"</span>,<span class="st">"25-29"</span>,<span class="st">"30-34"</span>,<span class="st">"35-39"</span>,<span class="st">"40-44"</span>,<span class="st">"45-49"</span>,<span class="st">"50-54"</span>,<span class="st">"55-59"</span>,<span class="st">"60-64"</span>,<span class="st">"65-69"</span>,<span class="st">"70-74"</span>,<span class="st">"75-79"</span>,<span class="st">"80-84"</span>,<span class="st">"85-"</span>)</span>
 <span id="cb14-2"><a href="#cb14-2"></a>pop <span class="ot">&lt;-</span> pop<span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">group_by</span>(sex)<span class="sc">%&gt;%</span></span>
@@ -380,7 +380,7 @@ incomplete final line found by readTableHeader on 'pop.csv'</code></pre>
 <span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">mutate</span>(<span class="at">pop_rate=</span><span class="fu">ifelse</span>(sex<span class="sc">==</span><span class="st">"男性"</span>,<span class="sc">-</span>pop_rate,pop_rate))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>然后把人口数据拆分成男性和女性两个数据框，并把这个两个数据框存入列表ct</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-7_9835224b9fc3aed6aa0141c1e14da11b">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>ct <span class="ot">&lt;-</span> pop<span class="sc">%&gt;%</span><span class="fu">group_by</span>(sex)<span class="sc">%&gt;%</span><span class="fu">group_split</span>()</span>
 <span id="cb15-2"><a href="#cb15-2"></a>ct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -393,30 +393,6 @@ incomplete final line found by readTableHeader on 'pop.csv'</code></pre>
   &gt;
 &gt;[2]&gt;
 [[1]]
-# A tibble: 19 × 4
-   sex     age      pop pop_rate
-   &lt;chr&gt; &lt;dbl&gt;    &lt;int&gt;    &lt;dbl&gt;
- 1 男性      0  -193565   -1.13 
- 2 男性      1  -924420   -5.42 
- 3 男性      5 -1186130   -6.95 
- 4 男性     10 -1158427   -6.79 
- 5 男性     15 -1130776   -6.63 
- 6 男性     20 -1254271   -7.35 
- 7 男性     25 -1426065   -8.36 
- 8 男性     30 -1291455   -7.57 
- 9 男性     35 -1279639   -7.50 
-10 男性     40 -1322747   -7.76 
-11 男性     45 -1338809   -7.85 
-12 男性     50 -1145094   -6.71 
-13 男性     55  -941395   -5.52 
-14 男性     60  -812746   -4.77 
-15 男性     65  -622679   -3.65 
-16 男性     70  -440440   -2.58 
-17 男性     75  -300147   -1.76 
-18 男性     80  -183825   -1.08 
-19 男性     85  -102596   -0.602
-
-[[2]]
 # A tibble: 19 × 4
    sex     age     pop pop_rate
    &lt;chr&gt; &lt;dbl&gt;   &lt;int&gt;    &lt;dbl&gt;
@@ -438,7 +414,31 @@ incomplete final line found by readTableHeader on 'pop.csv'</code></pre>
 16 女性     70  467743     2.88
 17 女性     75  342476     2.11
 18 女性     80  228937     1.41
-19 女性     85  164663     1.02</code></pre>
+19 女性     85  164663     1.02
+
+[[2]]
+# A tibble: 19 × 4
+   sex     age      pop pop_rate
+   &lt;chr&gt; &lt;dbl&gt;    &lt;int&gt;    &lt;dbl&gt;
+ 1 男性      0  -193565   -1.13 
+ 2 男性      1  -924420   -5.42 
+ 3 男性      5 -1186130   -6.95 
+ 4 男性     10 -1158427   -6.79 
+ 5 男性     15 -1130776   -6.63 
+ 6 男性     20 -1254271   -7.35 
+ 7 男性     25 -1426065   -8.36 
+ 8 男性     30 -1291455   -7.57 
+ 9 男性     35 -1279639   -7.50 
+10 男性     40 -1322747   -7.76 
+11 男性     45 -1338809   -7.85 
+12 男性     50 -1145094   -6.71 
+13 男性     55  -941395   -5.52 
+14 男性     60  -812746   -4.77 
+15 男性     65  -622679   -3.65 
+16 男性     70  -440440   -2.58 
+17 男性     75  -300147   -1.76 
+18 男性     80  -183825   -1.08 
+19 男性     85  -102596   -0.602</code></pre>
 </div>
 </div>
 <p>为了使用方便，我们编制一个函数，并利用lapply函数把ct列表放入进去，这样就可以自动生成横向条形图。</p>
@@ -447,7 +447,7 @@ incomplete final line found by readTableHeader on 'pop.csv'</code></pre>
 <h2 data-number="5" class="anchored" data-anchor-id="制作金字塔图的思路"><span class="header-section-number">5</span> 制作金字塔图的思路</h2>
 <p>我们先编写一个函数，实现对列表数据进行处理，判断如果是男性数据的话则生成左侧横向条形图，如果是女性数据的话则生成右侧横向条形图，然后把利用cowplot把左侧条形图和右侧条形图组成一个金字塔图。</p>
 <p>上程序：</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-8_83fdc5f51f0bfdffec602bb205c25be1">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># top_value &lt;-  max(abs(pop$pop_rate)) </span></span>
 <span id="cb17-2"><a href="#cb17-2"></a>p<span class="ot">&lt;-</span> <span class="fu">lapply</span>(ct,<span class="cf">function</span>(x) {</span>
 <span id="cb17-3"><a href="#cb17-3"></a>  sexx <span class="ot">&lt;-</span> x[<span class="dv">1</span>,<span class="fu">c</span>(<span class="st">"sex"</span>)]</span>
@@ -479,12 +479,12 @@ Adding another scale for x, which will replace the existing scale.</code></pre>
 </div>
 </div>
 <p>上面的程序有已经把生成的左侧和右侧条形图放入列表p，下面把列表的第一个元素和第二个元素利用cowplot组合起来就是一个金字塔图了。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-9_9a7f81c0d506cd7011bd49c7b3d71b3a">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># 利用plot_grid来组合p列表元素，进行横向拼接，存入pyramid</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a>pyramid <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(p[[<span class="dv">1</span>]],p[[<span class="dv">2</span>]],<span class="at">ncol=</span><span class="dv">2</span>,<span class="at">align=</span><span class="st">"hv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>我们来看看最终的金字塔图的吧。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-10_536195044a20c99f3b3ec5bf5e9bba35">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>pyramid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" alt="科研作图，人口金字塔图" width="672"></p>
