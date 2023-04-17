@@ -1,6 +1,5 @@
 ---
 pagetitle: "Qiong Chen - Publications"
-lang: zh
 listing:
   - id: firstauthor
     contents: firstauthor
