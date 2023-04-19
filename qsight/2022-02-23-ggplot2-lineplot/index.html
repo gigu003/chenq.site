@@ -153,10 +153,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="普癌新声 - 利用ggplot2制作折线图或者趋势图，反映变化趋势">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://www.chenq.site/qsight/2022-02-23-ggplot2-lineplot/lineplot.png">
 <meta property="og:site-name" content="普癌新声">
+<meta property="og:image:height" content="1499">
+<meta property="og:image:width" content="2099">
 <meta name="twitter:title" content="普癌新声 - 利用ggplot2制作折线图或者趋势图，反映变化趋势">
 <meta name="twitter:description" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.chenq.site/qsight/2022-02-23-ggplot2-lineplot/lineplot.png">
+<meta name="twitter:image-height" content="1499">
+<meta name="twitter:image-width" content="2099">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -303,7 +309,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-5"><a href="#cb1-5"></a><span class="co"># 安装dplyr包</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>把这些要用到的R包加载到工作环境中</p>
-<div class="cell" data-hash="index_cache/html/warning==FALSE_35caec7672a1eaccd1fba23c50a92df5">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(cowplot)</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -326,11 +332,11 @@ Attaching package: 'dplyr'</code></pre>
 <section id="数据处理" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="数据处理"><span class="header-section-number">3</span> 数据处理</h2>
 <p>我们把需要用到的数据读取到向量中，我们的数据以csv的格式存放，我们可以基础包的read.csv函数来读取。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_abec4469562fb752a80a91cd9245a3cc">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"age_incidence.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>我们再来看看数据结构是什么样的</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_c71f9f62b0e37ee2526731e1eeed7419">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  area  sex variable agegrp
@@ -344,7 +350,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <p>可以看出读入的数据框里有四个变量，分别为area,sex,variable,agegrp 分别为地区、性别、发病率和年龄组数据，其中area的值为1,2,3分别代表全省合计、城市地区和农村地区，agegrp的值0、1、5、10、15、20、25、30、35、40、45、50、55、60、65、70、75、80、85分别为年龄组范围。</p>
 <p>然后，我们把area和agegrp两个变量都转化为因子，并加上标签，标签的值为最终显示在图上的值。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_a5d6d7dd32b9f001c9dbaa80688df9e6">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>data <span class="ot">&lt;-</span> data<span class="sc">%&gt;%</span><span class="fu">mutate</span>(</span>
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="at">area=</span><span class="fu">factor</span>(area,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"全省合计"</span>,<span class="st">"城市地区"</span>,<span class="st">"农村地区"</span>)),</span>
 <span id="cb9-3"><a href="#cb9-3"></a>  <span class="at">agegrp=</span><span class="fu">factor</span>(agegrp,<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0~"</span>,<span class="st">"1~"</span>,<span class="st">"5~"</span>,<span class="st">"10~"</span>,<span class="st">"15~"</span>,<span class="st">"20~"</span>,<span class="st">"25~"</span>,<span class="st">"30~"</span>,<span class="st">"35~"</span>,<span class="st">"40~"</span>,<span class="st">"45~"</span>,<span class="st">"50~"</span>,<span class="st">"55~"</span>,<span class="st">"60~"</span>,<span class="st">"65~"</span>,<span class="st">"70~"</span>,<span class="st">"75~"</span>,<span class="st">"80~"</span>,<span class="st">"85~"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -353,7 +359,7 @@ Attaching package: 'dplyr'</code></pre>
 <section id="利用ggplot2作图" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="利用ggplot2作图"><span class="header-section-number">4</span> 利用ggplot2作图</h2>
 <p>ggplot2包作折线图主要用的是geom_line()函数，我们先来一个示例，先作一个单图，把data数据框里的全省合计数据提取出来制作一个年龄别发病率的折线图。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_8c03bc100c7fd0342007630fe918eb9d">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 利用dplyr包filter函数提取数据</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>data<span class="sc">%&gt;%</span><span class="fu">filter</span>(area<span class="sc">==</span><span class="st">"全省合计"</span>)<span class="sc">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>agegrp))<span class="sc">+</span></span>
@@ -399,7 +405,7 @@ Attaching package: 'dplyr'</code></pre>
 <p><img src="lineplot.png" class="img-fluid" alt="折线图"> ## 在gpplot2语句中加入facet_wrap或者facet_grid语句制作组合图</p>
 <p>如果我们想分别展示不同地区的发病率随着年龄的变化趋势，那么我们可以把area这个变量放入facet_wrap函数里以按照area这个变量分组作图，并展示出来。</p>
 <p>另外，需要注意的是，用了facet_wrap函数就不用加annotate注释语句了，因为facet_wrap会自动加上。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_b4b183b995ab05249224dad0bcbd6a2d">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># 这里我们就不用filter函数提取数据了</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>data<span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>agegrp))<span class="sc">+</span></span>
@@ -425,7 +431,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 <p>现在不同地区的年龄别发病率图已经存入向量p2，现在我们p2展示出来，看看是什么样的？</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-6_9fcd36342f867f524cae8e4e2c0ee049">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" alt="科研作图，折线图" width="672"></p>
@@ -434,7 +440,7 @@ Attaching package: 'dplyr'</code></pre>
 <p>注意：facet_wrap()函数还提供了一个参数就 scales=“fixed” fixed是默认的参数值，意思是所有图共享一个统一的坐标轴刻度，但是还可以选择scales=“free”，这个每个图根据自身值的范围自动选择坐标轴刻度范围。</p>
 <p>但是因为我们已经在前面的语句中已经通过scale_y_continuous语句设置了坐标轴刻度，所以加入scales=“free”选项，只会再每个图上再单独显示出来坐标轴，但是刻度范围还是按照scale_y_continuous语句设置的来显示。</p>
 <p>我们再来验证一下是不是这样的？</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-7_6f12e54e4f7b724d6d0a19a61d9f5880">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>data<span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>agegrp))<span class="sc">+</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">geom_line</span>(<span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">y=</span>variable,<span class="at">group=</span><span class="fu">factor</span>(sex),<span class="at">color=</span><span class="fu">factor</span>(sex)),<span class="at">stat =</span> <span class="st">"identity"</span>,<span class="at">size=</span><span class="fl">1.3</span>)<span class="sc">+</span></span>
