@@ -7,6 +7,7 @@ link: https://chenq.site/tech/2022-ggplot2-lineplot/
 categories: [R, 科研作图]
 keywords: [ggplot2,折线图,趋势图]
 summary: '折线图常用来显示数据在一个连读的时间跨度上或者一个有序类别上的变化情况，它反映了数据随着时间或有序类别变化的趋势，今天我们一块来学习ggplot2绘制折线图，快点击进来看详情吧！'
+image: lineplot.png
 ---
 
 ## 什么是折线图？

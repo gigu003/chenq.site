@@ -6,7 +6,7 @@ listing:
   contents: "."
   sort: "date desc"
   categories: cloud
-  image-placeholder: qsightpic.jpeg
+  image-placeholder: "qsightpic.jpeg"
   image-height: 10em
   grid-item-border: true
   grid-item-align: left

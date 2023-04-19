@@ -5,6 +5,7 @@ slug: icdo3tool
 link: https://chenq.site/tech/2021-icdo3tool/
 categories: [肿瘤登记,工具]
 keywords: ["肿瘤登记","工具","ICD-O3"]
+image: "1.png"
 ---
 
 ![ICDO3模糊查询工具](1.png)

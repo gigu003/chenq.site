@@ -6,6 +6,7 @@ canreg: code
 feature: true
 tags: ["ICD-O3"]
 keywords: ["肿瘤登记","分类与编码","ICD-O3"]
+image: "ICDO3.png"
 ---
 
 ICD-O3 （International Classification of Disease for Oncology third edition，ICD-O3）是国际疾病分类肿瘤学专辑第三版。它是一个既有解剖学部位、又有形态学编码系统的双重分类体系，目前被广泛应用于肿瘤随访登记的数据收集系统和医疗实践中。

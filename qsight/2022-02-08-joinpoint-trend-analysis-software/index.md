@@ -5,6 +5,7 @@ slug: Joinpoint
 link: https://chenq.site/tech/2022-Joinpoint/
 categories: [肿瘤登记,数据处理]
 keywords: ["肿瘤登记","工具","Joinpoint"]
+image: "joinpoint.jpg"
 ---
 
 Joinpoint是用于使用连接点模型分析趋势的统计软件，也就是像下图所示的模型，其中几条不同的线在“连接点”连接在一起。NCI出版物中报告的癌症趋势是使用Joinpoint回归程序计算的，以分析由SEER*Stat软件计算的比率。

@@ -6,6 +6,7 @@ link: https://chenq.site/tech/2022-r-ggforest/
 categories: [R, 科研作图]
 keywords: [R,科研作图,ggforest]
 summary: '森林图是Meta分析中最常用的结果表达形式，但是现在被用来表达一些比值比数据，使结果更形象的展示出来。一起来看看如何高效的制作森林图吧！'
+image: forest.png
 ---
 
 ## 什么是森林图？
