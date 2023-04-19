@@ -255,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">更新时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">April 17, 2023</p>
+        <p class="date-modified">April 19, 2023</p>
       </div>
     </div>
       
@@ -284,17 +284,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="使用showtext包加载中文字体" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="使用showtext包加载中文字体"><span class="header-section-number">1</span> 使用showtext包加载中文字体</h2>
 <p>首先，安装showtext包</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_35a14cc757c892192362630ada448bcc">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">"showtext"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>加载showtext包，并显示当前环境中可用的字体</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_07a84153cf89b0e2651bbc8588fc0f63">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(showtext)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>载入需要的程辑包：sysfonts</code></pre>
+<pre><code>Loading required package: sysfonts</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>载入需要的程辑包：showtextdb</code></pre>
+<pre><code>Loading required package: showtextdb</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># 使用font_families()函数查看当前环境中可供使用的字体</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="fu">font_families</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -303,11 +303,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>Google上有很多可以用的免费字体，showtext可以加载google字体</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_4d50241acc25757197b3b6746f64ae45">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">font_add_google</span>(<span class="st">"Noto Serif Simplified Chinese"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>下面我们可以再次查看一下当前环境中的字体有哪些，我们就可以使用加载的中文字体来作图了。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_f9a533976b13379841fd2bc8bf6824ac">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="do">## 自动使用showtext渲染字体</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="fu">showtext_auto</span>()</span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="co">#现在再看看目前环境中的可用字体有哪些</span></span>
@@ -316,7 +316,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>[1] "sans"         "serif"        "mono"         "wqy-microhei"</code></pre>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_e9e03fccb61f3c59eed056dac0eaa6dd">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="dv">1000</span>), <span class="at">breaks =</span> <span class="dv">30</span>, <span class="at">col =</span> <span class="st">"steelblue"</span>, <span class="at">border =</span> <span class="st">"white"</span>,</span>
 <span id="cb10-2"><a href="#cb10-2"></a>     <span class="at">main =</span> <span class="st">"随机数直方图"</span>, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">"Frequency"</span>)</span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="fu">showtext_begin</span>()</span>

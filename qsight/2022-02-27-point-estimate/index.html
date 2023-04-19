@@ -262,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">更新时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">April 17, 2023</p>
+        <p class="date-modified">April 19, 2023</p>
       </div>
     </div>
       
@@ -285,11 +285,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>我们在前面的<a href="https://chenq.site/tech/2022-r-ggforest/">一篇博文</a>中介绍了利用<strong>森林图</strong>的方式展示比值比数据，这种方式对于展示多个不同类型变量，不同亚组的比值比数据比较有优势，但是如果我们的研究结果变量类型比较单一的话，也可以试试我们下面一种展示方式。</p>
 <p>首先，我们生成一组比值比可信区间数据，包含5个变量：group分组1,2,3,4分别代表Q1、Q2、Q3和Q4；type：指标类型，1代表PM10,2代表PM2.5；value代表OR值，lower和upper分别代表95%可信区间的下限和上限。</p>
 <p>然后，我们把group和type两个变量因子化，并添加相应的值标签，这样标签数据就可以显示到图上。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_c3bfab20daba0ac64f118a651575a8f5">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
-载入程辑包：'dplyr'</code></pre>
+Attaching package: 'dplyr'</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>The following objects are masked from 'package:stats':
@@ -313,7 +313,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-10"><a href="#cb5-10"></a>                <span class="at">type=</span><span class="fu">factor</span>(type,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"PM10"</span>,<span class="st">"PM2.5"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>我们可以利用ggplot2的geom_point函数绘制OR值的点，利用geom_errorbar函数绘制95%可信区间的上下限值，利用geom_hline函数绘制参考线，然后利用facet_wrap函数把两个指标的图绘制到一张图上。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_ad7d5f9571bbf3bab616a5afcfca0a11">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>df<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>group,<span class="at">y=</span>value))<span class="sc">+</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour=</span>type),<span class="at">shape=</span><span class="st">"square"</span>,<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>

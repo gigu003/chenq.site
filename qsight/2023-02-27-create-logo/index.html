@@ -262,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">更新时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">April 17, 2023</p>
+        <p class="date-modified">April 19, 2023</p>
       </div>
     </div>
       
@@ -302,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="制作癌症年龄别发病率折线图" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="制作癌症年龄别发病率折线图"><span class="header-section-number">1</span> 制作癌症年龄别发病率折线图</h2>
 <p>首先，读入年龄别发病率的数据，然后，利用ggplot2制作折线图，重点是要把图片背景设置成透明。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_9454e57cca1ceb957ab87765cd83d965">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 加载tidyverse包 </span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># 读取年龄别发病率数据</span></span>
@@ -338,7 +338,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="把肿瘤细胞图片读入r中" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="把肿瘤细胞图片读入r中"><span class="header-section-number">2</span> 把肿瘤细胞图片读入R中</h2>
 <p>我从google上搜索了一张癌细胞的图片，并利用在线工具把这张图片的背景去除。然后，利用magick包读取图片进入R环境中，转化成ggplot2可识别的元素，最后，以注释的方式加入前面生成折线图中。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_8eaee272b9a64f894301ba17b8bd94ad">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(magick)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Linking to ImageMagick 6.9.12.3
@@ -362,7 +362,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <section id="制作六角r包logo" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="制作六角r包logo"><span class="header-section-number">3</span> 制作六角R包logo</h2>
 <p>最后利用hexSticker包制作logo，具体语句如下。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_71850207cd9a7c9feb9b6daad3e2ec3a">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(hexSticker)</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="fu">sticker</span>(</span>

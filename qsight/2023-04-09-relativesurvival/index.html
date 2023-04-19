@@ -285,7 +285,7 @@ div.csl-indent {
       <div>
       <div class="quarto-title-meta-heading">更新时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">April 17, 2023</p>
+        <p class="date-modified">April 19, 2023</p>
       </div>
     </div>
       
@@ -398,7 +398,7 @@ div.csl-indent {
 <section id="不同生存率估计方法比较" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="不同生存率估计方法比较"><span class="header-section-number">2.1</span> 不同生存率估计方法比较</h3>
 <p><strong>相对生存率</strong>的估计方法有<em>队列法</em>（cohort method）、<em>完全法</em>（complete method）、<em>现时生存分析法</em>（period survival analysis）、<em>混合法</em>（hybrid method）和<em>预测法</em>（projection method），不同的生存率估计方法纳入的确诊病例和随访时间有所不同，具体不同可以见下图<span class="citation" data-cites="张华2014">(<a href="#ref-张华2014" role="doc-biblioref">张华 et al. 2014</a>)</span>。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_fd7e9a7fbaa63140322f64db114d415a">
 <div class="cell-output-display">
 <p><img src="followup.jpg" class="img-fluid" width="756"></p>
 </div>
@@ -421,7 +421,7 @@ div.csl-indent {
 <h2 data-number="3" class="anchored" data-anchor-id="统计软件包的安装"><span class="header-section-number">3</span> 统计软件包的安装</h2>
 <p>本篇博文介绍利用现时法统计模型估计癌症5年生存率，这种方法能够提高生存率估计的时效性。我们将使用Brenner等编写的R包“periodR”进行相对生存率的估计，你可以<a href="https://krebsregister.saarland.de/daten-auswertungen-veroeffentlichungen/software/periodr-english/">在这里下载R包</a>，并安装使用。</p>
 <p>点开链接之后，可以根据自己使用的操作系统和R语言版本选择相应的安装包。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_d3158a34884419afa391d818dbd27101">
 <div class="cell-output-display">
 <p><img src="periodR.jpg" class="img-fluid" width="692"></p>
 </div>
@@ -450,7 +450,7 @@ div.csl-indent {
 <span id="cb2-8"><a href="#cb2-8"></a><span class="fu">library</span>(kableExtra)</span>
 <span id="cb2-9"><a href="#cb2-9"></a><span class="fu">library</span>(gtsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>筛选入选河南省肿瘤登记年报的登记处数据</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_0309a36ee0aa364dad5a5450dc8572e7">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="do">## 从code字典里筛选出2014年年报纳入的登记处</span></span>
@@ -473,7 +473,7 @@ div.csl-indent {
 <h3 data-number="4.3" class="anchored" data-anchor-id="按照现时生存分析筛选病例"><span class="header-section-number">4.3</span> 按照现时生存分析筛选病例</h3>
 <p>考虑到我们设定的“感兴趣时期”为2017-2019年，按照<strong>现时生存分析</strong>方法纳入病例的原则，我们需要纳入2017-2019年期间新诊断的所有癌症患者以及在这个时期之前诊断且在2017-2019年期间内仍存活的癌症病例。</p>
 <p>按照上面的筛选标准，继续对上一步输出的数据进行范围筛查</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_333f4d8534c43755482bcb088df88a47">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>canreg <span class="ot">&lt;-</span> canreg <span class="sc">%&gt;%</span> </span>
@@ -487,7 +487,7 @@ div.csl-indent {
 </section>
 <section id="限制生存分析的癌种范围" class="level3" data-number="4.4">
 <h3 data-number="4.4" class="anchored" data-anchor-id="限制生存分析的癌种范围"><span class="header-section-number">4.4</span> 限制生存分析的癌种范围</h3>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_cb4370f28bd3887db3cf93d6694ae7d3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="do">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范围之内</span></span>
@@ -505,7 +505,7 @@ div.csl-indent {
 <section id="对删失数据进行处理" class="level3" data-number="4.5">
 <h3 data-number="4.5" class="anchored" data-anchor-id="对删失数据进行处理"><span class="header-section-number">4.5</span> 对删失数据进行处理</h3>
 <p>本研究的随访截止日期设定为2019年12月31日，我们按照这个截止日期进行结尾数据的手工处理。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-6_537e5c76a64bfa234e6bca0a2383b31e">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>analysis <span class="ot">&lt;-</span> analysis <span class="sc">%&gt;%</span>  </span>
@@ -526,7 +526,7 @@ div.csl-indent {
 </section>
 <section id="对待分析的分组变量进行处理" class="level3" data-number="4.6">
 <h3 data-number="4.6" class="anchored" data-anchor-id="对待分析的分组变量进行处理"><span class="header-section-number">4.6</span> 对待分析的分组变量进行处理</h3>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-7_2623b6f9bea6d781b97cbe8bc0224916">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>analysis <span class="ot">&lt;-</span> analysis <span class="sc">%&gt;%</span>  </span>
@@ -563,7 +563,7 @@ div.csl-indent {
 <section id="质量控制" class="level2 page-columns page-full" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="质量控制"><span class="header-section-number">5</span> 质量控制</h2>
 <p>在进行5年相对生存率的计算之前，我们需要先评估一下各个登记处的随访的质量情况，包括DCO数据的比例、失访的情况、最终纳入分析数据的病理诊断比例等来对数据质量进行评估。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-8_d30677c9de16c177fb9ebeaf43de0112">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>submit <span class="ot">&lt;-</span> analysis <span class="sc">%&gt;%</span> <span class="fu">count</span>(areacode2)</span>
@@ -606,7 +606,7 @@ div.csl-indent {
 </details>
 </div>
 <p>把上面计算的结果绘制成可以展现的表格，从下面 <a href="#tbl-t1">Table&nbsp;1</a> 中可以看出入选登记处的数据质量情况，包括DCO、失访情况、以及最终纳入分析的病例数、多原发比例、以病理诊断比例等。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-9_ca6d461f61a056ae6d655ed850233b51">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>t1 <span class="ot">&lt;-</span> result <span class="sc">%&gt;%</span> </span>
@@ -635,7 +635,7 @@ div.csl-indent {
 <span id="cb9-24"><a href="#cb9-24"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">bold=</span>T,<span class="at">italic=</span>T) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell page-columns page-full">
+<div class="cell page-columns page-full" data-hash="index_cache/html/tbl-t1_b0dc1e79f8c390cdb305b0761f36b46b">
 <div class="cell-output-display column-page">
 <div id="tbl-t1" class="anchored">
 <table class="table lightable-classic table-sm table-striped" data-quarto-postprocess="true">

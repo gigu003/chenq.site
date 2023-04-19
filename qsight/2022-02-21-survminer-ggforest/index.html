@@ -256,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">更新时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">April 17, 2023</p>
+        <p class="date-modified">April 19, 2023</p>
       </div>
     </div>
       
@@ -313,12 +313,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="4" class="anchored" data-anchor-id="准备数据"><span class="header-section-number">4</span> 准备数据</h2>
 <p>加载survival包时，自动加载了colon数据框，我们就可以利用这个数据来拟合预后风险。</p>
 <p>首先加载survival包，并查看一下colon数据框的基本情况</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_dbf5691a671872f28d5fe4aa1cc542ef">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 加载dplyr包进行数据处理</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
-载入程辑包：'dplyr'</code></pre>
+Attaching package: 'dplyr'</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>The following objects are masked from 'package:stats':
@@ -355,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="5" class="anchored" data-anchor-id="首先我们对colon数据预处理一下"><span class="header-section-number">5</span> 首先我们对colon数据预处理一下</h2>
 <p>我们对sex变量和differ变量因子化，并增加中文值标签。</p>
 <p>如果我们想在森林图里显示交互作用项，那么就需要提前处理数据，比如我们想看surg和nodes的交互作用，我们可以把两者的相乘项加入模型里。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_a28c436ed65ba4e7d59c4bd8b63e5e25">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># 预处理colon数据框</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>colon <span class="ot">&lt;-</span> colon<span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">mutate</span>(<span class="at">sex=</span><span class="fu">factor</span>(sex, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"女性"</span>, <span class="st">"男性"</span>)),</span>
@@ -368,7 +368,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="利用colon数据来拟合预后风险" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="利用colon数据来拟合预后风险"><span class="header-section-number">6</span> 利用colon数据来拟合预后风险</h2>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_475724c5d01301887c75141c24d2b205">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>model <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> sex <span class="sc">+</span>  differ <span class="sc">+</span> surg <span class="sc">+</span> nodes <span class="sc">+</span> interaction, <span class="at">data =</span> colon )</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -377,7 +377,7 @@ coxph(formula = Surv(time, status) ~ sex + differ + surg + nodes +
     interaction, data = colon)
 
   n= 1776, number of events= 876 
-   (因为不存在，82个观察量被删除了)
+   (82 observations deleted due to missingness)
 
                   coef exp(coef)  se(coef)      z Pr(&gt;|z|)    
 sex男性      -0.094440  0.909883  0.068029 -1.388   0.1651    
@@ -416,17 +416,17 @@ Score (logrank) test = 214.7  on 6 df,   p=&lt;2e-16</code></pre>
 <li>noDigits=2，设置小数点的位数，默认值为2。</li>
 <li>main=“图标的标题”，设置图的标题。</li>
 </ol>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_272e361d0c1203eae915b40f10a1b80a">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">library</span>(survminer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>载入需要的程辑包：ggplot2</code></pre>
+<pre><code>Loading required package: ggplot2</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>载入需要的程辑包：ggpubr</code></pre>
+<pre><code>Loading required package: ggpubr</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
-载入程辑包：'survminer'</code></pre>
+Attaching package: 'survminer'</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>The following object is masked from 'package:survival':

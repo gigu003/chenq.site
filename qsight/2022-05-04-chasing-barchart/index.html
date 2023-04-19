@@ -153,10 +153,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="普癌新声 - R语言ggplot2包和gganimate包绘制动态追逐条形图(chasing barchart)">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://www.chenq.site/qsight/2022-05-04-chasing-barchart/pp.gif">
 <meta property="og:site-name" content="普癌新声">
 <meta name="twitter:title" content="普癌新声 - R语言ggplot2包和gganimate包绘制动态追逐条形图(chasing barchart)">
 <meta name="twitter:description" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.chenq.site/qsight/2022-05-04-chasing-barchart/pp.gif">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -256,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">更新时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">April 17, 2023</p>
+        <p class="date-modified">April 19, 2023</p>
       </div>
     </div>
       
@@ -296,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="2" class="anchored" data-anchor-id="数据准备"><span class="header-section-number">2</span> 数据准备</h2>
 <p>作者在互联网上收集了从1980年以来全球前10位国家的GDP数据，<a href="gdp.csv">数据，点击下载</a>以CSV的形式保存。</p>
 <p>我们把数据读入到R环境中，总共有4个变量，year年份、country国家、continent大洲、gdp，下面看下数据的结构，这个数据已经是ggplot2绘图所需要的<em>长数据</em>格式，所以不需要进行特别的转换了。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_51a7a47f9c7fe8805145c6ca77ffeccc">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">#读入gdp数据</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"gdp.csv"</span>)</span>
@@ -326,7 +328,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>利用gganimate包把静态图动起来</li>
 </ul>
 <p>前面我们已经准备好了绘图的数据，那么我们就先绘制动态条形图每个画面的静态图。我们准备基于GDP的排名展示位于全球前10位的国家，我们需要绘制每年的排名情况。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_fdcf37b103b85fbd82b1f4356b1d731b">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb4-2"><a href="#cb4-2"></a>plot <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -349,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-20"><a href="#cb4-20"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>上面的代码绘制了动态条形图的每一个画面，也就是每一年的全球GDP排名前10的国家的条形图。当然你也可以对上面的代码进行更改，从而使图更加美观。而进行动态化的关键步骤是使用gganimate包的transition_states()功能，下面的代码使绘制的图按照year这个变量动态变化。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_332f085c3ac46c3ca9722ac6168d850b">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(gganimate)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>plot2<span class="ot">&lt;-</span>plot<span class="sc">+</span><span class="fu">transition_states</span>(year, <span class="at">state_length =</span> <span class="dv">0</span>, <span class="at">transition_length =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'全球不同国家近40年GDP排名变化情况(前10位)'</span>,  </span>

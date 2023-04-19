@@ -258,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">更新时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">April 17, 2023</p>
+        <p class="date-modified">April 19, 2023</p>
       </div>
     </div>
       
@@ -309,7 +309,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>image_read_pdf(path, pages = NULL, density = 300, password = ““)</li>
 <li>image_read_video(path, fps = 1, format = “png”)</li>
 </ol>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_c22288c5aa872dfbc82849a0df235359">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#加载magick包</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(<span class="st">"magick"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -342,7 +342,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 把图片另存起来</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="fu">image_write</span>(logo, <span class="at">path =</span> <span class="st">"logo.png"</span>, <span class="at">format =</span> <span class="st">"png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>可以更改图片的格式</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_2c3c5ca9f338cd9e15ff557e6535afce">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>logo1 <span class="ot">&lt;-</span> <span class="fu">image_convert</span>(logo, <span class="st">"jpg"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="fu">image_info</span>(logo1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -363,7 +363,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <li>image_frame(logo,geometry = “25x25+6+6”): 为图片增加相框</li>
 <li>image_shadow(logo): 为图片增加阴影</li>
 </ol>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_adadadd956116146774875091a210244">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># 从左侧80像素开始裁剪120像素宽90像素高的图片</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="fu">image_crop</span>(logo, <span class="st">"150x90+30"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -428,7 +428,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </section>
 <section id="magick包支持管道操作符" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="magick包支持管道操作符"><span class="header-section-number">5</span> magick包支持管道操作符”%”</h2>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_6c77a4906d5462510e9bd16fb24054c7">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># 等比例调整图片高度为300像素</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>)<span class="sc">%&gt;%</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a><span class="co"># 填充头像的胡子为红色，需要先大概估算胡子的中心位置具体图片左上点的横向具体和纵向距离分别为多少，</span></span>
@@ -447,7 +447,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </section>
 <section id="图片向量magick还支持图层叠加图片拼接动图处理等功能" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="图片向量magick还支持图层叠加图片拼接动图处理等功能"><span class="header-section-number">6</span> 图片向量，magick还支持图层叠加、图片拼接、动图处理等功能。</h2>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_8562aa362abd4ba9567f3b33e9557301">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># 先把一个gif的图片读进来</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a>rabbit <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">"rabbit.gif"</span>)</span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="co"># 查看一下这个gif向量有多少元素组成，也就是有多少张图片组成的。</span></span>
@@ -457,7 +457,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 </div>
 <p>从上面的信息可以看出，这个gif图片由22张子图组成，比较大。由于我们需要反复处理此图并展现在html中，可能造成页面加载的图片太大导致网页打开太慢，我们可以把部分的子图删掉以缩小gif的大小。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-6_19f0ba4b97d3a88384f917693927675c">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># 我们可以截取这个gif图片中部分元素组成新的gif（间隔3张子图提取一个子图（8个子图），组成新的gif）</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a>rabbit2<span class="ot">&lt;-</span>rabbit[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">13</span>,<span class="dv">16</span>,<span class="dv">19</span>,<span class="dv">22</span>)]</span>
 <span id="cb27-3"><a href="#cb27-3"></a><span class="co"># 先看看这个图是什么</span></span>
@@ -489,7 +489,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <section id="图层叠加" class="level2" data-number="7">
 <h2 data-number="7" class="anchored" data-anchor-id="图层叠加"><span class="header-section-number">7</span> 图层叠加</h2>
 <p>我们可以实现把gif图里的各层提取出来重新组合，或者添加进去新的图层，然后把他们以纵向排列或者横向排列的方式罗列出来，也可以重新做成gif动图。当然，在这个过程中，前面所说的哪些图片处理功能仍然可以实现。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-7_c8cec239565966929247cd2b9f337d1b">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># 把logo图片和rabbit2图片的前两层合并成新的图片向量</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a>img <span class="ot">&lt;-</span><span class="fu">c</span>(logo,rabbit2[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
 <span id="cb30-3"><a href="#cb30-3"></a><span class="co"># 把图片等比例调整为300像素宽</span></span>
@@ -525,7 +525,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <p>这个功能是借助pdftools包来实现的</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># 先安装pdftools包</span></span>
 <span id="cb35-2"><a href="#cb35-2"></a><span class="fu">install.packages</span>(<span class="st">"pdftools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-8_a49cb235f1cacc968e89c83a36a0b4f3">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># 读取一个pdf文件，设置density为72</span></span>
 <span id="cb36-2"><a href="#cb36-2"></a>kidney <span class="ot">&lt;-</span> <span class="fu">image_read_pdf</span>(<span class="st">'https://www.chenq.site/papers/kidney2015.pdf'</span>, <span class="at">density =</span> <span class="dv">72</span>)</span>
 <span id="cb36-3"><a href="#cb36-3"></a><span class="co"># 看看这个pdf的基本信息</span></span>
@@ -548,7 +548,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </section>
 <section id="图片合成" class="level2" data-number="9">
 <h2 data-number="9" class="anchored" data-anchor-id="图片合成"><span class="header-section-number">9</span> 图片合成</h2>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-9_201e06d2c4602eafe55142c1ae5703ae">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># 默认的叠加方式直接放到前图的上面</span></span>
 <span id="cb39-2"><a href="#cb39-2"></a><span class="fu">image_composite</span>(kidney[<span class="dv">1</span>],<span class="fu">image_scale</span>(logo,<span class="st">"x275"</span>), <span class="at">operator =</span> <span class="st">"atop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">

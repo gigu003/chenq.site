@@ -154,10 +154,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="普癌新声 - R语言gganimate包和ggplot2包绘制进度线图(progressive line plot)">
 <meta property="og:description" content="这篇文章将和大家分享如何利用ggplot2包和gganimate包绘制进度线图(progressive line plot)的过程，其实我所说的进度线图就是让线图按照某一个变量一点一点的显示出来，最后显示完全这样一种类型的动态图形。">
+<meta property="og:image" content="https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/px.gif">
 <meta property="og:site-name" content="普癌新声">
 <meta name="twitter:title" content="普癌新声 - R语言gganimate包和ggplot2包绘制进度线图(progressive line plot)">
 <meta name="twitter:description" content="这篇文章将和大家分享如何利用ggplot2包和gganimate包绘制进度线图(progressive line plot)的过程，其实我所说的进度线图就是让线图按照某一个变量一点一点的显示出来，最后显示完全这样一种类型的动态图形。">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/px.gif">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -262,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">更新时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">April 17, 2023</p>
+        <p class="date-modified">April 19, 2023</p>
       </div>
     </div>
       
@@ -295,7 +297,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="1" class="anchored" data-anchor-id="准备数据"><span class="header-section-number">1</span> 准备数据</h2>
 <p>我们还是利用制作<a href="https://chenq.site/tech/2022-ggplot2-lineplot/">普通线图</a>的年龄别癌症发病率数据，<a href="age_incidence.csv">点击链接，下载数据</a>。</p>
 <p>对数据进行简单的处理，把合计性别的数据剔除，只显示男性和女性的癌症发病率随年龄变化的趋势即可，这样图里的内容不至于过多而显得杂乱。</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_85c4779ed999b9258499a1e521894100">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#加载dplyr包</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># 读取年龄别发病率数据</span></span>
@@ -322,7 +324,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>想要达到这种效果，其实就是在利用ggplot2制作普通线图的基础上，再利用gganimate包的transition_reveal()函数，从而让线图按照某个变量逐步显示，我们这个例子就是按照x轴变量agegrp逐步显示，transition_reveal(agegrp)。</p>
 <p>为了让线图更文艺或者更美观，我们可以使用ggthemes包里面绘图的主题来进行图的美化。<a href="#fig-plot2">Figure&nbsp;1</a></p>
 <p><strong>绘图代码如下：</strong></p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/fig-plot2_365577a65750bd33da5643b4bc04bdc4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#加载包</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(gganimate)</span>
