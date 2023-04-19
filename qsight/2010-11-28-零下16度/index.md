@@ -4,6 +4,7 @@ date: '2010-11-28'
 slug: minus_16c
 link: https://chenq.site/post/2010-minus_16c/
 categories: [生活]
+image: "snow.jfif"
 ---
 
 现在大庆越来越冷了，最低温度已经达到零下16度了，大雪也是一茬接一茬的在下。

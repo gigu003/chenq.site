@@ -17,7 +17,7 @@ keywords:
   - ggplot2
   - geom_sf
 abstract: '这篇文章介绍了如何利用阿里云DataV可视化平台的行政区划边界数据绘制统计地图，用到R包包括sf包、ggplot2包等'
-feature: true
+image: "preview.png"
 ---
 
 ## 什么是统计地图？

@@ -14,6 +14,7 @@ keywords:
   - ggplot2
   - gganimate
 description: '这篇文章将和大家分享如何利用ggplot2包和gganimate包绘制进度线图(progressive line plot)的过程，其实我所说的进度线图就是让线图按照某一个变量一点一点的显示出来，最后显示完全这样一种类型的动态图形。'
+image: "px.gif"
 ---
 
 

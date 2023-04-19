@@ -5,6 +5,7 @@ slug: sas-data-step
 link: https://chenq.site/tech/2014-sas-data-step/
 categories: [SAS,数据处理]
 keywords: ["SAS","数据处理","数据步循环"]
+image: "dataloop.png"
 ---
 
 我们都知道，SAS的功能很强大，其中数据步是base模块中很重要的一部分，数据步读取数据、修改数据，有很大的灵活性，很大程度上允许你控制怎么改变你的数据。但是有一点，大家可能并不在意，特别是对于刚刚接触SAS的人来说；那就是数据步有一个潜在的内在循环，你不需要写程序告诉sas去执行该循环，sas在处理数据的时候会自动执行。

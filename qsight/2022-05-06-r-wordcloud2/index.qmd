@@ -15,7 +15,7 @@ keywords:
   - wordcloud2包
   - 词云图
 subtitle: '这篇文章介绍了利用R语言wordlcloud2包绘制词云图的过程。'
-feature: true
+image: "cover.png"
 ---
 
 ## 什么是词云图？

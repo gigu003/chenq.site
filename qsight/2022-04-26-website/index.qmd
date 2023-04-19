@@ -17,7 +17,7 @@ keywords:
   - blogdown包
   - 静态网页
 summary: ''
-feature: true
+image: "preview.png"
 ---
 
 本篇文章将介绍如何利用R语言blogdown包生成一个静态网站，从而用来展示个人信息、撰写博客、或者分享其他信息。
