@@ -1,7 +1,6 @@
 ---
 title: 科技写作，我选择使用quarto
 date: 2023-03-02
-categories: ["R语言基础"]
 tags: ["安装"]
 ---
 

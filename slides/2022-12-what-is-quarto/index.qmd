@@ -17,6 +17,7 @@ format:
     theme: [sky, custom.scss]
     transition: slide
     transition-speed: slow
+image: rmd-packages.png
 ---
 
 ## 你是怎么写论文的?

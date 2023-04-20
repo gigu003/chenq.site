@@ -1,0 +1,14 @@
+---
+title: 漯河市肿瘤登记培训
+date: 2023-04-20
+author: "陈琼"
+categories: ["肿瘤登记","直报系统"]
+image: cover.jpg
+summary: "今天漯河市举办了全市的肿瘤登记工作培训会议，我从肿瘤登记的内容、方法、流程以及肿瘤登记直报网络系统等方面，与全市的肿瘤登记同行进行了交流。"
+---
+
+
+```{r}
+#| echo: false
+knitr::include_url("https://www.chenq.site/slides/2023-4-20-cancer-registration/#/title-slide")
+```

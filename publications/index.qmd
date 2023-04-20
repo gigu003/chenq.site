@@ -44,9 +44,6 @@ language:
 ::: {#books}
 :::
 
-
-
-
 ## 第一作者论文
 
 ::: {#firstauthor}

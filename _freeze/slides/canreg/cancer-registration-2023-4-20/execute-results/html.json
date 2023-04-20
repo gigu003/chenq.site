@@ -1,0 +1,14 @@
+{
+  "hash": "62bbb4294a453928ac50fd41b318dbfc",
+  "result": {
+    "markdown": "---\ntitle: 漯河市肿瘤登记培训\ndate: 2023-04-20\ncategories: [\"肿瘤登记\",\"直报系统\"]\nimage: cover.png\n---\n\n::: {.cell}\n<iframe src=\"https://www.chenq.site/slides/2022-12-what-is-quarto/#/title-slide\" width=\"672\" height=\"400px\" data-external=\"1\"></iframe>\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

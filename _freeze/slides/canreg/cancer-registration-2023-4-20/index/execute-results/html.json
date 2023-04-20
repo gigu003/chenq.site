@@ -1,0 +1,14 @@
+{
+  "hash": "ec64145a354093177f5ccd5ad95e21b2",
+  "result": {
+    "markdown": "---\ntitle: 漯河市肿瘤登记培训\ndate: 2023-04-20\nauthor: \"陈琼\"\ncategories: [\"肿瘤登记\",\"直报系统\"]\nimage: cover.jpg\nsummary: \"今天漯河市举办了全市的肿瘤登记工作培训会议，我从肿瘤登记的内容、方法、流程以及肿瘤登记直报网络系统等方面，与全市的肿瘤登记同行进行了交流。\"\n---\n\n::: {.cell}\n<iframe src=\"https://www.chenq.site/slides/2023-4-20-cancer-registration/#/title-slide\" width=\"672\" height=\"400px\" data-external=\"1\"></iframe>\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
