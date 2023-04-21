@@ -55,7 +55,7 @@
 <section id="不完全数据" class="level3" data-number="1.4">
 <h3 data-number="1.4" class="anchored" data-anchor-id="不完全数据"><span class="header-section-number">1.4</span> 不完全数据</h3>
 <p>与完全数据相反，研究结束时，研究对象发生了研究设定的终点事件之外的其他事件，从而导致无法明确记录从起始观察到发生终点事件之间的生存时间，这类数据称之为不完全数据。</p>
-<p>在人群肿瘤登记数据中，在癌症病例随访过程的截止不是由“癌症死亡”引起的，而是由其他原因引起。</p>
+<p>在人群肿瘤登记数据中，在癌症病例随访过程的截止不是由”癌症死亡”引起的，而是由其他原因引起。</p>
 <p>不完全数据分为：删失数据和截尾数据。</p>
 <p>不完全数据的主要原因有：</p>
 <ul>
@@ -82,8 +82,8 @@
 <h2 data-number="2" class="anchored" data-anchor-id="现时生存分析方法介绍"><span class="header-section-number">2</span> 现时生存分析方法介绍</h2>
 <section id="不同生存率估计方法比较" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="不同生存率估计方法比较"><span class="header-section-number">2.1</span> 不同生存率估计方法比较</h3>
-<p><strong>相对生存率</strong>的估计方法有<em>队列法</em>（cohort method）、<em>完全法</em>（complete method）、<em>现时生存分析法</em>（period survival analysis）、<em>混合法</em>（hybrid method）和<em>预测法</em>（projection method），不同的生存率估计方法纳入的确诊病例和随访时间有所不同，具体不同可以见下图<span class="citation" data-cites="张华2014">(张华 et al. 2014)</span>。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_fd7e9a7fbaa63140322f64db114d415a">
+<p><strong>相对生存率</strong>的估计方法有<em>队列法</em>（cohort method）、<em>完全法</em>（complete method）、<em>现时生存分析法</em>（period survival analysis）、<em>混合法</em>（hybrid method）和<em>预测法</em>（projection method），不同的生存率估计方法纳入的确诊病例和随访时间有所不同，具体不同可以见下图<span class="citation" data-cites="张华2014">(1)</span>。</p>
+<div class="cell">
 <div class="cell-output-display">
 <p><img src="https://www.chenq.site/qsight/2023-04-09-relativesurvival/followup.jpg" class="img-fluid" width="756"></p>
 </div>
@@ -92,21 +92,21 @@
 </section>
 <section id="现时生存分析" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="现时生存分析"><span class="header-section-number">2.2</span> 现时生存分析</h3>
-<p>现时生存分析由德国流行病学家 Hermann Brenner于1996年首先提出，至2002年逐渐发展成熟。</p>
-<p>现时生存分析（period survival analysis）纳入的研究对象分为两部分，一部分是感兴趣时期新确诊的所有病例，另一部分是感兴趣时期之前确诊而且在感兴趣时期仍然存活的病例。本研究的感兴趣时期设定为<em>2017-2019年</em>，那研究对象就需要纳入2017-2019年期间所有新确诊癌症病例以及2017-2019年之前确诊并在2017-2019年期间仍存活的癌症病例。</p>
+<p>现时生存分析由德国流行病学家 Hermann Brenner于1996年首先提出，至2002年逐渐发展成熟<span class="citation" data-cites="brenner2002 brenner2004 holleczek2013b 李卓颖2021">(2–5)</span>。</p>
+<p>现时生存分析（period survival analysis）纳入的研究对象分为两部分，一部分是感兴趣时期新确诊的所有病例，另一部分是感兴趣时期之前确诊而且在感兴趣时期仍然存活的病例。本研究的感兴趣时期设定为<em>2017-2019年</em>，那研究对象就需要纳入2017-2019年期间所有新确诊癌症病例以及2017-2019年之前确诊并在2017-2019年期间仍存活的癌症病例<span class="citation" data-cites="jansen2013">(6)</span>。</p>
 <p>现时生存分析在感兴趣时期纳入了新确诊癌症病例数据和随访数据，因此该方法更接近真实生存率。</p>
 </section>
 <section id="现时生存分析的估计精度" class="level3" data-number="2.3">
 <h3 data-number="2.3" class="anchored" data-anchor-id="现时生存分析的估计精度"><span class="header-section-number">2.3</span> 现时生存分析的估计精度</h3>
 <p>由于现时生存分析方法纳入的病例数相对于<em>完全法</em>来说要少，因此，该方法估计生存率的精确度和稳健度比其他方法偏低，估计生存率的方差也偏大一些，因此，我们在利用该方法估计生存率的时候应注意把握估计精确度和时效性之间的平衡。</p>
-<p>但是对于省级人群肿瘤登记数据来说，数据样本量较大，生存率估计的精度能够得到保证，因此，评估的时效性成为优先考虑的问题，现时生存分析成为评估人群癌症生存率的优先选项。</p>
+<p>但是对于省级人群肿瘤登记数据来说，数据样本量较大，生存率估计的精度能够得到保证，因此，评估的时效性成为优先考虑的问题，现时生存分析成为评估人群癌症生存率的优先选项<span class="citation" data-cites="张华2014 张华2016">(1,7)</span>。</p>
 </section>
 </section>
 <section id="统计软件包的安装" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="统计软件包的安装"><span class="header-section-number">3</span> 统计软件包的安装</h2>
-<p>本篇博文介绍利用现时法统计模型估计癌症5年生存率，这种方法能够提高生存率估计的时效性。我们将使用Brenner等编写的R包“periodR”进行相对生存率的估计，你可以<a href="https://krebsregister.saarland.de/daten-auswertungen-veroeffentlichungen/software/periodr-english/">在这里下载R包</a>，并安装使用。</p>
+<p>本篇博文介绍利用现时法统计模型估计癌症5年生存率，这种方法能够提高生存率估计的时效性。我们将使用Brenner等编写的R包”periodR”进行相对生存率的估计，你可以<a href="https://krebsregister.saarland.de/daten-auswertungen-veroeffentlichungen/software/periodr-english/">在这里下载R包</a>，并安装使用<span class="citation" data-cites="holleczek2009 holleczek2013b">(4,8)</span>。</p>
 <p>点开链接之后，可以根据自己使用的操作系统和R语言版本选择相应的安装包。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_d3158a34884419afa391d818dbd27101">
+<div class="cell">
 <div class="cell-output-display">
 <p><img src="https://www.chenq.site/qsight/2023-04-09-relativesurvival/periodR.jpg" class="img-fluid" width="692"></p>
 </div>
@@ -134,8 +134,8 @@
 <span id="cb2-7"><span class="fu" style="color: #4758AB;">library</span>(flextable)</span>
 <span id="cb2-8"><span class="fu" style="color: #4758AB;">library</span>(kableExtra)</span>
 <span id="cb2-9"><span class="fu" style="color: #4758AB;">library</span>(gtsummary)</span></code></pre></div>
-<p>筛选入选河南省肿瘤登记年报的登记处数据</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_0309a36ee0aa364dad5a5450dc8572e7">
+<p>筛选入选河南省肿瘤登记年报的登记处数据。</p>
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="do" style="color: #5E5E5E;
@@ -158,9 +158,9 @@ font-style: italic;">## 读取肿瘤登记数据</span></span>
 </section>
 <section id="按照现时生存分析筛选病例" class="level3" data-number="4.3">
 <h3 data-number="4.3" class="anchored" data-anchor-id="按照现时生存分析筛选病例"><span class="header-section-number">4.3</span> 按照现时生存分析筛选病例</h3>
-<p>考虑到我们设定的“感兴趣时期”为2017-2019年，按照<strong>现时生存分析</strong>方法纳入病例的原则，我们需要纳入2017-2019年期间新诊断的所有癌症患者以及在这个时期之前诊断且在2017-2019年期间内仍存活的癌症病例。</p>
-<p>按照上面的筛选标准，继续对上一步输出的数据进行范围筛查</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_333f4d8534c43755482bcb088df88a47">
+<p>考虑到我们设定的”感兴趣时期”为2017-2019年，按照<strong>现时生存分析</strong>方法纳入病例的原则，我们需要纳入2017-2019年期间新诊断的所有癌症患者以及在这个时期之前诊断且在2017-2019年期间内仍存活的癌症病例<span class="citation" data-cites="ellison2006">(9)</span>。</p>
+<p>按照上面的筛选标准，继续对上一步输出的数据进行范围筛查。</p>
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1">canreg <span class="ot" style="color: #003B4F;">&lt;-</span> canreg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
@@ -174,7 +174,7 @@ font-style: italic;">## 读取肿瘤登记数据</span></span>
 </section>
 <section id="限制生存分析的癌种范围" class="level3" data-number="4.4">
 <h3 data-number="4.4" class="anchored" data-anchor-id="限制生存分析的癌种范围"><span class="header-section-number">4.4</span> 限制生存分析的癌种范围</h3>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_cb4370f28bd3887db3cf93d6694ae7d3">
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="do" style="color: #5E5E5E;
@@ -193,7 +193,7 @@ font-style: italic;">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范�
 <section id="对删失数据进行处理" class="level3" data-number="4.5">
 <h3 data-number="4.5" class="anchored" data-anchor-id="对删失数据进行处理"><span class="header-section-number">4.5</span> 对删失数据进行处理</h3>
 <p>本研究的随访截止日期设定为2019年12月31日，我们按照这个截止日期进行结尾数据的手工处理。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-6_537e5c76a64bfa234e6bca0a2383b31e">
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1">analysis <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span>  </span>
@@ -214,7 +214,7 @@ font-style: italic;">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范�
 </section>
 <section id="对待分析的分组变量进行处理" class="level3" data-number="4.6">
 <h3 data-number="4.6" class="anchored" data-anchor-id="对待分析的分组变量进行处理"><span class="header-section-number">4.6</span> 对待分析的分组变量进行处理</h3>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-7_2623b6f9bea6d781b97cbe8bc0224916">
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1">analysis <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span>  </span>
@@ -251,7 +251,7 @@ font-style: italic;">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范�
 <section id="质量控制" class="level2 page-columns page-full" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="质量控制"><span class="header-section-number">5</span> 质量控制</h2>
 <p>在进行5年相对生存率的计算之前，我们需要先评估一下各个登记处的随访的质量情况，包括DCO数据的比例、失访的情况、最终纳入分析数据的病理诊断比例等来对数据质量进行评估。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-8_d30677c9de16c177fb9ebeaf43de0112">
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1">submit <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">count</span>(areacode2)</span>
@@ -293,8 +293,8 @@ font-style: italic;">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范�
 <span id="cb8-37">urban <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"410300"</span>,<span class="st" style="color: #20794D;">"410600"</span>,<span class="st" style="color: #20794D;">"411100"</span>,<span class="st" style="color: #20794D;">"411202"</span>,<span class="st" style="color: #20794D;">"411303"</span>)</span></code></pre></div>
 </details>
 </div>
-<p>把上面计算的结果绘制成可以展现的表格，从下面 Table&nbsp;1 中可以看出入选登记处的数据质量情况，包括DCO、失访情况、以及最终纳入分析的病例数、多原发比例、以病理诊断比例等。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-9_ca6d461f61a056ae6d655ed850233b51">
+<p>把上面计算的结果绘制成可以展现的表格，从下面 表&nbsp;1 中可以看出入选登记处的数据质量情况，包括DCO、失访情况、以及最终纳入分析的病例数、多原发比例、以病理诊断比例等。</p>
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1">t1 <span class="ot" style="color: #003B4F;">&lt;-</span> result <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
@@ -316,18 +316,18 @@ font-style: italic;">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范�
 <span id="cb9-17">  <span class="fu" style="color: #4758AB;">kbl</span>(<span class="at" style="color: #657422;">col.names =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"登记处"</span>,<span class="st" style="color: #20794D;">"类型"</span>,<span class="st" style="color: #20794D;">"病例数"</span>,<span class="st" style="color: #20794D;">"DCO,n(%)"</span>,<span class="st" style="color: #20794D;">"失访,n(%)"</span>,</span>
 <span id="cb9-18">                    <span class="st" style="color: #20794D;">"病例数"</span>,<span class="st" style="color: #20794D;">"多原发,n(%)"</span>,<span class="st" style="color: #20794D;">"病理诊断,n(%)"</span>),</span>
 <span id="cb9-19">      <span class="at" style="color: #657422;">align =</span> <span class="st" style="color: #20794D;">"c"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
-<span id="cb9-20">  <span class="fu" style="color: #4758AB;">kable_styling</span>(<span class="at" style="color: #657422;">font_size =</span> <span class="dv" style="color: #AD0000;">8</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb9-20">  <span class="fu" style="color: #4758AB;">kable_styling</span>(<span class="at" style="color: #657422;">font_size =</span> <span class="dv" style="color: #AD0000;">7</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
 <span id="cb9-21">  <span class="fu" style="color: #4758AB;">kable_classic</span>(<span class="at" style="color: #657422;">full_width =</span> T, <span class="at" style="color: #657422;">html_font =</span> <span class="st" style="color: #20794D;">"Cambria"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
 <span id="cb9-22">  <span class="fu" style="color: #4758AB;">add_header_above</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">" "</span> <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">3</span>, <span class="st" style="color: #20794D;">"剔除"</span> <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="st" style="color: #20794D;">"纳入分析"</span> <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">3</span>),</span>
 <span id="cb9-23">                   <span class="at" style="color: #657422;">bold =</span> T,<span class="at" style="color: #657422;">border_left =</span> T) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
 <span id="cb9-24">  <span class="fu" style="color: #4758AB;">row_spec</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="at" style="color: #657422;">bold=</span>T,<span class="at" style="color: #657422;">italic=</span>T) </span></code></pre></div>
 </details>
 </div>
-<div class="cell page-columns page-full" data-hash="index_cache/html/tbl-t1_b0dc1e79f8c390cdb305b0761f36b46b">
+<div class="cell page-columns page-full">
 <div class="cell-output-display column-page">
 <div id="tbl-t1" class="anchored">
 <table class="table lightable-classic table-sm table-striped" data-quarto-postprocess="true">
-<caption>Table&nbsp;1: 纳入分析肿瘤登记处随访质量情况</caption>
+<caption>表&nbsp;1: 纳入分析肿瘤登记处随访质量情况</caption>
 <colgroup>
 <col style="width: 12%">
 <col style="width: 12%">
@@ -629,17 +629,655 @@ font-style: italic;">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范�
 </div>
 </section>
 <section id="计算一般人群期望生存概率" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="计算一般人群期望生存概率"><span class="header-section-number">6</span> 计算一般人群期望生存概率</h2>
+<p>普通人群期望生存概率是计算癌症相对生存率的基础，我们可以通过肿瘤登记处上报的分性别、年龄组的全因死亡数来计算简略寿命表，然后通过一些方法把简略寿命表扩展为完全寿命表。</p>
+<p>下面我们介绍如何使用stata软件计算简略寿命表，并把简略寿命表扩充为完全寿命表的过程。（图&nbsp;1）</p>
+<div class="cell" data-eval="true" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-lifetable" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div>
+
+<pre class="mermaid mermaid-js" data-label="fig-lifetable">flowchart TD
+ A[(全死因数据)] --&gt; B[分性别年龄组全因死亡数]
+ B --&gt; C[编制简略寿命表]
+ C --&gt; D[寿命表的质量控制]
+ D --&gt; E[平滑方法]
+ E --&gt; F[完全寿命表]
+</pre>
+</div>
+<p></p><figcaption class="figure-caption">图&nbsp;1: 简略寿命表扩充完全寿命表</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="统计整理全死因数据" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="统计整理全死因数据"><span class="header-section-number">6.1</span> 统计整理全死因数据</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;">library</span>(haven)</span>
+<span id="cb10-2">data <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read_dta</span>(<span class="st" style="color: #20794D;">"pop.dta"</span>)</span>
+<span id="cb10-3"><span class="fu" style="color: #4758AB;">head</span>(data)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+    sex  year agegrp    pop deaths  rate agegroup2 code 
+  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;
+1     1  2014      0 118519    596 5.03          0 Henan
+2     1  2014      1 593146    304 0.513         1 Henan
+3     1  2014      5 743825    181 0.243         5 Henan
+4     1  2014     10 694528    177 0.255        10 Henan
+5     1  2014     15 692646    290 0.419        15 Henan
+6     1  2014     20 829811    537 0.647        20 Henan</code></pre>
+</div>
+</div>
+</section>
+<section id="stata数据准备" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
+<p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
+<p><button class="btn btn-info downloadthis  " id="dnldts11989"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts30453"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+</section>
+<section id="计算简略寿命表" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb12-1">cd <span class="st" style="color: #20794D;">"/Users/qc0824/manuscripts/period-survival"</span></span>
+<span id="cb12-2">************step 2 简略寿命表准备</span>
+<span id="cb12-3"><span class="kw" style="color: #003B4F;">use</span> pop.dta,<span class="kw" style="color: #003B4F;">clear</span></span>
+<span id="cb12-4">browse</span>
+<span id="cb12-5"><span class="kw" style="color: #003B4F;">gen</span> n=5 <span class="co" style="color: #5E5E5E;">//生成组距</span></span>
+<span id="cb12-6"><span class="kw" style="color: #003B4F;">replace</span> n=1 <span class="kw" style="color: #003B4F;">if</span> agegroup2==0</span>
+<span id="cb12-7"><span class="kw" style="color: #003B4F;">replace</span> n=4 <span class="kw" style="color: #003B4F;">if</span> agegroup2==1</span>
+<span id="cb12-8"><span class="kw" style="color: #003B4F;">replace</span> n=15 <span class="kw" style="color: #003B4F;">if</span> agegroup2==85</span>
+<span id="cb12-9"></span>
+<span id="cb12-10"><span class="kw" style="color: #003B4F;">tab</span> n</span>
+<span id="cb12-11"><span class="kw" style="color: #003B4F;">gen</span> mx= deaths/pop <span class="co" style="color: #5E5E5E;">// 计算年龄组死亡率</span></span>
+<span id="cb12-12"><span class="kw" style="color: #003B4F;">gen</span> qx=1-<span class="fu" style="color: #4758AB;">exp</span>(-n*mx) <span class="co" style="color: #5E5E5E;">// 计算年龄组死亡概率</span></span>
+<span id="cb12-13"><span class="kw" style="color: #003B4F;">egen</span> ageblock1=<span class="fu" style="color: #4758AB;">seq</span>(),block(19)</span>
+<span id="cb12-14"><span class="kw" style="color: #003B4F;">bysort</span> ageblock1: <span class="kw" style="color: #003B4F;">gen</span> ageblock2=<span class="dt" style="color: #AD0000;">_n</span></span>
+<span id="cb12-15"></span>
+<span id="cb12-16"><span class="kw" style="color: #003B4F;">gen</span> lx=.</span>
+<span id="cb12-17"><span class="kw" style="color: #003B4F;">replace</span> lx=100000 <span class="kw" style="color: #003B4F;">if</span> agegroup2==0</span>
+<span id="cb12-18"><span class="kw" style="color: #003B4F;">gen</span> dx=.</span>
+<span id="cb12-19"><span class="kw" style="color: #003B4F;">replace</span> dx=qx*lx </span>
+<span id="cb12-20"></span>
+<span id="cb12-21"><span class="kw" style="color: #003B4F;">foreach</span> n <span class="kw" style="color: #003B4F;">of</span> numlist 2/19 {</span>
+<span id="cb12-22">   <span class="kw" style="color: #003B4F;">bysort</span> code <span class="fu" style="color: #4758AB;">year</span> sex ageblock1: <span class="kw" style="color: #003B4F;">replace</span> lx=lx[<span class="dt" style="color: #AD0000;">_n</span>-1]-dx[<span class="dt" style="color: #AD0000;">_n</span>-1] <span class="kw" style="color: #003B4F;">if</span>  ageblock2==<span class="ot" style="color: #003B4F;">`n'</span></span>
+<span id="cb12-23">   <span class="kw" style="color: #003B4F;">replace</span> dx=qx[<span class="dt" style="color: #AD0000;">_n</span>]*lx[<span class="dt" style="color: #AD0000;">_n</span>] <span class="kw" style="color: #003B4F;">if</span> ageblock2==<span class="ot" style="color: #003B4F;">`n'</span></span>
+<span id="cb12-24">    } <span class="co" style="color: #5E5E5E;">// 计算尚存活人数lx，和死亡人数dx</span></span>
+<span id="cb12-25"><span class="kw" style="color: #003B4F;">gen</span> Lx=n*(2*lx-dx)/2    <span class="co" style="color: #5E5E5E;">//计算个年龄组生存人年数</span></span>
+<span id="cb12-26"></span>
+<span id="cb12-27"><span class="kw" style="color: #003B4F;">gsort</span> code <span class="fu" style="color: #4758AB;">year</span> sex -ageblock2 <span class="co" style="color: #5E5E5E;">// 利用sum函数从上往下累计的原理，将年龄组倒序排列，反向累加</span></span>
+<span id="cb12-28"><span class="kw" style="color: #003B4F;">bysort</span> ageblock1: <span class="kw" style="color: #003B4F;">gen</span> Tx=<span class="kw" style="color: #003B4F;">sum</span>(Lx) <span class="co" style="color: #5E5E5E;">// 计算生存总人年数</span></span>
+<span id="cb12-29"><span class="kw" style="color: #003B4F;">gsort</span> code <span class="fu" style="color: #4758AB;">year</span> sex ageblock2</span>
+<span id="cb12-30"><span class="kw" style="color: #003B4F;">gen</span> ex=Tx/lx <span class="co" style="color: #5E5E5E;">// 计算期望寿命=生存总人年数/年龄组尚存活人数</span></span></code></pre></div>
+</section>
+<section id="寿命表的质量审核" class="level3" data-number="6.4">
+<h3 data-number="6.4" class="anchored" data-anchor-id="寿命表的质量审核"><span class="header-section-number">6.4</span> 寿命表的质量审核</h3>
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><span class="kw" style="color: #003B4F;">twoway</span>(connected ex <span class="fu" style="color: #4758AB;">year</span> <span class="kw" style="color: #003B4F;">if</span> agegroup2==0),<span class="kw" style="color: #003B4F;">by</span>(code sex) xla(2014(2)2020) <span class="co" style="color: #5E5E5E;">// #根据期望寿命判断寿命表的数据质量（修改分析年份）</span></span></code></pre></div>
+</section>
+<section id="扩充完全寿命表结构" class="level3" data-number="6.5">
+<h3 data-number="6.5" class="anchored" data-anchor-id="扩充完全寿命表结构"><span class="header-section-number">6.5</span> 扩充完全寿命表结构</h3>
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb14-1">*******************step3 将19个年龄组expand为0到99岁完整年龄寿命表结构</span>
+<span id="cb14-2"><span class="kw" style="color: #003B4F;">drop</span> ageblock1 ageblock2 <span class="co" style="color: #5E5E5E;">// 删除年龄区组中间变量</span></span>
+<span id="cb14-3"><span class="kw" style="color: #003B4F;">gen</span> num=<span class="dt" style="color: #AD0000;">_n</span> <span class="co" style="color: #5E5E5E;">// 生成序号</span></span>
+<span id="cb14-4">expand=n   <span class="co" style="color: #5E5E5E;">// 根据n的数量扩充数据库</span></span>
+<span id="cb14-5"><span class="kw" style="color: #003B4F;">sort</span> num <span class="co" style="color: #5E5E5E;">// 根据序号排序</span></span>
+<span id="cb14-6"><span class="kw" style="color: #003B4F;">bysort</span> code <span class="fu" style="color: #4758AB;">year</span> sex : <span class="kw" style="color: #003B4F;">egen</span> age=<span class="fu" style="color: #4758AB;">seq</span>(),f(0) t(99) <span class="co" style="color: #5E5E5E;">// 生成0-99岁单岁组</span></span>
+<span id="cb14-7"><span class="kw" style="color: #003B4F;">bysort</span> code <span class="fu" style="color: #4758AB;">year</span> sex num :<span class="kw" style="color: #003B4F;">egen</span> block=<span class="fu" style="color: #4758AB;">seq</span>(),f(1) t()  <span class="co" style="color: #5E5E5E;">// 为19个年组内扩充的单岁组排序</span></span>
+<span id="cb14-8"><span class="kw" style="color: #003B4F;">order</span> age,after(sex) <span class="co" style="color: #5E5E5E;">// 年龄变量移位至sex后面</span></span>
+<span id="cb14-9"><span class="kw" style="color: #003B4F;">foreach</span> <span class="kw" style="color: #003B4F;">var</span> <span class="kw" style="color: #003B4F;">of</span> <span class="kw" style="color: #003B4F;">varlist</span> mx-ex {</span>
+<span id="cb14-10">    <span class="kw" style="color: #003B4F;">replace</span> <span class="ot" style="color: #003B4F;">`var'</span>=. <span class="kw" style="color: #003B4F;">if</span> block~=1</span>
+<span id="cb14-11">    } <span class="co" style="color: #5E5E5E;">// 清除扩充出的单岁组的对应的死亡率mx，死亡概率qx，尚存活人数lx，死亡人数dx，生存人年数Lx，生存总人年数Tx，平均期望寿命ex</span></span>
+<span id="cb14-12">    </span>
+<span id="cb14-13"><span class="kw" style="color: #003B4F;">save</span> lt0-99,<span class="kw" style="color: #003B4F;">replace</span></span></code></pre></div>
+</section>
+<section id="合并ej推算系数" class="level3" data-number="6.6">
+<h3 data-number="6.6" class="anchored" data-anchor-id="合并ej推算系数"><span class="header-section-number">6.6</span> 合并EJ推算系数</h3>
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb15-1">************step 4 EJ推算系数合并</span>
+<span id="cb15-2"><span class="kw" style="color: #003B4F;">use</span> ej系数,<span class="kw" style="color: #003B4F;">clear</span></span>
+<span id="cb15-3"><span class="kw" style="color: #003B4F;">sort</span> age</span>
+<span id="cb15-4"><span class="kw" style="color: #003B4F;">save</span> ej系数,<span class="kw" style="color: #003B4F;">replace</span></span>
+<span id="cb15-5"></span>
+<span id="cb15-6"><span class="kw" style="color: #003B4F;">use</span> lt0-99,<span class="kw" style="color: #003B4F;">clear</span></span>
+<span id="cb15-7"><span class="kw" style="color: #003B4F;">sort</span> age</span>
+<span id="cb15-8"></span>
+<span id="cb15-9"><span class="kw" style="color: #003B4F;">merge</span> <span class="fu" style="color: #4758AB;">m</span>:1 age <span class="kw" style="color: #003B4F;">using</span> <span class="st" style="color: #20794D;">"ej系数"</span> <span class="co" style="color: #5E5E5E;">// 注意查看合并结果和note文件</span></span></code></pre></div>
+</section>
+<section id="利用ej-hm方法建模估计完全寿命表" class="level3" data-number="6.7">
+<h3 data-number="6.7" class="anchored" data-anchor-id="利用ej-hm方法建模估计完全寿命表"><span class="header-section-number">6.7</span> 利用EJ-hm方法建模估计完全寿命表</h3>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb16-1">************step 5 EJ建模估算</span>
+<span id="cb16-2"><span class="kw" style="color: #003B4F;">ren</span> (code pop deaths)(site population deaths) <span class="co" style="color: #5E5E5E;">// 重新命名变量与EJ-hm.do内保持一致</span></span>
+<span id="cb16-3"><span class="kw" style="color: #003B4F;">describe</span></span>
+<span id="cb16-4"><span class="kw" style="color: #003B4F;">sort</span> site <span class="fu" style="color: #4758AB;">year</span> sex age</span>
+<span id="cb16-5"><span class="kw" style="color: #003B4F;">replace</span> lx=lx/100000 <span class="co" style="color: #5E5E5E;">//必须将lx转化，除以100000，否则结果出错</span></span>
+<span id="cb16-6"><span class="kw" style="color: #003B4F;">do</span> <span class="st" style="color: #20794D;">"EJ-hm.do"</span></span>
+<span id="cb16-7">* Generate <span class="kw" style="color: #003B4F;">fitted</span> mortality rate from 0 to 98 years</span>
+<span id="cb16-8"><span class="kw" style="color: #003B4F;">sort</span> site sex <span class="fu" style="color: #4758AB;">year</span> age </span>
+<span id="cb16-9"><span class="kw" style="color: #003B4F;">gen</span> fitmx=-<span class="fu" style="color: #4758AB;">ln</span>(fitlx[<span class="dt" style="color: #AD0000;">_n</span>+1]/fitlx) <span class="kw" style="color: #003B4F;">if</span> age!=99 <span class="co" style="color: #5E5E5E;">// 根据qx=1-exp(-n*mx)公式反向推导而来，即px=exp(-mx)</span></span>
+<span id="cb16-10"><span class="kw" style="color: #003B4F;">replace</span> fitmx=-<span class="fu" style="color: #4758AB;">ln</span>(fitlx/fitlx[<span class="dt" style="color: #AD0000;">_n</span>-1]) <span class="kw" style="color: #003B4F;">if</span> age==99 <span class="co" style="color: #5E5E5E;">// 99岁组fitmx单独计算,等于98岁组的死亡率（疑问？）</span></span>
+<span id="cb16-11">* Save results</span>
+<span id="cb16-12"><span class="kw" style="color: #003B4F;">save</span> complete_lifetable_js, <span class="kw" style="color: #003B4F;">replace</span></span></code></pre></div>
+</section>
+</section>
+<section id="利用periodr包计算相对生存率" class="level2 page-columns page-full" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="利用periodr包计算相对生存率"><span class="header-section-number">7</span> 利用periodR包计算相对生存率</h2>
+<section id="periodr基本语法" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="periodr基本语法"><span class="header-section-number">7.1</span> periodR基本语法</h3>
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;">period</span>(data, k, surv.m, surv.f, perbeg, perend, <span class="at" style="color: #657422;">method=</span><span class="st" style="color: #20794D;">"EdereII"</span>, <span class="at" style="color: #657422;">agedist=</span><span class="cn" style="color: #8f5902;">NULL</span>)</span></code></pre></div>
+<p>程序参数如下：</p>
+<blockquote class="blockquote">
+<ul>
+<li>data：生存数据</li>
+<li>k：随访时间</li>
+<li>surv.m：0-99岁条件一年生存概率（男性）</li>
+<li>surv.f：0-99岁条件一年生存概率（女性）</li>
+<li>perbeg：纳入分析的起始年份</li>
+<li>perend：纳入分析的终止年份</li>
+<li>method：相对生存率的计算方法</li>
+<li>agedist: 标准年龄构成</li>
+</ul>
+</blockquote>
+</section>
+<section id="构建批量生存分析函数" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="构建批量生存分析函数"><span class="header-section-number">7.2</span> 构建批量生存分析函数</h3>
+<p>period函数对不同数据子集进行生存分析时，需要在data参数中制定不同的数据子集，如果子集很多的时候，数据分析起来就会很麻烦，比如对不同部位癌种进行生存分析，所以，我们可以在period函数的基础上，编制一个批量生存分析的函数，来方面我们的计算过程。</p>
+<p>下面这个函数在period的基础上进行了一些整合，可以批量分析不同亚组的生存分析，并把主要结果整理成数据集。</p>
+<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1">tperiod <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(data,cat) {</span>
+<span id="cb18-2">  cats <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">unique</span>(data[[cat]])</span>
+<span id="cb18-3">  ress <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>()</span>
+<span id="cb18-4">  <span class="cf" style="color: #003B4F;">for</span> (x <span class="cf" style="color: #003B4F;">in</span> cats) {</span>
+<span id="cb18-5">    std.pop <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">icss_choose</span>(x)</span>
+<span id="cb18-6">    ress_ <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">period</span>(<span class="fu" style="color: #4758AB;">subset</span>(data,data[[cat]]<span class="sc" style="color: #5E5E5E;">==</span>x), <span class="dv" style="color: #AD0000;">5</span>, surv.m, surv.f, <span class="dv" style="color: #AD0000;">2017</span>, <span class="dv" style="color: #AD0000;">2019</span>)</span>
+<span id="cb18-7">    res_ <span class="ot" style="color: #003B4F;">&lt;-</span>  <span class="fu" style="color: #4758AB;">period</span>(<span class="fu" style="color: #4758AB;">subset</span>(data,data[[cat]]<span class="sc" style="color: #5E5E5E;">==</span>x), <span class="dv" style="color: #AD0000;">5</span>, surv.m, surv.f, </span>
+<span id="cb18-8">                   <span class="dv" style="color: #AD0000;">2017</span>, <span class="dv" style="color: #AD0000;">2019</span>, <span class="at" style="color: #657422;">agedist =</span> std.pop)</span>
+<span id="cb18-9">    res <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(<span class="at" style="color: #657422;">cate=</span>x,</span>
+<span id="cb18-10">                      <span class="at" style="color: #657422;">crs=</span><span class="fu" style="color: #4758AB;">round</span>(ress_<span class="sc" style="color: #5E5E5E;">$</span>rel.surv[<span class="dv" style="color: #AD0000;">5</span>],<span class="dv" style="color: #AD0000;">1</span>),</span>
+<span id="cb18-11">                      <span class="at" style="color: #657422;">cse=</span><span class="fu" style="color: #4758AB;">round</span>(ress_<span class="sc" style="color: #5E5E5E;">$</span>rel.surv.stderr[<span class="dv" style="color: #AD0000;">5</span>],<span class="dv" style="color: #AD0000;">1</span>),</span>
+<span id="cb18-12">                      <span class="at" style="color: #657422;">rs=</span><span class="fu" style="color: #4758AB;">round</span>(res_<span class="sc" style="color: #5E5E5E;">$</span>rel.surv[<span class="dv" style="color: #AD0000;">5</span>],<span class="dv" style="color: #AD0000;">1</span>),</span>
+<span id="cb18-13">                      <span class="at" style="color: #657422;">se=</span><span class="fu" style="color: #4758AB;">round</span>(res_<span class="sc" style="color: #5E5E5E;">$</span>rel.surv.stderr[<span class="dv" style="color: #AD0000;">5</span>],<span class="dv" style="color: #AD0000;">1</span>))</span>
+<span id="cb18-14">    ress <span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">rbind</span>(ress,res)</span>
+<span id="cb18-15">  }</span>
+<span id="cb18-16">  total_ <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">period</span>(data, <span class="dv" style="color: #AD0000;">5</span>, surv.m, surv.f, <span class="dv" style="color: #AD0000;">2017</span>, <span class="dv" style="color: #AD0000;">2019</span>)</span>
+<span id="cb18-17">  total <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">period</span>(data, <span class="dv" style="color: #AD0000;">5</span>, surv.m, surv.f, <span class="dv" style="color: #AD0000;">2017</span>, <span class="dv" style="color: #AD0000;">2019</span>, <span class="at" style="color: #657422;">agedist =</span> icss1)</span>
+<span id="cb18-18">  total <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(<span class="at" style="color: #657422;">cate=</span><span class="st" style="color: #20794D;">"合计"</span>,</span>
+<span id="cb18-19">                      <span class="at" style="color: #657422;">crs=</span><span class="fu" style="color: #4758AB;">round</span>(total_<span class="sc" style="color: #5E5E5E;">$</span>rel.surv[<span class="dv" style="color: #AD0000;">5</span>],<span class="dv" style="color: #AD0000;">1</span>),</span>
+<span id="cb18-20">                      <span class="at" style="color: #657422;">cse=</span><span class="fu" style="color: #4758AB;">round</span>(total_<span class="sc" style="color: #5E5E5E;">$</span>rel.surv.stderr[<span class="dv" style="color: #AD0000;">5</span>],<span class="dv" style="color: #AD0000;">1</span>),</span>
+<span id="cb18-21">                      <span class="at" style="color: #657422;">rs=</span><span class="fu" style="color: #4758AB;">round</span>(total<span class="sc" style="color: #5E5E5E;">$</span>rel.surv[<span class="dv" style="color: #AD0000;">5</span>],<span class="dv" style="color: #AD0000;">1</span>),</span>
+<span id="cb18-22">                      <span class="at" style="color: #657422;">se=</span><span class="fu" style="color: #4758AB;">round</span>(total<span class="sc" style="color: #5E5E5E;">$</span>rel.surv.stderr[<span class="dv" style="color: #AD0000;">5</span>],<span class="dv" style="color: #AD0000;">1</span>))</span>
+<span id="cb18-23">  ress <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">rbind</span>(ress,total) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">arrange</span>(cate)</span>
+<span id="cb18-24">  <span class="fu" style="color: #4758AB;">return</span>(ress)</span>
+<span id="cb18-25">}</span></code></pre></div>
+</section>
+<section id="年龄标化生存率的计算" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="年龄标化生存率的计算"><span class="header-section-number">7.3</span> 年龄标化生存率的计算</h3>
+<p>在进行生存率的年龄标化时，WHO推荐了三个标准年龄构成，不同的癌种在进行年龄标化时应该选择不同的标准年龄构成。我把这个过程跟上面的函数整合到一起，可以实现根据不同癌症选择不同的标准年龄构成，这样就不用手动选择标准年龄结构了。</p>
+<p>程序如下：</p>
+<div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="co" style="color: #5E5E5E;">#生成生存分析标准人口结构</span></span>
+<span id="cb19-2">s <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">23</span>,<span class="dv" style="color: #AD0000;">29</span>,<span class="dv" style="color: #AD0000;">29</span>)</span>
+<span id="cb19-3">icss1 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">cbind</span>(cancer.pop[,<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">2</span>],s)</span>
+<span id="cb19-4">s<span class="ot" style="color: #003B4F;">=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">28</span>,<span class="dv" style="color: #AD0000;">17</span>,<span class="dv" style="color: #AD0000;">21</span>,<span class="dv" style="color: #AD0000;">20</span>,<span class="dv" style="color: #AD0000;">14</span>)</span>
+<span id="cb19-5">icss2 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">cbind</span>(icss1[,<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">2</span>],s)</span>
+<span id="cb19-6">s<span class="ot" style="color: #003B4F;">=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">60</span>,<span class="dv" style="color: #AD0000;">10</span>,<span class="dv" style="color: #AD0000;">10</span>,<span class="dv" style="color: #AD0000;">10</span>,<span class="dv" style="color: #AD0000;">10</span>)</span>
+<span id="cb19-7">icss3 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">cbind</span>(icss1[,<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">2</span>],s)</span>
+<span id="cb19-8"><span class="co" style="color: #5E5E5E;">#根据癌种不同选择不同的标准人口结构</span></span>
+<span id="cb19-9">icss_choose <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(x) {</span>
+<span id="cb19-10">  <span class="cf" style="color: #003B4F;">if</span> (x <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"鼻咽"</span>,<span class="st" style="color: #20794D;">"皮肤黑色素瘤"</span>,<span class="st" style="color: #20794D;">"子宫颈"</span>,<span class="st" style="color: #20794D;">"脑"</span>,<span class="st" style="color: #20794D;">"甲状腺"</span>,<span class="st" style="color: #20794D;">"骨"</span>)) {</span>
+<span id="cb19-11">    std.pop <span class="ot" style="color: #003B4F;">&lt;-</span> icss2</span>
+<span id="cb19-12">  } <span class="cf" style="color: #003B4F;">else</span> <span class="cf" style="color: #003B4F;">if</span> (x <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"睾丸"</span>)) {</span>
+<span id="cb19-13">    std.pop <span class="ot" style="color: #003B4F;">&lt;-</span> icss3 </span>
+<span id="cb19-14">  } <span class="cf" style="color: #003B4F;">else</span> { </span>
+<span id="cb19-15">    std.pop <span class="ot" style="color: #003B4F;">&lt;-</span> icss1 </span>
+<span id="cb19-16">  }</span>
+<span id="cb19-17">  <span class="fu" style="color: #4758AB;">return</span>(std.pop)</span>
+<span id="cb19-18">}</span></code></pre></div>
+</section>
+<section id="计数分性别不同部位的5年相对生存率" class="level3" data-number="7.4">
+<h3 data-number="7.4" class="anchored" data-anchor-id="计数分性别不同部位的5年相对生存率"><span class="header-section-number">7.4</span> 计数分性别不同部位的5年相对生存率</h3>
+<p>首先，截取需要用的数据子集，然后利用tperiod函数计算不同癌种的5年相对生存率</p>
+<div class="sourceCode" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="do" style="color: #5E5E5E;
+font-style: italic;">##合计成人5年生存率</span></span>
+<span id="cb20-2">total <span class="ot" style="color: #003B4F;">&lt;-</span> ana <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">filter</span>(diagage<span class="sc" style="color: #5E5E5E;">&gt;=</span><span class="dv" style="color: #AD0000;">15</span>) </span>
+<span id="cb20-3">ress_total <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tperiod</span>(<span class="at" style="color: #657422;">data=</span>total,<span class="at" style="color: #657422;">cat=</span><span class="st" style="color: #20794D;">"icdd"</span>)</span></code></pre></div>
+<p>计算男性成人5年相对生存率</p>
+<div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="do" style="color: #5E5E5E;
+font-style: italic;">##男性成人5年生存率</span></span>
+<span id="cb21-2">male <span class="ot" style="color: #003B4F;">&lt;-</span> ana <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">filter</span>(sex<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"1"</span>,diagage<span class="sc" style="color: #5E5E5E;">&gt;=</span><span class="dv" style="color: #AD0000;">15</span>)</span>
+<span id="cb21-3">ress_male <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tperiod</span>(<span class="at" style="color: #657422;">data=</span>male,<span class="at" style="color: #657422;">cat=</span><span class="st" style="color: #20794D;">"icdd"</span>)</span></code></pre></div>
+<p>计算女性成人5年相对生存率</p>
+<div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="do" style="color: #5E5E5E;
+font-style: italic;">##女性成人5年生存率</span></span>
+<span id="cb22-2">female <span class="ot" style="color: #003B4F;">&lt;-</span> ana <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">filter</span>(sex<span class="sc" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"2"</span>,diagage<span class="sc" style="color: #5E5E5E;">&gt;=</span><span class="dv" style="color: #AD0000;">15</span>)</span>
+<span id="cb22-3">ress_female <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tperiod</span>(<span class="at" style="color: #657422;">data=</span>female,<span class="at" style="color: #657422;">cat=</span><span class="st" style="color: #20794D;">"icdd"</span>)</span></code></pre></div>
+</section>
+<section id="组间相对生存率的统计学检验" class="level3" data-number="7.5">
+<h3 data-number="7.5" class="anchored" data-anchor-id="组间相对生存率的统计学检验"><span class="header-section-number">7.5</span> 组间相对生存率的统计学检验</h3>
+<p>我们采用Z检验比较组间5年相对生存率的统计学差异，其中<img src="https://latex.codecogs.com/png.latex?P_1">表示组1的相对生存率，<img src="https://latex.codecogs.com/png.latex?P_2">表示组2的相对生存率，<img src="https://latex.codecogs.com/png.latex?s.e.(P_1)">表示<img src="https://latex.codecogs.com/png.latex?P_1">的标准误，<img src="https://latex.codecogs.com/png.latex?s.e.(P_2)">表示<img src="https://latex.codecogs.com/png.latex?P_2">的标准误癌，如果Z&gt;1.96，则<em>P</em>&lt;0.05；如果Z&gt;2.56，则<em>P</em>&lt;0.01。<span class="citation" data-cites="xiangyongbing1999a">(10)</span></p>
+<p><img src="https://latex.codecogs.com/png.latex?Z=%5Cfrac%7B%7CP_1-P_2%7C%7D%7B%5Csqrt%7Bs.e.(P_1)%5E2+s.e.(P_2)%5E2%7D%7D"></p>
+</section>
+<section id="结果整理" class="level3 page-columns page-full" data-number="7.6">
+<h3 data-number="7.6" class="anchored" data-anchor-id="结果整理"><span class="header-section-number">7.6</span> 结果整理</h3>
+<div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;">options</span>(<span class="at" style="color: #657422;">NA.print =</span> <span class="st" style="color: #20794D;">"--"</span>)</span>
+<span id="cb23-2">ress_site <span class="ot" style="color: #003B4F;">&lt;-</span> ress_total <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb23-3">  <span class="fu" style="color: #4758AB;">left_join</span>(ress_male,<span class="at" style="color: #657422;">by=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"cate"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb23-4">  <span class="fu" style="color: #4758AB;">left_join</span>(ress_female,<span class="at" style="color: #657422;">by=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"cate"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb23-5">  <span class="fu" style="color: #4758AB;">arrange</span>(<span class="sc" style="color: #5E5E5E;">-</span>rs.x) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb23-6">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">z=</span><span class="fu" style="color: #4758AB;">round</span>(<span class="fu" style="color: #4758AB;">abs</span>(rs.y<span class="sc" style="color: #5E5E5E;">-</span>rs)<span class="sc" style="color: #5E5E5E;">/</span><span class="fu" style="color: #4758AB;">sqrt</span>(se.y<span class="sc" style="color: #5E5E5E;">^</span><span class="dv" style="color: #AD0000;">2</span><span class="sc" style="color: #5E5E5E;">+</span>se<span class="sc" style="color: #5E5E5E;">^</span><span class="dv" style="color: #AD0000;">2</span>),<span class="dv" style="color: #AD0000;">2</span>),</span>
+<span id="cb23-7">         <span class="at" style="color: #657422;">p=</span><span class="fu" style="color: #4758AB;">ifelse</span>(z<span class="sc" style="color: #5E5E5E;">&lt;</span><span class="fl" style="color: #AD0000;">1.96</span>,<span class="st" style="color: #20794D;">"&gt;0.05"</span>,</span>
+<span id="cb23-8">                  <span class="fu" style="color: #4758AB;">ifelse</span>(z<span class="sc" style="color: #5E5E5E;">&lt;</span><span class="fl" style="color: #AD0000;">2.56</span>,<span class="st" style="color: #20794D;">"&lt;0.05"</span>,<span class="st" style="color: #20794D;">"&lt;0.01"</span>))) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb23-9">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">a=</span><span class="fu" style="color: #4758AB;">paste0</span>(crs.x,<span class="st" style="color: #20794D;">"("</span>,cse.x,<span class="st" style="color: #20794D;">")"</span>),</span>
+<span id="cb23-10">         <span class="at" style="color: #657422;">b=</span><span class="fu" style="color: #4758AB;">paste0</span>(rs.x,<span class="st" style="color: #20794D;">"("</span>,se.x,<span class="st" style="color: #20794D;">")"</span>),</span>
+<span id="cb23-11">         <span class="at" style="color: #657422;">c=</span><span class="fu" style="color: #4758AB;">paste0</span>(crs.y,<span class="st" style="color: #20794D;">"("</span>,cse.y,<span class="st" style="color: #20794D;">")"</span>),</span>
+<span id="cb23-12">         <span class="at" style="color: #657422;">d=</span><span class="fu" style="color: #4758AB;">paste0</span>(rs.y,<span class="st" style="color: #20794D;">"("</span>,se.y,<span class="st" style="color: #20794D;">")"</span>),</span>
+<span id="cb23-13">         <span class="at" style="color: #657422;">e=</span><span class="fu" style="color: #4758AB;">paste0</span>(crs,<span class="st" style="color: #20794D;">"("</span>,cse,<span class="st" style="color: #20794D;">")"</span>),</span>
+<span id="cb23-14">         <span class="at" style="color: #657422;">f=</span><span class="fu" style="color: #4758AB;">paste0</span>(rs,<span class="st" style="color: #20794D;">"("</span>,se,<span class="st" style="color: #20794D;">")"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb23-15">  <span class="fu" style="color: #4758AB;">select</span>(cate,a,b,c,d,e,f,z,p) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb23-16">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="fu" style="color: #4758AB;">across</span>(a<span class="sc" style="color: #5E5E5E;">:</span>f, <span class="sc" style="color: #5E5E5E;">~</span> <span class="fu" style="color: #4758AB;">ifelse</span>(. <span class="sc" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"NA(NA)"</span>, <span class="st" style="color: #20794D;">"--"</span>, .))) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb23-17">  <span class="fu" style="color: #4758AB;">kbl</span>(<span class="at" style="color: #657422;">col.names =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"部位"</span>,<span class="fu" style="color: #4758AB;">rep</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"CRS"</span>,<span class="st" style="color: #20794D;">"ARS"</span>),<span class="dv" style="color: #AD0000;">3</span>),<span class="st" style="color: #20794D;">"Z"</span>,<span class="st" style="color: #20794D;">"P"</span>),<span class="at" style="color: #657422;">align =</span> <span class="st" style="color: #20794D;">"c"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb23-18">  <span class="fu" style="color: #4758AB;">kable_classic</span>(<span class="at" style="color: #657422;">full_width =</span> T, <span class="at" style="color: #657422;">html_font =</span> <span class="st" style="color: #20794D;">"Cambria"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb23-19">  <span class="fu" style="color: #4758AB;">add_header_above</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">" "</span> <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">1</span>, <span class="st" style="color: #20794D;">"合计"</span> <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="st" style="color: #20794D;">"男性"</span> <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="st" style="color: #20794D;">"女性"</span> <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="st" style="color: #20794D;">" "</span><span class="ot" style="color: #003B4F;">=</span><span class="dv" style="color: #AD0000;">2</span>),</span>
+<span id="cb23-20">                   <span class="at" style="color: #657422;">bold =</span> T,<span class="at" style="color: #657422;">border_left =</span> T) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb23-21">  <span class="fu" style="color: #4758AB;">row_spec</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="at" style="color: #657422;">bold=</span>T,<span class="at" style="color: #657422;">italic=</span>T) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb23-22">  <span class="fu" style="color: #4758AB;">footnote</span>(<span class="at" style="color: #657422;">general =</span> <span class="st" style="color: #20794D;">"结果以5年相对生存率(标准误)的形式展示. CRS: 5年相对生存率. ARS: 年龄调整5年相对生存率."</span>,</span>
+<span id="cb23-23">           <span class="at" style="color: #657422;">general_title =</span> <span class="st" style="color: #20794D;">"注:"</span>,<span class="at" style="color: #657422;">footnote_as_chunk =</span> <span class="cn" style="color: #8f5902;">TRUE</span>,<span class="at" style="color: #657422;">escape =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span></code></pre></div>
+<div class="cell page-columns page-full">
+<div class="cell-output-display column-page">
+<div id="tbl-t2" class="anchored">
+<table class="lightable-classic table table-sm table-striped" data-quarto-postprocess="true">
+<caption>表&nbsp;2: 15岁以上不同性别、不同部位癌症患者5年相对生存率</caption>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: center; empty-cells: hide;"></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; padding-bottom: 0; padding-left: 3px; padding-right: 3px; font-weight: bold;"><div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+合计
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; padding-bottom: 0; padding-left: 3px; padding-right: 3px; font-weight: bold;"><div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+男性
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; padding-bottom: 0; padding-left: 3px; padding-right: 3px; font-weight: bold;"><div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+女性
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; empty-cells: hide;"></th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">部位</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">CRS</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">ARS</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">CRS</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">ARS</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">CRS</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">ARS</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">Z</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">P</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">甲状腺</td>
+<td style="text-align: center;">91.8(0.6)</td>
+<td style="text-align: center;">86.4(1.2)</td>
+<td style="text-align: center;">87.8(1.6)</td>
+<td style="text-align: center;">83.4(2.3)</td>
+<td style="text-align: center;">92.9(0.6)</td>
+<td style="text-align: center;">87.3(1.4)</td>
+<td style="text-align: center;">1.45</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">睾丸</td>
+<td style="text-align: center;">72.8(5.4)</td>
+<td style="text-align: center;">74.4(4.9)</td>
+<td style="text-align: center;">72.8(5.4)</td>
+<td style="text-align: center;">74.4(4.9)</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">乳房</td>
+<td style="text-align: center;">79.7(0.4)</td>
+<td style="text-align: center;">73.1(1)</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">79.7(0.4)</td>
+<td style="text-align: center;">73.1(1)</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">子宫颈</td>
+<td style="text-align: center;">72.4(0.7)</td>
+<td style="text-align: center;">68.3(0.8)</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">72.4(0.7)</td>
+<td style="text-align: center;">68.3(0.8)</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">皮肤黑色素瘤</td>
+<td style="text-align: center;">68.4(4.5)</td>
+<td style="text-align: center;">67.6(4.5)</td>
+<td style="text-align: center;">64.9(6.3)</td>
+<td style="text-align: center;">63.7(6.2)</td>
+<td style="text-align: center;">72.4(6.3)</td>
+<td style="text-align: center;">72.2(6)</td>
+<td style="text-align: center;">0.99</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">膀胱</td>
+<td style="text-align: center;">66.1(1.4)</td>
+<td style="text-align: center;">66.2(1.4)</td>
+<td style="text-align: center;">68.5(1.7)</td>
+<td style="text-align: center;">68.7(1.6)</td>
+<td style="text-align: center;">58.5(2.7)</td>
+<td style="text-align: center;">58.7(2.6)</td>
+<td style="text-align: center;">3.28</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">子宫体</td>
+<td style="text-align: center;">79.5(0.8)</td>
+<td style="text-align: center;">64.2(1.8)</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">79.5(0.8)</td>
+<td style="text-align: center;">64.2(1.8)</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">口腔</td>
+<td style="text-align: center;">63.4(1.5)</td>
+<td style="text-align: center;">60.2(1.7)</td>
+<td style="text-align: center;">58.2(2)</td>
+<td style="text-align: center;">55.3(2.3)</td>
+<td style="text-align: center;">70.3(2.1)</td>
+<td style="text-align: center;">66.7(2.6)</td>
+<td style="text-align: center;">3.28</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">肾</td>
+<td style="text-align: center;">64.8(1.4)</td>
+<td style="text-align: center;">60.2(1.7)</td>
+<td style="text-align: center;">61.1(1.9)</td>
+<td style="text-align: center;">56.5(2.3)</td>
+<td style="text-align: center;">70.2(2)</td>
+<td style="text-align: center;">66(2.5)</td>
+<td style="text-align: center;">2.80</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">鼻咽</td>
+<td style="text-align: center;">59.2(2.3)</td>
+<td style="text-align: center;">59.2(2.3)</td>
+<td style="text-align: center;">57.5(2.8)</td>
+<td style="text-align: center;">57.5(3)</td>
+<td style="text-align: center;">62.2(3.7)</td>
+<td style="text-align: center;">62.7(3.7)</td>
+<td style="text-align: center;">1.09</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">结直肠</td>
+<td style="text-align: center;">58.5(0.6)</td>
+<td style="text-align: center;">56.9(0.6)</td>
+<td style="text-align: center;">58.5(0.8)</td>
+<td style="text-align: center;">57(0.9)</td>
+<td style="text-align: center;">58.5(0.8)</td>
+<td style="text-align: center;">56.8(0.9)</td>
+<td style="text-align: center;">0.16</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">其他</td>
+<td style="text-align: center;">58.3(0.8)</td>
+<td style="text-align: center;">55.1(0.9)</td>
+<td style="text-align: center;">53.9(1.1)</td>
+<td style="text-align: center;">51.7(1.3)</td>
+<td style="text-align: center;">62.7(1.1)</td>
+<td style="text-align: center;">58.2(1.3)</td>
+<td style="text-align: center;">3.54</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">前列腺</td>
+<td style="text-align: center;">58.7(2.1)</td>
+<td style="text-align: center;">55.1(2.7)</td>
+<td style="text-align: center;">58.7(2.1)</td>
+<td style="text-align: center;">55.1(2.7)</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">骨</td>
+<td style="text-align: center;">50.5(1.6)</td>
+<td style="text-align: center;">51.4(1.5)</td>
+<td style="text-align: center;">49.3(2.2)</td>
+<td style="text-align: center;">50.1(2.1)</td>
+<td style="text-align: center;">51.9(2.4)</td>
+<td style="text-align: center;">53.1(2.3)</td>
+<td style="text-align: center;">0.96</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">其他胸腔器官</td>
+<td style="text-align: center;">54.4(2.8)</td>
+<td style="text-align: center;">51.1(3.3)</td>
+<td style="text-align: center;">48.5(3.7)</td>
+<td style="text-align: center;">42.6(4.1)</td>
+<td style="text-align: center;">61.7(4.1)</td>
+<td style="text-align: center;">62.8(4.7)</td>
+<td style="text-align: center;">3.24</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">喉</td>
+<td style="text-align: center;">52.4(2.2)</td>
+<td style="text-align: center;">49.8(2.4)</td>
+<td style="text-align: center;">53.7(2.5)</td>
+<td style="text-align: center;">50.5(2.6)</td>
+<td style="text-align: center;">46.2(5.4)</td>
+<td style="text-align: center;">42.4(5.6)</td>
+<td style="text-align: center;">1.31</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">卵巢</td>
+<td style="text-align: center;">57.7(1.3)</td>
+<td style="text-align: center;">47.5(1.8)</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">57.7(1.3)</td>
+<td style="text-align: center;">47.5(1.8)</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">脑</td>
+<td style="text-align: center;">45.7(0.9)</td>
+<td style="text-align: center;">45.8(0.9)</td>
+<td style="text-align: center;">38(1.2)</td>
+<td style="text-align: center;">38.3(1.2)</td>
+<td style="text-align: center;">53.1(1.2)</td>
+<td style="text-align: center;">53.2(1.2)</td>
+<td style="text-align: center;">8.78</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">淋巴瘤</td>
+<td style="text-align: center;">47.2(1.2)</td>
+<td style="text-align: center;">43.1(1.4)</td>
+<td style="text-align: center;">47.1(1.7)</td>
+<td style="text-align: center;">43.1(1.9)</td>
+<td style="text-align: center;">47.4(1.8)</td>
+<td style="text-align: center;">43.1(1.9)</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">白血病</td>
+<td style="text-align: center;">44.4(1.1)</td>
+<td style="text-align: center;">41.6(1.3)</td>
+<td style="text-align: center;">43.4(1.4)</td>
+<td style="text-align: center;">42.3(1.8)</td>
+<td style="text-align: center;">45.7(1.6)</td>
+<td style="text-align: center;">40.5(2)</td>
+<td style="text-align: center;">0.67</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">合计</td>
+<td style="text-align: center;">44.2(0.1)</td>
+<td style="text-align: center;">40.7(0.2)</td>
+<td style="text-align: center;">35.2(0.2)</td>
+<td style="text-align: center;">34.4(0.2)</td>
+<td style="text-align: center;">54(0.2)</td>
+<td style="text-align: center;">47.1(0.2)</td>
+<td style="text-align: center;">44.90</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">食管</td>
+<td style="text-align: center;">36.7(0.4)</td>
+<td style="text-align: center;">36.9(0.4)</td>
+<td style="text-align: center;">35.9(0.5)</td>
+<td style="text-align: center;">35.6(0.5)</td>
+<td style="text-align: center;">37.9(0.6)</td>
+<td style="text-align: center;">39(0.6)</td>
+<td style="text-align: center;">4.35</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">胃</td>
+<td style="text-align: center;">34.3(0.4)</td>
+<td style="text-align: center;">33.5(0.4)</td>
+<td style="text-align: center;">34.2(0.4)</td>
+<td style="text-align: center;">33.2(0.5)</td>
+<td style="text-align: center;">34.7(0.7)</td>
+<td style="text-align: center;">34.4(0.7)</td>
+<td style="text-align: center;">1.39</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">胆囊</td>
+<td style="text-align: center;">27.5(1.1)</td>
+<td style="text-align: center;">28(1.2)</td>
+<td style="text-align: center;">25.4(1.7)</td>
+<td style="text-align: center;">25.6(1.7)</td>
+<td style="text-align: center;">29(1.5)</td>
+<td style="text-align: center;">29.6(1.6)</td>
+<td style="text-align: center;">1.71</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">肺</td>
+<td style="text-align: center;">24.1(0.3)</td>
+<td style="text-align: center;">24.3(0.3)</td>
+<td style="text-align: center;">22.2(0.4)</td>
+<td style="text-align: center;">22.5(0.4)</td>
+<td style="text-align: center;">28.1(0.6)</td>
+<td style="text-align: center;">27.8(0.6)</td>
+<td style="text-align: center;">7.35</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">胰腺</td>
+<td style="text-align: center;">20.8(0.9)</td>
+<td style="text-align: center;">20.5(0.9)</td>
+<td style="text-align: center;">18.7(1.2)</td>
+<td style="text-align: center;">18.1(1.2)</td>
+<td style="text-align: center;">23.4(1.5)</td>
+<td style="text-align: center;">23.2(1.5)</td>
+<td style="text-align: center;">2.65</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">肝</td>
+<td style="text-align: center;">19.9(0.4)</td>
+<td style="text-align: center;">19.1(0.4)</td>
+<td style="text-align: center;">19.9(0.5)</td>
+<td style="text-align: center;">19.1(0.5)</td>
+<td style="text-align: center;">20(0.7)</td>
+<td style="text-align: center;">19.7(0.7)</td>
+<td style="text-align: center;">0.70</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: center; padding: 0;"><span style="font-style: italic;">注:</span> <sup></sup> 结果以5年相对生存率(标准误)的形式展示. CRS: 5年相对生存率. ARS: 年龄调整5年相对生存率.</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
 
 
+</div>
+</div>
+</section>
+</section>
+<section id="参考文献" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="参考文献">参考文献</h2>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-张华2014" class="csl-entry">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">张华, 曹志刚, 柳光宇, et al. <span>队列法、完全法和现时生存分析方法在乳腺癌随访研究中的应用</span>. <em>肿瘤</em>. 2014;34(6): 550–556. </div>
+</div>
+<div id="ref-brenner2002" class="csl-entry">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Brenner H, Söderman B, Hakulinen T. Use of period analysis for providing more up-to-date estimates of long-term survival rates: Empirical evaluation among 370 000 cancer patients in <span>Finland</span>. <em>International Journal of Epidemiology</em>. 2002;31(2): 456–462. <a href="https://doi.org/10.1093/ije/31.2.456">https://doi.org/10.1093/ije/31.2.456.</a></div>
+</div>
+<div id="ref-brenner2004" class="csl-entry">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Brenner H, Gefeller O, Hakulinen T. Period analysis for <span>“up-to-date”</span> cancer survival data. <em>European Journal of Cancer</em>. 2004;40(3): 326–335. <a href="https://doi.org/10.1016/j.ejca.2003.10.013">https://doi.org/10.1016/j.ejca.2003.10.013.</a></div>
+</div>
+<div id="ref-holleczek2013b" class="csl-entry">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Holleczek B, Brenner H. Model based period analysis of absolute and relative survival with <span>R</span>: Data preparation, model fitting and derivation of survival estimates. <em>Comput Methods Programs Biomed</em>. 2013;110(2): 192–202. <a href="https://doi.org/10.1016/j.cmpb.2012.10.004">https://doi.org/10.1016/j.cmpb.2012.10.004.</a></div>
+</div>
+<div id="ref-李卓颖2021" class="csl-entry">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">李卓颖, 蒋宇飞, 谭玉婷, et al. <span>现时法统计模型在全人群肿瘤登记生存分析中的应用</span>. <em>复旦学报(医学版)</em>. 2021;48(3): 376-382+397+383-387. </div>
+</div>
+<div id="ref-jansen2013" class="csl-entry">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Jansen L, Hakulinen T, Brenner H. Study populations for period analyses of cancer survival. <em>Br J Cancer</em>. 2013;108(3): 699–707. <a href="https://doi.org/10.1038/bjc.2013.14">https://doi.org/10.1038/bjc.2013.14.</a></div>
+</div>
+<div id="ref-张华2016" class="csl-entry">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">张华, 曹志刚, 莫淼, et al. <span>肿瘤监测数据的生存分析方法比较</span>. <em>中国卫生统计</em>. 2016;33(5): 908–913. </div>
+</div>
+<div id="ref-holleczek2009" class="csl-entry">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Holleczek B, Gondos A, Brenner H. <span class="nocase">periodR</span> - an <span>R</span> package to calculate long-term cancer survival estimates using period analysis. <em>Methods Inf Med</em>. 2009;48(2): 123–128. <a href="https://doi.org/10.3414/ME0563">https://doi.org/10.3414/ME0563.</a></div>
+</div>
+<div id="ref-ellison2006" class="csl-entry">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Ellison LF. An <span>Empirical Evaluation</span> of <span>Period Survival Analysis Using Data</span> from the <span>Canadian Cancer Registry</span>. <em>Annals of Epidemiology</em>. 2006;16(3): 191–196. <a href="https://doi.org/10.1016/j.annepidem.2005.02.017">https://doi.org/10.1016/j.annepidem.2005.02.017.</a></div>
+</div>
+<div id="ref-xiangyongbing1999a" class="csl-entry">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">项永兵. <span>肿瘤流行病学研究资料的统计分析第六讲相对生存率的统计学检验</span>. <em>中华流行病学杂志</em>. 1999;(2): 59–61. </div>
+</div>
+</div>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">6 计算一般人群期望生存概率</h2><div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-张华2014" class="csl-entry">
-张华, 曹志刚, 柳光宇, 莫淼, 王春芳, 张志杰, 邵志敏, 朱骥, and 徐望红. 2014. <span>“<span>队列法、完全法和现时生存分析方法在乳腺癌随访研究中的应用</span>.”</span> <em>肿瘤</em> 34 (6): 550–56.
-</div>
-</div></section></div> ]]></description>
+ ]]></description>
   <category>肿瘤登记</category>
   <category>数据分析</category>
   <category>R</category>

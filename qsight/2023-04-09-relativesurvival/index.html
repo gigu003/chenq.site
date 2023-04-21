@@ -127,6 +127,7 @@ div.csl-indent {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/downloadthis-1.9.1/downloadthis.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -168,7 +169,11 @@ div.csl-indent {
     })();
     </script>
     
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="普癌新声 - 基于”periodR”包利用现时生存分析法计算人群癌症5年相对生存率">
@@ -325,7 +330,26 @@ div.csl-indent {
   <li><a href="#对待分析的分组变量进行处理" id="toc-对待分析的分组变量进行处理" class="nav-link" data-scroll-target="#对待分析的分组变量进行处理"><span class="header-section-number">4.6</span> 对待分析的分组变量进行处理</a></li>
   </ul></li>
   <li><a href="#质量控制" id="toc-质量控制" class="nav-link" data-scroll-target="#质量控制"><span class="header-section-number">5</span> 质量控制</a></li>
-  <li><a href="#计算一般人群期望生存概率" id="toc-计算一般人群期望生存概率" class="nav-link" data-scroll-target="#计算一般人群期望生存概率"><span class="header-section-number">6</span> 计算一般人群期望生存概率</a></li>
+  <li><a href="#计算一般人群期望生存概率" id="toc-计算一般人群期望生存概率" class="nav-link" data-scroll-target="#计算一般人群期望生存概率"><span class="header-section-number">6</span> 计算一般人群期望生存概率</a>
+  <ul class="collapse">
+  <li><a href="#统计整理全死因数据" id="toc-统计整理全死因数据" class="nav-link" data-scroll-target="#统计整理全死因数据"><span class="header-section-number">6.1</span> 统计整理全死因数据</a></li>
+  <li><a href="#stata数据准备" id="toc-stata数据准备" class="nav-link" data-scroll-target="#stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</a></li>
+  <li><a href="#计算简略寿命表" id="toc-计算简略寿命表" class="nav-link" data-scroll-target="#计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</a></li>
+  <li><a href="#寿命表的质量审核" id="toc-寿命表的质量审核" class="nav-link" data-scroll-target="#寿命表的质量审核"><span class="header-section-number">6.4</span> 寿命表的质量审核</a></li>
+  <li><a href="#扩充完全寿命表结构" id="toc-扩充完全寿命表结构" class="nav-link" data-scroll-target="#扩充完全寿命表结构"><span class="header-section-number">6.5</span> 扩充完全寿命表结构</a></li>
+  <li><a href="#合并ej推算系数" id="toc-合并ej推算系数" class="nav-link" data-scroll-target="#合并ej推算系数"><span class="header-section-number">6.6</span> 合并EJ推算系数</a></li>
+  <li><a href="#利用ej-hm方法建模估计完全寿命表" id="toc-利用ej-hm方法建模估计完全寿命表" class="nav-link" data-scroll-target="#利用ej-hm方法建模估计完全寿命表"><span class="header-section-number">6.7</span> 利用EJ-hm方法建模估计完全寿命表</a></li>
+  </ul></li>
+  <li><a href="#利用periodr包计算相对生存率" id="toc-利用periodr包计算相对生存率" class="nav-link" data-scroll-target="#利用periodr包计算相对生存率"><span class="header-section-number">7</span> 利用periodR包计算相对生存率</a>
+  <ul class="collapse">
+  <li><a href="#periodr基本语法" id="toc-periodr基本语法" class="nav-link" data-scroll-target="#periodr基本语法"><span class="header-section-number">7.1</span> periodR基本语法</a></li>
+  <li><a href="#构建批量生存分析函数" id="toc-构建批量生存分析函数" class="nav-link" data-scroll-target="#构建批量生存分析函数"><span class="header-section-number">7.2</span> 构建批量生存分析函数</a></li>
+  <li><a href="#年龄标化生存率的计算" id="toc-年龄标化生存率的计算" class="nav-link" data-scroll-target="#年龄标化生存率的计算"><span class="header-section-number">7.3</span> 年龄标化生存率的计算</a></li>
+  <li><a href="#计数分性别不同部位的5年相对生存率" id="toc-计数分性别不同部位的5年相对生存率" class="nav-link" data-scroll-target="#计数分性别不同部位的5年相对生存率"><span class="header-section-number">7.4</span> 计数分性别不同部位的5年相对生存率</a></li>
+  <li><a href="#组间相对生存率的统计学检验" id="toc-组间相对生存率的统计学检验" class="nav-link" data-scroll-target="#组间相对生存率的统计学检验"><span class="header-section-number">7.5</span> 组间相对生存率的统计学检验</a></li>
+  <li><a href="#结果整理" id="toc-结果整理" class="nav-link" data-scroll-target="#结果整理"><span class="header-section-number">7.6</span> 结果整理</a></li>
+  </ul></li>
+  <li><a href="#参考文献" id="toc-参考文献" class="nav-link" data-scroll-target="#参考文献">参考文献</a></li>
   </ul>
 </nav>
     </div>
@@ -370,7 +394,7 @@ div.csl-indent {
 <section id="不完全数据" class="level3" data-number="1.4">
 <h3 data-number="1.4" class="anchored" data-anchor-id="不完全数据"><span class="header-section-number">1.4</span> 不完全数据</h3>
 <p>与完全数据相反，研究结束时，研究对象发生了研究设定的终点事件之外的其他事件，从而导致无法明确记录从起始观察到发生终点事件之间的生存时间，这类数据称之为不完全数据。</p>
-<p>在人群肿瘤登记数据中，在癌症病例随访过程的截止不是由“癌症死亡”引起的，而是由其他原因引起。</p>
+<p>在人群肿瘤登记数据中，在癌症病例随访过程的截止不是由”癌症死亡”引起的，而是由其他原因引起。</p>
 <p>不完全数据分为：删失数据和截尾数据。</p>
 <p>不完全数据的主要原因有：</p>
 <ul>
@@ -397,8 +421,8 @@ div.csl-indent {
 <h2 data-number="2" class="anchored" data-anchor-id="现时生存分析方法介绍"><span class="header-section-number">2</span> 现时生存分析方法介绍</h2>
 <section id="不同生存率估计方法比较" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="不同生存率估计方法比较"><span class="header-section-number">2.1</span> 不同生存率估计方法比较</h3>
-<p><strong>相对生存率</strong>的估计方法有<em>队列法</em>（cohort method）、<em>完全法</em>（complete method）、<em>现时生存分析法</em>（period survival analysis）、<em>混合法</em>（hybrid method）和<em>预测法</em>（projection method），不同的生存率估计方法纳入的确诊病例和随访时间有所不同，具体不同可以见下图<span class="citation" data-cites="张华2014">(<a href="#ref-张华2014" role="doc-biblioref">张华 et al. 2014</a>)</span>。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_fd7e9a7fbaa63140322f64db114d415a">
+<p><strong>相对生存率</strong>的估计方法有<em>队列法</em>（cohort method）、<em>完全法</em>（complete method）、<em>现时生存分析法</em>（period survival analysis）、<em>混合法</em>（hybrid method）和<em>预测法</em>（projection method），不同的生存率估计方法纳入的确诊病例和随访时间有所不同，具体不同可以见下图<span class="citation" data-cites="张华2014">(<a href="#ref-张华2014" role="doc-biblioref">1</a>)</span>。</p>
+<div class="cell">
 <div class="cell-output-display">
 <p><img src="followup.jpg" class="img-fluid" width="756"></p>
 </div>
@@ -407,21 +431,21 @@ div.csl-indent {
 </section>
 <section id="现时生存分析" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="现时生存分析"><span class="header-section-number">2.2</span> 现时生存分析</h3>
-<p>现时生存分析由德国流行病学家 Hermann Brenner于1996年首先提出，至2002年逐渐发展成熟。</p>
-<p>现时生存分析（period survival analysis）纳入的研究对象分为两部分，一部分是感兴趣时期新确诊的所有病例，另一部分是感兴趣时期之前确诊而且在感兴趣时期仍然存活的病例。本研究的感兴趣时期设定为<em>2017-2019年</em>，那研究对象就需要纳入2017-2019年期间所有新确诊癌症病例以及2017-2019年之前确诊并在2017-2019年期间仍存活的癌症病例。</p>
+<p>现时生存分析由德国流行病学家 Hermann Brenner于1996年首先提出，至2002年逐渐发展成熟<span class="citation" data-cites="brenner2002 brenner2004 holleczek2013b 李卓颖2021">(<a href="#ref-brenner2002" role="doc-biblioref">2</a>–<a href="#ref-李卓颖2021" role="doc-biblioref">5</a>)</span>。</p>
+<p>现时生存分析（period survival analysis）纳入的研究对象分为两部分，一部分是感兴趣时期新确诊的所有病例，另一部分是感兴趣时期之前确诊而且在感兴趣时期仍然存活的病例。本研究的感兴趣时期设定为<em>2017-2019年</em>，那研究对象就需要纳入2017-2019年期间所有新确诊癌症病例以及2017-2019年之前确诊并在2017-2019年期间仍存活的癌症病例<span class="citation" data-cites="jansen2013">(<a href="#ref-jansen2013" role="doc-biblioref">6</a>)</span>。</p>
 <p>现时生存分析在感兴趣时期纳入了新确诊癌症病例数据和随访数据，因此该方法更接近真实生存率。</p>
 </section>
 <section id="现时生存分析的估计精度" class="level3" data-number="2.3">
 <h3 data-number="2.3" class="anchored" data-anchor-id="现时生存分析的估计精度"><span class="header-section-number">2.3</span> 现时生存分析的估计精度</h3>
 <p>由于现时生存分析方法纳入的病例数相对于<em>完全法</em>来说要少，因此，该方法估计生存率的精确度和稳健度比其他方法偏低，估计生存率的方差也偏大一些，因此，我们在利用该方法估计生存率的时候应注意把握估计精确度和时效性之间的平衡。</p>
-<p>但是对于省级人群肿瘤登记数据来说，数据样本量较大，生存率估计的精度能够得到保证，因此，评估的时效性成为优先考虑的问题，现时生存分析成为评估人群癌症生存率的优先选项。</p>
+<p>但是对于省级人群肿瘤登记数据来说，数据样本量较大，生存率估计的精度能够得到保证，因此，评估的时效性成为优先考虑的问题，现时生存分析成为评估人群癌症生存率的优先选项<span class="citation" data-cites="张华2014 张华2016">(<a href="#ref-张华2014" role="doc-biblioref">1</a>,<a href="#ref-张华2016" role="doc-biblioref">7</a>)</span>。</p>
 </section>
 </section>
 <section id="统计软件包的安装" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="统计软件包的安装"><span class="header-section-number">3</span> 统计软件包的安装</h2>
-<p>本篇博文介绍利用现时法统计模型估计癌症5年生存率，这种方法能够提高生存率估计的时效性。我们将使用Brenner等编写的R包“periodR”进行相对生存率的估计，你可以<a href="https://krebsregister.saarland.de/daten-auswertungen-veroeffentlichungen/software/periodr-english/">在这里下载R包</a>，并安装使用。</p>
+<p>本篇博文介绍利用现时法统计模型估计癌症5年生存率，这种方法能够提高生存率估计的时效性。我们将使用Brenner等编写的R包”periodR”进行相对生存率的估计，你可以<a href="https://krebsregister.saarland.de/daten-auswertungen-veroeffentlichungen/software/periodr-english/">在这里下载R包</a>，并安装使用<span class="citation" data-cites="holleczek2009 holleczek2013b">(<a href="#ref-holleczek2013b" role="doc-biblioref">4</a>,<a href="#ref-holleczek2009" role="doc-biblioref">8</a>)</span>。</p>
 <p>点开链接之后，可以根据自己使用的操作系统和R语言版本选择相应的安装包。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_d3158a34884419afa391d818dbd27101">
+<div class="cell">
 <div class="cell-output-display">
 <p><img src="periodR.jpg" class="img-fluid" width="692"></p>
 </div>
@@ -449,8 +473,8 @@ div.csl-indent {
 <span id="cb2-7"><a href="#cb2-7"></a><span class="fu">library</span>(flextable)</span>
 <span id="cb2-8"><a href="#cb2-8"></a><span class="fu">library</span>(kableExtra)</span>
 <span id="cb2-9"><a href="#cb2-9"></a><span class="fu">library</span>(gtsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>筛选入选河南省肿瘤登记年报的登记处数据</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_0309a36ee0aa364dad5a5450dc8572e7">
+<p>筛选入选河南省肿瘤登记年报的登记处数据。</p>
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="do">## 从code字典里筛选出2014年年报纳入的登记处</span></span>
@@ -471,9 +495,9 @@ div.csl-indent {
 </section>
 <section id="按照现时生存分析筛选病例" class="level3" data-number="4.3">
 <h3 data-number="4.3" class="anchored" data-anchor-id="按照现时生存分析筛选病例"><span class="header-section-number">4.3</span> 按照现时生存分析筛选病例</h3>
-<p>考虑到我们设定的“感兴趣时期”为2017-2019年，按照<strong>现时生存分析</strong>方法纳入病例的原则，我们需要纳入2017-2019年期间新诊断的所有癌症患者以及在这个时期之前诊断且在2017-2019年期间内仍存活的癌症病例。</p>
-<p>按照上面的筛选标准，继续对上一步输出的数据进行范围筛查</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_333f4d8534c43755482bcb088df88a47">
+<p>考虑到我们设定的”感兴趣时期”为2017-2019年，按照<strong>现时生存分析</strong>方法纳入病例的原则，我们需要纳入2017-2019年期间新诊断的所有癌症患者以及在这个时期之前诊断且在2017-2019年期间内仍存活的癌症病例<span class="citation" data-cites="ellison2006">(<a href="#ref-ellison2006" role="doc-biblioref">9</a>)</span>。</p>
+<p>按照上面的筛选标准，继续对上一步输出的数据进行范围筛查。</p>
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>canreg <span class="ot">&lt;-</span> canreg <span class="sc">%&gt;%</span> </span>
@@ -487,7 +511,7 @@ div.csl-indent {
 </section>
 <section id="限制生存分析的癌种范围" class="level3" data-number="4.4">
 <h3 data-number="4.4" class="anchored" data-anchor-id="限制生存分析的癌种范围"><span class="header-section-number">4.4</span> 限制生存分析的癌种范围</h3>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_cb4370f28bd3887db3cf93d6694ae7d3">
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="do">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范围之内</span></span>
@@ -505,7 +529,7 @@ div.csl-indent {
 <section id="对删失数据进行处理" class="level3" data-number="4.5">
 <h3 data-number="4.5" class="anchored" data-anchor-id="对删失数据进行处理"><span class="header-section-number">4.5</span> 对删失数据进行处理</h3>
 <p>本研究的随访截止日期设定为2019年12月31日，我们按照这个截止日期进行结尾数据的手工处理。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-6_537e5c76a64bfa234e6bca0a2383b31e">
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>analysis <span class="ot">&lt;-</span> analysis <span class="sc">%&gt;%</span>  </span>
@@ -526,7 +550,7 @@ div.csl-indent {
 </section>
 <section id="对待分析的分组变量进行处理" class="level3" data-number="4.6">
 <h3 data-number="4.6" class="anchored" data-anchor-id="对待分析的分组变量进行处理"><span class="header-section-number">4.6</span> 对待分析的分组变量进行处理</h3>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-7_2623b6f9bea6d781b97cbe8bc0224916">
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>analysis <span class="ot">&lt;-</span> analysis <span class="sc">%&gt;%</span>  </span>
@@ -563,7 +587,7 @@ div.csl-indent {
 <section id="质量控制" class="level2 page-columns page-full" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="质量控制"><span class="header-section-number">5</span> 质量控制</h2>
 <p>在进行5年相对生存率的计算之前，我们需要先评估一下各个登记处的随访的质量情况，包括DCO数据的比例、失访的情况、最终纳入分析数据的病理诊断比例等来对数据质量进行评估。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-8_d30677c9de16c177fb9ebeaf43de0112">
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>submit <span class="ot">&lt;-</span> analysis <span class="sc">%&gt;%</span> <span class="fu">count</span>(areacode2)</span>
@@ -605,8 +629,8 @@ div.csl-indent {
 <span id="cb8-37"><a href="#cb8-37"></a>urban <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"410300"</span>,<span class="st">"410600"</span>,<span class="st">"411100"</span>,<span class="st">"411202"</span>,<span class="st">"411303"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>把上面计算的结果绘制成可以展现的表格，从下面 <a href="#tbl-t1">Table&nbsp;1</a> 中可以看出入选登记处的数据质量情况，包括DCO、失访情况、以及最终纳入分析的病例数、多原发比例、以病理诊断比例等。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-9_ca6d461f61a056ae6d655ed850233b51">
+<p>把上面计算的结果绘制成可以展现的表格，从下面 <a href="#tbl-t1">表&nbsp;1</a> 中可以看出入选登记处的数据质量情况，包括DCO、失访情况、以及最终纳入分析的病例数、多原发比例、以病理诊断比例等。</p>
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>t1 <span class="ot">&lt;-</span> result <span class="sc">%&gt;%</span> </span>
@@ -628,18 +652,18 @@ div.csl-indent {
 <span id="cb9-17"><a href="#cb9-17"></a>  <span class="fu">kbl</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"登记处"</span>,<span class="st">"类型"</span>,<span class="st">"病例数"</span>,<span class="st">"DCO,n(%)"</span>,<span class="st">"失访,n(%)"</span>,</span>
 <span id="cb9-18"><a href="#cb9-18"></a>                    <span class="st">"病例数"</span>,<span class="st">"多原发,n(%)"</span>,<span class="st">"病理诊断,n(%)"</span>),</span>
 <span id="cb9-19"><a href="#cb9-19"></a>      <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-20"><a href="#cb9-20"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">8</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-20"><a href="#cb9-20"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">7</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb9-21"><a href="#cb9-21"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> T, <span class="at">html_font =</span> <span class="st">"Cambria"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb9-22"><a href="#cb9-22"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">" "</span> <span class="ot">=</span> <span class="dv">3</span>, <span class="st">"剔除"</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">"纳入分析"</span> <span class="ot">=</span> <span class="dv">3</span>),</span>
 <span id="cb9-23"><a href="#cb9-23"></a>                   <span class="at">bold =</span> T,<span class="at">border_left =</span> T) <span class="sc">%&gt;%</span></span>
 <span id="cb9-24"><a href="#cb9-24"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">bold=</span>T,<span class="at">italic=</span>T) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell page-columns page-full" data-hash="index_cache/html/tbl-t1_b0dc1e79f8c390cdb305b0761f36b46b">
+<div class="cell page-columns page-full">
 <div class="cell-output-display column-page">
 <div id="tbl-t1" class="anchored">
 <table class="table lightable-classic table-sm table-striped" data-quarto-postprocess="true">
-<caption>Table&nbsp;1: 纳入分析肿瘤登记处随访质量情况</caption>
+<caption>表&nbsp;1: 纳入分析肿瘤登记处随访质量情况</caption>
 <colgroup>
 <col style="width: 12%">
 <col style="width: 12%">
@@ -941,17 +965,668 @@ div.csl-indent {
 </div>
 </section>
 <section id="计算一般人群期望生存概率" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="计算一般人群期望生存概率"><span class="header-section-number">6</span> 计算一般人群期望生存概率</h2>
+<p>普通人群期望生存概率是计算癌症相对生存率的基础，我们可以通过肿瘤登记处上报的分性别、年龄组的全因死亡数来计算简略寿命表，然后通过一些方法把简略寿命表扩展为完全寿命表。</p>
+<p>下面我们介绍如何使用stata软件计算简略寿命表，并把简略寿命表扩充为完全寿命表的过程。（<a href="#fig-lifetable">图&nbsp;1</a>）</p>
+<div class="cell" data-eval="true" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-lifetable" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div>
+
+<pre class="mermaid mermaid-js" data-label="fig-lifetable">flowchart TD
+ A[(全死因数据)] --&gt; B[分性别年龄组全因死亡数]
+ B --&gt; C[编制简略寿命表]
+ C --&gt; D[寿命表的质量控制]
+ D --&gt; E[平滑方法]
+ E --&gt; F[完全寿命表]
+</pre>
+</div>
+<p></p><figcaption class="figure-caption">图&nbsp;1: 简略寿命表扩充完全寿命表</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="统计整理全死因数据" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="统计整理全死因数据"><span class="header-section-number">6.1</span> 统计整理全死因数据</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"pop.dta"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+    sex  year agegrp    pop deaths  rate agegroup2 code 
+  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;
+1     1  2014      0 118519    596 5.03          0 Henan
+2     1  2014      1 593146    304 0.513         1 Henan
+3     1  2014      5 743825    181 0.243         5 Henan
+4     1  2014     10 694528    177 0.255        10 Henan
+5     1  2014     15 692646    290 0.419        15 Henan
+6     1  2014     20 829811    537 0.647        20 Henan</code></pre>
+</div>
+</div>
+</section>
+<section id="stata数据准备" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
+<p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
+<p><a href="#dnldts11989" onclick="fetch('data:application/octet-stream;base64,PHN0YXRhX2R0YT48aGVhZGVyPjxyZWxlYXNlPjExODwvcmVsZWFzZT48Ynl0ZW9yZGVyPkxTRjwvYnl0ZW9yZGVyPjxLPg4APC9LPjxOPmQAAAAAAAAAPC9OPjxsYWJlbD4AADwvbGFiZWw+PHRpbWVzdGFtcD4RMTYgTWFyIDIwMjMgMTQ6NTc8L3RpbWVzdGFtcD48L2hlYWRlcj48bWFwPgAAAAAAAAAAngAAAAAAAAAZAQAAAAAAAFYBAAAAAAAAeQgAAAAAAACsCAAAAAAAAN0LAAAAAAAAEhMAAAAAAADDJAAAAAAAAOYkAAAAAAAAs1AAAAAAAADCUAAAAAAAAN9QAAAAAAAA61AAAAAAAAA8L21hcD48dmFyaWFibGVfdHlwZXM+9v/2//b/9v/2//b/9v/2//b/9v/2//b/9v/2/zwvdmFyaWFibGVfdHlwZXM+PHZhcm5hbWVzPmFnZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGFnZTIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGMxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGM1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGMxMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGMxNQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGMyMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGMyNQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGNtMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGNtMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGNtMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGNtNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGNtNQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGNtNgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvdmFybmFtZXM+PHNvcnRsaXN0PgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvc29ydGxpc3Q+PGZvcm1hdHM+JTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJTEyLjBnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC9mb3JtYXRzPjx2YWx1ZV9sYWJlbF9uYW1lcz4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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AADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAQFNAAAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAIBTQAAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAADAU0AAAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAFRAAAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAEBUQAAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAACAVEAAAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAwFRAAAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAABVQAAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAABAVUAAAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAgFVAAAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAMBVQAAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAAVkAAAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAQFZAAAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAIBWQAAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAADAVkAAAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAFdAAAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAEBXQAAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAACAV0AAAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAwFdAAAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAABYQAAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAABAWEAAAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAgFhAAAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAMBYQAAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/AAAAAAAA4H8AAAAAAADgfwAAAAAAAOB/PC9kYXRhPjxzdHJscz48L3N0cmxzPjx2YWx1ZV9sYWJlbHM+PC92YWx1ZV9sYWJlbHM+PC9zdGF0YV9kdGE+').then(res => res.blob()).then(blob => {
+      const downloadURL = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.href = downloadURL;
+      a.download = 'ej系数.dta'; a.click();
+      window.URL.revokeObjectURL(downloadURL);
+      document.body.removeChild(a);
+        });"><button class="btn btn-info downloadthis  " id="dnldts11989"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></a></p>
+<p><a href="#dnldts30453" onclick="fetch('data:text/plain;base64,c2V0IG1vcmUgb2ZmDQoNCiogVGhpcyBwcm9ncmFtIHRvIHJ1biBuZWVkczoNCgkqIEEgU3RhdGEgZGF0YXNldCBmaWxlIHdpdGggYWJyaWRnZWQgKHVwIHRvIDgwLCA4NSBvciA5NSB5ZWFycykgcmF3IG51bWJlciBvZiBkZWF0aHMgYW5kIHBvcA0KCSogQSBTdGF0YSBkYXRhc2V0IGZpbGUgd2l0aCBhbGwgYWdlcyAodmFyIHgpIGZyb20gMCB0byAxMDAsIHRoaXMgZmlsZSBpcyBjYWxsZWQgImNvbXBsZXRlIiBoZXJlDQoJKiBBIFN0YXRhIGRhdGFzZXQgb24gd2hpY2ggdGhlIHBhcmFtZXRlcnMgb2YgdGhlIGxpbmVhciBpbnRlcnBvbGF0aW9uIGFyZSBzdG9yZWQsIHRoZSBmaWxlIGlzIGNhbGxlZCAiY29lZmYxLTc0Ig0KDQoqIEFuZCB0aGUgZm9sbG93aW5nIGRvLWZpbGVzDQoJKiBjcmVhdGVfYWJyaWRnZWRfbSB3aGljaCBjcmVhdGVzIGZyb20gcmF3IHBvcCBhbmQgZGVhdGggZmlndXJlcywgYWxsIExUIGNvbXBvbmVudHMgKG14IGx4IGV4Li4uKQ0KCQ0KDQoNCi8qKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiovDQovKglNQUlOIFBST0dSQU06IEVMQU5EVCBKT0hOU09OCQkJKi8NCi8qKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiovDQoNCg0KDQpjYXAgcHJvZ3JhbSBkcm9wIGVqDQpwcm9ncmFtIGRlZmluZSBlag0KDQp3aGlsZSAiYDEnIiAhPSAiIiB7DQoNCg0KKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKg0KKglQQVJUIDE6IFBSRVBBUkFUSU9OIE9GIERBVEEJCQkqDQoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqDQoNCioqKipBbHJlYWR5IGRvbmUgZm9yIHlvdSoqKioNCg0KKioqIE1lcmdlIHdpdGggYSB0YWJsZSB0aGF0IGhhcyBjb21wbGV0ZSBhZ2VzICh1cCB0byAxMDApDQoqc29ydCB4DQoqbWVyZ2UgeCB1c2luZyAiY29tcGxldGUuZHRhIg0KKmRyb3AgX21lcmdlDQoNCipmaWxsaW4geCBzZXggcXVpbnQNCipkcm9wIGlmIHNleD09LiB8IHF1aW50PT0uIA0KKmRyb3AgX2ZpbGxpbg0KDQoqKiogTWVyZ2Ugd2l0aCBjb2VmZiB1c2VkIGZvciBhZ2VzIDEtMTANCipwcmVzZXJ2ZQ0KKgl1c2UgIk46XFNVUlZJVkFMXEJlcm5hcmRcTGlmZSB0YWJsZXNcUmVzdWx0c1xjb2VmZjEtNzQuZHRhIiwgY2xlYXINCioJc29ydCB4DQoqCXNhdmUgIk46XFNVUlZJVkFMXEJlcm5hcmRcTGlmZSB0YWJsZXNcUmVzdWx0c1xjb2VmZjEtNzQuZHRhIiwgcmVwbGFjZQ0KKnJlc3RvcmUNCg0KKnNvcnQgeA0KKm1lcmdlIHggdXNpbmcgIk46XFNVUlZJVkFMXEJlcm5hcmRcTGlmZSB0YWJsZXNcUmVzdWx0c1xjb2VmZjEtNzQuZHRhIg0KKmRyb3AgaWYgX21lcmdlPT0yDQoqZHJvcCBfbWVyZ2UgY20qDQoNCioqKiBNZXJnZSB3aXRoIGNvZWZmIHVzZWQgZm9yIGFnZXMgMTEtNzQNCiogY3JlYXRlIGEgdmFyaWFibGUgdGhhdCBnZXRzIG9ubHkgdGhlIGxhc3QgZGlnaXQgb2YgdGhlIHllYXIgb2YgYWdlOg0KKiB0YWtlIHRoZSBsYXN0IGRpZ2l0IGlmIHg+MTANCipwcmVzZXJ2ZQ0KKgl1c2UgIk46XFNVUlZJVkFMXEJlcm5hcmRcTGlmZSB0YWJsZXNcUmVzdWx0c1xjb2VmZjEtNzQuZHRhIiwgY2xlYXINCioJc29ydCB4Mg0KKglzYXZlICJOOlxTVVJWSVZBTFxCZXJuYXJkXExpZmUgdGFibGVzXFJlc3VsdHNcY29lZmYxLTc0LmR0YSIsIHJlcGxhY2UNCipyZXN0b3JlDQoNCipyZXBsYWNlIHgyID0geC1pbnQoeC8xMCkqMTAgaWYgNzU+eCAmIHg+MTANCipzb3J0IHgyDQoqbWVyZ2UgeDIgdXNpbmcgIk46XFNVUlZJVkFMXEJlcm5hcmRcTGlmZSB0YWJsZXNcUmVzdWx0c1xjb2VmZjEtNzQuZHRhIg0KKmRyb3AgX21lcmdlDQoNCioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioNCioJUEFSVCAyOiBBR0UgMSBUTyAxMAkJCQkqDQoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqDQoNCmNhcCByZW5hbWUgYWdlIHgNCmNhcCByZW5hbWUgYWdlMiB4Mg0KDQoNCioqKiBjYWxjdWxhdGUgbHggZm9yIGFnZSAxIHRvIDEwDQpzb3J0ICBzaXRlICB5ZWFyIHNleCB4DQpieXNvcnQgIHNpdGUgIHllYXIgc2V4IDogZ2VuIGNseCA9IGMxKmx4WzJdICsgYzUqbHhbNl0gKyBjMTAqbHhbMTFdICsgYzE1Kmx4WzE2XSArIGMyMCpseFsyMV0gKyBjMjUqbHhbMjZdDQpyZXBsYWNlIGNseD1jbHhbX24tMV0gaWYgY2x4PmNseFtfbi0xXSAmIGNseCE9Lg0KDQp0ZW1wdmFyIG5yb3cNCnF1aSBieXNvcnQgc2l0ZSB5ZWFyIHNleCA6IGdlbiBgbnJvdyc9X24tMQ0KYXNzZXJ0IGBucm93JyA9PSB4DQoNCioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioNCioJUEFSVCAzOiBBR0UgMTEgVE8gNzQJCQkJKg0KKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKg0KDQoNCioqKiB2YXJpYWJsZSB4MjogdmFsdWVzIDEgdG8gNCB0byBhcHBseSBmb3JtdWxhZSBvbiBhZ2VzIDExIHRvIDc0DQpyZXBsYWNlIHgyID0geDIgLSA1IGlmIHgyPjUNCnJlY29kZSB4MiAwIDU9Lg0KDQpnZW4gY2x4Mj1seCANCnNvcnQgc2l0ZSB5ZWFyIHNleCB4DQoNCmxvY2FsIHAgMTENCmZvcnZhbCBrID0gMCg1KTYwIHsNCiAgZm9ydmFsIG0gPSAxKDEpNCB7DQoJc29ydCBzaXRlIHllYXIgc2V4ICB4DQoJYnlzb3J0IHNpdGUgeWVhciBzZXggOiByZXBsYWNlIGNseDIgPSBjbTEqbHhbMStgayddICsgY20yKmx4WzYrYGsnXSArIGNtMypseFsxMStgayddIC8vLw0KCQkrIGNtNCpseFsxNitgayddICsgY201Kmx4WzIxK2BrJ10gKyBjbTYqbHhbMjYrYGsnXSBpZiB4PT1gcCcgJiB4MiE9Lg0KCXJlcGxhY2UgY2x4Mj1jbHgyW19uLTFdIGlmIGNseDJbX25dPmNseDJbX24tMV0gJiBjbHgyIT0uDQoJaWYgYG0nID09IDQgew0KCSAgbG9jYWwgcD1gcCcrMg0KCX0NCgllbHNlIHsNCgkgIGxvY2FsIHA9YHAnKzENCgl9DQogIH0NCn0NCg0KKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKg0KKglQQVJUIDQ6IEFHRSA3NSBPTldBUkQJCQkJKg0KKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKg0KDQoqKiogSWYgdGhlIGRhdGEgYXJlIGFicmlkZ2VkIHVwIHRvIHRoZSBhZ2Ugb2YgODUrIHRoZW4gcnVuIHRoZSBmb2xsb3dpbmcgYml0DQoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqDQoqIEdvbXBlcnR6IGJpdCBub3cgYWZ0ZXIgdGhlIGFnZSBvZiA3NSh3ZSBzdGFydCBmcm9tIGFnZSA2NSB0byBoYXZlIGluZm8gKFMpIGZvciB0aGUgb2xkZXIgYWdlcyApDQoNCnNvcnQgc2l0ZSB5ZWFyIHNleCB4DQpieXNvcnQgc2l0ZSB5ZWFyIHNleCA6IGdlbiB5ID0gbG9nMTAobHhbX25dL2x4W19uKzVdKSBpZiBseCE9Lg0KYnlzb3J0IHNpdGUgeWVhciBzZXggIDogZ2VuIGMgPSAoeVtfbl0veVtfbis1XSleKC0xLzUpIGlmIGx4IT0uDQpieXNvcnQgc2l0ZSB5ZWFyIHNleCA6IGdlbiBsb2diID0geS8oY154ICogKChjXjUpIC0xKSkgaWYgbHghPS4NCmJ5c29ydCBzaXRlIHllYXIgc2V4ICA6IGdlbiBiID0gMTBebG9nYg0KZ2VuIFM9Lg0KZ2VuIGNseDM9bHggDQoNCnN1bSB4IGlmIGx4IT0uDQpsb2NhbCBvbWVnYSByKG1heCkNCg0KKnRha2UgdGhlIGxhc3QgZGlnaXQgaWYgeD4xMA0KZ2VuIHgzID0geC1pbnQoeC8xMCkqMTAgaWYgNzU8eCAgIA0KcmVwbGFjZSB4MyA9IHgzIC0gNSBpZiB4Mz41DQpyZWNvZGUgeDMgMCA1PS4NCg0KbG9jYWwgcCA3NQ0KZm9ydmFsIGsgPSA3Nig1KTgxIHsNCiogYmVmb3JlIGFnZSA3NSB3ZSB1c2UgbHggYXQgNjUgYW5kIDcwDQogICAgZm9ydmFsIG0gPSAxKDEpNSB7DQoJc29ydCBzaXRlIHllYXIgc2V4IHgNCglieXNvcnQgc2l0ZSB5ZWFyIHNleCA6IHJlcGxhY2UgUyA9IGJbYGsnXSBeICgxLSBjW2BrJ11eYHAnKSBpZiB4PT1gcCcNCglieXNvcnQgc2l0ZSB5ZWFyIHNleCA6IHJlcGxhY2UgY2x4MyA9IGx4W2BrJ10gKiBTW2BwJysxXS9TW2BrJ10gaWYgeD09YHAnICYgeDMhPS4gDQoJcmVwbGFjZSBjbHgzPWNseDNbX24tMV0gaWYgY2x4M1tfbl0+Y2x4M1tfbi0xXSAmIGNseDMhPS4gJiB4PjAgDQogICAgICBsb2NhbCBwPWBwJysxDQogICAgfQ0KfQ0KKiBhZnRlciBhZ2UgODAgdGlsIGFnZSA5OSB3ZSBhbHdheXMgdXNlIGx4IGF0IGFnZSA3NQ0KbG9jYWwgcCA4MQ0KICAgIGZvcnZhbCBsID0gMSgxKTIxIHsNCgkgc29ydCBzaXRlIHllYXIgc2V4IHgNCgkgYnlzb3J0IHNpdGUgeWVhciBzZXggIDogcmVwbGFjZSBTID0gYls3Nl0gXiAoMS0gY1s3Nl1eYHAnKSBpZiB4PT1gcCcNCiAgICAgICBieXNvcnQgc2l0ZSB5ZWFyIHNleCAgOiByZXBsYWNlIGNseDMgPSBseFs3Nl0gKiBTW2BwJysxXS9TWzc2XSBpZiB4PT1gcCcgJiB4IT04NSANCgkgbG9jYWwgcD1gcCcrMQ0KfQ0KDQoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqDQoqCVBBUlQgNTogQ09NQklOQVRJT04JCQkJKg0KKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKg0KDQoqIHdlIG5vdyBwdXQgYWxsIGNhbGN1bGF0ZWQgbHggaW4gc2FtZSB2YXJpYWJsZS4NCg0KKioqIElmIHRoZSBkYXRhIGFyZSBhYnJpZGdlZCB1cCB0byB0aGUgYWdlIG9mIDg1KyBvciA5NSsgdGhlbiBydW4gdGhlIGZvbGxvd2luZyBiaXQNCglieXNvcnQgc2l0ZSB5ZWFyIHNleCA6IHJlcGxhY2UgY2x4ID0gMSBpZiB4PT0wDQoJYnlzb3J0IHNpdGUgeWVhciBzZXggOiByZXBsYWNlIGNseCA9IGNseDIgaWYgeD4xMCAmIHg8NzYNCglieXNvcnQgc2l0ZSB5ZWFyIHNleCAgOiByZXBsYWNlIGNseCA9IGNseDMgaWYgeD43NQ0KCWJ5c29ydCBzaXRlIHllYXIgc2V4ICA6IHJlcGxhY2UgY2x4PWNseFtfbi0xXSBpZiBjbHhbX25dPmNseFtfbi0xXSAmICB4W19uLTFdIT0xMDANCgkNCglyZW5hbWUgY2x4IGZpdGx4DQoJcmVuYW1lIHggYWdlDQoJa2VlcCBzZXggYWdlIHllYXIgcG9wdWxhdGlvbiBkZWF0aHMgbHggcXggbXggZHggTHggVHggZXggZml0bHggc2l0ZQ0KCSogc2F2ZSAiQ29tcGxldGVMVC5kdGEiLCByZXBsYWNlDQoNCg0KbWFjIHNoaWZ0DQp9DQplbmQNCg0KZWogIkhpIg0K').then(res => res.blob()).then(blob => {
+      const downloadURL = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.href = downloadURL;
+      a.download = 'ej-hm.do'; a.click();
+      window.URL.revokeObjectURL(downloadURL);
+      document.body.removeChild(a);
+        });"><button class="btn btn-info downloadthis  " id="dnldts30453"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></a></p>
+</section>
+<section id="计算简略寿命表" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1"></a>cd <span class="st">"/Users/qc0824/manuscripts/period-survival"</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>************step 2 简略寿命表准备</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="kw">use</span> pop.dta,<span class="kw">clear</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>browse</span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="kw">gen</span> n=5 <span class="co">//生成组距</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="kw">replace</span> n=1 <span class="kw">if</span> agegroup2==0</span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="kw">replace</span> n=4 <span class="kw">if</span> agegroup2==1</span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="kw">replace</span> n=15 <span class="kw">if</span> agegroup2==85</span>
+<span id="cb12-9"><a href="#cb12-9"></a></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="kw">tab</span> n</span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="kw">gen</span> mx= deaths/pop <span class="co">// 计算年龄组死亡率</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="kw">gen</span> qx=1-<span class="fu">exp</span>(-n*mx) <span class="co">// 计算年龄组死亡概率</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="kw">egen</span> ageblock1=<span class="fu">seq</span>(),block(19)</span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="kw">bysort</span> ageblock1: <span class="kw">gen</span> ageblock2=<span class="dt">_n</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a></span>
+<span id="cb12-16"><a href="#cb12-16"></a><span class="kw">gen</span> lx=.</span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="kw">replace</span> lx=100000 <span class="kw">if</span> agegroup2==0</span>
+<span id="cb12-18"><a href="#cb12-18"></a><span class="kw">gen</span> dx=.</span>
+<span id="cb12-19"><a href="#cb12-19"></a><span class="kw">replace</span> dx=qx*lx </span>
+<span id="cb12-20"><a href="#cb12-20"></a></span>
+<span id="cb12-21"><a href="#cb12-21"></a><span class="kw">foreach</span> n <span class="kw">of</span> numlist 2/19 {</span>
+<span id="cb12-22"><a href="#cb12-22"></a>   <span class="kw">bysort</span> code <span class="fu">year</span> sex ageblock1: <span class="kw">replace</span> lx=lx[<span class="dt">_n</span>-1]-dx[<span class="dt">_n</span>-1] <span class="kw">if</span>  ageblock2==<span class="ot">`n'</span></span>
+<span id="cb12-23"><a href="#cb12-23"></a>   <span class="kw">replace</span> dx=qx[<span class="dt">_n</span>]*lx[<span class="dt">_n</span>] <span class="kw">if</span> ageblock2==<span class="ot">`n'</span></span>
+<span id="cb12-24"><a href="#cb12-24"></a>    } <span class="co">// 计算尚存活人数lx，和死亡人数dx</span></span>
+<span id="cb12-25"><a href="#cb12-25"></a><span class="kw">gen</span> Lx=n*(2*lx-dx)/2    <span class="co">//计算个年龄组生存人年数</span></span>
+<span id="cb12-26"><a href="#cb12-26"></a></span>
+<span id="cb12-27"><a href="#cb12-27"></a><span class="kw">gsort</span> code <span class="fu">year</span> sex -ageblock2 <span class="co">// 利用sum函数从上往下累计的原理，将年龄组倒序排列，反向累加</span></span>
+<span id="cb12-28"><a href="#cb12-28"></a><span class="kw">bysort</span> ageblock1: <span class="kw">gen</span> Tx=<span class="kw">sum</span>(Lx) <span class="co">// 计算生存总人年数</span></span>
+<span id="cb12-29"><a href="#cb12-29"></a><span class="kw">gsort</span> code <span class="fu">year</span> sex ageblock2</span>
+<span id="cb12-30"><a href="#cb12-30"></a><span class="kw">gen</span> ex=Tx/lx <span class="co">// 计算期望寿命=生存总人年数/年龄组尚存活人数</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="寿命表的质量审核" class="level3" data-number="6.4">
+<h3 data-number="6.4" class="anchored" data-anchor-id="寿命表的质量审核"><span class="header-section-number">6.4</span> 寿命表的质量审核</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">twoway</span>(connected ex <span class="fu">year</span> <span class="kw">if</span> agegroup2==0),<span class="kw">by</span>(code sex) xla(2014(2)2020) <span class="co">// #根据期望寿命判断寿命表的数据质量（修改分析年份）</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="扩充完全寿命表结构" class="level3" data-number="6.5">
+<h3 data-number="6.5" class="anchored" data-anchor-id="扩充完全寿命表结构"><span class="header-section-number">6.5</span> 扩充完全寿命表结构</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1"></a>*******************step3 将19个年龄组expand为0到99岁完整年龄寿命表结构</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">drop</span> ageblock1 ageblock2 <span class="co">// 删除年龄区组中间变量</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="kw">gen</span> num=<span class="dt">_n</span> <span class="co">// 生成序号</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>expand=n   <span class="co">// 根据n的数量扩充数据库</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="kw">sort</span> num <span class="co">// 根据序号排序</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="kw">bysort</span> code <span class="fu">year</span> sex : <span class="kw">egen</span> age=<span class="fu">seq</span>(),f(0) t(99) <span class="co">// 生成0-99岁单岁组</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="kw">bysort</span> code <span class="fu">year</span> sex num :<span class="kw">egen</span> block=<span class="fu">seq</span>(),f(1) t()  <span class="co">// 为19个年组内扩充的单岁组排序</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="kw">order</span> age,after(sex) <span class="co">// 年龄变量移位至sex后面</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">varlist</span> mx-ex {</span>
+<span id="cb14-10"><a href="#cb14-10"></a>    <span class="kw">replace</span> <span class="ot">`var'</span>=. <span class="kw">if</span> block~=1</span>
+<span id="cb14-11"><a href="#cb14-11"></a>    } <span class="co">// 清除扩充出的单岁组的对应的死亡率mx，死亡概率qx，尚存活人数lx，死亡人数dx，生存人年数Lx，生存总人年数Tx，平均期望寿命ex</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a>    </span>
+<span id="cb14-13"><a href="#cb14-13"></a><span class="kw">save</span> lt0-99,<span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="合并ej推算系数" class="level3" data-number="6.6">
+<h3 data-number="6.6" class="anchored" data-anchor-id="合并ej推算系数"><span class="header-section-number">6.6</span> 合并EJ推算系数</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1"></a>************step 4 EJ推算系数合并</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="kw">use</span> ej系数,<span class="kw">clear</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="kw">sort</span> age</span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="kw">save</span> ej系数,<span class="kw">replace</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="kw">use</span> lt0-99,<span class="kw">clear</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="kw">sort</span> age</span>
+<span id="cb15-8"><a href="#cb15-8"></a></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="kw">merge</span> <span class="fu">m</span>:1 age <span class="kw">using</span> <span class="st">"ej系数"</span> <span class="co">// 注意查看合并结果和note文件</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="利用ej-hm方法建模估计完全寿命表" class="level3" data-number="6.7">
+<h3 data-number="6.7" class="anchored" data-anchor-id="利用ej-hm方法建模估计完全寿命表"><span class="header-section-number">6.7</span> 利用EJ-hm方法建模估计完全寿命表</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb16-1"><a href="#cb16-1"></a>************step 5 EJ建模估算</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="kw">ren</span> (code pop deaths)(site population deaths) <span class="co">// 重新命名变量与EJ-hm.do内保持一致</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="kw">describe</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="kw">sort</span> site <span class="fu">year</span> sex age</span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="kw">replace</span> lx=lx/100000 <span class="co">//必须将lx转化，除以100000，否则结果出错</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="kw">do</span> <span class="st">"EJ-hm.do"</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>* Generate <span class="kw">fitted</span> mortality rate from 0 to 98 years</span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="kw">sort</span> site sex <span class="fu">year</span> age </span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="kw">gen</span> fitmx=-<span class="fu">ln</span>(fitlx[<span class="dt">_n</span>+1]/fitlx) <span class="kw">if</span> age!=99 <span class="co">// 根据qx=1-exp(-n*mx)公式反向推导而来，即px=exp(-mx)</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="kw">replace</span> fitmx=-<span class="fu">ln</span>(fitlx/fitlx[<span class="dt">_n</span>-1]) <span class="kw">if</span> age==99 <span class="co">// 99岁组fitmx单独计算,等于98岁组的死亡率（疑问？）</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a>* Save results</span>
+<span id="cb16-12"><a href="#cb16-12"></a><span class="kw">save</span> complete_lifetable_js, <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="利用periodr包计算相对生存率" class="level2 page-columns page-full" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="利用periodr包计算相对生存率"><span class="header-section-number">7</span> 利用periodR包计算相对生存率</h2>
+<section id="periodr基本语法" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="periodr基本语法"><span class="header-section-number">7.1</span> periodR基本语法</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">period</span>(data, k, surv.m, surv.f, perbeg, perend, <span class="at">method=</span><span class="st">"EdereII"</span>, <span class="at">agedist=</span><span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>程序参数如下：</p>
+<blockquote class="blockquote">
+<ul>
+<li>data：生存数据</li>
+<li>k：随访时间</li>
+<li>surv.m：0-99岁条件一年生存概率（男性）</li>
+<li>surv.f：0-99岁条件一年生存概率（女性）</li>
+<li>perbeg：纳入分析的起始年份</li>
+<li>perend：纳入分析的终止年份</li>
+<li>method：相对生存率的计算方法</li>
+<li>agedist: 标准年龄构成</li>
+</ul>
+</blockquote>
+</section>
+<section id="构建批量生存分析函数" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="构建批量生存分析函数"><span class="header-section-number">7.2</span> 构建批量生存分析函数</h3>
+<p>period函数对不同数据子集进行生存分析时，需要在data参数中制定不同的数据子集，如果子集很多的时候，数据分析起来就会很麻烦，比如对不同部位癌种进行生存分析，所以，我们可以在period函数的基础上，编制一个批量生存分析的函数，来方面我们的计算过程。</p>
+<p>下面这个函数在period的基础上进行了一些整合，可以批量分析不同亚组的生存分析，并把主要结果整理成数据集。</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>tperiod <span class="ot">&lt;-</span> <span class="cf">function</span>(data,cat) {</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  cats <span class="ot">&lt;-</span> <span class="fu">unique</span>(data[[cat]])</span>
+<span id="cb18-3"><a href="#cb18-3"></a>  ress <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="cf">for</span> (x <span class="cf">in</span> cats) {</span>
+<span id="cb18-5"><a href="#cb18-5"></a>    std.pop <span class="ot">&lt;-</span> <span class="fu">icss_choose</span>(x)</span>
+<span id="cb18-6"><a href="#cb18-6"></a>    ress_ <span class="ot">&lt;-</span> <span class="fu">period</span>(<span class="fu">subset</span>(data,data[[cat]]<span class="sc">==</span>x), <span class="dv">5</span>, surv.m, surv.f, <span class="dv">2017</span>, <span class="dv">2019</span>)</span>
+<span id="cb18-7"><a href="#cb18-7"></a>    res_ <span class="ot">&lt;-</span>  <span class="fu">period</span>(<span class="fu">subset</span>(data,data[[cat]]<span class="sc">==</span>x), <span class="dv">5</span>, surv.m, surv.f, </span>
+<span id="cb18-8"><a href="#cb18-8"></a>                   <span class="dv">2017</span>, <span class="dv">2019</span>, <span class="at">agedist =</span> std.pop)</span>
+<span id="cb18-9"><a href="#cb18-9"></a>    res <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cate=</span>x,</span>
+<span id="cb18-10"><a href="#cb18-10"></a>                      <span class="at">crs=</span><span class="fu">round</span>(ress_<span class="sc">$</span>rel.surv[<span class="dv">5</span>],<span class="dv">1</span>),</span>
+<span id="cb18-11"><a href="#cb18-11"></a>                      <span class="at">cse=</span><span class="fu">round</span>(ress_<span class="sc">$</span>rel.surv.stderr[<span class="dv">5</span>],<span class="dv">1</span>),</span>
+<span id="cb18-12"><a href="#cb18-12"></a>                      <span class="at">rs=</span><span class="fu">round</span>(res_<span class="sc">$</span>rel.surv[<span class="dv">5</span>],<span class="dv">1</span>),</span>
+<span id="cb18-13"><a href="#cb18-13"></a>                      <span class="at">se=</span><span class="fu">round</span>(res_<span class="sc">$</span>rel.surv.stderr[<span class="dv">5</span>],<span class="dv">1</span>))</span>
+<span id="cb18-14"><a href="#cb18-14"></a>    ress <span class="ot">&lt;-</span><span class="fu">rbind</span>(ress,res)</span>
+<span id="cb18-15"><a href="#cb18-15"></a>  }</span>
+<span id="cb18-16"><a href="#cb18-16"></a>  total_ <span class="ot">&lt;-</span> <span class="fu">period</span>(data, <span class="dv">5</span>, surv.m, surv.f, <span class="dv">2017</span>, <span class="dv">2019</span>)</span>
+<span id="cb18-17"><a href="#cb18-17"></a>  total <span class="ot">&lt;-</span> <span class="fu">period</span>(data, <span class="dv">5</span>, surv.m, surv.f, <span class="dv">2017</span>, <span class="dv">2019</span>, <span class="at">agedist =</span> icss1)</span>
+<span id="cb18-18"><a href="#cb18-18"></a>  total <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cate=</span><span class="st">"合计"</span>,</span>
+<span id="cb18-19"><a href="#cb18-19"></a>                      <span class="at">crs=</span><span class="fu">round</span>(total_<span class="sc">$</span>rel.surv[<span class="dv">5</span>],<span class="dv">1</span>),</span>
+<span id="cb18-20"><a href="#cb18-20"></a>                      <span class="at">cse=</span><span class="fu">round</span>(total_<span class="sc">$</span>rel.surv.stderr[<span class="dv">5</span>],<span class="dv">1</span>),</span>
+<span id="cb18-21"><a href="#cb18-21"></a>                      <span class="at">rs=</span><span class="fu">round</span>(total<span class="sc">$</span>rel.surv[<span class="dv">5</span>],<span class="dv">1</span>),</span>
+<span id="cb18-22"><a href="#cb18-22"></a>                      <span class="at">se=</span><span class="fu">round</span>(total<span class="sc">$</span>rel.surv.stderr[<span class="dv">5</span>],<span class="dv">1</span>))</span>
+<span id="cb18-23"><a href="#cb18-23"></a>  ress <span class="ot">&lt;-</span> <span class="fu">rbind</span>(ress,total) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(cate)</span>
+<span id="cb18-24"><a href="#cb18-24"></a>  <span class="fu">return</span>(ress)</span>
+<span id="cb18-25"><a href="#cb18-25"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="年龄标化生存率的计算" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="年龄标化生存率的计算"><span class="header-section-number">7.3</span> 年龄标化生存率的计算</h3>
+<p>在进行生存率的年龄标化时，WHO推荐了三个标准年龄构成，不同的癌种在进行年龄标化时应该选择不同的标准年龄构成。我把这个过程跟上面的函数整合到一起，可以实现根据不同癌症选择不同的标准年龄构成，这样就不用手动选择标准年龄结构了。</p>
+<p>程序如下：</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">#生成生存分析标准人口结构</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>s <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">12</span>,<span class="dv">23</span>,<span class="dv">29</span>,<span class="dv">29</span>)</span>
+<span id="cb19-3"><a href="#cb19-3"></a>icss1 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(cancer.pop[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],s)</span>
+<span id="cb19-4"><a href="#cb19-4"></a>s<span class="ot">=</span><span class="fu">c</span>(<span class="dv">28</span>,<span class="dv">17</span>,<span class="dv">21</span>,<span class="dv">20</span>,<span class="dv">14</span>)</span>
+<span id="cb19-5"><a href="#cb19-5"></a>icss2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(icss1[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],s)</span>
+<span id="cb19-6"><a href="#cb19-6"></a>s<span class="ot">=</span><span class="fu">c</span>(<span class="dv">60</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>)</span>
+<span id="cb19-7"><a href="#cb19-7"></a>icss3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(icss1[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],s)</span>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="co">#根据癌种不同选择不同的标准人口结构</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a>icss_choose <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb19-10"><a href="#cb19-10"></a>  <span class="cf">if</span> (x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"鼻咽"</span>,<span class="st">"皮肤黑色素瘤"</span>,<span class="st">"子宫颈"</span>,<span class="st">"脑"</span>,<span class="st">"甲状腺"</span>,<span class="st">"骨"</span>)) {</span>
+<span id="cb19-11"><a href="#cb19-11"></a>    std.pop <span class="ot">&lt;-</span> icss2</span>
+<span id="cb19-12"><a href="#cb19-12"></a>  } <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"睾丸"</span>)) {</span>
+<span id="cb19-13"><a href="#cb19-13"></a>    std.pop <span class="ot">&lt;-</span> icss3 </span>
+<span id="cb19-14"><a href="#cb19-14"></a>  } <span class="cf">else</span> { </span>
+<span id="cb19-15"><a href="#cb19-15"></a>    std.pop <span class="ot">&lt;-</span> icss1 </span>
+<span id="cb19-16"><a href="#cb19-16"></a>  }</span>
+<span id="cb19-17"><a href="#cb19-17"></a>  <span class="fu">return</span>(std.pop)</span>
+<span id="cb19-18"><a href="#cb19-18"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="计数分性别不同部位的5年相对生存率" class="level3" data-number="7.4">
+<h3 data-number="7.4" class="anchored" data-anchor-id="计数分性别不同部位的5年相对生存率"><span class="header-section-number">7.4</span> 计数分性别不同部位的5年相对生存率</h3>
+<p>首先，截取需要用的数据子集，然后利用tperiod函数计算不同癌种的5年相对生存率</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="do">##合计成人5年生存率</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>total <span class="ot">&lt;-</span> ana <span class="sc">%&gt;%</span> <span class="fu">filter</span>(diagage<span class="sc">&gt;=</span><span class="dv">15</span>) </span>
+<span id="cb20-3"><a href="#cb20-3"></a>ress_total <span class="ot">&lt;-</span> <span class="fu">tperiod</span>(<span class="at">data=</span>total,<span class="at">cat=</span><span class="st">"icdd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>计算男性成人5年相对生存率</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="do">##男性成人5年生存率</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>male <span class="ot">&lt;-</span> ana <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex<span class="sc">==</span><span class="st">"1"</span>,diagage<span class="sc">&gt;=</span><span class="dv">15</span>)</span>
+<span id="cb21-3"><a href="#cb21-3"></a>ress_male <span class="ot">&lt;-</span> <span class="fu">tperiod</span>(<span class="at">data=</span>male,<span class="at">cat=</span><span class="st">"icdd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>计算女性成人5年相对生存率</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="do">##女性成人5年生存率</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>female <span class="ot">&lt;-</span> ana <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex<span class="sc">==</span><span class="st">"2"</span>,diagage<span class="sc">&gt;=</span><span class="dv">15</span>)</span>
+<span id="cb22-3"><a href="#cb22-3"></a>ress_female <span class="ot">&lt;-</span> <span class="fu">tperiod</span>(<span class="at">data=</span>female,<span class="at">cat=</span><span class="st">"icdd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="组间相对生存率的统计学检验" class="level3" data-number="7.5">
+<h3 data-number="7.5" class="anchored" data-anchor-id="组间相对生存率的统计学检验"><span class="header-section-number">7.5</span> 组间相对生存率的统计学检验</h3>
+<p>我们采用Z检验比较组间5年相对生存率的统计学差异，其中<span class="math inline">\(P_1\)</span>表示组1的相对生存率，<span class="math inline">\(P_2\)</span>表示组2的相对生存率，<span class="math inline">\(s.e.(P_1)\)</span>表示<span class="math inline">\(P_1\)</span>的标准误，<span class="math inline">\(s.e.(P_2)\)</span>表示<span class="math inline">\(P_2\)</span>的标准误癌，如果Z&gt;1.96，则<em>P</em>&lt;0.05；如果Z&gt;2.56，则<em>P</em>&lt;0.01。<span class="citation" data-cites="xiangyongbing1999a">(<a href="#ref-xiangyongbing1999a" role="doc-biblioref">10</a>)</span></p>
+<p><span class="math display">\[Z=\frac{|P_1-P_2|}{\sqrt{s.e.(P_1)^2+s.e.(P_2)^2}}\]</span></p>
+</section>
+<section id="结果整理" class="level3 page-columns page-full" data-number="7.6">
+<h3 data-number="7.6" class="anchored" data-anchor-id="结果整理"><span class="header-section-number">7.6</span> 结果整理</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">options</span>(<span class="at">NA.print =</span> <span class="st">"--"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2"></a>ress_site <span class="ot">&lt;-</span> ress_total <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">left_join</span>(ress_male,<span class="at">by=</span><span class="fu">c</span>(<span class="st">"cate"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">left_join</span>(ress_female,<span class="at">by=</span><span class="fu">c</span>(<span class="st">"cate"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>rs.x) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-6"><a href="#cb23-6"></a>  <span class="fu">mutate</span>(<span class="at">z=</span><span class="fu">round</span>(<span class="fu">abs</span>(rs.y<span class="sc">-</span>rs)<span class="sc">/</span><span class="fu">sqrt</span>(se.y<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>se<span class="sc">^</span><span class="dv">2</span>),<span class="dv">2</span>),</span>
+<span id="cb23-7"><a href="#cb23-7"></a>         <span class="at">p=</span><span class="fu">ifelse</span>(z<span class="sc">&lt;</span><span class="fl">1.96</span>,<span class="st">"&gt;0.05"</span>,</span>
+<span id="cb23-8"><a href="#cb23-8"></a>                  <span class="fu">ifelse</span>(z<span class="sc">&lt;</span><span class="fl">2.56</span>,<span class="st">"&lt;0.05"</span>,<span class="st">"&lt;0.01"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-9"><a href="#cb23-9"></a>  <span class="fu">mutate</span>(<span class="at">a=</span><span class="fu">paste0</span>(crs.x,<span class="st">"("</span>,cse.x,<span class="st">")"</span>),</span>
+<span id="cb23-10"><a href="#cb23-10"></a>         <span class="at">b=</span><span class="fu">paste0</span>(rs.x,<span class="st">"("</span>,se.x,<span class="st">")"</span>),</span>
+<span id="cb23-11"><a href="#cb23-11"></a>         <span class="at">c=</span><span class="fu">paste0</span>(crs.y,<span class="st">"("</span>,cse.y,<span class="st">")"</span>),</span>
+<span id="cb23-12"><a href="#cb23-12"></a>         <span class="at">d=</span><span class="fu">paste0</span>(rs.y,<span class="st">"("</span>,se.y,<span class="st">")"</span>),</span>
+<span id="cb23-13"><a href="#cb23-13"></a>         <span class="at">e=</span><span class="fu">paste0</span>(crs,<span class="st">"("</span>,cse,<span class="st">")"</span>),</span>
+<span id="cb23-14"><a href="#cb23-14"></a>         <span class="at">f=</span><span class="fu">paste0</span>(rs,<span class="st">"("</span>,se,<span class="st">")"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-15"><a href="#cb23-15"></a>  <span class="fu">select</span>(cate,a,b,c,d,e,f,z,p) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-16"><a href="#cb23-16"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(a<span class="sc">:</span>f, <span class="sc">~</span> <span class="fu">ifelse</span>(. <span class="sc">==</span> <span class="st">"NA(NA)"</span>, <span class="st">"--"</span>, .))) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-17"><a href="#cb23-17"></a>  <span class="fu">kbl</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"部位"</span>,<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"CRS"</span>,<span class="st">"ARS"</span>),<span class="dv">3</span>),<span class="st">"Z"</span>,<span class="st">"P"</span>),<span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-18"><a href="#cb23-18"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> T, <span class="at">html_font =</span> <span class="st">"Cambria"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-19"><a href="#cb23-19"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">" "</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"合计"</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">"男性"</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">"女性"</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">" "</span><span class="ot">=</span><span class="dv">2</span>),</span>
+<span id="cb23-20"><a href="#cb23-20"></a>                   <span class="at">bold =</span> T,<span class="at">border_left =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb23-21"><a href="#cb23-21"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">bold=</span>T,<span class="at">italic=</span>T) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-22"><a href="#cb23-22"></a>  <span class="fu">footnote</span>(<span class="at">general =</span> <span class="st">"结果以5年相对生存率(标准误)的形式展示. CRS: 5年相对生存率. ARS: 年龄调整5年相对生存率."</span>,</span>
+<span id="cb23-23"><a href="#cb23-23"></a>           <span class="at">general_title =</span> <span class="st">"注:"</span>,<span class="at">footnote_as_chunk =</span> <span class="cn">TRUE</span>,<span class="at">escape =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell page-columns page-full">
+<div class="cell-output-display column-page">
+<div id="tbl-t2" class="anchored">
+<table class="lightable-classic table table-sm table-striped" data-quarto-postprocess="true">
+<caption>表&nbsp;2: 15岁以上不同性别、不同部位癌症患者5年相对生存率</caption>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: center; empty-cells: hide;"></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; padding-bottom: 0; padding-left: 3px; padding-right: 3px; font-weight: bold;"><div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+合计
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; padding-bottom: 0; padding-left: 3px; padding-right: 3px; font-weight: bold;"><div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+男性
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; padding-bottom: 0; padding-left: 3px; padding-right: 3px; font-weight: bold;"><div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+女性
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; empty-cells: hide;"></th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">部位</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">CRS</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">ARS</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">CRS</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">ARS</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">CRS</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">ARS</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">Z</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">P</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">甲状腺</td>
+<td style="text-align: center;">91.8(0.6)</td>
+<td style="text-align: center;">86.4(1.2)</td>
+<td style="text-align: center;">87.8(1.6)</td>
+<td style="text-align: center;">83.4(2.3)</td>
+<td style="text-align: center;">92.9(0.6)</td>
+<td style="text-align: center;">87.3(1.4)</td>
+<td style="text-align: center;">1.45</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">睾丸</td>
+<td style="text-align: center;">72.8(5.4)</td>
+<td style="text-align: center;">74.4(4.9)</td>
+<td style="text-align: center;">72.8(5.4)</td>
+<td style="text-align: center;">74.4(4.9)</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">乳房</td>
+<td style="text-align: center;">79.7(0.4)</td>
+<td style="text-align: center;">73.1(1)</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">79.7(0.4)</td>
+<td style="text-align: center;">73.1(1)</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">子宫颈</td>
+<td style="text-align: center;">72.4(0.7)</td>
+<td style="text-align: center;">68.3(0.8)</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">72.4(0.7)</td>
+<td style="text-align: center;">68.3(0.8)</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">皮肤黑色素瘤</td>
+<td style="text-align: center;">68.4(4.5)</td>
+<td style="text-align: center;">67.6(4.5)</td>
+<td style="text-align: center;">64.9(6.3)</td>
+<td style="text-align: center;">63.7(6.2)</td>
+<td style="text-align: center;">72.4(6.3)</td>
+<td style="text-align: center;">72.2(6)</td>
+<td style="text-align: center;">0.99</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">膀胱</td>
+<td style="text-align: center;">66.1(1.4)</td>
+<td style="text-align: center;">66.2(1.4)</td>
+<td style="text-align: center;">68.5(1.7)</td>
+<td style="text-align: center;">68.7(1.6)</td>
+<td style="text-align: center;">58.5(2.7)</td>
+<td style="text-align: center;">58.7(2.6)</td>
+<td style="text-align: center;">3.28</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">子宫体</td>
+<td style="text-align: center;">79.5(0.8)</td>
+<td style="text-align: center;">64.2(1.8)</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">79.5(0.8)</td>
+<td style="text-align: center;">64.2(1.8)</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">口腔</td>
+<td style="text-align: center;">63.4(1.5)</td>
+<td style="text-align: center;">60.2(1.7)</td>
+<td style="text-align: center;">58.2(2)</td>
+<td style="text-align: center;">55.3(2.3)</td>
+<td style="text-align: center;">70.3(2.1)</td>
+<td style="text-align: center;">66.7(2.6)</td>
+<td style="text-align: center;">3.28</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">肾</td>
+<td style="text-align: center;">64.8(1.4)</td>
+<td style="text-align: center;">60.2(1.7)</td>
+<td style="text-align: center;">61.1(1.9)</td>
+<td style="text-align: center;">56.5(2.3)</td>
+<td style="text-align: center;">70.2(2)</td>
+<td style="text-align: center;">66(2.5)</td>
+<td style="text-align: center;">2.80</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">鼻咽</td>
+<td style="text-align: center;">59.2(2.3)</td>
+<td style="text-align: center;">59.2(2.3)</td>
+<td style="text-align: center;">57.5(2.8)</td>
+<td style="text-align: center;">57.5(3)</td>
+<td style="text-align: center;">62.2(3.7)</td>
+<td style="text-align: center;">62.7(3.7)</td>
+<td style="text-align: center;">1.09</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">结直肠</td>
+<td style="text-align: center;">58.5(0.6)</td>
+<td style="text-align: center;">56.9(0.6)</td>
+<td style="text-align: center;">58.5(0.8)</td>
+<td style="text-align: center;">57(0.9)</td>
+<td style="text-align: center;">58.5(0.8)</td>
+<td style="text-align: center;">56.8(0.9)</td>
+<td style="text-align: center;">0.16</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">其他</td>
+<td style="text-align: center;">58.3(0.8)</td>
+<td style="text-align: center;">55.1(0.9)</td>
+<td style="text-align: center;">53.9(1.1)</td>
+<td style="text-align: center;">51.7(1.3)</td>
+<td style="text-align: center;">62.7(1.1)</td>
+<td style="text-align: center;">58.2(1.3)</td>
+<td style="text-align: center;">3.54</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">前列腺</td>
+<td style="text-align: center;">58.7(2.1)</td>
+<td style="text-align: center;">55.1(2.7)</td>
+<td style="text-align: center;">58.7(2.1)</td>
+<td style="text-align: center;">55.1(2.7)</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">骨</td>
+<td style="text-align: center;">50.5(1.6)</td>
+<td style="text-align: center;">51.4(1.5)</td>
+<td style="text-align: center;">49.3(2.2)</td>
+<td style="text-align: center;">50.1(2.1)</td>
+<td style="text-align: center;">51.9(2.4)</td>
+<td style="text-align: center;">53.1(2.3)</td>
+<td style="text-align: center;">0.96</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">其他胸腔器官</td>
+<td style="text-align: center;">54.4(2.8)</td>
+<td style="text-align: center;">51.1(3.3)</td>
+<td style="text-align: center;">48.5(3.7)</td>
+<td style="text-align: center;">42.6(4.1)</td>
+<td style="text-align: center;">61.7(4.1)</td>
+<td style="text-align: center;">62.8(4.7)</td>
+<td style="text-align: center;">3.24</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">喉</td>
+<td style="text-align: center;">52.4(2.2)</td>
+<td style="text-align: center;">49.8(2.4)</td>
+<td style="text-align: center;">53.7(2.5)</td>
+<td style="text-align: center;">50.5(2.6)</td>
+<td style="text-align: center;">46.2(5.4)</td>
+<td style="text-align: center;">42.4(5.6)</td>
+<td style="text-align: center;">1.31</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">卵巢</td>
+<td style="text-align: center;">57.7(1.3)</td>
+<td style="text-align: center;">47.5(1.8)</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">57.7(1.3)</td>
+<td style="text-align: center;">47.5(1.8)</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">脑</td>
+<td style="text-align: center;">45.7(0.9)</td>
+<td style="text-align: center;">45.8(0.9)</td>
+<td style="text-align: center;">38(1.2)</td>
+<td style="text-align: center;">38.3(1.2)</td>
+<td style="text-align: center;">53.1(1.2)</td>
+<td style="text-align: center;">53.2(1.2)</td>
+<td style="text-align: center;">8.78</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">淋巴瘤</td>
+<td style="text-align: center;">47.2(1.2)</td>
+<td style="text-align: center;">43.1(1.4)</td>
+<td style="text-align: center;">47.1(1.7)</td>
+<td style="text-align: center;">43.1(1.9)</td>
+<td style="text-align: center;">47.4(1.8)</td>
+<td style="text-align: center;">43.1(1.9)</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">白血病</td>
+<td style="text-align: center;">44.4(1.1)</td>
+<td style="text-align: center;">41.6(1.3)</td>
+<td style="text-align: center;">43.4(1.4)</td>
+<td style="text-align: center;">42.3(1.8)</td>
+<td style="text-align: center;">45.7(1.6)</td>
+<td style="text-align: center;">40.5(2)</td>
+<td style="text-align: center;">0.67</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">合计</td>
+<td style="text-align: center;">44.2(0.1)</td>
+<td style="text-align: center;">40.7(0.2)</td>
+<td style="text-align: center;">35.2(0.2)</td>
+<td style="text-align: center;">34.4(0.2)</td>
+<td style="text-align: center;">54(0.2)</td>
+<td style="text-align: center;">47.1(0.2)</td>
+<td style="text-align: center;">44.90</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">食管</td>
+<td style="text-align: center;">36.7(0.4)</td>
+<td style="text-align: center;">36.9(0.4)</td>
+<td style="text-align: center;">35.9(0.5)</td>
+<td style="text-align: center;">35.6(0.5)</td>
+<td style="text-align: center;">37.9(0.6)</td>
+<td style="text-align: center;">39(0.6)</td>
+<td style="text-align: center;">4.35</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">胃</td>
+<td style="text-align: center;">34.3(0.4)</td>
+<td style="text-align: center;">33.5(0.4)</td>
+<td style="text-align: center;">34.2(0.4)</td>
+<td style="text-align: center;">33.2(0.5)</td>
+<td style="text-align: center;">34.7(0.7)</td>
+<td style="text-align: center;">34.4(0.7)</td>
+<td style="text-align: center;">1.39</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">胆囊</td>
+<td style="text-align: center;">27.5(1.1)</td>
+<td style="text-align: center;">28(1.2)</td>
+<td style="text-align: center;">25.4(1.7)</td>
+<td style="text-align: center;">25.6(1.7)</td>
+<td style="text-align: center;">29(1.5)</td>
+<td style="text-align: center;">29.6(1.6)</td>
+<td style="text-align: center;">1.71</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">肺</td>
+<td style="text-align: center;">24.1(0.3)</td>
+<td style="text-align: center;">24.3(0.3)</td>
+<td style="text-align: center;">22.2(0.4)</td>
+<td style="text-align: center;">22.5(0.4)</td>
+<td style="text-align: center;">28.1(0.6)</td>
+<td style="text-align: center;">27.8(0.6)</td>
+<td style="text-align: center;">7.35</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">胰腺</td>
+<td style="text-align: center;">20.8(0.9)</td>
+<td style="text-align: center;">20.5(0.9)</td>
+<td style="text-align: center;">18.7(1.2)</td>
+<td style="text-align: center;">18.1(1.2)</td>
+<td style="text-align: center;">23.4(1.5)</td>
+<td style="text-align: center;">23.2(1.5)</td>
+<td style="text-align: center;">2.65</td>
+<td style="text-align: center;">&lt;0.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">肝</td>
+<td style="text-align: center;">19.9(0.4)</td>
+<td style="text-align: center;">19.1(0.4)</td>
+<td style="text-align: center;">19.9(0.5)</td>
+<td style="text-align: center;">19.1(0.5)</td>
+<td style="text-align: center;">20(0.7)</td>
+<td style="text-align: center;">19.7(0.7)</td>
+<td style="text-align: center;">0.70</td>
+<td style="text-align: center;">&gt;0.05</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: center; padding: 0;"><span style="font-style: italic;">注:</span> <sup></sup> 结果以5年相对生存率(标准误)的形式展示. CRS: 5年相对生存率. ARS: 年龄调整5年相对生存率.</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
 
 
+</div>
+</div>
+</section>
+</section>
+<section id="参考文献" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="参考文献">参考文献</h2>
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-张华2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">张华, 曹志刚, 柳光宇, et al. <span>队列法、完全法和现时生存分析方法在乳腺癌随访研究中的应用</span>. <em>肿瘤</em>. 2014;34(6): 550–556. </div>
+</div>
+<div id="ref-brenner2002" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Brenner H, Söderman B, Hakulinen T. Use of period analysis for providing more up-to-date estimates of long-term survival rates: Empirical evaluation among 370 000 cancer patients in <span>Finland</span>. <em>International Journal of Epidemiology</em>. 2002;31(2): 456–462. <a href="https://doi.org/10.1093/ije/31.2.456">https://doi.org/10.1093/ije/31.2.456.</a></div>
+</div>
+<div id="ref-brenner2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Brenner H, Gefeller O, Hakulinen T. Period analysis for <span>“up-to-date”</span> cancer survival data. <em>European Journal of Cancer</em>. 2004;40(3): 326–335. <a href="https://doi.org/10.1016/j.ejca.2003.10.013">https://doi.org/10.1016/j.ejca.2003.10.013.</a></div>
+</div>
+<div id="ref-holleczek2013b" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Holleczek B, Brenner H. Model based period analysis of absolute and relative survival with <span>R</span>: Data preparation, model fitting and derivation of survival estimates. <em>Comput Methods Programs Biomed</em>. 2013;110(2): 192–202. <a href="https://doi.org/10.1016/j.cmpb.2012.10.004">https://doi.org/10.1016/j.cmpb.2012.10.004.</a></div>
+</div>
+<div id="ref-李卓颖2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">李卓颖, 蒋宇飞, 谭玉婷, et al. <span>现时法统计模型在全人群肿瘤登记生存分析中的应用</span>. <em>复旦学报(医学版)</em>. 2021;48(3): 376-382+397+383-387. </div>
+</div>
+<div id="ref-jansen2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Jansen L, Hakulinen T, Brenner H. Study populations for period analyses of cancer survival. <em>Br J Cancer</em>. 2013;108(3): 699–707. <a href="https://doi.org/10.1038/bjc.2013.14">https://doi.org/10.1038/bjc.2013.14.</a></div>
+</div>
+<div id="ref-张华2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">张华, 曹志刚, 莫淼, et al. <span>肿瘤监测数据的生存分析方法比较</span>. <em>中国卫生统计</em>. 2016;33(5): 908–913. </div>
+</div>
+<div id="ref-holleczek2009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Holleczek B, Gondos A, Brenner H. <span class="nocase">periodR</span> - an <span>R</span> package to calculate long-term cancer survival estimates using period analysis. <em>Methods Inf Med</em>. 2009;48(2): 123–128. <a href="https://doi.org/10.3414/ME0563">https://doi.org/10.3414/ME0563.</a></div>
+</div>
+<div id="ref-ellison2006" class="csl-entry" role="listitem">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Ellison LF. An <span>Empirical Evaluation</span> of <span>Period Survival Analysis Using Data</span> from the <span>Canadian Cancer Registry</span>. <em>Annals of Epidemiology</em>. 2006;16(3): 191–196. <a href="https://doi.org/10.1016/j.annepidem.2005.02.017">https://doi.org/10.1016/j.annepidem.2005.02.017.</a></div>
+</div>
+<div id="ref-xiangyongbing1999a" class="csl-entry" role="listitem">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">项永兵. <span>肿瘤流行病学研究资料的统计分析第六讲相对生存率的统计学检验</span>. <em>中华流行病学杂志</em>. 1999;(2): 59–61. </div>
+</div>
+</div>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">6 计算一般人群期望生存概率</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-张华2014" class="csl-entry" role="listitem">
-张华, 曹志刚, 柳光宇, 莫淼, 王春芳, 张志杰, 邵志敏, 朱骥, and 徐望红. 2014. <span>“<span>队列法、完全法和现时生存分析方法在乳腺癌随访研究中的应用</span>.”</span> <em>肿瘤</em> 34 (6): 550–56.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
