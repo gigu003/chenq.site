@@ -15,7 +15,7 @@ draft: false
 execute: 
   echo: true
   eval: false
-  code-fold: true
+  code-fold: false
   code-summary: "展示显示代码"
 image: "periodR.jpg"
 bibliography: "ref.bib"
@@ -28,7 +28,7 @@ crossref:
   fig-prefix: 图
 ---
 
-> 人群癌症5年生存率是评估包括癌症筛查、诊断、治疗以及管理等癌症综合防治效果的关键指标，是制定和优化癌症防控政策和措施的重要参考数据，它与一个地区的基础医疗水平、诊断设备的可及性等多种因素相关。 本篇博文将介绍如何利用人群肿瘤登记数据进行癌症5年相对生存率的数据分析过程。
+> 人群癌症5年生存率是评估包括癌症筛查、诊断、治疗以及管理等癌症综合防治效果的关键指标，是制定和优化癌症防控政策和措施的重要参考数据，它与一个地区的基础医疗水平、诊断设备的可及性等多种因素相关[@李卓颖2021]。 本篇博文将介绍如何利用人群肿瘤登记数据进行估计人群癌症5年相对生存率。
 
 ## 基本概念
 
@@ -44,7 +44,7 @@ crossref:
 
 **相对生存率**定义为研究人群的**观察生存率**与假定其为一般人群时的**期望生存率**之比,校正了诸如性别、年龄、种族和年代等因素对病人生存情况的影响。因而用**相对生存率**作为地区或人群间生存率水平的比较指标,比观察生存率能更好地说明问题。
 
-**观察生存率**反映的是研究人群的总的死亡危险,而**相对生存率**反映的是肿瘤的超额死亡危险。如果相对生存率越接近于 100%,则表明研究人群的预后越好,反之越差。所以它既可以象观察生存率一样用于描述研究人群的生存水平或预后优劣, 也可以作为观察生存率的标化指标。
+**观察生存率**反映的是研究人群的总的死亡危险,而**相对生存率**反映的是肿瘤的超额死亡危险。如果相对生存率越接近于 100%,则表明研究人群的预后越好,反之越差。所以它既可以象观察生存率一样用于描述研究人群的生存水平或预后优劣,也可以作为观察生存率的标化指标。
 
 ### 感兴趣时期
 
@@ -96,7 +96,7 @@ knitr::include_graphics("followup.jpg")
 
 ### 现时生存分析
 
-现时生存分析由德国流行病学家 Hermann Brenner于1996年首先提出，至2002年逐渐发展成熟[@brenner2002;@brenner2004;@holleczek2013b;@李卓颖2021]。
+现时生存分析由德国流行病学家 Hermann Brenner于1996年首先提出，至2002年逐渐发展成熟[@brenner2002; @brenner2004; @holleczek2013b; @李卓颖2021]。
 
 现时生存分析（period survival analysis）纳入的研究对象分为两部分，一部分是感兴趣时期新确诊的所有病例，另一部分是感兴趣时期之前确诊而且在感兴趣时期仍然存活的病例。本研究的感兴趣时期设定为*2017-2019年*，那研究对象就需要纳入2017-2019年期间所有新确诊癌症病例以及2017-2019年之前确诊并在2017-2019年期间仍存活的癌症病例[@jansen2013]。
 
@@ -106,11 +106,11 @@ knitr::include_graphics("followup.jpg")
 
 由于现时生存分析方法纳入的病例数相对于*完全法*来说要少，因此，该方法估计生存率的精确度和稳健度比其他方法偏低，估计生存率的方差也偏大一些，因此，我们在利用该方法估计生存率的时候应注意把握估计精确度和时效性之间的平衡。
 
-但是对于省级人群肿瘤登记数据来说，数据样本量较大，生存率估计的精度能够得到保证，因此，评估的时效性成为优先考虑的问题，现时生存分析成为评估人群癌症生存率的优先选项[@张华2014;@张华2016]。
+但是对于省级人群肿瘤登记数据来说，数据样本量较大，生存率估计的精度能够得到保证，因此，评估的时效性成为优先考虑的问题，现时生存分析成为评估人群癌症生存率的优先选项[@张华2014; @张华2016]。
 
 ## 统计软件包的安装
 
-本篇博文介绍利用现时法统计模型估计癌症5年生存率，这种方法能够提高生存率估计的时效性。我们将使用Brenner等编写的R包"periodR"进行相对生存率的估计，你可以[在这里下载R包](https://krebsregister.saarland.de/daten-auswertungen-veroeffentlichungen/software/periodr-english/)，并安装使用[@holleczek2009;@holleczek2013b]。
+本篇博文介绍利用现时法统计模型估计癌症5年生存率，这种方法能够提高生存率估计的时效性。我们将使用Brenner等编写的R包"periodR"进行相对生存率的估计，你可以[在这里下载R包](https://krebsregister.saarland.de/daten-auswertungen-veroeffentlichungen/software/periodr-english/)，并安装使用[@holleczek2009; @holleczek2013b]。
 
 点开链接之后，可以根据自己使用的操作系统和R语言版本选择相应的安装包。
 
@@ -130,7 +130,7 @@ install.packages('periodR_1.0-6.tar.gz', repos=NULL, type='source')
 
 ### 数据来源
 
-本篇博文拟分析河南省肿瘤登记处覆盖地区的癌症患者5年相对生存率，数据来源分为两部分，第一部分为肿瘤登记地区癌症患者生存信息用于计算观察生存率，另一部分来源于各肿瘤登记处上报的寿命表数据用于计算一般人群的期望生存率。
+本篇博文拟分析河南省肿瘤登记处覆盖地区的癌症患者5年相对生存率，数据来源分为两部分，第一部分为肿瘤登记地区癌症患者生存信息用于计算观察生存率，另一部分来源于各肿瘤登记处上报的**寿命表数据**用于计算一般人群的期望生存率。
 
 ### 肿瘤登记处的筛选
 
@@ -189,6 +189,8 @@ rename_all(tolower) %>%
 ```
 
 ### 限制生存分析的癌种范围
+
+我们选择分析的癌种范围与《国家肿瘤登记年报》报告的癌种范围一致，即所有恶性肿瘤和中枢神经系统良性肿瘤。
 
 ```{r}
 #| code-fold: true
@@ -364,15 +366,54 @@ flowchart TD
 
 ### 统计整理全死因数据
 
+```r
+lifetable <- read_sas("population.sas7bdat.zip") %>% 
+  rename_all(tolower) %>% 
+  # mutate(areacode = substr(addcode,1,6)) %>% 
+  # filter(areacode =="410302",type==4,year==2013)
+  mutate(areacode = substr(addcode,1,6),
+         area_type =
+          ifelse(areacode %in% c("410302","410303","410304","410305",
+                                  "410602","410603","410611",
+                                 "411102","411103","411104",
+                                  "411202","411303"),"Urban","Rural")) %>% 
+  filter(areacode %in% areacodes, year >= 2014,year <= 2020) %>% 
+  filter(!(areacode %in% c("410602","410603","410611","410303"))) %>% 
+  select(areacode,area_type,year,sex,type,p0:p85) %>%
+  pivot_longer(cols = p0:p85, names_to = c("agegrp"), values_to =c("count")) %>% 
+  mutate(type=ifelse(type==1,"pop","death")) %>% 
+  pivot_wider(names_from = c("type"), values_from = c("count")) %>% 
+  mutate(agegrp = as.numeric(gsub("[^0-9\\.]", "", agegrp)),
+         sex=as.numeric(sex))  
+```
+
+
+
+
+```r
+## 按照地区分类计算各年龄生存概率
+area_type <- lifetable %>%  
+  filter(!is.na(death),!is.na(pop)) %>%
+  group_by(area_type,sex, year, agegrp) %>% 
+  mutate(deaths=sum(death),
+         pop = sum(pop),
+         rate = deaths/pop*1000) %>% 
+  distinct(area_type,sex,year,agegrp,pop,deaths,rate) %>% 
+  ungroup() %>% 
+  mutate(agegroup2=agegrp,
+         code=area_type) %>%  
+  arrange(area_type,year,sex,agegrp)
+write_dta(area_type,"pop.dta")
+```
+
 ```{r}
-#| echo: true
+#| echo: false
 #| eval: true
 
 library(haven)
 data <- read_dta("pop.dta")
 head(data)
 ```
-
 
 ### stata数据准备
 
@@ -382,10 +423,9 @@ head(data)
 
 {{< downloadthis ej-hm.do dname="ej-hm" label="下载ej-hm.do" icon="database-fill-down" type="info" >}}
 
-
 ### 计算简略寿命表
 
-```stata
+``` stata
 cd "/Users/qc0824/manuscripts/period-survival"
 ************step 2 简略寿命表准备
 use pop.dta,clear
@@ -409,23 +449,24 @@ replace dx=qx*lx
 foreach n of numlist 2/19 {
    bysort code year sex ageblock1: replace lx=lx[_n-1]-dx[_n-1] if  ageblock2==`n'
    replace dx=qx[_n]*lx[_n] if ageblock2==`n'
-	} // 计算尚存活人数lx，和死亡人数dx
-gen Lx=n*(2*lx-dx)/2	//计算个年龄组生存人年数
+    } // 计算尚存活人数lx，和死亡人数dx
+gen Lx=n*(2*lx-dx)/2    //计算个年龄组生存人年数
 
 gsort code year sex -ageblock2 // 利用sum函数从上往下累计的原理，将年龄组倒序排列，反向累加
 bysort ageblock1: gen Tx=sum(Lx) // 计算生存总人年数
 gsort code year sex ageblock2
 gen ex=Tx/lx // 计算期望寿命=生存总人年数/年龄组尚存活人数
 ```
+
 ### 寿命表的质量审核
 
-```stata
+``` stata
 twoway(connected ex year if agegroup2==0),by(code sex) xla(2014(2)2020) // #根据期望寿命判断寿命表的数据质量（修改分析年份）
 ```
 
 ### 扩充完全寿命表结构
 
-```stata
+``` stata
 *******************step3 将19个年龄组expand为0到99岁完整年龄寿命表结构
 drop ageblock1 ageblock2 // 删除年龄区组中间变量
 gen num=_n // 生成序号
@@ -436,14 +477,14 @@ bysort code year sex num :egen block=seq(),f(1) t()  // 为19个年组内扩充�
 order age,after(sex) // 年龄变量移位至sex后面
 foreach var of varlist mx-ex {
     replace `var'=. if block~=1
-	} // 清除扩充出的单岁组的对应的死亡率mx，死亡概率qx，尚存活人数lx，死亡人数dx，生存人年数Lx，生存总人年数Tx，平均期望寿命ex
-	
+    } // 清除扩充出的单岁组的对应的死亡率mx，死亡概率qx，尚存活人数lx，死亡人数dx，生存人年数Lx，生存总人年数Tx，平均期望寿命ex
+    
 save lt0-99,replace
 ```
 
 ### 合并EJ推算系数
 
-```stata
+``` stata
 ************step 4 EJ推算系数合并
 use ej系数,clear
 sort age
@@ -457,7 +498,7 @@ merge m:1 age using "ej系数" // 注意查看合并结果和note文件
 
 ### 利用EJ-hm方法建模估计完全寿命表
 
-```stata
+``` stata
 ************step 5 EJ建模估算
 ren (code pop deaths)(site population deaths) // 重新命名变量与EJ-hm.do内保持一致
 describe
@@ -476,27 +517,42 @@ save complete_lifetable_js, replace
 
 ### periodR基本语法
 
-```r
+``` r
 period(data, k, surv.m, surv.f, perbeg, perend, method="EdereII", agedist=NULL)
 ```
+
 程序参数如下：
 
-> - data：生存数据
-> - k：随访时间
-> - surv.m：0-99岁条件一年生存概率（男性）
-> - surv.f：0-99岁条件一年生存概率（女性）
-> - perbeg：纳入分析的起始年份
-> - perend：纳入分析的终止年份
-> - method：相对生存率的计算方法 
-> - agedist: 标准年龄构成
+> -   data：生存数据
+> -   k：随访时间
+> -   surv.m：0-99岁条件一年生存概率（男性）
+> -   surv.f：0-99岁条件一年生存概率（女性）
+> -   perbeg：纳入分析的起始年份
+> -   perend：纳入分析的终止年份
+> -   method：相对生存率的计算方法
+> -   agedist: 标准年龄构成
 
-### 构建批量生存分析函数
+生存数据所须的一些强制性变量
+
+::: callout-important
+## periodR生存分析的强制性变量
+
+-   sex: 1-男性，2-女性
+-   dm: 诊断时间月份(数值：1-12)
+-   dy: 诊断时间年份(数值：2002)
+-   diagage: 诊断时年龄(数值：66)
+-   fm: 随访终止时间月份(数值：1-12)
+-   fy: 随访终止时间年份(数值：2019)
+-   vitstat: 随访终止时生存状态(1：存活，2：死亡)
+:::
+
+### 构建批量生存分析函数{#sec-macro}
 
 period函数对不同数据子集进行生存分析时，需要在data参数中制定不同的数据子集，如果子集很多的时候，数据分析起来就会很麻烦，比如对不同部位癌种进行生存分析，所以，我们可以在period函数的基础上，编制一个批量生存分析的函数，来方面我们的计算过程。
 
 下面这个函数在period的基础上进行了一些整合，可以批量分析不同亚组的生存分析，并把主要结果整理成数据集。
 
-```r
+``` r
 tperiod <- function(data,cat) {
   cats <- unique(data[[cat]])
   ress <- data.frame()
@@ -526,11 +582,62 @@ tperiod <- function(data,cat) {
 
 ### 年龄标化生存率的计算
 
-在进行生存率的年龄标化时，WHO推荐了三个标准年龄构成，不同的癌种在进行年龄标化时应该选择不同的标准年龄构成。我把这个过程跟上面的函数整合到一起，可以实现根据不同癌症选择不同的标准年龄构成，这样就不用手动选择标准年龄结构了。
+在进行生存率的年龄标化时，WHO推荐了三个标准年龄构成，不同的癌种在进行年龄标化时应该选择不同的标准年龄构成。我把这个过程跟上面的函数整合到一起，可以实现根据不同癌症选择不同的标准年龄构成，这样就不用手动选择标准年龄结构了[@corazziari2004a]。
+
+#### 标准年龄构成
+
+标准年龄构成分为两种，一种是每5岁一组的年龄构成(@tbl-std1)；另外一种是20岁一组的年龄构成(@tbl-std2)。
+
+```{r}
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| label: tbl-std1
+#| tbl-cap: 5岁年龄组的标准年龄构成
+library(dplyr)
+readxl::read_excel("stdage.xlsx",sheet="15group") %>% 
+  knitr::kable(align = "c")
+```
+
+```{r}
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| label: tbl-std2
+#| tbl-cap: 20岁年龄组的标准年龄构成
+library(dplyr)
+readxl::read_excel("stdage.xlsx",sheet="5group") %>% 
+ knitr::kable(align = "c")
+```
+
+#### 不同癌种对应的标准人口构成
+
+不同的癌种对应了不同的标准人口构成，(@tbl-icss)列出了不同的癌种的想对应的癌种，在计算所有癌种合计的标化生存率时，应选择ICSS1。
+
+我们在计算不同癌种的标化相对生存率时可以参考(@tbl-icss)选择标准人口构成。
+
+```{r}
+#| eval: true
+#| echo: false
+#| label: tbl-icss
+#| tbl-cap: 不同癌种对应的标准人口构成[@corazziari2004a]
+data <- data.frame(icss=c("ICSS1","ICSS2","ICSS3"),
+                   site=c("Lip, tongue, salivary glands, oral cavity, oropharynx, hypopharynx, head & neck, oesophagus, stomach, small intestine, colon, rectum, liver, biliary tract, pancreas, nasal cavities, larynx, lung, pleura, breast, corpus uteri, ovary, vagina & vulva, penis, bladder, kidney, choroid melanoma, non-Hodgkin lymphomas, multiple myeloma, chronic lymphatic leukaemia, acute myeloid leukaemia, chronic myeloid leukaemia, leukaemia, all cancers, prostate",
+                          "Nasopharynx, soft tissues, melanoma, cervix uteri, brain, thyroid gland, bone",
+                    "Testis, Hodgkins disease, acute lymphatic leukaemia"))
+data %>% knitr::kable(align="cl",col.names = c("ICSS","癌症部位")) 
+  
+```
+
+#### 标准人口选择R程序
+我们在计算标化率时选择的标准人口是(@tbl-std2)对应的标准人口，同时也写了R程序自动选择不同癌种对应的标准人口，并把程序嵌入到(@sec-macro)对应的R函数中，这样就可以使用程序批量输出标化相对生存率的计算结果。
+
 
 程序如下：
 
-```r
+``` r
 #生成生存分析标准人口结构
 s <- c(7,12,23,29,29)
 icss1 <- cbind(cancer.pop[,1:2],s)
@@ -555,14 +662,15 @@ icss_choose <- function(x) {
 
 首先，截取需要用的数据子集，然后利用tperiod函数计算不同癌种的5年相对生存率
 
-```r
+``` r
 ##合计成人5年生存率
 total <- ana %>% filter(diagage>=15) 
 ress_total <- tperiod(data=total,cat="icdd")
 ```
+
 计算男性成人5年相对生存率
 
-```r
+``` r
 ##男性成人5年生存率
 male <- ana %>% filter(sex=="1",diagage>=15)
 ress_male <- tperiod(data=male,cat="icdd")
@@ -570,23 +678,25 @@ ress_male <- tperiod(data=male,cat="icdd")
 
 计算女性成人5年相对生存率
 
-```r
+``` r
 ##女性成人5年生存率
 female <- ana %>% filter(sex=="2",diagage>=15)
 ress_female <- tperiod(data=female,cat="icdd")
 ```
 
-
-
 ### 组间相对生存率的统计学检验
 
-我们采用Z检验比较组间5年相对生存率的统计学差异，其中$P_1$表示组1的相对生存率，$P_2$表示组2的相对生存率，$s.e.(P_1)$表示$P_1$的标准误，$s.e.(P_2)$表示$P_2$的标准误癌，如果Z\>1.96，则*P*\<0.05；如果Z\>2.56，则*P*\<0.01。[@xiangyongbing1999a]
+periodR能够输出估计的相对生存率和标准差，其实有这两个参数可以直接推出95%可信区间，但是为了能够更直观的两组间相对生存率点估计值的统计学差异，可以对两组的相对生存率进行统计学检验。
 
-$$Z=\frac{|P_1-P_2|}{\sqrt{s.e.(P_1)^2+s.e.(P_2)^2}}$$
+我们采用Z检验比较组间5年相对生存率的统计学差异（@eq-z），其中$P_1$表示组1的相对生存率，$P_2$表示组2的相对生存率，$s.e.(P_1)$表示$P_1$的标准误，$s.e.(P_2)$表示$P_2$的标准误癌，如果Z\>1.96，则*P*\<0.05；如果Z\>2.56，则*P*\<0.01。[@xiangyongbing1999a]
+
+$$
+Z=\frac{|P_1-P_2|}{\sqrt{s.e.(P_1)^2+s.e.(P_2)^2}}
+$$ {#eq-z}
 
 ### 结果整理
 
-```r
+``` r
 options(NA.print = "--")
 ress_site <- ress_total %>% 
   left_join(ress_male,by=c("cate")) %>% 
@@ -612,7 +722,6 @@ ress_site <- ress_total %>%
            general_title = "注:",footnote_as_chunk = TRUE,escape = FALSE)
 ```
 
-
 ```{r}
 #| eval: true
 #| column: page
@@ -627,4 +736,3 @@ ress_site
 
 ::: {#refs}
 :::
-
