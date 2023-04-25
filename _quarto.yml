@@ -5,6 +5,8 @@ project:
     - baidu_verify_code-aDCTvXezZP.html
     - /report/2021/
     - /fonts/
+    - author.png
+    - /qsight/qsightpic.jpeg
 
 website:
   title: "普癌新声"
@@ -47,6 +49,7 @@ website:
   page-footer:
     border: true
     left: "Copyright@Qiong Chen"
+    center: "豫ICP备2021032022号"
     right:
       - icon: github
         href: https://github.com/gigu003
@@ -59,8 +62,6 @@ freeze: auto
 format:
   html:
     code-line-numbers: true
-    #code-block-border-left: "#31BAE9"
-    #page-layout: article
     toc: false
     theme: flatly
     css: styles.css

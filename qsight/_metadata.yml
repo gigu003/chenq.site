@@ -6,6 +6,8 @@ freeze: auto
 author: 陈琼
 date-modified: last-modified
 
+page-navigation: true
+back-to-top-navigation: true
 editor:
   markdown:
     wrap: 72
@@ -20,6 +22,7 @@ format:
     toc: true
     toc-location: right
     number-sections: true
+    include-after-body: author.html
 
     
 comments:

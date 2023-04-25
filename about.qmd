@@ -19,9 +19,6 @@ about:
       href: "mailto:chenqiong@hnccr.org.cn"
 ---
 
-
-
-
 ::: {#heading}
 > **陈琼**，博士，副主任医师，就职于河南省肿瘤医院。
 
@@ -51,7 +48,7 @@ My current work often involves SAS and R coding, and cancer registration data re
 
 ### 工作经历
 - 2011.07 ~ 至今 河南省肿瘤医院 从事肿瘤流行病学，以人群为基础的肿瘤登记工作
-- 2012.08--2013.09 耶鲁大学，环境医学系，访问学者
+- 2012.08 ~ 2013.09 耶鲁大学，环境医学系，访问学者
 
 ### 社会兼职
 - 中国抗癌协会癌症筛查与早诊早治专委会青年委员
@@ -60,8 +57,8 @@ My current work often involves SAS and R coding, and cancer registration data re
 - 《河南省肿瘤登记年报》副主编
 
 ### 荣誉
-- 《中国肿瘤》杂志颁发了--[**卓越论文奖**](/qsight/2023-02-08-paper-award/index.qmd)，获奖论文：2003~2007年中国结直肠癌发病与死亡分析（发表于：中国肿瘤，2012年第3期）
-- 全国肿瘤登记先进个人
+- 荣获《中国肿瘤》杂志[**卓越论文奖**](/qsight/2023-02-08-paper-award/index.qmd)
+- 荣获2022年度“全国肿瘤登记先进个人”
 
 
 ## 关于本站
