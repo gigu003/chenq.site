@@ -22,7 +22,7 @@ format:
     toc: true
     toc-location: right
     number-sections: true
-    include-after-body: author.html
+    #include-after-body: author.html
 
     
 comments:
