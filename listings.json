@@ -1,12 +1,5 @@
 [
   {
-    "listing": "/slides/index.html",
-    "items": [
-      "/slides/articles/choose-quarto.html",
-      "/slides/canreg/cancer-registration-2023-4-20/index.html"
-    ]
-  },
-  {
     "listing": "/publications/index.html",
     "items": [
       "/publications/firstauthor/2022-11-03-screening-cure/index.html",
@@ -36,13 +29,13 @@
       "/publications/firstauthor/2016-screening-effect-gastric.html",
       "/publications/firstauthor/2015-08-19-linzhou-screening-effect.html",
       "/publications/firstauthor/2014-PAH.html",
-      "/publications/firstauthor/2013-cc-chemokines.html",
       "/publications/firstauthor/2012-colorectal-cancer.html",
+      "/publications/firstauthor/2013-cc-chemokines.html",
       "/publications/firstauthor/2011-硕士毕业论文.html",
       "/publications/firstauthor/2010-叶酸.html",
       "/publications/coauthor/2022-03-15-liver-cancer.html",
-      "/publications/coauthor/2020-LDCT-screening-effect.html",
       "/publications/coauthor/2022-risk-score-model.html",
+      "/publications/coauthor/2020-LDCT-screening-effect.html",
       "/publications/coauthor/2022-11-03-huaihe.html",
       "/publications/coauthor/2022-rct-esophageal-gastric-cancer.html",
       "/publications/coauthor/2022-lung-cancer.html",
@@ -86,8 +79,8 @@
       "/publications/coauthor/2018-09-25-cancer.html",
       "/publications/coauthor/2018-02-25-cancer-incidence-mortality.html",
       "/publications/coauthor/2018-02-08-linzhou-gastric-survival.html",
-      "/publications/coauthor/2018-02-06-fried-food-gastric-cancer.html",
       "/publications/coauthor/2017-12-10-fried-food-esophagus-cancer.html",
+      "/publications/coauthor/2018-02-06-fried-food-gastric-cancer.html",
       "/publications/coauthor/2017-09-30-cancer.html",
       "/publications/coauthor/2016-HPV-esophageal-cancer.html",
       "/publications/coauthor/2017-HPV-Lung-cancer.html",
@@ -111,7 +104,8 @@
       "/publications/books/2018-annual report.html",
       "/publications/books/2019-annual report.html",
       "/publications/books/2020-annual report.html",
-      "/publications/books/2021-annual report.html"
+      "/publications/books/2021-annual report.html",
+      "/publications/books/2022-annual-report.html"
     ]
   },
   {
@@ -142,11 +136,11 @@
       "/qsight/2022-03-31-shige/index.html",
       "/qsight/2022-03-23-icd10-c-d/index.html",
       "/qsight/2022-03-19-picture/index.html",
-      "/qsight/2022-03-18-file/index.html",
       "/qsight/2022-03-18-xianjin/index.html",
+      "/qsight/2022-03-18-file/index.html",
       "/qsight/2022-03-17-history/index.html",
-      "/qsight/2022-03-10-iarccrgtools/index.html",
       "/qsight/2022-03-10-qualitycontrol/index.html",
+      "/qsight/2022-03-10-iarccrgtools/index.html",
       "/qsight/2022-03-09-icdo3-icd10/index.html",
       "/qsight/2022-03-08-milestone/index.html",
       "/qsight/2022-03-06-jamovi/index.html",
@@ -172,8 +166,8 @@
       "/qsight/2021-09-09-sas-learn/index.html",
       "/qsight/2021-09-03-洪水与疫情/index.html",
       "/qsight/2021-04-23-年报解读/index.html",
-      "/qsight/2021-04-19-发布年报/index.html",
       "/qsight/2021-04-20-慢病副高考试要点/index.html",
+      "/qsight/2021-04-19-发布年报/index.html",
       "/qsight/2021-01-16-肿瘤登记历史/index.html",
       "/qsight/2021-01-16-语言课/index.html",
       "/qsight/2020-12-25-funny/index.html",
@@ -187,11 +181,22 @@
       "/qsight/2012-03-05-SAS-import-all-file/index.html",
       "/qsight/2011-09-18-SAS-email-all/index.html",
       "/qsight/2011-08-16-SAS-compress/index.html",
-      "/qsight/2010-11-28-SAS-tips/index.html",
       "/qsight/2010-11-28-零下16度/index.html",
+      "/qsight/2010-11-28-SAS-tips/index.html",
       "/qsight/2010-06-04-SAS-note/index.html",
       "/qsight/2010-06-03-SAS-export/index.html",
       "/qsight/2010-06-02-SAS-start/index.html"
     ]
+  },
+  {
+    "listing": "/slides/index.html",
+    "items": [
+      "/slides/articles/choose-quarto.html",
+      "/slides/canreg/cancer-registration-2023-4-20/index.html"
+    ]
+  },
+  {
+    "listing": "/training/index.html",
+    "items": []
   }
 ]
