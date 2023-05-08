@@ -10,7 +10,5 @@ tags:
   - 年报
   - 恶性肿瘤流行情况
 details: <em>河南科学技术出版社</em>,郑州
-
+image: "cover/2017.jpg"
 ---
-
-![](cover/2017.jpg)

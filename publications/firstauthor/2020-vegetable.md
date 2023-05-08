@@ -1,5 +1,5 @@
 ---
-author:   <strong> Qiong Chen</strong>, Weiwei Wu, Hailan Yang, Ping Zhang, Yongliang Feng, Keke Wang, Ying Wang, Suping Wang, Yawei Zhang.
+author:   <strong> Qiong Chen</strong>, Weiwei Wu, Hailan Yang, Ping Zhang, Yongliang Feng, Keke Wang, Ying Wang, Suping Wang, Yawei Zhang
 date: 2020-09-11
 slug: vegetable
 title: A Vegetable Dietary Pattern Is Associated with Lowered Risk of Gestational Diabetes Mellitus in Chinese Women
@@ -11,7 +11,7 @@ tags:
   - Dietary pattern
   - Vegetable
   - Gestational diabetes
-details: <em>Diabetes Metab J</em>, 2020, 44(6):887-896.
+details: <em>Diabetes Metab J</em>, 2020, 44(6):887-896
 link: https://www.e-dmj.org/upload/pdf/dmj-2019-0138.pdf
 doi: 10.4093/dmj.2019.0138
 ---

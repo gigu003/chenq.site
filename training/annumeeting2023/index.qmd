@@ -1,0 +1,47 @@
+---
+title: 2023年河南省肿瘤登记年度培训暨肿瘤登记专业人员能力提升培训班
+date: 2023-05-11
+date-modified: last-modified
+address: 河南，郑州
+categories:
+  - 肿瘤登记
+  - 会议
+keywords:
+  - 肿瘤登记
+  - 培训会议
+  - 专业人员
+execute:
+  echo: false
+  message: false
+  warning: false
+draft: true
+---
+
+
+## 会议日程
+
+```{r}
+#| label: meeting
+#| tbl-cap: 2023河南省肿瘤登记年会暨肿瘤登记专业人员能力提升培训班
+#| tbl-cap-location: top
+library(kableExtra)
+library(dplyr)
+cal <- read.csv("calendar.csv")
+cal %>%
+  mutate_all(linebreak) %>% 
+  kable("html",
+        caption = "河南省2023年度肿瘤登记培训会议暨专业人员能力提升培训班", 
+        escape = F) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),full_width = F) %>% 
+  column_spec(1, width = "10em") %>%
+  column_spec(2, width = "26em") %>%
+  column_spec(3, width = "15em") %>%
+  column_spec(4, width = "8em") %>%
+  collapse_rows(columns=4, valign = "middle") %>%
+  pack_rows("第一部分：肿瘤登记方法及进展（地点:金鼎厅，时间:2023年5月11日 上午）", 2, 10,label_row_css = "background-color: #666; color: #fff; text-align: center;") %>%
+  pack_rows("第二部分：肿瘤登记系统平台（地点:金鼎厅，时间:2023年5月11日 下午）", 11, 14,label_row_css = "background-color: #666; color: #fff; text-align: center;") %>%
+  pack_rows("第三部分：肿瘤登记数据分析与利用（地点:金鼎厅，时间:2023年5月11日 下午）", 15, 21,label_row_css = "background-color: #666; color: #fff; text-align: center;") %>%
+  pack_rows("第四部分：肿瘤登记各地市工作进展情况（地点:金鼎厅，时间:2023年5月12日 上午）", 22, 41,label_row_css = "background-color: #666; color: #fff; text-align: center;")
+```
+
+

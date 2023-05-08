@@ -1,6 +1,6 @@
 ---
 title: "2003-2007年中国结直肠癌发病与死亡分析"
-author:  <strong>陈琼</strong>, 刘志才, 程兰平,  宋国慧,  孙喜斌,  郑荣寿,  张思维,  陈万青.
+author:  <strong>陈琼</strong>, 刘志才, 程兰平,  宋国慧,  孙喜斌,  郑荣寿,  张思维,  陈万青
 date: 2013-02-01
 slug: colorectal
 categories: 

@@ -13,7 +13,8 @@ tags:
   - 治愈比例
   - 胃癌
   - 内镜筛查
-details: <em>中国肿瘤</em>, 2022
+details: <em>中国肿瘤</em>, 2023,32(1):27-32
+doi: 10.11735/j.issn.1004-0242.2023.01.A005
 file: cure.pdf
 Keywords:
   - 中国肿瘤
@@ -21,7 +22,7 @@ Keywords:
   - 治愈模型
   - 胃癌内镜筛查
 abstract: '治愈比例即癌症患者人群中多大比例的患者被治愈越来越引起患者，医生以及癌症防控策略制定者的注意。本研究探讨了胃癌内镜筛查对治愈比例的影响。'
-feature: yes
+image: preview.jpg
 ---
 
 ```{r,echo=FALSE,message=FALSE}
@@ -43,4 +44,3 @@ knitr::include_graphics("preview.jpg")
 
 **【关键词】** 胃癌；内镜筛查；统计治愈；治愈比例
 
-[点击这里阅读全文](https://chenq.site/papers/cure.pdf)

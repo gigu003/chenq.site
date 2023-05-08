@@ -1,5 +1,5 @@
 ---
-author: 张建功，张韶凯， <strong>陈琼</strong>
+author: 张建功，张韶凯，刁琳琪，郭万申，罗素霞，<strong>陈琼</strong>，刘曙正
 date: 2021-04-15
 slug: book2020
 title: 2020河南省肿瘤登记年报
@@ -13,6 +13,7 @@ tags:
   - 年报
 details: <em>河南科学技术出版社</em>,郑州
 online: http://www.anti-cancer.com.cn/Sites/ereport/2020/index.html
+type: "M"
 ---
 
 我们利用河南省各肿瘤登记处上报的2017年恶性肿瘤发病和死亡数据编制并发布了《2020河南省肿瘤登记年报》，本书系统描述了河南省肿瘤登记地区癌症发病和死亡等癌症疾病负担情况，

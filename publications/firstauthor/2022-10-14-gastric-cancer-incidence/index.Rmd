@@ -1,6 +1,6 @@
 ---
 title: 'Incidence and mortality of gastric cancer in 2018 and their trends from 2010 to 2018 in Henan Province, China: results from a provincial population-based cancer registry'
-author:  <strong> Qiong Chen</strong>,, Cheng C, Liu Y, Guo L, Xu H, Wang H, Wang X, Zhang L, Zhang S, Han B
+author:  <strong> Qiong Chen</strong>, Cheng C, Liu Y, Guo L, Xu H, Wang H, Wang X, Zhang L, Zhang S, Han B
 date: '2022-10-14'
 slug: gastric cancer incidence
 categories: 

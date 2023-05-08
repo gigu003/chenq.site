@@ -5,6 +5,7 @@ date: "2019-04-28"
 categories: [中文论文, 共同作者]
 keywords: [妊娠期糖尿病（GDM）, 发病, 瘦素受体（LEPR）, 基因多态性, 关系]
 details: <em>中国公共卫生</em>,2019,35(07):833-837
+link: http://html.rhhz.net/ZGGGWS/html/20190710.htm
 ---
 ## 目的
 探讨瘦素受体（LEPR）基因多态性与妊娠期糖尿病（GDM）发病的关系,为GDM发病机理研究及其预防策略提供线索。

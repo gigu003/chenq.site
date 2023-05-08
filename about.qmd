@@ -22,8 +22,8 @@ about:
 ::: {#heading}
 > **陈琼**，博士，副主任医师，就职于河南省肿瘤医院。
 
-*I'm a Cancer Register working in [Henan Cancer Hospital](http://anti-cancer.com.cn/), and I earned my PhD from Department of Epidemiology in [Shanxi Medical University](http://www.sxmu.edu.cn/). 
-My current work often involves SAS and R coding, and cancer registration data report and visualization*. *I also have been invovled in the publication of the Cancer Registration Annual Report in Henan, China for several years, and I like sharing the experience, knowledge, and my life here*. 
+*I'm a Cancer Register working in [Henan Cancer Hospital](http://anti-cancer.com.cn/), and I earned my PhD from [Shanxi Medical University](http://www.sxmu.edu.cn/). 
+My current work involves SAS and R coding, and cancer registration data report and visualization*. *I also have been invovled in the publication of the Cancer Registration Annual Report in Henan, China for several years, and I like sharing the experience, knowledge, and my life here*. 
 *I have two daughters and they are the greatest achievement I have made*.
 
 *这是陈琼的个人主页。2011年，我从[兰州大学](http://www.lzu.edu.cn/)流行病与卫生统计学专业毕业，就职于[河南省肿瘤医院](http://anti-cancer.com.cn/)，之后一直从事肿瘤登记工作*。

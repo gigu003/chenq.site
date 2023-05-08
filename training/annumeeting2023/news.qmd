@@ -1,0 +1,94 @@
+---
+title: 2023年河南省肿瘤随访登记年度培训
+date: 2023-05-02
+date-modified: last-modified
+categories:
+  - 肿瘤登记
+  - 会议
+keywords:
+  - 肿瘤登记
+  - 培训会议
+  - 专业人员
+prefer-html: true
+execute:
+  echo: false
+  message: false
+  warning: false
+crossref:
+  fig-title: 图     
+  tbl-title: 表     
+  title-delim: ":"
+  tbl-prefix: 表
+  fig-prefix: 图
+format:
+  html: default
+  docx: default
+draft: true
+---
+
+## 各肿瘤登记处 {-}
+为贯彻落实健康中原行动，提升肿瘤登记县区覆盖比例，切实提高各地市肿瘤随访登记数据质量，河南省癌症中心\\河南省肿瘤医院定于2023年5月10日至12日，在郑州市举办“2023河南省肿瘤登记年会暨肿瘤登记专业人员能力提升培训班”，现将相关事宜通知如下。
+
+## 培训内容
+
+1. 肿瘤登记最新进展情况
+1. 肿瘤登记内容与方法
+1. 肿瘤登记数据分析与利用
+1. 肿瘤登记经验及各地市工作进展情况
+
+## 培训时间地点
+
+### 时间
+
+1. 培训时间：2023年5月10日-12日
+1. 报到时间：2023年5月10日下午15:00-20:00
+1. 离会时间：2023年5月12日下午
+
+### 地点
+
+1. 住宿地点：未来大酒店 (河南省郑州市金水区未来大道69号)
+1. 会议地点：未来大厦金鼎厅（河南省郑州市金水区未来大道69号）
+1. 交通路线：
+  - 郑州东站：乘坐地铁5号线外环至姚砦·聂庄站(A2口出)下车，步行800米至未来大酒店；
+  - 郑州站：乘坐地铁1号线至燕庄站(D口出)下车，步行1.1公里至未来大酒店。
+
+```{r}
+knitr::include_graphics("traffic.jpg")
+```
+
+## 参会人员
+
+1. 各市级肿瘤登记处分管领导及工作人员各1人；
+1. 各县级肿瘤登记处分管领导及工作人员各1人。(河南省肿瘤登记处名单见附件@tbl-registrys)
+
+## 注意事项
+
+1. 请按照通知要求确定参加培训人员，并于2023年5月9日前将参会回执报送河南省癌症中心\\河南省肿瘤医院，扫描下方二维码填写会议回执；
+1. 参会人员食宿费由会议承担，交通费用自理，会议不安排接站。
+
+## 会议联系信息
+
+- 联系人：陈琼、郑黎阳
+- 电话： 0371-65587361
+- 手机：18703898016、13027608275
+
+**2023年5月4日**
+
+**河南省癌症中心 河南省肿瘤医院**
+
+
+## 附件{-}
+
+```{r}
+#| label: tbl-registrys
+#| tbl-cap: 河南省肿瘤登记处列表
+#| tbl-cap-location: top
+library(kableExtra)
+library(dplyr)
+registrys <- read.csv("registrys.csv")
+registrys %>% 
+  kable("html") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),full_width = F) %>% 
+  collapse_rows(columns=2, valign = "middle") 
+```
+

@@ -1,0 +1,31 @@
+---
+pagetitle: "培训"
+toc: false
+listing:
+  type: table
+  contents: "**/index.qmd"
+  sort-ui: false
+  filter-ui: false
+  sort: "date desc"
+  date-format: "YYYY-MM-DD"
+  table-striped: true
+  field-display-names:
+    date: "日期"
+    title: "主题"
+    address: "地点"
+  fields: [date, title, address]
+  feed: true
+
+language:
+  listing-page-field-categories: "分类"
+  title-block-author-single: "作者"
+  title-block-published: "更新"
+---
+
+## 肿瘤登记培训{.unnumbered}
+
+本模块分享肿瘤登记专业人员培训相关内容。
+
+
+
+
