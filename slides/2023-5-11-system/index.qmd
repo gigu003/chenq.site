@@ -38,6 +38,7 @@ title-slide-attributes:
 提高肿瘤登记数据收集信息化、智能化水平
 
 
+
 ## 数据收集系统的发展
 
 <br>
@@ -47,6 +48,8 @@ knitr::include_graphics("./images/system.png")
 ```
 
 ## 最新肿瘤登记系统登录界面{background-image="images/sys-cover.jpg"}
+
+[http://218.28.13.204:35556](http://218.28.13.204:35556)
 
 ## 实现专业功能{background-color="lightblue"}
 
