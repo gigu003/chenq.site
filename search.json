@@ -4032,6 +4032,139 @@
     "text": "中国肿瘤数据集标准\n\n\n我国恶性肿瘤疾病负担居高不下，防控形势严峻，而高质量的肿瘤登记数据是制定肿瘤防控政策、开展防控工作、评价防控效果的基础。20世纪50年代的林县开始了食管癌单病种的登记工作，来开了全国开展肿瘤登记工作的序幕。自2008年开始，中央转移支付地方项目经费开始对肿瘤登记工作进行经费支持，我国的肿瘤登记工作也开始进入迅速发展的时期，肿瘤登记覆盖的人口范围迅速增加。经过近60年的发展，肿瘤登记已经覆盖全国5.98亿人口，在肿瘤防控政策制定、防控效果评价等方面发挥越来越重要的作用。\n肿瘤登记工作也得到我国政府的高度重视，并在“健康中国行动-癌症防治行动”里对肿瘤登记工作提出了具体要求：实施癌症信息化行动，健全肿瘤登记制度，提高肿瘤登记覆盖范围，提升肿瘤登记数据质量，促进信息资源共享利用。\n\n\n\n\n\n为了提高肿瘤登记数据收集的质量，国家癌症中心组织全国多家单位起草并发布了《中国人群肿瘤登记数据集标准》，河南省肿瘤医院是参与起草该标准的单位之一。该标准规定了中国肿瘤登记数据集的元数据属性和数据元属性，主要用于指导中国肿瘤登记基本信息的采集、存储、共享以及信息系统的开发。此标准实践性和可操作性极强，将为肿瘤登记数据的及时性、准确性、有效性，提供强有力的技术支撑。\n下载链接：肿瘤人群肿瘤登记数据集标准"
   },
   {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#年肿瘤登记数据上报内容",
+    "href": "slides/2023-5-11-area-canreg/index.html#年肿瘤登记数据上报内容",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "2020年肿瘤登记数据上报内容",
+    "text": "2020年肿瘤登记数据上报内容\n \n\n\n上报内容\n\n2020年癌症发病病例\n2020年癌症死亡病例\n2020年分年龄分性别户籍人口数\n2020年寿命表数据(分年龄、性别全因死亡数)\n\n\n建议系统操作\n\n批量上传全死因数据（不仅仅是肿瘤）\n死亡补发病操作\n病例查重（人口、发病）"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#郑州市",
+    "href": "slides/2023-5-11-area-canreg/index.html#郑州市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "郑州市",
+    "text": "郑州市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#开封市",
+    "href": "slides/2023-5-11-area-canreg/index.html#开封市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "开封市",
+    "text": "开封市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#洛阳市",
+    "href": "slides/2023-5-11-area-canreg/index.html#洛阳市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "洛阳市",
+    "text": "洛阳市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#平顶山市",
+    "href": "slides/2023-5-11-area-canreg/index.html#平顶山市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "平顶山市",
+    "text": "平顶山市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#安阳市",
+    "href": "slides/2023-5-11-area-canreg/index.html#安阳市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "安阳市",
+    "text": "安阳市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#鹤壁市",
+    "href": "slides/2023-5-11-area-canreg/index.html#鹤壁市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "鹤壁市",
+    "text": "鹤壁市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#新乡市",
+    "href": "slides/2023-5-11-area-canreg/index.html#新乡市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "新乡市",
+    "text": "新乡市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#焦作市",
+    "href": "slides/2023-5-11-area-canreg/index.html#焦作市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "焦作市",
+    "text": "焦作市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#濮阳市",
+    "href": "slides/2023-5-11-area-canreg/index.html#濮阳市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "濮阳市",
+    "text": "濮阳市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#许昌市",
+    "href": "slides/2023-5-11-area-canreg/index.html#许昌市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "许昌市",
+    "text": "许昌市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#漯河市",
+    "href": "slides/2023-5-11-area-canreg/index.html#漯河市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "漯河市",
+    "text": "漯河市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#三门峡市",
+    "href": "slides/2023-5-11-area-canreg/index.html#三门峡市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "三门峡市",
+    "text": "三门峡市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#南阳市",
+    "href": "slides/2023-5-11-area-canreg/index.html#南阳市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "南阳市",
+    "text": "南阳市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#商丘市",
+    "href": "slides/2023-5-11-area-canreg/index.html#商丘市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "商丘市",
+    "text": "商丘市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#信阳市",
+    "href": "slides/2023-5-11-area-canreg/index.html#信阳市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "信阳市",
+    "text": "信阳市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#周口市",
+    "href": "slides/2023-5-11-area-canreg/index.html#周口市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "周口市",
+    "text": "周口市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#驻马店市",
+    "href": "slides/2023-5-11-area-canreg/index.html#驻马店市",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "驻马店市",
+    "text": "驻马店市\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
+    "objectID": "slides/2023-5-11-area-canreg/index.html#省直管",
+    "href": "slides/2023-5-11-area-canreg/index.html#省直管",
+    "title": "河南省2020年度肿瘤登记数据质控情况",
+    "section": "省直管",
+    "text": "省直管\n\n\n\n\n\n\n\n本统计结果为质量控制过程结果，为非正式数据，请谨慎引用。"
+  },
+  {
     "objectID": "slides/2022-12-what-is-quarto/index.html#你是怎么写论文的",
     "href": "slides/2022-12-what-is-quarto/index.html#你是怎么写论文的",
     "title": "科技写作，我选择使用Quarto?",
@@ -4141,7 +4274,7 @@
     "href": "slides/2023-5-11-system/index.html#最新肿瘤登记系统登录界面",
     "title": "河南肿瘤随访登记平台",
     "section": "最新肿瘤登记系统登录界面",
-    "text": "最新肿瘤登记系统登录界面"
+    "text": "最新肿瘤登记系统登录界面\nhttp://218.28.13.204:35556"
   },
   {
     "objectID": "slides/2023-5-11-system/index.html#实现专业功能",
