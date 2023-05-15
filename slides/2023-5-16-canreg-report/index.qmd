@@ -9,12 +9,15 @@ institute: "🏥河南省癌症中心\n河南省肿瘤医院"
 format: 
   revealjs:
     theme: [custom.scss]
+    #width: 1600
+    #height: 900
     slide-number: true
     smaller: true
     scrollable: true
     #number-sections: true
     footer: "河南省人群肿瘤登记"
     subtitle-as-header: true
+    #sc-sb-title: true
 filters:
   - reveal-header
 slide-level: 2
@@ -1676,8 +1679,20 @@ knitr::include_graphics("images/pics.jpg")
 knitr::include_url("https://www.chenq.site/report/2021/")
 ```
 
-# 谢 谢 关 注 {background-color="lightblue"}
+
+## 学习资源
+
+- [R Markdown](https://rmarkdown.rstudio.com)
+- [bookdown](https://bookdown.org/yihui/bookdown/)
+- [Quarto官网](https://quarto.org)
+- [Github: Awesome-quarto](https://github.com/mcanouil/awesome-quarto)
+- [Revealjs slides](https://rstudio-conf-2022.github.io/get-started-quarto/materials/05-presentations.html#/presentations)
+- [统计之都](https://cosx.org/)
+
+# 谢 谢 关 注 ! {background-color="lightblue"}
 
 陈 琼
 
 chenq08@126.com
+
+{{< qrcode https://www.chenq.site/qsight qr2 width=60 height=60 colorDark='#0011bb' >}}
