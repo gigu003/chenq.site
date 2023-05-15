@@ -2240,6 +2240,13 @@
     "text": "基于bookdown撰写《肿瘤登记年报》"
   },
   {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#学习资源",
+    "href": "slides/2023-5-16-canreg-report/index.html#学习资源",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "学习资源",
+    "text": "学习资源\n\nR Markdown\nbookdown\nQuarto官网\nGithub: Awesome-quarto\nRevealjs slides\n统计之都"
+  },
+  {
     "objectID": "slides/articles/choose-quarto.html",
     "href": "slides/articles/choose-quarto.html",
     "title": "科技写作，我选择使用quarto",
