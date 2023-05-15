@@ -1850,100 +1850,100 @@
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#你是怎么写论文的",
     "href": "slides/2022-12-what-is-quarto/index.html#你是怎么写论文的",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "你是怎么写论文的?",
     "text": "你是怎么写论文的?\n\n用R/SAS/STATA计算统计结果\n把结果粘贴到Word里做表格\n然后在Word里写论文\n\n \n\n但是当你完成论文的撰写，突然发现原始数据有变化~"
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#section",
     "href": "slides/2022-12-what-is-quarto/index.html#section",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "",
-    "text": "是不是感觉要崩溃了？\n😭\n\n\n\n所有的统计工作和制表工作要重新来过！！！"
+    "text": "是不是感觉要崩溃了？\n:sob:\n\n\n\n所有的统计工作和制表工作要重新来过！！！"
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#section-1",
     "href": "slides/2022-12-what-is-quarto/index.html#section-1",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "",
     "text": "可重复性研究报告/可重复性数据分析\n\n\n是指利用代码把数据分析过程串起来，最终生成可重复性的报告。\n\n\n\n\n\nR sweave\nR markdown\nJupyter\n\n\n\n这些都是实现可重复性报告的具体方式"
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#rmarkdown",
     "href": "slides/2022-12-what-is-quarto/index.html#rmarkdown",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "Rmarkdown",
     "text": "Rmarkdown\n\n\n\n\n\n\nTip\n\n\nRmd格式文档通过把通用的markdown和嵌入的R语言代码块结合起来，通过knitr包把rmd文档编译成统一的md文档，然后再通过pandoc转成各种格式，如html、PDF、Word、slides等。\n\n\n\n\n\n\nmarkdown负责报告文本\n嵌入的代码块负责统计分析过程\n\n\n\n完成的Rmd又knitr包转换为普通的md文档\n再通过pandoc把md渲染成我们需要报告"
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#section-2",
     "href": "slides/2022-12-what-is-quarto/index.html#section-2",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "",
     "text": "支持Rmarkdown的包遍地开花\n\n\n\n\n网站/博客\n书籍\n论文\n幻灯片\n\n\n\n语法不兼容\n学习成本高🤣"
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#quarto-上线",
     "href": "slides/2022-12-what-is-quarto/index.html#quarto-上线",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "Quarto 上线",
     "text": "Quarto 上线\n\nQuarto® is an open-source scientific and technical publishing system built on Pandoc\nRstudio把Quarto定义为“一个基于Pandoc的开源科学与技术出版系统。”"
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#video-slides",
     "href": "slides/2022-12-what-is-quarto/index.html#video-slides",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "video slides",
     "text": "video slides\n\n\n\nSome additional commentary of more peripheral interest."
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#slide-title",
     "href": "slides/2022-12-what-is-quarto/index.html#slide-title",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "Slide Title",
     "text": "Slide Title"
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#slide-title-1",
     "href": "slides/2022-12-what-is-quarto/index.html#slide-title-1",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "Slide Title",
     "text": "Slide Title\n\n什么是文学编程？"
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#section-3",
     "href": "slides/2022-12-what-is-quarto/index.html#section-3",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "",
     "text": "什么事实爱啊"
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#section-4",
     "href": "slides/2022-12-what-is-quarto/index.html#section-4",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "",
     "text": "Animating content"
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#section-5",
     "href": "slides/2022-12-what-is-quarto/index.html#section-5",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "",
     "text": "# Fill in the spot we created for a plot\noutput$phonePlot &lt;- renderPlot({\n  # Render a barplot\n})"
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#section-6",
     "href": "slides/2022-12-what-is-quarto/index.html#section-6",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "",
     "text": "# Fill in the spot we created for a plot\noutput$phonePlot &lt;- renderPlot({\n  # Render a barplot\n  barplot(WorldPhones[,input$region]*1000, \n          main=input$region,\n          ylab=\"Number of Telephones\",\n          xlab=\"Year\")\n})"
   },
   {
     "objectID": "slides/2022-12-what-is-quarto/index.html#section-7",
     "href": "slides/2022-12-what-is-quarto/index.html#section-7",
-    "title": "科技写作，我选择使用Quarto?",
+    "title": "恶性肿瘤监测数据的分析与利用",
     "section": "",
-    "text": "Powered by Quarto"
+    "text": "河南省人群肿瘤登记\n\n\n\n\n\n\n \n\n\n从数据收集到出版《年报》"
   },
   {
     "objectID": "slides/index.html",
@@ -1958,6 +1958,223 @@
     "title": "普癌新声",
     "section": "科技写作",
     "text": "科技写作\n\n\n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\n科技写作，我选择使用quarto\n\n\n\n\n\n\n\n\n\n\n\n\n2023-03-02\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#人群肿瘤登记的目的和意义",
+    "href": "slides/2023-5-16-canreg-report/index.html#人群肿瘤登记的目的和意义",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "人群肿瘤登记的目的和意义",
+    "text": "人群肿瘤登记的目的和意义\n\n\n肿瘤登记是系统性、经常性搜集有关肿瘤及肿瘤患者信息的统计制度。\n\n\n\n了解癌症发病、死亡、生存情况\n掌握癌症疾病负担与变化趋势\n了解癌症在不同地区和人群中的分布特征"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#人群肿瘤登记的目的和意义-1",
+    "href": "slides/2023-5-16-canreg-report/index.html#人群肿瘤登记的目的和意义-1",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "人群肿瘤登记的目的和意义",
+    "text": "人群肿瘤登记的目的和意义\n\n\n肿瘤登记是系统性、经常性收集有关肿瘤及肿瘤患者信息的统计制度。\n\n\n\n为制定癌症防控策略与措施、规划与计划提供科学依据\n为癌症的临床研究提供信息\n为癌症防控效果评价提供数据支持"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#河南省肿瘤登记工作进展",
+    "href": "slides/2023-5-16-canreg-report/index.html#河南省肿瘤登记工作进展",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "河南省肿瘤登记工作进展",
+    "text": "河南省肿瘤登记工作进展\n\n\n\n\n肿瘤登记工作覆盖130个县区\n达到数据利用标准的登记处达到42个，覆盖全省32%的人口\n连续10年出版《河南省肿瘤登记年报》\n\n\n\n\n\n\n\n河南省肿瘤登记地区覆盖情况"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#组织架构",
+    "href": "slides/2023-5-16-canreg-report/index.html#组织架构",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "组织架构",
+    "text": "组织架构\n\n\n\n省级登记处\n河南省癌症中心\n\n\n\n\n\n\n职责\n\n\n\n制定全省工作计划、实施方案\n建立和完善肿瘤登记信息系统\n技术指导、人员培训、质量控制和考核评价\n督导检查\n数据分析和报告\n\n\n\n\n\n市级登记处\n市级CDC/肿瘤医院\n\n\n\n\n\n\n职责\n\n\n\n市级技术指导、人员培训\n质量控制\n督导检查\n数据分析和报告\n\n\n\n\n\n县区级登记处\n县区级CDC\n\n\n\n\n\n\n职责\n\n\n\n技术指导、人员培训\n质量控制\n督导检查\n统计分析和报告\n\n\n\n\n\n\n\n数据来源: 河南省肿瘤登记管理办法（豫卫2015(10号)文件）"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#收集数据内容",
+    "href": "slides/2023-5-16-canreg-report/index.html#收集数据内容",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "收集数据内容",
+    "text": "收集数据内容\n\n肿瘤登记收集一定人群中所有恶性肿瘤、中枢神经系统良性肿瘤以及原位癌。 \n\n\n\n\n肿瘤收集范围(ICD10)\n\nC00-C97\nD32-D33\nD42-D43\nD45-D47\n原位癌\n\n\n人口数据\n\n以县区为单位收集登记处覆盖人群分年龄、分性别户籍人口数\n\n\n寿命表数据\n\n以县区为单位收集登记处覆盖人群分年龄、分性别全死因死亡数以估计寿命表"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#数据项目",
+    "href": "slides/2023-5-16-canreg-report/index.html#数据项目",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "数据项目",
+    "text": "数据项目\n\n\n\n肿瘤登记收集的变量包括以下7个部分（图 1）\n\n\n个人识别信息\n人口学信息\n肿瘤信息\n治疗信息\n随访信息\n预后信息\n信息来源\n\n\n\n\n\n\n\nclassDiagram\n    class 个人识别信息 {\n    登记处编号\n    身份证号\n    姓名\n    户籍地址\n    常住地址\n}\n    class 人口学信息 {\n    性别\n    年龄\n    出生日期\n    婚姻状态\n    职业\n    民族\n}\n    class 肿瘤信息 {\n    发病日期\n    诊断依据\n    原发部位ICDO3\n    形态学ICDO3\n    行为ICDO3\n    分级ICDO3\n    临床分期/TNM分期\n    多原发状态\n    双边性\n}\n    class 治疗信息 {\n    治疗方法\n}\n    class 随访相关信息 {\n    联系电话\n    联系人\n    联系人电话\n    常住地址\n}\n    class 结局信息 {\n    最后接触日期\n    生存状态\n    死亡日期\n    死亡原因\n    死亡地点\n}\n    class 信息来源 {\n    报告医院\n    住院号/门诊号\n    报告医师\n    报告日期\n}\n\n    个人识别信息 --|&gt; 人口学信息\n    个人识别信息 --|&gt; 肿瘤信息\n    个人识别信息 --|&gt; 治疗信息\n    个人识别信息 --|&gt; 随访相关信息\n    个人识别信息 --|&gt; 结局信息\n    个人识别信息 --|&gt; 信息来源\n\n\n图 1: 人群肿瘤登记收集数据项目"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#数据来源",
+    "href": "slides/2023-5-16-canreg-report/index.html#数据来源",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "数据来源",
+    "text": "数据来源\n\n肿瘤登记强调多源上报、数据来源于医院、医保系统、县-乡-村医师网、全死因数据等。（图 5 ）\n\n\n\n\n\n\nflowchart TD\n  A[(肿瘤登记数据库)] --&gt; B(医院)\n  A --&gt; B\n  A --&gt; C(县-乡-村三级医师网络)\n  A --&gt; D(医疗保险)\n  A --&gt; E(死因监测)\n  A --&gt; F(殡葬系统)\n  A --&gt; G(公安系统)\n  B --&gt; b1(住院患者数据)\n  B --&gt; b2(门诊患者数据)\n  B --&gt; b3(病案部门)\n  B --&gt; b4(病理诊断部门)\n  D --&gt; d1(新农合)\n  D --&gt; d2(城镇医保)\n  D --&gt; d3(职工医保)\n\n\n图 2: 肿瘤登记数据来源渠道"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#肿瘤分类与编码",
+    "href": "slides/2023-5-16-canreg-report/index.html#肿瘤分类与编码",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "肿瘤分类与编码",
+    "text": "肿瘤分类与编码\n\n\n\n\n肿瘤登记采用ICDO3和ICD10双编码系统\n\nICD-O-3：数据收集\n\n原发部位\n形态学\n行为\n分级\n\nICD10 ：数据统计分析\n\n《肿瘤登记年报》采用ICD10进行肿瘤分类（表 1）\n\n\n\n\n\n\n表 1: 常用癌症分类统计表（大类）\n\n\n部位\nICD10\n\n\n\n\n口腔和咽 (除外鼻咽癌和喉)\nC00-10,C12-14（除外C10.1）\n\n\n鼻咽癌\nC11\n\n\n食管\nC15\n\n\n胃\nC16\n\n\n结直肠肛门\nC18-21\n\n\n肝脏\nC22\n\n\n胆囊及其他\nC23-C24\n\n\n胰腺\nC25\n\n\n喉\nC32，C10.1\n\n\n气管、支气管、肺\nC33-C34\n\n\n骨\nC40-C41\n\n\n乳房\nC50\n\n\n子宫颈\nC53\n\n\n子宫体及子宫部位不明\nC54-55\n\n\n卵巢\nC56\n\n\n前列腺\nC61\n\n\n睾丸\nC62\n\n\n肾及泌尿系统不明\nC64-66，68\n\n\n膀胱\nC67\n\n\n脑,神经系统\nC70-C72\n\n\n甲状腺\nC73\n\n\n淋巴瘤\nC81-85,88,90,96\n\n\n白血病\nC91-C95\n\n\n其它\nOther（除外以上）\n\n\n所有部位合计\nALL"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#质量控制",
+    "href": "slides/2023-5-16-canreg-report/index.html#质量控制",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "质量控制",
+    "text": "质量控制\n\n\n\n\n\n\n\n\n质量控制的意义\n\n\n\n使不同地区之间的数据具有可比性\n代表登记处所在地区的癌症人群\n使癌症数据真实有效\n\n\n\n\n\n\n\n\n\n\n\nflowchart LR\n  A[质量控制指标] --&gt; B(可比性)\n  A --&gt; C(完整性)\n  A --&gt; D(有效性)\n  A --&gt; E(时效性)\n  B --&gt; b1(发病的定义)\n  B --&gt; b2(多原发判断)\n  B --&gt; b3(分类与编码)\n  B --&gt; b4(死亡证明)\n  C --&gt; c1(死亡发病比M:I)\n  C --&gt; c2(只有死亡医学证明书比例DCO%)\n  C --&gt; c3(组织学确诊比例MV%)\n  C --&gt; c4(不同时间发病率的稳定性)\n  C --&gt; c5(年龄别发病率曲线)\n  D --&gt; d1(组织学确诊比例)\n  D --&gt; d2(只有死亡医学证明书比例DC\\%)\n  D --&gt; d3(部位不明比例UB%)\n  D --&gt; d4(数据内部一致性)\n\n\n图 3: 肿瘤登记质量控制指标体系\n\n\n\n\n\n\n\n采用IARC/IACR国际质量控制标准"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#质量控制-1",
+    "href": "slides/2023-5-16-canreg-report/index.html#质量控制-1",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "质量控制",
+    "text": "质量控制\n\n\n肿瘤登记收集的变量或者变量组合之间存在一定的逻辑关系，通过对单个变量或变量组合之间的逻辑关系进行审查，以提高肿瘤登记数据有效性。\n\n\n\n\n\n\n\n\n\n单个项目\n\n\n\n出生日期\n发病日期\n年龄、性别\n发病部位\n形态学\n行为和分级\n\n\n\n\n\n\n\n\n\n\n\n项目组合\n\n\n\n性别/部位\n部位/组织学学\n年龄/部位/组织学\n行为/部位\n行为/组织学\n性别/组织学\n\n\n\n\n\n\n\n\n\n\n\n校验结果\n\n\n\n正确✅\n警告⚠️\n错误❌"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#肿瘤登记报告流程",
+    "href": "slides/2023-5-16-canreg-report/index.html#肿瘤登记报告流程",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "肿瘤登记报告流程",
+    "text": "肿瘤登记报告流程\n\n\n\n\n\n\nflowchart LR\n  A(数据来源单位) --&gt; B(县区级登记处)\n  B --&gt; C(市级登记处)\n  C --&gt; D(省级登记处)\n  D --&gt; E(质量控制)\n  E --&gt; B\n  B --&gt; A\n  E --&gt; C\n  E --&gt; F(综合评估)\n  F --&gt; G(年报撰写及发布)\n\n\n图 4: 肿瘤登记报告流程\n\n\n\n\n\n\n\n主要内容\n\n质量控制报告撰写\n肿瘤登记报告撰写\n\n\n特点\n\n登记处数量多(130个县区)\n县区级专业人员能力不足\n质控报告反馈至市级和县区级"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#文学编程和可能重复性报告概念的引入",
+    "href": "slides/2023-5-16-canreg-report/index.html#文学编程和可能重复性报告概念的引入",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "文学编程和可能重复性报告概念的引入",
+    "text": "文学编程和可能重复性报告概念的引入\n\n文学编程:强调以自然语言呈现计算逻辑，以文本描述和计算代码相互混合的方式，从计算机代码的执行逻辑过渡到人的思维逻辑。\n\n\n可重复性报告:利用代码把数据分析过程和报告撰写过程串起来，最终生成可重复性的报告。\n\n\n\n基于原始数据更新报告\n报告的批量化生成\n多种格式输出(html、docx)"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#markdown",
+    "href": "slides/2023-5-16-canreg-report/index.html#markdown",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "Markdown",
+    "text": "Markdown\n\n\n它允许人们使用易读易写的纯文本格式编写文档，然后转换成有效的 XHTML（或者HTML）文档。\n\n\n\n轻量级标记语言\n轻量化、易读易写、对图片、表格、数学公式支持\nGithub、Reddit、Diaspora、Stack Exchange、OpenStreetMap、SourceForge、简书等，甚至还能被使用来撰写电子书"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#r-markdown",
+    "href": "slides/2023-5-16-canreg-report/index.html#r-markdown",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "R Markdown",
+    "text": "R Markdown\n\n\nR Markdown把报告文本和统计计算代码整合起来，从而实现一次输入多种格式输出(HTML、PDF、WORD等)。\n\n\n\nYAML 元数据设置\n代码块（R、Python等）\nMarkdown文本"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#r-markdown-1",
+    "href": "slides/2023-5-16-canreg-report/index.html#r-markdown-1",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "R Markdown",
+    "text": "R Markdown\nYAML元数据\n---\ntitle: \"河南省恶性肿瘤2017-2019年5年相对生存率\"\nauthors:\n  - name: 陈琼\n    affiliations:\n      - ref: zlyy\n  - name: 张明霞\n    affiliations:\n      - ref: zlyy\n      - ref: lzu\n  - name: 郭兰伟\n    affiliations:\n      - ref: zlyy\n  - name: 郑黎阳\n    affiliations:\n      - ref: zlyy\n  - name: 刘纯亚\n    affiliations:\n      - ref: zlyy\n  - name: 王一先\n    affiliations:\n      - ref: zlyy\n  - name: 刘茵\n    affiliations:\n      - ref: zlyy\n  - name: 王红\n    affiliations:\n      - ref: zlyy\n  - name: 徐慧芳\n    affiliations:\n      - ref: zlyy\n  - name: 康瑞华\n    affiliations:\n      - ref: zlyy\n  - name: 王潇杨\n    affiliations:\n      - ref: zlyy\n  - name: 刘曙正\n    affiliations:\n      - ref: zlyy\n  - name: 张韶凯\n    affiliations:\n      - ref: zlyy\n    corresponding: true\n    email: shaokaizhang@126.com\naffiliations:\n  - id: zlyy\n    name: 郑州大学附属肿瘤医院(河南省肿瘤医院)，疾病预防控制科；河南省肿瘤防控工程研究中心；河南省肿瘤预防国际联合实验室，郑州，450008。\n    city: 郑州\n    state: 河南省\n  - id: lzu\n    name: 兰州大学公共卫生学院\n    city: 兰州\n    state: 甘肃省\nfilters:\n  - authors-block\n\n#prefer-html: true\nexecute: \n  echo: false\n  warning: false\n  message: false\n  tbl-cap-location: top\n#lang: zh\ncrossref:\n  fig-title: 图     \n  tbl-title: 表     \n  title-delim: \"\"\n  tbl-prefix: 表\n\nformat: \n  docx: \n    number-sections: true\n    number-depth: 3\n    reference-doc: chinese.docx\n\nbibliography: survival17-19.bib\ncsl: \"zhonghua.csl\"\neditor_options: \n  chunk_output_type: console\n---"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#r-markdown-2",
+    "href": "slides/2023-5-16-canreg-report/index.html#r-markdown-2",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "R Markdown",
+    "text": "R Markdown\n代码块\n\n\n\n```{r}\n#| label: tbl-table1\n#| tbl-cap-location: top\n#| tbl-cap: \"接受不同药物治疗人群基本特征分析\"\n#| warning: false\n#| eval: false\n#| message: false\n\nlibrary(gtsummary)\n\ntrial %&gt;% select(age, grade, response, trt) %&gt;% \n   tbl_summary(by=trt) %&gt;% \n  add_p() %&gt;% \n  add_overall() %&gt;% \n  add_n() %&gt;% \n  bold_labels() \n```\n\n\n?(caption)"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#r-markdown-3",
+    "href": "slides/2023-5-16-canreg-report/index.html#r-markdown-3",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "R Markdown",
+    "text": "R Markdown\nMarkdown文本\n**通讯作者**：张韶凯，Email: shaokaizhang\\@126.com\n\n【**摘要**】\n\n**目的** 利用河南省人群肿瘤登记数据分析河南省人群癌症5年相对生存率。\n\n**方法** 提取河南省肿瘤登记数据库中25个肿瘤登记处诊断日期在2014年1月1日至2019年12月31日之间以及2014年之前诊断但是2019年12月31日之前仍然存活的癌症病例（ICD10编码范围：C00-C97、D32-D33、D42-D43和D45-D47），随访截止日期设定为2019年12月31日，利用现时生存分析法和R语言\"periodR\"包的EdererII法计算癌症的5年相对生存率。\n\n**结果** 2017-2019年期间，河南省0-14岁儿童癌症的5年相对生存率为62.5%，15岁及以上成人癌症5年相对生存率为44.2%，年龄标化后为40.7%。总体癌症5年生存率呈现女性高于男性（47.1% VS 34.4%, *P*\\&lt;0.01）、城市地区高于农村地区（46.4% VS 39.2%, *P*\\&lt;0.01）的特点。在不同发病部位的癌症患者中，甲状腺癌、睾丸癌及乳腺癌具有最高的5年相对生存率，分别为86.4%、74.4%和73.1%；肝癌、胰腺癌、肺癌具有最低的5年相对生存率，分别为19.1%、20.5%和24.3%。\n\n**结论** 河南省儿童及成人癌症患者总体5年相对生存率仍然较低，应根据河南省癌症流行情况及不同癌症的生存率数据调整和优化癌症防控策略和措施。\n\n【**关键词**】 癌症；癌症防控；现时生存分析；5年相对生存率；河南省\n\nThe 5-year relative survival among cancer patients diagnosed during 2017-2019 in Henan Province, China {.unnumbered}\n\nQiong Chen$^1$, Mingxia Zhang$^12$, Lanwei Guo$^1$, Liyang Zheng$^1$, Yixian Wang$^1$, Yin Liu$^1$, Hong Wang$^1$, Huifang Xu$^1$, Ruihua Kang$^1$, Xiaoyang Wang$^1$, Shuzheng Liu$^1$, Shaokai Zhang$^1$\n\n$^1$ The Affiliated Cancer Hospital of Zhengzhou University & Henan Cancer Hospital, Zhengzhou 450008, China。 $^2$ School of Public Health, Lanzhou University.\n\n**Corresponding** to：Shaokai Zhang，Email:shaokaizhang\\@126.com\n\n**Abstract** \n\n**Objective** To analyze the 5-year relative survival rate of cancer in the population of Henan Province using cancer registration data. \n\n**Methods** Cancer cases were extracted from the cancer registration database of Henan Province with the diagnosis date between January 1, 2014 and December 31, 2019, and those diagnosed before 2014 but still alive by December 31, 2019 were included. The follow-up date was set as December 31, 2019. The 5-year relative survival rate of cancer was calculated using the period survival analysis method and the Ederer II method in the R package \"periodR\". \n\n**Results** The 5-year cancer relative survival rate in children aged 0-14 in Henan Province was 62.5% during 2017-2019, while that in adults aged 15 and above was 44.2%, age-standardized to 40.7%. The overall cancer 5-year survival rate was higher in females than in males (47.1% vs 34.4%, *P*\\&lt;0.01) and in urban areas than in rural areas (46.4% vs 39.2%, *P*\\&lt;0.01). Among patients with different cancer sites, thyroid cancer, testicular cancer, and breast cancer had the highest 5-year relative survival rates, which were 86.4%, 74.4%, and 73.1%, respectively. Liver cancer, pancreatic cancer, and lung cancer had the lowest 5-year relative survival rates, which were 19.1%, 20.5%, and 24.3%, respectively. \n\n**Conclusion** The overall 5-year relative survival rate of cancer in children and adults in Henan Province is still low, and cancer prevention and control strategies and measures should be adjusted and optimized according to the cancer incidence and survival rate data in Henan Province.\n\n**Keywords**: Cancer; cancer control; period survival; 5-year relative survival; Henan"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#r-markdown-4",
+    "href": "slides/2023-5-16-canreg-report/index.html#r-markdown-4",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "R Markdown",
+    "text": "R Markdown\n\nR 通过一系列包实现了文学编程的主要功能。\n\n\n\n\nrmarkdown\nknitr\nbookdown\nblogdown\nthesisdown\nposterdown\ndistill\nxaringan\ntinytex"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#pandoc",
+    "href": "slides/2023-5-16-canreg-report/index.html#pandoc",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "Pandoc",
+    "text": "Pandoc\n\nPandoc是使用Haskell语言编写的一款跨平台、自由开源及命令行界面的标记语言转换工具，可实现不同标记语言间的格式转换。\n\n\nHTML格式：包括XHTML，HTML5及HTML slide\n文字处理软件格式：包括docx、odt、OpenDocument XML\n电子书格式：包括EPUB（第2版及第3版）、FictionBook2\n技术文档格式：包括DocBook、GNU TexInfo、Groff manpages、Haddock\n页面布局格式：InDesign ICML\n大纲处理标记语言格式：OPML\nTeX格式：包括LaTeX、ConTeXt、LaTeX Beamer\nPDF格式：需要LaTeX支持\n轻量级标记语言格式：包括Markdown、reStructuredText、textile、Org-Mode、MediaWiki标记语言、AsciiDoc\n自定义格式：可使用lua自定义转换规则"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#quarto-下一代-r-markdown",
+    "href": "slides/2023-5-16-canreg-report/index.html#quarto-下一代-r-markdown",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "Quarto 下一代 R Markdown",
+    "text": "Quarto 下一代 R Markdown\n\n\nQuarto® is an open-source scientific and technical publishing system built on Pandoc."
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#quarto特点",
+    "href": "slides/2023-5-16-canreg-report/index.html#quarto特点",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "Quarto特点",
+    "text": "Quarto特点\n\n它可以独立于R、Rstudio或者其他软件如python等编程或统计软件，支持在Macos、Linux、Windows系统运行；\nQuarto继承了一些Rmd包的特点、如blogdown、bookdown、xaringan等；\n在生成website、blog、book、slides等各种格式中有了统一的语法，缩小了使用者的学习成本；\n支持的语言包括R、Python、Julia和Observable；\nquarto有了新的文档格式，文档扩展名为“.qmd”, 代码块选项的形式有了变化。\n支持科技写作的特征，如公式、引用、交叉引用、图、表等。"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#为什么要使用-quarto-r-markdown",
+    "href": "slides/2023-5-16-canreg-report/index.html#为什么要使用-quarto-r-markdown",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "为什么要使用 Quarto / R Markdown ?",
+    "text": "为什么要使用 Quarto / R Markdown ?\n\n\n\n\n\nflowchart LR\n  A[(数据清洗)] --&gt; B(统计分析)\n  B --&gt; C{结果初步评估}\n  C --&gt; B\n  C --&gt; D(统计制表)\n  D --&gt; E[报告撰写]\n  E -- 发现不合理结果 --&gt; B\n  E --&gt; F[出版流程]\n  F --&gt; G[专家意见]\n  G -- 建议重新统计 --&gt; B\n  G -- 不需要重新统计 --&gt; E\n  G --&gt; H[正式出版]\n\n\n图 5: 报告撰写流程\n\n\n\n\n\n\n\n\n\n\n\n\n可能存在的情形\n\n\n\n统计分析(SAS、R、SPSS、EXCEL)\n数据可视化展现(R、SAS、EXCEL)\n撰写报告(WORD、WPS、其它文字处理软件)\n图表交叉引用\n参考文献的引用(Zotero、Endnote、Mendley)\n\n\n\n\n\n\n\n\n\n\n\n存在的问题\n\n\n\n统计过程与报告撰写的割裂\n存在重复性工作的可能"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#应用场景",
+    "href": "slides/2023-5-16-canreg-report/index.html#应用场景",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "应用场景",
+    "text": "应用场景\n\n\n\n\n科技论文撰写\n书籍编写\n幻灯片制作\n博客\n网站"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#应用场景-1",
+    "href": "slides/2023-5-16-canreg-report/index.html#应用场景-1",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "应用场景",
+    "text": "应用场景\n\n\n\n\n科技论文撰写\n书籍编写\n幻灯片制作\n博客\n网站"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#应用场景-2",
+    "href": "slides/2023-5-16-canreg-report/index.html#应用场景-2",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "应用场景",
+    "text": "应用场景\n\n\n\n\n科技论文撰写\n书籍编写\n幻灯片制作\n博客\n网站"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#应用场景-3",
+    "href": "slides/2023-5-16-canreg-report/index.html#应用场景-3",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "应用场景",
+    "text": "应用场景\n\n\n\n\n科技论文撰写\n书籍编写\n幻灯片制作\n博客\n网站"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#cancer-incidence-in-five-continents-iarc",
+    "href": "slides/2023-5-16-canreg-report/index.html#cancer-incidence-in-five-continents-iarc",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "Cancer Incidence in Five Continents-IARC",
+    "text": "Cancer Incidence in Five Continents-IARC\nYAML元数据设置\n--- \ntitle: \"河南省《五大洲发病率第12卷》数据上报审核程序\"\nsubtitle: \"登记处：\"\nauthor: \n- \"2013-2017年\"\n- \"Qiong Chen @ Henan Cancer Center/Henan Cancer Hospital\"\ndate: \"\"\noutput:\n  prettydoc::html_pretty:\n    theme: cayman\n    number_section: TRUE\n    highlight: github\nvignette: &gt;\n  %\\VignetteIndexEntry{Vignette Title}\n  %\\VignetteEncoding{UTF-8}\n  %\\VignetteEngine{knitr::rmarkdown}\neditor_options: \n  chunk_output_type: console\n---"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#cancer-incidence-in-five-continents-iarc-1",
+    "href": "slides/2023-5-16-canreg-report/index.html#cancer-incidence-in-five-continents-iarc-1",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "Cancer Incidence in Five Continents-IARC",
+    "text": "Cancer Incidence in Five Continents-IARC\n代码块\n\nknitr::opts_chunk$set(\n    echo = FALSE,\n    warning = FALSE,\n    fig.width=10,\n    fig.height=8\n)\nlibrary(dplyr)\nlibrary(knitr)\nlibrary(kableExtra)\nlibrary(reshape2)\nlibrary(ggplot2)\nlibrary(tidyr)\n\nperiod&lt;-20132017\n\n#率的统计学检验\nreport &lt;- report%&gt;%\n  group_by(year,sex,code)%&gt;%\n  mutate(y_ics2000=sum(ics2000)/n(),\n         a_ics2000=sum((ics2000-sum(ics2000)/n())^2/var_ics2000)/(n()-1),\n         a_ics2000=ifelse(a_ics2000&lt;=1,1,a_ics2000),\n         z_ics2000=(ics2000-sum(ics2000)/n())^2/(a_ics2000*var_ics2000),\n        \n         y_dcs2000=sum(dcs2000)/n(),\n         a_dcs2000=sum((dcs2000-sum(dcs2000)/n())^2/var_dcs2000)/(n()-1),\n         a_dcs2000=ifelse(a_dcs2000&lt;=1,1,a_dcs2000),\n         z_dcs2000=(dcs2000-sum(dcs2000)/n())^2/(a_dcs2000*var_dcs2000),\n         \n         y_iws85=sum(iws85)/n(),\n         a_iws85=sum((iws85-sum(iws85)/n())^2/var_iws85)/(n()-1),\n         a_iws85=ifelse(a_iws85&lt;=1,1,a_iws85),\n         z_iws85=(iws85-sum(iws85)/n())^2/(a_iws85*var_iws85),\n         \n         y_dws85=sum(dws85)/n(),\n         a_dws85=sum((dws85-sum(dws85)/n())^2/var_dws85)/(n()-1),\n         a_dws85=ifelse(a_dws85&lt;=1,1,a_dws85),\n         z_dws85=(dws85-sum(dws85)/n())^2/(a_dws85*var_dws85),\n         \n         mvn=b5+b6+b7,\n         p1=(b5+b6+b7)/fhj,\n         p=sum(mvn)/sum(fhj),\n         a_mv=sum((mvn-p*fhj)^2/(fhj*p1*(1-p1)))/(n()-1),\n         z_mv=(mvn-p*fhj)^2/(a_mv*p1*(1-p1)*fhj),\n        \n         a_mi=sum(shj)/sum(fhj),\n         aa_mi=sum((shj-a_mi*fhj)^2/((shj+fhj)*a_mi))/(n()-1),\n         z_mi=(shj-a_mi*fhj)^2/(aa_mi*(shj+fhj)*a_mi),\n         \n\ndiff2_ics2000=ifelse(z_ics2000&gt;3.84 & ics2000/y_ics2000&gt;1, paste0(\"&gt;\",\"(\",round(ics2000/y_ics2000,1),\")\"),\n              ifelse(z_ics2000&gt;3.84 & ics2000/y_ics2000&lt;1, paste0(\"&lt;\",\"(\",round(ics2000/y_ics2000,1),\")\"),\"\")),\ndiff2_dcs2000=ifelse(z_dcs2000&gt;3.84 & dcs2000/y_dcs2000&gt;1, paste0(\"&gt;\",\"(\",round(dcs2000/y_dcs2000,1),\")\"),\n              ifelse(z_dcs2000&gt;3.84 & dcs2000/y_dcs2000&lt;1, paste0(\"&lt;\",\"(\",round(dcs2000/y_dcs2000,1),\")\"),\"\")),\ndiff2_iws85=ifelse(z_iws85&gt;3.84 & iws85/y_iws85&gt;1, paste0(\"&gt;\",\"(\",round(iws85/y_iws85,1),\")\"),\n            ifelse(z_iws85&gt;3.84 & iws85/y_iws85&lt;1, paste0(\"&lt;\",\"(\",round(iws85/y_iws85,1),\")\"),\"\")),\ndiff2_dws85=ifelse(z_dws85&gt;3.84 & dws85/y_dws85&gt;1, paste0(\"&gt;\",\"(\",round(dws85/y_dws85,1),\")\"),\n            ifelse(z_dws85&gt;3.84 & dws85/y_dws85&lt;1, paste0(\"&lt;\",\"(\",round(dws85/y_dws85,1),\")\"),\"\")),\n         \n         diff_mi=ifelse(z_mi&gt;3.84 & mi/a_mi&gt;1,paste0(\"&gt;\",\"(\",round(mi/a_mi,1),\")\"),\n                        ifelse(z_mi&gt;3.84 & mi/a_mi&lt;1,paste0(\"&lt;\",\"(\",round(mi/a_mi,1),\")\"),\"\")),\n         diff_mv=ifelse(z_mv&gt;3.84 & p1/p&gt;1,paste0(\"&gt;\",\"(\",round(p1/p,1),\")\"),\n                        ifelse(z_mv&gt;3.84 & p1/p&lt;1,paste0(\"&lt;\",\"(\",round(p1/p,1),\")\"),\"\"))\n         \n         )%&gt;%\n  ungroup()%&gt;%\n  select(-a_ics2000,-z_ics2000,-a_dcs2000,-z_dcs2000,-y_iws85,-a_iws85,-z_iws85,-y_dws85,-a_dws85,-z_dws85,-mvn,-a_mv,-z_mv,-aa_mi,-z_mi)\n\n\n\nquality &lt;- haven::read_sas(\"Y:/CanReg/statistic/code/create_report/codedata/quality.sas7bdat\")\nquality &lt;- quality %&gt;% mutate(city=ifelse(city==0,2,1),city=as.character(city))\nsite &lt;- unique(registry[registry$name==state,c(\"areacode\")]$areacode)\n\n#levels &lt;- c(110,104,103,106,112,105,113,120,115,116,119,122)\n#labels &lt;- c(\"肺\",\"胃\",\"食管\",\"肝\",\"乳房\",\"结直肠\",\"宫颈\",\"甲状腺\",\"卵巢\",\"前列腺\",\"脑\",\"白血病\")\n\nlevels=c(122,121,120,119,113,112,105,103,106,104,110,62)\nlabels=c(\"白血病\",\"淋巴瘤\",\"甲状腺\",\"脑\",\"宫颈\",\"乳房\",\"结直肠\",\"食管\",\"肝\",\"胃\",\"肺\",\"所有部位\")\n\n\nyears&lt;-report[report$areacode==site&!(report$year%in%c(\"20132017\",\"20182022\")),c(\"year\")]$year\nmax&lt;-as.numeric(max(years))\nmin&lt;-as.numeric(min(years))\ncaption2&lt;-paste0(\"图中&gt;(O/E)或&lt;(O/E)表示登记处指标与同期河南省各登记处的平均值相比具有统计学意义\\n(O/E)表示登记处指标与平均值指标的比值\")\n\n\npop &lt;- report%&gt;%filter(areacode==site,sex==\"合计\",code==62,year==\"2017\")%&gt;%select(rhj)\npop &lt;-pop$rhj\n\nmv &lt;- report%&gt;%filter(areacode==site,sex==\"合计\",code==62,year==\"20132017\")%&gt;%select(mv)\nmv &lt;-mv$mv\n\nmi &lt;- report%&gt;%filter(areacode==site,sex==\"合计\",code==62,year==\"20132017\")%&gt;%select(mi)\nmi &lt;-mi$mi\n\ncr_color_block &lt;- function() {\n  theme_classic()+\n  theme(\n    legend.title= element_blank(),\n    legend.position= \"top\",\n    strip.text= element_text(size=10,face=\"bold.italic\"),\n    strip.background= element_rect(color=\"white\",size=0),\n    axis.line= element_blank(),\n    axis.ticks= element_blank(),\n    axis.title= element_blank(),\n    axis.text= element_text(size=11,face=\"bold.italic\"),\n    axis.text.x= element_text(size=11,face=\"bold.italic\",angle = 90),\n    plot.title= element_text(face=\"bold\", size=14, hjust = 0.5),\n    plot.subtitle = element_text(face=\"bold\",size=10,hjust=0.5),\n    plot.caption = element_text(size=8)\n  )\n}\n\n\ncr_grid &lt;- function() {\n  theme_light()+\n  theme(\n    legend.title= element_blank(),\n    legend.position= \"bottom\",\n    strip.text= element_text(size=10,face=\"bold.italic\"),\n    strip.background= element_rect(color=\"white\",size=0),\n    axis.line.y= element_blank(),\n    axis.ticks.y= element_blank(),\n    axis.title= element_blank(),\n    axis.text= element_text(size=9,face=\"bold.italic\"),\n    plot.title= element_text(face=\"bold\", size=14, hjust = 0.5),\n    plot.subtitle=element_text(face=\"bold.italic\",size=12,hjust=0.5),\n    # add border 1)\n    panel.border = element_rect(colour = \"blue\", fill = NA, linetype = 2),\n    # color background 2)\n    panel.background = element_rect(fill = \"aliceblue\"),\n    # modify grid 3)\n    panel.grid.major.x = element_line(colour = \"steelblue\", linetype = 3, size = 0.5),\n    panel.grid.minor.x = element_blank(),\n    panel.grid.major.y =  element_line(colour = \"steelblue\", linetype = 3, size = 0.5),\n    panel.grid.minor.y = element_blank()\n  )\n}"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#cancer-incidence-in-five-continents-iarc-2",
+    "href": "slides/2023-5-16-canreg-report/index.html#cancer-incidence-in-five-continents-iarc-2",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "Cancer Incidence in Five Continents-IARC",
+    "text": "Cancer Incidence in Five Continents-IARC\n代码块\n\nfor (i in min:max) {\n report %&gt;%\n  filter(areacode==site, code==62, !(sex==\"合计\"), year==i)%&gt;%\n  select(year,sex,r0:r85)%&gt;%\n  gather(\"agegrp\",\"rks\",-year,-sex)%&gt;%\n  mutate(agegrp=as.numeric(gsub(\"[^0-9]\", \"\", agegrp)),\n         rks=ifelse(sex==\"男性\",-rks,rks),\n         agegrp=factor(agegrp,labels = c(\"0\",\"1-4\",\"5-9\",\"10-14\",\"15-19\",\"20-24\",\"25-29\",\"30-34\",\"35-39\",\"40-44\",\"45-49\",\"50-54\",\"55-59\",\"60-64\",\"65-69\",\"70-74\",\"75-79\",\"80-84\",\"85+\")))%&gt;%\n  group_by(sex)%&gt;%\n  mutate(rks=round(rks/sum(rks),2),\n         rks=ifelse(sex==\"男性\",-rks,rks))%&gt;%\n  ggplot(aes(x=factor(agegrp),y=rks,fill=sex)) +\n  geom_bar(stat = \"identity\",position = \"identity\",color=\"black\",size=0.25)+\n  coord_flip()+\n  theme_classic()+\n  xlab(\"\")+\n  ylab(\"\")+\n  scale_y_continuous(limits = c(-0.12,0.12),breaks=seq(-0.12,0.12,0.02),labels = function(x) paste0(abs(x) * 100, '%'))+\n  labs(title=\"历年人口金字塔变化情况\",subtitle=paste(i))+\n  theme(legend.position = c(0.1,0.9),\n        legend.title = element_blank(),\n        strip.text = element_text(size=10, face=\"bold.italic\"),\n        strip.background = element_rect(color=\"white\", size=0),\n        axis.text=element_text(size=10),\n        axis.title=element_text(size=12, face=\"bold\"),\n        plot.title = element_text(face=\"bold\", size=14, hjust = 0.5),\n        plot.subtitle=element_text(face=\"bold\",size=13,hjust=0.8,colour=\"tomato\"))-&gt;p\n  plot(p)\n}"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#cancer-incidence-in-five-continents-iarc-3",
+    "href": "slides/2023-5-16-canreg-report/index.html#cancer-incidence-in-five-continents-iarc-3",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "Cancer Incidence in Five Continents-IARC",
+    "text": "Cancer Incidence in Five Continents-IARC\nMarkdown文本\n# 基本情况介绍\n\n肿瘤登记处拟上报至年肿瘤登记数据至五大洲发病率第12卷。\n\n河南省肿瘤登记处按照《五大洲发病率》收录数据审核标准对河南省各登记处拟上报年份范围的数据质量进行了图形化展示，各登记处可根据审核结果完善核实本登记处数据！\n\n&gt;本结果分如下几个部分：\n\n&gt;1. 基本情况介绍 \n&gt;1. 人口数据审核\n&gt;1. 总体癌症发病死亡情况\n&gt;1. 主要部位癌症发病死亡情况\n&gt;1. 年龄别率\n&gt;1. 儿童肿瘤发病率/死亡率\n&gt;1. 主要质量控制指标情况(登记癌种数、MV%、M:I、DCO%)\n\n# 人口数据审核\n\n&gt;人口数据质量对于肿瘤登记数据质量至关重要，本程序对于人口数据的审核从**人口总数**、**人口性别比例**、以&gt;及**人口金字塔**等三个方面进行。\n\n## 人口总数变化情况"
+  },
+  {
+    "objectID": "slides/2023-5-16-canreg-report/index.html#cancer-incidence-in-five-continents-iarc-4",
+    "href": "slides/2023-5-16-canreg-report/index.html#cancer-incidence-in-five-continents-iarc-4",
+    "title": "R语言促进高效率肿瘤登记报告",
+    "section": "Cancer Incidence in Five Continents-IARC",
+    "text": "Cancer Incidence in Five Continents-IARC\n\n\n\n\n\n\n河南省人群肿瘤登记\n\n\n\n\n\n\n \n\n\n基于R Markdown / Quarto的可重复性报告撰写"
   },
   {
     "objectID": "slides/articles/choose-quarto.html",
@@ -1999,7 +2216,7 @@
     "href": "slides/2023-4-20-cancer-registration/index.html#收集数据内容",
     "title": "人群肿瘤随访登记",
     "section": "收集数据内容",
-    "text": "收集数据内容\n\n肿瘤登记收集一定人群中所有恶性肿瘤、中枢神经系统良性肿瘤以及原位癌。 \n\n\n\n\n肿瘤上报范围(ICD10)\n\nC00-C93\nD32-D33\nD42-D43\nD45-D47\n原位癌\n\n\n人口数据\n\n以县区为单位收集登记处覆盖人群分年龄、分性别户籍人口数\n\n\n寿命表数据\n\n以县区为单位收集登记处覆盖人群分年龄、分性别全死因死亡数以估计寿命表"
+    "text": "收集数据内容\n\n肿瘤登记收集一定人群中所有恶性肿瘤、中枢神经系统良性肿瘤以及原位癌。 \n\n\n\n\n肿瘤上报范围(ICD10)\n\nC00-C97\nD32-D33\nD42-D43\nD45-D47\n原位癌\n\n\n人口数据\n\n以县区为单位收集登记处覆盖人群分年龄、分性别户籍人口数\n\n\n寿命表数据\n\n以县区为单位收集登记处覆盖人群分年龄、分性别全死因死亡数以估计寿命表"
   },
   {
     "objectID": "slides/2023-4-20-cancer-registration/index.html#数据项目",
