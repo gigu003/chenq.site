@@ -1,0 +1,1186 @@
+---
+title: "R语言促进高效率肿瘤登记报告"
+subtitle: "基于R Markdown / Quarto的可重复性报告撰写"
+author: "陈琼"
+date: 2023-5-16
+date-modified: last-modified
+date-format: "dddd MMM D, YYYY"
+institute: "🏥河南省癌症中心\n河南省肿瘤医院"
+format: 
+  revealjs:
+    theme: [custom.scss]
+    slide-number: true
+    smaller: true
+    scrollable: true
+    #number-sections: true
+    footer: "河南省人群肿瘤登记"
+    subtitle-as-header: true
+filters:
+  - reveal-header
+slide-level: 2
+title-slide-style: pandoc
+crossref:
+  fig-title: 图     
+  tbl-title: 表     
+  #title-delim: ""
+  tbl-prefix: 表
+  fig-prefix: 图
+title-slide-attributes:
+  data-background-color: "lightblue"
+---
+
+# 肿瘤登记工作介绍 {background-color="lightblue"}
+
+
+
+## 人群肿瘤登记的目的和意义
+
+<br>
+
+> 肿瘤登记是系统性、经常性搜集有关肿瘤及肿瘤患者信息的统计制度。
+
+</br>
+
+
+-   了解癌症发病、死亡、生存情况
+
+-   掌握癌症疾病负担与变化趋势
+
+-   了解癌症在不同地区和人群中的分布特征
+
+
+## 人群肿瘤登记的目的和意义
+
+<br>
+
+> 肿瘤登记是系统性、经常性收集有关肿瘤及肿瘤患者信息的统计制度。
+
+</br>
+
+-   为制定癌症防控策略与措施、规划与计划提供科学依据
+
+-   为癌症的临床研究提供信息
+
+-   为癌症防控效果评价提供数据支持
+
+
+## 河南省肿瘤登记工作进展
+
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- 肿瘤登记工作覆盖130个县区
+- 达到数据利用标准的登记处达到42个，覆盖全省32%的人口
+- 连续10年出版《河南省肿瘤登记年报》
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: map
+#| fig-cap: 河南省肿瘤登记地区覆盖情况
+#| fig-align: center
+#| fig-width: 10
+knitr::include_graphics("../2023-4-20-cancer-registration/images/map.png")
+```
+
+:::
+
+::::
+
+
+
+
+## 组织架构
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="33%"}
+#### 省级登记处
+
+*河南省癌症中心*
+
+:::{.callout-note}
+## 职责
+
+- 制定全省工作计划、实施方案
+- 建立和完善肿瘤登记信息系统
+- 技术指导、人员培训、质量控制和考核评价
+- 督导检查
+- 数据分析和报告 
+
+:::
+:::
+
+::: {.column width="33%"}
+
+#### 市级登记处
+
+*市级CDC/肿瘤医院*
+
+
+:::{.callout-note}
+## 职责
+- 市级技术指导、人员培训
+- 质量控制
+- 督导检查
+- 数据分析和报告
+:::
+
+
+
+:::
+
+
+::: {.column width="33%"}
+
+#### 县区级登记处
+
+*县区级CDC*
+
+:::{.callout-note}
+## 职责
+
+- 技术指导、人员培训
+- 质量控制
+- 督导检查
+- 统计分析和报告
+  
+:::
+
+:::
+
+::::
+
+
+::: footer
+数据来源: 河南省肿瘤登记管理办法（豫卫2015(10号)文件）
+:::
+
+## 收集数据内容
+
+> 肿瘤登记收集一定人群中所有恶性肿瘤、中枢神经系统良性肿瘤以及原位癌。 <br>
+
+</br>
+
+::: columns
+::: {.column width="33%"}
+#### 肿瘤收集范围(ICD10)
+
+-   C00-C97
+-   D32-D33
+-   D42-D43
+-   D45-D47
+-   原位癌
+:::
+
+::: {.column width="33%"}
+#### 人口数据
+
+> 以县区为单位收集登记处覆盖人群分年龄、分性别户籍人口数
+:::
+
+::: {.column width="33%"}
+#### 寿命表数据
+
+> 以县区为单位收集登记处覆盖人群分年龄、分性别全死因死亡数以估计寿命表
+:::
+:::
+
+## 数据项目
+
+::: columns
+::: {.column width="30%"}
+> 肿瘤登记收集的变量包括以下7个部分（@fig-items）
+
+-   个人识别信息
+-   人口学信息
+-   肿瘤信息
+-   治疗信息
+-   随访信息
+-   预后信息
+-   信息来源
+:::
+
+::: {.column width="70%"}
+```{mermaid}
+%%| label: fig-items
+%%| fig-cap: 人群肿瘤登记收集数据项目
+classDiagram
+    class 个人识别信息 {
+    登记处编号
+    身份证号
+    姓名
+    户籍地址
+    常住地址
+}
+    class 人口学信息 {
+    性别
+    年龄
+    出生日期
+    婚姻状态
+    职业
+    民族
+}
+    class 肿瘤信息 {
+    发病日期
+    诊断依据
+    原发部位ICDO3
+    形态学ICDO3
+    行为ICDO3
+    分级ICDO3
+    临床分期/TNM分期
+    多原发状态
+    双边性
+}
+    class 治疗信息 {
+    治疗方法
+}
+    class 随访相关信息 {
+    联系电话
+    联系人
+    联系人电话
+    常住地址
+}
+    class 结局信息 {
+    最后接触日期
+    生存状态
+    死亡日期
+    死亡原因
+    死亡地点
+}
+    class 信息来源 {
+    报告医院
+    住院号/门诊号
+    报告医师
+    报告日期
+}
+
+    个人识别信息 --|> 人口学信息
+    个人识别信息 --|> 肿瘤信息
+    个人识别信息 --|> 治疗信息
+    个人识别信息 --|> 随访相关信息
+    个人识别信息 --|> 结局信息
+    个人识别信息 --|> 信息来源
+```
+:::
+:::
+
+## 数据来源
+
+> 肿瘤登记强调**多源上报**、数据来源于医院、医保系统、县-乡-村医师网、全死因数据等。（@fig-1 ）
+
+```{mermaid}
+%%| label: fig-1
+%%| fig-cap: 肿瘤登记数据来源渠道
+%%| fig-align: center
+flowchart TD
+  A[(肿瘤登记数据库)] --> B(医院)
+  A --> B
+  A --> C(县-乡-村三级医师网络)
+  A --> D(医疗保险)
+  A --> E(死因监测)
+  A --> F(殡葬系统)
+  A --> G(公安系统)
+  B --> b1(住院患者数据)
+  B --> b2(门诊患者数据)
+  B --> b3(病案部门)
+  B --> b4(病理诊断部门)
+  D --> d1(新农合)
+  D --> d2(城镇医保)
+  D --> d3(职工医保)
+```
+
+
+## 肿瘤分类与编码
+
+::: columns
+::: {.column width="50%"}
+<br>
+
+> 肿瘤登记采用ICDO3和ICD10**双编码系统**
+
+#### ICD-O-3：数据收集
+
+  - 原发部位
+  - 形态学
+  - 行为
+  - 分级
+
+####  ICD10 ：数据统计分析
+
+>  《肿瘤登记年报》采用ICD10进行肿瘤分类（@tbl-category）
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: tbl-category
+#| tbl-cap: 常用癌症分类统计表（大类）
+library(haven)
+library(dplyr)
+library(kableExtra)
+names_ <- c("部位","编码范围(ICD10)")
+ haven::read_sas("../2023-4-20-cancer-registration/data/category2.sas7bdat") %>%
+   kbl(col.names = c("部位","ICD10")) %>% 
+   kable_styling(font_size = 12)
+```
+:::
+:::
+
+
+
+## 质量控制
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::{.callout-tip}
+## 质量控制的意义
+ - 使不同地区之间的数据具有可比性
+ - 代表登记处所在地区的癌症人群
+ - 使癌症数据真实有效
+:::
+
+::: aside
+采用IARC/IACR国际质量控制标准
+:::
+
+:::
+
+::: {.column width="60%"}
+
+```{mermaid}
+%%| label: fig-quality
+%%| fig-cap: 肿瘤登记质量控制指标体系
+%%| fig-align: center
+flowchart LR
+  A[质量控制指标] --> B(可比性)
+  A --> C(完整性)
+  A --> D(有效性)
+  A --> E(时效性)
+  B --> b1(发病的定义)
+  B --> b2(多原发判断)
+  B --> b3(分类与编码)
+  B --> b4(死亡证明)
+  C --> c1(死亡发病比M:I)
+  C --> c2(只有死亡医学证明书比例DCO%)
+  C --> c3(组织学确诊比例MV%)
+  C --> c4(不同时间发病率的稳定性)
+  C --> c5(年龄别发病率曲线)
+  D --> d1(组织学确诊比例)
+  D --> d2(只有死亡医学证明书比例DC\%)
+  D --> d3(部位不明比例UB%)
+  D --> d4(数据内部一致性)
+```
+
+:::
+
+::::
+
+
+
+## 质量控制
+<br>
+
+> 肿瘤登记收集的变量或者变量组合之间存在一定的逻辑关系，通过对单个变量或变量组合之间的逻辑关系进行审查，以提高肿瘤登记数据有效性。
+
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::{.callout-tip}
+
+## 单个项目
+
+- 出生日期
+- 发病日期
+- 年龄、性别
+- 发病部位
+- 形态学
+- 行为和分级
+:::
+
+:::
+
+::: {.column width="40%"}
+
+:::{.callout-important}
+
+## 项目组合
+
+- 性别/部位
+- 部位/组织学学
+- 年龄/部位/组织学
+- 行为/部位
+- 行为/组织学
+- 性别/组织学
+:::
+
+:::
+
+
+::: {.column width="20%"}
+
+:::{.callout-caution}
+
+## 校验结果
+
+- 正确✅
+- 警告⚠️
+- 错误❌
+:::
+
+:::
+::::
+
+
+## 肿瘤登记报告流程
+
+<br>
+
+```{mermaid}
+%%| label: fig-report
+%%| fig-cap: 肿瘤登记报告流程
+%%| fig-align: center
+flowchart LR
+  A(数据来源单位) --> B(县区级登记处)
+  B --> C(市级登记处)
+  C --> D(省级登记处)
+  D --> E(质量控制)
+  E --> B
+  B --> A
+  E --> C
+  E --> F(综合评估)
+  F --> G(年报撰写及发布)
+```
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### 主要内容
+
+- 质量控制报告撰写
+- 肿瘤登记报告撰写
+
+:::
+
+::: {.column width="50%"}
+
+### 特点
+
+- 登记处数量多(130个县区)
+- 县区级专业人员能力不足
+- 质控报告反馈至市级和县区级
+
+
+:::
+
+::::
+
+## 文学编程和可能重复性报告概念的引入
+
+> **文学编程**:强调以自然语言呈现计算逻辑，以文本描述和计算代码相互混合的方式，从计算机代码的执行逻辑过渡到人的思维逻辑。
+
+> **可重复性报告**:利用代码把数据分析过程和报告撰写过程串起来，最终生成可重复性的报告。
+
+<br>
+
+- 基于*原始数据*更新报告
+- 报告的*批量化*生成
+- 多种格式输出(html、docx)
+
+
+# 基于R Markdown / Quarto 的可重复性报告 {background-color="lightblue"}
+
+
+## Markdown
+
+<br>
+
+> 它允许人们使用易读易写的**纯文本格式**编写文档，然后转换成有效的 XHTML（或者HTML）文档。
+
+<br>
+
+- 轻量级标记语言
+- 轻量化、易读易写、对图片、表格、数学公式支持
+- Github、Reddit、Diaspora、Stack Exchange、OpenStreetMap、SourceForge、简书等，甚至还能被使用来撰写电子书
+
+
+
+## R Markdown
+
+<br>
+
+> R Markdown把*报告文本*和*统计计算代码*整合起来，从而实现一次输入多种格式输出(HTML、PDF、WORD等)。
+
+<br>
+
+- YAML 元数据设置
+- 代码块（R、Python等）
+- Markdown文本
+
+
+
+## R Markdown
+
+### YAML元数据
+
+```yaml
+---
+title: "河南省恶性肿瘤2017-2019年5年相对生存率"
+authors:
+  - name: 陈琼
+    affiliations:
+      - ref: zlyy
+  - name: 张明霞
+    affiliations:
+      - ref: zlyy
+      - ref: lzu
+  - name: 郭兰伟
+    affiliations:
+      - ref: zlyy
+  - name: 郑黎阳
+    affiliations:
+      - ref: zlyy
+  - name: 刘纯亚
+    affiliations:
+      - ref: zlyy
+  - name: 王一先
+    affiliations:
+      - ref: zlyy
+  - name: 刘茵
+    affiliations:
+      - ref: zlyy
+  - name: 王红
+    affiliations:
+      - ref: zlyy
+  - name: 徐慧芳
+    affiliations:
+      - ref: zlyy
+  - name: 康瑞华
+    affiliations:
+      - ref: zlyy
+  - name: 王潇杨
+    affiliations:
+      - ref: zlyy
+  - name: 刘曙正
+    affiliations:
+      - ref: zlyy
+  - name: 张韶凯
+    affiliations:
+      - ref: zlyy
+    corresponding: true
+    email: shaokaizhang@126.com
+affiliations:
+  - id: zlyy
+    name: 郑州大学附属肿瘤医院(河南省肿瘤医院)，疾病预防控制科；河南省肿瘤防控工程研究中心；河南省肿瘤预防国际联合实验室，郑州，450008。
+    city: 郑州
+    state: 河南省
+  - id: lzu
+    name: 兰州大学公共卫生学院
+    city: 兰州
+    state: 甘肃省
+filters:
+  - authors-block
+
+#prefer-html: true
+execute: 
+  echo: false
+  warning: false
+  message: false
+  tbl-cap-location: top
+#lang: zh
+crossref:
+  fig-title: 图     
+  tbl-title: 表     
+  title-delim: ""
+  tbl-prefix: 表
+
+format: 
+  docx: 
+    number-sections: true
+    number-depth: 3
+    reference-doc: chinese.docx
+
+bibliography: survival17-19.bib
+csl: "zhonghua.csl"
+editor_options: 
+  chunk_output_type: console
+---
+```
+
+
+
+## R Markdown
+
+### 代码块
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: tbl-table1
+#| tbl-cap-location: top
+#| tbl-cap: "接受不同药物治疗人群基本特征分析"
+#| warning: false
+#| eval: false
+#| message: false
+#| echo: fenced
+
+library(gtsummary)
+
+trial %>% select(age, grade, response, trt) %>% 
+   tbl_summary(by=trt) %>% 
+  add_p() %>% 
+  add_overall() %>% 
+  add_n() %>% 
+  bold_labels() 
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+knitr::include_graphics("images/table.jpg")
+```
+
+:::
+
+::::
+
+
+## R Markdown
+
+### Markdown文本
+
+```yaml
+**通讯作者**：张韶凯，Email: shaokaizhang\@126.com
+
+【**摘要**】
+
+**目的** 利用河南省人群肿瘤登记数据分析河南省人群癌症5年相对生存率。
+
+**方法** 提取河南省肿瘤登记数据库中25个肿瘤登记处诊断日期在2014年1月1日至2019年12月31日之间以及2014年之前诊断但是2019年12月31日之前仍然存活的癌症病例（ICD10编码范围：C00-C97、D32-D33、D42-D43和D45-D47），随访截止日期设定为2019年12月31日，利用现时生存分析法和R语言"periodR"包的EdererII法计算癌症的5年相对生存率。
+
+**结果** 2017-2019年期间，河南省0-14岁儿童癌症的5年相对生存率为62.5%，15岁及以上成人癌症5年相对生存率为44.2%，年龄标化后为40.7%。总体癌症5年生存率呈现女性高于男性（47.1% VS 34.4%, *P*\<0.01）、城市地区高于农村地区（46.4% VS 39.2%, *P*\<0.01）的特点。在不同发病部位的癌症患者中，甲状腺癌、睾丸癌及乳腺癌具有最高的5年相对生存率，分别为86.4%、74.4%和73.1%；肝癌、胰腺癌、肺癌具有最低的5年相对生存率，分别为19.1%、20.5%和24.3%。
+
+**结论** 河南省儿童及成人癌症患者总体5年相对生存率仍然较低，应根据河南省癌症流行情况及不同癌症的生存率数据调整和优化癌症防控策略和措施。
+
+【**关键词**】 癌症；癌症防控；现时生存分析；5年相对生存率；河南省
+
+The 5-year relative survival among cancer patients diagnosed during 2017-2019 in Henan Province, China {.unnumbered}
+
+Qiong Chen$^1$, Mingxia Zhang$^12$, Lanwei Guo$^1$, Liyang Zheng$^1$, Yixian Wang$^1$, Yin Liu$^1$, Hong Wang$^1$, Huifang Xu$^1$, Ruihua Kang$^1$, Xiaoyang Wang$^1$, Shuzheng Liu$^1$, Shaokai Zhang$^1$
+
+$^1$ The Affiliated Cancer Hospital of Zhengzhou University & Henan Cancer Hospital, Zhengzhou 450008, China。 $^2$ School of Public Health, Lanzhou University.
+
+**Corresponding** to：Shaokai Zhang，Email:shaokaizhang\@126.com
+
+**Abstract** 
+
+**Objective** To analyze the 5-year relative survival rate of cancer in the population of Henan Province using cancer registration data. 
+
+**Methods** Cancer cases were extracted from the cancer registration database of Henan Province with the diagnosis date between January 1, 2014 and December 31, 2019, and those diagnosed before 2014 but still alive by December 31, 2019 were included. The follow-up date was set as December 31, 2019. The 5-year relative survival rate of cancer was calculated using the period survival analysis method and the Ederer II method in the R package "periodR". 
+
+**Results** The 5-year cancer relative survival rate in children aged 0-14 in Henan Province was 62.5% during 2017-2019, while that in adults aged 15 and above was 44.2%, age-standardized to 40.7%. The overall cancer 5-year survival rate was higher in females than in males (47.1% vs 34.4%, *P*\<0.01) and in urban areas than in rural areas (46.4% vs 39.2%, *P*\<0.01). Among patients with different cancer sites, thyroid cancer, testicular cancer, and breast cancer had the highest 5-year relative survival rates, which were 86.4%, 74.4%, and 73.1%, respectively. Liver cancer, pancreatic cancer, and lung cancer had the lowest 5-year relative survival rates, which were 19.1%, 20.5%, and 24.3%, respectively. 
+
+**Conclusion** The overall 5-year relative survival rate of cancer in children and adults in Henan Province is still low, and cancer prevention and control strategies and measures should be adjusted and optimized according to the cancer incidence and survival rate data in Henan Province.
+
+**Keywords**: Cancer; cancer control; period survival; 5-year relative survival; Henan
+```
+
+
+## R Markdown {background-color="lightblue"}
+
+> R 通过一系列包实现了文学编程的主要功能。
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+- rmarkdown
+- knitr
+- bookdown
+- blogdown
+- thesisdown
+- posterdown
+- distill
+- xaringan
+- tinytex
+
+:::
+
+::: {.column width="70%"}
+
+```{r}
+knitr::include_graphics("images/rmd-packages.png")
+```
+
+:::
+
+::::
+
+
+## Pandoc
+
+> Pandoc是使用Haskell语言编写的一款跨平台、自由开源及命令行界面的标记语言转换工具，可实现不同标记语言间的格式转换。
+
+- HTML格式：包括XHTML，HTML5及HTML slide
+- 文字处理软件格式：包括docx、odt、OpenDocument XML
+- 电子书格式：包括EPUB（第2版及第3版）、FictionBook2
+- 技术文档格式：包括DocBook、GNU TexInfo、Groff manpages、Haddock
+- 页面布局格式：InDesign ICML
+- 大纲处理标记语言格式：OPML
+- TeX格式：包括LaTeX、ConTeXt、LaTeX Beamer
+- PDF格式：需要LaTeX支持
+- 轻量级标记语言格式：包括Markdown、reStructuredText、textile、Org-Mode、MediaWiki标记语言、AsciiDoc
+- 自定义格式：可使用lua自定义转换规则
+
+
+## Quarto 下一代 R Markdown
+
+<br>
+
+> Quarto® is an open-source scientific and technical publishing system built on Pandoc.
+
+<br>
+
+```{r}
+knitr::include_graphics("https://quarto.org/docs/get-started/hello/images/rstudio-qmd-how-it-works.png")
+```
+
+
+## Quarto特点
+
+- 它可以独立于R、Rstudio或者其他软件如python等编程或统计软件，支持在Macos、Linux、Windows系统运行；
+- Quarto继承了一些Rmd包的特点、如blogdown、bookdown、xaringan等；
+- 在生成website、blog、book、slides等各种格式中有了统一的语法，缩小了使用者的学习成本；
+- 支持的语言包括R、Python、Julia和Observable；
+- quarto有了新的文档格式，文档扩展名为“.qmd”, 代码块选项的形式有了变化。
+- 支持科技写作的特征，如公式、引用、交叉引用、图、表等。
+
+## 为什么要使用 Quarto / R Markdown ?
+
+```{mermaid}
+%%| label: fig-1
+%%| fig-cap: 报告撰写流程
+%%| fig-align: center
+flowchart LR
+  A[(数据清洗)] --> B(统计分析)
+  B --> C{结果初步评估}
+  C --> B
+  C --> D(统计制表)
+  D --> E[报告撰写]
+  E -- 发现不合理结果 --> B
+  E --> F[出版流程]
+  F --> G[专家意见]
+  G -- 建议重新统计 --> B
+  G -- 不需要重新统计 --> E
+  G --> H[正式出版]
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+:::{.callout-tip}
+
+## 可能存在的情形
+
+- 统计分析(SAS、R、SPSS、EXCEL)
+- 数据可视化展现(R、SAS、EXCEL)
+- 撰写报告(WORD、WPS、其它文字处理软件)
+- 图表交叉引用
+- 参考文献的引用(Zotero、Endnote、Mendley)
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+:::{.callout-tip}
+
+## 存在的问题
+
+- 统计过程与报告撰写的割裂
+- 存在重复性工作的可能 
+
+:::
+
+:::
+
+::::
+
+
+## 应用场景
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="30%"}
+- 科技论文撰写
+- 书籍编写
+- 幻灯片制作
+- 博客
+- 网站
+:::
+
+::: {.column width="70%"}
+
+```{r}
+knitr::include_url("https://www.chenq.site/qsight")
+```
+
+:::
+
+::::
+
+
+
+## 应用场景
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="30%"}
+- 科技论文撰写
+- 书籍编写
+- 幻灯片制作
+- 博客
+- 网站
+:::
+
+::: {.column width="70%"}
+
+```{r}
+knitr::include_url("https://www.chenq.site/slides/2023-5-11-system")
+```
+
+:::
+
+::::
+
+
+## 应用场景
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="30%"}
+- 科技论文撰写
+- 书籍编写
+- 幻灯片制作
+- 博客
+- 网站
+:::
+
+::: {.column width="70%"}
+
+```{r}
+knitr::include_graphics("images/paper.jpg")
+```
+
+:::
+
+::::
+
+
+## 应用场景
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="30%"}
+- 科技论文撰写
+- 书籍编写
+- 幻灯片制作
+- 博客
+- 网站
+:::
+
+::: {.column width="70%"}
+
+```{r}
+knitr::include_url("https://www.chenq.site/report/2021")
+```
+
+:::
+
+::::
+
+# 肿瘤登记报告的实际应用分享 {background-color="lightblue"}
+
+## Cancer Incidence in Five Continents-IARC
+
+### YAML元数据设置
+
+```yaml
+--- 
+title: "河南省《五大洲发病率第12卷》数据上报审核程序"
+subtitle: "登记处："
+author: 
+- "2013-2017年"
+- "Qiong Chen @ Henan Cancer Center/Henan Cancer Hospital"
+date: ""
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    number_section: TRUE
+    highlight: github
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+```
+
+## Cancer Incidence in Five Continents-IARC
+
+### 代码块
+
+```{r}
+#| eval: false
+#| echo: true
+knitr::opts_chunk$set(
+	echo = FALSE,
+	warning = FALSE,
+	fig.width=10,
+	fig.height=8
+)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+library(reshape2)
+library(ggplot2)
+library(tidyr)
+
+period<-20132017
+
+#率的统计学检验
+report <- report%>%
+  group_by(year,sex,code)%>%
+  mutate(y_ics2000=sum(ics2000)/n(),
+         a_ics2000=sum((ics2000-sum(ics2000)/n())^2/var_ics2000)/(n()-1),
+         a_ics2000=ifelse(a_ics2000<=1,1,a_ics2000),
+         z_ics2000=(ics2000-sum(ics2000)/n())^2/(a_ics2000*var_ics2000),
+        
+         y_dcs2000=sum(dcs2000)/n(),
+         a_dcs2000=sum((dcs2000-sum(dcs2000)/n())^2/var_dcs2000)/(n()-1),
+         a_dcs2000=ifelse(a_dcs2000<=1,1,a_dcs2000),
+         z_dcs2000=(dcs2000-sum(dcs2000)/n())^2/(a_dcs2000*var_dcs2000),
+         
+         y_iws85=sum(iws85)/n(),
+         a_iws85=sum((iws85-sum(iws85)/n())^2/var_iws85)/(n()-1),
+         a_iws85=ifelse(a_iws85<=1,1,a_iws85),
+         z_iws85=(iws85-sum(iws85)/n())^2/(a_iws85*var_iws85),
+         
+         y_dws85=sum(dws85)/n(),
+         a_dws85=sum((dws85-sum(dws85)/n())^2/var_dws85)/(n()-1),
+         a_dws85=ifelse(a_dws85<=1,1,a_dws85),
+         z_dws85=(dws85-sum(dws85)/n())^2/(a_dws85*var_dws85),
+         
+         mvn=b5+b6+b7,
+         p1=(b5+b6+b7)/fhj,
+         p=sum(mvn)/sum(fhj),
+         a_mv=sum((mvn-p*fhj)^2/(fhj*p1*(1-p1)))/(n()-1),
+         z_mv=(mvn-p*fhj)^2/(a_mv*p1*(1-p1)*fhj),
+        
+         a_mi=sum(shj)/sum(fhj),
+         aa_mi=sum((shj-a_mi*fhj)^2/((shj+fhj)*a_mi))/(n()-1),
+         z_mi=(shj-a_mi*fhj)^2/(aa_mi*(shj+fhj)*a_mi),
+         
+
+diff2_ics2000=ifelse(z_ics2000>3.84 & ics2000/y_ics2000>1, paste0(">","(",round(ics2000/y_ics2000,1),")"),
+              ifelse(z_ics2000>3.84 & ics2000/y_ics2000<1, paste0("<","(",round(ics2000/y_ics2000,1),")"),"")),
+diff2_dcs2000=ifelse(z_dcs2000>3.84 & dcs2000/y_dcs2000>1, paste0(">","(",round(dcs2000/y_dcs2000,1),")"),
+              ifelse(z_dcs2000>3.84 & dcs2000/y_dcs2000<1, paste0("<","(",round(dcs2000/y_dcs2000,1),")"),"")),
+diff2_iws85=ifelse(z_iws85>3.84 & iws85/y_iws85>1, paste0(">","(",round(iws85/y_iws85,1),")"),
+            ifelse(z_iws85>3.84 & iws85/y_iws85<1, paste0("<","(",round(iws85/y_iws85,1),")"),"")),
+diff2_dws85=ifelse(z_dws85>3.84 & dws85/y_dws85>1, paste0(">","(",round(dws85/y_dws85,1),")"),
+            ifelse(z_dws85>3.84 & dws85/y_dws85<1, paste0("<","(",round(dws85/y_dws85,1),")"),"")),
+         
+         diff_mi=ifelse(z_mi>3.84 & mi/a_mi>1,paste0(">","(",round(mi/a_mi,1),")"),
+                        ifelse(z_mi>3.84 & mi/a_mi<1,paste0("<","(",round(mi/a_mi,1),")"),"")),
+         diff_mv=ifelse(z_mv>3.84 & p1/p>1,paste0(">","(",round(p1/p,1),")"),
+                        ifelse(z_mv>3.84 & p1/p<1,paste0("<","(",round(p1/p,1),")"),""))
+         
+         )%>%
+  ungroup()%>%
+  select(-a_ics2000,-z_ics2000,-a_dcs2000,-z_dcs2000,-y_iws85,-a_iws85,-z_iws85,-y_dws85,-a_dws85,-z_dws85,-mvn,-a_mv,-z_mv,-aa_mi,-z_mi)
+
+
+
+quality <- haven::read_sas("Y:/CanReg/statistic/code/create_report/codedata/quality.sas7bdat")
+quality <- quality %>% mutate(city=ifelse(city==0,2,1),city=as.character(city))
+site <- unique(registry[registry$name==state,c("areacode")]$areacode)
+
+#levels <- c(110,104,103,106,112,105,113,120,115,116,119,122)
+#labels <- c("肺","胃","食管","肝","乳房","结直肠","宫颈","甲状腺","卵巢","前列腺","脑","白血病")
+
+levels=c(122,121,120,119,113,112,105,103,106,104,110,62)
+labels=c("白血病","淋巴瘤","甲状腺","脑","宫颈","乳房","结直肠","食管","肝","胃","肺","所有部位")
+
+
+years<-report[report$areacode==site&!(report$year%in%c("20132017","20182022")),c("year")]$year
+max<-as.numeric(max(years))
+min<-as.numeric(min(years))
+caption2<-paste0("图中>(O/E)或<(O/E)表示登记处指标与同期河南省各登记处的平均值相比具有统计学意义\n(O/E)表示登记处指标与平均值指标的比值")
+
+
+pop <- report%>%filter(areacode==site,sex=="合计",code==62,year=="2017")%>%select(rhj)
+pop <-pop$rhj
+
+mv <- report%>%filter(areacode==site,sex=="合计",code==62,year=="20132017")%>%select(mv)
+mv <-mv$mv
+
+mi <- report%>%filter(areacode==site,sex=="合计",code==62,year=="20132017")%>%select(mi)
+mi <-mi$mi
+
+cr_color_block <- function() {
+  theme_classic()+
+  theme(
+    legend.title= element_blank(),
+    legend.position= "top",
+    strip.text= element_text(size=10,face="bold.italic"),
+    strip.background= element_rect(color="white",size=0),
+    axis.line= element_blank(),
+    axis.ticks= element_blank(),
+    axis.title= element_blank(),
+    axis.text= element_text(size=11,face="bold.italic"),
+    axis.text.x= element_text(size=11,face="bold.italic",angle = 90),
+    plot.title= element_text(face="bold", size=14, hjust = 0.5),
+    plot.subtitle = element_text(face="bold",size=10,hjust=0.5),
+    plot.caption = element_text(size=8)
+  )
+}
+
+
+cr_grid <- function() {
+  theme_light()+
+  theme(
+    legend.title= element_blank(),
+    legend.position= "bottom",
+    strip.text= element_text(size=10,face="bold.italic"),
+    strip.background= element_rect(color="white",size=0),
+    axis.line.y= element_blank(),
+    axis.ticks.y= element_blank(),
+    axis.title= element_blank(),
+    axis.text= element_text(size=9,face="bold.italic"),
+    plot.title= element_text(face="bold", size=14, hjust = 0.5),
+    plot.subtitle=element_text(face="bold.italic",size=12,hjust=0.5),
+    # add border 1)
+    panel.border = element_rect(colour = "blue", fill = NA, linetype = 2),
+    # color background 2)
+    panel.background = element_rect(fill = "aliceblue"),
+    # modify grid 3)
+    panel.grid.major.x = element_line(colour = "steelblue", linetype = 3, size = 0.5),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y =  element_line(colour = "steelblue", linetype = 3, size = 0.5),
+    panel.grid.minor.y = element_blank()
+  )
+}
+
+```
+
+## Cancer Incidence in Five Continents-IARC
+
+### 代码块
+
+```{r}
+#| eval: false
+#| echo: true
+for (i in min:max) {
+ report %>%
+  filter(areacode==site, code==62, !(sex=="合计"), year==i)%>%
+  select(year,sex,r0:r85)%>%
+  gather("agegrp","rks",-year,-sex)%>%
+  mutate(agegrp=as.numeric(gsub("[^0-9]", "", agegrp)),
+         rks=ifelse(sex=="男性",-rks,rks),
+         agegrp=factor(agegrp,labels = c("0","1-4","5-9","10-14","15-19","20-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84","85+")))%>%
+  group_by(sex)%>%
+  mutate(rks=round(rks/sum(rks),2),
+         rks=ifelse(sex=="男性",-rks,rks))%>%
+  ggplot(aes(x=factor(agegrp),y=rks,fill=sex)) +
+  geom_bar(stat = "identity",position = "identity",color="black",size=0.25)+
+  coord_flip()+
+  theme_classic()+
+  xlab("")+
+  ylab("")+
+  scale_y_continuous(limits = c(-0.12,0.12),breaks=seq(-0.12,0.12,0.02),labels = function(x) paste0(abs(x) * 100, '%'))+
+  labs(title="历年人口金字塔变化情况",subtitle=paste(i))+
+  theme(legend.position = c(0.1,0.9),
+        legend.title = element_blank(),
+        strip.text = element_text(size=10, face="bold.italic"),
+        strip.background = element_rect(color="white", size=0),
+        axis.text=element_text(size=10),
+        axis.title=element_text(size=12, face="bold"),
+        plot.title = element_text(face="bold", size=14, hjust = 0.5),
+        plot.subtitle=element_text(face="bold",size=13,hjust=0.8,colour="tomato"))->p
+  plot(p)
+}
+
+```
+
+## Cancer Incidence in Five Continents-IARC
+
+### Markdown文本
+
+```md
+# 基本情况介绍
+
+肿瘤登记处拟上报至年肿瘤登记数据至五大洲发病率第12卷。
+
+河南省肿瘤登记处按照《五大洲发病率》收录数据审核标准对河南省各登记处拟上报年份范围的数据质量进行了图形化展示，各登记处可根据审核结果完善核实本登记处数据！
+
+>本结果分如下几个部分：
+
+>1. 基本情况介绍 
+>1. 人口数据审核
+>1. 总体癌症发病死亡情况
+>1. 主要部位癌症发病死亡情况
+>1. 年龄别率
+>1. 儿童肿瘤发病率/死亡率
+>1. 主要质量控制指标情况(登记癌种数、MV%、M:I、DCO%)
+
+# 人口数据审核
+
+>人口数据质量对于肿瘤登记数据质量至关重要，本程序对于人口数据的审核从**人口总数**、**人口性别比例**、以>及**人口金字塔**等三个方面进行。
+
+## 人口总数变化情况
+
+```
+
+## Cancer Incidence in Five Continents-IARC
+
+```{r}
+knitr::include_url("https:www.chenq.site/slides/2023-5-16-canreg-report/example.html")
+```
+
+
+
+
+
+

@@ -29,7 +29,6 @@ crossref:
   fig-prefix: 图
 title-slide-attributes:
   data-background-color: "lightblue"
-
 ---
 
 

@@ -1,23 +1,34 @@
 ---
-title: "科技写作，我选择使用Quarto?"
-subtitle: 从 markdown 到 Rmarkdown 再到 quarto
-author: "Qiong Chen"
-date: 2022-12-10
-categories: ["R语言基础"]
-from: markdown+emoji
-title-slide-attributes:
-    data-background-image: ../theme-images/slides-body-hospital.jpeg
-    data-background-size: contain
-    data-background-opacity: "0.5"
-format:
+title: "恶性肿瘤监测数据的分析与利用"
+subtitle: "从数据收集到出版《年报》"
+author: "👨‍⚕️陈琼，博士，副主任医师"
+date: 2023-4-20
+date-modified: last-modified
+date-format: "dddd MMM D, YYYY"
+institute: "🏥河南省癌症中心\n河南省肿瘤医院"
+format: 
   revealjs:
+    theme: [custom.scss]
+    slide-number: true
     smaller: true
-    logo: logo-hospital.png
-    footer: "Powered by Quarto"
-    theme: [sky, custom.scss]
-    transition: slide
-    transition-speed: slow
-image: rmd-packages.png
+    scrollable: true
+    footer: "河南省人群肿瘤登记"
+    #header-logo: logo.gif
+    #sc-sb-title: h1
+    subtitle-as-header: true
+filters:
+  - reveal-header
+slide-level: 2
+title-slide-style: pandoc
+#number-sections: true
+crossref:
+  fig-title: 图     
+  tbl-title: 表     
+  #title-delim: ""
+  tbl-prefix: 表
+  fig-prefix: 图
+title-slide-attributes:
+  data-background-color: "lightblue"
 ---
 
 ## 你是怎么写论文的?

@@ -160,7 +160,7 @@ knitr::include_graphics("./images/map.png")
 ::: {.column width="33%"}
 #### 肿瘤上报范围(ICD10)
 
--   C00-C93
+-   C00-C97
 -   D32-D33
 -   D42-D43
 -   D45-D47

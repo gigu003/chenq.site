@@ -7,6 +7,7 @@ project:
     - /fonts/
     - author.png
     - /qsight/qsightpic.jpeg
+    - /slides/2023-5-16-canreg-report/example.html
 
 website:
   title: "普癌新声"
