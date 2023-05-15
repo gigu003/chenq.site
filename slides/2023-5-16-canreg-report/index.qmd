@@ -740,6 +740,9 @@ knitr::include_graphics("images/rmd-packages.png")
 
 > Pandoc是使用Haskell语言编写的一款跨平台、自由开源及命令行界面的标记语言转换工具，可实现不同标记语言间的格式转换。
 
+
+::: {style="font-size: 70%;"}
+
 - HTML格式：包括XHTML，HTML5及HTML slide
 - 文字处理软件格式：包括docx、odt、OpenDocument XML
 - 电子书格式：包括EPUB（第2版及第3版）、FictionBook2
@@ -750,6 +753,9 @@ knitr::include_graphics("images/rmd-packages.png")
 - PDF格式：需要LaTeX支持
 - 轻量级标记语言格式：包括Markdown、reStructuredText、textile、Org-Mode、MediaWiki标记语言、AsciiDoc
 - 自定义格式：可使用lua自定义转换规则
+
+:::
+
 
 
 ## Quarto 下一代 R Markdown
@@ -1176,11 +1182,502 @@ for (i in min:max) {
 ## Cancer Incidence in Five Continents-IARC
 
 ```{r}
-knitr::include_url("https:www.chenq.site/slides/2023-5-16-canreg-report/example.html")
+
+knitr::include_url("https:www.chenq.site/slides/2023-5-16-canreg-report/example.html",height = "600px")
 ```
 
+## Cancer Incidence in Five Continents-IARC
+
+### 报告输出的批量化
+
+```{r}
+#| eval: false
+#| echo: true
+
+###五大洲数据审核程序#
+library(dplyr)
+library(RODBC)
+state.name<-c("开封市祥符区","洛阳市城区","孟津县","新安县","栾川县","嵩县","汝阳县",
+              "宜阳县","偃师市","鲁山县","林州市","鹤壁市城区","辉县市","濮阳市华龙区",
+              "濮阳县","漯河市郾城区","漯河市召陵区","漯河市源汇区","三门峡市湖滨区","方城县",
+              "内乡县","睢县","虞城县","罗山县","沈丘县","郸城县","西平县","济源市")
+
+db<-file.path("../create_report/Codedata/code.mdb") 
+channel<-odbcConnectAccess2007(db)
+data<-sqlFetch(channel,"registry")
+data1<-data%>%filter(!(is.na(CI512)))
+
+report<-haven::read_sas("../create_report/tmpdata/report.sas7bdat")
+pro<-report%>%filter(name %in% c("全省"))
+report<-report%>%filter((name %in% state.name))
+registry<- report%>%
+  select(areacode,name)%>%
+  filter(!(substr(areacode,1,1)=="9"))%>%
+  distinct(.keep_all = TRUE)
+
+for (state in state.name) {
+  areacode<-registry[registry$name==state,c("areacode")]$areacode
+  dir.create(paste0("./Output/CI5check/",areacode,state))
+  rmarkdown::render(
+    input = './Rmd_template/CI5check.Rmd',
+    output_file = 'index.html',
+    output_dir = paste0("./Output/CI5check/",areacode,state)
+  )
+}
+```
+
+## Cancer Incidence in Five Continents-IARC
+
+### 报告输出的批量化
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+knitr::include_graphics("images/list.png")
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+knitr::include_graphics("images/list2.png")
+```
+
+:::
+
+::::
+
+
+## 基于bookdown撰写《肿瘤登记年报》
+
+### _bookdown.yml
+
+```{r}
+#| eval: false
+#| echo: true
+book_filename: bookdown
+clean: [packages.bib, bookdown.bbl]
+delete_merged_file: true
+new_session: true
+language:
+  label:
+    fig: "图 "
+    tab: "表 "
+  ui:
+    edit: "编辑"
+    chapter_name: ["第 ", " 章"]
+```
+
+## 基于bookdown撰写《肿瘤登记年报》
+
+### _output.yml
+
+```{r}
+#| eval: false
+#| echo: true
+bookdown::gitbook:
+  css: css/style.css
+  config:
+    toc:
+      collapse: none
+      before: |
+        <li><a href="./">2021河南省肿瘤登记年报</a></li>
+      after: |
+        <li><a href="https://chenq.site" target="blank">Qiong Chen</a></li>
+    search: yes
+    sharing:
+      github: yes
+      weibo: yes
+bookdown::markdown_document2:
+  base_format: officedown::rdocx_document
+  lists:
+    ol.style: Default ol
+    ul.style: Default ul
+  tables:
+    conditional:
+      first_row: true
+      first_column: true
+      last_row: false
+      last_column: false
+      no_hband: false
+      no_vband: true
+```
+
+## 基于bookdown撰写《肿瘤登记年报》
+### yaml元数据
+
+```yaml
+--- 
+title: "2022河南省肿瘤登记年报"
+author: "主编 张建功 张韶凯"
+date: 2022-4-1
+output:
+  html_document:
+    df_print: paged
+  bookdown::word_document2: 
+    toc: yes
+    reference_docx: "./data/format.docx"
+  pdf_document: default
+always_allow_html: yes
+bibliography:
+- book.bib
+- packages.bib
+description: 河南省肿瘤登记年报
+documentclass: ctexbook
+colorlinks: yes
+site: bookdown::bookdown_site
+biblio-style: apalike
+---
+```
+
+## 基于bookdown撰写《肿瘤登记年报》
+### 报告文本撰写
 
 
 
+:::: {.columns}
+
+::: {.column width="30%"}
+
+- index.Rmd
+- 01summary.Rmd
+- 02-method.Rmd
+- 03-quality.Rmd
+- 04-total_cancer.Rmd
+- 05-eachsite.Rmd
+
+:::
+
+::: {.column width="70%"}
+
+```{r}
+knitr::include_graphics("images/page.jpg")
+```
+
+:::
+
+::::
+
+## 基于bookdown撰写《肿瘤登记年报》
+### 图表批量生成
+
+```{r}
+#| eval: false
+#| echo: true
+
+#####
+# 年度数据审核##
+#####
+
+library(dplyr)
+library(reshape2)
+require(ggplot2)
+library(ggsci)
+library(cowplot)
+library(stringr)
+library(ggpubr)
+library(extrafont)
+#font_import() # 导入系统中已经安装的字体，包括中文字体
+# 恢复默认的主题设置
+loadfonts() # 加载已经导入的字体
+#font <- "SimHei" # 指定中文字体，这里使用黑体（SimHei）
+theme_set(theme_bw(base_family = "STKaiti"))
 
 
+
+####
+#生成第五章各癌种年龄别率图#
+###
+
+age_specific_rate <- report%>%
+  filter(city=="33",code>=101&code<=122|code==62)%>%
+  select(areacode,sex,code,icd,by,i0:i85,d0:d85)%>%
+  melt(id.vars=c("areacode","sex","code","icd","by"),
+       variable.name = "type",
+       value.name="rate") %>%
+  mutate(order=code-100,
+         age=as.numeric(ifelse(substr(type,1,1)=="i",gsub("i","",type),gsub("d","",type))),
+         type=ifelse(substr(type,1,1)=="i","incidence","mortality"))
+
+age_specific_rate2<-age_specific_rate%>%
+  filter(code==62)%>%
+  mutate(sex=ifelse(areacode=="510000",paste0("城市",sex),
+                    ifelse(areacode=="520000",paste0("农村",sex),sex)))%>%
+  filter(!(areacode=="500000"))%>%
+  mutate(areacode="530000")
+
+
+age_specific_rate<-age_specific_rate%>%
+  filter(!((code %in% 112:115)&(sex %in% c("合计","男性"))),!(code==116&sex%in%c("合计","女性")))
+
+Age_specific_rate<-rbind(age_specific_rate,age_specific_rate2)%>%
+  mutate(order=ifelse(order==-38,0,order))%>%
+  filter(!(sex %in% c("城市合计","农村合计")))
+
+
+for (i in 0:22){
+  plot <- Age_specific_rate[Age_specific_rate$order==i,]
+  if (i %in% c(12:16)){
+    ct <- plot%>%mutate(areacode=factor(areacode,labels =c("全省","城市","农村")))%>%group_by(type)%>%group_split()
+  } else {
+    ct <- plot%>%group_by(type,areacode)%>%group_split()
+  }
+
+  icd<-plot[1,c("icd")]
+
+  p<- lapply(ct,function(x) {
+    type<-x[1,c("type")]
+    if (i %in% c(12:16)){
+      p<-ggplot(x,aes(x=age,y=rate,group=areacode))+geom_line(aes(colour=areacode),size=1.2)
+    } else {
+      p<-ggplot(x,aes(x=age,y=rate,group=sex))+geom_line(aes(colour=sex),size=1.2)
+    }
+    p<-p+scale_x_continuous(breaks = c(0,10,20,30,40,50,60,70,80))+
+      theme_classic()+
+      xlab("年龄(岁)")+
+      ylab(ifelse(type=="incidence",expression(paste("年龄别发病率（1/", 10^5,")")),expression(paste("年龄别死亡率（1/", 10^5,")"))))+
+      scale_color_lancet()+
+      theme(
+        text=element_text(family = "STKaiti"),
+        legend.position=c(0.2,0.8),
+        legend.title=element_blank(),
+        axis.text = element_text(face="bold"),
+        axis.title.y = element_text(face="bold"),
+        axis.line=element_line(size=0.5,colour="black"),
+        axis.ticks = element_line(size=0.5,colour="black"))
+
+  })
+
+  if (i==0){
+    p_com1<-plot_grid(p[[1]],p[[2]],p[[3]],p[[4]],labels=c("全省","城市","农村","城市和农村"),label_size=13,label_x=0.35,align="hv",ncol=2,nrow=2,byrow=TRUE)
+    p_com2<-plot_grid(p[[5]],p[[6]],p[[7]],p[[8]],labels=c("全省","城市","农村","城市和农村"),label_size=13,label_x=0.35,align="hv",ncol=2,nrow=2,byrow=TRUE)
+    loca2 <- paste("./images/Chapter4-","2.png",sep="")
+    loca3 <- paste("./images/Chapter4-","6.png",sep="")
+    ggsave(loca2,p_com1,width=8,height=6.6,device="png")
+    ggsave(loca3,p_com2,width=8,height=6.6,device="png")
+  } else if(i %in% c(12:16)){
+    p_comx<-plot_grid(p[[1]],p[[2]],labels=c("发病","死亡"), lable_size=13,label_x=0.35,ncol=2,nrow=1,align="hv")
+    loca <- paste("./images/Chapter5-",i,"-1.png",sep="")
+    ggsave(loca,p_comx,width=8,height=3.3,device="png")
+  }
+  else {
+    p_com<-plot_grid(p[[1]],p[[4]],p[[2]],p[[5]],p[[3]],p[[6]],labels=c("全省 发病","全省 死亡","城市 发病","城市 死亡","农村 发病","农村 死亡"),label_size=13,label_x=0.35,align="hv",ncol=2,nrow=3,byrow=TRUE)
+    #p_com<-add_sub(p_com, paste("ICD10:",icd),x=0.07, y=0,vjust=0,hjust=0)
+    loca <- paste("./images/Chapter5-",i,"-1.png",sep="")
+    ggsave(loca,p_com,width=8,height=10,device="png")
+  }
+}
+
+####
+#生成第五章各癌种不同地区发病率和死亡率顺位图#
+####
+
+area_rate <- report%>%
+  filter(!(city=="33"),code>=101&code<=122)%>%
+  select(areacode,city,name,sex,code,icd,by,ics2000,dcs2000)%>%
+  melt(id.vars=c("areacode","city","name","sex","code","icd","by"),
+       variable.name = "type",
+       value.name="rate") %>%
+  mutate(order=code-100,
+         city=ifelse(city==11,1,city),
+         type=ifelse(type=="ics2000","发病率","死亡率"),
+         rate=ifelse(sex=="男性",-rate,rate),
+         )%>%
+  filter(!((code %in% 112:115)& sex %in% c("合计","男性")),
+         !(code==116&sex%in%c("合计","女性")))
+
+#自定义主题
+theme_nb <- function(..., bg='white'){
+  theme_classic(...) +
+    theme(
+      text=element_text(family = "STKaiti"),
+      legend.position=c(0.7,0.1),
+      legend.title=element_blank(),
+      axis.line.y=element_blank(),
+      axis.title.y =element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.text.x = element_text(size=12),
+      axis.text.y = element_text(size=12),
+      legend.text = element_text(size=12),
+      axis.title.x =element_text(face="bold",size=14))
+}
+
+for (i in c(1:22)){
+  plot <- area_rate[area_rate$order==i,]
+  ct <- plot%>%group_by(city)%>%group_split()
+
+  icd<-plot[1,c("icd")]
+
+  if (i %in% c(1:11,17:22)) {
+    p<- lapply(ct,function(x) {
+      top_value <-  max(abs(x$rate))
+
+      xx <-x%>%filter(sex=="女性")%>%
+        arrange(type,rate)%>%
+        mutate(name=factor(name,unique(name)),type=factor(type,levels=c("死亡率","发病率")))
+      p2<-ggplot(data=xx,aes(y=name))+
+        geom_bar(aes(x=rate,fill=factor(type)),stat = "identity",position = "dodge")+
+        scale_fill_manual(values=c('#e31a1c','#4169E1'))+
+        scale_x_continuous(position = "top",limits=c(0,top_value))+
+        xlab(expression(paste("女性率（1/", 10^5,"）")))+
+        scale_y_discrete(position = "right")+
+        theme_nb()
+
+      xx <-x%>%filter(sex=="男性")%>%mutate(rate2=abs(rate))%>%arrange(type,rate2)%>%mutate(name=factor(name,unique(name)),type=factor(type,levels=c("死亡率","发病率")))
+      p1<-ggplot(data=xx,aes(x=name))+
+        geom_bar(aes(y=rate,fill=factor(type)),stat = "identity",position = "dodge")+
+        scale_fill_manual(values=c('#e31a1c','#4169E1'))+
+        scale_y_continuous(position = "right",limits=c(-top_value,0),labels=abs)+
+        ylab(expression(paste("男性率（1/", 10^5,"）")))+
+        coord_flip()+
+        theme_nb()+
+        theme(legend.position="none")
+      p3<-plot_grid(p1,p2,labels=c("",""),ncol=2)
+      return(p3)
+    })
+
+  } else {
+    #制作单性别癌种图
+    p<- lapply(ct,function(x) {
+      top_value <-  max(abs(x$rate))
+      xx <-x%>%mutate(rate2=abs(rate))%>%arrange(type,rate2)%>%mutate(name=factor(name,unique(name)),type=factor(type,levels=c("死亡率","发病率")))
+      px<-ggplot(data=xx,mapping = aes(y=name))+
+        geom_bar(mapping=aes(x=rate2,fill=factor(type)),stat = "identity",position = "dodge")+
+        scale_fill_manual(values=c('#e31a1c','#4169E1'))+
+        scale_x_continuous(position = "top",limits=c(0,top_value))+
+        scale_y_discrete(position = "left")+
+        xlab(expression(paste("中标率（1/", 10^5,"）")))+
+        theme_nb()
+      return(px)
+    })
+  }
+
+  loca2 <- paste("./images/Chapter5-",i,"-2.png",sep="")
+  loca3 <- paste("./images/Chapter5-",i,"-3.png",sep="")
+  ggsave(loca2,p[[1]],width=8,height=4,device="png")
+  ggsave(loca3,p[[2]],width=8,height=10,device="png")
+}
+
+
+
+####
+#生成第四章 前10肿瘤 顺位及构成图#
+####
+
+t1 <- report%>%
+  filter( city=="33",code>=101&code<=122)%>%
+  select(areacode,name,sex,code,icd,by,ihj,fcon)%>%
+  mutate(type="incidence")%>%
+  rename(rate=ihj,constitute=fcon)
+
+t2 <- report%>%
+  filter( city=="33",code>=101&code<=122)%>%
+  select(areacode,name,sex,code,icd,by,dhj,scon)%>%
+  mutate(type="mortality")%>%
+  rename(rate=dhj,constitute=scon)
+
+total_rank<-rbind(t1,t2)%>%
+  mutate(by=ifelse(code==110,"肺",
+                   ifelse(code==119,"脑",
+                          ifelse(code==105,"结直肠",
+                                 ifelse(code==107,"胆囊",
+                                        ifelse(code==117,"肾",
+                                               ifelse(code==121,"淋巴瘤",by)))))),
+         cate=paste0(by,"(",icd,")"),
+         cate=ifelse(code==121,"淋巴瘤",cate),
+         sex=factor(sex,levels=c("合计","男性","女性"),labels=c("合计","男性","女性")))
+
+
+mycolor<- c('#1f78b4','#a6cee3','#33a02c','#b2df8a','#e31a1c','#fb9a99','#ff7f00','#fdbf6f','#6a3d9a','#cab2d6','#ffff99')
+
+for (i in c("incidence","mortality")) {
+  for (j in c("全省","城市地区","农村地区")) {
+    plot <- total_rank[total_rank$type==i & total_rank$name==j,]
+    ct <- plot%>%group_by(sex)%>%group_split()
+    p<- lapply(ct,function(x) {
+
+      xx <-x%>%arrange(rate)%>%mutate(cate=factor(cate,unique(cate)))%>%slice(13:22)
+      yy<-ggplot(xx,aes(y=cate))+geom_bar(aes(x=rate),fill=ifelse(i=="incidence","#1f78b4","#e31a1c"),stat = "identity")+theme_void()+
+        scale_x_continuous(position = "top")+
+        xlab(ifelse(i=="incidence",expression(paste("发病率（1/", 10^5,")")),expression(paste("死亡率（1/", 10^5,")"))))+
+        scale_y_discrete(position = "left",labels=function(x) str_wrap(x, width=20))+
+        theme(
+          #plot.background = element_rect(fill="white",color="white"),
+          text=element_text(family = "STKaiti"),
+          axis.text.x = element_text(size=9),
+          axis.text.y = element_text(size=9),
+          axis.line.y=element_blank(),
+          axis.title.y =element_blank(),
+          axis.title.x =element_text(face="bold",size=12),
+          axis.ticks.y = element_blank()
+        )
+
+
+      xx <-xx%>%arrange(desc(constitute))%>%mutate(cate=factor(cate,unique(cate)))
+      xx2<-xx%>%mutate(constitute=round(100-sum(constitute),2))%>%
+        distinct(areacode,name,sex,constitute,type)%>%
+        mutate(cate="其它",code=62,by="其它",rate=50,icd="other")
+      xx<-rbind(xx,xx2)
+
+      zz <- ggplot(xx,aes(x="",y=constitute,fill=cate))+
+        geom_bar(width=1,stat="identity",color="white")+
+        coord_polar("y",start=0)+
+        theme_void()+
+        scale_fill_manual(values= mycolor)+
+        #geom_text(aes(x=1.2,label=as.character(constitute)),position = position_stack(vjust=0.5),size=2)+
+        theme(
+          #plot.background = element_rect(fill="white",color="white"),
+          text=element_text(family = "STKaiti"),
+          legend.title=element_blank(),
+          legend.text = element_text(size = 9),
+          legend.position ="right",
+          legend.direction = "vertical",
+          axis.title.x = element_blank(),
+          axis.title.y = element_blank(),
+          panel.border = element_blank(),
+          panel.grid=element_blank(),
+          plot.margin = unit(c(0,1,0,0), "lines"),
+          axis.ticks = element_blank(),
+          plot.title=element_text(size=14, face="bold")
+        )
+
+      com1<-plot_grid(yy,zz,ncol=2,labels=c("","构成"),label_x=0.2,label_y=0.2,label_size=12,rel_widths=c(1,1))
+      return(com1)
+    })
+
+    pp<-plot_grid(p[[1]],p[[2]],p[[3]],ncol=1,labels=c("合计","男性","女性"),label_size=13,label_x=0.45,align="hv")
+
+    kk<- ifelse(i=="incidence" & j=="全省",3,
+                ifelse(i=="incidence" & j=="城市地区",4,
+                       ifelse(i=="incidence" & j=="农村地区",5,
+                              ifelse(i=="mortality" & j=="全省",7,
+                                     ifelse(i=="mortality" & j=="城市地区",8,
+                                            ifelse(i=="mortality" & j=="农村地区",9,))))))
+
+    loca2 <- paste("./images/Chapter4-",kk,".png",sep="")
+    ggsave(loca2,pp,width=6,height=8,device = "png")
+
+  }}
+```
+
+## 基于bookdown撰写《肿瘤登记年报》
+### 图表批量生成
+
+```{r}
+knitr::include_graphics("images/pics.jpg")
+```
+
+## 基于bookdown撰写《肿瘤登记年报》
+
+```{r}
+knitr::include_url("https://www.chenq.site/report/2021/")
+```
+
+# 谢 谢 关 注 {background-color="lightblue"}
+
+陈 琼
+
+chenq08@126.com
