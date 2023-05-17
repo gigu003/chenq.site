@@ -1186,7 +1186,7 @@ for (i in min:max) {
 
 ```{r}
 
-knitr::include_url("https:www.chenq.site/slides/2023-5-16-canreg-report/example.html",height = "600px")
+knitr::include_url("https://www.chenq.site/slides/2023-5-16-canreg-report/example.html",height = "600px")
 ```
 
 ## Cancer Incidence in Five Continents-IARC
