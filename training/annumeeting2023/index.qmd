@@ -10,10 +10,15 @@ keywords:
   - 肿瘤登记
   - 培训会议
   - 专业人员
+filters:
+   - lightbox
+lightbox:
+  match: auto
 execute:
   echo: false
   message: false
   warning: false
+toc: true
 ---
 
 
@@ -70,4 +75,122 @@ cal %>%
 - [三门峡经验分享: 加强数据利用促进癌症防控政策实施](pdf/part3/p4.pdf)
 - [洛阳市经验分享: 多措并举促进高质量肿瘤登记市级全覆盖](pdf/part3/p5.pdf)
 - [林州市经验分享: 多源报告提升肿瘤登记数据质量](pdf/part3/p6.pdf)
+
+### 第四部分：各地市肿瘤登记工作进展
+
+- [郑州市](pdf/part4/p1.pdf)
+- [开封市](pdf/part4/p2.pdf)
+- [洛阳市](pdf/part4/p3.pdf)
+- [平顶山市](pdf/part4/p4.pdf)
+- [安阳市](pdf/part4/p5.pdf)
+- [鹤壁市](pdf/part4/p6.pdf)
+- [新乡市](pdf/part4/p7.pdf)
+- [焦作市](pdf/part4/p8.pdf)
+- [濮阳市](pdf/part4/p9.pdf)
+- [许昌市](pdf/part4/p10.pdf)
+- [漯河市](pdf/part4/p11.pdf)
+- [三门峡市](pdf/part4/p12.pdf)
+- [南阳市](pdf/part4/p13.pdf)
+- [商丘市](pdf/part4/p14.pdf)
+- [信阳市](pdf/part4/p15.pdf)
+- [周口市](pdf/part4/p16.pdf)
+- [驻马店市](pdf/part4/p17.pdf)
+- [济源市](pdf/part4/p18.pdf)
+
+
+## 会议总结
+
+
+### 会场情况
+
+2023河南省肿瘤登记年会参会人次为212人，参会单位有98家，会议报告34个，讨论人次43人(嘉宾9人)。
+
+```{r}
+#| label: fig-meetinng
+#| fig-cap: "会场总览"
+#| fig-subcap: 
+#|   - "会场总览-右侧"
+#|   - "会场总览-正面"
+#|   - "会场总览-近景"
+#|   - "会场总览-左侧"
+#| lightbox:
+#|   group: meeting
+#| layout-ncol: 2
+
+knitr::include_graphics("images/D5S_6543.jpg")
+knitr::include_graphics("images/D5S_6541.jpg")
+knitr::include_graphics("images/D5S_6544.jpg")
+knitr::include_graphics("images/D5S_6549.jpg")
+```
+
+### 2022年度肿瘤登记工作先进单位颁奖仪式
+
+**2022年度肿瘤登记工作杰出贡献奖（7项）**
+
+  - 林州市肿瘤医院
+  - 西平县疾病预防控制中心
+  - 偃师区疾病预防控制中心
+
+**2022年度肿瘤登记工作优秀奖（18项）**
+
+- 开封市祥符区疾病预防控制中心 
+- 洛阳市疾病预防控制中心 
+- 孟津县疾病预防控制中心 
+- 新安县疾病预防控制中心 
+- 栾川县疾病预防控制中心 
+- 嵩县疾病预防控制中心 
+- 汝阳县疾病预防控制中心 
+- 鲁山县疾病预防控制中心 
+- 鹤壁市人民医院 
+- 辉县市疾病预防控制中心 
+- 禹州市疾病预防控制中心 
+- 漯河市郾城区疾病预防控制中心 
+- 方城县疾病预防控制中心 
+- 内乡县疾病预防控制中心
+- 罗山县疾病预防控制中心 
+- 沈丘县疾病预防控制中心 
+- 郸城县疾病预防控制中心 
+- 济源市疾病预防控制中心
+
+**2022年度肿瘤登记工作进步奖（7项）**
+
+- 洛宁县疾病预防控制中心 
+- 伊川县疾病预防控制中心 
+- 濮阳市华龙区疾病预防控制中心 
+- 濮阳县疾病预防控制中心 
+- 三门峡市湖滨区疾病预防控制中心 
+- 南阳市卧龙区疾病预防控制中心 
+- 信阳市浉河区疾病预防控制中心
+
+**2022年度肿瘤登记工作先进个人**
+
+- 侯 凯(林州市肿瘤医院)
+- 秦延锦(偃师区疾病预防控制中心)
+- 闫云燕(洛阳市疾病预防控制中心)
+- 钞利娜(鹤壁市人民医院)
+- 代君君(漯河市疾病预防控制中心)
+- 刘彩霞(西平县疾病预防控制中心)
+- 李亚波(内乡县疾病预防控制中心)
+
+```{r}
+#| label: fig-award
+#| fig-cap: "2022年度肿瘤登记工作先进单位颁奖仪式"
+#| fig-subcap: 
+#|   - "肿瘤登记杰出贡献奖"
+#|   - "肿瘤登记工作优秀奖-1"
+#|   - "肿瘤登记工作优秀奖-2"
+#|   - "肿瘤登记工作优秀奖-3"
+#|   - "肿瘤登记工作进步奖"
+#|   - "肿瘤登记工作先进个人"
+#| lightbox:
+#|   group: award
+#| layout-ncol: 3
+
+knitr::include_graphics("images/D5S_6673.jpg")
+knitr::include_graphics("images/D5S_6655.jpg")
+knitr::include_graphics("images/D5S_6661.jpg")
+knitr::include_graphics("images/D5S_6668.jpg")
+knitr::include_graphics("images/D5S_6653.jpg")
+knitr::include_graphics("images/D5S_6687.jpg")
+```
 
