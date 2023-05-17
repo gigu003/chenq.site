@@ -55,10 +55,9 @@ cal %>%
 
 - 肿瘤登记处的建立与高质量发展
 
-```{=html}
-<iframe width="800" height="600" src="pdf/2-孙喜斌肿瘤登记处的建立与高质量发展.pdf" title="肿瘤登记处的建立与高质量发展"></iframe>
+```{r}
+knitr::include_url("https://www.chenq.site/training/pdf/part1/p2.pdf")
 ```
-
 
 ### 第二部分：肿瘤登记数据上报及管理平台
 
