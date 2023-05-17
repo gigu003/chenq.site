@@ -11,9 +11,8 @@ keywords:
   - 培训会议
   - 专业人员
 filters:
-   - lightbox
-lightbox:
-  match: auto
+  - lightbox
+lightbox: auto
 execute:
   echo: false
   message: false
@@ -117,10 +116,10 @@ cal %>%
 #|   group: meeting
 #| layout-ncol: 2
 
-knitr::include_graphics("images/D5S_6543.jpg")
-knitr::include_graphics("images/D5S_6541.jpg")
-knitr::include_graphics("images/D5S_6544.jpg")
-knitr::include_graphics("images/D5S_6549.jpg")
+knitr::include_graphics("images/D5S_6543.JPG")
+knitr::include_graphics("images/D5S_6541.JPG")
+knitr::include_graphics("images/D5S_6544.JPG")
+knitr::include_graphics("images/D5S_6549.JPG")
 ```
 
 ### 2022年度肿瘤登记工作先进单位颁奖仪式
@@ -186,11 +185,11 @@ knitr::include_graphics("images/D5S_6549.jpg")
 #|   group: award
 #| layout-ncol: 3
 
-knitr::include_graphics("images/D5S_6673.jpg")
-knitr::include_graphics("images/D5S_6655.jpg")
-knitr::include_graphics("images/D5S_6661.jpg")
-knitr::include_graphics("images/D5S_6668.jpg")
-knitr::include_graphics("images/D5S_6653.jpg")
-knitr::include_graphics("images/D5S_6687.jpg")
+knitr::include_graphics("images/D5S_6673.JPG")
+knitr::include_graphics("images/D5S_6655.JPG")
+knitr::include_graphics("images/D5S_6661.JPG")
+knitr::include_graphics("images/D5S_6668.JPG")
+knitr::include_graphics("images/D5S_6653.JPG")
+knitr::include_graphics("images/D5S_6687.JPG")
 ```
 
