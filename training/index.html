@@ -71,9 +71,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-address',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-date','listing-title','listing-address',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -212,6 +212,17 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </thead>
 <tbody class="list">
+<tr data-index="0" data-categories="肿瘤登记,会议" data-listing-date-sort="1683763200000" data-listing-file-modified-sort="1684296030863" data-listing-date-modified-sort="1684296030000" data-listing-reading-time-sort="0.76" data-listing-title-sort="2023年河南省肿瘤登记年度培训暨肿瘤登记专业人员能力提升培训班" data-listing-filename-sort="index.qmd">
+<td class="listing-date">
+2023-05-11
+</td>
+<td class="listing-title">
+<a href="../training/annumeeting2023/index.html" class="title">2023年河南省肿瘤登记年度培训暨肿瘤登记专业人员能力提升培训班</a>
+</td>
+<td class="listing-address">
+河南，郑州
+</td>
+</tr>
 </tbody>
 
 </table>

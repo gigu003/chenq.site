@@ -198,6 +198,8 @@
   },
   {
     "listing": "/training/index.html",
-    "items": []
+    "items": [
+      "/training/annumeeting2023/index.html"
+    ]
   }
 ]
