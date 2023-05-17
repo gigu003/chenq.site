@@ -49,6 +49,25 @@ cal %>%
 ```
 
 
+## 会议幻灯
+
+### 第一部分：肿瘤登记方法及进展
+
+- 肿瘤登记处的建立与高质量发展
+
+```{=html}
+<iframe width="800" height="600" src="pdf/2-孙喜斌肿瘤登记处的建立与高质量发展.pdf" title="肿瘤登记处的建立与高质量发展"></iframe>
+```
 
 
+### 第二部分：肿瘤登记数据上报及管理平台
+
+```{r}
+knitr::include_url("https://www.chenq.site/slides/2023-5-11-area-canreg")
+```
+
+
+```{r}
+knitr::include_url("https://www.chenq.site/slides/2023-5-11-system")
+```
 
