@@ -6,8 +6,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="陈琼">
+<meta name="dcterms.date" content="2023-05-16">
+<meta name="keywords" content="肿瘤登记, 年报, ">
+<meta name="description" content="2023年5月16日，我有幸与郑州大学流行病学的老师们交流学习，我也向大家汇报了河南省肿瘤登记工作的基本内容以及基于R Markdown/Quarto的可重复性报告在肿瘤登记工作中的应用，现在我把幻灯在这里跟大家分享，如果您发现有错误，请与我联系！">
 
-<title>培训</title>
+<title>普癌新声 - R语言促进高效率肿瘤登记报告</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +27,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../favicon.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../favicon.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,35 +64,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-address',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-<script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -101,15 +74,16 @@ ul.task-list li input[type="checkbox"] {
     </script>
     
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../styles.css">
-<link rel="alternate" type="application/rss+xml" title="普癌新声" href="index.xml"><meta property="og:title" content="培训">
-<meta property="og:description" content="">
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="普癌新声 - R语言促进高效率肿瘤登记报告">
+<meta property="og:description" content="2023年5月16日，我有幸与郑州大学流行病学的老师们交流学习，我也向大家汇报了河南省肿瘤登记工作的基本内容以及基于R Markdown/Quarto的可重复性报告在肿瘤登记工作中的应用，现在我把幻灯在这里跟大家分享，如果您发现有错误，请与我联系！">
+<meta property="og:image" content="https://www.chenq.site/slides/canreg/canreg-report-2023-5-16/cover.jpg">
 <meta property="og:site-name" content="普癌新声">
-<meta name="twitter:title" content="培训">
-<meta name="twitter:description" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="普癌新声 - R语言促进高效率肿瘤登记报告">
+<meta name="twitter:description" content="2023年5月16日，我有幸与郑州大学流行病学的老师们交流学习，我也向大家汇报了河南省肿瘤登记工作的基本内容以及基于R Markdown/Quarto的可重复性报告在肿瘤登记工作中的应用，现在我把幻灯在这里跟大家分享，如果您发现有错误，请与我联系！">
+<meta name="twitter:image" content="https://www.chenq.site/slides/canreg/canreg-report-2023-5-16/cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -119,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
@@ -130,12 +104,12 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../../index.html" rel="" target=""><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
 </i> 
  <span class="menu-text">Qsight博客</span></a>
   </li>  
@@ -150,23 +124,23 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Packages</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
 </i> 
  <span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../slides/" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="../../../slides/" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
 </i> 
  <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
  <span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -185,51 +159,52 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R语言促进高效率肿瘤登记报告</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">肿瘤登记</div>
+    <div class="quarto-category">年报</div>
+  </div>
+  </div>
 
-
-<section id="肿瘤登记培训" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="肿瘤登记培训">肿瘤登记培训</h2>
-<p>本模块分享肿瘤登记专业人员培训相关内容。</p>
-
-
-
-</section>
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-
-<table class="quarto-listing-table table table-striped">
-<thead>
-<tr>
-<th>
-日期
-</th>
-<th>
-主题
-</th>
-<th>
-地点
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-categories="肿瘤登记,会议" data-listing-date-sort="1683763200000" data-listing-file-modified-sort="1684317042792" data-listing-date-modified-sort="1684317042000" data-listing-reading-time-sort="1.52" data-listing-title-sort="2023年河南省肿瘤登记年度培训暨肿瘤登记专业人员能力提升培训班" data-listing-filename-sort="index.qmd">
-<td class="listing-date">
-2023-05-11
-</td>
-<td class="listing-title">
-<a href="../training/annumeeting2023/index.html" class="title">2023年河南省肿瘤登记年度培训暨肿瘤登记专业人员能力提升培训班</a>
-</td>
-<td class="listing-address">
-河南，郑州
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
+<div>
+  <div class="description">
+    2023年5月16日，我有幸与郑州大学流行病学的老师们交流学习，我也向大家汇报了河南省肿瘤登记工作的基本内容以及基于R Markdown/Quarto的可重复性报告在肿瘤登记工作中的应用，现在我把幻灯在这里跟大家分享，如果您发现有错误，请与我联系！
+  </div>
 </div>
-</div></main> <!-- /main -->
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>陈琼 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 16, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<iframe src="https://www.chenq.site/slides/2023-5-16-canreg-report/#/title-slide" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -477,7 +452,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="../qsight/index.xml">
+    <a class="nav-link" href="../../../qsight/index.xml">
       <i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
     </a>
