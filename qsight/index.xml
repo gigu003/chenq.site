@@ -703,8 +703,8 @@ font-style: italic;">## 按照地区分类计算各年龄生存概率</span></sp
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts12446"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts53000"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts19760"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts6649"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
