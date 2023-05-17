@@ -52,20 +52,22 @@ cal %>%
 
 ### 第一部分：肿瘤登记方法及进展
 
-- 肿瘤登记处的建立与高质量发展
-
-```{r}
-knitr::include_url("https://www.chenq.site/training/pdf/part1/p2.pdf")
-```
+- [肿瘤登记处的建立与高质量发展](pdf/part1/p2.pdf)
+- [肿瘤的分类与编码](pdf/part1/p5.pdf)
 
 ### 第二部分：肿瘤登记数据上报及管理平台
 
-```{r}
-knitr::include_url("https://www.chenq.site/slides/2023-5-11-area-canreg")
-```
+- [河南省2020年肿瘤登记数据质量及上报要求](https://www.chenq.site/slides/2023-5-11-area-canreg)
+- [河南省肿瘤登记信息平台介绍](https://www.chenq.site/slides/2023-5-11-system)
+- [南阳市肿瘤登记数据上报经验介绍](pdf/part2/p4.pdf)
 
+### 第三部分：肿瘤登记数据分析与利用
 
-```{r}
-knitr::include_url("https://www.chenq.site/slides/2023-5-11-system")
-```
+- [肿瘤登记数据分析与利用](pdf/part3/p1.pdf)
+- [医学论文写作规范与投稿流程](pdf/part3/p2.pdf)
+- [论文撰写中的常用统计分析方法及SPSS操作](pdf/part3/p3.pdf)
+- [R语言促进高效率肿瘤登记-基于R Markdown/  Quarto的可重复性报告撰写](https://www.chenq.site/slides/2023-5-16-canreg-report)
+- [三门峡经验分享: 加强数据利用促进癌症防控政策实施](pdf/part3/p4.pdf)
+- [洛阳市经验分享: 多措并举促进高质量肿瘤登记市级全覆盖](pdf/part3/p5.pdf)
+- [林州市经验分享: 多源报告提升肿瘤登记数据质量](pdf/part3/p6.pdf)
 
