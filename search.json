@@ -1337,6 +1337,27 @@
     "text": "3 其它相关R包\n\nforeign包 读取SAS XPORT,SPSS,和Stata数据\nreadstat13 读取和写入stata格式数据\nsas7bdat 读取SAS软件SAS7BDAT数据"
   },
   {
+    "objectID": "qsight/2023-05-23-import-all/index.html",
+    "href": "qsight/2023-05-23-import-all/index.html",
+    "title": "肿瘤登记数据上报经验分享：R语言批量导入导出excel数据",
+    "section": "",
+    "text": "随访数据要求上报两部分资料，第一部分是随访资料，第二部分是寿命表资料，并分别以FB和LT为表单名称保存到Excel中。\n\n\n要求上报建立登记处以来的所有癌症病例并随访至上一年末。\n具体上报变量如下：\n\nRegistr：登记编号\nID: 身份识别号码\nSex: 性别\nAge: 年龄\nBirthda: 出生日期\nInciden: 出生日期\nICDO3: ICDO3解剖学部位\nMorp: ICDO3形态学编码\nBeha: ICDO3行为编码\nGrad: ICDO3分级编码\nIcd10: ICD10编码\nDeathda: 死亡日期\nBasi: 诊断依据\nTrib: 民族\nMarri: 婚姻状态\nMult: 是否多原发\nLastcontact: 最后接触日期\nStatus: 生存状态\nCaus: 死亡原因\n\n\n\n\n要求上报与随访资料同年份的寿命表资料。具体变量如下：\n\n年份(Year):与随访数据库覆盖年份相同\n性别(Sex):合计=0，男性=1，女性=2\n年龄组(Age): 0, 1-, 5-, …, 80-, 85及以上， 用组段下限年龄值表示\n死亡数(Death):覆盖人群中的全死亡数\n人口数(Popu):户籍人口"
+  },
+  {
+    "objectID": "qsight/2023-05-23-import-all/index.html#当年发病死亡数据上报",
+    "href": "qsight/2023-05-23-import-all/index.html#当年发病死亡数据上报",
+    "title": "肿瘤登记数据上报经验分享：R语言批量导入导出excel数据",
+    "section": "2 当年发病死亡数据上报",
+    "text": "2 当年发病死亡数据上报\n当年发病死亡数据上报的内容要求与随访资料要求上报的变量是一样的，只不过要分为三部分：\n\n发病资料：发病日期为上报年份的所有癌症病例资料；\n死亡资料：死亡日期为要求上报年份的所有癌症病例资料；\n人口数据：要求上报年份登记处所有在地分年龄分性别户籍人口数。"
+  },
+  {
+    "objectID": "qsight/2023-05-23-import-all/index.html#存在问题及解决方法",
+    "href": "qsight/2023-05-23-import-all/index.html#存在问题及解决方法",
+    "title": "肿瘤登记数据上报经验分享：R语言批量导入导出excel数据",
+    "section": "3 存在问题及解决方法",
+    "text": "3 存在问题及解决方法\n河南省肿瘤登记采用网络直报信息管理系统进行日常数据的收集和管理，在进行数据上报的时候，我们需要把最新的数据分登记处按照上报格式导出就可以了，这个过程中也涉及了变量名的更改等。\n首先加载相关R语言包\n\nlibrary(dplyr)\nlibrary(openxlsx)\nlibrary(Hmisc)\nlibrary(haven)\n\n我们在code.mdb数据库的registry表中存储了相关登记处的信息，report2019这个变量标记了哪些登记处入选了河南省肿瘤登记年报。\n\n## 从code字典里筛选出2019年年报纳入的登记处\nregistrys &lt;- mdb.get(\"code.mdb\",tables = c(\"registry\")) %&gt;% \n  filter(report2019==1) %&gt;% \n  select(areacode,city,county)\nregistrys$areacode &lt;- as.character(registrys$areacode)\n\n通下面的程序，我们把选择需要上报的变量以及把上报变量更改为上报模板要求的变量名称。\n\n## 读取肿瘤登记数据\ncanreg &lt;- read_sas(\"tumorinfo.sas7bdat.zip\") %&gt;% \n1  rename_all(tolower) %&gt;%\n2  select(registr,indno,sex,age,birthda,inciden,topo,morp,beha,grad,autoicd10,deathda,basi,state,caus,dlc,areacode) %&gt;%\n3  rename(id=indno,icdo3=topo,icd10=autoicd10,status=state,lastcontact=dlc)\n\n\n1\n\n把所有变量名改为小写字母\n\n2\n\n选择需要上报的变量\n\n3\n\n把变量名改成上报模板要求的变量名\n\n\n\n\n我们通过下面的程序把寿命表数据转换成上报格式要求的形式。\n\n## 整理寿命表数据\nlifetable &lt;- read_sas(\"population.sas7bdat.zip\") %&gt;% \n  rename_all(tolower) %&gt;% \n  mutate(areacode = substr(addcode,1,6)) %&gt;% \n  filter(areacode %in% areacodes, year &gt;= 2008, year &lt;= 2021) %&gt;% \n  select(areacode,year,sex,type,p0:p85) %&gt;%\n  pivot_longer(cols = p0:p85, names_to = c(\"agegrp\"), values_to =c(\"count\")) %&gt;% \n  mutate(type=ifelse(type==1,\"pop\",\"death\")) %&gt;% \n  pivot_wider(names_from = c(\"type\"), values_from = c(\"count\")) %&gt;% \n  mutate(agegrp = as.numeric(gsub(\"[^0-9\\\\.]\", \"\", agegrp)),\n         sex=as.numeric(sex)) %&gt;% \n  arrange(areacode,year,sex,agegrp)\n\n下面的程序把随访资料和寿命表数据按照登记处的行政区划和名称保存成excel，虽然for显式循环运行效率有点低，但是对于几十个登记处的数据来说，运行速度还可以。如果数据量大的时候可以考虑使用lapply来批量导出。\n\nfor (areas in registrys$areacode){\n  fb &lt;- canreg %&gt;% filter(areacode==areas)\n  lt &lt;- lifetable %&gt;% filter(areacode==areas)\n  county &lt;- registrys[registrys$areacode==areas,c(\"county\")]\n  res &lt;- list(FB=fb, LT=lt)\n  write.xlsx(res,paste0(\"report/\",areas,county,\".xlsx\"),colNames = TRUE)\n}\n\n以上程序运行的结果见图 Figure 1 。\n\n\n\n\n\nFigure 1: 导出excel结果"
+  },
+  {
     "objectID": "qsight/2022-05-04-chasing-barchart/index.html",
     "href": "qsight/2022-05-04-chasing-barchart/index.html",
     "title": "R语言ggplot2包和gganimate包绘制动态追逐条形图(chasing barchart)",

@@ -10,7 +10,159 @@
 <atom:link href="https://www.chenq.site/qsight/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
 <generator>quarto-1.3.238</generator>
-<lastBuildDate>Sun, 09 Apr 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 23 May 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>肿瘤登记数据上报经验分享：R语言批量导入导出excel数据</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://www.chenq.site/qsight/2023-05-23-import-all/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="随访数据上报要求" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="随访数据上报要求"><span class="header-section-number">1</span> 随访数据上报要求</h2>
+<p>随访数据要求上报两部分资料，第一部分是<em>随访资料</em>，第二部分是<em>寿命表资料</em>，并分别以FB和LT为表单名称保存到Excel中。</p>
+<section id="随访资料" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="随访资料"><span class="header-section-number">1.1</span> 随访资料</h3>
+<p>要求上报建立登记处以来的所有癌症病例并随访至上一年末。</p>
+<p>具体上报变量如下：</p>
+<ul>
+<li>Registr：登记编号</li>
+<li>ID: 身份识别号码</li>
+<li>Sex: 性别</li>
+<li>Age: 年龄</li>
+<li>Birthda: 出生日期</li>
+<li>Inciden: 出生日期</li>
+<li>ICDO3: ICDO3解剖学部位</li>
+<li>Morp: ICDO3形态学编码</li>
+<li>Beha: ICDO3行为编码</li>
+<li>Grad: ICDO3分级编码</li>
+<li>Icd10: ICD10编码</li>
+<li>Deathda: 死亡日期</li>
+<li>Basi: 诊断依据</li>
+<li>Trib: 民族</li>
+<li>Marri: 婚姻状态</li>
+<li>Mult: 是否多原发</li>
+<li>Lastcontact: 最后接触日期</li>
+<li>Status: 生存状态</li>
+<li>Caus: 死亡原因</li>
+</ul>
+</section>
+<section id="寿命表数据" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="寿命表数据"><span class="header-section-number">1.2</span> 寿命表数据</h3>
+<p>要求上报与随访资料同年份的寿命表资料。具体变量如下：</p>
+<ul>
+<li>年份(Year):与随访数据库覆盖年份相同</li>
+<li>性别(Sex):合计=0，男性=1，女性=2</li>
+<li>年龄组(Age): 0, 1-, 5-, …, 80-, 85及以上， 用组段下限年龄值表示</li>
+<li>死亡数(Death):覆盖人群中的全死亡数</li>
+<li>人口数(Popu):户籍人口</li>
+</ul>
+</section>
+</section>
+<section id="当年发病死亡数据上报" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="当年发病死亡数据上报"><span class="header-section-number">2</span> 当年发病死亡数据上报</h2>
+<p>当年发病死亡数据上报的内容要求与随访资料要求上报的变量是一样的，只不过要分为三部分：</p>
+<ul>
+<li>发病资料：发病日期为上报年份的所有癌症病例资料；</li>
+<li>死亡资料：死亡日期为要求上报年份的所有癌症病例资料；</li>
+<li>人口数据：要求上报年份登记处所有在地分年龄分性别户籍人口数。</li>
+</ul>
+</section>
+<section id="存在问题及解决方法" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="存在问题及解决方法"><span class="header-section-number">3</span> 存在问题及解决方法</h2>
+<p>河南省肿瘤登记采用网络直报信息管理系统进行日常数据的收集和管理，在进行数据上报的时候，我们需要把最新的数据分登记处按照上报格式导出就可以了，这个过程中也涉及了变量名的更改等。</p>
+<p>首先加载相关R语言包</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(openxlsx)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(Hmisc)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;">library</span>(haven)</span></code></pre></div>
+</div>
+<p>我们在code.mdb数据库的registry表中存储了相关登记处的信息，report2019这个变量标记了哪些登记处入选了河南省肿瘤登记年报。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 从code字典里筛选出2019年年报纳入的登记处</span></span>
+<span id="cb2-2">registrys <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">mdb.get</span>(<span class="st" style="color: #20794D;">"code.mdb"</span>,<span class="at" style="color: #657422;">tables =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"registry"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;">filter</span>(report2019<span class="sc" style="color: #5E5E5E;">==</span><span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb2-4">  <span class="fu" style="color: #4758AB;">select</span>(areacode,city,county)</span>
+<span id="cb2-5">registrys<span class="sc" style="color: #5E5E5E;">$</span>areacode <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">as.character</span>(registrys<span class="sc" style="color: #5E5E5E;">$</span>areacode)</span></code></pre></div>
+</div>
+<p>通下面的程序，我们把选择需要上报的变量以及把上报变量更改为上报模板要求的变量名称。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy"><code class="sourceCode r"><span id="annotated-cell-3-1"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 读取肿瘤登记数据</span></span>
+<span id="annotated-cell-3-2">canreg <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read_sas</span>(<span class="st" style="color: #20794D;">"tumorinfo.sas7bdat.zip"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-3" class="code-annotation-target">  <span class="fu" style="color: #4758AB;">rename_all</span>(tolower) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-4" class="code-annotation-target">  <span class="fu" style="color: #4758AB;">select</span>(registr,indno,sex,age,birthda,inciden,topo,morp,beha,grad,autoicd10,deathda,basi,state,caus,dlc,areacode) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-5" class="code-annotation-target">  <span class="fu" style="color: #4758AB;">rename</span>(<span class="at" style="color: #657422;">id=</span>indno,<span class="at" style="color: #657422;">icdo3=</span>topo,<span class="at" style="color: #657422;">icd10=</span>autoicd10,<span class="at" style="color: #657422;">status=</span>state,<span class="at" style="color: #657422;">lastcontact=</span>dlc)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-annotation="1" data-code-lines="3" data-code-cell="annotated-cell-3">把所有变量名改为小写字母</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-annotation="2" data-code-lines="4" data-code-cell="annotated-cell-3">选择需要上报的变量</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-annotation="3" data-code-lines="5" data-code-cell="annotated-cell-3">把变量名改成上报模板要求的变量名</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>我们通过下面的程序把寿命表数据转换成上报格式要求的形式。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## 整理寿命表数据</span></span>
+<span id="cb3-2">lifetable <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read_sas</span>(<span class="st" style="color: #20794D;">"population.sas7bdat.zip"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;">rename_all</span>(tolower) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-4">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">areacode =</span> <span class="fu" style="color: #4758AB;">substr</span>(addcode,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">6</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-5">  <span class="fu" style="color: #4758AB;">filter</span>(areacode <span class="sc" style="color: #5E5E5E;">%in%</span> areacodes, year <span class="sc" style="color: #5E5E5E;">&gt;=</span> <span class="dv" style="color: #AD0000;">2008</span>, year <span class="sc" style="color: #5E5E5E;">&lt;=</span> <span class="dv" style="color: #AD0000;">2021</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-6">  <span class="fu" style="color: #4758AB;">select</span>(areacode,year,sex,type,p0<span class="sc" style="color: #5E5E5E;">:</span>p85) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb3-7">  <span class="fu" style="color: #4758AB;">pivot_longer</span>(<span class="at" style="color: #657422;">cols =</span> p0<span class="sc" style="color: #5E5E5E;">:</span>p85, <span class="at" style="color: #657422;">names_to =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"agegrp"</span>), <span class="at" style="color: #657422;">values_to =</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"count"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-8">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">type=</span><span class="fu" style="color: #4758AB;">ifelse</span>(type<span class="sc" style="color: #5E5E5E;">==</span><span class="dv" style="color: #AD0000;">1</span>,<span class="st" style="color: #20794D;">"pop"</span>,<span class="st" style="color: #20794D;">"death"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-9">  <span class="fu" style="color: #4758AB;">pivot_wider</span>(<span class="at" style="color: #657422;">names_from =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"type"</span>), <span class="at" style="color: #657422;">values_from =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"count"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-10">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">agegrp =</span> <span class="fu" style="color: #4758AB;">as.numeric</span>(<span class="fu" style="color: #4758AB;">gsub</span>(<span class="st" style="color: #20794D;">"[^0-9</span><span class="sc" style="color: #5E5E5E;">\\</span><span class="st" style="color: #20794D;">.]"</span>, <span class="st" style="color: #20794D;">""</span>, agegrp)),</span>
+<span id="cb3-11">         <span class="at" style="color: #657422;">sex=</span><span class="fu" style="color: #4758AB;">as.numeric</span>(sex)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-12">  <span class="fu" style="color: #4758AB;">arrange</span>(areacode,year,sex,agegrp)</span></code></pre></div>
+</div>
+<p>下面的程序把随访资料和寿命表数据按照登记处的行政区划和名称保存成excel，虽然for显式循环运行效率有点低，但是对于几十个登记处的数据来说，运行速度还可以。如果数据量大的时候可以考虑使用lapply来批量导出。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="cf" style="color: #003B4F;">for</span> (areas <span class="cf" style="color: #003B4F;">in</span> registrys<span class="sc" style="color: #5E5E5E;">$</span>areacode){</span>
+<span id="cb4-2">  fb <span class="ot" style="color: #003B4F;">&lt;-</span> canreg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">filter</span>(areacode<span class="sc" style="color: #5E5E5E;">==</span>areas)</span>
+<span id="cb4-3">  lt <span class="ot" style="color: #003B4F;">&lt;-</span> lifetable <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">filter</span>(areacode<span class="sc" style="color: #5E5E5E;">==</span>areas)</span>
+<span id="cb4-4">  county <span class="ot" style="color: #003B4F;">&lt;-</span> registrys[registrys<span class="sc" style="color: #5E5E5E;">$</span>areacode<span class="sc" style="color: #5E5E5E;">==</span>areas,<span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"county"</span>)]</span>
+<span id="cb4-5">  res <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">list</span>(<span class="at" style="color: #657422;">FB=</span>fb, <span class="at" style="color: #657422;">LT=</span>lt)</span>
+<span id="cb4-6">  <span class="fu" style="color: #4758AB;">write.xlsx</span>(res,<span class="fu" style="color: #4758AB;">paste0</span>(<span class="st" style="color: #20794D;">"report/"</span>,areas,county,<span class="st" style="color: #20794D;">".xlsx"</span>),<span class="at" style="color: #657422;">colNames =</span> <span class="cn" style="color: #8f5902;">TRUE</span>)</span>
+<span id="cb4-7">}</span></code></pre></div>
+</div>
+<p>以上程序运行的结果见图 Figure&nbsp;1 。</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-export" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://www.chenq.site/qsight/2023-05-23-import-all/files.jpg" class="img-fluid figure-img" width="879"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: 导出excel结果</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>数据处理</category>
+  <category>R</category>
+  <category>肿瘤登记</category>
+  <guid>https://www.chenq.site/qsight/2023-05-23-import-all/index.html</guid>
+  <pubDate>Tue, 23 May 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://www.chenq.site/qsight/2023-05-23-import-all/files.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>基于”periodR”包利用现时生存分析法计算人群癌症5年相对生存率</title>
   <dc:creator>陈琼</dc:creator>
@@ -703,8 +855,8 @@ font-style: italic;">## 按照地区分类计算各年龄生存概率</span></sp
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts25128"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts59878"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts59645"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts7800"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
@@ -4154,40 +4306,6 @@ font-style: italic;">## 建立for循环</span></span>
   <guid>https://www.chenq.site/qsight/2022-04-17-mv/index.html</guid>
   <pubDate>Sun, 17 Apr 2022 00:00:00 GMT</pubDate>
   <media:content url="https://www.chenq.site/qsight/2022-04-17-mv/namv.png" medium="image" type="image/png" height="104" width="144"/>
-</item>
-<item>
-  <title>我国发布首个肿瘤登记数据集标准</title>
-  <dc:creator>陈琼</dc:creator>
-  <link>https://www.chenq.site/qsight/2022-04-16-standard/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.chenq.site/qsight/2022-04-16-standard/cover.png" title="中国肿瘤数据集标准" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">中国肿瘤数据集标准</figcaption><p></p>
-</figure>
-</div>
-<p>我国恶性肿瘤疾病负担居高不下，防控形势严峻，而高质量的肿瘤登记数据是制定肿瘤防控政策、开展防控工作、评价防控效果的基础。20世纪50年代的林县开始了食管癌单病种的登记工作，来开了全国开展肿瘤登记工作的序幕。自2008年开始，中央转移支付地方项目经费开始对肿瘤登记工作进行经费支持，我国的肿瘤登记工作也开始进入迅速发展的时期，肿瘤登记覆盖的人口范围迅速增加。经过近60年的发展，肿瘤登记已经覆盖全国5.98亿人口，在肿瘤防控政策制定、防控效果评价等方面发挥越来越重要的作用。</p>
-<p>肿瘤登记工作也得到我国政府的高度重视，并在“健康中国行动-癌症防治行动”里对肿瘤登记工作提出了具体要求：实施癌症信息化行动，健全肿瘤登记制度，提高肿瘤登记覆盖范围，提升肿瘤登记数据质量，促进信息资源共享利用。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_e735d2b2ea28ae03d9c5f3e11274588f">
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-16-standard/author.png" class="img-fluid" width="790"></p>
-</div>
-</div>
-<p>为了提高肿瘤登记数据收集的质量，国家癌症中心组织全国多家单位起草并发布了《中国人群肿瘤登记数据集标准》，河南省肿瘤医院是参与起草该标准的单位之一。该标准规定了中国肿瘤登记数据集的元数据属性和数据元属性，主要用于指导中国肿瘤登记基本信息的采集、存储、共享以及信息系统的开发。此标准实践性和可操作性极强，将为肿瘤登记数据的及时性、准确性、有效性，提供强有力的技术支撑。</p>
-<p>下载链接：<a href="standard.pdf">肿瘤人群肿瘤登记数据集标准</a></p>
-
-
-
- ]]></description>
-  <category>肿瘤登记</category>
-  <category>文件</category>
-  <guid>https://www.chenq.site/qsight/2022-04-16-standard/index.html</guid>
-  <pubDate>Sat, 16 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-04-16-standard/cover.png" medium="image" type="image/png" height="127" width="144"/>
 </item>
 </channel>
 </rss>

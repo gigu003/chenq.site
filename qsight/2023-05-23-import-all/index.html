@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.238">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="陈琼">
+<meta name="dcterms.date" content="2023-05-23">
+<meta name="description" content="每年向国家肿瘤登记处上报当年肿瘤登记数据是每个省级肿瘤登记处的每年的工作内容，而当县区级登记处的数量很多的时候，数据整理工作变得很琐碎，这篇博文将向大家介绍如何处理肿瘤登记上报过程中的数据处理。">
+
+<title>普癌新声 - 肿瘤登记数据上报经验分享：R语言批量导入导出excel数据</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>
+    .quarto-title-block .quarto-title-banner,
+    .quarto-title-block .quarto-title-banner h1,
+    .quarto-title-block .quarto-title-banner h2,
+    .quarto-title-block .quarto-title-banner h3,
+    .quarto-title-block .quarto-title-banner h4,
+    .quarto-title-block .quarto-title-banner h5,
+    .quarto-title-block .quarto-title-banner h6
+    {
+      color: #c8c8c8;
+    }
+    </style>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c07d97fb46a2cbcc09d408cf3a281e08";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="普癌新声 - 肿瘤登记数据上报经验分享：R语言批量导入导出excel数据">
+<meta property="og:description" content="每年向国家肿瘤登记处上报当年肿瘤登记数据是每个省级肿瘤登记处的每年的工作内容，而当县区级登记处的数量很多的时候，数据整理工作变得很琐碎，这篇博文将向大家介绍如何处理肿瘤登记上报过程中的数据处理。">
+<meta property="og:image" content="https://www.chenq.site/qsight/2023-05-23-import-all/files.jpg">
+<meta property="og:site-name" content="普癌新声">
+<meta name="twitter:title" content="普癌新声 - 肿瘤登记数据上报经验分享：R语言批量导入导出excel数据">
+<meta name="twitter:description" content="每年向国家肿瘤登记处上报当年肿瘤登记数据是每个省级肿瘤登记处的每年的工作内容，而当县区级登记处的数量很多的时候，数据整理工作变得很琐碎，这篇博文将向大家介绍如何处理肿瘤登记上报过程中的数据处理。">
+<meta name="twitter:image" content="https://www.chenq.site/qsight/2023-05-23-import-all/files.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">普癌新声</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
+</i> 
+ <span class="menu-text">Qsight博客</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://diary.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
+</i> 
+ <span class="menu-text">随笔录</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel="" target=""><i class="bi bi-hexagon" role="img">
+</i> 
+ <span class="menu-text">Packages</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
+</i> 
+ <span class="menu-text">出版作品</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../slides/" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
+</i> 
+ <span class="menu-text">Slides</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">关于</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">肿瘤登记数据上报经验分享：R语言批量导入导出excel数据</h1>
+            <p class="subtitle lead">肿瘤登记数据上报实践</p>
+                  <div>
+        <div class="description">
+          <p>每年向国家肿瘤登记处上报当年肿瘤登记数据是每个省级肿瘤登记处的每年的工作内容，而当县区级登记处的数量很多的时候，数据整理工作变得很琐碎，这篇博文将向大家介绍如何处理肿瘤登记上报过程中的数据处理。</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">数据处理</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">肿瘤登记</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">作者</div>
+      <div class="quarto-title-meta-contents">
+               <p>陈琼 </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">发表时间</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 23, 2023</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">更新时间</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">May 23, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">本页内容</h2>
+   
+  <ul>
+  <li><a href="#随访数据上报要求" id="toc-随访数据上报要求" class="nav-link active" data-scroll-target="#随访数据上报要求"><span class="header-section-number">1</span> 随访数据上报要求</a>
+  <ul class="collapse">
+  <li><a href="#随访资料" id="toc-随访资料" class="nav-link" data-scroll-target="#随访资料"><span class="header-section-number">1.1</span> 随访资料</a></li>
+  <li><a href="#寿命表数据" id="toc-寿命表数据" class="nav-link" data-scroll-target="#寿命表数据"><span class="header-section-number">1.2</span> 寿命表数据</a></li>
+  </ul></li>
+  <li><a href="#当年发病死亡数据上报" id="toc-当年发病死亡数据上报" class="nav-link" data-scroll-target="#当年发病死亡数据上报"><span class="header-section-number">2</span> 当年发病死亡数据上报</a></li>
+  <li><a href="#存在问题及解决方法" id="toc-存在问题及解决方法" class="nav-link" data-scroll-target="#存在问题及解决方法"><span class="header-section-number">3</span> 存在问题及解决方法</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="随访数据上报要求" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="随访数据上报要求"><span class="header-section-number">1</span> 随访数据上报要求</h2>
+<p>随访数据要求上报两部分资料，第一部分是<em>随访资料</em>，第二部分是<em>寿命表资料</em>，并分别以FB和LT为表单名称保存到Excel中。</p>
+<section id="随访资料" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="随访资料"><span class="header-section-number">1.1</span> 随访资料</h3>
+<p>要求上报建立登记处以来的所有癌症病例并随访至上一年末。</p>
+<p>具体上报变量如下：</p>
+<ul>
+<li>Registr：登记编号</li>
+<li>ID: 身份识别号码</li>
+<li>Sex: 性别</li>
+<li>Age: 年龄</li>
+<li>Birthda: 出生日期</li>
+<li>Inciden: 出生日期</li>
+<li>ICDO3: ICDO3解剖学部位</li>
+<li>Morp: ICDO3形态学编码</li>
+<li>Beha: ICDO3行为编码</li>
+<li>Grad: ICDO3分级编码</li>
+<li>Icd10: ICD10编码</li>
+<li>Deathda: 死亡日期</li>
+<li>Basi: 诊断依据</li>
+<li>Trib: 民族</li>
+<li>Marri: 婚姻状态</li>
+<li>Mult: 是否多原发</li>
+<li>Lastcontact: 最后接触日期</li>
+<li>Status: 生存状态</li>
+<li>Caus: 死亡原因</li>
+</ul>
+</section>
+<section id="寿命表数据" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="寿命表数据"><span class="header-section-number">1.2</span> 寿命表数据</h3>
+<p>要求上报与随访资料同年份的寿命表资料。具体变量如下：</p>
+<ul>
+<li>年份(Year):与随访数据库覆盖年份相同</li>
+<li>性别(Sex):合计=0，男性=1，女性=2</li>
+<li>年龄组(Age): 0, 1-, 5-, …, 80-, 85及以上， 用组段下限年龄值表示</li>
+<li>死亡数(Death):覆盖人群中的全死亡数</li>
+<li>人口数(Popu):户籍人口</li>
+</ul>
+</section>
+</section>
+<section id="当年发病死亡数据上报" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="当年发病死亡数据上报"><span class="header-section-number">2</span> 当年发病死亡数据上报</h2>
+<p>当年发病死亡数据上报的内容要求与随访资料要求上报的变量是一样的，只不过要分为三部分：</p>
+<ul>
+<li>发病资料：发病日期为上报年份的所有癌症病例资料；</li>
+<li>死亡资料：死亡日期为要求上报年份的所有癌症病例资料；</li>
+<li>人口数据：要求上报年份登记处所有在地分年龄分性别户籍人口数。</li>
+</ul>
+</section>
+<section id="存在问题及解决方法" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="存在问题及解决方法"><span class="header-section-number">3</span> 存在问题及解决方法</h2>
+<p>河南省肿瘤登记采用网络直报信息管理系统进行日常数据的收集和管理，在进行数据上报的时候，我们需要把最新的数据分登记处按照上报格式导出就可以了，这个过程中也涉及了变量名的更改等。</p>
+<p>首先加载相关R语言包</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(Hmisc)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(haven)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>我们在code.mdb数据库的registry表中存储了相关登记处的信息，report2019这个变量标记了哪些登记处入选了河南省肿瘤登记年报。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="do">## 从code字典里筛选出2019年年报纳入的登记处</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>registrys <span class="ot">&lt;-</span> <span class="fu">mdb.get</span>(<span class="st">"code.mdb"</span>,<span class="at">tables =</span> <span class="fu">c</span>(<span class="st">"registry"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">filter</span>(report2019<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">select</span>(areacode,city,county)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>registrys<span class="sc">$</span>areacode <span class="ot">&lt;-</span> <span class="fu">as.character</span>(registrys<span class="sc">$</span>areacode)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>通下面的程序，我们把选择需要上报的变量以及把上报变量更改为上报模板要求的变量名称。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1"></a><span class="do">## 读取肿瘤登记数据</span></span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a>canreg <span class="ot">&lt;-</span> <span class="fu">read_sas</span>(<span class="st">"tumorinfo.sas7bdat.zip"</span>) <span class="sc">%&gt;%</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3"></a>  <span class="fu">rename_all</span>(tolower) <span class="sc">%&gt;%</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4"></a>  <span class="fu">select</span>(registr,indno,sex,age,birthda,inciden,topo,morp,beha,grad,autoicd10,deathda,basi,state,caus,dlc,areacode) <span class="sc">%&gt;%</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-5" class="code-annotation-target"><a href="#annotated-cell-3-5"></a>  <span class="fu">rename</span>(<span class="at">id=</span>indno,<span class="at">icdo3=</span>topo,<span class="at">icd10=</span>autoicd10,<span class="at">status=</span>state,<span class="at">lastcontact=</span>dlc)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-annotation="1" data-code-lines="3" data-code-cell="annotated-cell-3">把所有变量名改为小写字母</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-annotation="2" data-code-lines="4" data-code-cell="annotated-cell-3">选择需要上报的变量</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-annotation="3" data-code-lines="5" data-code-cell="annotated-cell-3">把变量名改成上报模板要求的变量名</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>我们通过下面的程序把寿命表数据转换成上报格式要求的形式。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="do">## 整理寿命表数据</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>lifetable <span class="ot">&lt;-</span> <span class="fu">read_sas</span>(<span class="st">"population.sas7bdat.zip"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">rename_all</span>(tolower) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">mutate</span>(<span class="at">areacode =</span> <span class="fu">substr</span>(addcode,<span class="dv">1</span>,<span class="dv">6</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">filter</span>(areacode <span class="sc">%in%</span> areacodes, year <span class="sc">&gt;=</span> <span class="dv">2008</span>, year <span class="sc">&lt;=</span> <span class="dv">2021</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">select</span>(areacode,year,sex,type,p0<span class="sc">:</span>p85) <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> p0<span class="sc">:</span>p85, <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"agegrp"</span>), <span class="at">values_to =</span><span class="fu">c</span>(<span class="st">"count"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="fu">mutate</span>(<span class="at">type=</span><span class="fu">ifelse</span>(type<span class="sc">==</span><span class="dv">1</span>,<span class="st">"pop"</span>,<span class="st">"death"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="fu">c</span>(<span class="st">"type"</span>), <span class="at">values_from =</span> <span class="fu">c</span>(<span class="st">"count"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-10"><a href="#cb3-10"></a>  <span class="fu">mutate</span>(<span class="at">agegrp =</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">"[^0-9</span><span class="sc">\\</span><span class="st">.]"</span>, <span class="st">""</span>, agegrp)),</span>
+<span id="cb3-11"><a href="#cb3-11"></a>         <span class="at">sex=</span><span class="fu">as.numeric</span>(sex)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-12"><a href="#cb3-12"></a>  <span class="fu">arrange</span>(areacode,year,sex,agegrp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>下面的程序把随访资料和寿命表数据按照登记处的行政区划和名称保存成excel，虽然for显式循环运行效率有点低，但是对于几十个登记处的数据来说，运行速度还可以。如果数据量大的时候可以考虑使用lapply来批量导出。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">for</span> (areas <span class="cf">in</span> registrys<span class="sc">$</span>areacode){</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  fb <span class="ot">&lt;-</span> canreg <span class="sc">%&gt;%</span> <span class="fu">filter</span>(areacode<span class="sc">==</span>areas)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  lt <span class="ot">&lt;-</span> lifetable <span class="sc">%&gt;%</span> <span class="fu">filter</span>(areacode<span class="sc">==</span>areas)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  county <span class="ot">&lt;-</span> registrys[registrys<span class="sc">$</span>areacode<span class="sc">==</span>areas,<span class="fu">c</span>(<span class="st">"county"</span>)]</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  res <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">FB=</span>fb, <span class="at">LT=</span>lt)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">write.xlsx</span>(res,<span class="fu">paste0</span>(<span class="st">"report/"</span>,areas,county,<span class="st">".xlsx"</span>),<span class="at">colNames =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-7"><a href="#cb4-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>以上程序运行的结果见图 <a href="#fig-export">Figure&nbsp;1</a> 。</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-export" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="files.jpg" class="img-fluid figure-img" width="879"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: 导出excel结果</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Handle positioning of the toggle
+      window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
+          }
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="gigu003/chenqcomments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright@Qiong Chen</div>   
+    <div class="nav-footer-center">豫ICP备2021032022号</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gigu003">
+      <i class="bi bi-github" role="img" aria-label="Qiong@GitHub">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="../../qsight/index.xml">
+      <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
