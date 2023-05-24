@@ -484,8 +484,6 @@ flowchart LR
 
 ::::
 
-
-
 ## 质量控制
 <br>
 
@@ -541,6 +539,112 @@ flowchart LR
 :::
 ::::
 
+## 质量控制 {auto-animate=true auto-animate-easing="ease-in-out"}
+### 完整性指标
+
+::: {.r-hstack}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 200px; height: 150px; margin: 10px;"}
+癌症患者
+:::
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #3fb618; width: 200px; height: 150px; margin: 10px;"}
+诊断患者
+:::
+
+::: {data-id="box3" auto-animate-delay="0.2" style="background: #e83e8c; width: 200px; height: 150px; margin: 10px;"}
+肿瘤登记
+:::
+:::
+
+## 质量控制 {auto-animate=true auto-animate-easing="ease-in-out"}
+### 完整性指标
+
+::: {.r-stack}
+::: {data-id="box1" style="background: #2780e3; width: 350px; height: 350px; border-radius: 200px;"}
+癌症患者
+:::
+
+::: {data-id="box2" style="background: #3fb618; width: 250px; height: 250px; border-radius: 200px;"}
+诊断患者
+:::
+
+::: {data-id="box3" style="background: #e83e8c; width: 150px; height: 150px; border-radius: 200px;"}
+肿瘤登记
+:::
+:::
+
+
+## 质量控制-完整性指标 
+### 率的连续性
+
+```{r}
+knitr::include_graphics("images/incitrend.jpg")
+```
+
+
+## 质量控制-完整性指标 
+### 率的连续性
+
+```{r}
+knitr::include_graphics("images/sitetrend.jpg")
+```
+
+
+## 质量控制-完整性指标 
+### 相邻区域率的比较
+
+```{r}
+knitr::include_graphics("images/sitecompare.jpg")
+```
+
+
+## 质量控制-完整性指标 
+### 年龄别发病率
+
+```{r}
+knitr::include_graphics("images/agespecific.jpg")
+```
+
+## 质量控制-完整性指标 
+### 死亡发病比(M:I)-连续性
+
+```{r}
+#| column: page
+knitr::include_graphics("images/mi.jpg")
+```
+
+## 质量控制-完整性指标 
+### 死亡发病比(M:I)-比较
+
+```{r}
+#| column: page
+knitr::include_graphics("images/micompare.jpg")
+```
+
+## 质量控制-有效性指标 
+### 病理诊断比例(MV%)-连续性
+
+```{r}
+#| column: page
+knitr::include_graphics("images/mv.jpg")
+```
+
+## 质量控制-有效性指标 
+### 病理诊断比例(MV%)-比较
+
+```{r}
+#| column: page
+knitr::include_graphics("images/mvcompare.jpg")
+```
+
+## 质量控制报告
+
+```{r}
+knitr::include_url("https://www.chenq.site/slides/2023-5-16-canreg-report/example.html",height="600px")
+```
+
+
+
 
 
 ## {background-image="images/flow.png" background-size="95%"}
@@ -557,7 +661,6 @@ flowchart LR
 ```{r}
 knitr::include_graphics("./images/system.png")
 ```
-
 
 ## 最新肿瘤登记系统登录界面{background-image="images/sys-cover.jpg"}
 
@@ -848,7 +951,13 @@ knitr::include_graphics("./images/author.png")
 个人网站：[普癌新声https://www.chenq.site](https://chenq.site)
 :::
 
-# 谢 谢 关 注{background-color="lightblue"  style="text-align: center;color: white;"}
+# 谢 谢 关 注 ! {background-color="lightblue"  style="text-align: center;color: white;"}
+
+陈 琼 博士
+
+chenq08@126.com
+
+https:://www.chenq.site/qsight/
 
 
 
