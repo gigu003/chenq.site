@@ -2394,6 +2394,83 @@
     "text": "质量控制\n\n\n肿瘤登记收集的变量或者变量组合之间存在一定的逻辑关系，通过对单个变量或变量组合之间的逻辑关系进行审查，以提高肿瘤登记数据有效性。\n\n\n\n\n\n\n\n\n\n单个项目\n\n\n\n出生日期\n发病日期\n年龄、性别\n发病部位\n形态学\n行为和分级\n\n\n\n\n\n\n\n\n\n\n\n项目组合\n\n\n\n性别/部位\n部位/组织学学\n年龄/部位/组织学\n行为/部位\n行为/组织学\n性别/组织学\n\n\n\n\n\n\n\n\n\n\n\n校验结果\n\n\n\n正确✅\n警告⚠️\n错误❌"
   },
   {
+    "objectID": "slides/2023-4-20-cancer-registration/index.html#质量控制-2",
+    "href": "slides/2023-4-20-cancer-registration/index.html#质量控制-2",
+    "title": "人群肿瘤随访登记",
+    "section": "质量控制",
+    "text": "质量控制\n完整性指标\n\n\n癌症患者\n\n\n诊断患者\n\n\n肿瘤登记"
+  },
+  {
+    "objectID": "slides/2023-4-20-cancer-registration/index.html#质量控制-3",
+    "href": "slides/2023-4-20-cancer-registration/index.html#质量控制-3",
+    "title": "人群肿瘤随访登记",
+    "section": "质量控制",
+    "text": "质量控制\n完整性指标\n\n\n癌症患者\n\n\n诊断患者\n\n\n肿瘤登记"
+  },
+  {
+    "objectID": "slides/2023-4-20-cancer-registration/index.html#质量控制-完整性指标",
+    "href": "slides/2023-4-20-cancer-registration/index.html#质量控制-完整性指标",
+    "title": "人群肿瘤随访登记",
+    "section": "质量控制-完整性指标",
+    "text": "质量控制-完整性指标\n率的连续性"
+  },
+  {
+    "objectID": "slides/2023-4-20-cancer-registration/index.html#质量控制-完整性指标-1",
+    "href": "slides/2023-4-20-cancer-registration/index.html#质量控制-完整性指标-1",
+    "title": "人群肿瘤随访登记",
+    "section": "质量控制-完整性指标",
+    "text": "质量控制-完整性指标\n率的连续性"
+  },
+  {
+    "objectID": "slides/2023-4-20-cancer-registration/index.html#质量控制-完整性指标-2",
+    "href": "slides/2023-4-20-cancer-registration/index.html#质量控制-完整性指标-2",
+    "title": "人群肿瘤随访登记",
+    "section": "质量控制-完整性指标",
+    "text": "质量控制-完整性指标\n相邻区域率的比较"
+  },
+  {
+    "objectID": "slides/2023-4-20-cancer-registration/index.html#质量控制-完整性指标-3",
+    "href": "slides/2023-4-20-cancer-registration/index.html#质量控制-完整性指标-3",
+    "title": "人群肿瘤随访登记",
+    "section": "质量控制-完整性指标",
+    "text": "质量控制-完整性指标\n年龄别发病率"
+  },
+  {
+    "objectID": "slides/2023-4-20-cancer-registration/index.html#质量控制-完整性指标-4",
+    "href": "slides/2023-4-20-cancer-registration/index.html#质量控制-完整性指标-4",
+    "title": "人群肿瘤随访登记",
+    "section": "质量控制-完整性指标",
+    "text": "质量控制-完整性指标\n死亡发病比(M:I)-连续性"
+  },
+  {
+    "objectID": "slides/2023-4-20-cancer-registration/index.html#质量控制-完整性指标-5",
+    "href": "slides/2023-4-20-cancer-registration/index.html#质量控制-完整性指标-5",
+    "title": "人群肿瘤随访登记",
+    "section": "质量控制-完整性指标",
+    "text": "质量控制-完整性指标\n死亡发病比(M:I)-比较"
+  },
+  {
+    "objectID": "slides/2023-4-20-cancer-registration/index.html#质量控制-有效性指标",
+    "href": "slides/2023-4-20-cancer-registration/index.html#质量控制-有效性指标",
+    "title": "人群肿瘤随访登记",
+    "section": "质量控制-有效性指标",
+    "text": "质量控制-有效性指标\n病理诊断比例(MV%)-连续性"
+  },
+  {
+    "objectID": "slides/2023-4-20-cancer-registration/index.html#质量控制-有效性指标-1",
+    "href": "slides/2023-4-20-cancer-registration/index.html#质量控制-有效性指标-1",
+    "title": "人群肿瘤随访登记",
+    "section": "质量控制-有效性指标",
+    "text": "质量控制-有效性指标\n病理诊断比例(MV%)-比较"
+  },
+  {
+    "objectID": "slides/2023-4-20-cancer-registration/index.html#质量控制报告",
+    "href": "slides/2023-4-20-cancer-registration/index.html#质量控制报告",
+    "title": "人群肿瘤随访登记",
+    "section": "质量控制报告",
+    "text": "质量控制报告"
+  },
+  {
     "objectID": "slides/2023-4-20-cancer-registration/index.html#数据收集系统的发展",
     "href": "slides/2023-4-20-cancer-registration/index.html#数据收集系统的发展",
     "title": "人群肿瘤随访登记",
