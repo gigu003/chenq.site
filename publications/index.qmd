@@ -11,6 +11,16 @@ listing:
     date-format: "YYYY-MM-DD"
     page-size: 999
     feed: true
+  - id: corresponding
+    contents: corresponding
+    template: pubs.ejs
+    sort: "date desc"
+    categories: true
+    sort-ui: [title,date,author]
+    filter-ui: [date, title, author, details]
+    date-format: "YYYY-MM-DD"
+    page-size: 999
+    feed: true
   - id: coauthor
     contents: coauthor
     template: pubs.ejs
@@ -49,6 +59,11 @@ language:
 ::: {#firstauthor}
 :::
 
+
+## 通讯作者论文
+
+::: {#corresponding}
+:::
 
 ## 共同作者论文
 

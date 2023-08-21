@@ -17,8 +17,7 @@ doi: 10.4093/dmj.2019.0138
 ---
 
 ## Background
-Identification of modifiable dietary factors, which are involved in the development of gestational diabetes mellitus (GDM), 
-could inform strategies to prevent GDM.
+Identification of modifiable dietary factors, which are involved in the development of gestational diabetes mellitus (GDM), could inform strategies to prevent GDM.
 
 ## Methods
 We examined the dietary patterns in a Chinese population and evaluated their relationship with GDM risk using a case-control 
