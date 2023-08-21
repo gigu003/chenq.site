@@ -1,5 +1,11 @@
 [
   {
+    "listing": "/training/index.html",
+    "items": [
+      "/training/annumeeting2023/index.html"
+    ]
+  },
+  {
     "listing": "/qsight/index.html",
     "items": [
       "/qsight/2023-05-23-import-all/index.html",
@@ -17,8 +23,8 @@
       "/qsight/2022-05-07-progressive-line-plot/index.html",
       "/qsight/2022-05-06-r-wordcloud2/index.html",
       "/qsight/2022-05-04-chasing-barchart/index.html",
-      "/qsight/2022-04-29-datav/index.html",
       "/qsight/2022-04-29-ggplot2-barplot/index.html",
+      "/qsight/2022-04-29-datav/index.html",
       "/qsight/2022-04-26-website/index.html",
       "/qsight/2022-04-25-rmd/index.html",
       "/qsight/2022-04-17-mv/index.html",
@@ -31,8 +37,8 @@
       "/qsight/2022-03-18-file/index.html",
       "/qsight/2022-03-18-xianjin/index.html",
       "/qsight/2022-03-17-history/index.html",
-      "/qsight/2022-03-10-qualitycontrol/index.html",
       "/qsight/2022-03-10-iarccrgtools/index.html",
+      "/qsight/2022-03-10-qualitycontrol/index.html",
       "/qsight/2022-03-09-icdo3-icd10/index.html",
       "/qsight/2022-03-08-milestone/index.html",
       "/qsight/2022-03-06-jamovi/index.html",
@@ -41,8 +47,8 @@
       "/qsight/2022-02-27-point-estimate/index.html",
       "/qsight/2022-02-26-whyr/index.html",
       "/qsight/2022-02-23-ggplot2-lineplot/index.html",
-      "/qsight/2022-02-21-survminer-ggforest/index.html",
       "/qsight/2022-02-21-ggplot2/index.html",
+      "/qsight/2022-02-21-survminer-ggforest/index.html",
       "/qsight/2022-02-18-for-macro/index.html",
       "/qsight/2022-02-16-r-magick/index.html",
       "/qsight/2022-02-15-update-package/index.html",
@@ -81,14 +87,6 @@
     ]
   },
   {
-    "listing": "/slides/index.html",
-    "items": [
-      "/slides/articles/choose-quarto.html",
-      "/slides/canreg/canreg-report-2023-5-16/index.html",
-      "/slides/canreg/cancer-registration-2023-4-20/index.html"
-    ]
-  },
-  {
     "listing": "/publications/index.html",
     "items": [
       "/publications/firstauthor/2023-5-12-1719-cancer-survival/index.html",
@@ -123,14 +121,15 @@
       "/publications/firstauthor/2013-cc-chemokines.html",
       "/publications/firstauthor/2011-硕士毕业论文.html",
       "/publications/firstauthor/2010-叶酸.html",
+      "/publications/corresponding/2023-08-21-2018cancer.html",
       "/publications/coauthor/2023-lung-nomogram.html",
-      "/publications/coauthor/2020-LDCT-screening-effect.html",
       "/publications/coauthor/2022-risk-score-model.html",
+      "/publications/coauthor/2020-LDCT-screening-effect.html",
       "/publications/coauthor/2022-11-03-huaihe.html",
       "/publications/coauthor/2022-rct-esophageal-gastric-cancer.html",
       "/publications/coauthor/2022-lung-cancer.html",
-      "/publications/coauthor/2022-colorectal-cancer.html",
       "/publications/coauthor/2022-esophagus-cancer.html",
+      "/publications/coauthor/2022-colorectal-cancer.html",
       "/publications/coauthor/2022-07-27-colorectal-cancer.html",
       "/publications/coauthor/2022-07-26-risk-score.html",
       "/publications/coauthor/2022-06-14-gastric-cancer.html",
@@ -158,8 +157,8 @@
       "/publications/coauthor/2020-07-10-LDCT-lung-screening.html",
       "/publications/coauthor/2020-05-06-uppergastro.html",
       "/publications/coauthor/2020-02-23-LDCT-lung-cancer-screening.html",
-      "/publications/coauthor/2019-screening-upper-gastrointestinal-cancer.html",
       "/publications/coauthor/2019-11-25-esophgeal-cancer.html",
+      "/publications/coauthor/2019-screening-upper-gastrointestinal-cancer.html",
       "/publications/coauthor/2019-11-05-HPV-E6E7.html",
       "/publications/coauthor/2015-liver-cancer.html",
       "/publications/coauthor/2019-10-05-esophagus-pathology.html",
@@ -200,9 +199,11 @@
     ]
   },
   {
-    "listing": "/training/index.html",
+    "listing": "/slides/index.html",
     "items": [
-      "/training/annumeeting2023/index.html"
+      "/slides/articles/choose-quarto.html",
+      "/slides/canreg/canreg-report-2023-5-16/index.html",
+      "/slides/canreg/cancer-registration-2023-4-20/index.html"
     ]
   }
 ]
