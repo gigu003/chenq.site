@@ -20,7 +20,7 @@ website:
 
 
   navbar:
-    background: primary
+    background: "primary"
     search: true
     left:
       - icon: house
@@ -33,7 +33,7 @@ website:
         href: https://diary.chenq.site
         text: 随笔录
       - icon: hexagon
-        href: https://gigu003.github.io/canregtools
+        href: https://canregtools.chenq.site
         text: Packages
       - icon: journal-medical
         href: /publications/

@@ -37,7 +37,7 @@ head(data)
 pic <-
   data %>% 
   ggplot(aes(x=agegrp,y=incidence,color=sex))+
-  geom_line(size=1) +
+  geom_line(size=0.2) +
   ylab("Cancer Incidence")+
   xlab("Age groups (years)")+
   theme_void()+
@@ -78,29 +78,31 @@ myplot
 library(hexSticker)
 
 sticker(
-  subplot = myplot,
-  package = "canregtools",
-  s_width = 1,
-  s_height = .8,
+  pic,
   s_x = 1,
-  s_y = .75,
-  p_size = 14,
-  p_color = "purple",
+  s_y = 0.8,
+  s_width = 1,
+  s_height = 1,
+  package = "canregtools",
+  p_size = 23,
+  p_color = "#f5f5f5",
   p_fontface = "bold",
- # p_family = "Apple Braille",
-  h_fill = "gold",
-  h_color = "hotpink",
-  h_size = 1.5,
-  url = "canregtools.chenq.site/canregtools",
-  u_size = 3,
-  u_color = "violetred",
+  p_family = "STKaiti",
+  h_fill = "#3fc1c9",
+  h_color = "#364f6b",
+  h_size = 0.5,
+  url = "packages.chenq.site/canregtools",
+  u_size = 5,
+  u_color = "#fc5185",
   spotlight = T,
-  l_y = 1,
+  l_y = 1.8,
   l_x = 1,
-  l_width = 3,
-  l_height = 3,
-  l_alpha = .3
-) %>% print()
+  l_width = 2,
+  l_height = 2,
+  l_alpha = .3,
+  filename ="dddd.png",
+  dpi ="retina")
+getwd()
 ```
 
-效果怎么样？对于审美感不足的我来说，还算可以吧！
+效果怎么样？对于审美感不足的我来说， 还算可以吧！
