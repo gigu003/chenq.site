@@ -101,15 +101,15 @@ font-style: italic;">## 读取肿瘤登记数据</span></span>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-3" data-code-annotation="1">把所有变量名改为小写字母</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="1">把所有变量名改为小写字母</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-3" data-code-annotation="2">选择需要上报的变量</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2">选择需要上报的变量</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="5" data-code-cell="annotated-cell-3" data-code-annotation="3">把变量名改成上报模板要求的变量名</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="5" data-code-annotation="3">把变量名改成上报模板要求的变量名</span>
 </dd>
 </dl>
 </div>
@@ -855,8 +855,8 @@ font-style: italic;">## 按照地区分类计算各年龄生存概率</span></sp
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts9323"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts29082"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts53516"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts25209"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
