@@ -101,15 +101,15 @@ font-style: italic;">## 读取肿瘤登记数据</span></span>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-annotation="1" data-code-lines="3">把所有变量名改为小写字母</span>
+<span data-code-lines="3" data-code-cell="annotated-cell-3" data-code-annotation="1">把所有变量名改为小写字母</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-annotation="2" data-code-lines="4">选择需要上报的变量</span>
+<span data-code-lines="4" data-code-cell="annotated-cell-3" data-code-annotation="2">选择需要上报的变量</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-annotation="3" data-code-lines="5">把变量名改成上报模板要求的变量名</span>
+<span data-code-lines="5" data-code-cell="annotated-cell-3" data-code-annotation="3">把变量名改成上报模板要求的变量名</span>
 </dd>
 </dl>
 </div>
@@ -855,8 +855,8 @@ font-style: italic;">## 按照地区分类计算各年龄生存概率</span></sp
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts63242"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts11548"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts9323"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts29082"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
@@ -3060,7 +3060,7 @@ authors-block设置方法
 <section id="制作癌症年龄别发病率折线图" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="制作癌症年龄别发病率折线图"><span class="header-section-number">1</span> 制作癌症年龄别发病率折线图</h2>
 <p>首先，读入年龄别发病率的数据，然后，利用ggplot2制作折线图，重点是要把图片背景设置成透明。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_9454e57cca1ceb957ab87765cd83d965">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># 加载tidyverse包 </span></span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
 <span id="cb1-3"><span class="co" style="color: #5E5E5E;"># 读取年龄别发病率数据</span></span>
@@ -3079,7 +3079,7 @@ authors-block设置方法
 <span id="cb3-2">pic <span class="ot" style="color: #003B4F;">&lt;-</span></span>
 <span id="cb3-3">  data <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
 <span id="cb3-4">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span>agegrp,<span class="at" style="color: #657422;">y=</span>incidence,<span class="at" style="color: #657422;">color=</span>sex))<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb3-5">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-5">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="at" style="color: #657422;">size=</span><span class="fl" style="color: #AD0000;">0.2</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb3-6">  <span class="fu" style="color: #4758AB;">ylab</span>(<span class="st" style="color: #20794D;">"Cancer Incidence"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb3-7">  <span class="fu" style="color: #4758AB;">xlab</span>(<span class="st" style="color: #20794D;">"Age groups (years)"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
 <span id="cb3-8">  <span class="fu" style="color: #4758AB;">theme_void</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
@@ -3096,7 +3096,7 @@ authors-block设置方法
 <section id="把肿瘤细胞图片读入r中" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="把肿瘤细胞图片读入r中"><span class="header-section-number">2</span> 把肿瘤细胞图片读入R中</h2>
 <p>我从google上搜索了一张癌细胞的图片，并利用在线工具把这张图片的背景去除。然后，利用magick包读取图片进入R环境中，转化成ggplot2可识别的元素，最后，以注释的方式加入前面生成折线图中。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_8eaee272b9a64f894301ba17b8bd94ad">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">library</span>(magick)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Linking to ImageMagick 6.9.12.3
@@ -3120,38 +3120,40 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <section id="制作六角r包logo" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="制作六角r包logo"><span class="header-section-number">3</span> 制作六角R包logo</h2>
 <p>最后利用hexSticker包制作logo，具体语句如下。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_71850207cd9a7c9feb9b6daad3e2ec3a">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;">library</span>(hexSticker)</span>
 <span id="cb7-2"></span>
 <span id="cb7-3"><span class="fu" style="color: #4758AB;">sticker</span>(</span>
-<span id="cb7-4">  <span class="at" style="color: #657422;">subplot =</span> myplot,</span>
-<span id="cb7-5">  <span class="at" style="color: #657422;">package =</span> <span class="st" style="color: #20794D;">"canregtools"</span>,</span>
-<span id="cb7-6">  <span class="at" style="color: #657422;">s_width =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
-<span id="cb7-7">  <span class="at" style="color: #657422;">s_height =</span> .<span class="dv" style="color: #AD0000;">8</span>,</span>
-<span id="cb7-8">  <span class="at" style="color: #657422;">s_x =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
-<span id="cb7-9">  <span class="at" style="color: #657422;">s_y =</span> .<span class="dv" style="color: #AD0000;">75</span>,</span>
-<span id="cb7-10">  <span class="at" style="color: #657422;">p_size =</span> <span class="dv" style="color: #AD0000;">14</span>,</span>
-<span id="cb7-11">  <span class="at" style="color: #657422;">p_color =</span> <span class="st" style="color: #20794D;">"purple"</span>,</span>
+<span id="cb7-4">  pic,</span>
+<span id="cb7-5">  <span class="at" style="color: #657422;">s_x =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb7-6">  <span class="at" style="color: #657422;">s_y =</span> <span class="fl" style="color: #AD0000;">0.8</span>,</span>
+<span id="cb7-7">  <span class="at" style="color: #657422;">s_width =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb7-8">  <span class="at" style="color: #657422;">s_height =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb7-9">  <span class="at" style="color: #657422;">package =</span> <span class="st" style="color: #20794D;">"canregtools"</span>,</span>
+<span id="cb7-10">  <span class="at" style="color: #657422;">p_size =</span> <span class="dv" style="color: #AD0000;">23</span>,</span>
+<span id="cb7-11">  <span class="at" style="color: #657422;">p_color =</span> <span class="st" style="color: #20794D;">"#f5f5f5"</span>,</span>
 <span id="cb7-12">  <span class="at" style="color: #657422;">p_fontface =</span> <span class="st" style="color: #20794D;">"bold"</span>,</span>
-<span id="cb7-13"> <span class="co" style="color: #5E5E5E;"># p_family = "Apple Braille",</span></span>
-<span id="cb7-14">  <span class="at" style="color: #657422;">h_fill =</span> <span class="st" style="color: #20794D;">"gold"</span>,</span>
-<span id="cb7-15">  <span class="at" style="color: #657422;">h_color =</span> <span class="st" style="color: #20794D;">"hotpink"</span>,</span>
-<span id="cb7-16">  <span class="at" style="color: #657422;">h_size =</span> <span class="fl" style="color: #AD0000;">1.5</span>,</span>
-<span id="cb7-17">  <span class="at" style="color: #657422;">url =</span> <span class="st" style="color: #20794D;">"canregtools.chenq.site/canregtools"</span>,</span>
-<span id="cb7-18">  <span class="at" style="color: #657422;">u_size =</span> <span class="dv" style="color: #AD0000;">3</span>,</span>
-<span id="cb7-19">  <span class="at" style="color: #657422;">u_color =</span> <span class="st" style="color: #20794D;">"violetred"</span>,</span>
+<span id="cb7-13">  <span class="at" style="color: #657422;">p_family =</span> <span class="st" style="color: #20794D;">"STKaiti"</span>,</span>
+<span id="cb7-14">  <span class="at" style="color: #657422;">h_fill =</span> <span class="st" style="color: #20794D;">"#3fc1c9"</span>,</span>
+<span id="cb7-15">  <span class="at" style="color: #657422;">h_color =</span> <span class="st" style="color: #20794D;">"#364f6b"</span>,</span>
+<span id="cb7-16">  <span class="at" style="color: #657422;">h_size =</span> <span class="fl" style="color: #AD0000;">0.5</span>,</span>
+<span id="cb7-17">  <span class="at" style="color: #657422;">url =</span> <span class="st" style="color: #20794D;">"packages.chenq.site/canregtools"</span>,</span>
+<span id="cb7-18">  <span class="at" style="color: #657422;">u_size =</span> <span class="dv" style="color: #AD0000;">5</span>,</span>
+<span id="cb7-19">  <span class="at" style="color: #657422;">u_color =</span> <span class="st" style="color: #20794D;">"#fc5185"</span>,</span>
 <span id="cb7-20">  <span class="at" style="color: #657422;">spotlight =</span> T,</span>
-<span id="cb7-21">  <span class="at" style="color: #657422;">l_y =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb7-21">  <span class="at" style="color: #657422;">l_y =</span> <span class="fl" style="color: #AD0000;">1.8</span>,</span>
 <span id="cb7-22">  <span class="at" style="color: #657422;">l_x =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
-<span id="cb7-23">  <span class="at" style="color: #657422;">l_width =</span> <span class="dv" style="color: #AD0000;">3</span>,</span>
-<span id="cb7-24">  <span class="at" style="color: #657422;">l_height =</span> <span class="dv" style="color: #AD0000;">3</span>,</span>
-<span id="cb7-25">  <span class="at" style="color: #657422;">l_alpha =</span> .<span class="dv" style="color: #AD0000;">3</span></span>
-<span id="cb7-26">) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">print</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2023-02-27-create-logo/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<span id="cb7-23">  <span class="at" style="color: #657422;">l_width =</span> <span class="dv" style="color: #AD0000;">2</span>,</span>
+<span id="cb7-24">  <span class="at" style="color: #657422;">l_height =</span> <span class="dv" style="color: #AD0000;">2</span>,</span>
+<span id="cb7-25">  <span class="at" style="color: #657422;">l_alpha =</span> .<span class="dv" style="color: #AD0000;">3</span>,</span>
+<span id="cb7-26">  <span class="at" style="color: #657422;">filename =</span><span class="st" style="color: #20794D;">"dddd.png"</span>,</span>
+<span id="cb7-27">  <span class="at" style="color: #657422;">dpi =</span><span class="st" style="color: #20794D;">"retina"</span>)</span>
+<span id="cb7-28"><span class="fu" style="color: #4758AB;">getwd</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/Users/qc0824/Website/chenq.site/qsight/2023-02-27-create-logo"</code></pre>
 </div>
 </div>
-<p>效果怎么样？对于审美感不足的我来说，还算可以吧！</p>
+<p>效果怎么样？对于审美感不足的我来说， 还算可以吧！</p>
 
 
 </section>

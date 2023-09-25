@@ -198,7 +198,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text">随笔录</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gigu003.github.io/canregtools" rel="" target=""><i class="bi bi-hexagon" role="img">
+    <a class="nav-link" href="https://canregtools.chenq.site" rel="" target=""><i class="bi bi-hexagon" role="img">
 </i> 
  <span class="menu-text">Packages</span></a>
   </li>  
@@ -262,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">更新时间</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">August 21, 2023</p>
+        <p class="date-modified">September 25, 2023</p>
       </div>
     </div>
       
@@ -302,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="制作癌症年龄别发病率折线图" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="制作癌症年龄别发病率折线图"><span class="header-section-number">1</span> 制作癌症年龄别发病率折线图</h2>
 <p>首先，读入年龄别发病率的数据，然后，利用ggplot2制作折线图，重点是要把图片背景设置成透明。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_9454e57cca1ceb957ab87765cd83d965">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 加载tidyverse包 </span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># 读取年龄别发病率数据</span></span>
@@ -321,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-2"><a href="#cb3-2"></a>pic <span class="ot">&lt;-</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>  data <span class="sc">%&gt;%</span> </span>
 <span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>agegrp,<span class="at">y=</span>incidence,<span class="at">color=</span>sex))<span class="sc">+</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
 <span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">ylab</span>(<span class="st">"Cancer Incidence"</span>)<span class="sc">+</span></span>
 <span id="cb3-7"><a href="#cb3-7"></a>  <span class="fu">xlab</span>(<span class="st">"Age groups (years)"</span>)<span class="sc">+</span></span>
 <span id="cb3-8"><a href="#cb3-8"></a>  <span class="fu">theme_void</span>()<span class="sc">+</span></span>
@@ -338,7 +338,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="把肿瘤细胞图片读入r中" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="把肿瘤细胞图片读入r中"><span class="header-section-number">2</span> 把肿瘤细胞图片读入R中</h2>
 <p>我从google上搜索了一张癌细胞的图片，并利用在线工具把这张图片的背景去除。然后，利用magick包读取图片进入R环境中，转化成ggplot2可识别的元素，最后，以注释的方式加入前面生成折线图中。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_8eaee272b9a64f894301ba17b8bd94ad">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(magick)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Linking to ImageMagick 6.9.12.3
@@ -362,38 +362,40 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <section id="制作六角r包logo" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="制作六角r包logo"><span class="header-section-number">3</span> 制作六角R包logo</h2>
 <p>最后利用hexSticker包制作logo，具体语句如下。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_71850207cd9a7c9feb9b6daad3e2ec3a">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(hexSticker)</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="fu">sticker</span>(</span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="at">subplot =</span> myplot,</span>
-<span id="cb7-5"><a href="#cb7-5"></a>  <span class="at">package =</span> <span class="st">"canregtools"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6"></a>  <span class="at">s_width =</span> <span class="dv">1</span>,</span>
-<span id="cb7-7"><a href="#cb7-7"></a>  <span class="at">s_height =</span> .<span class="dv">8</span>,</span>
-<span id="cb7-8"><a href="#cb7-8"></a>  <span class="at">s_x =</span> <span class="dv">1</span>,</span>
-<span id="cb7-9"><a href="#cb7-9"></a>  <span class="at">s_y =</span> .<span class="dv">75</span>,</span>
-<span id="cb7-10"><a href="#cb7-10"></a>  <span class="at">p_size =</span> <span class="dv">14</span>,</span>
-<span id="cb7-11"><a href="#cb7-11"></a>  <span class="at">p_color =</span> <span class="st">"purple"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  pic,</span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="at">s_x =</span> <span class="dv">1</span>,</span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="at">s_y =</span> <span class="fl">0.8</span>,</span>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="at">s_width =</span> <span class="dv">1</span>,</span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="at">s_height =</span> <span class="dv">1</span>,</span>
+<span id="cb7-9"><a href="#cb7-9"></a>  <span class="at">package =</span> <span class="st">"canregtools"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10"></a>  <span class="at">p_size =</span> <span class="dv">23</span>,</span>
+<span id="cb7-11"><a href="#cb7-11"></a>  <span class="at">p_color =</span> <span class="st">"#f5f5f5"</span>,</span>
 <span id="cb7-12"><a href="#cb7-12"></a>  <span class="at">p_fontface =</span> <span class="st">"bold"</span>,</span>
-<span id="cb7-13"><a href="#cb7-13"></a> <span class="co"># p_family = "Apple Braille",</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a>  <span class="at">h_fill =</span> <span class="st">"gold"</span>,</span>
-<span id="cb7-15"><a href="#cb7-15"></a>  <span class="at">h_color =</span> <span class="st">"hotpink"</span>,</span>
-<span id="cb7-16"><a href="#cb7-16"></a>  <span class="at">h_size =</span> <span class="fl">1.5</span>,</span>
-<span id="cb7-17"><a href="#cb7-17"></a>  <span class="at">url =</span> <span class="st">"canregtools.chenq.site/canregtools"</span>,</span>
-<span id="cb7-18"><a href="#cb7-18"></a>  <span class="at">u_size =</span> <span class="dv">3</span>,</span>
-<span id="cb7-19"><a href="#cb7-19"></a>  <span class="at">u_color =</span> <span class="st">"violetred"</span>,</span>
+<span id="cb7-13"><a href="#cb7-13"></a>  <span class="at">p_family =</span> <span class="st">"STKaiti"</span>,</span>
+<span id="cb7-14"><a href="#cb7-14"></a>  <span class="at">h_fill =</span> <span class="st">"#3fc1c9"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15"></a>  <span class="at">h_color =</span> <span class="st">"#364f6b"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16"></a>  <span class="at">h_size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb7-17"><a href="#cb7-17"></a>  <span class="at">url =</span> <span class="st">"packages.chenq.site/canregtools"</span>,</span>
+<span id="cb7-18"><a href="#cb7-18"></a>  <span class="at">u_size =</span> <span class="dv">5</span>,</span>
+<span id="cb7-19"><a href="#cb7-19"></a>  <span class="at">u_color =</span> <span class="st">"#fc5185"</span>,</span>
 <span id="cb7-20"><a href="#cb7-20"></a>  <span class="at">spotlight =</span> T,</span>
-<span id="cb7-21"><a href="#cb7-21"></a>  <span class="at">l_y =</span> <span class="dv">1</span>,</span>
+<span id="cb7-21"><a href="#cb7-21"></a>  <span class="at">l_y =</span> <span class="fl">1.8</span>,</span>
 <span id="cb7-22"><a href="#cb7-22"></a>  <span class="at">l_x =</span> <span class="dv">1</span>,</span>
-<span id="cb7-23"><a href="#cb7-23"></a>  <span class="at">l_width =</span> <span class="dv">3</span>,</span>
-<span id="cb7-24"><a href="#cb7-24"></a>  <span class="at">l_height =</span> <span class="dv">3</span>,</span>
-<span id="cb7-25"><a href="#cb7-25"></a>  <span class="at">l_alpha =</span> .<span class="dv">3</span></span>
-<span id="cb7-26"><a href="#cb7-26"></a>) <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<span id="cb7-23"><a href="#cb7-23"></a>  <span class="at">l_width =</span> <span class="dv">2</span>,</span>
+<span id="cb7-24"><a href="#cb7-24"></a>  <span class="at">l_height =</span> <span class="dv">2</span>,</span>
+<span id="cb7-25"><a href="#cb7-25"></a>  <span class="at">l_alpha =</span> .<span class="dv">3</span>,</span>
+<span id="cb7-26"><a href="#cb7-26"></a>  <span class="at">filename =</span><span class="st">"dddd.png"</span>,</span>
+<span id="cb7-27"><a href="#cb7-27"></a>  <span class="at">dpi =</span><span class="st">"retina"</span>)</span>
+<span id="cb7-28"><a href="#cb7-28"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/Users/qc0824/Website/chenq.site/qsight/2023-02-27-create-logo"</code></pre>
 </div>
 </div>
-<p>效果怎么样？对于审美感不足的我来说，还算可以吧！</p>
+<p>效果怎么样？对于审美感不足的我来说， 还算可以吧！</p>
 
 
 </section>
