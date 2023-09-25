@@ -39,7 +39,7 @@ website:
         href: /publications/
         text: 出版作品
       - icon: file-slides-fill
-        href: /slides/
+        href: https://slides.chenq.site
         text: Slides
       - href: about.qmd
         text: 关于
