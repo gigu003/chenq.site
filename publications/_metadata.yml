@@ -1,5 +1,5 @@
 # options specified here will apply to all posts in this folder
-
+lang: zh
 format:
   html:
     css: styles.css
@@ -8,9 +8,3 @@ format:
     template: publication.html
     template-partials: title-metadata.html
 page-layout: full   
-language: 
-  title-block-published: "发表时间"
-  toc-title-document: "目录"
-  toc-title-website: "本页内容"
-  title-block-author-single: "作者"
-  title-block-author-plural: "作者"
