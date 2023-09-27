@@ -16,6 +16,7 @@ tags:
 image: "files.jpg"
 draft: false
 code-annotations: hover
+title-block-banner: false
 ---
 
 

@@ -2,6 +2,7 @@
 
 format:
   html:
+    css: styles.css
     toc: true
     toc-location: right
     template: publication.html
