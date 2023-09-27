@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.238">
@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="陈琼">
-<meta name="dcterms.date" content="2023-03-31">
 <meta name="keywords" content="quarto, rstudio, R">
 <meta name="description" content="本篇博文介绍了我们使用Rstudio进行数据分析或使用Quarto撰写报告时提高效率的一些方法和配置，通过这些配置可以大大提高我们工作的便捷性和效率，俗话说“磨刀不误砍柴工”，开始数据分析之前，先把工具“Rstudio,R”配置好，肯定事半功倍！">
 
@@ -118,29 +117,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交"
   }
 }</script>
-<style>
-    .quarto-title-block .quarto-title-banner,
-    .quarto-title-block .quarto-title-banner h1,
-    .quarto-title-block .quarto-title-banner h2,
-    .quarto-title-block .quarto-title-banner h3,
-    .quarto-title-block .quarto-title-banner h4,
-    .quarto-title-block .quarto-title-banner h5,
-    .quarto-title-block .quarto-title-banner h6
-    {
-      color: #c8c8c8;
-    }
-    </style>
 <script>
     var _hmt = _hmt || [];
     (function() {
@@ -175,8 +162,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="切换导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -230,57 +217,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">提高Rstudio和Quarto使用效率的一些方法和配置</h1>
-            <p class="subtitle lead">磨刀不误砍柴工，开始数据分析之前，先把工具配置好</p>
-                  <div>
-        <div class="description">
-          <p>本篇博文介绍了我们使用Rstudio进行数据分析或使用Quarto撰写报告时提高效率的一些方法和配置，通过这些配置可以大大提高我们工作的便捷性和效率，俗话说“磨刀不误砍柴工”，开始数据分析之前，先把工具“Rstudio,R”配置好，肯定事半功倍！</p>
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">quarto</div>
-                <div class="quarto-category">rstudio</div>
-                <div class="quarto-category">R</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">作者</div>
-      <div class="quarto-title-meta-contents">
-               <p>陈琼 </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">发表时间</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">March 31, 2023</p>
-      </div>
-    </div>
-    
-      <div>
-      <div class="quarto-title-meta-heading">更新时间</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">September 25, 2023</p>
-      </div>
-    </div>
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">本页内容</h2>
+    <h2 id="toc-title">该页面内容</h2>
    
   <ul>
   <li><a href="#提高quarto效率的常见配置" id="toc-提高quarto效率的常见配置" class="nav-link active" data-scroll-target="#提高quarto效率的常见配置"><span class="header-section-number">1</span> 提高Quarto效率的常见配置</a>
@@ -305,9 +247,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">提高Rstudio和Quarto使用效率的一些方法和配置</h1>
+<p class="subtitle lead">磨刀不误砍柴工，开始数据分析之前，先把工具配置好</p>
+</div>
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">日期</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023年3月31日</p>
+    </div>
+  </div>
+        <div>
+    <div class="quarto-title-meta-heading">主题</div>
+    <div class="quarto-title-meta-contents">
+              <div class="badge badge-small quarto-category">quarto</div>
+              <div class="badge badge-small quarto-category">rstudio</div>
+              <div class="badge badge-small quarto-category">R</div>
+          </div>
+  </div>
+    
+</div>
+</header>
+
+<div>
+  <div class="description">
+    <p>本篇博文介绍了我们使用Rstudio进行数据分析或使用Quarto撰写报告时提高效率的一些方法和配置，通过这些配置可以大大提高我们工作的便捷性和效率，俗话说“磨刀不误砍柴工”，开始数据分析之前，先把工具“Rstudio,R”配置好，肯定事半功倍！</p>
+  </div>
+</div><p></p>
 
 
 <section id="提高quarto效率的常见配置" class="level2" data-number="1">
@@ -318,7 +290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Quarto支持利用Divs和Spans来给特定的内容增加一些属性。比如，我们可以给一段话增加边框，语句如下：</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>::: {.border}</span>
 <span id="cb1-2"><a href="#cb1-2"></a>这是具有边框样式的一段话。</span>
-<span id="cb1-3"><a href="#cb1-3"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a>:::</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>具体显示效果如下：</p>
 <div class="border">
 <p>这是具有边框样式的一段话。</p>
@@ -326,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>我们也可以使用一些内置的callout样式，语法如下：</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>::: {.callout-warning}</span>
 <span id="cb2-2"><a href="#cb2-2"></a>这是一段warning类型callout段落。</span>
-<span id="cb2-3"><a href="#cb2-3"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3"></a>:::</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>具体显示效果如下：</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -334,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+警告
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -368,7 +340,7 @@ Warning
 <span id="cb3-23"><a href="#cb3-23"></a>    ::: {.column width="50%"}</span>
 <span id="cb3-24"><a href="#cb3-24"></a>    Right column</span>
 <span id="cb3-25"><a href="#cb3-25"></a>    :::</span>
-<span id="cb3-26"><a href="#cb3-26"></a>    ::::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-26"><a href="#cb3-26"></a>    ::::</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>我们在在使用的时候，在Quarto文档里输入snippet名称，然后按Shift+Tab键就可以按照设定的片段录入代码了。比如，我们可以将将内容进行分栏，可以录入column，然后按Shift+Tab键，然后相应的代码块会自动填充。</p>
 </section>
 <section id="善于使用echo-fenced选项" class="level3" data-number="1.2">
@@ -377,7 +349,7 @@ Warning
 <p>在没有这是 echo: fenced时，代码块的显示是下面这样的。</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>data <span class="sc">%&gt;%</span> </span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">kable_stylling</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">kable_stylling</span>()</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>设置echo: fenced之后，代码块的显示是这样的：</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#| label: tbl-t1</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#| tbl-cap: "不同地区恶性肿瘤5年相对生存率"</span></span>
@@ -385,23 +357,23 @@ Warning
 <span id="cb5-4"><a href="#cb5-4"></a></span>
 <span id="cb5-5"><a href="#cb5-5"></a>data <span class="sc">%&gt;%</span> </span>
 <span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">kable_stylling</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">kable_stylling</span>()</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="利用shortcode方便地插入内容" class="level3" data-number="1.3">
 <h3 data-number="1.3" class="anchored" data-anchor-id="利用shortcode方便地插入内容"><span class="header-section-number">1.3</span> 利用shortcode方便地插入内容</h3>
 <p>通常我们可以在quarto文档中添加HTML内容，比如通过添加视频内容等，shortcode可以使我们很方便地插入我们想插入的内容。Quarto原生支持一些shortcode，比如运行下面的代码。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a>这篇博客的标题是`提高Rstudio和Quarto使用效率的一些方法和配置`。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a>这篇博客的标题是`提高Rstudio和Quarto使用效率的一些方法和配置`。</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>显示的内容如下：</p>
 <p>这篇博客的标题是提高Rstudio和Quarto使用效率的一些方法和配置。</p>
 </section>
 <section id="在不同文档间重复利用内容" class="level3" data-number="1.4">
 <h3 data-number="1.4" class="anchored" data-anchor-id="在不同文档间重复利用内容"><span class="header-section-number">1.4</span> 在不同文档间重复利用内容</h3>
 <p><code>{{&lt; include &gt;}}</code>是一个quarto的shortcode使我们能够重复利用不同quarto文档的内容，而不用复制和粘贴。在你想插入内容的地方，添加shortcode <code>{{&lt; include &gt;}}</code> include后面放入想添加的文档名称，记得在名称前添加下划线。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>{{&lt; incldue _content.qmd &gt;}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>{{&lt; incldue _content.qmd &gt;}}</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>也可以按照一定的条件纳入内容，比如，只在渲染为特定格式时显示内容，用.content-visible 或者 .content-hidden</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href="#cb8-1"></a>::: {.content-visible when-format="html"}</span>
 <span id="cb8-2"><a href="#cb8-2"></a>这部分文字只在渲染为HTML时显示</span>
-<span id="cb8-3"><a href="#cb8-3"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3"></a>:::</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="善于使用快捷键" class="level2" data-number="2">
@@ -700,12 +672,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "已复制");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "已复制");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

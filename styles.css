@@ -149,6 +149,9 @@ a.badge.badge-green {
   padding: 5px 5px 3px 5px;
 }
 
+
+
+
 .badge:hover {
   opacity: 1;
 }
@@ -259,11 +262,12 @@ div.quarto-about-trestles .about-entity .about-link:hover {
 .quarto-category {
   color: white;
 }
+
 .badge-grey:hover, .quarto-category:hover,
 .listing-category:hover {
   background-color: #536878;
-  color: #ebebeb !important;
-  opacity: .6;
+  color: white;
+  opacity: .9;
 }
 
 .badge-grey:hover a {
@@ -296,9 +300,9 @@ div.quarto-about-trestles .about-entity .about-link:hover {
 .quarto-category,
 .listing-category {
   line-height: 1.8em !important;
-  padding: 10px 5px 0px 5px;
-  margin-left: -5px;
+  margin-left: 0px;
   margin-right: 5px;
+  border-radius: 15px;
 }
 
 div.quarto-post .metadata {
@@ -426,12 +430,22 @@ div.quarto-post .listing-categories:hover .listing-category:hover {
   color: #555;
   margin: 0;
 }
-.author-box-container .author-info .description {
+.author-box-container .author-info  {
   font-size: 12px;
   padding-top: 10px;
   line-height: 1.5;
   color: #555;
 }
 
+.quarto-categories .quarto-category{
+  background-color: blue;
+}
 
-
+.description p{
+  padding: 10px;
+  border: 2px dashed  gray;
+  border-radius: 10px;
+  width: fit-content;
+  opacity: 0.9;
+  margin: 2px;
+}

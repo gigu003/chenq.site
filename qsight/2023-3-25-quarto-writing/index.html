@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.238">
@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="陈琼">
-<meta name="dcterms.date" content="2023-03-25">
 <meta name="keywords" content="quarto, 论文写作">
 <meta name="description" content="这篇博文介绍我使用quarto进行论文写作的一些技巧和经验，它们在无形中提高了我论文写作的效率，使论文的数据统计结果具有可能重复性，如果你还没听说过quarto，耐心的读完这篇博文，我相信会给你带来帮助。">
 
@@ -116,29 +115,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交"
   }
 }</script>
-<style>
-    .quarto-title-block .quarto-title-banner,
-    .quarto-title-block .quarto-title-banner h1,
-    .quarto-title-block .quarto-title-banner h2,
-    .quarto-title-block .quarto-title-banner h3,
-    .quarto-title-block .quarto-title-banner h4,
-    .quarto-title-block .quarto-title-banner h5,
-    .quarto-title-block .quarto-title-banner h6
-    {
-      color: #c8c8c8;
-    }
-    </style>
 <script>
     var _hmt = _hmt || [];
     (function() {
@@ -176,8 +163,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="切换导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -231,56 +218,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">论文写作效率神器：Quarto出版系统</h1>
-            <p class="subtitle lead">科技论文写作我选择使用Quarto</p>
-                  <div>
-        <div class="description">
-          <p>这篇博文介绍我使用quarto进行论文写作的一些技巧和经验，它们在无形中提高了我论文写作的效率，使论文的数据统计结果具有可能重复性，如果你还没听说过quarto，耐心的读完这篇博文，我相信会给你带来帮助。</p>
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">quarto</div>
-                <div class="quarto-category">论文写作</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">作者</div>
-      <div class="quarto-title-meta-contents">
-               <p>陈琼 </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">发表时间</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">March 25, 2023</p>
-      </div>
-    </div>
-    
-      <div>
-      <div class="quarto-title-meta-heading">更新时间</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">September 25, 2023</p>
-      </div>
-    </div>
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">本页内容</h2>
+    <h2 id="toc-title">该页面内容</h2>
    
   <ul>
   <li><a href="#传统论文写作中的常见问题" id="toc-传统论文写作中的常见问题" class="nav-link active" data-scroll-target="#传统论文写作中的常见问题"><span class="header-section-number">1</span> 传统论文写作中的常见问题</a></li>
@@ -306,14 +249,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">论文写作效率神器：Quarto出版系统</h1>
+<p class="subtitle lead">科技论文写作我选择使用Quarto</p>
+</div>
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">日期</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023年3月25日</p>
+    </div>
+  </div>
+        <div>
+    <div class="quarto-title-meta-heading">主题</div>
+    <div class="quarto-title-meta-contents">
+              <div class="badge badge-small quarto-category">quarto</div>
+              <div class="badge badge-small quarto-category">论文写作</div>
+          </div>
+  </div>
+    
+</div>
+</header>
+
+<div>
+  <div class="description">
+    <p>这篇博文介绍我使用quarto进行论文写作的一些技巧和经验，它们在无形中提高了我论文写作的效率，使论文的数据统计结果具有可能重复性，如果你还没听说过quarto，耐心的读完这篇博文，我相信会给你带来帮助。</p>
+  </div>
+</div><p></p>
 
 
 <section id="传统论文写作中的常见问题" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="传统论文写作中的常见问题"><span class="header-section-number">1</span> 传统论文写作中的常见问题</h2>
-<p>我相信除了不需要进行统计分析的综述类文章类型之外，大部分论文类型的论文写作流程是下面 <a href="#fig-1">Figure&nbsp;1</a> 这个样子的：</p>
+<p>我相信除了不需要进行统计分析的综述类文章类型之外，大部分论文类型的论文写作流程是下面 <a href="#fig-1">图&nbsp;1</a> 这个样子的：</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-1" class="quarto-figure quarto-figure-center anchored">
@@ -333,7 +305,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   G --&gt; H[发表见刊]
 </pre>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: 论文写作流程</figcaption><p></p>
+<p></p><figcaption class="figure-caption">图&nbsp;1: 论文写作流程</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -392,7 +364,7 @@ Quarto
 <p>如果你使用Rstudio的话，<a href="https://posit.co/download/rstudio-desktop/">下载最新的版本</a>，该版本内置有quarto。</p>
 <p>如果你需要在R 代码进行文档渲染的话，可以安装R quarto包</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">"quarto"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"hello.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"hello.qmd"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>如果你需要在Vscode或者终端中使用quarto的话，可以参考<a href="https://quarto.org/docs/get-started/">不同运行环境quarto的安装与配置</a>，进行相应的配置，本篇博客将使用Rstudio进行相应的操作和介绍。</p>
 </section>
 <section id="新建quarto文件" class="level2" data-number="5">
@@ -427,11 +399,11 @@ Quarto
 <span id="cb2-13"><a href="#cb2-13"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb2-14"><a href="#cb2-14"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> default</span></span>
 <span id="cb2-15"><a href="#cb2-15"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="pp">---</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="代码块" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="代码块"><span class="header-section-number">6.2</span> 代码块</h3>
-<p>quarto文档中可以插入代码块，在代码块中可以进行编写相应语言的代码，进行统计分析或结果展现。目前quarto支持的代码块包括R语言、Python等，下面的R语言代码块，利用gtsummary包制作了论文中常用的表1，结果可见 <a href="#tbl-table1">Table&nbsp;1</a> 。</p>
+<p>quarto文档中可以插入代码块，在代码块中可以进行编写相应语言的代码，进行统计分析或结果展现。目前quarto支持的代码块包括R语言、Python等，下面的R语言代码块，利用gtsummary包制作了论文中常用的表1，结果可见 <a href="#tbl-table1">表格&nbsp;1</a> 。</p>
 <div class="cell tbl-cap-location-top" data-hash="index_cache/html/tbl-table1_6b02c3f223d2d5cbfda1ad46238e90e6">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="in">```{r}</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#| label: tbl-table1</span></span>
@@ -448,7 +420,7 @@ Quarto
 <span id="cb3-13"><a href="#cb3-13"></a>  <span class="fu">add_overall</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb3-14"><a href="#cb3-14"></a>  <span class="fu">add_n</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb3-15"><a href="#cb3-15"></a>  <span class="fu">bold_labels</span>() </span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="in">```</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div id="pjntvbatiy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -865,7 +837,7 @@ Quarto
 
 <div id="tbl-table1" class="anchored">
 <table class="gt_table table table-sm table-striped" data-quarto-postprocess="true">
-<caption>Table&nbsp;1: 接受不同药物治疗人群基本特征分析</caption>
+<caption>表格&nbsp;1: 接受不同药物治疗人群基本特征分析</caption>
 <thead class="gt_col_headings">
 <tr class="header">
 <th id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
@@ -979,7 +951,7 @@ Quarto
 <span id="cb4-4"><a href="#cb4-4"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> </span></span>
 <span id="cb4-5"><a href="#cb4-5"></a><span class="co">  #reference-doc制定word模板文件</span></span>
 <span id="cb4-6"><a href="#cb4-6"></a><span class="at">    </span><span class="fu">reference-doc</span><span class="kw">:</span><span class="at"> chinese.docx</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="pp">---</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="图表交叉引用的相关设置" class="level3" data-number="7.2">
 <h3 data-number="7.2" class="anchored" data-anchor-id="图表交叉引用的相关设置"><span class="header-section-number">7.2</span> 图表交叉引用的相关设置</h3>
@@ -993,7 +965,7 @@ Quarto
 <span id="cb5-6"><a href="#cb5-6"></a><span class="at">  </span><span class="fu">title-delim</span><span class="kw">:</span><span class="at"> —  </span></span>
 <span id="cb5-7"><a href="#cb5-7"></a><span class="at">  </span><span class="fu">tbl-prefix</span><span class="kw">:</span><span class="at"> 表</span></span>
 <span id="cb5-8"><a href="#cb5-8"></a><span class="at">  </span><span class="fu">fig-prefix</span><span class="kw">:</span><span class="at"> 图</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="pp">---</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="设置参考文献引用格式" class="level3" data-number="7.3">
 <h3 data-number="7.3" class="anchored" data-anchor-id="设置参考文献引用格式"><span class="header-section-number">7.3</span> 设置参考文献引用格式</h3>
@@ -1006,7 +978,7 @@ Quarto
 <span id="cb6-2"><a href="#cb6-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"河南省肿瘤登记地区恶性肿瘤2017-2019年期间5年相对生存率"</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> survival17-19.bib</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a><span class="fu">csl</span><span class="kw">:</span><span class="at"> </span><span class="st">"/Users/qc0824/zotero/styles/chinese-gb7714-2005-numeric.csl"</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="pp">---</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>在文本编辑时，通过[“<span class="citation" data-cites="refid">@refid</span>”]的形式进行参考文献的文内引用，如果同一位置引用多篇文献，[“<span class="citation" data-cites="refid1">@refid1</span>;<span class="citation" data-cites="refid2">@refid2</span>”]，可以在文献之间添加”;“。</p>
 </section>
 <section id="设置作者列表和单位信息" class="level3" data-number="7.4">
@@ -1016,7 +988,7 @@ Quarto
 <section id="安装方法" class="level5" data-number="7.4.0.1">
 <h5 data-number="7.4.0.1" class="anchored" data-anchor-id="安装方法"><span class="header-section-number">7.4.0.1</span> 安装方法</h5>
 <p>在qmd文档所在的quarto项目之下，在terminal运行如下命令：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>quarto add kapsner/authors-block</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>quarto add kapsner/authors-block</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="authors-block使用方法" class="level5" data-number="7.4.0.2">
 <h5 data-number="7.4.0.2" class="anchored" data-anchor-id="authors-block使用方法"><span class="header-section-number">7.4.0.2</span> authors-block使用方法</h5>
@@ -1072,7 +1044,7 @@ authors-block设置方法
 <span id="cb8-37"><a href="#cb8-37"></a>    name: 兰州大学公共卫生学院</span>
 <span id="cb8-38"><a href="#cb8-38"></a>filters:</span>
 <span id="cb8-39"><a href="#cb8-39"></a>  - authors-block</span>
-<span id="cb8-40"><a href="#cb8-40"></a>---</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-40"><a href="#cb8-40"></a>---</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1158,12 +1130,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "已复制");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "已复制");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

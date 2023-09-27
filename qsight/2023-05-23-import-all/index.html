@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.238">
@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="陈琼">
-<meta name="dcterms.date" content="2023-05-23">
 <meta name="description" content="每年向国家肿瘤登记处上报当年肿瘤登记数据是每个省级肿瘤登记处的每年的工作内容，而当县区级登记处的数量很多的时候，数据整理工作变得很琐碎，这篇博文将向大家介绍如何处理肿瘤登记上报过程中的数据处理。">
 
 <title>普癌新声 - 肿瘤登记数据上报经验分享：R语言批量导入导出excel数据</title>
@@ -115,29 +114,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交"
   }
 }</script>
-<style>
-    .quarto-title-block .quarto-title-banner,
-    .quarto-title-block .quarto-title-banner h1,
-    .quarto-title-block .quarto-title-banner h2,
-    .quarto-title-block .quarto-title-banner h3,
-    .quarto-title-block .quarto-title-banner h4,
-    .quarto-title-block .quarto-title-banner h5,
-    .quarto-title-block .quarto-title-banner h6
-    {
-      color: #c8c8c8;
-    }
-    </style>
 <script>
     var _hmt = _hmt || [];
     (function() {
@@ -172,8 +159,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="切换导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -227,57 +214,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">肿瘤登记数据上报经验分享：R语言批量导入导出excel数据</h1>
-            <p class="subtitle lead">肿瘤登记数据上报实践</p>
-                  <div>
-        <div class="description">
-          <p>每年向国家肿瘤登记处上报当年肿瘤登记数据是每个省级肿瘤登记处的每年的工作内容，而当县区级登记处的数量很多的时候，数据整理工作变得很琐碎，这篇博文将向大家介绍如何处理肿瘤登记上报过程中的数据处理。</p>
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">数据处理</div>
-                <div class="quarto-category">R</div>
-                <div class="quarto-category">肿瘤登记</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">作者</div>
-      <div class="quarto-title-meta-contents">
-               <p>陈琼 </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">发表时间</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">May 23, 2023</p>
-      </div>
-    </div>
-    
-      <div>
-      <div class="quarto-title-meta-heading">更新时间</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">September 25, 2023</p>
-      </div>
-    </div>
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">本页内容</h2>
+    <h2 id="toc-title">该页面内容</h2>
    
   <ul>
   <li><a href="#随访数据上报要求" id="toc-随访数据上报要求" class="nav-link active" data-scroll-target="#随访数据上报要求"><span class="header-section-number">1</span> 随访数据上报要求</a>
@@ -291,9 +233,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">肿瘤登记数据上报经验分享：R语言批量导入导出excel数据</h1>
+<p class="subtitle lead">肿瘤登记数据上报实践</p>
+</div>
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">日期</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023年5月23日</p>
+    </div>
+  </div>
+        <div>
+    <div class="quarto-title-meta-heading">主题</div>
+    <div class="quarto-title-meta-contents">
+              <div class="badge badge-small quarto-category">数据处理</div>
+              <div class="badge badge-small quarto-category">R</div>
+              <div class="badge badge-small quarto-category">肿瘤登记</div>
+          </div>
+  </div>
+    
+</div>
+</header>
+
+<div>
+  <div class="description">
+    <p>每年向国家肿瘤登记处上报当年肿瘤登记数据是每个省级肿瘤登记处的每年的工作内容，而当县区级登记处的数量很多的时候，数据整理工作变得很琐碎，这篇博文将向大家介绍如何处理肿瘤登记上报过程中的数据处理。</p>
+  </div>
+</div><p></p>
 
 
 <section id="随访数据上报要求" class="level2" data-number="1">
@@ -354,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(openxlsx)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(Hmisc)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(haven)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(haven)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>我们在code.mdb数据库的registry表中存储了相关登记处的信息，report2019这个变量标记了哪些登记处入选了河南省肿瘤登记年报。</p>
 <div class="cell">
@@ -362,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-2"><a href="#cb2-2"></a>registrys <span class="ot">&lt;-</span> <span class="fu">mdb.get</span>(<span class="st">"code.mdb"</span>,<span class="at">tables =</span> <span class="fu">c</span>(<span class="st">"registry"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">filter</span>(report2019<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">select</span>(areacode,city,county)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>registrys<span class="sc">$</span>areacode <span class="ot">&lt;-</span> <span class="fu">as.character</span>(registrys<span class="sc">$</span>areacode)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5"></a>registrys<span class="sc">$</span>areacode <span class="ot">&lt;-</span> <span class="fu">as.character</span>(registrys<span class="sc">$</span>areacode)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>通下面的程序，我们把选择需要上报的变量以及把上报变量更改为上报模板要求的变量名称。</p>
 <div class="cell">
@@ -370,20 +342,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a>canreg <span class="ot">&lt;-</span> <span class="fu">read_sas</span>(<span class="st">"tumorinfo.sas7bdat.zip"</span>) <span class="sc">%&gt;%</span> </span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3"></a>  <span class="fu">rename_all</span>(tolower) <span class="sc">%&gt;%</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4"></a>  <span class="fu">select</span>(registr,indno,sex,age,birthda,inciden,topo,morp,beha,grad,autoicd10,deathda,basi,state,caus,dlc,areacode) <span class="sc">%&gt;%</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-5" class="code-annotation-target"><a href="#annotated-cell-3-5"></a>  <span class="fu">rename</span>(<span class="at">id=</span>indno,<span class="at">icdo3=</span>topo,<span class="at">icd10=</span>autoicd10,<span class="at">status=</span>state,<span class="at">lastcontact=</span>dlc)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-5" class="code-annotation-target"><a href="#annotated-cell-3-5"></a>  <span class="fu">rename</span>(<span class="at">id=</span>indno,<span class="at">icdo3=</span>topo,<span class="at">icd10=</span>autoicd10,<span class="at">status=</span>state,<span class="at">lastcontact=</span>dlc)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="1">把所有变量名改为小写字母</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-3">把所有变量名改为小写字母</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2">选择需要上报的变量</span>
+<span data-code-lines="4" data-code-annotation="2" data-code-cell="annotated-cell-3">选择需要上报的变量</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="5" data-code-annotation="3">把变量名改成上报模板要求的变量名</span>
+<span data-code-lines="5" data-code-annotation="3" data-code-cell="annotated-cell-3">把变量名改成上报模板要求的变量名</span>
 </dd>
 </dl>
 </div>
@@ -401,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-9"><a href="#cb3-9"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="fu">c</span>(<span class="st">"type"</span>), <span class="at">values_from =</span> <span class="fu">c</span>(<span class="st">"count"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb3-10"><a href="#cb3-10"></a>  <span class="fu">mutate</span>(<span class="at">agegrp =</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">"[^0-9</span><span class="sc">\\</span><span class="st">.]"</span>, <span class="st">""</span>, agegrp)),</span>
 <span id="cb3-11"><a href="#cb3-11"></a>         <span class="at">sex=</span><span class="fu">as.numeric</span>(sex)) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-12"><a href="#cb3-12"></a>  <span class="fu">arrange</span>(areacode,year,sex,agegrp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-12"><a href="#cb3-12"></a>  <span class="fu">arrange</span>(areacode,year,sex,agegrp)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>下面的程序把随访资料和寿命表数据按照登记处的行政区划和名称保存成excel，虽然for显式循环运行效率有点低，但是对于几十个登记处的数据来说，运行速度还可以。如果数据量大的时候可以考虑使用lapply来批量导出。</p>
 <div class="cell">
@@ -411,15 +383,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-4"><a href="#cb4-4"></a>  county <span class="ot">&lt;-</span> registrys[registrys<span class="sc">$</span>areacode<span class="sc">==</span>areas,<span class="fu">c</span>(<span class="st">"county"</span>)]</span>
 <span id="cb4-5"><a href="#cb4-5"></a>  res <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">FB=</span>fb, <span class="at">LT=</span>lt)</span>
 <span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">write.xlsx</span>(res,<span class="fu">paste0</span>(<span class="st">"report/"</span>,areas,county,<span class="st">".xlsx"</span>),<span class="at">colNames =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a href="#cb4-7"></a>}</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>以上程序运行的结果见图 <a href="#fig-export">Figure&nbsp;1</a> 。</p>
+<p>以上程序运行的结果见图 <a href="#fig-export">图&nbsp;1</a> 。</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-export" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="files.jpg" class="img-fluid figure-img" width="879"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: 导出excel结果</figcaption><p></p>
+<p></p><figcaption class="figure-caption">图&nbsp;1: 导出excel结果</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -483,12 +455,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "已复制");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "已复制");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

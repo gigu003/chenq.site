@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.238">
@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="陈琼">
-<meta name="dcterms.date" content="2022-05-07">
 <meta name="keywords" content="R语言, progressive line plot, 进度线图, ggplot2, gganimate">
 <meta name="description" content="这篇文章将和大家分享如何利用ggplot2包和gganimate包绘制进度线图(progressive line plot)的过程，其实我所说的进度线图就是让线图按照某一个变量一点一点的显示出来，最后显示完全这样一种类型的动态图形。">
 
@@ -116,29 +115,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交"
   }
 }</script>
-<style>
-    .quarto-title-block .quarto-title-banner,
-    .quarto-title-block .quarto-title-banner h1,
-    .quarto-title-block .quarto-title-banner h2,
-    .quarto-title-block .quarto-title-banner h3,
-    .quarto-title-block .quarto-title-banner h4,
-    .quarto-title-block .quarto-title-banner h5,
-    .quarto-title-block .quarto-title-banner h6
-    {
-      color: #c8c8c8;
-    }
-    </style>
 <script>
     var _hmt = _hmt || [];
     (function() {
@@ -173,8 +160,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="切换导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -228,55 +215,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">R语言gganimate包和ggplot2包绘制进度线图(progressive line plot)</h1>
-                  <div>
-        <div class="description">
-          这篇文章将和大家分享如何利用ggplot2包和gganimate包绘制进度线图(progressive line plot)的过程，其实我所说的进度线图就是让线图按照某一个变量一点一点的显示出来，最后显示完全这样一种类型的动态图形。
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">R</div>
-                <div class="quarto-category">科研作图</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">作者</div>
-      <div class="quarto-title-meta-contents">
-               <p>陈琼 </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">发表时间</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">May 7, 2022</p>
-      </div>
-    </div>
-    
-      <div>
-      <div class="quarto-title-meta-heading">更新时间</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">September 25, 2023</p>
-      </div>
-    </div>
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">本页内容</h2>
+    <h2 id="toc-title">该页面内容</h2>
    
   <ul>
   <li><a href="#准备数据" id="toc-准备数据" class="nav-link active" data-scroll-target="#准备数据"><span class="header-section-number">1</span> 准备数据</a></li>
@@ -285,9 +229,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R语言gganimate包和ggplot2包绘制进度线图(progressive line plot)</h1>
+</div>
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">日期</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2022年5月7日</p>
+    </div>
+  </div>
+        <div>
+    <div class="quarto-title-meta-heading">主题</div>
+    <div class="quarto-title-meta-contents">
+              <div class="badge badge-small quarto-category">R</div>
+              <div class="badge badge-small quarto-category">科研作图</div>
+          </div>
+  </div>
+    
+</div>
+</header>
+
+<div>
+  <div class="description">
+    这篇文章将和大家分享如何利用ggplot2包和gganimate包绘制进度线图(progressive line plot)的过程，其实我所说的进度线图就是让线图按照某一个变量一点一点的显示出来，最后显示完全这样一种类型的动态图形。
+  </div>
+</div><p></p>
 
 
 <p>在利用R语言gganimate包绘制动态的进度线图之前，你需要先理解在R里利用ggplot2包绘制线图的过程。点击了解ggplot2绘制线图</p>
@@ -306,7 +278,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-6"><a href="#cb1-6"></a>  <span class="co"># 剔除合计性别数据</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">filter</span>(area<span class="sc">==</span><span class="dv">1</span>,<span class="sc">!</span>(sex<span class="sc">==</span><span class="st">"合计"</span>))</span>
 <span id="cb1-8"><a href="#cb1-8"></a><span class="co">#查看前6条数据结构情况</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="fu">head</span>(data)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  area  sex variable agegrp
 1    1 男性     9.42      0
@@ -322,7 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="2" class="anchored" data-anchor-id="绘制进度线图progressive-line-plot"><span class="header-section-number">2</span> 绘制进度线图(progressive line plot)</h2>
 <p>我们利用线图(line plot)展示了河南省年龄别癌症发病率数据，而我们想让年龄别发病率数据随着年龄的增加而逐渐显示出来，从而让线图动起来，这样，年龄别发病率数据随着年龄变化的特点就能更直观的显示出来。</p>
 <p>想要达到这种效果，其实就是在利用ggplot2制作普通线图的基础上，再利用gganimate包的transition_reveal()函数，从而让线图按照某个变量逐步显示，我们这个例子就是按照x轴变量agegrp逐步显示，transition_reveal(agegrp)。</p>
-<p>为了让线图更文艺或者更美观，我们可以使用ggthemes包里面绘图的主题来进行图的美化。<a href="#fig-plot2">Figure&nbsp;1</a></p>
+<p>为了让线图更文艺或者更美观，我们可以使用ggthemes包里面绘图的主题来进行图的美化。<a href="#fig-plot2">图&nbsp;1</a></p>
 <p><strong>绘图代码如下：</strong></p>
 <div class="cell" data-layout-align="center" data-hash="index_cache/html/fig-plot2_365577a65750bd33da5643b4bc04bdc4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#加载包</span></span>
@@ -350,12 +322,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-23"><a href="#cb3-23"></a>  <span class="co"># 让线图按照agegrp变量逐步显示</span></span>
 <span id="cb3-24"><a href="#cb3-24"></a>    <span class="fu">transition_reveal</span>(agegrp)</span>
 <span id="cb3-25"><a href="#cb3-25"></a></span>
-<span id="cb3-26"><a href="#cb3-26"></a><span class="fu">anim_save</span>(<span class="st">"px.gif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-26"><a href="#cb3-26"></a><span class="fu">anim_save</span>(<span class="st">"px.gif"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-plot2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="index_files/figure-html/fig-plot2-1.gif" class="img-fluid figure-img" alt="进度线图 progressive line plot"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: 河南省肿瘤登记地区癌症年龄别发病率</figcaption><p></p>
+<p></p><figcaption class="figure-caption">图&nbsp;1: 河南省肿瘤登记地区癌症年龄别发病率</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -425,12 +397,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "已复制");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "已复制");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

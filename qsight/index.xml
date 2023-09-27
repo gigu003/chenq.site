@@ -19,6 +19,12 @@
 
 
 
+<div>
+  <div class="description">
+    <p>每年向国家肿瘤登记处上报当年肿瘤登记数据是每个省级肿瘤登记处的每年的工作内容，而当县区级登记处的数量很多的时候，数据整理工作变得很琐碎，这篇博文将向大家介绍如何处理肿瘤登记上报过程中的数据处理。</p>
+  </div>
+</div><p></p>
+
 
 <section id="随访数据上报要求" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="随访数据上报要求"><span class="header-section-number">1</span> 随访数据上报要求</h2>
@@ -101,15 +107,15 @@ font-style: italic;">## 读取肿瘤登记数据</span></span>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="1">把所有变量名改为小写字母</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-3">把所有变量名改为小写字母</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2">选择需要上报的变量</span>
+<span data-code-lines="4" data-code-annotation="2" data-code-cell="annotated-cell-3">选择需要上报的变量</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="5" data-code-annotation="3">把变量名改成上报模板要求的变量名</span>
+<span data-code-lines="5" data-code-annotation="3" data-code-cell="annotated-cell-3">把变量名改成上报模板要求的变量名</span>
 </dd>
 </dl>
 </div>
@@ -140,13 +146,13 @@ font-style: italic;">## 整理寿命表数据</span></span>
 <span id="cb4-6">  <span class="fu" style="color: #4758AB;">write.xlsx</span>(res,<span class="fu" style="color: #4758AB;">paste0</span>(<span class="st" style="color: #20794D;">"report/"</span>,areas,county,<span class="st" style="color: #20794D;">".xlsx"</span>),<span class="at" style="color: #657422;">colNames =</span> <span class="cn" style="color: #8f5902;">TRUE</span>)</span>
 <span id="cb4-7">}</span></code></pre></div>
 </div>
-<p>以上程序运行的结果见图 Figure&nbsp;1 。</p>
+<p>以上程序运行的结果见图 图&nbsp;1 。</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-export" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://www.chenq.site/qsight/2023-05-23-import-all/files.jpg" class="img-fluid figure-img" width="879"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: 导出excel结果</figcaption><p></p>
+<p></p><figcaption class="figure-caption">图&nbsp;1: 导出excel结果</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -170,6 +176,12 @@ font-style: italic;">## 整理寿命表数据</span></span>
   <description><![CDATA[ 
 
 
+
+<div>
+  <div class="description">
+    <p>癌症5年生存率是评估癌症诊疗水平的一个重要指标，本篇博文介绍了如何利用R语言"periodR"包基于人群肿瘤登记数据计算人群癌症5年相对生存率。</p>
+  </div>
+</div><p></p>
 
 
 <blockquote class="blockquote">
@@ -289,7 +301,7 @@ font-style: italic;">## 整理寿命表数据</span></span>
 <p>筛选入选河南省肿瘤登记年报的登记处数据。</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>代码</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="do" style="color: #5E5E5E;
 font-style: italic;">## 从code字典里筛选出2014年年报纳入的登记处</span></span>
 <span id="cb3-2">registrys <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">mdb.get</span>(<span class="st" style="color: #20794D;">"code.mdb"</span>,<span class="at" style="color: #657422;">tables =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"registry"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
@@ -314,7 +326,7 @@ font-style: italic;">## 读取肿瘤登记数据</span></span>
 <p>按照上面的筛选标准，继续对上一步输出的数据进行范围筛查。</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>代码</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1">canreg <span class="ot" style="color: #003B4F;">&lt;-</span> canreg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
 <span id="cb4-2"><span class="fu" style="color: #4758AB;">rename_all</span>(tolower) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
 <span id="cb4-3">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">dy =</span> <span class="fu" style="color: #4758AB;">year</span>(inciden),</span>
@@ -329,7 +341,7 @@ font-style: italic;">## 读取肿瘤登记数据</span></span>
 <p>我们选择分析的癌种范围与《国家肿瘤登记年报》报告的癌种范围一致，即所有恶性肿瘤和中枢神经系统良性肿瘤。</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>代码</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="do" style="color: #5E5E5E;
 font-style: italic;">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范围之内</span></span>
 <span id="cb5-2">analysis <span class="ot" style="color: #003B4F;">&lt;-</span> canreg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
@@ -348,7 +360,7 @@ font-style: italic;">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范�
 <p>本研究的随访截止日期设定为2019年12月31日，我们按照这个截止日期进行结尾数据的手工处理。</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>代码</summary>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1">analysis <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span>  </span>
 <span id="cb6-2">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">diagage =</span> <span class="fu" style="color: #4758AB;">trunc</span>((birthda <span class="sc" style="color: #5E5E5E;">%--%</span> inciden) <span class="sc" style="color: #5E5E5E;">/</span> <span class="fu" style="color: #4758AB;">years</span>(<span class="dv" style="color: #AD0000;">1</span>)),</span>
 <span id="cb6-3">         <span class="at" style="color: #657422;">icdd=</span> <span class="fu" style="color: #4758AB;">classify_icd10</span>(autoicd10),</span>
@@ -369,7 +381,7 @@ font-style: italic;">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范�
 <h3 data-number="4.6" class="anchored" data-anchor-id="对待分析的分组变量进行处理"><span class="header-section-number">4.6</span> 对待分析的分组变量进行处理</h3>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>代码</summary>
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1">analysis <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span>  </span>
 <span id="cb7-2">  <span class="fu" style="color: #4758AB;">mutate</span>(</span>
 <span id="cb7-3">         <span class="at" style="color: #657422;">area_type =</span><span class="fu" style="color: #4758AB;">ifelse</span>(areacode <span class="sc" style="color: #5E5E5E;">%in%</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"410302"</span>,<span class="st" style="color: #20794D;">"410303"</span>,<span class="st" style="color: #20794D;">"410304"</span>,<span class="st" style="color: #20794D;">"410305"</span>,</span>
@@ -406,7 +418,7 @@ font-style: italic;">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范�
 <p>在进行5年相对生存率的计算之前，我们需要先评估一下各个登记处的随访的质量情况，包括DCO数据的比例、失访的情况、最终纳入分析数据的病理诊断比例等来对数据质量进行评估。</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>代码</summary>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1">submit <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">count</span>(areacode2)</span>
 <span id="cb8-2">dco <span class="ot" style="color: #003B4F;">&lt;-</span> analysis <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
 <span id="cb8-3">  <span class="fu" style="color: #4758AB;">filter</span>(basi2<span class="sc" style="color: #5E5E5E;">==</span><span class="dv" style="color: #AD0000;">0</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
@@ -449,7 +461,7 @@ font-style: italic;">## 把数据限制在上报C00-C98,D32-33,D42-43,D45-47范�
 <p>把上面计算的结果绘制成可以展现的表格，从下面 表&nbsp;1 中可以看出入选登记处的数据质量情况，包括DCO、失访情况、以及最终纳入分析的病例数、多原发比例、以病理诊断比例等。</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>代码</summary>
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1">t1 <span class="ot" style="color: #003B4F;">&lt;-</span> result <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
 <span id="cb9-2">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">a=</span><span class="fu" style="color: #4758AB;">paste0</span>(dco,<span class="st" style="color: #20794D;">"("</span>,dco_p,<span class="st" style="color: #20794D;">"%)"</span>),</span>
 <span id="cb9-3">         <span class="at" style="color: #657422;">b=</span><span class="fu" style="color: #4758AB;">paste0</span>(missfol,<span class="st" style="color: #20794D;">"("</span>,missfol_p,<span class="st" style="color: #20794D;">"%)"</span>),</span>
@@ -855,8 +867,8 @@ font-style: italic;">## 按照地区分类计算各年龄生存概率</span></sp
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts53516"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts25209"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts3922"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts11122"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
@@ -1215,7 +1227,7 @@ periodR生存分析的强制性变量
 </section>
 <section id="标准人口选择r程序" class="level4" data-number="7.3.3">
 <h4 data-number="7.3.3" class="anchored" data-anchor-id="标准人口选择r程序"><span class="header-section-number">7.3.3</span> 标准人口选择R程序</h4>
-<p>我们在计算标化率时选择的标准人口是(表&nbsp;3)对应的标准人口，同时也写了R程序自动选择不同癌种对应的标准人口，并把程序嵌入到(Section&nbsp;7.2)对应的R函数中，这样就可以使用程序批量输出标化相对生存率的计算结果。</p>
+<p>我们在计算标化率时选择的标准人口是(表&nbsp;3)对应的标准人口，同时也写了R程序自动选择不同癌种对应的标准人口，并把程序嵌入到(章节&nbsp;7.2)对应的R函数中，这样就可以使用程序批量输出标化相对生存率的计算结果。</p>
 <p>程序如下：</p>
 <div class="sourceCode" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="co" style="color: #5E5E5E;">#生成生存分析标准人口结构</span></span>
 <span id="cb20-2">s <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">23</span>,<span class="dv" style="color: #AD0000;">29</span>,<span class="dv" style="color: #AD0000;">29</span>)</span>
@@ -1258,12 +1270,12 @@ font-style: italic;">##女性成人5年生存率</span></span>
 <section id="组间相对生存率的统计学检验" class="level3" data-number="7.5">
 <h3 data-number="7.5" class="anchored" data-anchor-id="组间相对生存率的统计学检验"><span class="header-section-number">7.5</span> 组间相对生存率的统计学检验</h3>
 <p>periodR能够输出估计的相对生存率和标准差，其实有这两个参数可以直接推出95%可信区间，但是为了能够更直观的两组间相对生存率点估计值的统计学差异，可以对两组的相对生存率进行统计学检验。</p>
-<p>我们采用Z检验比较组间5年相对生存率的统计学差异（Equation&nbsp;1），其中<img src="https://latex.codecogs.com/png.latex?P_1">表示组1的相对生存率，<img src="https://latex.codecogs.com/png.latex?P_2">表示组2的相对生存率，<img src="https://latex.codecogs.com/png.latex?s.e.(P_1)">表示<img src="https://latex.codecogs.com/png.latex?P_1">的标准误，<img src="https://latex.codecogs.com/png.latex?s.e.(P_2)">表示<img src="https://latex.codecogs.com/png.latex?P_2">的标准误癌，如果Z&gt;1.96，则<em>P</em>&lt;0.05；如果Z&gt;2.56，则<em>P</em>&lt;0.01。<span class="citation" data-cites="xiangyongbing1999a">(<strong>xiangyongbing1999a?</strong>)</span></p>
+<p>我们采用Z检验比较组间5年相对生存率的统计学差异（方程式&nbsp;1），其中<img src="https://latex.codecogs.com/png.latex?P_1">表示组1的相对生存率，<img src="https://latex.codecogs.com/png.latex?P_2">表示组2的相对生存率，<img src="https://latex.codecogs.com/png.latex?s.e.(P_1)">表示<img src="https://latex.codecogs.com/png.latex?P_1">的标准误，<img src="https://latex.codecogs.com/png.latex?s.e.(P_2)">表示<img src="https://latex.codecogs.com/png.latex?P_2">的标准误癌，如果Z&gt;1.96，则<em>P</em>&lt;0.05；如果Z&gt;2.56，则<em>P</em>&lt;0.01。<span class="citation" data-cites="xiangyongbing1999a">(<strong>xiangyongbing1999a?</strong>)</span></p>
 <p><span id="eq-z"><img src="https://latex.codecogs.com/png.latex?%0AZ=%5Cfrac%7B%7CP_1-P_2%7C%7D%7B%5Csqrt%7Bs.e.(P_1)%5E2+s.e.(P_2)%5E2%7D%7D%0A%5Ctag%7B1%7D"></span></p>
 </section>
 <section id="结果表格整理" class="level3 page-columns page-full" data-number="7.6">
 <h3 data-number="7.6" class="anchored" data-anchor-id="结果表格整理"><span class="header-section-number">7.6</span> 结果表格整理</h3>
-<p>(Section&nbsp;7.4)已经计算出了不同癌种、不同性别癌症人群的5年相对生存率，这一部分，我们将根据计算结果以及(Equation&nbsp;1)计算男性和女性之间估计5年相对生存率的统计学差异。</p>
+<p>(章节&nbsp;7.4)已经计算出了不同癌种、不同性别癌症人群的5年相对生存率，这一部分，我们将根据计算结果以及(方程式&nbsp;1)计算男性和女性之间估计5年相对生存率的统计学差异。</p>
 <div class="sourceCode" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="fu" style="color: #4758AB;">options</span>(<span class="at" style="color: #657422;">NA.print =</span> <span class="st" style="color: #20794D;">"--"</span>)</span>
 <span id="cb24-2">ress_site <span class="ot" style="color: #003B4F;">&lt;-</span> ress_total <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
 <span id="cb24-3">  <span class="fu" style="color: #4758AB;">left_join</span>(ress_male,<span class="at" style="color: #657422;">by=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"cate"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
@@ -1655,34 +1667,34 @@ font-style: italic;">##女性成人5年生存率</span></span>
 <h2 class="unnumbered anchored" data-anchor-id="参考文献">参考文献</h2>
 <div id="refs" class="references csl-bib-body">
 <div id="ref-李卓颖2021" class="csl-entry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">李卓颖, 蒋宇飞, 谭玉婷, et al. <span>现时法统计模型在全人群肿瘤登记生存分析中的应用</span>. <em>复旦学报(医学版)</em>. 2021;48(3): 376-382+397+383-387. </div>
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">李卓颖, 蒋宇飞, 谭玉婷, 等. <span>现时法统计模型在全人群肿瘤登记生存分析中的应用</span>. <em>复旦学报(医学版)</em>. 2021年;48(3): 376-382+397+383-387. </div>
 </div>
 <div id="ref-张华2014" class="csl-entry">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">张华, 曹志刚, 柳光宇, et al. <span>队列法、完全法和现时生存分析方法在乳腺癌随访研究中的应用</span>. <em>肿瘤</em>. 2014;34(6): 550–556. </div>
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">张华, 曹志刚, 柳光宇, 等. <span>队列法、完全法和现时生存分析方法在乳腺癌随访研究中的应用</span>. <em>肿瘤</em>. 2014年;34(6): 550–556. </div>
 </div>
 <div id="ref-brenner2002" class="csl-entry">
-<div class="csl-left-margin">3. </div><div class="csl-right-inline">Brenner H, Söderman B, Hakulinen T. Use of period analysis for providing more up-to-date estimates of long-term survival rates: Empirical evaluation among 370 000 cancer patients in <span>Finland</span>. <em>International Journal of Epidemiology</em>. 2002;31(2): 456–462. <a href="https://doi.org/10.1093/ije/31.2.456">https://doi.org/10.1093/ije/31.2.456.</a></div>
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Brenner H, Söderman B, Hakulinen T. Use of Period Analysis for Providing More Up-to-Date Estimates of Long-Term Survival Rates: Empirical Evaluation among 370 000 Cancer Patients in <span>Finland</span>. <em>International Journal of Epidemiology</em>. 2002年;31(2): 456–462. <a href="https://doi.org/10.1093/ije/31.2.456">https://doi.org/10.1093/ije/31.2.456.</a></div>
 </div>
 <div id="ref-brenner2004" class="csl-entry">
-<div class="csl-left-margin">4. </div><div class="csl-right-inline">Brenner H, Gefeller O, Hakulinen T. Period analysis for <span>“up-to-date”</span> cancer survival data. <em>European Journal of Cancer</em>. 2004;40(3): 326–335. <a href="https://doi.org/10.1016/j.ejca.2003.10.013">https://doi.org/10.1016/j.ejca.2003.10.013.</a></div>
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Brenner H, Gefeller O, Hakulinen T. Period Analysis for <span>《up-to-Date》</span> Cancer Survival Data. <em>European Journal of Cancer</em>. 2004年;40(3): 326–335. <a href="https://doi.org/10.1016/j.ejca.2003.10.013">https://doi.org/10.1016/j.ejca.2003.10.013.</a></div>
 </div>
 <div id="ref-holleczek2013b" class="csl-entry">
-<div class="csl-left-margin">5. </div><div class="csl-right-inline">Holleczek B, Brenner H. Model based period analysis of absolute and relative survival with <span>R</span>: Data preparation, model fitting and derivation of survival estimates. <em>Comput Methods Programs Biomed</em>. 2013;110(2): 192–202. <a href="https://doi.org/10.1016/j.cmpb.2012.10.004">https://doi.org/10.1016/j.cmpb.2012.10.004.</a></div>
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Holleczek B, Brenner H. Model Based Period Analysis of Absolute and Relative Survival with <span>R</span>: Data Preparation, Model Fitting and Derivation of Survival Estimates. <em>Comput Methods Programs Biomed</em>. 2013年;110(2): 192–202. <a href="https://doi.org/10.1016/j.cmpb.2012.10.004">https://doi.org/10.1016/j.cmpb.2012.10.004.</a></div>
 </div>
 <div id="ref-jansen2013" class="csl-entry">
-<div class="csl-left-margin">6. </div><div class="csl-right-inline">Jansen L, Hakulinen T, Brenner H. Study populations for period analyses of cancer survival. <em>Br J Cancer</em>. 2013;108(3): 699–707. <a href="https://doi.org/10.1038/bjc.2013.14">https://doi.org/10.1038/bjc.2013.14.</a></div>
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Jansen L, Hakulinen T, Brenner H. Study Populations for Period Analyses of Cancer Survival. <em>Br J Cancer</em>. 2013年;108(3): 699–707. <a href="https://doi.org/10.1038/bjc.2013.14">https://doi.org/10.1038/bjc.2013.14.</a></div>
 </div>
 <div id="ref-张华2016" class="csl-entry">
-<div class="csl-left-margin">7. </div><div class="csl-right-inline">张华, 曹志刚, 莫淼, et al. <span>肿瘤监测数据的生存分析方法比较</span>. <em>中国卫生统计</em>. 2016;33(5): 908–913. </div>
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">张华, 曹志刚, 莫淼, 等. <span>肿瘤监测数据的生存分析方法比较</span>. <em>中国卫生统计</em>. 2016年;33(5): 908–913. </div>
 </div>
 <div id="ref-holleczek2009" class="csl-entry">
-<div class="csl-left-margin">8. </div><div class="csl-right-inline">Holleczek B, Gondos A, Brenner H. <span class="nocase">periodR</span> - an <span>R</span> package to calculate long-term cancer survival estimates using period analysis. <em>Methods Inf Med</em>. 2009;48(2): 123–128. <a href="https://doi.org/10.3414/ME0563">https://doi.org/10.3414/ME0563.</a></div>
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Holleczek B, Gondos A, Brenner H. <span>periodR</span> - an <span>R</span> Package to Calculate Long-Term Cancer Survival Estimates Using Period Analysis. <em>Methods Inf Med</em>. 2009年;48(2): 123–128. <a href="https://doi.org/10.3414/ME0563">https://doi.org/10.3414/ME0563.</a></div>
 </div>
 <div id="ref-ellison2006" class="csl-entry">
-<div class="csl-left-margin">9. </div><div class="csl-right-inline">Ellison LF. An <span>Empirical Evaluation</span> of <span>Period Survival Analysis Using Data</span> from the <span>Canadian Cancer Registry</span>. <em>Annals of Epidemiology</em>. 2006;16(3): 191–196. <a href="https://doi.org/10.1016/j.annepidem.2005.02.017">https://doi.org/10.1016/j.annepidem.2005.02.017.</a></div>
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Ellison LF. An <span>Empirical Evaluation</span> of <span>Period Survival Analysis Using Data</span> from the <span>Canadian Cancer Registry</span>. <em>Annals of Epidemiology</em>. 2006年;16(3): 191–196. <a href="https://doi.org/10.1016/j.annepidem.2005.02.017">https://doi.org/10.1016/j.annepidem.2005.02.017.</a></div>
 </div>
 <div id="ref-corazziari2004a" class="csl-entry">
-<div class="csl-left-margin">10. </div><div class="csl-right-inline">Corazziari I, Quinn M, Capocaccia R. Standard cancer patient population for age standardising survival ratios. <em>European Journal of Cancer</em>. 2004;40(15): 2307–2316. <a href="https://doi.org/10.1016/j.ejca.2004.07.002">https://doi.org/10.1016/j.ejca.2004.07.002.</a></div>
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Corazziari I, Quinn M, Capocaccia R. Standard Cancer Patient Population for Age Standardising Survival Ratios. <em>European Journal of Cancer</em>. 2004年;40(15): 2307–2316. <a href="https://doi.org/10.1016/j.ejca.2004.07.002">https://doi.org/10.1016/j.ejca.2004.07.002.</a></div>
 </div>
 </div>
 
@@ -1704,6 +1716,12 @@ font-style: italic;">##女性成人5年生存率</span></span>
   <description><![CDATA[ 
 
 
+
+<div>
+  <div class="description">
+    <p>Quarto自1.3以后的版本中将支持网页输出中包含其他输出格式（PDF、MS Word等）的链接，这对于多种格式的内容分享很重要。</p>
+  </div>
+</div><p></p>
 
 
 <section id="功能介绍" class="level2" data-number="1">
@@ -1831,6 +1849,12 @@ _quarto.yml
 
 
 
+<div>
+  <div class="description">
+    <p>本篇博文介绍了我们使用Rstudio进行数据分析或使用Quarto撰写报告时提高效率的一些方法和配置，通过这些配置可以大大提高我们工作的便捷性和效率，俗话说“磨刀不误砍柴工”，开始数据分析之前，先把工具“Rstudio,R”配置好，肯定事半功倍！</p>
+  </div>
+</div><p></p>
+
 
 <section id="提高quarto效率的常见配置" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="提高quarto效率的常见配置"><span class="header-section-number">1</span> 提高Quarto效率的常见配置</h2>
@@ -1856,7 +1880,7 @@ _quarto.yml
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+警告
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2183,10 +2207,16 @@ Rstudio项目
 
 
 
+<div>
+  <div class="description">
+    <p>这篇博文介绍我使用quarto进行论文写作的一些技巧和经验，它们在无形中提高了我论文写作的效率，使论文的数据统计结果具有可能重复性，如果你还没听说过quarto，耐心的读完这篇博文，我相信会给你带来帮助。</p>
+  </div>
+</div><p></p>
+
 
 <section id="传统论文写作中的常见问题" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="传统论文写作中的常见问题"><span class="header-section-number">1</span> 传统论文写作中的常见问题</h2>
-<p>我相信除了不需要进行统计分析的综述类文章类型之外，大部分论文类型的论文写作流程是下面 Figure&nbsp;1 这个样子的：</p>
+<p>我相信除了不需要进行统计分析的综述类文章类型之外，大部分论文类型的论文写作流程是下面 图&nbsp;1 这个样子的：</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-1" class="quarto-figure quarto-figure-center anchored">
@@ -2206,7 +2236,7 @@ Rstudio项目
   G --&gt; H[发表见刊]
 </pre>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: 论文写作流程</figcaption><p></p>
+<p></p><figcaption class="figure-caption">图&nbsp;1: 论文写作流程</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -2304,7 +2334,7 @@ Quarto
 </section>
 <section id="代码块" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="代码块"><span class="header-section-number">6.2</span> 代码块</h3>
-<p>quarto文档中可以插入代码块，在代码块中可以进行编写相应语言的代码，进行统计分析或结果展现。目前quarto支持的代码块包括R语言、Python等，下面的R语言代码块，利用gtsummary包制作了论文中常用的表1，结果可见 Table&nbsp;1 。</p>
+<p>quarto文档中可以插入代码块，在代码块中可以进行编写相应语言的代码，进行统计分析或结果展现。目前quarto支持的代码块包括R语言、Python等，下面的R语言代码块，利用gtsummary包制作了论文中常用的表1，结果可见 表格&nbsp;1 。</p>
 <div class="cell tbl-cap-location-top" data-hash="index_cache/html/tbl-table1_6b02c3f223d2d5cbfda1ad46238e90e6">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><span class="in" style="color: #5E5E5E;">```{r}</span></span>
 <span id="cb3-2"><span class="co" style="color: #5E5E5E;">#| label: tbl-table1</span></span>
@@ -2738,7 +2768,7 @@ Quarto
 
 <div id="tbl-table1" class="anchored">
 <table class="gt_table table table-sm table-striped" data-quarto-postprocess="true">
-<caption>Table&nbsp;1: 接受不同药物治疗人群基本特征分析</caption>
+<caption>表格&nbsp;1: 接受不同药物治疗人群基本特征分析</caption>
 <thead class="gt_col_headings">
 <tr class="header">
 <th id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
@@ -2991,6 +3021,12 @@ authors-block设置方法
 
 
 
+<div>
+  <div class="description">
+    <p>今天我审读了一篇肿瘤临床预后影响因素分析的投稿论文，也想起了以前看过的几篇临床肿瘤预后影响因素的文章，我发现他们在进行数据分析的时候存在某些共同的问题，今天在这里和大家分享一下我的一些观点，希望能对肿瘤预后分析的朋友有所帮助。</p>
+  </div>
+</div><p></p>
+
 
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -3043,6 +3079,7 @@ authors-block设置方法
   <dc:creator>陈琼</dc:creator>
   <link>https://www.chenq.site/qsight/2023-02-27-create-logo/index.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -3173,6 +3210,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 
 
 
+
 <p>多舛的2022年<strong>终于</strong>过去了，2023年也伴随着一次全民的新冠感染重磅出场。本想着2023年还是像以往一样，单调、乏味，但是生活还是给了我一个小惊喜。</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
@@ -3214,6 +3252,12 @@ Disabled features: fftw, ghostscript, x11</code></pre>
   <description><![CDATA[ 
 
 
+
+<div>
+  <div class="description">
+    这篇博文描述了博主从利用blogdown、bookdown等基于rmd的包实现可重复性研究报告到利用quarto实现的过程。
+  </div>
+</div><p></p>
 
 
 <section id="传统写作的困境" class="level2" data-number="1">
@@ -3287,6 +3331,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 
 
 
+
 <p>Quarto考虑了各种运行环境，你可以直接用各类文本编辑器配合终端命令行直接运行quarto命令，可以用Rstudio运行，当然也可以用比较流行的vscode来运行。</p>
 <p>点击下面的链接，根据自己的系统环境下载相应的quarto版本。</p>
 <div class="quarto-figure quarto-figure-center">
@@ -3337,6 +3382,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 
 
 
+
 <section id="忽略.ds_store" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="忽略.ds_store"><span class="header-section-number">1</span> 忽略.DS_Store</h2>
 <p>git按照工作环境里的.gitignore文件设置去忽略相应的文件，如果你的git环境里还没有创建.gitignore文件,则需要首先创建该文件。</p>
@@ -3368,6 +3414,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
   <dc:creator>陈琼</dc:creator>
   <link>https://www.chenq.site/qsight/2022-11-24-mindmap/index.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -3434,6 +3481,12 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 
 
 
+<div>
+  <div class="description">
+    这篇文章将和大家分享如何利用ggplot2包和gganimate包绘制进度线图(progressive line plot)的过程，其实我所说的进度线图就是让线图按照某一个变量一点一点的显示出来，最后显示完全这样一种类型的动态图形。
+  </div>
+</div><p></p>
+
 
 <p>在利用R语言gganimate包绘制动态的进度线图之前，你需要先理解在R里利用ggplot2包绘制线图的过程。点击了解ggplot2绘制线图</p>
 <p>在理解了如何利用ggplot2包绘制线图之后，你可以利用gganimate包增加一个绘图函数transition_…()，从而绘制动态变化图形。给transition_…()函数提供一个frame变量，这个变量的值每变化一次，就会在图上绘制一次，从而实现图的动态变化。</p>
@@ -3467,7 +3520,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <h2 data-number="2" class="anchored" data-anchor-id="绘制进度线图progressive-line-plot"><span class="header-section-number">2</span> 绘制进度线图(progressive line plot)</h2>
 <p>我们利用线图(line plot)展示了河南省年龄别癌症发病率数据，而我们想让年龄别发病率数据随着年龄的增加而逐渐显示出来，从而让线图动起来，这样，年龄别发病率数据随着年龄变化的特点就能更直观的显示出来。</p>
 <p>想要达到这种效果，其实就是在利用ggplot2制作普通线图的基础上，再利用gganimate包的transition_reveal()函数，从而让线图按照某个变量逐步显示，我们这个例子就是按照x轴变量agegrp逐步显示，transition_reveal(agegrp)。</p>
-<p>为了让线图更文艺或者更美观，我们可以使用ggthemes包里面绘图的主题来进行图的美化。Figure&nbsp;1</p>
+<p>为了让线图更文艺或者更美观，我们可以使用ggthemes包里面绘图的主题来进行图的美化。图&nbsp;1</p>
 <p><strong>绘图代码如下：</strong></p>
 <div class="cell" data-layout-align="center" data-hash="index_cache/html/fig-plot2_365577a65750bd33da5643b4bc04bdc4">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#加载包</span></span>
@@ -3500,7 +3553,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div id="fig-plot2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/index_files/figure-html/fig-plot2-1.gif" class="img-fluid figure-img" alt="进度线图 progressive line plot"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: 河南省肿瘤登记地区癌症年龄别发病率</figcaption><p></p>
+<p></p><figcaption class="figure-caption">图&nbsp;1: 河南省肿瘤登记地区癌症年龄别发病率</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -3527,6 +3580,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
   <dc:creator>陈琼</dc:creator>
   <link>https://www.chenq.site/qsight/2022-05-06-r-wordcloud2/index.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -3638,6 +3692,7 @@ the       the   26</code></pre>
 
 
 
+
 <p>最近动态条形图或者称之为追逐条形图在社交媒体上比较火，最常见的是世界各个国家的GDP排名随着时间（以年为单位）变化的情况，通过它可以明显的看到中国的GDP排名从前10名开外逐渐上升到全球第二名的位置。热爱数据可视化的小伙伴们也在想着如何制作这样酷炫的图呢？今天这篇文章的目的就是介绍如何利用R语言绘制这样的动态条形图。</p>
 <section id="用到哪些r包" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="用到哪些r包"><span class="header-section-number">1</span> 用到哪些R包？</h2>
@@ -3736,6 +3791,7 @@ the       the   26</code></pre>
   <dc:creator>陈琼</dc:creator>
   <link>https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -3921,6 +3977,7 @@ the       the   26</code></pre>
 
 
 
+
 <section id="什么是统计地图" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="什么是统计地图"><span class="header-section-number">1</span> 什么是统计地图？</h2>
 <p>统计地图是以地图为背景，运用各种线纹、色彩、几何图形或实物形象来显示被研究现象的指标数值的大小及其在各地区的分布状况的一种统计图形。又称空间数列图和地理数列图。主要用于说明某些现象在地域上的分布，进行不同地区间的比较，反映现象所处的地理位置，以及它们的密集和分散程度。</p>
@@ -4049,6 +4106,7 @@ the       the   26</code></pre>
 
 
 
+
 <p>本篇文章将介绍如何利用R语言blogdown包生成一个静态网站，从而用来展示个人信息、撰写博客、或者分享其他信息。</p>
 <blockquote class="blockquote">
 <p>静态页面实际上说的是相对于相对于动态网页而言，它没有后台数据库、不含程序，是不能交互的网页。代码编的是什么它显示的就是什么、不会有任何改变。</p>
@@ -4164,6 +4222,7 @@ the       the   26</code></pre>
 
 
 
+
 <p><strong><em>人口金字塔图</em></strong>可以形象的展示人口结构，而动态人口金字塔则可以直观的展示历年人口结构的变化情况，从而可以直观的对人口数据进行质量控制，本篇博文讲介绍如何利用R语言Rmd文档输出动态人口金字塔图。</p>
 <p>首先，我们先看一下需要准备的人口数据结构,数据集包含某个地区男性和女性每年的不同年龄组的人口数（5岁一组），年份变量为year，性别变量为sex，人口数据分别为r0、r1、r5、r10、… 、r85等。</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_15a4ce92de0c3e32b3b078d870defe58">
@@ -4270,6 +4329,7 @@ font-style: italic;">## 建立for循环</span></span>
   <dc:creator>陈琼</dc:creator>
   <link>https://www.chenq.site/qsight/2022-04-17-mv/index.html</link>
   <description><![CDATA[ 
+
 
 
 
