@@ -22,8 +22,8 @@ format:
     number-sections: true
     template: qsight.html
     template-partials:
-      - title-metadata.html
       - title-block.html
+      - title-metadata.html
 
 comments:
   utterances:
