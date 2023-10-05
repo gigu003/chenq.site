@@ -1,0 +1,39 @@
+---
+title: "一个肿瘤登记R语言包: canregtools"
+subtitle: "让肿瘤登记数据分析和可视化更容易"
+description: |
+  为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“*canregtools*”，这篇博文将详细介绍这个R包的功能和使用。
+author: 陈琼
+date: 2023-09-30
+categories:
+  - 肿瘤登记
+  - R语言
+---
+
+> 肿瘤登记工作是搜集一个地区肿瘤数据资料，并进行常规数据分析和统计报告的统计制度，从而为肿瘤防治提供肿瘤发病率、死亡率、生存率及分布特征等流行病学数据。
+
+canregtools包提供了肿瘤登记常用的数据分析、可视化、自动化报告等功能，目前*canregtools*包还处在开发阶段，新的功能会不断补充更新到该包中。
+
+我为该包做了一个网站[canregtools包](https://caregtools.chenq.site)，你可以登录网站查看最新的功能。
+
+## canregtools的安装
+
+```{{r}}
+library(devtools)
+install_github("gigu003/canregtools")
+```
+
+## 数据格式
+
+
+## 读取数据
+包里内置了登记处常用的数据上报格式，
+```{r}
+#| echo: fenced
+library(canregtools)
+file <- system.file("extdata", "411721.xls", package = "canregtools")
+data <- read_canreg(file)
+data
+```
+
+

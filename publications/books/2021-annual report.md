@@ -12,7 +12,7 @@ tags:
   - 年报
 details: <em>河南科学技术出版社</em>,郑州
 online: https://chenq.site/report/2021/
-image: "cover/2021.jpeg"
+image: "https://cdn.jsdelivr.net/gh/gigu003/db//images/book/2021.jpg"
 ---
 
 

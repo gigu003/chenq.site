@@ -11,7 +11,7 @@ tags:
   - 流行情况
   - 年报
 details: <em>河南科学技术出版社</em>,郑州
-image: "cover/2019.jpg"
+image: "https://cdn.jsdelivr.net/gh/gigu003/db//images/book/2019.jpg"
 ---
 
 我们利用河南省各肿瘤登记处上报的2016年恶性肿瘤发病和死亡数据编制并发布了《2019河南省肿瘤登记年报》，本书系统描述了河南省肿瘤登记地区癌症发病和死亡等癌症疾病负担情况，
