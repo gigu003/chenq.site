@@ -10,7 +10,126 @@
 <atom:link href="https://www.chenq.site/qsight/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
 <generator>quarto-1.3.238</generator>
-<lastBuildDate>Tue, 23 May 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 30 Sep 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>一个肿瘤登记R语言包: canregtools</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://www.chenq.site/qsight/2023-09-30-canregtools/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div>
+  <div class="def">
+    <p>为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“<em>canregtools</em>”，这篇博文将详细介绍这个R包的功能和使用。</p>
+  </div>
+</div><p></p>
+
+
+<blockquote class="blockquote">
+<p>肿瘤登记工作是搜集一个地区肿瘤数据资料，并进行常规数据分析和统计报告的统计制度，从而为肿瘤防治提供肿瘤发病率、死亡率、生存率及分布特征等流行病学数据。</p>
+</blockquote>
+<p>canregtools包提供了肿瘤登记常用的数据分析、可视化、自动化报告等功能，目前<em>canregtools</em>包还处在开发阶段，新的功能会不断补充更新到该包中。</p>
+<p>我为该包做了一个网站<a href="https://caregtools.chenq.site">canregtools包</a>，你可以登录网站查看最新的功能。</p>
+<section id="canregtools的安装" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="canregtools的安装"><span class="header-section-number">1</span> canregtools的安装</h2>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource {{r}} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1">library(devtools)</span>
+<span id="cb1-2">install_github("gigu003/canregtools")</span></code></pre></div>
+</section>
+<section id="数据格式" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="数据格式"><span class="header-section-number">2</span> 数据格式</h2>
+</section>
+<section id="读取数据" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="读取数据"><span class="header-section-number">3</span> 读取数据</h2>
+<p>包里内置了登记处常用的数据上报格式，</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><span class="in" style="color: #5E5E5E;">```{r}</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;">library</span>(canregtools)</span>
+<span id="cb2-3">file <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">system.file</span>(<span class="st" style="color: #20794D;">"extdata"</span>, <span class="st" style="color: #20794D;">"411721.xls"</span>, <span class="at" style="color: #657422;">package =</span> <span class="st" style="color: #20794D;">"canregtools"</span>)</span>
+<span id="cb2-4">data <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read_canreg</span>(file)</span>
+<span id="cb2-5">data</span>
+<span id="cb2-6"><span class="in" style="color: #5E5E5E;">```</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2200  cases were read from FB sheet.1470  cases were read from SW sheet.$areacode
+[1] "411721"
+
+$county
+[1] ""
+
+$area_type
+[1] ""
+
+$location
+[1] ""
+
+$year
+[1] 2016
+
+$FBcases
+# A tibble: 2,200 × 20
+   registr sex   age   birthda    inciden    topo  morp  beha  grad  basi  trib 
+   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+ 1 174117… 2     72    1943-10-04 2016-04-11 C00.9 8070  3     9     7     01   
+ 2 184117… 1     91    1925-02-02 2016-09-13 C01.9 8070  3     9     7     01   
+ 3 184117… 1     74    1941-09-16 2016-04-14 C01.9 8070  3     9     7     01   
+ 4 194117… 1     61    1954-08-13 2016-06-15 C02.9 8070  3     9     7     01   
+ 5 174117… 2     8     2008-03-31 2016-05-05 C02.9 9591  3     9     7     01   
+ 6 164117… 1     60    1955-11-22 2016-07-04 C03.9 8070  3     9     7     01   
+ 7 184117… 1     80    1935-08-12 2016-04-03 C03.9 8070  3     9     7     01   
+ 8 204117… 1     71    1944-06-13 2016-03-02 C05.1 8070  3     9     7     01   
+ 9 174117… 1     65    1951-03-25 2016-12-28 C05.9 8010  3     3     7     01   
+10 174117… 1     63    1953-01-08 2016-05-10 C05.9 8070  3     9     7     01   
+# ℹ 2,190 more rows
+# ℹ 9 more variables: dlc &lt;dttm&gt;, deathda &lt;dttm&gt;, caus &lt;chr&gt;, marri &lt;chr&gt;,
+#   status &lt;chr&gt;, reportd &lt;dttm&gt;, treatment &lt;chr&gt;, firsttreat &lt;chr&gt;,
+#   icd10 &lt;chr&gt;
+
+$SWcases
+# A tibble: 1,470 × 10
+   registr  sex   age   birthda    topo  morp  beha  inciden    deathda    icd10
+   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;
+ 1 1641172… 1     65    1951-05-28 C02.9 8052  3     2012-09-03 2016-07-13 C02.9
+ 2 1741170… 1     75    1941-10-01 C02.9 8070  3     2014-04-28 2016-12-10 C02.9
+ 3 1741170… 1     67    1949-11-04 C03.0 8070  3     2015-10-04 2016-12-15 C03.0
+ 4 1741170… 1     68    1948-01-15 C04.9 8070  3     2015-09-11 2016-07-29 C04.9
+ 5 1741170… 1     63    1953-04-08 C06.0 8050  3     2012-11-08 2016-11-09 C06.0
+ 6 1741170… 1     67    1948-12-12 C06.9 8070  3     2015-05-06 2016-07-23 C06.9
+ 7 1741170… 1     66    1950-10-10 C06.9 8070  3     2015-04-08 2016-11-10 C06.9
+ 8 1741170… 1     67    1949-03-10 C07.9 8430  3     2014-06-10 2016-06-06 C07  
+ 9 1741170… 1     65    1950-07-07 C07.9 8562  3     2015-10-02 2016-03-14 C07  
+10 1741170… 2     84    1931-12-02 C09.9 8070  3     2016-05-16 2016-12-22 C09.9
+# ℹ 1,460 more rows
+
+$POP
+# A tibble: 38 × 4
+    year   sex agegrp   rks
+   &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;dbl&gt;
+ 1  2016     1 0       5053
+ 2  2016     1 1      17743
+ 3  2016     1 5      25541
+ 4  2016     1 10     32509
+ 5  2016     1 15     30530
+ 6  2016     1 20     34806
+ 7  2016     1 25     36846
+ 8  2016     1 30     38691
+ 9  2016     1 35     40056
+10  2016     1 40     39252
+# ℹ 28 more rows
+
+attr(,"class")
+[1] "canreg" "list"  </code></pre>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>肿瘤登记</category>
+  <category>R语言</category>
+  <guid>https://www.chenq.site/qsight/2023-09-30-canregtools/index.html</guid>
+  <pubDate>Sat, 30 Sep 2023 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>肿瘤登记数据上报经验分享：R语言批量导入导出excel数据</title>
   <dc:creator>陈琼</dc:creator>
@@ -107,15 +226,15 @@ font-style: italic;">## 读取肿瘤登记数据</span></span>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="1">把所有变量名改为小写字母</span>
+<span data-code-annotation="1" data-code-lines="3" data-code-cell="annotated-cell-3">把所有变量名改为小写字母</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2">选择需要上报的变量</span>
+<span data-code-annotation="2" data-code-lines="4" data-code-cell="annotated-cell-3">选择需要上报的变量</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="5" data-code-annotation="3">把变量名改成上报模板要求的变量名</span>
+<span data-code-annotation="3" data-code-lines="5" data-code-cell="annotated-cell-3">把变量名改成上报模板要求的变量名</span>
 </dd>
 </dl>
 </div>
@@ -867,8 +986,8 @@ font-style: italic;">## 按照地区分类计算各年龄生存概率</span></sp
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts15567"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts42890"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts31283"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts13639"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
@@ -4323,48 +4442,6 @@ font-style: italic;">## 建立for循环</span></span>
   <guid>https://www.chenq.site/qsight/2022-04-25-rmd/index.html</guid>
   <pubDate>Mon, 25 Apr 2022 00:00:00 GMT</pubDate>
   <media:content url="https://www.chenq.site/qsight/2022-04-25-rmd/cover.png" medium="image" type="image/png" height="89" width="144"/>
-</item>
-<item>
-  <title>如何利用病理诊断比例（MV%）指标评价人群肿瘤登记数据质量？</title>
-  <dc:creator>陈琼</dc:creator>
-  <link>https://www.chenq.site/qsight/2022-04-17-mv/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>肿瘤登记数据的质量控制对于产出高质量数据至关重要，以人群为基础的肿瘤登记数据一般从<a href="https://chenq.site/tech/2022-qualitycontrol/">四个方面</a>进行质量控制，具体包括可比性、完整性、有效性和时效性指标，而病理诊断比例(MV%)指标可以在完整性和有效性两个方面对肿瘤登记数据的质量进行评价。</p>
-<p>病理诊断比例(MV%)是指收集的全部病例中，经过形态学诊断（组织下、细胞学、血液学）确认的病例数占全部病例数的百分比，<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%E7%BB%8F%E7%97%85%E7%90%86%E5%AD%A6%E7%A1%AE%E8%AE%A4%E7%9A%84%E7%97%85%E4%BE%8B%E6%95%B0%7D%7B%E6%89%80%E6%9C%89%E7%97%85%E4%BE%8B%E6%95%B0%7D">，该指标的大小受到肿瘤的发病部位、肿瘤登记地区的病理诊断能力与水平、该地区的医疗服务能力与水平等因素的影响，因此，我们在利用该指标进行肿瘤登记数据质量评价时应该考虑这些因素。</p>
-<p>在质量评价方面，MV%的绝对指标意义有限，通常利用它与适当的标准比较,比如与相似的区域的MV%指标比较，或者与国家的平均水平进行比较，从而判断该肿瘤登记地区的数据的有效性和完整性。</p>
-<section id="与一定的区域标准mv值进行比较" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="与一定的区域标准mv值进行比较"><span class="header-section-number">1</span> 与一定的区域标准MV值%进行比较</h2>
-<p>当肿瘤登记处的MV%值与区域标准（比如国家的平均水平）进行比较的时候，如果登记处MV%值与区域标准差距较大，并且该地区的医疗服务能力与水平以及病理诊断能力与区域平均水平没有很大差异的时候，则提示该登记处数据的有效性或者完整性可能存在问题。如果登记处MV%值小于区域标准值，并且差距较大，提示登记处收集的数据有效性较差；而如果登记处MV%值大于区域标准值，并且差距较大，则提示登记处数据的完整性可能存在问题。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.chenq.site/qsight/2022-04-17-mv/namv.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">病理诊断比例</figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="与一定的区域标准mv值进行比较-1" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="与一定的区域标准mv值进行比较-1"><span class="header-section-number">2</span> 与一定的区域标准MV值%进行比较</h2>
-<p>在多年的连续监测中，一个登记处的MV%应该是相对稳定的，不会出现大的波动，因为一个地区的医疗服务水平或者病理诊断能力是相对稳定的。如果多年份的MV%值出现跳跃性波动，则提示登记处数据的稳定性较差，相应存在波动年份的数据可能存在问题。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_b871f9777f04c621f70da5275303c7e2">
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-17-mv/yearmv.png" class="img-fluid" width="686"></p>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>肿瘤登记</category>
-  <category>质量控制</category>
-  <guid>https://www.chenq.site/qsight/2022-04-17-mv/index.html</guid>
-  <pubDate>Sun, 17 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-04-17-mv/namv.png" medium="image" type="image/png" height="104" width="144"/>
 </item>
 </channel>
 </rss>

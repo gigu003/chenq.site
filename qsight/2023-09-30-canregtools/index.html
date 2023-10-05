@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="陈琼">
+<meta name="description" content="为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“canregtools”，这篇博文将详细介绍这个R包的功能和使用。">
 
-<title>普癌新声 - 我家养的那些花儿</title>
+<title>普癌新声 - 一个肿瘤登记R语言包: canregtools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +22,70 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -41,9 +106,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,14 +138,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="普癌新声 - 我家养的那些花儿">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://www.chenq.site/qsight/2022-03-19-picture/img/cherry.jpg">
+<meta property="og:title" content="普癌新声 - 一个肿瘤登记R语言包: canregtools">
+<meta property="og:description" content="为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“canregtools”，这篇博文将详细介绍这个R包的功能和使用。">
 <meta property="og:site-name" content="普癌新声">
-<meta name="twitter:title" content="普癌新声 - 我家养的那些花儿">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://www.chenq.site/qsight/2022-03-19-picture/img/cherry.jpg">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="普癌新声 - 一个肿瘤登记R语言包: canregtools">
+<meta name="twitter:description" content="为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“canregtools”，这篇博文将详细介绍这个R包的功能和使用。">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed">
@@ -156,115 +216,141 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">该页面内容</h2>
+   
+  <ul>
+  <li><a href="#canregtools的安装" id="toc-canregtools的安装" class="nav-link active" data-scroll-target="#canregtools的安装"><span class="header-section-number">1</span> canregtools的安装</a></li>
+  <li><a href="#数据格式" id="toc-数据格式" class="nav-link" data-scroll-target="#数据格式"><span class="header-section-number">2</span> 数据格式</a></li>
+  <li><a href="#读取数据" id="toc-读取数据" class="nav-link" data-scroll-target="#读取数据"><span class="header-section-number">3</span> 读取数据</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">我家养的那些花儿</h1>
+<h1 class="title">一个肿瘤登记R语言包: canregtools</h1>
+<p class="subtitle lead">让肿瘤登记数据分析和可视化更容易</p>
 </div>
 
   
-    <p>2022年3月19日</p>
+    <p>2023年9月30日</p>
     
     
     <div class="quarto-categories">
-              <p class="quarto-category">生活</p>
-              <p class="quarto-category">摄影</p>
+              <p class="quarto-category">肿瘤登记</p>
+              <p class="quarto-category">R语言</p>
             </div>
 
     
 </header>
 
+<div>
+  <div class="def">
+    <p>为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“<em>canregtools</em>”，这篇博文将详细介绍这个R包的功能和使用。</p>
+  </div>
+</div><p></p>
 
 
-<p>以前养多肉，总是养着养着，仅剩下一个个花盆。卖花的大妈给传授的要点就是少浇水，但是养多肉的要点不仅仅只是少浇水，还有其它一些特点。现在又到了春暖花开的季节，我又耐不住躁动买了一盆盆的多肉，这一次要好好学习一下这些养多肉的知识和技巧，希望能养的好一些！</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/qianchuan1.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="img/qianchuan1.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/qianchuan2.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="img/qianchuan2.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/qianchuan3.jpg" class="lightbox" title="钱串儿" data-gallery="flowers" data-description="这是过年的时候采购的一批多肉，希望撑过一年。"><img src="img/qianchuan3.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">钱串儿</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/juhua.jpg" class="lightbox" title="菊花" data-gallery="flowers" data-description="商家说是可以过冬。"><img src="img/juhua.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">菊花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/cherry.jpg" class="lightbox" title="看樱桃" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/cherry.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">看樱桃</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0023.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0023.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0019.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0019.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0013.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0013.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0011.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0011.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0010.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0010.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0006.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0006.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="img/IMG_0005.jpg" class="lightbox" title="海棠花" data-gallery="flowers" data-description="小时候院里有很多这种野生的看樱桃，不知道学名是啥。"><img src="img/IMG_0005.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">海棠花</figcaption><p></p>
-</figure>
-</div>
+<blockquote class="blockquote">
+<p>肿瘤登记工作是搜集一个地区肿瘤数据资料，并进行常规数据分析和统计报告的统计制度，从而为肿瘤防治提供肿瘤发病率、死亡率、生存率及分布特征等流行病学数据。</p>
+</blockquote>
+<p>canregtools包提供了肿瘤登记常用的数据分析、可视化、自动化报告等功能，目前<em>canregtools</em>包还处在开发阶段，新的功能会不断补充更新到该包中。</p>
+<p>我为该包做了一个网站<a href="https://caregtools.chenq.site">canregtools包</a>，你可以登录网站查看最新的功能。</p>
+<section id="canregtools的安装" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="canregtools的安装"><span class="header-section-number">1</span> canregtools的安装</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {{r}} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>library(devtools)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>install_github("gigu003/canregtools")</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="数据格式" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="数据格式"><span class="header-section-number">2</span> 数据格式</h2>
+</section>
+<section id="读取数据" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="读取数据"><span class="header-section-number">3</span> 读取数据</h2>
+<p>包里内置了登记处常用的数据上报格式，</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(canregtools)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>file <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"411721.xls"</span>, <span class="at">package =</span> <span class="st">"canregtools"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>data <span class="ot">&lt;-</span> <span class="fu">read_canreg</span>(file)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>data</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="in">```</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2200  cases were read from FB sheet.1470  cases were read from SW sheet.$areacode
+[1] "411721"
+
+$county
+[1] ""
+
+$area_type
+[1] ""
+
+$location
+[1] ""
+
+$year
+[1] 2016
+
+$FBcases
+# A tibble: 2,200 × 20
+   registr sex   age   birthda    inciden    topo  morp  beha  grad  basi  trib 
+   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+ 1 174117… 2     72    1943-10-04 2016-04-11 C00.9 8070  3     9     7     01   
+ 2 184117… 1     91    1925-02-02 2016-09-13 C01.9 8070  3     9     7     01   
+ 3 184117… 1     74    1941-09-16 2016-04-14 C01.9 8070  3     9     7     01   
+ 4 194117… 1     61    1954-08-13 2016-06-15 C02.9 8070  3     9     7     01   
+ 5 174117… 2     8     2008-03-31 2016-05-05 C02.9 9591  3     9     7     01   
+ 6 164117… 1     60    1955-11-22 2016-07-04 C03.9 8070  3     9     7     01   
+ 7 184117… 1     80    1935-08-12 2016-04-03 C03.9 8070  3     9     7     01   
+ 8 204117… 1     71    1944-06-13 2016-03-02 C05.1 8070  3     9     7     01   
+ 9 174117… 1     65    1951-03-25 2016-12-28 C05.9 8010  3     3     7     01   
+10 174117… 1     63    1953-01-08 2016-05-10 C05.9 8070  3     9     7     01   
+# ℹ 2,190 more rows
+# ℹ 9 more variables: dlc &lt;dttm&gt;, deathda &lt;dttm&gt;, caus &lt;chr&gt;, marri &lt;chr&gt;,
+#   status &lt;chr&gt;, reportd &lt;dttm&gt;, treatment &lt;chr&gt;, firsttreat &lt;chr&gt;,
+#   icd10 &lt;chr&gt;
+
+$SWcases
+# A tibble: 1,470 × 10
+   registr  sex   age   birthda    topo  morp  beha  inciden    deathda    icd10
+   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;
+ 1 1641172… 1     65    1951-05-28 C02.9 8052  3     2012-09-03 2016-07-13 C02.9
+ 2 1741170… 1     75    1941-10-01 C02.9 8070  3     2014-04-28 2016-12-10 C02.9
+ 3 1741170… 1     67    1949-11-04 C03.0 8070  3     2015-10-04 2016-12-15 C03.0
+ 4 1741170… 1     68    1948-01-15 C04.9 8070  3     2015-09-11 2016-07-29 C04.9
+ 5 1741170… 1     63    1953-04-08 C06.0 8050  3     2012-11-08 2016-11-09 C06.0
+ 6 1741170… 1     67    1948-12-12 C06.9 8070  3     2015-05-06 2016-07-23 C06.9
+ 7 1741170… 1     66    1950-10-10 C06.9 8070  3     2015-04-08 2016-11-10 C06.9
+ 8 1741170… 1     67    1949-03-10 C07.9 8430  3     2014-06-10 2016-06-06 C07  
+ 9 1741170… 1     65    1950-07-07 C07.9 8562  3     2015-10-02 2016-03-14 C07  
+10 1741170… 2     84    1931-12-02 C09.9 8070  3     2016-05-16 2016-12-22 C09.9
+# ℹ 1,460 more rows
+
+$POP
+# A tibble: 38 × 4
+    year   sex agegrp   rks
+   &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;dbl&gt;
+ 1  2016     1 0       5053
+ 2  2016     1 1      17743
+ 3  2016     1 5      25541
+ 4  2016     1 10     32509
+ 5  2016     1 15     30530
+ 6  2016     1 20     34806
+ 7  2016     1 25     36846
+ 8  2016     1 30     38691
+ 9  2016     1 35     40056
+10  2016     1 40     39252
+# ℹ 28 more rows
+
+attr(,"class")
+[1] "canreg" "list"  </code></pre>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -525,7 +611,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true,"openEffect":"zoom"});</script>
 
 
 
