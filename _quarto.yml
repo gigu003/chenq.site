@@ -46,7 +46,10 @@ website:
     right:
       - icon: rss
         href: /qsight/index.xml
-        aria-label: RSS 
+        aria-label: RSS
+      - icon: pen
+        href: https://notes.chenq.site
+        text: 学习笔记
 
   page-footer:
     border: true
