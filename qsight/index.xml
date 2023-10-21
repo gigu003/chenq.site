@@ -10,125 +10,86 @@
 <atom:link href="https://www.chenq.site/qsight/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
 <generator>quarto-1.3.238</generator>
-<lastBuildDate>Sat, 30 Sep 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 06 Oct 2023 00:00:00 GMT</lastBuildDate>
 <item>
-  <title>一个肿瘤登记R语言包: canregtools</title>
+  <title>幽门螺杆菌(H. polyri)感染和血糖水平有关系吗？</title>
   <dc:creator>陈琼</dc:creator>
-  <link>https://www.chenq.site/qsight/2023-09-30-canregtools/index.html</link>
+  <link>https://www.chenq.site/qsight/2023-10-06-hpandglu/index.html</link>
   <description><![CDATA[ 
 
 
 
 <div>
   <div class="def">
-    <p>为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“<em>canregtools</em>”，这篇博文将详细介绍这个R包的功能和使用。</p>
+    <p>最近拿到了某个医院的常规体检数据，变量有年龄、性别、BMI、血压、空腹血糖、糖化血红蛋白、C13和C14等，我们想通过数据做一些探索性的分析，看看幽门螺杆菌感染(H. pylori)是否与血糖水平相关？</p>
   </div>
 </div><p></p>
 
 
-<blockquote class="blockquote">
-<p>肿瘤登记工作是搜集一个地区肿瘤数据资料，并进行常规数据分析和统计报告的统计制度，从而为肿瘤防治提供肿瘤发病率、死亡率、生存率及分布特征等流行病学数据。</p>
-</blockquote>
-<p>canregtools包提供了肿瘤登记常用的数据分析、可视化、自动化报告等功能，目前<em>canregtools</em>包还处在开发阶段，新的功能会不断补充更新到该包中。</p>
-<p>我为该包做了一个网站<a href="https://caregtools.chenq.site">canregtools包</a>，你可以登录网站查看最新的功能。</p>
-<section id="canregtools的安装" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="canregtools的安装"><span class="header-section-number">1</span> canregtools的安装</h2>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource {{r}} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1">library(devtools)</span>
-<span id="cb1-2">install_github("gigu003/canregtools")</span></code></pre></div>
+<section id="文献回顾" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="文献回顾"><span class="header-section-number">1</span> 文献回顾</h2>
+<p>幽门螺杆菌(H. Polyri, HP)感染和糖尿病是两个相对独立的常见疾病。研究发现HP感染与胰岛素抵抗 <span class="citation" data-cites="dogan2015">(Dogan 等 2015)</span>、代谢综合征、炎性反应等相关<span class="citation" data-cites="SongShuRan2016 kayar2015">(宋淑然 2016; Kayar 等 2015)</span>，糖尿病患者中HP感染率较高，而HP根除率较正常人低<span class="citation" data-cites="c2014">(C 等 2014)</span>，且清除之后的再感染率更高 <span class="citation" data-cites="m2012">(M 等 2012)</span>。</p>
+<p>一些样本量较大的人群研究也发现HP感染和糖尿病相关的症状、体征或并发症相关。 同济东风队列的一项横断面研究，纳入了30810研究对象，结果发现H. polyri感染与二型糖尿病发病风险相关 <span class="citation" data-cites="han2016">(Han 等 2016)</span>。另外一项纳入了73824例体检人群的回顾性研究发现，H. polyri感染与糖尿病视网膜病变发病风险相关<span class="citation" data-cites="liu2023">(Liu 等 2023)</span>。</p>
+<p><strong>与HP感染相关的糖尿病相关症状体征：</strong></p>
+<ul>
+<li>胰岛素抵抗</li>
+<li>代谢综合征</li>
+<li>炎性反应</li>
+<li>二型糖尿病</li>
+<li>糖尿病视网膜病变</li>
+</ul>
+<p><strong>HP感染与糖尿病机制研究</strong></p>
+<p>目前HP感染对糖尿病发生发展的影响机制不明确，而糖尿病患者HP感染率高的原因可能如下：</p>
+<ul>
+<li>糖尿病患者免疫功能紊乱</li>
+<li>胃肠功能紊乱</li>
+<li><strong>胃粘膜非酶糖基化</strong></li>
+</ul>
+<p>导致HP更容易植入胃粘膜，从而增加HP感染概率。</p>
+<p>糖尿病患者HP感染根除率低可能的原因如下：</p>
+<ul>
+<li>抗生素耐药性增加</li>
+<li>抗生素生物利用度下降</li>
+</ul>
+<p>HP感染可能导致系统性炎症和血管内皮损伤，HP感染也可能通过影响瘦素和胃饥饿素的水平，从而影响脂质代谢和胰岛素敏感性。</p>
+<p><strong>相关知识点：</strong></p>
+<ul>
+<li>HP感染率在40%只70%之间波动。</li>
+<li>HP感染通过升高C反应蛋白和IL-6等炎性因子水平从而心脑血管疾病和代谢综合征，而这些因子与糖尿病致病机制相关。</li>
+<li>既往研究中<em>HP感染与糖尿病风险之间的关系</em>结果不一致。</li>
+</ul>
+
+
+
 </section>
-<section id="数据格式" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="数据格式"><span class="header-section-number">2</span> 数据格式</h2>
-</section>
-<section id="读取数据" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="读取数据"><span class="header-section-number">3</span> 读取数据</h2>
-<p>包里内置了登记处常用的数据上报格式，</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><span class="in" style="color: #5E5E5E;">```{r}</span></span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;">library</span>(canregtools)</span>
-<span id="cb2-3">file <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">system.file</span>(<span class="st" style="color: #20794D;">"extdata"</span>, <span class="st" style="color: #20794D;">"411721.xls"</span>, <span class="at" style="color: #657422;">package =</span> <span class="st" style="color: #20794D;">"canregtools"</span>)</span>
-<span id="cb2-4">data <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read_canreg</span>(file)</span>
-<span id="cb2-5">data</span>
-<span id="cb2-6"><span class="in" style="color: #5E5E5E;">```</span></span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>2200  cases were read from FB sheet.1470  cases were read from SW sheet.$areacode
-[1] "411721"
 
-$county
-[1] ""
-
-$area_type
-[1] ""
-
-$location
-[1] ""
-
-$year
-[1] 2016
-
-$FBcases
-# A tibble: 2,200 × 20
-   registr sex   age   birthda    inciden    topo  morp  beha  grad  basi  trib 
-   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
- 1 174117… 2     72    1943-10-04 2016-04-11 C00.9 8070  3     9     7     01   
- 2 184117… 1     91    1925-02-02 2016-09-13 C01.9 8070  3     9     7     01   
- 3 184117… 1     74    1941-09-16 2016-04-14 C01.9 8070  3     9     7     01   
- 4 194117… 1     61    1954-08-13 2016-06-15 C02.9 8070  3     9     7     01   
- 5 174117… 2     8     2008-03-31 2016-05-05 C02.9 9591  3     9     7     01   
- 6 164117… 1     60    1955-11-22 2016-07-04 C03.9 8070  3     9     7     01   
- 7 184117… 1     80    1935-08-12 2016-04-03 C03.9 8070  3     9     7     01   
- 8 204117… 1     71    1944-06-13 2016-03-02 C05.1 8070  3     9     7     01   
- 9 174117… 1     65    1951-03-25 2016-12-28 C05.9 8010  3     3     7     01   
-10 174117… 1     63    1953-01-08 2016-05-10 C05.9 8070  3     9     7     01   
-# ℹ 2,190 more rows
-# ℹ 9 more variables: dlc &lt;dttm&gt;, deathda &lt;dttm&gt;, caus &lt;chr&gt;, marri &lt;chr&gt;,
-#   status &lt;chr&gt;, reportd &lt;dttm&gt;, treatment &lt;chr&gt;, firsttreat &lt;chr&gt;,
-#   icd10 &lt;chr&gt;
-
-$SWcases
-# A tibble: 1,470 × 10
-   registr  sex   age   birthda    topo  morp  beha  inciden    deathda    icd10
-   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;
- 1 1641172… 1     65    1951-05-28 C02.9 8052  3     2012-09-03 2016-07-13 C02.9
- 2 1741170… 1     75    1941-10-01 C02.9 8070  3     2014-04-28 2016-12-10 C02.9
- 3 1741170… 1     67    1949-11-04 C03.0 8070  3     2015-10-04 2016-12-15 C03.0
- 4 1741170… 1     68    1948-01-15 C04.9 8070  3     2015-09-11 2016-07-29 C04.9
- 5 1741170… 1     63    1953-04-08 C06.0 8050  3     2012-11-08 2016-11-09 C06.0
- 6 1741170… 1     67    1948-12-12 C06.9 8070  3     2015-05-06 2016-07-23 C06.9
- 7 1741170… 1     66    1950-10-10 C06.9 8070  3     2015-04-08 2016-11-10 C06.9
- 8 1741170… 1     67    1949-03-10 C07.9 8430  3     2014-06-10 2016-06-06 C07  
- 9 1741170… 1     65    1950-07-07 C07.9 8562  3     2015-10-02 2016-03-14 C07  
-10 1741170… 2     84    1931-12-02 C09.9 8070  3     2016-05-16 2016-12-22 C09.9
-# ℹ 1,460 more rows
-
-$POP
-# A tibble: 38 × 4
-    year   sex agegrp   rks
-   &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;dbl&gt;
- 1  2016     1 0       5053
- 2  2016     1 1      17743
- 3  2016     1 5      25541
- 4  2016     1 10     32509
- 5  2016     1 15     30530
- 6  2016     1 20     34806
- 7  2016     1 25     36846
- 8  2016     1 30     38691
- 9  2016     1 35     40056
-10  2016     1 40     39252
-# ℹ 28 more rows
-
-attr(,"class")
-[1] "canreg" "list"  </code></pre>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">参考</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-c2014" class="csl-entry">
+C, Horikawa, Kodama S, Fujihara K, Hirasawa R, Yachi Y, Suzuki A, Hanyu O, Shimano H, 和 Sone H. 2014. <span>《High Risk of Failing Eradication of <span>Helicobacter</span> Pylori in Patients with Diabetes: A Meta-Analysis》</span>. <em>Diabetes research and clinical practice</em> 106 (1). <a href="https://doi.org/10.1016/j.diabres.2014.07.009">https://doi.org/10.1016/j.diabres.2014.07.009</a>.
 </div>
+<div id="ref-dogan2015" class="csl-entry">
+Dogan, Zeynal, Murat Sarikaya, Bilal Ergul, 和 Levent Filik. 2015. <span>《The Effect of <span>Helicobacter</span> Pylori Eradication on Insulin Resistance and <span>HbA1c</span> Level in People with Normal Glucose Levels: A Prospective Study》</span>. <em>Biomed Pap Med Fac Univ Palacky Olomouc Czech Repub</em> 159 (2): 242–45. <a href="https://doi.org/10.5507/bp.2014.036">https://doi.org/10.5507/bp.2014.036</a>.
 </div>
-
-
-</section>
-
- ]]></description>
-  <category>肿瘤登记</category>
-  <category>R语言</category>
-  <guid>https://www.chenq.site/qsight/2023-09-30-canregtools/index.html</guid>
-  <pubDate>Sat, 30 Sep 2023 00:00:00 GMT</pubDate>
+<div id="ref-han2016" class="csl-entry">
+Han, Xu, Yaru Li, Jing Wang, Bing Liu, Hua Hu, Xiulou Li, Kun Yang, 等. 2016. <span>《Helicobacter Pylori Infection Is Associated with Type 2 Diabetes among a Middle- and Old-Age <span>Chinese</span> Population》</span>. <em>Diabetes Metab Res Rev</em> 32 (1): 95–101. <a href="https://doi.org/10.1002/dmrr.2677">https://doi.org/10.1002/dmrr.2677</a>.
+</div>
+<div id="ref-kayar2015" class="csl-entry">
+Kayar, Yusuf, Özgül Pamukçu, Hatice Eroğlu, Kübra Kalkan Erol, Aysegul Ilhan, 和 Orhan Kocaman. 2015. <span>《Relationship between <span>Helicobacter</span> Pylori <span>Infections</span> in <span>Diabetic Patients</span> and <span>Inflammations</span>, <span>Metabolic Syndrome</span>, and <span>Complications</span>》</span>. <em>Int J Chronic Dis</em> 2015: 290128. <a href="https://doi.org/10.1155/2015/290128">https://doi.org/10.1155/2015/290128</a>.
+</div>
+<div id="ref-liu2023" class="csl-entry">
+Liu, Zhen-Rong, Ting Bao, Gui-Jun Xue, Qiao-Yun Xu, Yun-Xia Gao, 和 Ming Zhang. 2023. <span>《Correlation between Diabetic Retinopathy and <span>Helicobacter</span> Pylori Infection: A Cross-Sectional Retrospective Study》</span>. <em>Int J Ophthalmol</em> 16 (8): 1260–67. <a href="https://doi.org/10.18240/ijo.2023.08.11">https://doi.org/10.18240/ijo.2023.08.11</a>.
+</div>
+<div id="ref-m2012" class="csl-entry">
+M, Candelli, Rigante D, Schiavino A, Gabrielli M, Crea F, Minguell Del Lungo L, Pignataro G, 等. 2012. <span>《<a href="https://www.ncbi.nlm.nih.gov/pubmed/23111958">High Reinfection Rate of <span>Helicobacter</span> Pylori in Young Type 1 Diabetic Patients: A Three-Year Follow-up Study</a>》</span>. <em>European review for medical and pharmacological sciences</em> 16 (11).
+</div>
+<div id="ref-SongShuRan2016" class="csl-entry">
+宋淑然赵丽梅. 2016. <span>《幽门螺杆菌感染与糖尿病》</span>. <em>世界华人消化杂志</em> 24 (8): 1220–26. <a href="https://doi.org/10.11569/wcjd.v24.i8.1220">https://doi.org/10.11569/wcjd.v24.i8.1220</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>数据处理</category>
+  <category>论文写作</category>
+  <guid>https://www.chenq.site/qsight/2023-10-06-hpandglu/index.html</guid>
+  <pubDate>Fri, 06 Oct 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>肿瘤登记数据上报经验分享：R语言批量导入导出excel数据</title>
@@ -226,15 +187,15 @@ font-style: italic;">## 读取肿瘤登记数据</span></span>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-3" data-code-annotation="1">把所有变量名改为小写字母</span>
+<span data-code-annotation="1" data-code-lines="3" data-code-cell="annotated-cell-3">把所有变量名改为小写字母</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-3" data-code-annotation="2">选择需要上报的变量</span>
+<span data-code-annotation="2" data-code-lines="4" data-code-cell="annotated-cell-3">选择需要上报的变量</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="5" data-code-cell="annotated-cell-3" data-code-annotation="3">把变量名改成上报模板要求的变量名</span>
+<span data-code-annotation="3" data-code-lines="5" data-code-cell="annotated-cell-3">把变量名改成上报模板要求的变量名</span>
 </dd>
 </dl>
 </div>
@@ -986,8 +947,8 @@ font-style: italic;">## 按照地区分类计算各年龄生存概率</span></sp
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts9689"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts57880"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts40986"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts1276"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>

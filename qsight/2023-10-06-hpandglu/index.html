@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Shuzheng Liu, Qiong Chen, Lanwei Guo, Xiaoqin Cao, Xibin Sun, Wanqing Chen, Jie He">
+<meta name="author" content="陈琼">
+<meta name="description" content="最近拿到了某个医院的常规体检数据，变量有年龄、性别、BMI、血压、空腹血糖、糖化血红蛋白、C13和C14等，我们想通过数据做一些探索性的分析，看看幽门螺杆菌感染(H. pylori)是否与血糖水平相关？">
 
-<title>普癌新声 - Incidence and mortality of lung cancer in China, 2008 - 2012</title>
+<title>普癌新声 - 幽门螺杆菌(H. polyri)感染和血糖水平有关系吗？</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,7 +22,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -73,12 +93,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="普癌新声 - Incidence and mortality of lung cancer in China, 2008 - 2012">
-<meta property="og:description" content="">
+<meta property="og:title" content="普癌新声 - 幽门螺杆菌(H. polyri)感染和血糖水平有关系吗？">
+<meta property="og:description" content="最近拿到了某个医院的常规体检数据，变量有年龄、性别、BMI、血压、空腹血糖、糖化血红蛋白、C13和C14等，我们想通过数据做一些探索性的分析，看看幽门螺杆菌感染(H. pylori)是否与血糖水平相关？">
 <meta property="og:site-name" content="普癌新声">
-<meta name="twitter:title" content="普癌新声 - Incidence and mortality of lung cancer in China, 2008 - 2012">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="普癌新声 - 幽门螺杆菌(H. polyri)感染和血糖水平有关系吗？">
+<meta name="twitter:description" content="最近拿到了某个医院的常规体检数据，变量有年龄、性别、BMI、血压、空腹血糖、糖化血红蛋白、C13和C14等，我们想通过数据做一些探索性的分析，看看幽门螺杆菌感染(H. pylori)是否与血糖水平相关？">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -153,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -161,97 +180,97 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">该页面内容</h2>
    
   <ul>
-  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective">Objective</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  <li><a href="#文献回顾" id="toc-文献回顾" class="nav-link active" data-scroll-target="#文献回顾"><span class="header-section-number">1</span> 文献回顾</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Incidence and mortality of lung cancer in China, 2008 - 2012</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">英文论文</div>
-    <div class="quarto-category">共同作者</div>
-  </div>
-  </div>
-
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">作者</div>
-    <div class="quarto-title-meta-contents">
-            <p>Shuzheng Liu, <strong>Qiong Chen</strong>, Lanwei Guo, Xiaoqin Cao, Xibin Sun, Wanqing Chen, Jie He 
-      </p>
-          </div>
-  </div>
-  
-    <div>
-    <div class="quarto-title-meta-heading">发布日期</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">2018年12月30日</p>
-    </div>
-  </div>
-  
-  <div>
-    <div class="quarto-title-meta-heading">详细出版信息</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">
-                <em>Chin J Cancer Res</em>, 2018 Dec;30(6):580-587
-              </p>
-    </div>
-  </div>
-
-  <div>
-    <div class="quarto-title-meta-heading">附件</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date" style="color: #fff !important;">
-            <a href="https://doi.org/10.21147/j.issn.1000-9604.2018.06.02" class="badge badge badge-blue">DOI</a>
-                                    <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6328502/pdf/cjcr-30-6-580.pdf" class="badge badge badge-red"><i class="fa-regular fa-file-pdf" aria-hidden="true"></i>&nbsp;pdf</a>
-            
-      
-      
-      
-      <span data-doi="10.21147/j.issn.1000-9604.2018.06.02" data-hide-no-mentions="true" class="altmetric-embed"></span>
-      
-      </p>
-    </div>
-
-  </div>
+<h1 class="title">幽门螺杆菌(H. polyri)感染和血糖水平有关系吗？</h1>
 </div>
 
+  
+    <p>2023年10月6日</p>
+    
+    
+    <div class="quarto-categories">
+              <p class="quarto-category">数据处理</p>
+              <p class="quarto-category">论文写作</p>
+            </div>
 
-
-<p>&nbsp;</p>
+    
 </header>
 
-<section id="objective" class="level2">
-<h2 class="anchored" data-anchor-id="objective">Objective</h2>
-<p>To analyze the incidence and mortality rates of lung cancer in China from 2008 to 2012.</p>
-</section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>Incident and death cases of lung cancer were retrieved from the National Central Cancer Registry (NCCR) database collecting from 135 cancer registries in China during 2008-2012. The crude incidence and mortality rates of lung cancer were calculated by area (urban/rural), region (eastern, middle, western), gender and age group (0, 1-4, 5-9, …, 85+). China census in 2000 and Segi’s world population were applied for age-standardized rates. JoinPoint (Version 4.5.0.1) model was used for time trend analysis.</p>
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>The crude incidence rate of lung cancer was 54.66/100,000 which ranked the first in overall cancers. The age-standardized incidence rates by China population (ASIRC) and by World population (ASIRW) were 35.13/100,000 and 34.86/100,000, respectively. The crude mortality of lung cancer in China was 45.60/100,000 and it was the first cause of cancer-related death in overall cancers. The age-standardized mortality rates by Chinese standard population (ASMRC) and by world standard population (ASMRW) were 28.57/100,000 and 28.22/100,000, respectively. Incidence and mortality rates of lung cancer were higher in males than in females and higher in urban areas than in rural areas. Eastern areas had the highest incidence and mortality rates followed by middle and western areas. Incidence and mortality rates of lung cancer retained low level in age groups before 40 years old but increased greatly after and peaked in age group of 80-84. During 2003-2012, the temporal trend of the incidence rate of lung cancer in both sexes in China was general stable (P&lt;0.05). The lung cancer incidence rate increased by 0.71% per year in females (P&lt;0.05) and 2.26% per year in rural areas (P&lt;0.05). The mortality rate of lung cancer decreased slightly annually during 2003-2012 in China (P&gt;0.05). In urban areas, it declined by 0.76% per year (P&lt;0.05), but rose by 2.09% per year (P&lt;0.05) in rural areas.</p>
-</section>
-<section id="conclusions" class="level2">
-<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
-<p>Appropriate targeted prevention, early detection and treatment programs should be carried out to control the local burden of lung cancer.</p>
-<p><strong>Keywords</strong>: China; Lung cancer; incidence; mortality.</p>
+<div>
+  <div class="def">
+    <p>最近拿到了某个医院的常规体检数据，变量有年龄、性别、BMI、血压、空腹血糖、糖化血红蛋白、C13和C14等，我们想通过数据做一些探索性的分析，看看幽门螺杆菌感染(H. pylori)是否与血糖水平相关？</p>
+  </div>
+</div><p></p>
 
 
+<section id="文献回顾" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="文献回顾"><span class="header-section-number">1</span> 文献回顾</h2>
+<p>幽门螺杆菌(H. Polyri, HP)感染和糖尿病是两个相对独立的常见疾病。研究发现HP感染与胰岛素抵抗 <span class="citation" data-cites="dogan2015">(<a href="#ref-dogan2015" role="doc-biblioref">Dogan 等 2015</a>)</span>、代谢综合征、炎性反应等相关<span class="citation" data-cites="SongShuRan2016 kayar2015">(<a href="#ref-SongShuRan2016" role="doc-biblioref">宋淑然 2016</a>; <a href="#ref-kayar2015" role="doc-biblioref">Kayar 等 2015</a>)</span>，糖尿病患者中HP感染率较高，而HP根除率较正常人低<span class="citation" data-cites="c2014">(<a href="#ref-c2014" role="doc-biblioref">C 等 2014</a>)</span>，且清除之后的再感染率更高 <span class="citation" data-cites="m2012">(<a href="#ref-m2012" role="doc-biblioref">M 等 2012</a>)</span>。</p>
+<p>一些样本量较大的人群研究也发现HP感染和糖尿病相关的症状、体征或并发症相关。 同济东风队列的一项横断面研究，纳入了30810研究对象，结果发现H. polyri感染与二型糖尿病发病风险相关 <span class="citation" data-cites="han2016">(<a href="#ref-han2016" role="doc-biblioref">Han 等 2016</a>)</span>。另外一项纳入了73824例体检人群的回顾性研究发现，H. polyri感染与糖尿病视网膜病变发病风险相关<span class="citation" data-cites="liu2023">(<a href="#ref-liu2023" role="doc-biblioref">Liu 等 2023</a>)</span>。</p>
+<p><strong>与HP感染相关的糖尿病相关症状体征：</strong></p>
+<ul>
+<li>胰岛素抵抗</li>
+<li>代谢综合征</li>
+<li>炎性反应</li>
+<li>二型糖尿病</li>
+<li>糖尿病视网膜病变</li>
+</ul>
+<p><strong>HP感染与糖尿病机制研究</strong></p>
+<p>目前HP感染对糖尿病发生发展的影响机制不明确，而糖尿病患者HP感染率高的原因可能如下：</p>
+<ul>
+<li>糖尿病患者免疫功能紊乱</li>
+<li>胃肠功能紊乱</li>
+<li><strong>胃粘膜非酶糖基化</strong></li>
+</ul>
+<p>导致HP更容易植入胃粘膜，从而增加HP感染概率。</p>
+<p>糖尿病患者HP感染根除率低可能的原因如下：</p>
+<ul>
+<li>抗生素耐药性增加</li>
+<li>抗生素生物利用度下降</li>
+</ul>
+<p>HP感染可能导致系统性炎症和血管内皮损伤，HP感染也可能通过影响瘦素和胃饥饿素的水平，从而影响脂质代谢和胰岛素敏感性。</p>
+<p><strong>相关知识点：</strong></p>
+<ul>
+<li>HP感染率在40%只70%之间波动。</li>
+<li>HP感染通过升高C反应蛋白和IL-6等炎性因子水平从而心脑血管疾病和代谢综合征，而这些因子与糖尿病致病机制相关。</li>
+<li>既往研究中<em>HP感染与糖尿病风险之间的关系</em>结果不一致。</li>
+</ul>
+
+
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">参考</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-c2014" class="csl-entry" role="listitem">
+C, Horikawa, Kodama S, Fujihara K, Hirasawa R, Yachi Y, Suzuki A, Hanyu O, Shimano H, 和 Sone H. 2014. <span>《High Risk of Failing Eradication of <span>Helicobacter</span> Pylori in Patients with Diabetes: A Meta-Analysis》</span>. <em>Diabetes research and clinical practice</em> 106 (1). <a href="https://doi.org/10.1016/j.diabres.2014.07.009">https://doi.org/10.1016/j.diabres.2014.07.009</a>.
+</div>
+<div id="ref-dogan2015" class="csl-entry" role="listitem">
+Dogan, Zeynal, Murat Sarikaya, Bilal Ergul, 和 Levent Filik. 2015. <span>《The Effect of <span>Helicobacter</span> Pylori Eradication on Insulin Resistance and <span>HbA1c</span> Level in People with Normal Glucose Levels: A Prospective Study》</span>. <em>Biomed Pap Med Fac Univ Palacky Olomouc Czech Repub</em> 159 (2): 242–45. <a href="https://doi.org/10.5507/bp.2014.036">https://doi.org/10.5507/bp.2014.036</a>.
+</div>
+<div id="ref-han2016" class="csl-entry" role="listitem">
+Han, Xu, Yaru Li, Jing Wang, Bing Liu, Hua Hu, Xiulou Li, Kun Yang, 等. 2016. <span>《Helicobacter Pylori Infection Is Associated with Type 2 Diabetes among a Middle- and Old-Age <span>Chinese</span> Population》</span>. <em>Diabetes Metab Res Rev</em> 32 (1): 95–101. <a href="https://doi.org/10.1002/dmrr.2677">https://doi.org/10.1002/dmrr.2677</a>.
+</div>
+<div id="ref-kayar2015" class="csl-entry" role="listitem">
+Kayar, Yusuf, Özgül Pamukçu, Hatice Eroğlu, Kübra Kalkan Erol, Aysegul Ilhan, 和 Orhan Kocaman. 2015. <span>《Relationship between <span>Helicobacter</span> Pylori <span>Infections</span> in <span>Diabetic Patients</span> and <span>Inflammations</span>, <span>Metabolic Syndrome</span>, and <span>Complications</span>》</span>. <em>Int J Chronic Dis</em> 2015: 290128. <a href="https://doi.org/10.1155/2015/290128">https://doi.org/10.1155/2015/290128</a>.
+</div>
+<div id="ref-liu2023" class="csl-entry" role="listitem">
+Liu, Zhen-Rong, Ting Bao, Gui-Jun Xue, Qiao-Yun Xu, Yun-Xia Gao, 和 Ming Zhang. 2023. <span>《Correlation between Diabetic Retinopathy and <span>Helicobacter</span> Pylori Infection: A Cross-Sectional Retrospective Study》</span>. <em>Int J Ophthalmol</em> 16 (8): 1260–67. <a href="https://doi.org/10.18240/ijo.2023.08.11">https://doi.org/10.18240/ijo.2023.08.11</a>.
+</div>
+<div id="ref-m2012" class="csl-entry" role="listitem">
+M, Candelli, Rigante D, Schiavino A, Gabrielli M, Crea F, Minguell Del Lungo L, Pignataro G, 等. 2012. <span>《<a href="https://www.ncbi.nlm.nih.gov/pubmed/23111958">High Reinfection Rate of <span>Helicobacter</span> Pylori in Young Type 1 Diabetic Patients: A Three-Year Follow-up Study</a>》</span>. <em>European review for medical and pharmacological sciences</em> 16 (11).
+</div>
+<div id="ref-SongShuRan2016" class="csl-entry" role="listitem">
+宋淑然赵丽梅. 2016. <span>《幽门螺杆菌感染与糖尿病》</span>. <em>世界华人消化杂志</em> 24 (8): 1220–26. <a href="https://doi.org/10.11569/wcjd.v24.i8.1220">https://doi.org/10.11569/wcjd.v24.i8.1220</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -485,6 +504,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://utteranc.es/client.js" repo="gigu003/chenqcomments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -508,7 +529,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-
 
 
 
