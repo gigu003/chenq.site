@@ -226,8 +226,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#canregtools的安装" id="toc-canregtools的安装" class="nav-link active" data-scroll-target="#canregtools的安装"><span class="header-section-number">1</span> canregtools的安装</a></li>
-  <li><a href="#数据格式" id="toc-数据格式" class="nav-link" data-scroll-target="#数据格式"><span class="header-section-number">2</span> 数据格式</a></li>
-  <li><a href="#读取数据" id="toc-读取数据" class="nav-link" data-scroll-target="#读取数据"><span class="header-section-number">3</span> 读取数据</a></li>
   </ul>
 </nav>
     </div>
@@ -263,96 +261,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>肿瘤登记工作是搜集一个地区肿瘤数据资料，并进行常规数据分析和统计报告的统计制度，从而为肿瘤防治提供肿瘤发病率、死亡率、生存率及分布特征等流行病学数据。</p>
 </blockquote>
 <p>canregtools包提供了肿瘤登记常用的数据分析、可视化、自动化报告等功能，目前<em>canregtools</em>包还处在开发阶段，新的功能会不断补充更新到该包中。</p>
-<p>我为该包做了一个网站<a href="https://caregtools.chenq.site">canregtools包</a>，你可以登录网站查看最新的功能。</p>
+<p>我为该包做了一个网站<a href="https://caregtools.chenq.site">canregtools包</a>，你可以登录网站查看包的开发进度和最新功能。</p>
 <section id="canregtools的安装" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="canregtools的安装"><span class="header-section-number">1</span> canregtools的安装</h2>
+<p>目前该包正处于开发阶段，代码托管在github上，你可以通过下面的代码进行安装。</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {{r}} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>library(devtools)</span>
 <span id="cb1-2"><a href="#cb1-2"></a>install_github("gigu003/canregtools")</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="数据格式" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="数据格式"><span class="header-section-number">2</span> 数据格式</h2>
-</section>
-<section id="读取数据" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="读取数据"><span class="header-section-number">3</span> 读取数据</h2>
-<p>包里内置了登记处常用的数据上报格式，</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="in">```{r}</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(canregtools)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>file <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"411721.xls"</span>, <span class="at">package =</span> <span class="st">"canregtools"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>data <span class="ot">&lt;-</span> <span class="fu">read_canreg</span>(file)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>data</span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="in">```</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>2200  cases were read from FB sheet.1470  cases were read from SW sheet.$areacode
-[1] "411721"
-
-$county
-[1] ""
-
-$area_type
-[1] ""
-
-$location
-[1] ""
-
-$year
-[1] 2016
-
-$FBcases
-# A tibble: 2,200 × 20
-   registr sex   age   birthda    inciden    topo  morp  beha  grad  basi  trib 
-   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
- 1 174117… 2     72    1943-10-04 2016-04-11 C00.9 8070  3     9     7     01   
- 2 184117… 1     91    1925-02-02 2016-09-13 C01.9 8070  3     9     7     01   
- 3 184117… 1     74    1941-09-16 2016-04-14 C01.9 8070  3     9     7     01   
- 4 194117… 1     61    1954-08-13 2016-06-15 C02.9 8070  3     9     7     01   
- 5 174117… 2     8     2008-03-31 2016-05-05 C02.9 9591  3     9     7     01   
- 6 164117… 1     60    1955-11-22 2016-07-04 C03.9 8070  3     9     7     01   
- 7 184117… 1     80    1935-08-12 2016-04-03 C03.9 8070  3     9     7     01   
- 8 204117… 1     71    1944-06-13 2016-03-02 C05.1 8070  3     9     7     01   
- 9 174117… 1     65    1951-03-25 2016-12-28 C05.9 8010  3     3     7     01   
-10 174117… 1     63    1953-01-08 2016-05-10 C05.9 8070  3     9     7     01   
-# ℹ 2,190 more rows
-# ℹ 9 more variables: dlc &lt;dttm&gt;, deathda &lt;dttm&gt;, caus &lt;chr&gt;, marri &lt;chr&gt;,
-#   status &lt;chr&gt;, reportd &lt;dttm&gt;, treatment &lt;chr&gt;, firsttreat &lt;chr&gt;,
-#   icd10 &lt;chr&gt;
-
-$SWcases
-# A tibble: 1,470 × 10
-   registr  sex   age   birthda    topo  morp  beha  inciden    deathda    icd10
-   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;
- 1 1641172… 1     65    1951-05-28 C02.9 8052  3     2012-09-03 2016-07-13 C02.9
- 2 1741170… 1     75    1941-10-01 C02.9 8070  3     2014-04-28 2016-12-10 C02.9
- 3 1741170… 1     67    1949-11-04 C03.0 8070  3     2015-10-04 2016-12-15 C03.0
- 4 1741170… 1     68    1948-01-15 C04.9 8070  3     2015-09-11 2016-07-29 C04.9
- 5 1741170… 1     63    1953-04-08 C06.0 8050  3     2012-11-08 2016-11-09 C06.0
- 6 1741170… 1     67    1948-12-12 C06.9 8070  3     2015-05-06 2016-07-23 C06.9
- 7 1741170… 1     66    1950-10-10 C06.9 8070  3     2015-04-08 2016-11-10 C06.9
- 8 1741170… 1     67    1949-03-10 C07.9 8430  3     2014-06-10 2016-06-06 C07  
- 9 1741170… 1     65    1950-07-07 C07.9 8562  3     2015-10-02 2016-03-14 C07  
-10 1741170… 2     84    1931-12-02 C09.9 8070  3     2016-05-16 2016-12-22 C09.9
-# ℹ 1,460 more rows
-
-$POP
-# A tibble: 38 × 4
-    year   sex agegrp   rks
-   &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;dbl&gt;
- 1  2016     1 0       5053
- 2  2016     1 1      17743
- 3  2016     1 5      25541
- 4  2016     1 10     32509
- 5  2016     1 15     30530
- 6  2016     1 20     34806
- 7  2016     1 25     36846
- 8  2016     1 30     38691
- 9  2016     1 35     40056
-10  2016     1 40     39252
-# ℹ 28 more rows
-
-attr(,"class")
-[1] "canreg" "list"  </code></pre>
-</div>
-</div>
 
 
 </section>
