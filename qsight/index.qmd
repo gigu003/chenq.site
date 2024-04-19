@@ -6,6 +6,7 @@ listing:
   sort: "date desc"
   categories: cloud
   image-placeholder: "qsightpic.jpeg"
+  max-description-length: 50
   image-height: 10em
   grid-item-border: true
   grid-item-align: left
