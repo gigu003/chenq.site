@@ -71,8 +71,3 @@ format:
     theme: flatly
     css: styles.css
     include-in-header: baidusta.html
-
-
-
-
-
