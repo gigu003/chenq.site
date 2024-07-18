@@ -52,7 +52,7 @@
   <media:content url="https://cdn.jsdelivr.net/gh/gigu003/db/images/title-pic2.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
-  <title>一个肿瘤登记R语言包: canregtools</title>
+  <title>R包canregtools：肿瘤登记可视化和自动化报告</title>
   <dc:creator>陈琼</dc:creator>
   <link>https://www.chenq.site/qsight/2023-09-30-canregtools/index.html</link>
   <description><![CDATA[ 
@@ -66,18 +66,374 @@
 </div><p></p>
 
 
-<blockquote class="blockquote">
-<p>肿瘤登记工作是搜集一个地区肿瘤数据资料，并进行常规数据分析和统计报告的统计制度，从而为肿瘤防治提供肿瘤发病率、死亡率、生存率及分布特征等流行病学数据。</p>
-</blockquote>
-<p>canregtools包提供了肿瘤登记常用的数据分析、可视化、自动化报告等功能，目前<em>canregtools</em>包还处在开发阶段，新的功能会不断补充更新到该包中。</p>
-<p>我为该包做了一个网站<a href="https://caregtools.chenq.site">canregtools包</a>，你可以登录网站查看包的开发进度和最新功能。</p>
+<p>R语言包“<em>canregtools</em>”提供了肿瘤登记常规数据分析中常用的数据处理、可视化、自动化报告等功能，该包的主要目的是通过一系列R语言函数功能实现肿瘤登记数据常规数据分析和数据可视化功能，并通过整合不同函数功能从而实现应用于不同场景的肿瘤登记报告，在统一的R语言环境中让肿瘤登记数据分析更流畅。</p>
+<p>目前<em>canregtools</em>包还处在开发阶段，新的功能会不断补充更新到该包中，大家可以登陆<a href="https://caregtools.chenq.site">canregtools包网站</a>了解开发进度和最新功能，如果您有关于该包的建议，请<a href="mailto:chenq08@126.com">发送邮件</a>给我。</p>
 <section id="canregtools的安装" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="canregtools的安装"><span class="header-section-number">1</span> canregtools的安装</h2>
-<p>目前该包正处于开发阶段，代码托管在github上，你可以通过下面的代码进行安装。</p>
+<p>该包还正处于开发阶段，暂时还没有准备将其提交至CRAN，我们会等其功能稳定之后再考虑将其正式提交。目前代码托管在github上，大家可以通过下面的代码进行安装。</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource {{r}} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1">library(devtools)</span>
 <span id="cb1-2">install_github("gigu003/canregtools")</span></code></pre></div>
+<p>在开始介绍canregtools包之前，首先看看我们包的运行环境。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;">library</span>(devtools)</span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;">session_info</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>─ Session info ───────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.4.0 (2024-04-24)
+ os       macOS Sonoma 14.4.1
+ system   aarch64, darwin20
+ ui       X11
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       Asia/Shanghai
+ date     2024-05-10
+ pandoc   3.1.11 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package     * version date (UTC) lib source
+ cachem        1.0.8   2023-05-01 [1] CRAN (R 4.2.0)
+ cli           3.6.2   2023-12-11 [1] CRAN (R 4.3.1)
+ devtools    * 2.4.5   2022-10-11 [1] CRAN (R 4.4.0)
+ digest        0.6.35  2024-03-11 [1] CRAN (R 4.4.0)
+ ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.2.0)
+ evaluate      0.23    2023-11-01 [1] CRAN (R 4.3.1)
+ fastmap       1.1.1   2023-02-24 [1] CRAN (R 4.2.0)
+ fs            1.6.4   2024-04-25 [1] CRAN (R 4.4.0)
+ glue          1.7.0   2024-01-09 [1] CRAN (R 4.3.1)
+ htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.4.0)
+ htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.4.0)
+ httpuv        1.6.15  2024-03-26 [1] CRAN (R 4.4.0)
+ jsonlite      1.8.8   2023-12-04 [1] CRAN (R 4.3.1)
+ knitr         1.46    2024-04-06 [1] CRAN (R 4.4.0)
+ later         1.3.2   2023-12-06 [1] CRAN (R 4.4.0)
+ lifecycle     1.0.4   2023-11-07 [1] CRAN (R 4.3.1)
+ magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.2.0)
+ memoise       2.0.1   2021-11-26 [1] CRAN (R 4.3.0)
+ mime          0.12    2021-09-28 [1] CRAN (R 4.2.0)
+ miniUI        0.1.1.1 2018-05-18 [1] CRAN (R 4.2.2)
+ pkgbuild      1.4.4   2024-03-17 [1] CRAN (R 4.4.0)
+ pkgload       1.3.4   2024-01-16 [1] CRAN (R 4.4.0)
+ profvis       0.3.8   2023-05-02 [1] CRAN (R 4.3.0)
+ promises      1.3.0   2024-04-05 [1] CRAN (R 4.4.0)
+ purrr         1.0.2   2023-08-10 [1] CRAN (R 4.2.0)
+ R6            2.5.1   2021-08-19 [1] CRAN (R 4.2.0)
+ Rcpp          1.0.12  2024-01-09 [1] CRAN (R 4.4.0)
+ remotes       2.5.0   2024-03-17 [1] CRAN (R 4.4.0)
+ rlang         1.1.3   2024-01-10 [1] CRAN (R 4.3.1)
+ rmarkdown     2.26    2024-03-05 [1] CRAN (R 4.4.0)
+ rstudioapi    0.16.0  2024-03-24 [1] CRAN (R 4.4.0)
+ sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.2.0)
+ shiny         1.8.1.1 2024-04-02 [1] CRAN (R 4.4.0)
+ stringi       1.8.4   2024-05-06 [1] CRAN (R 4.4.0)
+ stringr       1.5.1   2023-11-14 [1] CRAN (R 4.3.1)
+ urlchecker    1.0.1   2021-11-30 [1] CRAN (R 4.2.0)
+ usethis     * 2.2.3   2024-02-19 [1] CRAN (R 4.4.0)
+ vctrs         0.6.5   2023-12-01 [1] CRAN (R 4.3.1)
+ xfun          0.43    2024-03-25 [1] CRAN (R 4.4.0)
+ xtable        1.8-4   2019-04-21 [1] CRAN (R 4.2.0)
+ yaml          2.3.8   2023-12-11 [1] CRAN (R 4.3.1)
+
+ [1] /Users/qc0824/Library/R
+ [2] /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library
+
+──────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+</section>
+<section id="主要功能介绍" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="主要功能介绍"><span class="header-section-number">2</span> 主要功能介绍</h2>
+<p>该包的主要功能分为以下几类：数据读取、数据整理、指标计算、可视化、表单制作和生成报告等。</p>
+</section>
+<section id="数据读取" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="数据读取"><span class="header-section-number">3</span> 数据读取</h2>
+<p>目前该包可以读取国家癌症中心发布的数据上报格式（call for data），包括以EXCEL格式保存的单年数据或生存数据，通过<em>read_canreg()</em>函数来实现。我们在包里内置了按照国家癌症中心数据上报格式准备的excel数据文档(“411721.xls”)。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">library</span>(canregtools)</span>
+<span id="cb4-2">file <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">system.file</span>(<span class="st" style="color: #20794D;">"extdata"</span>, <span class="st" style="color: #20794D;">"411721.xls"</span>, <span class="at" style="color: #657422;">package =</span> <span class="st" style="color: #20794D;">"canregtools"</span>)</span>
+<span id="cb4-3">data <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read_canreg</span>(file)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2200  cases were read from FB sheet.1470  cases were read from SW sheet.</code></pre>
+</div>
+</div>
+<p>我们给读入的原始数据定义一个类”canreg”， 我们可以通过class函数查看一下。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">class</span>(data)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "canreg" "list"  </code></pre>
+</div>
+</div>
+</section>
+<section id="数据整理" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="数据整理"><span class="header-section-number">4</span> 数据整理</h2>
+<p>数据整理函数主要为<em>count_canreg()</em>，它可以把读入的class类型为<em>canreg</em>的原始数据整理为各个变量的频数数据，我们给这个频数数据定义了一个类为‘fbswicd’。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1">fbsw <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">count_canreg</span>(data)</span>
+<span id="cb8-2"><span class="fu" style="color: #4758AB;">class</span>(fbsw)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "fbswicd" "list"   </code></pre>
+</div>
+</div>
+<p>这个函数还可以指定一些参数值从而实现对<em>年龄</em>、<em>癌症分类</em>、<em>语言类型</em>使用不同的分类方法。</p>
+<p>比如癌症分类方法，我们按照不同解剖学系统进行分类、大类或小类进行分类。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;"># 指定癌症分类方法为system</span></span>
+<span id="cb10-2">fbsw <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">count_canreg</span>(data, <span class="at" style="color: #657422;">type =</span> <span class="st" style="color: #20794D;">"system"</span>)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="co" style="color: #5E5E5E;"># 指定癌症分类方法为small，并指定输出语言为英语</span></span>
+<span id="cb11-2">fbsw <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">count_canreg</span>(data, <span class="at" style="color: #657422;">type =</span> <span class="st" style="color: #20794D;">"small"</span>, <span class="at" style="color: #657422;">lang=</span><span class="st" style="color: #20794D;">"en"</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="统计指标计算" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="统计指标计算"><span class="header-section-number">5</span> 统计指标计算</h2>
+<section id="年龄标化率" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="年龄标化率"><span class="header-section-number">5.1</span> 年龄标化率</h3>
+<p>计算年龄标化率的函数为ageadjust()，可以基于不同标准人口计算年龄标化率，并基于不同方法估计可信区间。该函数主要有以下参数：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;">ageadjust</span>(</span>
+<span id="cb12-2">  count, <span class="co" style="color: #5E5E5E;">#不同年龄组病例数</span></span>
+<span id="cb12-3">  pop, <span class="co" style="color: #5E5E5E;">#不同年龄组风险人口数</span></span>
+<span id="cb12-4">  <span class="at" style="color: #657422;">rate =</span> <span class="cn" style="color: #8f5902;">NULL</span>, <span class="co" style="color: #5E5E5E;">#不同年龄组发病率</span></span>
+<span id="cb12-5">  <span class="at" style="color: #657422;">stdpop =</span> <span class="cn" style="color: #8f5902;">NULL</span>, <span class="co" style="color: #5E5E5E;">#各年龄组标准人口数</span></span>
+<span id="cb12-6">  <span class="at" style="color: #657422;">method =</span> <span class="st" style="color: #20794D;">"gamma"</span>, <span class="co" style="color: #5E5E5E;">#估计可信区间的方法，选项为'gamma', 'normal'，'lognormal'</span></span>
+<span id="cb12-7">  <span class="at" style="color: #657422;">conf_level =</span> <span class="fl" style="color: #AD0000;">0.95</span>, <span class="co" style="color: #5E5E5E;">#设置可信区间水平, 范围为0-1， 0.95则输出95%可信区间</span></span>
+<span id="cb12-8">  <span class="at" style="color: #657422;">mp =</span> <span class="fl" style="color: #AD0000;">1e+05</span></span>
+<span id="cb12-9">)</span></code></pre></div>
+</div>
+<p>举个具体的例子：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1">cases <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">50</span>, <span class="dv" style="color: #AD0000;">60</span>, <span class="dv" style="color: #AD0000;">45</span>, <span class="dv" style="color: #AD0000;">70</span>)</span>
+<span id="cb13-2">pop <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">1000</span>, <span class="dv" style="color: #AD0000;">1200</span>, <span class="dv" style="color: #AD0000;">1100</span>, <span class="dv" style="color: #AD0000;">900</span>)</span>
+<span id="cb13-3">spop <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">800</span>, <span class="dv" style="color: #AD0000;">1000</span>, <span class="dv" style="color: #AD0000;">1100</span>, <span class="dv" style="color: #AD0000;">900</span>)</span>
+<span id="cb13-4"><span class="fu" style="color: #4758AB;">ageadjust</span>(cases, pop, <span class="at" style="color: #657422;">stdpop =</span> spop, <span class="at" style="color: #657422;">mp =</span> <span class="dv" style="color: #AD0000;">100000</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$cases
+[1] 225
+
+$cr
+[1] 5357.143
+
+$cr_var
+[1] 1.27551e-05
+
+$cr_lci
+[1] 4679.972
+
+$cr_uci
+[1] 6104.765
+
+$asr
+[1] 5394.737
+
+$asr_var
+[1] 1.306556e-05
+
+$asr_lci
+[1] 4709.493
+
+$asr_uci
+[1] 6154.046</code></pre>
+</div>
+</div>
+<p>这是一个向量化的函数，如果你使用tidyverse进行数据处理时，你可以把他放到<em>mutate</em>或<em>reframe</em>函数内使用。</p>
+</section>
+<section id="基于类canreg或fbswicd计算标化率" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="基于类canreg或fbswicd计算标化率"><span class="header-section-number">5.2</span> 基于类canreg或fbswicd计算标化率</h3>
+<p>我们把数据读入R以后被转换为’canreg’类，我可以直接基于’canreg’数据计算标化率。函数为<em>create_asr()</em>，该函数的参数如下：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;">create_asr</span>(</span>
+<span id="cb15-2">  x, <span class="co" style="color: #5E5E5E;"># 类为canreg或fbswicd的数据</span></span>
+<span id="cb15-3">  ..., <span class="co" style="color: #5E5E5E;">#指定输出的分类: year,sex,icd_cat</span></span>
+<span id="cb15-4">  <span class="at" style="color: #657422;">event =</span> fbs, <span class="co" style="color: #5E5E5E;">#指定计算年龄率的变量</span></span>
+<span id="cb15-5">  <span class="at" style="color: #657422;">pop =</span> rks, <span class="co" style="color: #5E5E5E;"># 指定人口数变量</span></span>
+<span id="cb15-6">  <span class="at" style="color: #657422;">agegrp =</span> agegrp, <span class="co" style="color: #5E5E5E;">#指定年龄分组变量</span></span>
+<span id="cb15-7">  <span class="at" style="color: #657422;">std =</span> <span class="fu" style="color: #4758AB;">c</span>(china, segi), <span class="co" style="color: #5E5E5E;">#指定标准人口</span></span>
+<span id="cb15-8">  <span class="at" style="color: #657422;">mp =</span> <span class="fl" style="color: #AD0000;">1e+05</span>, </span>
+<span id="cb15-9">  <span class="at" style="color: #657422;">decimal =</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="co" style="color: #5E5E5E;">#输出小数位</span></span>
+<span id="cb15-10">  <span class="at" style="color: #657422;">show_var =</span> <span class="cn" style="color: #8f5902;">FALSE</span>, <span class="co" style="color: #5E5E5E;">#是否输出方差</span></span>
+<span id="cb15-11">  <span class="at" style="color: #657422;">show_ci =</span> <span class="cn" style="color: #8f5902;">FALSE</span>, <span class="co" style="color: #5E5E5E;">#是否输出可信区间</span></span>
+<span id="cb15-12">  <span class="at" style="color: #657422;">keep_sex_specific =</span> <span class="cn" style="color: #8f5902;">FALSE</span> <span class="co" style="color: #5E5E5E;">#是否保留年龄别专属癌种值</span></span>
+<span id="cb15-13">)</span></code></pre></div>
+</div>
+<p>基于<em>canreg</em>类数据计算标化率,同时也可以输出0-74岁累积率和35-64岁截缩率。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1">asr <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">create_asr</span>(data, year, sex, icd_cat)</span>
+<span id="cb16-2">asr</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 52 × 12
+    year sex   icd_cat no_cases    pop    cr asr_china asr_segi cumur
+   &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;      &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+ 1  2016 男性  口腔          13 455653  2.85      2.46     2.73  0.19
+ 2  2016 男性  鼻咽           7 455653  1.54      1.37     1.16  0.12
+ 3  2016 男性  食管         157 455653 34.5      29.0     30.6   2.06
+ 4  2016 男性  胃           135 455653 29.6      24.0     24.9   1.94
+ 5  2016 男性  结直肠        72 455653 15.8      12.4     12.6   1.09
+ 6  2016 男性  肝           180 455653 39.5      31.7     31.8   2.86
+ 7  2016 男性  胆囊          16 455653  3.51      2.74     2.7   0.21
+ 8  2016 男性  胰腺          27 455653  5.93      4.88     5.03  0.46
+ 9  2016 男性  喉            11 455653  2.41      1.89     1.78  0.15
+10  2016 男性  肺           320 455653 70.2      59.2     61.0   3.54
+# ℹ 42 more rows
+# ℹ 3 more variables: truncr_china &lt;dbl&gt;, truncr_segi &lt;dbl&gt;, prop &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>同样，也可以基于<em>fbswicd</em>类数据计算标化率。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1">asr <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">create_asr</span>(fbsw, year, sex, icd_cat)</span>
+<span id="cb18-2">asr</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 118 × 12
+    year sex   icd_cat            no_cases    pop    cr asr_china asr_segi cumur
+   &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;                 &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+ 1  2016 Male  Lip                       0 455653  0         0        0     0   
+ 2  2016 Male  Tongue                    3 455653  0.66      0.68     0.9   0.02
+ 3  2016 Male  Mouth                     5 455653  1.1       0.86     0.89  0.08
+ 4  2016 Male  Salivary glands           2 455653  0.44      0.33     0.36  0.02
+ 5  2016 Male  Tonsil                    0 455653  0         0        0     0   
+ 6  2016 Male  Other oropharynx          2 455653  0.44      0.4      0.43  0.05
+ 7  2016 Male  Nasopharynx               7 455653  1.54      1.37     1.16  0.12
+ 8  2016 Male  Hypopharynx               1 455653  0.22      0.18     0.16  0.01
+ 9  2016 Male  Pharynx unspecifi…        0 455653  0         0        0     0   
+10  2016 Male  Esophagus               157 455653 34.5      29.0     30.6   2.06
+# ℹ 108 more rows
+# ℹ 3 more variables: truncr_china &lt;dbl&gt;, truncr_segi &lt;dbl&gt;, prop &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="数据可视化" class="level2 page-columns page-full" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="数据可视化"><span class="header-section-number">6</span> 数据可视化</h2>
+<section id="绘制人口金字塔图" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="绘制人口金字塔图"><span class="header-section-number">6.1</span> 绘制人口金字塔图</h3>
+<p>绘图函数为draw_pyramid()，该函数的主要功能为绘制一个或多个人口金字塔，用于展示人口数据结构。该函数主要有以下参数：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;">draw_pyramid</span>(</span>
+<span id="cb20-2">  x, <span class="co" style="color: #5E5E5E;"># 类为"canreg"或"fbswicd"的数据 </span></span>
+<span id="cb20-3">  <span class="at" style="color: #657422;">show_value =</span> <span class="cn" style="color: #8f5902;">TRUE</span>, <span class="co" style="color: #5E5E5E;">#是否在人口金字塔上显示人口数</span></span>
+<span id="cb20-4">  <span class="at" style="color: #657422;">show_prop =</span> <span class="cn" style="color: #8f5902;">TRUE</span>,  <span class="co" style="color: #5E5E5E;">#是否在人口金字塔上显示人口比例</span></span>
+<span id="cb20-5">  <span class="at" style="color: #657422;">left_axis =</span> <span class="cn" style="color: #8f5902;">NULL</span>, <span class="co" style="color: #5E5E5E;">#设置人口金字塔左侧坐标轴值</span></span>
+<span id="cb20-6">  <span class="at" style="color: #657422;">right_axis =</span> <span class="cn" style="color: #8f5902;">NULL</span>, <span class="co" style="color: #5E5E5E;">#设置人口金字塔右侧坐标轴值</span></span>
+<span id="cb20-7">  <span class="at" style="color: #657422;">axis_fm =</span> <span class="st" style="color: #20794D;">"g"</span>, </span>
+<span id="cb20-8">  <span class="at" style="color: #657422;">axis_bm =</span> <span class="st" style="color: #20794D;">""</span>,</span>
+<span id="cb20-9">  <span class="at" style="color: #657422;">axis_bi =</span> <span class="dv" style="color: #AD0000;">3</span>,</span>
+<span id="cb20-10">  <span class="at" style="color: #657422;">cgap =</span> <span class="fl" style="color: #AD0000;">0.3</span>, <span class="co" style="color: #5E5E5E;"># 人口金字塔的中间间隔宽度</span></span>
+<span id="cb20-11">  <span class="at" style="color: #657422;">cstep =</span> <span class="dv" style="color: #AD0000;">1</span>, <span class="co" style="color: #5E5E5E;"># 间隔1个条形显示人口金字塔</span></span>
+<span id="cb20-12">  <span class="at" style="color: #657422;">csize =</span> <span class="dv" style="color: #AD0000;">1</span>, <span class="co" style="color: #5E5E5E;">#设置字体大小，默认为1</span></span>
+<span id="cb20-13">  <span class="at" style="color: #657422;">labs =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"Males"</span>, <span class="st" style="color: #20794D;">"Ages"</span>, <span class="st" style="color: #20794D;">"Females"</span>), <span class="co" style="color: #5E5E5E;"># 设置左中右坐标标签</span></span>
+<span id="cb20-14">  <span class="at" style="color: #657422;">gl =</span> <span class="cn" style="color: #8f5902;">TRUE</span>, <span class="co" style="color: #5E5E5E;"># 是否显示竖型背景条</span></span>
+<span id="cb20-15">  <span class="at" style="color: #657422;">cadj =</span> <span class="dv" style="color: #AD0000;">0</span>, <span class="co" style="color: #5E5E5E;"># 调整标签位置</span></span>
+<span id="cb20-16">  <span class="at" style="color: #657422;">cols =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"#006400"</span>, <span class="st" style="color: #20794D;">"#b32134"</span>), <span class="co" style="color: #5E5E5E;"># 设置人口金字塔条颜色</span></span>
+<span id="cb20-17">  <span class="at" style="color: #657422;">dens =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="sc" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">1</span>, <span class="sc" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">1</span>),</span>
+<span id="cb20-18">  <span class="at" style="color: #657422;">main =</span> <span class="st" style="color: #20794D;">""</span>, <span class="co" style="color: #5E5E5E;"># 设置人口金字塔图的标题</span></span>
+<span id="cb20-19">  <span class="at" style="color: #657422;">grid =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">2</span>, <span class="dv" style="color: #AD0000;">3</span>) <span class="co" style="color: #5E5E5E;">#如果绘制多个图，设置显示方式，c(2,3) 设置为2行3列</span></span>
+<span id="cb20-20">)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;">draw_pyramid</span>(fbsw,</span>
+<span id="cb21-2">             <span class="at" style="color: #657422;">csize =</span> <span class="fl" style="color: #AD0000;">0.8</span>,</span>
+<span id="cb21-3">             <span class="at" style="color: #657422;">cgap =</span> <span class="fl" style="color: #AD0000;">0.4</span>,</span>
+<span id="cb21-4">             <span class="at" style="color: #657422;">cols =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"steelblue"</span>, <span class="st" style="color: #20794D;">"pink"</span>),</span>
+<span id="cb21-5">             <span class="at" style="color: #657422;">grid =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">1</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2023-09-30-canregtools/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>如果不想显示人口金字塔人口数字可以，设置<em>show_value = FALSE</em>，不显示这些数据。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="fu" style="color: #4758AB;">draw_pyramid</span>(fbsw,</span>
+<span id="cb22-2">             <span class="at" style="color: #657422;">csize =</span> <span class="fl" style="color: #AD0000;">0.8</span>,</span>
+<span id="cb22-3">             <span class="at" style="color: #657422;">cgap =</span> <span class="fl" style="color: #AD0000;">0.4</span>,</span>
+<span id="cb22-4">             <span class="at" style="color: #657422;">show_value =</span> <span class="cn" style="color: #8f5902;">FALSE</span>,</span>
+<span id="cb22-5">             <span class="at" style="color: #657422;">cols =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"steelblue"</span>, <span class="st" style="color: #20794D;">"pink"</span>),</span>
+<span id="cb22-6">             <span class="at" style="color: #657422;">grid =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">1</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2023-09-30-canregtools/index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="绘制条形图" class="level3 page-columns page-full" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="绘制条形图"><span class="header-section-number">6.2</span> 绘制条形图</h3>
+<p>肿瘤登记年报中经常会出现各种各样的条形图，该包通过<em>draw_barchart()</em>来绘制这种类型的图。该函数的参数如下：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
+<span id="cb23-2"><span class="fu" style="color: #4758AB;">library</span>(tidyr)</span>
+<span id="cb23-3"><span class="fu" style="color: #4758AB;">library</span>(showtext)</span>
+<span id="cb23-4"><span class="fu" style="color: #4758AB;">showtext_auto</span>()</span>
+<span id="cb23-5">asr <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">create_asr</span>(data, <span class="at" style="color: #657422;">event =</span> fbs, sex, icd_cat) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb23-6">  <span class="fu" style="color: #4758AB;">select</span>(sex,icd_cat,asr_china) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb23-7">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">sex =</span> <span class="fu" style="color: #4758AB;">factor</span>(sex, <span class="at" style="color: #657422;">labels =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"male"</span>,<span class="st" style="color: #20794D;">"female"</span>))) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb23-8">  <span class="fu" style="color: #4758AB;">pivot_wider</span>(<span class="at" style="color: #657422;">names_from =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"sex"</span>),<span class="at" style="color: #657422;">values_from =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"asr_china"</span>)) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb23-9">  <span class="fu" style="color: #4758AB;">arrange</span>(male)</span>
+<span id="cb23-10"></span>
+<span id="cb23-11"><span class="fu" style="color: #4758AB;">draw_bar</span>(<span class="fu" style="color: #4758AB;">list</span>(asr<span class="sc" style="color: #5E5E5E;">$</span>male),</span>
+<span id="cb23-12">         <span class="at" style="color: #657422;">cates =</span> <span class="fu" style="color: #4758AB;">as.character</span>(asr<span class="sc" style="color: #5E5E5E;">$</span>icd_cat),</span>
+<span id="cb23-13">         <span class="at" style="color: #657422;">bar_side =</span> <span class="dv" style="color: #AD0000;">2</span>,</span>
+<span id="cb23-14">         <span class="at" style="color: #657422;">label =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"男性"</span>,<span class="st" style="color: #20794D;">"男性"</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2023-09-30-canregtools/index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="fu" style="color: #4758AB;">draw_barchart</span>(</span>
+<span id="cb24-2">  data, <span class="co" style="color: #5E5E5E;">#用于绘图的数据框</span></span>
+<span id="cb24-3">  <span class="at" style="color: #657422;">plot_var =</span> cr, <span class="co" style="color: #5E5E5E;">#用于绘图的变量</span></span>
+<span id="cb24-4">  <span class="at" style="color: #657422;">cate_var =</span> icd_cat, <span class="co" style="color: #5E5E5E;">#分类变量</span></span>
+<span id="cb24-5">  <span class="at" style="color: #657422;">group_var =</span> year, <span class="co" style="color: #5E5E5E;">#分组变量</span></span>
+<span id="cb24-6">  <span class="at" style="color: #657422;">side_var =</span> sex,</span>
+<span id="cb24-7">  <span class="at" style="color: #657422;">topn =</span> <span class="dv" style="color: #AD0000;">10</span>,</span>
+<span id="cb24-8">  <span class="at" style="color: #657422;">bar_side =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb24-9">  <span class="at" style="color: #657422;">nrow =</span> <span class="dv" style="color: #AD0000;">2</span>,</span>
+<span id="cb24-10">  ...</span>
+<span id="cb24-11">)</span></code></pre></div>
+</div>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
+<span id="cb25-2"><span class="fu" style="color: #4758AB;">library</span>(showtext)</span>
+<span id="cb25-3"><span class="fu" style="color: #4758AB;">showtext_auto</span>()</span>
+<span id="cb25-4">asr1 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">create_asr</span>(data, <span class="at" style="color: #657422;">event =</span> fbs, sex, icd_cat) <span class="sc" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb25-5">  <span class="fu" style="color: #4758AB;">bind_rows</span>(<span class="fu" style="color: #4758AB;">create_asr</span>(data, <span class="at" style="color: #657422;">event =</span> fbs, icd_cat)) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb25-6">  <span class="fu" style="color: #4758AB;">select</span>(sex, icd_cat, asr_china) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb25-7">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">sex =</span> <span class="fu" style="color: #4758AB;">ifelse</span>(<span class="fu" style="color: #4758AB;">is.na</span>(sex),<span class="dv" style="color: #AD0000;">3</span>,sex),</span>
+<span id="cb25-8">         <span class="at" style="color: #657422;">type =</span> <span class="st" style="color: #20794D;">"发病率"</span>)</span>
+<span id="cb25-9">asr2 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">create_asr</span>(data, <span class="at" style="color: #657422;">event =</span> sws, sex, icd_cat) <span class="sc" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb25-10">  <span class="fu" style="color: #4758AB;">bind_rows</span>(<span class="fu" style="color: #4758AB;">create_asr</span>(data, <span class="at" style="color: #657422;">event =</span> sws, icd_cat)) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb25-11">  <span class="fu" style="color: #4758AB;">select</span>(sex, icd_cat, asr_china) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb25-12">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">sex =</span> <span class="fu" style="color: #4758AB;">ifelse</span>(<span class="fu" style="color: #4758AB;">is.na</span>(sex),<span class="dv" style="color: #AD0000;">3</span>,sex),</span>
+<span id="cb25-13">         <span class="at" style="color: #657422;">type =</span> <span class="st" style="color: #20794D;">"死亡率"</span>) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb25-14">  <span class="fu" style="color: #4758AB;">bind_rows</span>(asr1) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb25-15">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">sex =</span> <span class="fu" style="color: #4758AB;">factor</span>(sex, <span class="at" style="color: #657422;">labels =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"男性"</span>,<span class="st" style="color: #20794D;">"女性"</span>,<span class="st" style="color: #20794D;">"合计"</span>))) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb25-16">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">sex =</span> <span class="fu" style="color: #4758AB;">as.character</span>(sex))</span>
+<span id="cb25-17"></span>
+<span id="cb25-18"><span class="fu" style="color: #4758AB;">draw_barchart</span>(asr2,</span>
+<span id="cb25-19">              <span class="at" style="color: #657422;">plot_var =</span> asr_china,</span>
+<span id="cb25-20">              <span class="at" style="color: #657422;">cate_var =</span> icd_cat,</span>
+<span id="cb25-21">              <span class="at" style="color: #657422;">group_var =</span> type,</span>
+<span id="cb25-22">              <span class="at" style="color: #657422;">side_var =</span> sex,</span>
+<span id="cb25-23">              <span class="at" style="color: #657422;">bar_side =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb25-24">              <span class="at" style="color: #657422;">grid =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">3</span>))</span></code></pre></div>
+<div class="cell-output-display column-screen-left">
+<p><img src="https://www.chenq.site/qsight/2023-09-30-canregtools/index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1">asr2 <span class="ot" style="color: #003B4F;">&lt;-</span> asr2 <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb26-2">  <span class="fu" style="color: #4758AB;">filter</span>(<span class="sc" style="color: #5E5E5E;">!</span>sex <span class="sc" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"合计"</span>) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb26-3">  <span class="fu" style="color: #4758AB;">arrange</span>(type,sex,icd_cat) <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb26-4"><span class="fu" style="color: #4758AB;">draw_barchart</span>(</span>
+<span id="cb26-5">              <span class="at" style="color: #657422;">plot_var =</span> asr_china,</span>
+<span id="cb26-6">              <span class="at" style="color: #657422;">cate_var =</span> icd_cat,</span>
+<span id="cb26-7">              <span class="at" style="color: #657422;">group_var =</span> type,</span>
+<span id="cb26-8">              <span class="at" style="color: #657422;">side_var =</span> sex,</span>
+<span id="cb26-9">              <span class="at" style="color: #657422;">grid =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">1</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2023-09-30-canregtools/index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
+</section>
 </section>
 
  ]]></description>
@@ -183,15 +539,15 @@ font-style: italic;">## 读取肿瘤登记数据</span></span>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-3" data-code-annotation="1">把所有变量名改为小写字母</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-3" data-code-lines="3">把所有变量名改为小写字母</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-3" data-code-annotation="2">选择需要上报的变量</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-3" data-code-lines="4">选择需要上报的变量</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="5" data-code-cell="annotated-cell-3" data-code-annotation="3">把变量名改成上报模板要求的变量名</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-3" data-code-lines="5">把变量名改成上报模板要求的变量名</span>
 </dd>
 </dl>
 </div>
@@ -943,8 +1299,8 @@ font-style: italic;">## 按照地区分类计算各年龄生存概率</span></sp
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts46743"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts44413"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts60836"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts51805"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
@@ -3863,135 +4219,6 @@ the       the   26</code></pre>
   <media:content url="https://www.chenq.site/qsight/2022-05-04-chasing-barchart/pp.gif" medium="image" type="image/gif"/>
 </item>
 <item>
-  <title>利用阿里云DataV可视化平台数据以及ggplot2包的geom_sf函数绘制统计地图</title>
-  <dc:creator>陈琼</dc:creator>
-  <link>https://www.chenq.site/qsight/2022-04-29-datav/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="什么是统计地图" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="什么是统计地图"><span class="header-section-number">1</span> 什么是统计地图？</h2>
-<p>统计地图是以地图为背景，运用各种线纹、色彩、几何图形或实物形象来显示被研究现象的指标数值的大小及其在各地区的分布状况的一种统计图形。又称空间数列图和地理数列图。主要用于说明某些现象在地域上的分布，进行不同地区间的比较，反映现象所处的地理位置，以及它们的密集和分散程度。</p>
-</section>
-<section id="制作统计地图的难点有哪些" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="制作统计地图的难点有哪些"><span class="header-section-number">2</span> 制作统计地图的难点有哪些？</h2>
-<p>在流行病学研究中，往往需要通过以统计地图的形式来展示数据的空间分布情况。然而，我们一般很难找到合适的用于绘制统计地图的地图边界数据。要么找到的地图行政区划边界数据太旧，实际的行政区划边界已经发生了改变，要么就是找不到相应的数据。</p>
-<p>目前还有一些制作统计地图的网站，可以提供绘制简单的统计地图的功能，但是基本上这些服务都是以收费为目的地，不符合互联网上开源自由的精神，但是如果同学不缺钱，那就可以去试试哈！</p>
-</section>
-<section id="如何利用阿里云datav可视化平台地图数据" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="如何利用阿里云datav可视化平台地图数据"><span class="header-section-number">3</span> 如何利用阿里云DataV可视化平台地图数据?</h2>
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid"></p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_5b195a6e6b025514837cea829491c303">
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid" width="1086"></p>
-</div>
-</div>
-<p>利用<strong>sf包</strong>读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_5151299f5cc0bad1a368dc27a1bfe8d6">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
-<span id="cb1-2"><span class="co" style="color: #5E5E5E;">#加载sf包</span></span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;">#加载ggplot2包</span></span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
-<span id="cb1-6"><span class="fu" style="color: #4758AB;">rm</span>(<span class="at" style="color: #657422;">list =</span> <span class="fu" style="color: #4758AB;">ls</span>())</span>
-<span id="cb1-7"><span class="co" style="color: #5E5E5E;">#利用read_sf函数读取json格式边界数据</span></span>
-<span id="cb1-8">china1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json"</span>)</span>
-<span id="cb1-9"></span>
-<span id="cb1-10"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
-<span id="cb1-11">china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-12">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-13">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>也可以利用<strong>geojsonio包</strong>读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_ae1cd812a76126ab626d9377e50fc81c">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;">#加载geojsonio包</span></span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;">library</span>(geojsonio)</span>
-<span id="cb2-3"><span class="co" style="color: #5E5E5E;">#利用geojsonio包读取json格式数据为sp数据</span></span>
-<span id="cb2-4">states <span class="ot" style="color: #003B4F;">&lt;-</span> geojsonio<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">geojson_read</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>, <span class="at" style="color: #657422;">what =</span> <span class="st" style="color: #20794D;">"sp"</span>)</span>
-<span id="cb2-5"><span class="co" style="color: #5E5E5E;">#将地理空间数据转换为sf数据</span></span>
-<span id="cb2-6">states2<span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_as_sf</span>(states)</span>
-<span id="cb2-7"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
-<span id="cb2-8">states2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-9">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-10">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000.json">https://geo.datav.aliyun.com/areas_v3/bound/410000.json</a>，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json">https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json</a>。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_f46fb8ec6b13f84dda620aabf11352ed">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#读取仅有河南省省界的json数据</span></span>
-<span id="cb3-2">hn1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000.json"</span>)</span>
-<span id="cb3-3"><span class="co" style="color: #5E5E5E;">#读取具有河南省各市区边界的json数据</span></span>
-<span id="cb3-4">hn2 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>)</span>
-<span id="cb3-5"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf函数绘制河南省省界</span></span>
-<span id="cb3-6">hn1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb3-7">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb3-8">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;">#利用geom_sf函数绘制河南省省界及各市区边界</span></span>
-<span id="cb4-2">hn2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb4-3">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb4-4">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;">#读取洛阳市各区县边界数据，并绘制地图</span></span>
-<span id="cb5-2">ly <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410300_full.json"</span>)</span>
-<span id="cb5-3">ly<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb5-4">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb5-5">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="如何绘制统计地图" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="如何绘制统计地图"><span class="header-section-number">4</span> 如何绘制统计地图？</h2>
-<p>可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。</p>
-<p>实现代码如下：</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_2ec9d7c7c20d81652ad0a03c60e35509">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">library</span>(RColorBrewer)</span>
-<span id="cb6-2">data<span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">data.frame</span>(<span class="at" style="color: #657422;">adcode=</span><span class="fu" style="color: #4758AB;">c</span>( <span class="st" style="color: #20794D;">"110000"</span>, <span class="st" style="color: #20794D;">"120000"</span> ,<span class="st" style="color: #20794D;">"130000"</span> ,<span class="st" style="color: #20794D;">"140000"</span>, <span class="st" style="color: #20794D;">"150000"</span> ,<span class="st" style="color: #20794D;">"210000"</span>, <span class="st" style="color: #20794D;">"220000"</span> ,<span class="st" style="color: #20794D;">"230000"</span>, <span class="st" style="color: #20794D;">"310000"</span> ,<span class="st" style="color: #20794D;">"320000"</span>, <span class="st" style="color: #20794D;">"330000"</span> ,<span class="st" style="color: #20794D;">"340000"</span> ,<span class="st" style="color: #20794D;">"350000"</span> ,<span class="st" style="color: #20794D;">"360000"</span>, <span class="st" style="color: #20794D;">"370000"</span>, <span class="st" style="color: #20794D;">"410000"</span>, <span class="st" style="color: #20794D;">"420000"</span>, <span class="st" style="color: #20794D;">"430000"</span> ,<span class="st" style="color: #20794D;">"440000"</span> ,<span class="st" style="color: #20794D;">"450000"</span> ,<span class="st" style="color: #20794D;">"460000"</span>, <span class="st" style="color: #20794D;">"500000"</span> ,<span class="st" style="color: #20794D;">"510000"</span> ,<span class="st" style="color: #20794D;">"520000"</span> ,<span class="st" style="color: #20794D;">"530000"</span> ,<span class="st" style="color: #20794D;">"540000"</span> ,<span class="st" style="color: #20794D;">"610000"</span>, <span class="st" style="color: #20794D;">"620000"</span>, <span class="st" style="color: #20794D;">"630000"</span>, <span class="st" style="color: #20794D;">"640000"</span>, <span class="st" style="color: #20794D;">"650000"</span> ,<span class="st" style="color: #20794D;">"710000"</span> ,<span class="st" style="color: #20794D;">"810000"</span>, <span class="st" style="color: #20794D;">"820000"</span> ,<span class="st" style="color: #20794D;">"100000"</span>),</span>
-<span id="cb6-3">                 <span class="at" style="color: #657422;">num=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">391</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">13</span>,<span class="dv" style="color: #AD0000;">28</span>,<span class="dv" style="color: #AD0000;">60</span>,<span class="dv" style="color: #AD0000;">40</span>,<span class="dv" style="color: #AD0000;">884</span>,<span class="dv" style="color: #AD0000;">230</span>,<span class="dv" style="color: #AD0000;">12988</span>,<span class="dv" style="color: #AD0000;">30</span>,<span class="dv" style="color: #AD0000;">609</span>,<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">50</span>,<span class="dv" style="color: #AD0000;">220</span>,<span class="dv" style="color: #AD0000;">70</span>,<span class="dv" style="color: #AD0000;">36</span>,<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">26</span>,<span class="dv" style="color: #AD0000;">169</span>,<span class="dv" style="color: #AD0000;">23</span>,<span class="dv" style="color: #AD0000;">15</span>,<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">74</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">27</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">20</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">8</span>,<span class="dv" style="color: #AD0000;">13742</span>,<span class="dv" style="color: #AD0000;">59661</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">0</span>))</span>
-<span id="cb6-4">data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">35</span>] <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">sum</span>(data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">34</span>])</span>
-<span id="cb6-5"></span>
-<span id="cb6-6">china2<span class="ot" style="color: #003B4F;">&lt;-</span>china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
-<span id="cb6-7">  <span class="fu" style="color: #4758AB;">left_join</span>(data,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"adcode"</span>)<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
-<span id="cb6-8">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">case=</span><span class="fu" style="color: #4758AB;">cut</span>(num,<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">10</span>,<span class="dv" style="color: #AD0000;">100</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">1000</span>,<span class="dv" style="color: #AD0000;">10000</span>,<span class="dv" style="color: #AD0000;">50000</span>),<span class="at" style="color: #657422;">include.lowest=</span>T,<span class="at" style="color: #657422;">right=</span>F))</span>
-<span id="cb6-9"></span>
-<span id="cb6-10"><span class="fu" style="color: #4758AB;">ggplot</span>(china2)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-11">  <span class="fu" style="color: #4758AB;">geom_sf</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-12">  <span class="fu" style="color: #4758AB;">theme_void</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-13">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">fill=</span>case))<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-14">  <span class="fu" style="color: #4758AB;">scale_fill_manual</span>(</span>
-<span id="cb6-15">    <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"现存病例数"</span>,</span>
-<span id="cb6-16">    <span class="at" style="color: #657422;">values =</span> <span class="fu" style="color: #4758AB;">brewer.pal</span>(<span class="dv" style="color: #AD0000;">7</span>,<span class="st" style="color: #20794D;">"Reds"</span>),</span>
-<span id="cb6-17">    <span class="at" style="color: #657422;">labels=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"0-10"</span>,<span class="st" style="color: #20794D;">"10-100"</span>,<span class="st" style="color: #20794D;">"100-500"</span>, <span class="st" style="color: #20794D;">"500-1000"</span>,<span class="st" style="color: #20794D;">"1000-10000"</span>,<span class="st" style="color: #20794D;">"10000-50000"</span>,<span class="st" style="color: #20794D;">"&gt;50000"</span>))</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>科研作图</category>
-  <guid>https://www.chenq.site/qsight/2022-04-29-datav/index.html</guid>
-  <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" medium="image" type="image/png" height="83" width="144"/>
-</item>
-<item>
   <title>利用ggplot2包绘制barplot简单条形图</title>
   <dc:creator>陈琼</dc:creator>
   <link>https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index.html</link>
@@ -4172,6 +4399,135 @@ the       the   26</code></pre>
   <category>科研作图</category>
   <guid>https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/index.html</guid>
   <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>利用阿里云DataV可视化平台数据以及ggplot2包的geom_sf函数绘制统计地图</title>
+  <dc:creator>陈琼</dc:creator>
+  <link>https://www.chenq.site/qsight/2022-04-29-datav/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="什么是统计地图" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="什么是统计地图"><span class="header-section-number">1</span> 什么是统计地图？</h2>
+<p>统计地图是以地图为背景，运用各种线纹、色彩、几何图形或实物形象来显示被研究现象的指标数值的大小及其在各地区的分布状况的一种统计图形。又称空间数列图和地理数列图。主要用于说明某些现象在地域上的分布，进行不同地区间的比较，反映现象所处的地理位置，以及它们的密集和分散程度。</p>
+</section>
+<section id="制作统计地图的难点有哪些" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="制作统计地图的难点有哪些"><span class="header-section-number">2</span> 制作统计地图的难点有哪些？</h2>
+<p>在流行病学研究中，往往需要通过以统计地图的形式来展示数据的空间分布情况。然而，我们一般很难找到合适的用于绘制统计地图的地图边界数据。要么找到的地图行政区划边界数据太旧，实际的行政区划边界已经发生了改变，要么就是找不到相应的数据。</p>
+<p>目前还有一些制作统计地图的网站，可以提供绘制简单的统计地图的功能，但是基本上这些服务都是以收费为目的地，不符合互联网上开源自由的精神，但是如果同学不缺钱，那就可以去试试哈！</p>
+</section>
+<section id="如何利用阿里云datav可视化平台地图数据" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="如何利用阿里云datav可视化平台地图数据"><span class="header-section-number">3</span> 如何利用阿里云DataV可视化平台地图数据?</h2>
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid"></p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_5b195a6e6b025514837cea829491c303">
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid" width="1086"></p>
+</div>
+</div>
+<p>利用<strong>sf包</strong>读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_5151299f5cc0bad1a368dc27a1bfe8d6">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;">#加载sf包</span></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;">#加载ggplot2包</span></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;">rm</span>(<span class="at" style="color: #657422;">list =</span> <span class="fu" style="color: #4758AB;">ls</span>())</span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;">#利用read_sf函数读取json格式边界数据</span></span>
+<span id="cb1-8">china1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json"</span>)</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
+<span id="cb1-11">china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-12">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-13">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>也可以利用<strong>geojsonio包</strong>读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_ae1cd812a76126ab626d9377e50fc81c">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;">#加载geojsonio包</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;">library</span>(geojsonio)</span>
+<span id="cb2-3"><span class="co" style="color: #5E5E5E;">#利用geojsonio包读取json格式数据为sp数据</span></span>
+<span id="cb2-4">states <span class="ot" style="color: #003B4F;">&lt;-</span> geojsonio<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">geojson_read</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>, <span class="at" style="color: #657422;">what =</span> <span class="st" style="color: #20794D;">"sp"</span>)</span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;">#将地理空间数据转换为sf数据</span></span>
+<span id="cb2-6">states2<span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_as_sf</span>(states)</span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
+<span id="cb2-8">states2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-9">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-10">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000.json">https://geo.datav.aliyun.com/areas_v3/bound/410000.json</a>，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json">https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json</a>。</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_f46fb8ec6b13f84dda620aabf11352ed">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#读取仅有河南省省界的json数据</span></span>
+<span id="cb3-2">hn1 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000.json"</span>)</span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;">#读取具有河南省各市区边界的json数据</span></span>
+<span id="cb3-4">hn2 <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>)</span>
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;">#利用ggplot2包geom_sf函数绘制河南省省界</span></span>
+<span id="cb3-6">hn1<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-7">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-8">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;">#利用geom_sf函数绘制河南省省界及各市区边界</span></span>
+<span id="cb4-2">hn2<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;">#读取洛阳市各区县边界数据，并绘制地图</span></span>
+<span id="cb5-2">ly <span class="ot" style="color: #003B4F;">=</span> <span class="fu" style="color: #4758AB;">read_sf</span>(<span class="st" style="color: #20794D;">"https://geo.datav.aliyun.com/areas_v3/bound/410300_full.json"</span>)</span>
+<span id="cb5-3">ly<span class="sc" style="color: #5E5E5E;">%&gt;%</span><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">fill=</span><span class="cn" style="color: #8f5902;">NA</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="如何绘制统计地图" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="如何绘制统计地图"><span class="header-section-number">4</span> 如何绘制统计地图？</h2>
+<p>可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。</p>
+<p>实现代码如下：</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_2ec9d7c7c20d81652ad0a03c60e35509">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">library</span>(RColorBrewer)</span>
+<span id="cb6-2">data<span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">data.frame</span>(<span class="at" style="color: #657422;">adcode=</span><span class="fu" style="color: #4758AB;">c</span>( <span class="st" style="color: #20794D;">"110000"</span>, <span class="st" style="color: #20794D;">"120000"</span> ,<span class="st" style="color: #20794D;">"130000"</span> ,<span class="st" style="color: #20794D;">"140000"</span>, <span class="st" style="color: #20794D;">"150000"</span> ,<span class="st" style="color: #20794D;">"210000"</span>, <span class="st" style="color: #20794D;">"220000"</span> ,<span class="st" style="color: #20794D;">"230000"</span>, <span class="st" style="color: #20794D;">"310000"</span> ,<span class="st" style="color: #20794D;">"320000"</span>, <span class="st" style="color: #20794D;">"330000"</span> ,<span class="st" style="color: #20794D;">"340000"</span> ,<span class="st" style="color: #20794D;">"350000"</span> ,<span class="st" style="color: #20794D;">"360000"</span>, <span class="st" style="color: #20794D;">"370000"</span>, <span class="st" style="color: #20794D;">"410000"</span>, <span class="st" style="color: #20794D;">"420000"</span>, <span class="st" style="color: #20794D;">"430000"</span> ,<span class="st" style="color: #20794D;">"440000"</span> ,<span class="st" style="color: #20794D;">"450000"</span> ,<span class="st" style="color: #20794D;">"460000"</span>, <span class="st" style="color: #20794D;">"500000"</span> ,<span class="st" style="color: #20794D;">"510000"</span> ,<span class="st" style="color: #20794D;">"520000"</span> ,<span class="st" style="color: #20794D;">"530000"</span> ,<span class="st" style="color: #20794D;">"540000"</span> ,<span class="st" style="color: #20794D;">"610000"</span>, <span class="st" style="color: #20794D;">"620000"</span>, <span class="st" style="color: #20794D;">"630000"</span>, <span class="st" style="color: #20794D;">"640000"</span>, <span class="st" style="color: #20794D;">"650000"</span> ,<span class="st" style="color: #20794D;">"710000"</span> ,<span class="st" style="color: #20794D;">"810000"</span>, <span class="st" style="color: #20794D;">"820000"</span> ,<span class="st" style="color: #20794D;">"100000"</span>),</span>
+<span id="cb6-3">                 <span class="at" style="color: #657422;">num=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">391</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">13</span>,<span class="dv" style="color: #AD0000;">28</span>,<span class="dv" style="color: #AD0000;">60</span>,<span class="dv" style="color: #AD0000;">40</span>,<span class="dv" style="color: #AD0000;">884</span>,<span class="dv" style="color: #AD0000;">230</span>,<span class="dv" style="color: #AD0000;">12988</span>,<span class="dv" style="color: #AD0000;">30</span>,<span class="dv" style="color: #AD0000;">609</span>,<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">50</span>,<span class="dv" style="color: #AD0000;">220</span>,<span class="dv" style="color: #AD0000;">70</span>,<span class="dv" style="color: #AD0000;">36</span>,<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">26</span>,<span class="dv" style="color: #AD0000;">169</span>,<span class="dv" style="color: #AD0000;">23</span>,<span class="dv" style="color: #AD0000;">15</span>,<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">74</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">27</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">20</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">8</span>,<span class="dv" style="color: #AD0000;">13742</span>,<span class="dv" style="color: #AD0000;">59661</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">0</span>))</span>
+<span id="cb6-4">data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">35</span>] <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">sum</span>(data<span class="sc" style="color: #5E5E5E;">$</span>num[<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">34</span>])</span>
+<span id="cb6-5"></span>
+<span id="cb6-6">china2<span class="ot" style="color: #003B4F;">&lt;-</span>china1<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-7">  <span class="fu" style="color: #4758AB;">left_join</span>(data,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"adcode"</span>)<span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-8">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">case=</span><span class="fu" style="color: #4758AB;">cut</span>(num,<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">10</span>,<span class="dv" style="color: #AD0000;">100</span>,<span class="dv" style="color: #AD0000;">500</span>,<span class="dv" style="color: #AD0000;">1000</span>,<span class="dv" style="color: #AD0000;">10000</span>,<span class="dv" style="color: #AD0000;">50000</span>),<span class="at" style="color: #657422;">include.lowest=</span>T,<span class="at" style="color: #657422;">right=</span>F))</span>
+<span id="cb6-9"></span>
+<span id="cb6-10"><span class="fu" style="color: #4758AB;">ggplot</span>(china2)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-11">  <span class="fu" style="color: #4758AB;">geom_sf</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-12">  <span class="fu" style="color: #4758AB;">theme_void</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-13">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">fill=</span>case))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-14">  <span class="fu" style="color: #4758AB;">scale_fill_manual</span>(</span>
+<span id="cb6-15">    <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"现存病例数"</span>,</span>
+<span id="cb6-16">    <span class="at" style="color: #657422;">values =</span> <span class="fu" style="color: #4758AB;">brewer.pal</span>(<span class="dv" style="color: #AD0000;">7</span>,<span class="st" style="color: #20794D;">"Reds"</span>),</span>
+<span id="cb6-17">    <span class="at" style="color: #657422;">labels=</span><span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"0-10"</span>,<span class="st" style="color: #20794D;">"10-100"</span>,<span class="st" style="color: #20794D;">"100-500"</span>, <span class="st" style="color: #20794D;">"500-1000"</span>,<span class="st" style="color: #20794D;">"1000-10000"</span>,<span class="st" style="color: #20794D;">"10000-50000"</span>,<span class="st" style="color: #20794D;">"&gt;50000"</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>科研作图</category>
+  <guid>https://www.chenq.site/qsight/2022-04-29-datav/index.html</guid>
+  <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" medium="image" type="image/png" height="83" width="144"/>
 </item>
 <item>
   <title>利用R语言Rmd文档+blogdown包制作个人网站</title>

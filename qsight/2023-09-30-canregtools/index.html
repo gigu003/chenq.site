@@ -9,7 +9,7 @@
 <meta name="author" content="陈琼">
 <meta name="description" content="为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“canregtools”，这篇博文将详细介绍这个R包的功能和使用。">
 
-<title>普癌新声 - 一个肿瘤登记R语言包: canregtools</title>
+<title>普癌新声 - R包canregtools：肿瘤登记可视化和自动化报告</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -138,11 +138,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="普癌新声 - 一个肿瘤登记R语言包: canregtools">
+<meta property="og:title" content="普癌新声 - R包canregtools：肿瘤登记可视化和自动化报告">
 <meta property="og:description" content="为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“canregtools”，这篇博文将详细介绍这个R包的功能和使用。">
 <meta property="og:image" content="https://www.chenq.site/qsight/2023-09-30-canregtools/preview.jpg">
 <meta property="og:site-name" content="普癌新声">
-<meta name="twitter:title" content="普癌新声 - 一个肿瘤登记R语言包: canregtools">
+<meta name="twitter:title" content="普癌新声 - R包canregtools：肿瘤登记可视化和自动化报告">
 <meta name="twitter:description" content="为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“canregtools”，这篇博文将详细介绍这个R包的功能和使用。">
 <meta name="twitter:image" content="https://www.chenq.site/qsight/2023-09-30-canregtools/preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -228,16 +228,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#canregtools的安装" id="toc-canregtools的安装" class="nav-link active" data-scroll-target="#canregtools的安装"><span class="header-section-number">1</span> canregtools的安装</a></li>
+  <li><a href="#主要功能介绍" id="toc-主要功能介绍" class="nav-link" data-scroll-target="#主要功能介绍"><span class="header-section-number">2</span> 主要功能介绍</a></li>
+  <li><a href="#数据读取" id="toc-数据读取" class="nav-link" data-scroll-target="#数据读取"><span class="header-section-number">3</span> 数据读取</a></li>
+  <li><a href="#数据整理" id="toc-数据整理" class="nav-link" data-scroll-target="#数据整理"><span class="header-section-number">4</span> 数据整理</a></li>
+  <li><a href="#统计指标计算" id="toc-统计指标计算" class="nav-link" data-scroll-target="#统计指标计算"><span class="header-section-number">5</span> 统计指标计算</a>
+  <ul class="collapse">
+  <li><a href="#年龄标化率" id="toc-年龄标化率" class="nav-link" data-scroll-target="#年龄标化率"><span class="header-section-number">5.1</span> 年龄标化率</a></li>
+  <li><a href="#基于类canreg或fbswicd计算标化率" id="toc-基于类canreg或fbswicd计算标化率" class="nav-link" data-scroll-target="#基于类canreg或fbswicd计算标化率"><span class="header-section-number">5.2</span> 基于类canreg或fbswicd计算标化率</a></li>
+  </ul></li>
+  <li><a href="#数据可视化" id="toc-数据可视化" class="nav-link" data-scroll-target="#数据可视化"><span class="header-section-number">6</span> 数据可视化</a>
+  <ul class="collapse">
+  <li><a href="#绘制人口金字塔图" id="toc-绘制人口金字塔图" class="nav-link" data-scroll-target="#绘制人口金字塔图"><span class="header-section-number">6.1</span> 绘制人口金字塔图</a></li>
+  <li><a href="#绘制条形图" id="toc-绘制条形图" class="nav-link" data-scroll-target="#绘制条形图"><span class="header-section-number">6.2</span> 绘制条形图</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">一个肿瘤登记R语言包: canregtools</h1>
-<p class="subtitle lead">让肿瘤登记数据分析和可视化更容易</p>
+<h1 class="title">R包canregtools：肿瘤登记可视化和自动化报告</h1>
+<p class="subtitle lead">促进肿瘤登记数据的分析、可视化和报告流程化</p>
 </div>
 
   
@@ -259,18 +272,374 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div><p></p>
 
 
-<blockquote class="blockquote">
-<p>肿瘤登记工作是搜集一个地区肿瘤数据资料，并进行常规数据分析和统计报告的统计制度，从而为肿瘤防治提供肿瘤发病率、死亡率、生存率及分布特征等流行病学数据。</p>
-</blockquote>
-<p>canregtools包提供了肿瘤登记常用的数据分析、可视化、自动化报告等功能，目前<em>canregtools</em>包还处在开发阶段，新的功能会不断补充更新到该包中。</p>
-<p>我为该包做了一个网站<a href="https://caregtools.chenq.site">canregtools包</a>，你可以登录网站查看包的开发进度和最新功能。</p>
+<p>R语言包“<em>canregtools</em>”提供了肿瘤登记常规数据分析中常用的数据处理、可视化、自动化报告等功能，该包的主要目的是通过一系列R语言函数功能实现肿瘤登记数据常规数据分析和数据可视化功能，并通过整合不同函数功能从而实现应用于不同场景的肿瘤登记报告，在统一的R语言环境中让肿瘤登记数据分析更流畅。</p>
+<p>目前<em>canregtools</em>包还处在开发阶段，新的功能会不断补充更新到该包中，大家可以登陆<a href="https://caregtools.chenq.site">canregtools包网站</a>了解开发进度和最新功能，如果您有关于该包的建议，请<a href="mailto:chenq08@126.com">发送邮件</a>给我。</p>
 <section id="canregtools的安装" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="canregtools的安装"><span class="header-section-number">1</span> canregtools的安装</h2>
-<p>目前该包正处于开发阶段，代码托管在github上，你可以通过下面的代码进行安装。</p>
+<p>该包还正处于开发阶段，暂时还没有准备将其提交至CRAN，我们会等其功能稳定之后再考虑将其正式提交。目前代码托管在github上，大家可以通过下面的代码进行安装。</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {{r}} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>library(devtools)</span>
 <span id="cb1-2"><a href="#cb1-2"></a>install_github("gigu003/canregtools")</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>在开始介绍canregtools包之前，首先看看我们包的运行环境。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">session_info</span>()</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>─ Session info ───────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.4.0 (2024-04-24)
+ os       macOS Sonoma 14.4.1
+ system   aarch64, darwin20
+ ui       X11
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       Asia/Shanghai
+ date     2024-05-10
+ pandoc   3.1.11 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package     * version date (UTC) lib source
+ cachem        1.0.8   2023-05-01 [1] CRAN (R 4.2.0)
+ cli           3.6.2   2023-12-11 [1] CRAN (R 4.3.1)
+ devtools    * 2.4.5   2022-10-11 [1] CRAN (R 4.4.0)
+ digest        0.6.35  2024-03-11 [1] CRAN (R 4.4.0)
+ ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.2.0)
+ evaluate      0.23    2023-11-01 [1] CRAN (R 4.3.1)
+ fastmap       1.1.1   2023-02-24 [1] CRAN (R 4.2.0)
+ fs            1.6.4   2024-04-25 [1] CRAN (R 4.4.0)
+ glue          1.7.0   2024-01-09 [1] CRAN (R 4.3.1)
+ htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.4.0)
+ htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.4.0)
+ httpuv        1.6.15  2024-03-26 [1] CRAN (R 4.4.0)
+ jsonlite      1.8.8   2023-12-04 [1] CRAN (R 4.3.1)
+ knitr         1.46    2024-04-06 [1] CRAN (R 4.4.0)
+ later         1.3.2   2023-12-06 [1] CRAN (R 4.4.0)
+ lifecycle     1.0.4   2023-11-07 [1] CRAN (R 4.3.1)
+ magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.2.0)
+ memoise       2.0.1   2021-11-26 [1] CRAN (R 4.3.0)
+ mime          0.12    2021-09-28 [1] CRAN (R 4.2.0)
+ miniUI        0.1.1.1 2018-05-18 [1] CRAN (R 4.2.2)
+ pkgbuild      1.4.4   2024-03-17 [1] CRAN (R 4.4.0)
+ pkgload       1.3.4   2024-01-16 [1] CRAN (R 4.4.0)
+ profvis       0.3.8   2023-05-02 [1] CRAN (R 4.3.0)
+ promises      1.3.0   2024-04-05 [1] CRAN (R 4.4.0)
+ purrr         1.0.2   2023-08-10 [1] CRAN (R 4.2.0)
+ R6            2.5.1   2021-08-19 [1] CRAN (R 4.2.0)
+ Rcpp          1.0.12  2024-01-09 [1] CRAN (R 4.4.0)
+ remotes       2.5.0   2024-03-17 [1] CRAN (R 4.4.0)
+ rlang         1.1.3   2024-01-10 [1] CRAN (R 4.3.1)
+ rmarkdown     2.26    2024-03-05 [1] CRAN (R 4.4.0)
+ rstudioapi    0.16.0  2024-03-24 [1] CRAN (R 4.4.0)
+ sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.2.0)
+ shiny         1.8.1.1 2024-04-02 [1] CRAN (R 4.4.0)
+ stringi       1.8.4   2024-05-06 [1] CRAN (R 4.4.0)
+ stringr       1.5.1   2023-11-14 [1] CRAN (R 4.3.1)
+ urlchecker    1.0.1   2021-11-30 [1] CRAN (R 4.2.0)
+ usethis     * 2.2.3   2024-02-19 [1] CRAN (R 4.4.0)
+ vctrs         0.6.5   2023-12-01 [1] CRAN (R 4.3.1)
+ xfun          0.43    2024-03-25 [1] CRAN (R 4.4.0)
+ xtable        1.8-4   2019-04-21 [1] CRAN (R 4.2.0)
+ yaml          2.3.8   2023-12-11 [1] CRAN (R 4.3.1)
+
+ [1] /Users/qc0824/Library/R
+ [2] /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library
+
+──────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+</section>
+<section id="主要功能介绍" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="主要功能介绍"><span class="header-section-number">2</span> 主要功能介绍</h2>
+<p>该包的主要功能分为以下几类：数据读取、数据整理、指标计算、可视化、表单制作和生成报告等。</p>
+</section>
+<section id="数据读取" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="数据读取"><span class="header-section-number">3</span> 数据读取</h2>
+<p>目前该包可以读取国家癌症中心发布的数据上报格式（call for data），包括以EXCEL格式保存的单年数据或生存数据，通过<em>read_canreg()</em>函数来实现。我们在包里内置了按照国家癌症中心数据上报格式准备的excel数据文档(“411721.xls”)。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(canregtools)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>file <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"411721.xls"</span>, <span class="at">package =</span> <span class="st">"canregtools"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read_canreg</span>(file)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2200  cases were read from FB sheet.1470  cases were read from SW sheet.</code></pre>
+</div>
+</div>
+<p>我们给读入的原始数据定义一个类”canreg”， 我们可以通过class函数查看一下。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">class</span>(data)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "canreg" "list"  </code></pre>
+</div>
+</div>
+</section>
+<section id="数据整理" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="数据整理"><span class="header-section-number">4</span> 数据整理</h2>
+<p>数据整理函数主要为<em>count_canreg()</em>，它可以把读入的class类型为<em>canreg</em>的原始数据整理为各个变量的频数数据，我们给这个频数数据定义了一个类为‘fbswicd’。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>fbsw <span class="ot">&lt;-</span> <span class="fu">count_canreg</span>(data)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">class</span>(fbsw)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "fbswicd" "list"   </code></pre>
+</div>
+</div>
+<p>这个函数还可以指定一些参数值从而实现对<em>年龄</em>、<em>癌症分类</em>、<em>语言类型</em>使用不同的分类方法。</p>
+<p>比如癌症分类方法，我们按照不同解剖学系统进行分类、大类或小类进行分类。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 指定癌症分类方法为system</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>fbsw <span class="ot">&lt;-</span> <span class="fu">count_canreg</span>(data, <span class="at">type =</span> <span class="st">"system"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># 指定癌症分类方法为small，并指定输出语言为英语</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>fbsw <span class="ot">&lt;-</span> <span class="fu">count_canreg</span>(data, <span class="at">type =</span> <span class="st">"small"</span>, <span class="at">lang=</span><span class="st">"en"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="统计指标计算" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="统计指标计算"><span class="header-section-number">5</span> 统计指标计算</h2>
+<section id="年龄标化率" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="年龄标化率"><span class="header-section-number">5.1</span> 年龄标化率</h3>
+<p>计算年龄标化率的函数为ageadjust()，可以基于不同标准人口计算年龄标化率，并基于不同方法估计可信区间。该函数主要有以下参数：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ageadjust</span>(</span>
+<span id="cb12-2"><a href="#cb12-2"></a>  count, <span class="co">#不同年龄组病例数</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  pop, <span class="co">#不同年龄组风险人口数</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="at">rate =</span> <span class="cn">NULL</span>, <span class="co">#不同年龄组发病率</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="at">stdpop =</span> <span class="cn">NULL</span>, <span class="co">#各年龄组标准人口数</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="at">method =</span> <span class="st">"gamma"</span>, <span class="co">#估计可信区间的方法，选项为'gamma', 'normal'，'lognormal'</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>  <span class="at">conf_level =</span> <span class="fl">0.95</span>, <span class="co">#设置可信区间水平, 范围为0-1， 0.95则输出95%可信区间</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a>  <span class="at">mp =</span> <span class="fl">1e+05</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>举个具体的例子：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>cases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">45</span>, <span class="dv">70</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>pop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">1200</span>, <span class="dv">1100</span>, <span class="dv">900</span>)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>spop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">800</span>, <span class="dv">1000</span>, <span class="dv">1100</span>, <span class="dv">900</span>)</span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="fu">ageadjust</span>(cases, pop, <span class="at">stdpop =</span> spop, <span class="at">mp =</span> <span class="dv">100000</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$cases
+[1] 225
+
+$cr
+[1] 5357.143
+
+$cr_var
+[1] 1.27551e-05
+
+$cr_lci
+[1] 4679.972
+
+$cr_uci
+[1] 6104.765
+
+$asr
+[1] 5394.737
+
+$asr_var
+[1] 1.306556e-05
+
+$asr_lci
+[1] 4709.493
+
+$asr_uci
+[1] 6154.046</code></pre>
+</div>
+</div>
+<p>这是一个向量化的函数，如果你使用tidyverse进行数据处理时，你可以把他放到<em>mutate</em>或<em>reframe</em>函数内使用。</p>
+</section>
+<section id="基于类canreg或fbswicd计算标化率" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="基于类canreg或fbswicd计算标化率"><span class="header-section-number">5.2</span> 基于类canreg或fbswicd计算标化率</h3>
+<p>我们把数据读入R以后被转换为’canreg’类，我可以直接基于’canreg’数据计算标化率。函数为<em>create_asr()</em>，该函数的参数如下：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">create_asr</span>(</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  x, <span class="co"># 类为canreg或fbswicd的数据</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>  ..., <span class="co">#指定输出的分类: year,sex,icd_cat</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="at">event =</span> fbs, <span class="co">#指定计算年龄率的变量</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="at">pop =</span> rks, <span class="co"># 指定人口数变量</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="at">agegrp =</span> agegrp, <span class="co">#指定年龄分组变量</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>  <span class="at">std =</span> <span class="fu">c</span>(china, segi), <span class="co">#指定标准人口</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a>  <span class="at">mp =</span> <span class="fl">1e+05</span>, </span>
+<span id="cb15-9"><a href="#cb15-9"></a>  <span class="at">decimal =</span> <span class="dv">2</span>, <span class="co">#输出小数位</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a>  <span class="at">show_var =</span> <span class="cn">FALSE</span>, <span class="co">#是否输出方差</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a>  <span class="at">show_ci =</span> <span class="cn">FALSE</span>, <span class="co">#是否输出可信区间</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>  <span class="at">keep_sex_specific =</span> <span class="cn">FALSE</span> <span class="co">#是否保留年龄别专属癌种值</span></span>
+<span id="cb15-13"><a href="#cb15-13"></a>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>基于<em>canreg</em>类数据计算标化率,同时也可以输出0-74岁累积率和35-64岁截缩率。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>asr <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, year, sex, icd_cat)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>asr</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 52 × 12
+    year sex   icd_cat no_cases    pop    cr asr_china asr_segi cumur
+   &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;      &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+ 1  2016 男性  口腔          13 455653  2.85      2.46     2.73  0.19
+ 2  2016 男性  鼻咽           7 455653  1.54      1.37     1.16  0.12
+ 3  2016 男性  食管         157 455653 34.5      29.0     30.6   2.06
+ 4  2016 男性  胃           135 455653 29.6      24.0     24.9   1.94
+ 5  2016 男性  结直肠        72 455653 15.8      12.4     12.6   1.09
+ 6  2016 男性  肝           180 455653 39.5      31.7     31.8   2.86
+ 7  2016 男性  胆囊          16 455653  3.51      2.74     2.7   0.21
+ 8  2016 男性  胰腺          27 455653  5.93      4.88     5.03  0.46
+ 9  2016 男性  喉            11 455653  2.41      1.89     1.78  0.15
+10  2016 男性  肺           320 455653 70.2      59.2     61.0   3.54
+# ℹ 42 more rows
+# ℹ 3 more variables: truncr_china &lt;dbl&gt;, truncr_segi &lt;dbl&gt;, prop &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>同样，也可以基于<em>fbswicd</em>类数据计算标化率。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>asr <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(fbsw, year, sex, icd_cat)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>asr</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 118 × 12
+    year sex   icd_cat            no_cases    pop    cr asr_china asr_segi cumur
+   &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;                 &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+ 1  2016 Male  Lip                       0 455653  0         0        0     0   
+ 2  2016 Male  Tongue                    3 455653  0.66      0.68     0.9   0.02
+ 3  2016 Male  Mouth                     5 455653  1.1       0.86     0.89  0.08
+ 4  2016 Male  Salivary glands           2 455653  0.44      0.33     0.36  0.02
+ 5  2016 Male  Tonsil                    0 455653  0         0        0     0   
+ 6  2016 Male  Other oropharynx          2 455653  0.44      0.4      0.43  0.05
+ 7  2016 Male  Nasopharynx               7 455653  1.54      1.37     1.16  0.12
+ 8  2016 Male  Hypopharynx               1 455653  0.22      0.18     0.16  0.01
+ 9  2016 Male  Pharynx unspecifi…        0 455653  0         0        0     0   
+10  2016 Male  Esophagus               157 455653 34.5      29.0     30.6   2.06
+# ℹ 108 more rows
+# ℹ 3 more variables: truncr_china &lt;dbl&gt;, truncr_segi &lt;dbl&gt;, prop &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="数据可视化" class="level2 page-columns page-full" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="数据可视化"><span class="header-section-number">6</span> 数据可视化</h2>
+<section id="绘制人口金字塔图" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="绘制人口金字塔图"><span class="header-section-number">6.1</span> 绘制人口金字塔图</h3>
+<p>绘图函数为draw_pyramid()，该函数的主要功能为绘制一个或多个人口金字塔，用于展示人口数据结构。该函数主要有以下参数：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">draw_pyramid</span>(</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  x, <span class="co"># 类为"canreg"或"fbswicd"的数据 </span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="at">show_value =</span> <span class="cn">TRUE</span>, <span class="co">#是否在人口金字塔上显示人口数</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="at">show_prop =</span> <span class="cn">TRUE</span>,  <span class="co">#是否在人口金字塔上显示人口比例</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="at">left_axis =</span> <span class="cn">NULL</span>, <span class="co">#设置人口金字塔左侧坐标轴值</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>  <span class="at">right_axis =</span> <span class="cn">NULL</span>, <span class="co">#设置人口金字塔右侧坐标轴值</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a>  <span class="at">axis_fm =</span> <span class="st">"g"</span>, </span>
+<span id="cb20-8"><a href="#cb20-8"></a>  <span class="at">axis_bm =</span> <span class="st">""</span>,</span>
+<span id="cb20-9"><a href="#cb20-9"></a>  <span class="at">axis_bi =</span> <span class="dv">3</span>,</span>
+<span id="cb20-10"><a href="#cb20-10"></a>  <span class="at">cgap =</span> <span class="fl">0.3</span>, <span class="co"># 人口金字塔的中间间隔宽度</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>  <span class="at">cstep =</span> <span class="dv">1</span>, <span class="co"># 间隔1个条形显示人口金字塔</span></span>
+<span id="cb20-12"><a href="#cb20-12"></a>  <span class="at">csize =</span> <span class="dv">1</span>, <span class="co">#设置字体大小，默认为1</span></span>
+<span id="cb20-13"><a href="#cb20-13"></a>  <span class="at">labs =</span> <span class="fu">c</span>(<span class="st">"Males"</span>, <span class="st">"Ages"</span>, <span class="st">"Females"</span>), <span class="co"># 设置左中右坐标标签</span></span>
+<span id="cb20-14"><a href="#cb20-14"></a>  <span class="at">gl =</span> <span class="cn">TRUE</span>, <span class="co"># 是否显示竖型背景条</span></span>
+<span id="cb20-15"><a href="#cb20-15"></a>  <span class="at">cadj =</span> <span class="dv">0</span>, <span class="co"># 调整标签位置</span></span>
+<span id="cb20-16"><a href="#cb20-16"></a>  <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"#006400"</span>, <span class="st">"#b32134"</span>), <span class="co"># 设置人口金字塔条颜色</span></span>
+<span id="cb20-17"><a href="#cb20-17"></a>  <span class="at">dens =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>),</span>
+<span id="cb20-18"><a href="#cb20-18"></a>  <span class="at">main =</span> <span class="st">""</span>, <span class="co"># 设置人口金字塔图的标题</span></span>
+<span id="cb20-19"><a href="#cb20-19"></a>  <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>) <span class="co">#如果绘制多个图，设置显示方式，c(2,3) 设置为2行3列</span></span>
+<span id="cb20-20"><a href="#cb20-20"></a>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">draw_pyramid</span>(fbsw,</span>
+<span id="cb21-2"><a href="#cb21-2"></a>             <span class="at">csize =</span> <span class="fl">0.8</span>,</span>
+<span id="cb21-3"><a href="#cb21-3"></a>             <span class="at">cgap =</span> <span class="fl">0.4</span>,</span>
+<span id="cb21-4"><a href="#cb21-4"></a>             <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"steelblue"</span>, <span class="st">"pink"</span>),</span>
+<span id="cb21-5"><a href="#cb21-5"></a>             <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>如果不想显示人口金字塔人口数字可以，设置<em>show_value = FALSE</em>，不显示这些数据。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">draw_pyramid</span>(fbsw,</span>
+<span id="cb22-2"><a href="#cb22-2"></a>             <span class="at">csize =</span> <span class="fl">0.8</span>,</span>
+<span id="cb22-3"><a href="#cb22-3"></a>             <span class="at">cgap =</span> <span class="fl">0.4</span>,</span>
+<span id="cb22-4"><a href="#cb22-4"></a>             <span class="at">show_value =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-5"><a href="#cb22-5"></a>             <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"steelblue"</span>, <span class="st">"pink"</span>),</span>
+<span id="cb22-6"><a href="#cb22-6"></a>             <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="绘制条形图" class="level3 page-columns page-full" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="绘制条形图"><span class="header-section-number">6.2</span> 绘制条形图</h3>
+<p>肿瘤登记年报中经常会出现各种各样的条形图，该包通过<em>draw_barchart()</em>来绘制这种类型的图。该函数的参数如下：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">library</span>(showtext)</span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="fu">showtext_auto</span>()</span>
+<span id="cb23-5"><a href="#cb23-5"></a>asr <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, <span class="at">event =</span> fbs, sex, icd_cat) <span class="sc">|&gt;</span> </span>
+<span id="cb23-6"><a href="#cb23-6"></a>  <span class="fu">select</span>(sex,icd_cat,asr_china) <span class="sc">|&gt;</span> </span>
+<span id="cb23-7"><a href="#cb23-7"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"male"</span>,<span class="st">"female"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb23-8"><a href="#cb23-8"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="fu">c</span>(<span class="st">"sex"</span>),<span class="at">values_from =</span> <span class="fu">c</span>(<span class="st">"asr_china"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb23-9"><a href="#cb23-9"></a>  <span class="fu">arrange</span>(male)</span>
+<span id="cb23-10"><a href="#cb23-10"></a></span>
+<span id="cb23-11"><a href="#cb23-11"></a><span class="fu">draw_bar</span>(<span class="fu">list</span>(asr<span class="sc">$</span>male),</span>
+<span id="cb23-12"><a href="#cb23-12"></a>         <span class="at">cates =</span> <span class="fu">as.character</span>(asr<span class="sc">$</span>icd_cat),</span>
+<span id="cb23-13"><a href="#cb23-13"></a>         <span class="at">bar_side =</span> <span class="dv">2</span>,</span>
+<span id="cb23-14"><a href="#cb23-14"></a>         <span class="at">label =</span> <span class="fu">c</span>(<span class="st">"男性"</span>,<span class="st">"男性"</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">draw_barchart</span>(</span>
+<span id="cb24-2"><a href="#cb24-2"></a>  data, <span class="co">#用于绘图的数据框</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="at">plot_var =</span> cr, <span class="co">#用于绘图的变量</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="at">cate_var =</span> icd_cat, <span class="co">#分类变量</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="at">group_var =</span> year, <span class="co">#分组变量</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a>  <span class="at">side_var =</span> sex,</span>
+<span id="cb24-7"><a href="#cb24-7"></a>  <span class="at">topn =</span> <span class="dv">10</span>,</span>
+<span id="cb24-8"><a href="#cb24-8"></a>  <span class="at">bar_side =</span> <span class="dv">1</span>,</span>
+<span id="cb24-9"><a href="#cb24-9"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb24-10"><a href="#cb24-10"></a>  ...</span>
+<span id="cb24-11"><a href="#cb24-11"></a>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">library</span>(showtext)</span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="fu">showtext_auto</span>()</span>
+<span id="cb25-4"><a href="#cb25-4"></a>asr1 <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, <span class="at">event =</span> fbs, sex, icd_cat) <span class="sc">|&gt;</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">bind_rows</span>(<span class="fu">create_asr</span>(data, <span class="at">event =</span> fbs, icd_cat)) <span class="sc">|&gt;</span> </span>
+<span id="cb25-6"><a href="#cb25-6"></a>  <span class="fu">select</span>(sex, icd_cat, asr_china) <span class="sc">|&gt;</span> </span>
+<span id="cb25-7"><a href="#cb25-7"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(sex),<span class="dv">3</span>,sex),</span>
+<span id="cb25-8"><a href="#cb25-8"></a>         <span class="at">type =</span> <span class="st">"发病率"</span>)</span>
+<span id="cb25-9"><a href="#cb25-9"></a>asr2 <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, <span class="at">event =</span> sws, sex, icd_cat) <span class="sc">|&gt;</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a>  <span class="fu">bind_rows</span>(<span class="fu">create_asr</span>(data, <span class="at">event =</span> sws, icd_cat)) <span class="sc">|&gt;</span> </span>
+<span id="cb25-11"><a href="#cb25-11"></a>  <span class="fu">select</span>(sex, icd_cat, asr_china) <span class="sc">|&gt;</span> </span>
+<span id="cb25-12"><a href="#cb25-12"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(sex),<span class="dv">3</span>,sex),</span>
+<span id="cb25-13"><a href="#cb25-13"></a>         <span class="at">type =</span> <span class="st">"死亡率"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb25-14"><a href="#cb25-14"></a>  <span class="fu">bind_rows</span>(asr1) <span class="sc">|&gt;</span> </span>
+<span id="cb25-15"><a href="#cb25-15"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"男性"</span>,<span class="st">"女性"</span>,<span class="st">"合计"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb25-16"><a href="#cb25-16"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">as.character</span>(sex))</span>
+<span id="cb25-17"><a href="#cb25-17"></a></span>
+<span id="cb25-18"><a href="#cb25-18"></a><span class="fu">draw_barchart</span>(asr2,</span>
+<span id="cb25-19"><a href="#cb25-19"></a>              <span class="at">plot_var =</span> asr_china,</span>
+<span id="cb25-20"><a href="#cb25-20"></a>              <span class="at">cate_var =</span> icd_cat,</span>
+<span id="cb25-21"><a href="#cb25-21"></a>              <span class="at">group_var =</span> type,</span>
+<span id="cb25-22"><a href="#cb25-22"></a>              <span class="at">side_var =</span> sex,</span>
+<span id="cb25-23"><a href="#cb25-23"></a>              <span class="at">bar_side =</span> <span class="dv">1</span>,</span>
+<span id="cb25-24"><a href="#cb25-24"></a>              <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display column-screen-left">
+<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>asr2 <span class="ot">&lt;-</span> asr2 <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span>sex <span class="sc">==</span> <span class="st">"合计"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">arrange</span>(type,sex,icd_cat) <span class="sc">|&gt;</span> </span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="fu">draw_barchart</span>(</span>
+<span id="cb26-5"><a href="#cb26-5"></a>              <span class="at">plot_var =</span> asr_china,</span>
+<span id="cb26-6"><a href="#cb26-6"></a>              <span class="at">cate_var =</span> icd_cat,</span>
+<span id="cb26-7"><a href="#cb26-7"></a>              <span class="at">group_var =</span> type,</span>
+<span id="cb26-8"><a href="#cb26-8"></a>              <span class="at">side_var =</span> sex,</span>
+<span id="cb26-9"><a href="#cb26-9"></a>              <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
