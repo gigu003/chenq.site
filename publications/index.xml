@@ -6,14 +6,14 @@
       version="2.0">
 <channel>
 <title>普癌新声</title>
-<link>https://www.chenq.site/publications/index.html</link>
+<link>https://www.chenq.site/publications/</link>
 <atom:link href="https://www.chenq.site/publications/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
-<generator>quarto-1.3.238</generator>
+<generator>quarto-1.6.9</generator>
 <lastBuildDate>Mon, 21 Aug 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>2018年河南省恶性肿瘤发病与死亡情况及2014-2018年趋势分析</title>
-  <dc:creator>张明霞,陈琼,郭兰伟,郑黎阳,刘茵,王红,王潇杨,刘纯亚,徐慧芳,刘曙正,张韶凯</dc:creator>
+  <dc:creator>张明霞,陈琼,郭兰伟,郑黎阳,刘茵,王红,王潇杨,刘纯亚,徐慧芳,刘曙正,张韶凯 </dc:creator>
   <link>https://www.chenq.site/publications/corresponding/2023-08-21-2018cancer.html</link>
   <description><![CDATA[ 
 
@@ -47,7 +47,7 @@
 <item>
   <title>河南省恶性肿瘤2017-2019年5年相对生存率分析</title>
   <dc:creator>&lt;strong&gt;陈琼&lt;/strong&gt;, 张明霞, 郭兰伟, 郑黎阳, 刘纯亚, 王一先, 刘茵, 王红, 徐慧芳, 康瑞华, 王潇杨, 刘曙正, 张韶凯</dc:creator>
-  <link>https://www.chenq.site/publications/firstauthor/2023-5-12-1719-cancer-survival/index.html</link>
+  <link>https://www.chenq.site/publications/firstauthor/2023-5-12-1719-cancer-survival/</link>
   <description><![CDATA[ 
 
 
@@ -76,7 +76,7 @@
   <category>第一作者</category>
   <category>生存分析</category>
   <category>中华肿瘤杂志</category>
-  <guid>https://www.chenq.site/publications/firstauthor/2023-5-12-1719-cancer-survival/index.html</guid>
+  <guid>https://www.chenq.site/publications/firstauthor/2023-5-12-1719-cancer-survival/</guid>
   <pubDate>Fri, 12 May 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -194,15 +194,19 @@
 </item>
 <item>
   <title>胃癌内镜筛查对统计治愈比例的影响</title>
-  <dc:creator>&lt;strong&gt;陈琼&lt;/strong&gt;，李变云，刘曙正，徐慧芳，于亮，郭兰伟，张璐瑶，刘茵，王潇杨，孙喜斌，张韶凯</dc:creator>
-  <link>https://www.chenq.site/publications/firstauthor/2022-11-03-screening-cure/index.html</link>
+  <dc:creator>&lt;strong&gt;陈琼&lt;/strong&gt;，李变云，刘曙正，徐慧芳，于亮，郭兰伟，张璐瑶，刘茵，王潇杨，孙喜斌，张韶凯 </dc:creator>
+  <link>https://www.chenq.site/publications/firstauthor/2022-11-03-screening-cure/</link>
   <description><![CDATA[ 
 
 
 
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://www.chenq.site/publications/firstauthor/2022-11-03-screening-cure/preview.jpg" class="img-fluid" width="863"></p>
+<div>
+<figure class="figure">
+<p><img src="https://www.chenq.site/publications/firstauthor/2022-11-03-screening-cure/preview.jpg" class="img-fluid figure-img" width="863"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="目的" class="level2">
@@ -230,14 +234,14 @@
   <category>第一作者</category>
   <category>治愈比例</category>
   <category>中国肿瘤</category>
-  <guid>https://www.chenq.site/publications/firstauthor/2022-11-03-screening-cure/index.html</guid>
+  <guid>https://www.chenq.site/publications/firstauthor/2022-11-03-screening-cure/</guid>
   <pubDate>Thu, 03 Nov 2022 00:00:00 GMT</pubDate>
   <media:content url="https://www.chenq.site/publications/firstauthor/2022-11-03-screening-cure/preview.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>以人群为基础的肿瘤登记建设规范</title>
-  <dc:creator>张韶凯，&lt;strong&gt;陈琼&lt;/strong&gt;，张璐瑶，刘茵，徐慧芳，王潇杨，王红，康瑞华，郭兰伟，郑黎阳，刘曙正，孙喜斌</dc:creator>
-  <link>https://www.chenq.site/publications/firstauthor/2022-10-23-guideline/index.html</link>
+  <dc:creator>张韶凯，&lt;strong&gt;陈琼&lt;/strong&gt;，张璐瑶，刘茵，徐慧芳，王潇杨，王红，康瑞华，郭兰伟，郑黎阳，刘曙正，孙喜斌 </dc:creator>
+  <link>https://www.chenq.site/publications/firstauthor/2022-10-23-guideline/</link>
   <description><![CDATA[ 
 
 
@@ -247,7 +251,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://www.chenq.site/publications/firstauthor/2022-10-23-guideline/flowchart.jpg" class="img-fluid figure-img" width="895"></p>
-<p></p><figcaption class="figure-caption">肿瘤登记数据上报流程图</figcaption><p></p>
+<figcaption>肿瘤登记数据上报流程图</figcaption>
 </figure>
 </div>
 </div>
@@ -263,13 +267,13 @@
   <category>共同作者</category>
   <category>肿瘤登记</category>
   <category>社区医学杂志</category>
-  <guid>https://www.chenq.site/publications/firstauthor/2022-10-23-guideline/index.html</guid>
+  <guid>https://www.chenq.site/publications/firstauthor/2022-10-23-guideline/</guid>
   <pubDate>Sun, 23 Oct 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>2010-2014年河南省儿童和青少年恶性肿瘤生存分析</title>
-  <dc:creator>&lt;strong&gt;陈琼&lt;/strong&gt;，张明霞，郭兰伟，王红，徐慧芳，刘茵，王潇杨，康瑞华，郑黎阳，刘曙正，孙喜斌，张韶凯</dc:creator>
-  <link>https://www.chenq.site/publications/firstauthor/2022-10-22-childhood-cancer-survival/index.html</link>
+  <dc:creator>&lt;strong&gt;陈琼&lt;/strong&gt;，张明霞，郭兰伟，王红，徐慧芳，刘茵，王潇杨，康瑞华，郑黎阳，刘曙正，孙喜斌，张韶凯 </dc:creator>
+  <link>https://www.chenq.site/publications/firstauthor/2022-10-22-childhood-cancer-survival/</link>
   <description><![CDATA[ 
 
 
@@ -300,13 +304,13 @@
   <category>第一作者</category>
   <category>肿瘤登记</category>
   <category>中国肿瘤</category>
-  <guid>https://www.chenq.site/publications/firstauthor/2022-10-22-childhood-cancer-survival/index.html</guid>
+  <guid>https://www.chenq.site/publications/firstauthor/2022-10-22-childhood-cancer-survival/</guid>
   <pubDate>Sat, 22 Oct 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Incidence and mortality of gastric cancer in 2018 and their trends from 2010 to 2018 in Henan Province, China: results from a provincial population-based cancer registry</title>
   <dc:creator>&lt;strong&gt; Qiong Chen&lt;/strong&gt;, Cheng C, Liu Y, Guo L, Xu H, Wang H, Wang X, Zhang L, Zhang S, Han B</dc:creator>
-  <link>https://www.chenq.site/publications/firstauthor/2022-10-14-gastric-cancer-incidence/index.html</link>
+  <link>https://www.chenq.site/publications/firstauthor/2022-10-14-gastric-cancer-incidence/</link>
   <description><![CDATA[ 
 
 
@@ -335,7 +339,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://www.chenq.site/publications/firstauthor/2022-10-14-gastric-cancer-incidence/images/Figure1.png" class="img-fluid figure-img" width="1622"></p>
-<p></p><figcaption class="figure-caption">Distribution of Cancer Registries in Henan Province, China that included in analysis.</figcaption><p></p>
+<figcaption>Distribution of Cancer Registries in Henan Province, China that included in analysis.</figcaption>
 </figure>
 </div>
 </div>
@@ -345,7 +349,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://www.chenq.site/publications/firstauthor/2022-10-14-gastric-cancer-incidence/images/Figure2.png" class="img-fluid figure-img" width="1045"></p>
-<p></p><figcaption class="figure-caption">Cancer registration data quality control workflow.</figcaption><p></p>
+<figcaption>Cancer registration data quality control workflow.</figcaption>
 </figure>
 </div>
 </div>
@@ -355,7 +359,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://www.chenq.site/publications/firstauthor/2022-10-14-gastric-cancer-incidence/images/Figure3.png" class="img-fluid figure-img" width="1350"></p>
-<p></p><figcaption class="figure-caption">Age specific gastric cancer cases and incidence.</figcaption><p></p>
+<figcaption>Age specific gastric cancer cases and incidence.</figcaption>
 </figure>
 </div>
 </div>
@@ -365,7 +369,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://www.chenq.site/publications/firstauthor/2022-10-14-gastric-cancer-incidence/images/Figure4.png" class="img-fluid figure-img" width="1350"></p>
-<p></p><figcaption class="figure-caption">Age specific gastric cancer deaths and mortality.</figcaption><p></p>
+<figcaption>Age specific gastric cancer deaths and mortality.</figcaption>
 </figure>
 </div>
 </div>
@@ -375,7 +379,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://www.chenq.site/publications/firstauthor/2022-10-14-gastric-cancer-incidence/images/Figure5.png" class="img-fluid figure-img" width="1200"></p>
-<p></p><figcaption class="figure-caption">Changing trend of gastric cancer incidence and mortality in Henan Provice from 2010 to 2018.</figcaption><p></p>
+<figcaption>Changing trend of gastric cancer incidence and mortality in Henan Provice from 2010 to 2018.</figcaption>
 </figure>
 </div>
 </div>
@@ -393,7 +397,7 @@
   <category>第一作者</category>
   <category>肿瘤登记</category>
   <category>Ann Transl Med</category>
-  <guid>https://www.chenq.site/publications/firstauthor/2022-10-14-gastric-cancer-incidence/index.html</guid>
+  <guid>https://www.chenq.site/publications/firstauthor/2022-10-14-gastric-cancer-incidence/</guid>
   <pubDate>Fri, 14 Oct 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -467,8 +471,8 @@
 </item>
 <item>
   <title>2017年河南省恶性肿瘤发病与死亡情况分析</title>
-  <dc:creator>&lt;strong&gt;陈琼&lt;/strong&gt;，徐慧芳，郭兰伟，康瑞华，刘茵，王潇杨，郑黎阳，张璐瑶，刘曙正，孙喜斌，张韶凯</dc:creator>
-  <link>https://www.chenq.site/publications/firstauthor/2022-08-10-2017-cancer/index.html</link>
+  <dc:creator>&lt;strong&gt;陈琼&lt;/strong&gt;，徐慧芳，郭兰伟，康瑞华，刘茵，王潇杨，郑黎阳，张璐瑶，刘曙正，孙喜斌，张韶凯 </dc:creator>
+  <link>https://www.chenq.site/publications/firstauthor/2022-08-10-2017-cancer/</link>
   <description><![CDATA[ 
 
 
@@ -498,41 +502,7 @@
   <category>第一作者</category>
   <category>肿瘤登记</category>
   <category>中华肿瘤防治</category>
-  <guid>https://www.chenq.site/publications/firstauthor/2022-08-10-2017-cancer/index.html</guid>
-  <pubDate>Wed, 10 Aug 2022 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Incidence and mortality of colorectal cancer in 2017 and the time-trend from 2010 to 2017 in Henan province, China: a population-based registry study</title>
-  <dc:creator>Jian-Gong Zhang, Yin Liu, &lt;strong&gt;Qiong Chen&lt;/strong&gt;, Hui-Fang Xu, Xiao-Yang Wang, Lan-Wei Guo, Rui-Hua Kang, Lu-Yao Zhang, Hong Wang, Shao-Kai Zhang</dc:creator>
-  <link>https://www.chenq.site/publications/coauthor/2022-colorectal-cancer.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
-<p>Henan province is an area with a serious disease burden of colorectal cancer (CRC) in China. Understanding the current incidence and mortality and the time-trend is critical to formulate and optimize prevention and control strategies for CRC. However, the current incidence and mortality and time-trend of CRC in Henan province, China have not been reported.</p>
-</section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>CRC data was got from the Henan Provincial Central Cancer Registry of China in which the data was submitted from local cancer registries. Combined with the census data, the incidence, mortality, proportion, age-standardized rate by Chinese population (ASRC), age-standardized rate by world population (ASRW), and cumulative incidence and mortality (0-74 years old) of CRC by urban and rural population, gender, and age groups were estimated. The average annual percentage change (AAPC) and its 95% confidence interval (CI) of ASRC from 2010 to 2017 were analyzed.</p>
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>In 2017, it was estimated that there were 20,275 new cases and 10,046 deaths of CRC in Henan province. The crude incidence was 18.73/100,000, with an age-standardized incidence rate by Chinese population (ASIRC) of 13.97/100,000 and age-standardized mortality rate by world population (ASIRW) of 13.78/100,000. The cumulative incidence was 1.66%. The mortality rate was 9.28/100,000, with an age-standardized mortality rate by Chinese population (ASMRC) of 6.49/100,000 and an age-standardized mortality rate by world population (ASMRW) of 6.45/100,000. The cumulative mortality rate was 0.69%. The ASIRC and ASMRC were higher in urban areas (15.89/100,000, 7.19/100,000) than in rural areas (13.13/100,000, 6.20/100,000), and higher in males (15.53/100,000, 7.44/100,000) than in females (12.48/100,000, 5.66/100,000). The age-specific incidence reached the peak at age of 80-84, and the age-specific mortality reached the peak at age 85. From 2010 to 2017, the overall ASIRC and ASMRC showed a steady trend (P&gt;0.05), while an upward trend was observed in the mortality rate in urban males (AAPC =3.4, 95% CI: 0.2-6.7, P=0.040).</p>
-</section>
-<section id="conclusions" class="level2">
-<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
-<p>The incidence and mortality of CRC were high in Henan province, and higher in urban areas and males. It is critical to strengthen the prevention and control of CRC, carry out targeted intervention, and promote screening and early diagnosis and treatment, particularly among urban areas and males.</p>
-<p><strong>Keywords</strong>: China; Colorectal cancer (CRC); incidence; mortality; trend.</p>
-
-
-</section>
-
- ]]></description>
-  <category>英文论文</category>
-  <category>共同作者</category>
-  <guid>https://www.chenq.site/publications/coauthor/2022-colorectal-cancer.html</guid>
+  <guid>https://www.chenq.site/publications/firstauthor/2022-08-10-2017-cancer/</guid>
   <pubDate>Wed, 10 Aug 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -567,6 +537,40 @@
   <category>英文论文</category>
   <category>共同作者</category>
   <guid>https://www.chenq.site/publications/coauthor/2022-esophagus-cancer.html</guid>
+  <pubDate>Wed, 10 Aug 2022 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Incidence and mortality of colorectal cancer in 2017 and the time-trend from 2010 to 2017 in Henan province, China: a population-based registry study</title>
+  <dc:creator>Jian-Gong Zhang, Yin Liu, &lt;strong&gt;Qiong Chen&lt;/strong&gt;, Hui-Fang Xu, Xiao-Yang Wang, Lan-Wei Guo, Rui-Hua Kang, Lu-Yao Zhang, Hong Wang, Shao-Kai Zhang</dc:creator>
+  <link>https://www.chenq.site/publications/coauthor/2022-colorectal-cancer.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>Henan province is an area with a serious disease burden of colorectal cancer (CRC) in China. Understanding the current incidence and mortality and the time-trend is critical to formulate and optimize prevention and control strategies for CRC. However, the current incidence and mortality and time-trend of CRC in Henan province, China have not been reported.</p>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>CRC data was got from the Henan Provincial Central Cancer Registry of China in which the data was submitted from local cancer registries. Combined with the census data, the incidence, mortality, proportion, age-standardized rate by Chinese population (ASRC), age-standardized rate by world population (ASRW), and cumulative incidence and mortality (0-74 years old) of CRC by urban and rural population, gender, and age groups were estimated. The average annual percentage change (AAPC) and its 95% confidence interval (CI) of ASRC from 2010 to 2017 were analyzed.</p>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>In 2017, it was estimated that there were 20,275 new cases and 10,046 deaths of CRC in Henan province. The crude incidence was 18.73/100,000, with an age-standardized incidence rate by Chinese population (ASIRC) of 13.97/100,000 and age-standardized mortality rate by world population (ASIRW) of 13.78/100,000. The cumulative incidence was 1.66%. The mortality rate was 9.28/100,000, with an age-standardized mortality rate by Chinese population (ASMRC) of 6.49/100,000 and an age-standardized mortality rate by world population (ASMRW) of 6.45/100,000. The cumulative mortality rate was 0.69%. The ASIRC and ASMRC were higher in urban areas (15.89/100,000, 7.19/100,000) than in rural areas (13.13/100,000, 6.20/100,000), and higher in males (15.53/100,000, 7.44/100,000) than in females (12.48/100,000, 5.66/100,000). The age-specific incidence reached the peak at age of 80-84, and the age-specific mortality reached the peak at age 85. From 2010 to 2017, the overall ASIRC and ASMRC showed a steady trend (P&gt;0.05), while an upward trend was observed in the mortality rate in urban males (AAPC =3.4, 95% CI: 0.2-6.7, P=0.040).</p>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>The incidence and mortality of CRC were high in Henan province, and higher in urban areas and males. It is critical to strengthen the prevention and control of CRC, carry out targeted intervention, and promote screening and early diagnosis and treatment, particularly among urban areas and males.</p>
+<p><strong>Keywords</strong>: China; Colorectal cancer (CRC); incidence; mortality; trend.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>英文论文</category>
+  <category>共同作者</category>
+  <guid>https://www.chenq.site/publications/coauthor/2022-colorectal-cancer.html</guid>
   <pubDate>Wed, 10 Aug 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -605,7 +609,7 @@
 </item>
 <item>
   <title>河南省2016年肝癌的发病与死亡情况及2010-2016年趋势分析</title>
-  <dc:creator>&lt;strong&gt;陈琼&lt;/strong&gt;，刘茵，刘曙正，郭兰伟，郑黎阳，徐慧芳，王潇杨，王红，孙喜斌，张韶凯</dc:creator>
+  <dc:creator>&lt;strong&gt;陈琼&lt;/strong&gt;，刘茵，刘曙正，郭兰伟，郑黎阳，徐慧芳，王潇杨，王红，孙喜斌，张韶凯 </dc:creator>
   <link>https://www.chenq.site/publications/firstauthor/2022-06-30-liver.html</link>
   <description><![CDATA[ 
 

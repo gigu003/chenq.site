@@ -1,0 +1,194 @@
+---
+title: "恶性肿瘤监测数据的分析与利用"
+subtitle: "从数据收集到出版《年报》"
+author: "👨‍⚕️陈琼，博士，副主任医师"
+date: 2023-4-20
+date-modified: last-modified
+date-format: "dddd MMM D, YYYY"
+institute: "🏥河南省癌症中心\n河南省肿瘤医院"
+format: 
+  revealjs:
+    theme: [custom.scss]
+    slide-number: true
+    smaller: true
+    scrollable: true
+    footer: "河南省人群肿瘤登记"
+    #header-logo: logo.gif
+    #sc-sb-title: h1
+    subtitle-as-header: true
+filters:
+  - reveal-header
+slide-level: 2
+title-slide-style: pandoc
+#number-sections: true
+crossref:
+  fig-title: 图     
+  tbl-title: 表     
+  #title-delim: ""
+  tbl-prefix: 表
+  fig-prefix: 图
+title-slide-attributes:
+  data-background-color: "lightblue"
+---
+
+## 你是怎么写论文的?
+
+- 用R/SAS/STATA计算统计结果
+- 把结果粘贴到Word里做表格
+- 然后在Word里写论文
+
+<br>
+<br>
+
+
+
+::: {.fragment  }
+但是当你完成论文的撰写，突然发现原始数据有变化~
+:::
+
+
+## {style="text-align: center; vertical-align: middle;"}
+
+<br>
+<br>
+
+:::{.r-fit-text style="color: red;"}
+是不是感觉要崩溃了？
+
+:sob:
+:::
+
+::: {.incremental}
+- 所有的统计工作和制表工作要重新来过！！！
+:::
+
+##
+
+::: {.callout-important}
+## 可重复性研究报告/可重复性数据分析
+是指利用代码把数据分析过程串起来，最终生成可重复性的报告。
+:::
+
+:::{.incremental}
+- R sweave
+- R markdown
+- Jupyter
+:::
+
+:::{.r-fit-text}
+这些都是实现可重复性报告的具体方式
+:::
+
+## Rmarkdown 
+
+:::{.callout-tip}
+Rmd格式文档通过把通用的markdown和嵌入的R语言代码块结合起来，通过knitr包把rmd文档编译成统一的md文档，然后再通过pandoc转成各种格式，如html、PDF、Word、slides等。
+:::
+
+:::{.columns style="line-height: 130%; font-size: 80%;"}
+
+:::{.column width=”40%“ .incremental}
+- markdown负责报告文本
+- 嵌入的代码块负责统计分析过程
+:::
+
+:::{.column width=”60%“ .incremental}
+- 完成的Rmd又knitr包转换为普通的md文档
+- 再通过pandoc把md渲染成我们需要报告
+:::
+
+:::
+
+## {background-image="rmd-packages.png" background-opacity="15%"}
+
+:::{.r-fit-text style="color:blue;"}
+支持Rmarkdown的包遍地开花
+:::
+
+:::{.columns}
+:::{.column width="50%"}
+- 网站/博客
+- 书籍
+- 论文
+- 幻灯片
+:::
+:::{.column width="50%"}
+- ~~语法不兼容~~
+- ~~学习成本高~~🤣
+:::
+:::
+
+## Quarto 上线
+ 
+> Quarto® is an open-source scientific and technical publishing system built on Pandoc
+>
+> Rstudio把Quarto定义为“一个基于Pandoc的开源科学与技术出版系统。”
+
+
+
+## video slides
+
+{{< video https://youtu.be/wo9vZccmqwc width="80%" height="80%" >}}
+
+::: aside
+
+Some additional commentary of more peripheral interest.
+
+:::
+
+
+
+---
+jldajlfkjalfdjlfdjlaj
+fjdklajflajflja
+
+
+
+## Slide Title {background-color="aquamarine"}
+
+
+## Slide Title {background-iframe="https://chenq.site"}
+
+
+::: {.r-fit-text .center}
+
+什么是文学编程？ 
+:::
+
+
+## {auto-animate=true}
+
+::: {style="margin-top: 100px;"}
+什么事实爱啊
+:::
+
+## {auto-animate=true}
+
+::: {style="margin-top: 200px; font-size: 3em; color: red;"}
+Animating content
+:::
+
+
+## {auto-animate="true"}
+
+```r
+# Fill in the spot we created for a plot
+output$phonePlot <- renderPlot({
+  # Render a barplot
+})
+```
+
+## {auto-animate=true}
+
+```r
+# Fill in the spot we created for a plot
+output$phonePlot <- renderPlot({
+  # Render a barplot
+  barplot(WorldPhones[,input$region]*1000, 
+          main=input$region,
+          ylab="Number of Telephones",
+          xlab="Year")
+})
+```
+
+## {background-image="../theme-images/slides-end-hospital.jpeg"}

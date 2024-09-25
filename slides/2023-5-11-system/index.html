@@ -7,14 +7,14 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-html-68b329da9893e34099c7d8ad5cb9c940.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.238">
+  <meta name="generator" content="quarto-1.6.9">
 
   <meta name="author" content="👨‍⚕️陈琼，博士，副主任医师">
-  <title>普癌新声 - 河南肿瘤随访登记平台</title>
+  <title>普癌新声 – 河南肿瘤随访登记平台</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -33,7 +33,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-492c5038a531c95dfcac2e3703f3eba9.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -159,7 +159,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -326,10 +327,10 @@
   <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
   <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
   <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
-<meta property="og:title" content="普癌新声 - 河南肿瘤随访登记平台">
+<meta property="og:title" content="河南肿瘤随访登记平台 – 普癌新声">
 <meta property="og:description" content="设计思路、系统框架、推荐操作流程">
-<meta property="og:site-name" content="普癌新声">
-<meta name="twitter:title" content="普癌新声 - 河南肿瘤随访登记平台">
+<meta property="og:site_name" content="普癌新声">
+<meta name="twitter:title" content="河南肿瘤随访登记平台 – 普癌新声">
 <meta name="twitter:description" content="设计思路、系统框架、推荐操作流程">
 <meta name="twitter:card" content="summary">
 </head>
@@ -382,15 +383,14 @@
 <li>发病地理信息管理</li>
 <li>就医历史纵向追踪</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="数据项目" class="slide level2">
 <h2>数据项目</h2>
 <div class="columns">
 <div class="column" style="width:30%;">
 <blockquote>
-<p>肿瘤登记收集的变量包括以下7个部分（<a href="#/fig-items">图&nbsp;1</a>）</p>
+<p>肿瘤登记收集的变量包括以下7个部分（<a href="#/数据项目" class="quarto-xref">图&nbsp;1</a>）</p>
 </blockquote>
 <ul>
 <li>个人识别信息</li>
@@ -402,10 +402,11 @@
 <li>信息来源</li>
 </ul>
 </div><div class="column" style="width:70%;">
-<div class="cell" data-reveal="true">
+<div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
-<div id="fig-items" class="quarto-figure quarto-figure-center">
-<figure>
+<div id="fig-items" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-items-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-items">classDiagram
     class 个人识别信息 {
@@ -465,13 +466,15 @@
     个人识别信息 --|&gt; 信息来源
 </pre>
 </div>
-<p></p><figcaption>图&nbsp;1: 人群肿瘤登记收集数据项目</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-items-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1: 人群肿瘤登记收集数据项目
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="新系统设计思路" class="slide level2">
 <h2>新系统设计思路</h2>
@@ -479,7 +482,7 @@
 <div class="column" style="width:50%;">
 <p><br></p>
 <blockquote>
-<p>新系统围绕<strong>人口身份识别信息</strong>，不断更新肿瘤信息、随访信息、地理信息等（<a href="#/fig-system">图&nbsp;2</a>）</p>
+<p>新系统围绕<strong>人口身份识别信息</strong>，不断更新肿瘤信息、随访信息、地理信息等（<a href="#/新系统设计思路" class="quarto-xref">图&nbsp;2</a>）</p>
 </blockquote>
 <p><br></p>
 <ul>
@@ -491,8 +494,9 @@
 </div><div class="column" style="width:50%;">
 <div class="cell" data-reveal="true" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-system" class="quarto-figure quarto-figure-center">
-<figure>
+<div id="fig-system" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-system">flowchart LR
   A[人口身份识别信息] --&gt; B[肿瘤信息]
@@ -505,13 +509,15 @@
   
 </pre>
 </div>
-<p></p><figcaption>图&nbsp;2: 河南省肿瘤随访登记信息平台</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;2: 河南省肿瘤随访登记信息平台
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><br></p>
 <blockquote>
 <p>保证人口信息数据的<span style="color: red; text-size: 3.5em; ">唯一性</span>特别重要，也是重卡合并、多原发标记和更新随访数据的基础。</p>
@@ -521,13 +527,14 @@
 <h2>数据操作流程（推荐）</h2>
 <p><br></p>
 <blockquote>
-<p><strong>人口信息的查重</strong>特别重要，在肿瘤病例的查重之前，需要先做人口信息查重（<a href="#/fig-system-flow">图&nbsp;3</a>）</p>
+<p><strong>人口信息的查重</strong>特别重要，在肿瘤病例的查重之前，需要先做人口信息查重（<a href="#/数据操作流程推荐" class="quarto-xref">图&nbsp;3</a>）</p>
 </blockquote>
 <p><br></p>
 <div class="cell" data-reveal="true" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-system-flow" class="quarto-figure quarto-figure-center">
-<figure>
+<div id="fig-system-flow" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-system-flow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-system-flow">flowchart LR
   x[肿瘤数据上报] --&gt; A[更新人口信息]
@@ -538,7 +545,10 @@
   C --&gt; D[标记多原发肿瘤]
 </pre>
 </div>
-<p></p><figcaption>图&nbsp;3: 新系统数据操作流程（建议）</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-system-flow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;3: 新系统数据操作流程（建议）
+</figcaption>
 </figure>
 </div>
 </div>
@@ -559,16 +569,19 @@
 </div><div class="column" style="width:70%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-record1" class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="./images/record1.jpg" width="1622"></p>
-<p></p><figcaption>图&nbsp;4: 手工录入界面</figcaption><p></p>
+<div id="fig-record1" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-record1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="./images/record1.jpg" width="1622">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-record1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;4: 手工录入界面
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="肿瘤数据上传操作-1" class="slide level2">
 <h2>肿瘤数据上传操作</h2>
@@ -611,10 +624,11 @@
 <img data-src="./images/dco.jpg" width="1834" class="r-stretch"></section>
 <section id="死亡补发病流程" class="slide level2">
 <h2>死亡补发病流程</h2>
-<div class="cell" data-reveal="true">
+<div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
-<div id="fig-dco" class="quarto-figure quarto-figure-center">
-<figure>
+<div id="fig-dco" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-dco-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-dco">flowchart LR
   A[全死因数据] --&gt; B[上传至信息系统]
@@ -629,7 +643,10 @@
   
 </pre>
 </div>
-<p></p><figcaption>图&nbsp;5: 河南省肿瘤登记死亡补发病流程</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dco-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;5: 河南省肿瘤登记死亡补发病流程
+</figcaption>
 </figure>
 </div>
 </div>
@@ -702,8 +719,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="随访功能" class="slide level2">
 <h2>随访功能</h2>
@@ -731,8 +747,10 @@
 <section id="谢-谢-关-注" class="title-slide slide level1 center" data-background-color="lightblue" style="text-align: center;color: white;">
 <h1>谢 谢 关 注</h1>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>河南省人群肿瘤登记</p>
+</div>
 </div>
 <div class="reveal-header">
 <div class="header-logo">
@@ -775,12 +793,11 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': true,
  
         // Display controls in the bottom right corner
@@ -1030,18 +1047,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1073,11 +1079,50 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/www\.chenq\.site");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1087,8 +1132,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1102,7 +1156,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

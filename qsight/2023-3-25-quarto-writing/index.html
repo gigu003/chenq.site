@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.238">
+<meta name="generator" content="quarto-1.6.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="keywords" content="quarto, 论文写作">
 <meta name="description" content="这篇博文介绍我使用quarto进行论文写作的一些技巧和经验，它们在无形中提高了我论文写作的效率，使论文的数据统计结果具有可能重复性，如果你还没听说过quarto，耐心的读完这篇博文，我相信会给你带来帮助。">
 
-<title>普癌新声 - 论文写作效率神器：Quarto出版系统</title>
+<title>论文写作效率神器：Quarto出版系统 – 普癌新声</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -50,43 +50,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -103,17 +73,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-622d69364da439c143a9a341894a8141.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "没有结果",
     "search-matching-documents-text": "匹配的文档",
@@ -122,8 +98,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "更多匹配结果",
     "search-more-matches-text": "更多匹配结果",
     "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "提交"
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
   }
 }</script>
 <script>
@@ -142,11 +120,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="普癌新声 - 论文写作效率神器：Quarto出版系统">
+<meta property="og:title" content="论文写作效率神器：Quarto出版系统 – 普癌新声">
 <meta property="og:description" content="这篇博文介绍我使用quarto进行论文写作的一些技巧和经验，它们在无形中提高了我论文写作的效率，使论文的数据统计结果具有可能重复性，如果你还没听说过quarto，耐心的读完这篇博文，我相信会给你带来帮助。">
 <meta property="og:image" content="https://www.chenq.site/qsight/2023-3-25-quarto-writing/writing.jpg">
-<meta property="og:site-name" content="普癌新声">
-<meta name="twitter:title" content="普癌新声 - 论文写作效率神器：Quarto出版系统">
+<meta property="og:site_name" content="普癌新声">
+<meta name="twitter:title" content="论文写作效率神器：Quarto出版系统 – 普癌新声">
 <meta name="twitter:description" content="这篇博文介绍我使用quarto进行论文写作的一些技巧和经验，它们在无形中提高了我论文写作的效率，使论文的数据统计结果具有可能重复性，如果你还没听说过quarto，耐心的读完这篇博文，我相信会给你带来帮助。">
 <meta name="twitter:image" content="https://www.chenq.site/qsight/2023-3-25-quarto-writing/writing.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -156,69 +134,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="搜索"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="切换导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
 </i> 
- <span class="menu-text">Home</span></a>
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight/"> <i class="bi bi-tropical-storm" role="img">
 </i> 
- <span class="menu-text">Qsight博客</span></a>
+<span class="menu-text">Qsight博客</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://diary.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://diary.chenq.site"> <i class="bi bi-pen" role="img">
 </i> 
- <span class="menu-text">随笔录</span></a>
+<span class="menu-text">随笔录</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://canregtools.chenq.site" rel="" target=""><i class="bi bi-hexagon" role="img">
+    <a class="nav-link" href="https://canregtools.chenq.site"> <i class="bi bi-hexagon" role="img">
 </i> 
- <span class="menu-text">Packages</span></a>
+<span class="menu-text">Packages</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../publications/"> <i class="bi bi-journal-medical" role="img">
 </i> 
- <span class="menu-text">出版作品</span></a>
+<span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://slides.chenq.site" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="https://slides.chenq.site"> <i class="bi bi-file-slides-fill" role="img">
 </i> 
- <span class="menu-text">Slides</span></a>
+<span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">关于</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../qsight/index.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://notes.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://notes.chenq.site"> <i class="bi bi-pen" role="img">
 </i> 
- <span class="menu-text">学习笔记</span></a>
+<span class="menu-text">学习笔记</span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -283,11 +261,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="传统论文写作中的常见问题" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="传统论文写作中的常见问题"><span class="header-section-number">1</span> 传统论文写作中的常见问题</h2>
-<p>我相信除了不需要进行统计分析的综述类文章类型之外，大部分论文类型的论文写作流程是下面 <a href="#fig-1">图&nbsp;1</a> 这个样子的：</p>
+<p>我相信除了不需要进行统计分析的综述类文章类型之外，大部分论文类型的论文写作流程是下面 <a href="#fig-1" class="quarto-xref">图&nbsp;1</a> 这个样子的：</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div id="fig-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 <pre class="mermaid mermaid-js" data-label="fig-1">flowchart TD
   A[(数据清洗)] --&gt; B(统计分析)
@@ -303,7 +282,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   G --&gt; H[发表见刊]
 </pre>
 </div>
-<p></p><figcaption class="figure-caption">图&nbsp;1: 论文写作流程</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1: 论文写作流程
+</figcaption>
 </figure>
 </div>
 </div>
@@ -368,11 +350,7 @@ Quarto
 <section id="新建quarto文件" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="新建quarto文件"><span class="header-section-number">5</span> 新建quarto文件</h2>
 <p>在Rstudio里，点击 <em>File</em> –&gt; New Files –&gt; Quarto Document 新建一个quarto文件，该文件以.qmd为文件后缀</p>
-<div class="quarto-figure quarto-figure-center aside">
-<figure class="figure">
-<p><img src="newfile.jpg" class="aside img-fluid figure-img"></p>
-</figure>
-</div>
+<p><img src="newfile.jpg" class="aside img-fluid"></p>
 </section>
 <section id="quarto语法介绍" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="quarto语法介绍"><span class="header-section-number">6</span> Quarto语法介绍</h2>
@@ -401,34 +379,51 @@ Quarto
 </section>
 <section id="代码块" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="代码块"><span class="header-section-number">6.2</span> 代码块</h3>
-<p>quarto文档中可以插入代码块，在代码块中可以进行编写相应语言的代码，进行统计分析或结果展现。目前quarto支持的代码块包括R语言、Python等，下面的R语言代码块，利用gtsummary包制作了论文中常用的表1，结果可见 <a href="#tbl-table1">表格&nbsp;1</a> 。</p>
-<div class="cell tbl-cap-location-top" data-hash="index_cache/html/tbl-table1_6b02c3f223d2d5cbfda1ad46238e90e6">
+<p>quarto文档中可以插入代码块，在代码块中可以进行编写相应语言的代码，进行统计分析或结果展现。目前quarto支持的代码块包括R语言、Python等，下面的R语言代码块，利用gtsummary包制作了论文中常用的表1，结果可见 <a href="#tbl-table1" class="quarto-xref">表&nbsp;1</a> 。</p>
+<div class="cell" data-tbl-cap-location="top">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="in">```{r}</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#| label: tbl-table1</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#| tbl-cap-location: top</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#| tbl-cap: "接受不同药物治疗人群基本特征分析"</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#| warning: false</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#| message: false</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="in">#| label: tbl-table1</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="in">#| tbl-cap-location: top</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="in">#| tbl-cap: "接受不同药物治疗人群基本特征分析"</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="in">#| warning: false</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="in">#| message: false</span></span>
 <span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="in">library(gtsummary)</span></span>
 <span id="cb3-9"><a href="#cb3-9"></a></span>
-<span id="cb3-10"><a href="#cb3-10"></a>trial <span class="sc">%&gt;%</span> <span class="fu">select</span>(age, grade, response, trt) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-11"><a href="#cb3-11"></a>  <span class="fu">tbl_summary</span>(<span class="at">by=</span>trt) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-12"><a href="#cb3-12"></a>  <span class="fu">add_p</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb3-13"><a href="#cb3-13"></a>  <span class="fu">add_overall</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb3-14"><a href="#cb3-14"></a>  <span class="fu">add_n</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb3-15"><a href="#cb3-15"></a>  <span class="fu">bold_labels</span>() </span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="in">trial %&gt;% select(age, grade, response, trt) %&gt;% </span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="in">  tbl_summary(by=trt) %&gt;% </span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="in">  add_p() %&gt;% </span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="in">  add_overall() %&gt;% </span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="in">  add_n() %&gt;% </span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="in">  bold_labels() </span></span>
 <span id="cb3-16"><a href="#cb3-16"></a><span class="in">```</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-table1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-cap-location="top">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-table1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;1: 接受不同药物治疗人群基本特征分析
+</figcaption>
+<div aria-describedby="tbl-table1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-
-<div id="pjntvbatiy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="rlfilfcxfe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rlfilfcxfe table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#pjntvbatiy .gt_table {
+#rlfilfcxfe thead, #rlfilfcxfe tbody, #rlfilfcxfe tfoot, #rlfilfcxfe tr, #rlfilfcxfe td, #rlfilfcxfe th {
+  border-style: none;
+}
+
+#rlfilfcxfe p {
+  margin: 0;
+  padding: 0;
+}
+
+#rlfilfcxfe .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -451,24 +446,12 @@ Quarto
   border-left-color: #D3D3D3;
 }
 
-#pjntvbatiy .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#pjntvbatiy .gt_caption {
+#rlfilfcxfe .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pjntvbatiy .gt_title {
+#rlfilfcxfe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -480,25 +463,37 @@ Quarto
   border-bottom-width: 0;
 }
 
-#pjntvbatiy .gt_subtitle {
+#rlfilfcxfe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#pjntvbatiy .gt_bottom_border {
+#rlfilfcxfe .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rlfilfcxfe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pjntvbatiy .gt_col_headings {
+#rlfilfcxfe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -513,7 +508,7 @@ Quarto
   border-right-color: #D3D3D3;
 }
 
-#pjntvbatiy .gt_col_heading {
+#rlfilfcxfe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -533,7 +528,7 @@ Quarto
   overflow-x: hidden;
 }
 
-#pjntvbatiy .gt_column_spanner_outer {
+#rlfilfcxfe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -545,15 +540,15 @@ Quarto
   padding-right: 4px;
 }
 
-#pjntvbatiy .gt_column_spanner_outer:first-child {
+#rlfilfcxfe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pjntvbatiy .gt_column_spanner_outer:last-child {
+#rlfilfcxfe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pjntvbatiy .gt_column_spanner {
+#rlfilfcxfe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -565,7 +560,11 @@ Quarto
   width: 100%;
 }
 
-#pjntvbatiy .gt_group_heading {
+#rlfilfcxfe .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#rlfilfcxfe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -591,7 +590,7 @@ Quarto
   text-align: left;
 }
 
-#pjntvbatiy .gt_empty_group_heading {
+#rlfilfcxfe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -606,15 +605,15 @@ Quarto
   vertical-align: middle;
 }
 
-#pjntvbatiy .gt_from_md > :first-child {
+#rlfilfcxfe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pjntvbatiy .gt_from_md > :last-child {
+#rlfilfcxfe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pjntvbatiy .gt_row {
+#rlfilfcxfe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -633,7 +632,7 @@ Quarto
   overflow-x: hidden;
 }
 
-#pjntvbatiy .gt_stub {
+#rlfilfcxfe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -646,7 +645,7 @@ Quarto
   padding-right: 5px;
 }
 
-#pjntvbatiy .gt_stub_row_group {
+#rlfilfcxfe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -660,11 +659,15 @@ Quarto
   vertical-align: top;
 }
 
-#pjntvbatiy .gt_row_group_first td {
+#rlfilfcxfe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pjntvbatiy .gt_summary_row {
+#rlfilfcxfe .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#rlfilfcxfe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -674,16 +677,16 @@ Quarto
   padding-right: 5px;
 }
 
-#pjntvbatiy .gt_first_summary_row {
+#rlfilfcxfe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pjntvbatiy .gt_first_summary_row.thick {
+#rlfilfcxfe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pjntvbatiy .gt_last_summary_row {
+#rlfilfcxfe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -693,7 +696,7 @@ Quarto
   border-bottom-color: #D3D3D3;
 }
 
-#pjntvbatiy .gt_grand_summary_row {
+#rlfilfcxfe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -703,7 +706,7 @@ Quarto
   padding-right: 5px;
 }
 
-#pjntvbatiy .gt_first_grand_summary_row {
+#rlfilfcxfe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -713,11 +716,21 @@ Quarto
   border-top-color: #D3D3D3;
 }
 
-#pjntvbatiy .gt_striped {
+#rlfilfcxfe .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rlfilfcxfe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pjntvbatiy .gt_table_body {
+#rlfilfcxfe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -726,7 +739,7 @@ Quarto
   border-bottom-color: #D3D3D3;
 }
 
-#pjntvbatiy .gt_footnotes {
+#rlfilfcxfe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -740,30 +753,8 @@ Quarto
   border-right-color: #D3D3D3;
 }
 
-#pjntvbatiy .gt_footnote {
+#rlfilfcxfe .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#pjntvbatiy .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#pjntvbatiy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -771,79 +762,106 @@ Quarto
   padding-right: 5px;
 }
 
-#pjntvbatiy .gt_left {
+#rlfilfcxfe .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rlfilfcxfe .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rlfilfcxfe .gt_left {
   text-align: left;
 }
 
-#pjntvbatiy .gt_center {
+#rlfilfcxfe .gt_center {
   text-align: center;
 }
 
-#pjntvbatiy .gt_right {
+#rlfilfcxfe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pjntvbatiy .gt_font_normal {
+#rlfilfcxfe .gt_font_normal {
   font-weight: normal;
 }
 
-#pjntvbatiy .gt_font_bold {
+#rlfilfcxfe .gt_font_bold {
   font-weight: bold;
 }
 
-#pjntvbatiy .gt_font_italic {
+#rlfilfcxfe .gt_font_italic {
   font-style: italic;
 }
 
-#pjntvbatiy .gt_super {
+#rlfilfcxfe .gt_super {
   font-size: 65%;
 }
 
-#pjntvbatiy .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#rlfilfcxfe .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#pjntvbatiy .gt_asterisk {
+#rlfilfcxfe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pjntvbatiy .gt_indent_1 {
+#rlfilfcxfe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pjntvbatiy .gt_indent_2 {
+#rlfilfcxfe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pjntvbatiy .gt_indent_3 {
+#rlfilfcxfe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pjntvbatiy .gt_indent_4 {
+#rlfilfcxfe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pjntvbatiy .gt_indent_5 {
+#rlfilfcxfe .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 
-<div id="tbl-table1" class="anchored">
-<table class="gt_table table table-sm table-striped" data-quarto-postprocess="true">
-<caption>表格&nbsp;1: 接受不同药物治疗人群基本特征分析</caption>
-<thead class="gt_col_headings">
-<tr class="header">
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
 <th id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
 <th id="<strong>N</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>N</strong></th>
-<th id="<strong>Overall</strong>, N = 200<sup class=&quot;gt_footnote_marks&quot;>1</sup>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Overall</strong>, N = 200<sup>1</sup></th>
-<th id="<strong>Drug A</strong>, N = 98<sup class=&quot;gt_footnote_marks&quot;>1</sup>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Drug A</strong>, N = 98<sup>1</sup></th>
-<th id="<strong>Drug B</strong>, N = 102<sup class=&quot;gt_footnote_marks&quot;>1</sup>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Drug B</strong>, N = 102<sup>1</sup></th>
-<th id="<strong>p-value</strong><sup class=&quot;gt_footnote_marks&quot;>2</sup>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><sup>2</sup></th>
+<th id="<strong>Overall</strong>, N = 200<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Overall</strong>, N = 200<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+<th id="<strong>Drug A</strong>, N = 98<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Drug A</strong>, N = 98<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+<th id="<strong>Drug B</strong>, N = 102<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Drug B</strong>, N = 102<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+<th id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -857,43 +875,54 @@ Quarto
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Unknown</td>
-<td class="gt_row gt_center" headers="n"></td>
+<td class="gt_row gt_center" headers="n"><br>
+</td>
 <td class="gt_row gt_center" headers="stat_0">11</td>
 <td class="gt_row gt_center" headers="stat_1">7</td>
 <td class="gt_row gt_center" headers="stat_2">4</td>
-<td class="gt_row gt_center" headers="p.value"></td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">Grade</td>
 <td class="gt_row gt_center" headers="n">200</td>
-<td class="gt_row gt_center" headers="stat_0"></td>
-<td class="gt_row gt_center" headers="stat_1"></td>
-<td class="gt_row gt_center" headers="stat_2"></td>
+<td class="gt_row gt_center" headers="stat_0"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2"><br>
+</td>
 <td class="gt_row gt_center" headers="p.value">0.9</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;I</td>
-<td class="gt_row gt_center" headers="n"></td>
+<td class="gt_row gt_center" headers="n"><br>
+</td>
 <td class="gt_row gt_center" headers="stat_0">68 (34%)</td>
 <td class="gt_row gt_center" headers="stat_1">35 (36%)</td>
 <td class="gt_row gt_center" headers="stat_2">33 (32%)</td>
-<td class="gt_row gt_center" headers="p.value"></td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;II</td>
-<td class="gt_row gt_center" headers="n"></td>
+<td class="gt_row gt_center" headers="n"><br>
+</td>
 <td class="gt_row gt_center" headers="stat_0">68 (34%)</td>
 <td class="gt_row gt_center" headers="stat_1">32 (33%)</td>
 <td class="gt_row gt_center" headers="stat_2">36 (35%)</td>
-<td class="gt_row gt_center" headers="p.value"></td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;III</td>
-<td class="gt_row gt_center" headers="n"></td>
+<td class="gt_row gt_center" headers="n"><br>
+</td>
 <td class="gt_row gt_center" headers="stat_0">64 (32%)</td>
 <td class="gt_row gt_center" headers="stat_1">31 (32%)</td>
 <td class="gt_row gt_center" headers="stat_2">33 (32%)</td>
-<td class="gt_row gt_center" headers="p.value"></td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">Tumor Response</td>
@@ -905,25 +934,29 @@ Quarto
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Unknown</td>
-<td class="gt_row gt_center" headers="n"></td>
+<td class="gt_row gt_center" headers="n"><br>
+</td>
 <td class="gt_row gt_center" headers="stat_0">7</td>
 <td class="gt_row gt_center" headers="stat_1">3</td>
 <td class="gt_row gt_center" headers="stat_2">4</td>
-<td class="gt_row gt_center" headers="p.value"></td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
 <tr class="odd">
-<td colspan="6" class="gt_footnote"><sup>1</sup> Median (IQR); n (%)</td>
+<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Median (IQR); n (%)</td>
 </tr>
 <tr class="even">
-<td colspan="6" class="gt_footnote"><sup>2</sup> Wilcoxon rank sum test; Pearson's Chi-squared test</td>
+<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Wilcoxon rank sum test; Pearson’s Chi-squared test</td>
 </tr>
 </tfoot>
 
 </table>
-</div>
 
 </div>
+</div>
+</div>
+</figure>
 </div>
 </div>
 </section>
@@ -1109,18 +1142,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1152,11 +1174,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/www\.chenq\.site");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1166,8 +1227,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1179,7 +1249,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1223,6 +1416,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1248,6 +1442,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1312,8 +1532,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Copyright@Qiong Chen</div>   
-    <div class="nav-footer-center">豫ICP备2021032022号</div>
+    <div class="nav-footer-left">
+<p>Copyright@Qiong Chen</p>
+</div>   
+    <div class="nav-footer-center">
+<p>豫ICP备2021032022号</p>
+</div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

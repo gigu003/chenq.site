@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.238">
+<meta name="generator" content="quarto-1.6.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="陈琼">
 <meta name="description" content="为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“canregtools”，这篇博文将详细介绍这个R包的功能和使用。">
 
-<title>普癌新声 - R包canregtools：肿瘤登记可视化和自动化报告</title>
+<title>R包canregtools：肿瘤登记可视化和自动化报告 – 普癌新声</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -49,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -102,17 +72,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-622d69364da439c143a9a341894a8141.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "没有结果",
     "search-matching-documents-text": "匹配的文档",
@@ -121,8 +97,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "更多匹配结果",
     "search-more-matches-text": "更多匹配结果",
     "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "提交"
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
   }
 }</script>
 <script>
@@ -138,11 +116,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="普癌新声 - R包canregtools：肿瘤登记可视化和自动化报告">
+<meta property="og:title" content="R包canregtools：肿瘤登记可视化和自动化报告 – 普癌新声">
 <meta property="og:description" content="为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“canregtools”，这篇博文将详细介绍这个R包的功能和使用。">
 <meta property="og:image" content="https://www.chenq.site/qsight/2023-09-30-canregtools/preview.jpg">
-<meta property="og:site-name" content="普癌新声">
-<meta name="twitter:title" content="普癌新声 - R包canregtools：肿瘤登记可视化和自动化报告">
+<meta property="og:site_name" content="普癌新声">
+<meta name="twitter:title" content="R包canregtools：肿瘤登记可视化和自动化报告 – 普癌新声">
 <meta name="twitter:description" content="为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“canregtools”，这篇博文将详细介绍这个R包的功能和使用。">
 <meta name="twitter:image" content="https://www.chenq.site/qsight/2023-09-30-canregtools/preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -152,69 +130,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="搜索"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="切换导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
 </i> 
- <span class="menu-text">Home</span></a>
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight/"> <i class="bi bi-tropical-storm" role="img">
 </i> 
- <span class="menu-text">Qsight博客</span></a>
+<span class="menu-text">Qsight博客</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://diary.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://diary.chenq.site"> <i class="bi bi-pen" role="img">
 </i> 
- <span class="menu-text">随笔录</span></a>
+<span class="menu-text">随笔录</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://canregtools.chenq.site" rel="" target=""><i class="bi bi-hexagon" role="img">
+    <a class="nav-link" href="https://canregtools.chenq.site"> <i class="bi bi-hexagon" role="img">
 </i> 
- <span class="menu-text">Packages</span></a>
+<span class="menu-text">Packages</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../publications/"> <i class="bi bi-journal-medical" role="img">
 </i> 
- <span class="menu-text">出版作品</span></a>
+<span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://slides.chenq.site" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="https://slides.chenq.site"> <i class="bi bi-file-slides-fill" role="img">
 </i> 
- <span class="menu-text">Slides</span></a>
+<span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">关于</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../qsight/index.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://notes.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://notes.chenq.site"> <i class="bi bi-pen" role="img">
 </i> 
- <span class="menu-text">学习笔记</span></a>
+<span class="menu-text">学习笔记</span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -277,42 +255,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="canregtools的安装" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="canregtools的安装"><span class="header-section-number">1</span> canregtools的安装</h2>
 <p>该包还正处于开发阶段，暂时还没有准备将其提交至CRAN，我们会等其功能稳定之后再考虑将其正式提交。目前代码托管在github上，大家可以通过下面的代码进行安装。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {{r}} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>library(devtools)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>install_github("gigu003/canregtools")</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="in">library(devtools)</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="in">install_github("gigu003/canregtools")</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="in">```</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>在开始介绍canregtools包之前，首先看看我们包的运行环境。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">session_info</span>()</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(sessioninfo)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">session_info</span>()</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
  version  R version 4.4.0 (2024-04-24)
- os       macOS Sonoma 14.4.1
+ os       macOS Sonoma 14.6.1
  system   aarch64, darwin20
  ui       X11
  language (EN)
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Asia/Shanghai
- date     2024-05-10
- pandoc   3.1.11 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
+ date     2024-09-25
+ pandoc   3.2.1 @ /opt/homebrew/bin/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date (UTC) lib source
- cachem        1.0.8   2023-05-01 [1] CRAN (R 4.2.0)
- cli           3.6.2   2023-12-11 [1] CRAN (R 4.3.1)
+ cachem        1.1.0   2024-05-16 [1] CRAN (R 4.4.0)
+ cli           3.6.3   2024-06-21 [1] CRAN (R 4.4.0)
  devtools    * 2.4.5   2022-10-11 [1] CRAN (R 4.4.0)
- digest        0.6.35  2024-03-11 [1] CRAN (R 4.4.0)
+ digest        0.6.37  2024-08-19 [1] CRAN (R 4.4.1)
  ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.2.0)
- evaluate      0.23    2023-11-01 [1] CRAN (R 4.3.1)
- fastmap       1.1.1   2023-02-24 [1] CRAN (R 4.2.0)
+ evaluate      0.24.0  2024-06-10 [1] CRAN (R 4.4.0)
+ fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.4.0)
  fs            1.6.4   2024-04-25 [1] CRAN (R 4.4.0)
  glue          1.7.0   2024-01-09 [1] CRAN (R 4.3.1)
  htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.4.0)
  htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.4.0)
  httpuv        1.6.15  2024-03-26 [1] CRAN (R 4.4.0)
  jsonlite      1.8.8   2023-12-04 [1] CRAN (R 4.3.1)
- knitr         1.46    2024-04-06 [1] CRAN (R 4.4.0)
+ knitr         1.48    2024-07-07 [1] CRAN (R 4.4.0)
  later         1.3.2   2023-12-06 [1] CRAN (R 4.4.0)
  lifecycle     1.0.4   2023-11-07 [1] CRAN (R 4.3.1)
  magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.2.0)
@@ -325,21 +306,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  promises      1.3.0   2024-04-05 [1] CRAN (R 4.4.0)
  purrr         1.0.2   2023-08-10 [1] CRAN (R 4.2.0)
  R6            2.5.1   2021-08-19 [1] CRAN (R 4.2.0)
- Rcpp          1.0.12  2024-01-09 [1] CRAN (R 4.4.0)
+ Rcpp          1.0.13  2024-07-17 [1] CRAN (R 4.4.0)
  remotes       2.5.0   2024-03-17 [1] CRAN (R 4.4.0)
- rlang         1.1.3   2024-01-10 [1] CRAN (R 4.3.1)
- rmarkdown     2.26    2024-03-05 [1] CRAN (R 4.4.0)
+ rlang         1.1.4   2024-06-04 [1] CRAN (R 4.4.0)
+ rmarkdown     2.27    2024-05-17 [1] CRAN (R 4.4.0)
  rstudioapi    0.16.0  2024-03-24 [1] CRAN (R 4.4.0)
- sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.2.0)
+ sessioninfo * 1.2.2   2021-12-06 [1] CRAN (R 4.2.0)
  shiny         1.8.1.1 2024-04-02 [1] CRAN (R 4.4.0)
  stringi       1.8.4   2024-05-06 [1] CRAN (R 4.4.0)
  stringr       1.5.1   2023-11-14 [1] CRAN (R 4.3.1)
  urlchecker    1.0.1   2021-11-30 [1] CRAN (R 4.2.0)
  usethis     * 2.2.3   2024-02-19 [1] CRAN (R 4.4.0)
  vctrs         0.6.5   2023-12-01 [1] CRAN (R 4.3.1)
- xfun          0.43    2024-03-25 [1] CRAN (R 4.4.0)
+ xfun          0.45    2024-06-16 [1] CRAN (R 4.4.0)
  xtable        1.8-4   2019-04-21 [1] CRAN (R 4.2.0)
- yaml          2.3.8   2023-12-11 [1] CRAN (R 4.3.1)
+ yaml          2.3.9   2024-07-05 [1] CRAN (R 4.4.0)
 
  [1] /Users/qc0824/Library/R
  [2] /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library
@@ -359,13 +340,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(canregtools)</span>
 <span id="cb4-2"><a href="#cb4-2"></a>file <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"411721.xls"</span>, <span class="at">package =</span> <span class="st">"canregtools"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read_canreg</span>(file)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>2200  cases were read from FB sheet.1470  cases were read from SW sheet.</code></pre>
-</div>
 </div>
 <p>我们给读入的原始数据定义一个类”canreg”， 我们可以通过class函数查看一下。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">class</span>(data)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">class</span>(data)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "canreg" "list"  </code></pre>
 </div>
@@ -375,8 +353,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="4" class="anchored" data-anchor-id="数据整理"><span class="header-section-number">4</span> 数据整理</h2>
 <p>数据整理函数主要为<em>count_canreg()</em>，它可以把读入的class类型为<em>canreg</em>的原始数据整理为各个变量的频数数据，我们给这个频数数据定义了一个类为‘fbswicd’。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>fbsw <span class="ot">&lt;-</span> <span class="fu">count_canreg</span>(data)</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">class</span>(fbsw)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>fbsw <span class="ot">&lt;-</span> <span class="fu">count_canreg</span>(data)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">class</span>(fbsw)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "fbswicd" "list"   </code></pre>
 </div>
@@ -384,12 +362,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>这个函数还可以指定一些参数值从而实现对<em>年龄</em>、<em>癌症分类</em>、<em>语言类型</em>使用不同的分类方法。</p>
 <p>比如癌症分类方法，我们按照不同解剖学系统进行分类、大类或小类进行分类。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 指定癌症分类方法为system</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>fbsw <span class="ot">&lt;-</span> <span class="fu">count_canreg</span>(data, <span class="at">type =</span> <span class="st">"system"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># 指定癌症分类方法为system</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>fbsw <span class="ot">&lt;-</span> <span class="fu">count_canreg</span>(data, <span class="at">cancer_type =</span> <span class="st">"system"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># 指定癌症分类方法为small，并指定输出语言为英语</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>fbsw <span class="ot">&lt;-</span> <span class="fu">count_canreg</span>(data, <span class="at">type =</span> <span class="st">"small"</span>, <span class="at">lang=</span><span class="st">"en"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 指定癌症分类方法为small，并指定输出语言为英语</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>fbsw <span class="ot">&lt;-</span> <span class="fu">count_canreg</span>(data, <span class="at">cancer_type =</span> <span class="st">"small"</span>, <span class="at">lang=</span><span class="st">"en"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="统计指标计算" class="level2" data-number="5">
@@ -397,23 +375,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="年龄标化率" class="level3" data-number="5.1">
 <h3 data-number="5.1" class="anchored" data-anchor-id="年龄标化率"><span class="header-section-number">5.1</span> 年龄标化率</h3>
 <p>计算年龄标化率的函数为ageadjust()，可以基于不同标准人口计算年龄标化率，并基于不同方法估计可信区间。该函数主要有以下参数：</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ageadjust</span>(</span>
-<span id="cb12-2"><a href="#cb12-2"></a>  count, <span class="co">#不同年龄组病例数</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>  pop, <span class="co">#不同年龄组风险人口数</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>  <span class="at">rate =</span> <span class="cn">NULL</span>, <span class="co">#不同年龄组发病率</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="at">stdpop =</span> <span class="cn">NULL</span>, <span class="co">#各年龄组标准人口数</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a>  <span class="at">method =</span> <span class="st">"gamma"</span>, <span class="co">#估计可信区间的方法，选项为'gamma', 'normal'，'lognormal'</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a>  <span class="at">conf_level =</span> <span class="fl">0.95</span>, <span class="co">#设置可信区间水平, 范围为0-1， 0.95则输出95%可信区间</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a>  <span class="at">mp =</span> <span class="fl">1e+05</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="in">#| eval: false</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="in">ageadjust(</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="in">  count, #不同年龄组病例数</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="in">  pop, #不同年龄组风险人口数</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="in">  rate = NULL, #不同年龄组发病率</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="in">  stdpop = NULL, #各年龄组标准人口数</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="in">  method = "gamma", #估计可信区间的方法，选项为'gamma', 'normal'，'lognormal'</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="in">  conf_level = 0.95, #设置可信区间水平, 范围为0-1， 0.95则输出95%可信区间</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="in">  mp = 1e+05</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="in">)</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="in">```</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>举个具体的例子：</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>cases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">45</span>, <span class="dv">70</span>)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>pop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">1200</span>, <span class="dv">1100</span>, <span class="dv">900</span>)</span>
-<span id="cb13-3"><a href="#cb13-3"></a>spop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">800</span>, <span class="dv">1000</span>, <span class="dv">1100</span>, <span class="dv">900</span>)</span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="fu">ageadjust</span>(cases, pop, <span class="at">stdpop =</span> spop, <span class="at">mp =</span> <span class="dv">100000</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>cases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">45</span>, <span class="dv">70</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>pop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">1200</span>, <span class="dv">1100</span>, <span class="dv">900</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a>spop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">800</span>, <span class="dv">1000</span>, <span class="dv">1100</span>, <span class="dv">900</span>)</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">ageadjust</span>(cases, pop, <span class="at">stdpop =</span> spop, <span class="at">mp =</span> <span class="dv">100000</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$cases
 [1] 225
@@ -448,63 +427,66 @@ $asr_uci
 <section id="基于类canreg或fbswicd计算标化率" class="level3" data-number="5.2">
 <h3 data-number="5.2" class="anchored" data-anchor-id="基于类canreg或fbswicd计算标化率"><span class="header-section-number">5.2</span> 基于类canreg或fbswicd计算标化率</h3>
 <p>我们把数据读入R以后被转换为’canreg’类，我可以直接基于’canreg’数据计算标化率。函数为<em>create_asr()</em>，该函数的参数如下：</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">create_asr</span>(</span>
-<span id="cb15-2"><a href="#cb15-2"></a>  x, <span class="co"># 类为canreg或fbswicd的数据</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>  ..., <span class="co">#指定输出的分类: year,sex,icd_cat</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a>  <span class="at">event =</span> fbs, <span class="co">#指定计算年龄率的变量</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>  <span class="at">pop =</span> rks, <span class="co"># 指定人口数变量</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a>  <span class="at">agegrp =</span> agegrp, <span class="co">#指定年龄分组变量</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a>  <span class="at">std =</span> <span class="fu">c</span>(china, segi), <span class="co">#指定标准人口</span></span>
-<span id="cb15-8"><a href="#cb15-8"></a>  <span class="at">mp =</span> <span class="fl">1e+05</span>, </span>
-<span id="cb15-9"><a href="#cb15-9"></a>  <span class="at">decimal =</span> <span class="dv">2</span>, <span class="co">#输出小数位</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a>  <span class="at">show_var =</span> <span class="cn">FALSE</span>, <span class="co">#是否输出方差</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a>  <span class="at">show_ci =</span> <span class="cn">FALSE</span>, <span class="co">#是否输出可信区间</span></span>
-<span id="cb15-12"><a href="#cb15-12"></a>  <span class="at">keep_sex_specific =</span> <span class="cn">FALSE</span> <span class="co">#是否保留年龄别专属癌种值</span></span>
-<span id="cb15-13"><a href="#cb15-13"></a>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="in">#| eval: false</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="in">create_asr(</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="in">  x, # 类为canreg或fbswicd的数据</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="in">  ..., #指定输出的分类: year,sex,icd_cat</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="in">  event = fbs, #指定计算年龄率的变量</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="in">  pop = rks, # 指定人口数变量</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="in">  agegrp = agegrp, #指定年龄分组变量</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="in">  std = c(china, segi), #指定标准人口</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a><span class="in">  mp = 1e+05, </span></span>
+<span id="cb14-11"><a href="#cb14-11"></a><span class="in">  decimal = 2, #输出小数位</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a><span class="in">  show_var = FALSE, #是否输出方差</span></span>
+<span id="cb14-13"><a href="#cb14-13"></a><span class="in">  show_ci = FALSE, #是否输出可信区间</span></span>
+<span id="cb14-14"><a href="#cb14-14"></a><span class="in">  keep_sex_specific = FALSE #是否保留年龄别专属癌种值</span></span>
+<span id="cb14-15"><a href="#cb14-15"></a><span class="in">)</span></span>
+<span id="cb14-16"><a href="#cb14-16"></a><span class="in">```</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>基于<em>canreg</em>类数据计算标化率,同时也可以输出0-74岁累积率和35-64岁截缩率。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>asr <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, year, sex, icd_cat)</span>
-<span id="cb16-2"><a href="#cb16-2"></a>asr</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>asr <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, year, sex, cancer) <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">add_labels</span>()</span>
+<span id="cb15-3"><a href="#cb15-3"></a>asr</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 52 × 12
-    year sex   icd_cat no_cases    pop    cr asr_china asr_segi cumur
-   &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;      &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
- 1  2016 男性  口腔          13 455653  2.85      2.46     2.73  0.19
- 2  2016 男性  鼻咽           7 455653  1.54      1.37     1.16  0.12
- 3  2016 男性  食管         157 455653 34.5      29.0     30.6   2.06
- 4  2016 男性  胃           135 455653 29.6      24.0     24.9   1.94
- 5  2016 男性  结直肠        72 455653 15.8      12.4     12.6   1.09
- 6  2016 男性  肝           180 455653 39.5      31.7     31.8   2.86
- 7  2016 男性  胆囊          16 455653  3.51      2.74     2.7   0.21
- 8  2016 男性  胰腺          27 455653  5.93      4.88     5.03  0.46
- 9  2016 男性  喉            11 455653  2.41      1.89     1.78  0.15
-10  2016 男性  肺           320 455653 70.2      59.2     61.0   3.54
-# ℹ 42 more rows
-# ℹ 3 more variables: truncr_china &lt;dbl&gt;, truncr_segi &lt;dbl&gt;, prop &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 56 × 13
+    year sex   cancer site    icd10  no_cases     cr asr_cn2000 asr_wld85  cumur
+   &lt;int&gt; &lt;fct&gt;  &lt;int&gt; &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;  &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2016 男性      60 合计    ALL        1187 261.       218.      227.   16.3  
+ 2  2016 男性      61 所有部… ALLbu…     1179 259.       216.      225.   16.3  
+ 3  2016 男性     101 口腔和… C00-C…       13   2.85       2.46      2.73  0.185
+ 4  2016 男性     102 鼻咽    C11           7   1.54       1.37      1.16  0.117
+ 5  2016 男性     103 食管    C15         157  34.5       29.0      30.6   2.06 
+ 6  2016 男性     104 胃      C16         135  29.6       24.0      24.9   1.94 
+ 7  2016 男性     105 结直肠… C18-C…       72  15.8       12.4      12.6   1.09 
+ 8  2016 男性     106 肝脏    C22         180  39.5       31.7      31.8   2.86 
+ 9  2016 男性     107 胆囊及… C23-C…       16   3.51       2.74      2.70  0.210
+10  2016 男性     108 胰腺    C25          27   5.93       4.88      5.03  0.465
+# ℹ 46 more rows
+# ℹ 3 more variables: truncr_cn2000 &lt;dbl&gt;, truncr_wld85 &lt;dbl&gt;, prop &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p>同样，也可以基于<em>fbswicd</em>类数据计算标化率。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>asr <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(fbsw, year, sex, icd_cat)</span>
-<span id="cb18-2"><a href="#cb18-2"></a>asr</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>asr <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(fbsw, year, sex, cancer) <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">add_labels</span>(<span class="at">lang =</span> <span class="st">"en"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3"></a>asr</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 118 × 12
-    year sex   icd_cat            no_cases    pop    cr asr_china asr_segi cumur
-   &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;                 &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
- 1  2016 Male  Lip                       0 455653  0         0        0     0   
- 2  2016 Male  Tongue                    3 455653  0.66      0.68     0.9   0.02
- 3  2016 Male  Mouth                     5 455653  1.1       0.86     0.89  0.08
- 4  2016 Male  Salivary glands           2 455653  0.44      0.33     0.36  0.02
- 5  2016 Male  Tonsil                    0 455653  0         0        0     0   
- 6  2016 Male  Other oropharynx          2 455653  0.44      0.4      0.43  0.05
- 7  2016 Male  Nasopharynx               7 455653  1.54      1.37     1.16  0.12
- 8  2016 Male  Hypopharynx               1 455653  0.22      0.18     0.16  0.01
- 9  2016 Male  Pharynx unspecifi…        0 455653  0         0        0     0   
-10  2016 Male  Esophagus               157 455653 34.5      29.0     30.6   2.06
-# ℹ 108 more rows
-# ℹ 3 more variables: truncr_china &lt;dbl&gt;, truncr_segi &lt;dbl&gt;, prop &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 110 × 13
+    year sex   cancer site     icd10 no_cases     cr asr_cn2000 asr_wld85  cumur
+   &lt;int&gt; &lt;fct&gt;  &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;    &lt;int&gt;  &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2016 Male       1 Lip      C00          0  0          0         0     0     
+ 2  2016 Male       2 Tongue   C01-…        3  0.658      0.682     0.901 0.0231
+ 3  2016 Male       3 Mouth    C03-…        5  1.10       0.865     0.888 0.0787
+ 4  2016 Male       4 Salivar… C07-…        2  0.439      0.330     0.355 0.0231
+ 5  2016 Male       5 Tonsil   C09          0  0          0         0     0     
+ 6  2016 Male       6 Other O… C10          2  0.439      0.401     0.425 0.0469
+ 7  2016 Male       7 Nasopha… C11          7  1.54       1.37      1.16  0.117 
+ 8  2016 Male       8 Laryngo… C12-…        1  0.219      0.184     0.161 0.0134
+ 9  2016 Male      10 Esophag… C15        157 34.5       29.0      30.6   2.06  
+10  2016 Male      11 Stomach  C16        135 29.6       24.0      24.9   1.94  
+# ℹ 100 more rows
+# ℹ 3 more variables: truncr_cn2000 &lt;dbl&gt;, truncr_wld85 &lt;dbl&gt;, prop &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -514,48 +496,57 @@ $asr_uci
 <section id="绘制人口金字塔图" class="level3" data-number="6.1">
 <h3 data-number="6.1" class="anchored" data-anchor-id="绘制人口金字塔图"><span class="header-section-number">6.1</span> 绘制人口金字塔图</h3>
 <p>绘图函数为draw_pyramid()，该函数的主要功能为绘制一个或多个人口金字塔，用于展示人口数据结构。该函数主要有以下参数：</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="in">#| eval: false</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="in">draw_pyramid(</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="in">  x, # 类为"canreg"或"fbswicd"的数据 </span></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="in">  show_value = TRUE, #是否在人口金字塔上显示人口数</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="in">  show_prop = TRUE,  #是否在人口金字塔上显示人口比例</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a><span class="in">  left_axis = NULL, #设置人口金字塔左侧坐标轴值</span></span>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="in">  right_axis = NULL, #设置人口金字塔右侧坐标轴值</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="in">  axis_fm = "g", </span></span>
+<span id="cb19-10"><a href="#cb19-10"></a><span class="in">  axis_bm = "",</span></span>
+<span id="cb19-11"><a href="#cb19-11"></a><span class="in">  axis_bi = 3,</span></span>
+<span id="cb19-12"><a href="#cb19-12"></a><span class="in">  cgap = 0.3, # 人口金字塔的中间间隔宽度</span></span>
+<span id="cb19-13"><a href="#cb19-13"></a><span class="in">  cstep = 1, # 间隔1个条形显示人口金字塔</span></span>
+<span id="cb19-14"><a href="#cb19-14"></a><span class="in">  csize = 1, #设置字体大小，默认为1</span></span>
+<span id="cb19-15"><a href="#cb19-15"></a><span class="in">  labs = c("Males", "Ages", "Females"), # 设置左中右坐标标签</span></span>
+<span id="cb19-16"><a href="#cb19-16"></a><span class="in">  gl = TRUE, # 是否显示竖型背景条</span></span>
+<span id="cb19-17"><a href="#cb19-17"></a><span class="in">  cadj = 0, # 调整标签位置</span></span>
+<span id="cb19-18"><a href="#cb19-18"></a><span class="in">  cols = c("#006400", "#b32134"), # 设置人口金字塔条颜色</span></span>
+<span id="cb19-19"><a href="#cb19-19"></a><span class="in">  dens = c(-1, -1),</span></span>
+<span id="cb19-20"><a href="#cb19-20"></a><span class="in">  main = "", # 设置人口金字塔图的标题</span></span>
+<span id="cb19-21"><a href="#cb19-21"></a><span class="in">  grid = c(2, 3) #如果绘制多个图，设置显示方式，c(2,3) 设置为2行3列</span></span>
+<span id="cb19-22"><a href="#cb19-22"></a><span class="in">)</span></span>
+<span id="cb19-23"><a href="#cb19-23"></a><span class="in">```</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">draw_pyramid</span>(</span>
-<span id="cb20-2"><a href="#cb20-2"></a>  x, <span class="co"># 类为"canreg"或"fbswicd"的数据 </span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="at">show_value =</span> <span class="cn">TRUE</span>, <span class="co">#是否在人口金字塔上显示人口数</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="at">show_prop =</span> <span class="cn">TRUE</span>,  <span class="co">#是否在人口金字塔上显示人口比例</span></span>
-<span id="cb20-5"><a href="#cb20-5"></a>  <span class="at">left_axis =</span> <span class="cn">NULL</span>, <span class="co">#设置人口金字塔左侧坐标轴值</span></span>
-<span id="cb20-6"><a href="#cb20-6"></a>  <span class="at">right_axis =</span> <span class="cn">NULL</span>, <span class="co">#设置人口金字塔右侧坐标轴值</span></span>
-<span id="cb20-7"><a href="#cb20-7"></a>  <span class="at">axis_fm =</span> <span class="st">"g"</span>, </span>
-<span id="cb20-8"><a href="#cb20-8"></a>  <span class="at">axis_bm =</span> <span class="st">""</span>,</span>
-<span id="cb20-9"><a href="#cb20-9"></a>  <span class="at">axis_bi =</span> <span class="dv">3</span>,</span>
-<span id="cb20-10"><a href="#cb20-10"></a>  <span class="at">cgap =</span> <span class="fl">0.3</span>, <span class="co"># 人口金字塔的中间间隔宽度</span></span>
-<span id="cb20-11"><a href="#cb20-11"></a>  <span class="at">cstep =</span> <span class="dv">1</span>, <span class="co"># 间隔1个条形显示人口金字塔</span></span>
-<span id="cb20-12"><a href="#cb20-12"></a>  <span class="at">csize =</span> <span class="dv">1</span>, <span class="co">#设置字体大小，默认为1</span></span>
-<span id="cb20-13"><a href="#cb20-13"></a>  <span class="at">labs =</span> <span class="fu">c</span>(<span class="st">"Males"</span>, <span class="st">"Ages"</span>, <span class="st">"Females"</span>), <span class="co"># 设置左中右坐标标签</span></span>
-<span id="cb20-14"><a href="#cb20-14"></a>  <span class="at">gl =</span> <span class="cn">TRUE</span>, <span class="co"># 是否显示竖型背景条</span></span>
-<span id="cb20-15"><a href="#cb20-15"></a>  <span class="at">cadj =</span> <span class="dv">0</span>, <span class="co"># 调整标签位置</span></span>
-<span id="cb20-16"><a href="#cb20-16"></a>  <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"#006400"</span>, <span class="st">"#b32134"</span>), <span class="co"># 设置人口金字塔条颜色</span></span>
-<span id="cb20-17"><a href="#cb20-17"></a>  <span class="at">dens =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>),</span>
-<span id="cb20-18"><a href="#cb20-18"></a>  <span class="at">main =</span> <span class="st">""</span>, <span class="co"># 设置人口金字塔图的标题</span></span>
-<span id="cb20-19"><a href="#cb20-19"></a>  <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>) <span class="co">#如果绘制多个图，设置显示方式，c(2,3) 设置为2行3列</span></span>
-<span id="cb20-20"><a href="#cb20-20"></a>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">draw_pyramid</span>(fbsw,</span>
-<span id="cb21-2"><a href="#cb21-2"></a>             <span class="at">csize =</span> <span class="fl">0.8</span>,</span>
-<span id="cb21-3"><a href="#cb21-3"></a>             <span class="at">cgap =</span> <span class="fl">0.4</span>,</span>
-<span id="cb21-4"><a href="#cb21-4"></a>             <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"steelblue"</span>, <span class="st">"pink"</span>),</span>
-<span id="cb21-5"><a href="#cb21-5"></a>             <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">draw_pyramid</span>(fbsw,</span>
+<span id="cb20-2"><a href="#cb20-2"></a>             <span class="at">csize =</span> <span class="fl">0.8</span>,</span>
+<span id="cb20-3"><a href="#cb20-3"></a>             <span class="at">cgap =</span> <span class="fl">0.4</span>,</span>
+<span id="cb20-4"><a href="#cb20-4"></a>             <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"steelblue"</span>, <span class="st">"pink"</span>),</span>
+<span id="cb20-5"><a href="#cb20-5"></a>             <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>如果不想显示人口金字塔人口数字可以，设置<em>show_value = FALSE</em>，不显示这些数据。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">draw_pyramid</span>(fbsw,</span>
-<span id="cb22-2"><a href="#cb22-2"></a>             <span class="at">csize =</span> <span class="fl">0.8</span>,</span>
-<span id="cb22-3"><a href="#cb22-3"></a>             <span class="at">cgap =</span> <span class="fl">0.4</span>,</span>
-<span id="cb22-4"><a href="#cb22-4"></a>             <span class="at">show_value =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb22-5"><a href="#cb22-5"></a>             <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"steelblue"</span>, <span class="st">"pink"</span>),</span>
-<span id="cb22-6"><a href="#cb22-6"></a>             <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">draw_pyramid</span>(fbsw,</span>
+<span id="cb21-2"><a href="#cb21-2"></a>             <span class="at">csize =</span> <span class="fl">0.8</span>,</span>
+<span id="cb21-3"><a href="#cb21-3"></a>             <span class="at">cgap =</span> <span class="fl">0.4</span>,</span>
+<span id="cb21-4"><a href="#cb21-4"></a>             <span class="at">show_value =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb21-5"><a href="#cb21-5"></a>             <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"steelblue"</span>, <span class="st">"pink"</span>),</span>
+<span id="cb21-6"><a href="#cb21-6"></a>             <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -563,78 +554,92 @@ $asr_uci
 <h3 data-number="6.2" class="anchored" data-anchor-id="绘制条形图"><span class="header-section-number">6.2</span> 绘制条形图</h3>
 <p>肿瘤登记年报中经常会出现各种各样的条形图，该包通过<em>draw_barchart()</em>来绘制这种类型的图。该函数的参数如下：</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">library</span>(showtext)</span>
-<span id="cb23-4"><a href="#cb23-4"></a><span class="fu">showtext_auto</span>()</span>
-<span id="cb23-5"><a href="#cb23-5"></a>asr <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, <span class="at">event =</span> fbs, sex, icd_cat) <span class="sc">|&gt;</span> </span>
-<span id="cb23-6"><a href="#cb23-6"></a>  <span class="fu">select</span>(sex,icd_cat,asr_china) <span class="sc">|&gt;</span> </span>
-<span id="cb23-7"><a href="#cb23-7"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"male"</span>,<span class="st">"female"</span>))) <span class="sc">|&gt;</span> </span>
-<span id="cb23-8"><a href="#cb23-8"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="fu">c</span>(<span class="st">"sex"</span>),<span class="at">values_from =</span> <span class="fu">c</span>(<span class="st">"asr_china"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb23-9"><a href="#cb23-9"></a>  <span class="fu">arrange</span>(male)</span>
-<span id="cb23-10"><a href="#cb23-10"></a></span>
-<span id="cb23-11"><a href="#cb23-11"></a><span class="fu">draw_bar</span>(<span class="fu">list</span>(asr<span class="sc">$</span>male),</span>
-<span id="cb23-12"><a href="#cb23-12"></a>         <span class="at">cates =</span> <span class="fu">as.character</span>(asr<span class="sc">$</span>icd_cat),</span>
-<span id="cb23-13"><a href="#cb23-13"></a>         <span class="at">bar_side =</span> <span class="dv">2</span>,</span>
-<span id="cb23-14"><a href="#cb23-14"></a>         <span class="at">label =</span> <span class="fu">c</span>(<span class="st">"男性"</span>,<span class="st">"男性"</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">library</span>(showtext)</span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="fu">showtext_auto</span>()</span>
+<span id="cb22-5"><a href="#cb22-5"></a>asr <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, <span class="at">event =</span> fbs, sex, cancer) <span class="sc">|&gt;</span> </span>
+<span id="cb22-6"><a href="#cb22-6"></a>  <span class="fu">select</span>(sex,cancer,asr_cn2000) <span class="sc">|&gt;</span> </span>
+<span id="cb22-7"><a href="#cb22-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span>cancer <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">60</span>,<span class="dv">61</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb22-8"><a href="#cb22-8"></a>  <span class="fu">add_labels</span>(<span class="at">lang=</span><span class="st">"en"</span>, <span class="at">label_type =</span> <span class="st">"abbr"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb22-9"><a href="#cb22-9"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex, <span class="at">values_from =</span> asr_cn2000) <span class="sc">|&gt;</span> </span>
+<span id="cb22-10"><a href="#cb22-10"></a>  <span class="fu">arrange</span>(Male)</span>
+<span id="cb22-11"><a href="#cb22-11"></a></span>
+<span id="cb22-12"><a href="#cb22-12"></a><span class="fu">draw_bar</span>(<span class="fu">list</span>(asr<span class="sc">$</span>Male),</span>
+<span id="cb22-13"><a href="#cb22-13"></a>         <span class="at">cates =</span> <span class="fu">as.character</span>(asr<span class="sc">$</span>site),</span>
+<span id="cb22-14"><a href="#cb22-14"></a>         <span class="at">bar_side =</span> <span class="dv">1</span>,</span>
+<span id="cb22-15"><a href="#cb22-15"></a>         <span class="at">label =</span> <span class="fu">c</span>(<span class="st">"男性"</span>,<span class="st">"女性"</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">draw_barchart</span>(</span>
-<span id="cb24-2"><a href="#cb24-2"></a>  data, <span class="co">#用于绘图的数据框</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a>  <span class="at">plot_var =</span> cr, <span class="co">#用于绘图的变量</span></span>
-<span id="cb24-4"><a href="#cb24-4"></a>  <span class="at">cate_var =</span> icd_cat, <span class="co">#分类变量</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>  <span class="at">group_var =</span> year, <span class="co">#分组变量</span></span>
-<span id="cb24-6"><a href="#cb24-6"></a>  <span class="at">side_var =</span> sex,</span>
-<span id="cb24-7"><a href="#cb24-7"></a>  <span class="at">topn =</span> <span class="dv">10</span>,</span>
-<span id="cb24-8"><a href="#cb24-8"></a>  <span class="at">bar_side =</span> <span class="dv">1</span>,</span>
-<span id="cb24-9"><a href="#cb24-9"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
-<span id="cb24-10"><a href="#cb24-10"></a>  ...</span>
-<span id="cb24-11"><a href="#cb24-11"></a>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1"></a><span class="in">```{r}</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="in">#| eval: false</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="in">draw_barchart(</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="in">  data, #用于绘图的数据框</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="in">  plot_var = cr, #用于绘图的变量</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="in">  cate_var = icd_cat, #分类变量</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="in">  group_var = year, #分组变量</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a><span class="in">  side_var = sex,</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a><span class="in">  topn = 10,</span></span>
+<span id="cb23-10"><a href="#cb23-10"></a><span class="in">  bar_side = 1,</span></span>
+<span id="cb23-11"><a href="#cb23-11"></a><span class="in">  nrow = 2,</span></span>
+<span id="cb23-12"><a href="#cb23-12"></a><span class="in">  ...</span></span>
+<span id="cb23-13"><a href="#cb23-13"></a><span class="in">)</span></span>
+<span id="cb23-14"><a href="#cb23-14"></a><span class="in">```</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell page-columns page-full">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">library</span>(showtext)</span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="fu">showtext_auto</span>()</span>
-<span id="cb25-4"><a href="#cb25-4"></a>asr1 <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, <span class="at">event =</span> fbs, sex, icd_cat) <span class="sc">|&gt;</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">bind_rows</span>(<span class="fu">create_asr</span>(data, <span class="at">event =</span> fbs, icd_cat)) <span class="sc">|&gt;</span> </span>
-<span id="cb25-6"><a href="#cb25-6"></a>  <span class="fu">select</span>(sex, icd_cat, asr_china) <span class="sc">|&gt;</span> </span>
-<span id="cb25-7"><a href="#cb25-7"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(sex),<span class="dv">3</span>,sex),</span>
-<span id="cb25-8"><a href="#cb25-8"></a>         <span class="at">type =</span> <span class="st">"发病率"</span>)</span>
-<span id="cb25-9"><a href="#cb25-9"></a>asr2 <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, <span class="at">event =</span> sws, sex, icd_cat) <span class="sc">|&gt;</span></span>
-<span id="cb25-10"><a href="#cb25-10"></a>  <span class="fu">bind_rows</span>(<span class="fu">create_asr</span>(data, <span class="at">event =</span> sws, icd_cat)) <span class="sc">|&gt;</span> </span>
-<span id="cb25-11"><a href="#cb25-11"></a>  <span class="fu">select</span>(sex, icd_cat, asr_china) <span class="sc">|&gt;</span> </span>
-<span id="cb25-12"><a href="#cb25-12"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(sex),<span class="dv">3</span>,sex),</span>
-<span id="cb25-13"><a href="#cb25-13"></a>         <span class="at">type =</span> <span class="st">"死亡率"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb25-14"><a href="#cb25-14"></a>  <span class="fu">bind_rows</span>(asr1) <span class="sc">|&gt;</span> </span>
-<span id="cb25-15"><a href="#cb25-15"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"男性"</span>,<span class="st">"女性"</span>,<span class="st">"合计"</span>))) <span class="sc">|&gt;</span> </span>
-<span id="cb25-16"><a href="#cb25-16"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">as.character</span>(sex))</span>
-<span id="cb25-17"><a href="#cb25-17"></a></span>
-<span id="cb25-18"><a href="#cb25-18"></a><span class="fu">draw_barchart</span>(asr2,</span>
-<span id="cb25-19"><a href="#cb25-19"></a>              <span class="at">plot_var =</span> asr_china,</span>
-<span id="cb25-20"><a href="#cb25-20"></a>              <span class="at">cate_var =</span> icd_cat,</span>
-<span id="cb25-21"><a href="#cb25-21"></a>              <span class="at">group_var =</span> type,</span>
-<span id="cb25-22"><a href="#cb25-22"></a>              <span class="at">side_var =</span> sex,</span>
-<span id="cb25-23"><a href="#cb25-23"></a>              <span class="at">bar_side =</span> <span class="dv">1</span>,</span>
-<span id="cb25-24"><a href="#cb25-24"></a>              <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display column-screen-left">
-<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">library</span>(showtext)</span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="fu">showtext_auto</span>()</span>
+<span id="cb24-4"><a href="#cb24-4"></a>asr1 <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, <span class="at">event =</span> fbs, sex, cancer) <span class="sc">|&gt;</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">bind_rows</span>(<span class="fu">create_asr</span>(data, <span class="at">event =</span> fbs, cancer)) <span class="sc">|&gt;</span> </span>
+<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">select</span>(sex, cancer, asr_cn2000) <span class="sc">|&gt;</span> </span>
+<span id="cb24-7"><a href="#cb24-7"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="st">"发病率"</span>)</span>
+<span id="cb24-8"><a href="#cb24-8"></a>asr2 <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, <span class="at">event =</span> sws, sex, cancer) <span class="sc">|&gt;</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a>  <span class="fu">bind_rows</span>(<span class="fu">create_asr</span>(data, <span class="at">event =</span> sws, cancer)) <span class="sc">|&gt;</span> </span>
+<span id="cb24-10"><a href="#cb24-10"></a>  <span class="fu">select</span>(sex, cancer, asr_cn2000) <span class="sc">|&gt;</span> </span>
+<span id="cb24-11"><a href="#cb24-11"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="st">"死亡率"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb24-12"><a href="#cb24-12"></a>  <span class="fu">bind_rows</span>(asr1) <span class="sc">|&gt;</span> </span>
+<span id="cb24-13"><a href="#cb24-13"></a>  <span class="fu">drop_total</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb24-14"><a href="#cb24-14"></a>  <span class="fu">drop_others</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb24-15"><a href="#cb24-15"></a>  <span class="fu">add_labels</span>(<span class="at">label_type =</span> <span class="st">"abbr"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb24-16"><a href="#cb24-16"></a>  <span class="fu">mutate</span>(<span class="at">sex=</span><span class="fu">as.character</span>(sex))</span>
+<span id="cb24-17"><a href="#cb24-17"></a></span>
+<span id="cb24-18"><a href="#cb24-18"></a><span class="fu">draw_barchart</span>(asr2,</span>
+<span id="cb24-19"><a href="#cb24-19"></a>              <span class="at">plot_var =</span> asr_cn2000,</span>
+<span id="cb24-20"><a href="#cb24-20"></a>              <span class="at">cate_var =</span> site,</span>
+<span id="cb24-21"><a href="#cb24-21"></a>              <span class="at">group_var =</span> type,</span>
+<span id="cb24-22"><a href="#cb24-22"></a>              <span class="at">side_var =</span> sex,</span>
+<span id="cb24-23"><a href="#cb24-23"></a>              <span class="at">bar_side =</span> <span class="dv">2</span>,</span>
+<span id="cb24-24"><a href="#cb24-24"></a>              <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full">
+<p class="page-columns page-full"><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img column-screen-left" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>asr2 <span class="ot">&lt;-</span> asr2 <span class="sc">|&gt;</span> </span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span>sex <span class="sc">==</span> <span class="st">"合计"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">arrange</span>(type,sex,icd_cat) <span class="sc">|&gt;</span> </span>
-<span id="cb26-4"><a href="#cb26-4"></a><span class="fu">draw_barchart</span>(</span>
-<span id="cb26-5"><a href="#cb26-5"></a>              <span class="at">plot_var =</span> asr_china,</span>
-<span id="cb26-6"><a href="#cb26-6"></a>              <span class="at">cate_var =</span> icd_cat,</span>
-<span id="cb26-7"><a href="#cb26-7"></a>              <span class="at">group_var =</span> type,</span>
-<span id="cb26-8"><a href="#cb26-8"></a>              <span class="at">side_var =</span> sex,</span>
-<span id="cb26-9"><a href="#cb26-9"></a>              <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>asr2 <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span>sex <span class="sc">==</span> <span class="st">"合计"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">arrange</span>(type,sex,cancer) <span class="sc">|&gt;</span> </span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="fu">draw_barchart</span>(</span>
+<span id="cb25-5"><a href="#cb25-5"></a>              <span class="at">plot_var =</span> asr_cn2000,</span>
+<span id="cb25-6"><a href="#cb25-6"></a>              <span class="at">cate_var =</span> site,</span>
+<span id="cb25-7"><a href="#cb25-7"></a>              <span class="at">group_var =</span> type,</span>
+<span id="cb25-8"><a href="#cb25-8"></a>              <span class="at">side_var =</span> sex,</span>
+<span id="cb25-9"><a href="#cb25-9"></a>              <span class="at">grid =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -678,18 +683,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -721,11 +715,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/www\.chenq\.site");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -735,8 +768,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -748,7 +790,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -792,6 +957,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -817,6 +983,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -881,8 +1073,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Copyright@Qiong Chen</div>   
-    <div class="nav-footer-center">豫ICP备2021032022号</div>
+    <div class="nav-footer-left">
+<p>Copyright@Qiong Chen</p>
+</div>   
+    <div class="nav-footer-center">
+<p>豫ICP备2021032022号</p>
+</div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

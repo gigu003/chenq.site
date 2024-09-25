@@ -6,15 +6,16 @@
       version="2.0">
 <channel>
 <title>普癌新声</title>
-<link>https://www.chenq.site/training/index.html</link>
+<link>https://www.chenq.site/training/</link>
 <atom:link href="https://www.chenq.site/training/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
-<generator>quarto-1.3.238</generator>
+<generator>quarto-1.6.9</generator>
 <lastBuildDate>Thu, 11 May 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>2023年河南省肿瘤登记年度培训暨肿瘤登记专业人员能力提升培训班</title>
-  <link>https://www.chenq.site/training/annumeeting2023/index.html</link>
+  <link>https://www.chenq.site/training/annumeeting2023/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -24,8 +25,8 @@
 <p>地点：未来大厦金鼎厅</p>
 <div class="cell tbl-cap-location-top">
 <div class="cell-output-display">
-<table class="table table-striped table-hover table-condensed table-sm" data-quarto-postprocess="true">
-<caption>2023河南省肿瘤登记年会暨肿瘤登记专业人员能力提升培训班 </caption>
+<table class="table table-striped table-hover table-condensed caption-top table-sm small" data-quarto-postprocess="true">
+<caption>2023河南省肿瘤登记年会暨肿瘤登记专业人员能力提升培训班</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">时间</th>
@@ -340,37 +341,65 @@
 <section id="会场情况" class="level3">
 <h3 class="anchored" data-anchor-id="会场情况">会场情况</h3>
 <p>2023河南省肿瘤登记年会参会人次为212人，参会单位有98家，会议报告34个，讨论人次43人(嘉宾9人)。</p>
-<div id="fig-meetinng" class="cell quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 50.0%;justify-content: center;">
-<figure class="figure">
-<p><a href="images/D5S_6543.JPG" class="lightbox" data-gallery="meeting" title="会场总览-右侧"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6543.JPG" class="img-fluid figure-img" width="1181"></a></p>
-<p></p><figcaption class="figure-caption">会场总览-右侧</figcaption><p></p>
-</figure>
+<div id="fig-meetinng" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-meetinng-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-meetinng" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-meetinng-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-meetinng-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/D5S_6543.JPG" class="lightbox" data-gallery="fig-meetinng" title="Figure&nbsp;1&nbsp;(a): 会场总览-右侧"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6543.JPG" class="img-fluid figure-img" data-ref-parent="fig-meetinng" width="1181"></a>
 </div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 50.0%;justify-content: center;">
-<figure class="figure">
-<p><a href="images/D5S_6541.JPG" class="lightbox" data-gallery="meeting" title="会场总览-正面"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6541.JPG" class="img-fluid figure-img" width="1181"></a></p>
-<p></p><figcaption class="figure-caption">会场总览-正面</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 50.0%;justify-content: center;">
-<figure class="figure">
-<p><a href="images/D5S_6544.JPG" class="lightbox" data-gallery="meeting" title="会场总览-近景"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6544.JPG" class="img-fluid figure-img" width="1181"></a></p>
-<p></p><figcaption class="figure-caption">会场总览-近景</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 50.0%;justify-content: center;">
-<figure class="figure">
-<p><a href="images/D5S_6549.JPG" class="lightbox" data-gallery="meeting" title="会场总览-左侧"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6549.JPG" class="img-fluid figure-img" width="1181"></a></p>
-<p></p><figcaption class="figure-caption">会场总览-左侧</figcaption><p></p>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-meetinng-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) 会场总览-右侧
+</figcaption>
 </figure>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: 会场总览</figcaption><p></p>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-meetinng" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-meetinng-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-meetinng-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/D5S_6541.JPG" class="lightbox" data-gallery="fig-meetinng" title="Figure&nbsp;1&nbsp;(b): 会场总览-正面"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6541.JPG" class="img-fluid figure-img" data-ref-parent="fig-meetinng" width="1181"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-meetinng-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) 会场总览-正面
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-meetinng" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-meetinng-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-meetinng-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/D5S_6544.JPG" class="lightbox" data-gallery="fig-meetinng" title="Figure&nbsp;1&nbsp;(c): 会场总览-近景"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6544.JPG" class="img-fluid figure-img" data-ref-parent="fig-meetinng" width="1181"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-meetinng-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) 会场总览-近景
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-meetinng" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-meetinng-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-meetinng-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/D5S_6549.JPG" class="lightbox" data-gallery="fig-meetinng" title="Figure&nbsp;1&nbsp;(d): 会场总览-左侧"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6549.JPG" class="img-fluid figure-img" data-ref-parent="fig-meetinng" width="1181"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-meetinng-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) 会场总览-左侧
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-meetinng-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: 会场总览
+</figcaption>
 </figure>
 </div>
 </section>
@@ -423,49 +452,89 @@
 <li>刘彩霞(西平县疾病预防控制中心)</li>
 <li>李亚波(内乡县疾病预防控制中心)</li>
 </ul>
-<div id="fig-award" class="cell quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="images/D5S_6673.JPG" class="lightbox" data-gallery="award" title="肿瘤登记杰出贡献奖"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6673.JPG" class="img-fluid figure-img" width="590"></a></p>
-<p></p><figcaption class="figure-caption">肿瘤登记杰出贡献奖</figcaption><p></p>
-</figure>
+<div id="fig-award" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-award-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-award" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-award-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-award-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/D5S_6673.JPG" class="lightbox" data-gallery="fig-award" title="Figure&nbsp;2&nbsp;(a): 肿瘤登记杰出贡献奖"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6673.JPG" class="img-fluid figure-img" data-ref-parent="fig-award" width="590"></a>
 </div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="images/D5S_6655.JPG" class="lightbox" data-gallery="award" title="肿瘤登记工作优秀奖-1"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6655.JPG" class="img-fluid figure-img" width="590"></a></p>
-<p></p><figcaption class="figure-caption">肿瘤登记工作优秀奖-1</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="images/D5S_6661.JPG" class="lightbox" data-gallery="award" title="肿瘤登记工作优秀奖-2"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6661.JPG" class="img-fluid figure-img" width="590"></a></p>
-<p></p><figcaption class="figure-caption">肿瘤登记工作优秀奖-2</figcaption><p></p>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-award-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) 肿瘤登记杰出贡献奖
+</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="images/D5S_6668.JPG" class="lightbox" data-gallery="award" title="肿瘤登记工作优秀奖-3"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6668.JPG" class="img-fluid figure-img" width="590"></a></p>
-<p></p><figcaption class="figure-caption">肿瘤登记工作优秀奖-3</figcaption><p></p>
-</figure>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-award" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-award-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-award-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/D5S_6655.JPG" class="lightbox" data-gallery="fig-award" title="Figure&nbsp;2&nbsp;(b): 肿瘤登记工作优秀奖-1"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6655.JPG" class="img-fluid figure-img" data-ref-parent="fig-award" width="590"></a>
 </div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="images/D5S_6653.JPG" class="lightbox" data-gallery="award" title="肿瘤登记工作进步奖"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6653.JPG" class="img-fluid figure-img" width="590"></a></p>
-<p></p><figcaption class="figure-caption">肿瘤登记工作进步奖</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
-<figure class="figure">
-<p><a href="images/D5S_6687.JPG" class="lightbox" data-gallery="award" title="肿瘤登记工作先进个人"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6687.JPG" class="img-fluid figure-img" width="590"></a></p>
-<p></p><figcaption class="figure-caption">肿瘤登记工作先进个人</figcaption><p></p>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-award-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) 肿瘤登记工作优秀奖-1
+</figcaption>
 </figure>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: 2022年度肿瘤登记工作先进单位颁奖仪式</figcaption><p></p>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-award" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-award-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-award-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/D5S_6661.JPG" class="lightbox" data-gallery="fig-award" title="Figure&nbsp;2&nbsp;(c): 肿瘤登记工作优秀奖-2"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6661.JPG" class="img-fluid figure-img" data-ref-parent="fig-award" width="590"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-award-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) 肿瘤登记工作优秀奖-2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-award" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-award-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-award-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/D5S_6668.JPG" class="lightbox" data-gallery="fig-award" title="Figure&nbsp;2&nbsp;(d): 肿瘤登记工作优秀奖-3"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6668.JPG" class="img-fluid figure-img" data-ref-parent="fig-award" width="590"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-award-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) 肿瘤登记工作优秀奖-3
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-award" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-award-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-award-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/D5S_6653.JPG" class="lightbox" data-gallery="fig-award" title="Figure&nbsp;2&nbsp;(e): 肿瘤登记工作进步奖"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6653.JPG" class="img-fluid figure-img" data-ref-parent="fig-award" width="590"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-award-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(e) 肿瘤登记工作进步奖
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-award" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-award-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-award-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/D5S_6687.JPG" class="lightbox" data-gallery="fig-award" title="Figure&nbsp;2&nbsp;(f): 肿瘤登记工作先进个人"><img src="https://www.chenq.site/training/annumeeting2023/images/D5S_6687.JPG" class="img-fluid figure-img" data-ref-parent="fig-award" width="590"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-award-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(f) 肿瘤登记工作先进个人
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-award-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: 2022年度肿瘤登记工作先进单位颁奖仪式
+</figcaption>
 </figure>
 </div>
 
@@ -476,7 +545,7 @@
  ]]></description>
   <category>肿瘤登记</category>
   <category>会议</category>
-  <guid>https://www.chenq.site/training/annumeeting2023/index.html</guid>
+  <guid>https://www.chenq.site/training/annumeeting2023/</guid>
   <pubDate>Thu, 11 May 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>

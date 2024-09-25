@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.238">
+<meta name="generator" content="quarto-1.6.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="陈琼">
 <meta name="keywords" content="R, magick, 图片处理, photoshop">
 
-<title>普癌新声 - 用过R magick包处理图片，你还会用PS来P图吗？</title>
+<title>用过R magick包处理图片，你还会用PS来P图吗？ – 普癌新声</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -49,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -102,17 +72,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-622d69364da439c143a9a341894a8141.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "没有结果",
     "search-matching-documents-text": "匹配的文档",
@@ -121,8 +97,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "更多匹配结果",
     "search-more-matches-text": "更多匹配结果",
     "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "提交"
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
   }
 }</script>
 <script>
@@ -138,12 +116,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="普癌新声 - 用过R magick包处理图片，你还会用PS来P图吗？">
-<meta property="og:description" content="">
+<meta property="og:title" content="用过R magick包处理图片，你还会用PS来P图吗？ – 普癌新声">
+<meta property="og:description" content="一个公共卫生医师的个人网站">
 <meta property="og:image" content="https://www.chenq.site/qsight/2022-02-16-r-magick/rabbit.gif">
-<meta property="og:site-name" content="普癌新声">
-<meta name="twitter:title" content="普癌新声 - 用过R magick包处理图片，你还会用PS来P图吗？">
-<meta name="twitter:description" content="">
+<meta property="og:site_name" content="普癌新声">
+<meta name="twitter:title" content="用过R magick包处理图片，你还会用PS来P图吗？ – 普癌新声">
+<meta name="twitter:description" content="一个公共卫生医师的个人网站">
 <meta name="twitter:image" content="https://www.chenq.site/qsight/2022-02-16-r-magick/rabbit.gif">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -152,69 +130,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">普癌新声</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="搜索"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="切换导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
 </i> 
- <span class="menu-text">Home</span></a>
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../qsight/" rel="" target=""><i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight/"> <i class="bi bi-tropical-storm" role="img">
 </i> 
- <span class="menu-text">Qsight博客</span></a>
+<span class="menu-text">Qsight博客</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://diary.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://diary.chenq.site"> <i class="bi bi-pen" role="img">
 </i> 
- <span class="menu-text">随笔录</span></a>
+<span class="menu-text">随笔录</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://canregtools.chenq.site" rel="" target=""><i class="bi bi-hexagon" role="img">
+    <a class="nav-link" href="https://canregtools.chenq.site"> <i class="bi bi-hexagon" role="img">
 </i> 
- <span class="menu-text">Packages</span></a>
+<span class="menu-text">Packages</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications/" rel="" target=""><i class="bi bi-journal-medical" role="img">
+    <a class="nav-link" href="../../publications/"> <i class="bi bi-journal-medical" role="img">
 </i> 
- <span class="menu-text">出版作品</span></a>
+<span class="menu-text">出版作品</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://slides.chenq.site" rel="" target=""><i class="bi bi-file-slides-fill" role="img">
+    <a class="nav-link" href="https://slides.chenq.site"> <i class="bi bi-file-slides-fill" role="img">
 </i> 
- <span class="menu-text">Slides</span></a>
+<span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">关于</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">关于</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../../qsight/index.xml" rel="" target=""><i class="bi bi-rss" role="img" aria-label="RSS">
+    <a class="nav-link" href="../../qsight/index.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://notes.chenq.site" rel="" target=""><i class="bi bi-pen" role="img">
+    <a class="nav-link" href="https://notes.chenq.site"> <i class="bi bi-pen" role="img">
 </i> 
- <span class="menu-text">学习笔记</span></a>
+<span class="menu-text">学习笔记</span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -279,11 +257,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>image_read_pdf(path, pages = NULL, density = 300, password = ““)</li>
 <li>image_read_video(path, fps = 1, format = “png”)</li>
 </ol>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_c22288c5aa872dfbc82849a0df235359">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#加载magick包</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(<span class="st">"magick"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Linking to ImageMagick 6.9.12.3
+<pre><code>Linking to ImageMagick 6.9.12.93
 Enabled features: cairo, fontconfig, freetype, heic, lcms, pango, raw, rsvg, webp
 Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
@@ -306,13 +284,17 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># 把图片在R中显示</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="fu">plot</span>(logo)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" alt="magick包处理图片" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" alt="magick包处理图片" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 把图片另存起来</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="fu">image_write</span>(logo, <span class="at">path =</span> <span class="st">"logo.png"</span>, <span class="at">format =</span> <span class="st">"png"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>可以更改图片的格式</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_2c3c5ca9f338cd9e15ff557e6535afce">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>logo1 <span class="ot">&lt;-</span> <span class="fu">image_convert</span>(logo, <span class="st">"jpg"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="fu">image_info</span>(logo1)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -333,58 +315,98 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <li>image_frame(logo,geometry = “25x25+6+6”): 为图片增加相框</li>
 <li>image_shadow(logo): 为图片增加阴影</li>
 </ol>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_adadadd956116146774875091a210244">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># 从左侧80像素开始裁剪120像素宽90像素高的图片</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="fu">image_crop</span>(logo, <span class="st">"150x90+30"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># 按照等比例重新调整图片宽度为200像素</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="fu">image_scale</span>(logo, <span class="st">"200"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-2.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-2.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#按照等比例重新调整图片高度为200像素</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="fu">image_scale</span>(logo, <span class="st">"x200"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-3.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-3.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">#图片添加白色背景</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>logo <span class="ot">&lt;-</span> <span class="fu">image_background</span>(logo, <span class="st">'white'</span>)</span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="co">#从x:200，y:150开始填充粉红色</span></span>
 <span id="cb16-4"><a href="#cb16-4"></a><span class="fu">image_fill</span>(logo, <span class="st">"pink"</span>, <span class="at">point =</span> <span class="st">"+200+150"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-4.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-4.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#从x:200，y:130开始填充红色</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="fu">image_fill</span>(logo, <span class="st">"red"</span>, <span class="at">point =</span> <span class="st">"+200+130"</span>, <span class="at">fuzz =</span> <span class="dv">25</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-5.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-5.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># 为图片添加左右为20像素、上下为10像素的边框</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="fu">image_border</span>(logo, <span class="st">"#000080"</span>, <span class="st">"20x10"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-6.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-6.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># 旋转图片90度</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="fu">image_rotate</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x200"</span>), <span class="dv">90</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-7.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-7.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># 增加滤镜模糊效果</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a><span class="fu">image_blur</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>), <span class="dv">10</span>, <span class="dv">5</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-8.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-8.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># 增加噪点</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a><span class="fu">image_noise</span>(<span class="fu">image_blur</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>), <span class="dv">10</span>, <span class="dv">5</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-9.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-9.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># 去色</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a><span class="fu">image_charcoal</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-10.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-10.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -398,7 +420,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </section>
 <section id="magick包支持管道操作符" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="magick包支持管道操作符"><span class="header-section-number">5</span> magick包支持管道操作符”%”</h2>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_6c77a4906d5462510e9bd16fb24054c7">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># 等比例调整图片高度为300像素</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="fu">image_scale</span>(logo,<span class="st">"x300"</span>)<span class="sc">%&gt;%</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a><span class="co"># 填充头像的胡子为红色，需要先大概估算胡子的中心位置具体图片左上点的横向具体和纵向距离分别为多少，</span></span>
@@ -411,13 +433,17 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <span id="cb24-10"><a href="#cb24-10"></a><span class="co"># 为图片增加噪点</span></span>
 <span id="cb24-11"><a href="#cb24-11"></a>  <span class="fu">image_noise</span>()</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="图片向量magick还支持图层叠加图片拼接动图处理等功能" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="图片向量magick还支持图层叠加图片拼接动图处理等功能"><span class="header-section-number">6</span> 图片向量，magick还支持图层叠加、图片拼接、动图处理等功能。</h2>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_8562aa362abd4ba9567f3b33e9557301">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># 先把一个gif的图片读进来</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a>rabbit <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">"rabbit.gif"</span>)</span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="co"># 查看一下这个gif向量有多少元素组成，也就是有多少张图片组成的。</span></span>
@@ -427,7 +453,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 </div>
 <p>从上面的信息可以看出，这个gif图片由22张子图组成，比较大。由于我们需要反复处理此图并展现在html中，可能造成页面加载的图片太大导致网页打开太慢，我们可以把部分的子图删掉以缩小gif的大小。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-6_19f0ba4b97d3a88384f917693927675c">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># 我们可以截取这个gif图片中部分元素组成新的gif（间隔3张子图提取一个子图（8个子图），组成新的gif）</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a>rabbit2<span class="ot">&lt;-</span>rabbit[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">13</span>,<span class="dv">16</span>,<span class="dv">19</span>,<span class="dv">22</span>)]</span>
 <span id="cb27-3"><a href="#cb27-3"></a><span class="co"># 先看看这个图是什么</span></span>
@@ -444,7 +470,11 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 8    GIF   480    264       sRGB  TRUE        0   72x72</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>下面我们再来试试给gif格式的图片加上处理效果吧，我们不妨试试给这个gif图片的天空加点颜色，然后在图片上再加上一条文字注释。</p>
@@ -459,7 +489,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <section id="图层叠加" class="level2" data-number="7">
 <h2 data-number="7" class="anchored" data-anchor-id="图层叠加"><span class="header-section-number">7</span> 图层叠加</h2>
 <p>我们可以实现把gif图里的各层提取出来重新组合，或者添加进去新的图层，然后把他们以纵向排列或者横向排列的方式罗列出来，也可以重新做成gif动图。当然，在这个过程中，前面所说的哪些图片处理功能仍然可以实现。</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-7_c8cec239565966929247cd2b9f337d1b">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># 把logo图片和rabbit2图片的前两层合并成新的图片向量</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a>img <span class="ot">&lt;-</span><span class="fu">c</span>(logo,rabbit2[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
 <span id="cb30-3"><a href="#cb30-3"></a><span class="co"># 把图片等比例调整为300像素宽</span></span>
@@ -475,17 +505,29 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># 把img图片各层等比例调整为200像素高，然后横向罗列出来 </span></span>
 <span id="cb32-2"><a href="#cb32-2"></a><span class="fu">image_append</span>(<span class="fu">image_scale</span>(img, <span class="st">"x200"</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># 把img图片各层等比例调整为200像素宽，然后纵向堆积</span></span>
 <span id="cb33-2"><a href="#cb33-2"></a><span class="fu">image_append</span>(<span class="fu">image_scale</span>(img, <span class="st">"200"</span>), <span class="at">stack =</span> <span class="cn">TRUE</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-7-2.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-2.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># 把imge图片向量各层重重新做成动图，以每秒1帧的速度播放</span></span>
 <span id="cb34-2"><a href="#cb34-2"></a><span class="fu">image_animate</span>(<span class="fu">image_scale</span>(img, <span class="st">"x200"</span>), <span class="at">fps =</span> <span class="dv">1</span>, <span class="at">dispose =</span> <span class="st">"previous"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-7-3.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-3.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -495,7 +537,7 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <p>这个功能是借助pdftools包来实现的</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># 先安装pdftools包</span></span>
 <span id="cb35-2"><a href="#cb35-2"></a><span class="fu">install.packages</span>(<span class="st">"pdftools"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-8_a49cb235f1cacc968e89c83a36a0b4f3">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># 读取一个pdf文件，设置density为72</span></span>
 <span id="cb36-2"><a href="#cb36-2"></a>kidney <span class="ot">&lt;-</span> <span class="fu">image_read_pdf</span>(<span class="st">'https://www.chenq.site/papers/kidney2015.pdf'</span>, <span class="at">density =</span> <span class="dv">72</span>)</span>
 <span id="cb36-3"><a href="#cb36-3"></a><span class="co"># 看看这个pdf的基本信息</span></span>
@@ -512,22 +554,34 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># 查看一下第一页的内容</span></span>
 <span id="cb38-2"><a href="#cb38-2"></a>kidney[<span class="dv">1</span>]</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" alt="magick包处理图片，科研作图" width="251"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" alt="magick包处理图片，科研作图" width="251"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="图片合成" class="level2" data-number="9">
 <h2 data-number="9" class="anchored" data-anchor-id="图片合成"><span class="header-section-number">9</span> 图片合成</h2>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-9_201e06d2c4602eafe55142c1ae5703ae">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># 默认的叠加方式直接放到前图的上面</span></span>
 <span id="cb39-2"><a href="#cb39-2"></a><span class="fu">image_composite</span>(kidney[<span class="dv">1</span>],<span class="fu">image_scale</span>(logo,<span class="st">"x275"</span>), <span class="at">operator =</span> <span class="st">"atop"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" alt="magick包处理图片，科研作图" width="251"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" alt="magick包处理图片，科研作图" width="251"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># 通过blend的方式叠加</span></span>
 <span id="cb40-2"><a href="#cb40-2"></a><span class="fu">image_composite</span>(<span class="fu">image_scale</span>(logo,<span class="st">"x275"</span>),  kidney[<span class="dv">1</span>], <span class="at">operator =</span> <span class="st">"blend"</span>, <span class="at">compose_args=</span><span class="st">"50"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-9-2.gif" class="img-fluid" alt="magick包处理图片，科研作图"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-9-2.gif" class="img-fluid figure-img" alt="magick包处理图片，科研作图"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -578,18 +632,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -621,11 +664,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/www\.chenq\.site");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -635,8 +717,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -648,7 +739,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -692,6 +906,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -717,6 +932,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -781,8 +1022,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Copyright@Qiong Chen</div>   
-    <div class="nav-footer-center">豫ICP备2021032022号</div>
+    <div class="nav-footer-left">
+<p>Copyright@Qiong Chen</p>
+</div>   
+    <div class="nav-footer-center">
+<p>豫ICP备2021032022号</p>
+</div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
