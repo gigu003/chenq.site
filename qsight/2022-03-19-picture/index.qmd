@@ -2,13 +2,10 @@
 title: '我家养的那些花儿'
 date: '2022-03-19'
 slug: picture
-link: https://chenq.site/post/2022-picture/
 categories: [生活,摄影]
 Keywords:
   - 多肉植物
   - 多肉摄影
-filters: 
-  - lightbox
 lightbox: auto
 image: "./img/cherry.jpg"
 ---

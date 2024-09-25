@@ -786,7 +786,7 @@ knitr::include_graphics("https://quarto.org/docs/get-started/hello/images/rstudi
 ## 为什么要使用 Quarto / R Markdown ?
 
 ```{mermaid}
-%%| label: fig-1
+%%| label: fig-2
 %%| fig-cap: 报告撰写流程
 %%| fig-align: center
 flowchart LR

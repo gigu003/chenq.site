@@ -11,9 +11,6 @@ date: 2024-09-25
 categories:
   - 肿瘤登记
   - R语言
-format:
-  html: default
-  typst: default
 image: https://cdn.jsdelivr.net/gh/gigu003/db/images/book/2022.jpg
 ---
 

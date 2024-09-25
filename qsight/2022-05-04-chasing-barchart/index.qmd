@@ -37,6 +37,7 @@ ggplot2包和gganimate包是两个主要用到的包，但是我们在数据整�
 
 ```{r}
 #| echo: true
+#| eval: false
 #| message: false
 library(dplyr)
 #读入gdp数据
@@ -50,6 +51,7 @@ data1<-data%>%
   mutate(ranking=row_number())%>%
   filter(ranking<=10)
 ```
+
 ## 绘制动态条形图
 
 绘制动态条形图实际需要两个部分，
@@ -60,6 +62,7 @@ data1<-data%>%
 前面我们已经准备好了绘图的数据，那么我们就先绘制动态条形图每个画面的静态图。我们准备基于GDP的排名展示位于全球前10位的国家，我们需要绘制每年的排名情况。
 
 ```{r}
+#| eval: false
 library(ggplot2)
 plot <- data1 %>%
   ggplot() +
@@ -87,6 +90,7 @@ plot <- data1 %>%
 上面的代码绘制了动态条形图的每一个画面，也就是每一年的全球GDP排名前10的国家的条形图。当然你也可以对上面的代码进行更改，从而使图更加美观。而进行动态化的关键步骤是使用gganimate包的transition_states()功能，下面的代码使绘制的图按照year这个变量动态变化。
 
 ```{r}
+#| eval: false
 library(gganimate)
 plot2<-plot+transition_states(year, state_length = 0, transition_length = 2) +
   labs(title = '全球不同国家近40年GDP排名变化情况(前10位)',  
@@ -100,6 +104,7 @@ anim_save("pp.gif")
 ```
 
 ![追逐条形图](pp.gif)
+
 ## 小结
 我们已经成功的绘制了全球gdp前10的国家在过去40年里动态变化的过程，而只要按照我们前面的准备的数据格式整理自己的数据，那么也很容易地能套用这个代码，从而实现自己的动态条形图。
 

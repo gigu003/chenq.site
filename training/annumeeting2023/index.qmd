@@ -10,8 +10,6 @@ keywords:
   - 肿瘤登记
   - 培训会议
   - 专业人员
-filters:
-  - lightbox
 lightbox: auto
 execute:
   echo: false

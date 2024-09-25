@@ -1,6 +1,7 @@
 {
   "hash": "b23678dcfbc6d7d9c8e5ac5e078d9976",
   "result": {
+    "engine": "knitr",
     "markdown": "---\ntitle: R语言促进高效率肿瘤登记报告\ndate: 2023-05-16\nauthor: \"陈琼\"\ncategories: [\"肿瘤登记\",\"年报\"]\nkeywords: [\"肿瘤登记\",\"年报\",\"\"]\nimage: cover.jpg\ndescription: \"2023年5月16日，我有幸与郑州大学流行病学的老师们交流学习，我也向大家汇报了河南省肿瘤登记工作的基本内容以及基于R Markdown/Quarto的可重复性报告在肿瘤登记工作中的应用，现在我把幻灯在这里跟大家分享，如果您发现有错误，请与我联系！\"\n---\n\n::: {.cell}\n<iframe src=\"https://www.chenq.site/slides/2023-5-16-canreg-report/#/title-slide\" width=\"672\" height=\"400px\" data-external=\"1\"></iframe>\n:::\n",
     "supporting": [],
     "filters": [
