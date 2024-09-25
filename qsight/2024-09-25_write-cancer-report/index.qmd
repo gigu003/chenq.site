@@ -41,5 +41,5 @@ flowchart LR
 ## 编写思路
 我以前曾经发过一篇[介绍利用quarto进行论文写作的博文](https://chenq.site/qsight/2023-3-25-quarto-writing/)，其实我们也可以利用quarto进行书籍的编写，quarto系统内置了*book*的项目类型进行书籍的编写。
 
-基本思路是利用可重复性报告的方法，利用qmd把文字描述和引用数据结合起来，从而形成综合的报告，通过knitr转换为md，再通过pandoc最终渲染为我们所需要的格式，比如docx、pdf或者html等。
+基本思路是利用可重复性报告的方法，利用qmd把文字描述和引用数据结合起来，从而形成综合的报告，通过knitr转换为md，再通过pandoc最终渲染为我们所需要的格式，比如docx、pdf或者html等。 
 
