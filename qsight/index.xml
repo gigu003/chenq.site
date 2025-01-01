@@ -3525,8 +3525,8 @@ font-style: inherit;">"pop.dta"</span>)</span></code></pre></div>
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts58124"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts34652"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts48501"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts20824"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
@@ -7935,7 +7935,7 @@ font-style: inherit;">anim_save</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"px.gif"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-plot2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="进度线图 progressive line plot" data-fig-align="center">
+<div id="fig-plot2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="进度线图 progressive line plot">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-plot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/index_files/figure-html/fig-plot2-1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="进度线图 progressive line plot">
@@ -8548,603 +8548,6 @@ font-style: inherit;">"pp.gif"</span>)</span></code></pre></div>
   <guid>https://www.chenq.site/qsight/2022-05-04-chasing-barchart/</guid>
   <pubDate>Wed, 04 May 2022 00:00:00 GMT</pubDate>
   <media:content url="https://www.chenq.site/qsight/2022-05-04-chasing-barchart/pp.gif" medium="image" type="image/gif"/>
-</item>
-<item>
-  <title>利用阿里云DataV可视化平台数据以及ggplot2包的geom_sf函数绘制统计地图</title>
-  <dc:creator>陈琼 </dc:creator>
-  <link>https://www.chenq.site/qsight/2022-04-29-datav/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="什么是统计地图" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="什么是统计地图"><span class="header-section-number">1</span> 什么是统计地图？</h2>
-<p>统计地图是以地图为背景，运用各种线纹、色彩、几何图形或实物形象来显示被研究现象的指标数值的大小及其在各地区的分布状况的一种统计图形。又称空间数列图和地理数列图。主要用于说明某些现象在地域上的分布，进行不同地区间的比较，反映现象所处的地理位置，以及它们的密集和分散程度。</p>
-</section>
-<section id="制作统计地图的难点有哪些" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="制作统计地图的难点有哪些"><span class="header-section-number">2</span> 制作统计地图的难点有哪些？</h2>
-<p>在流行病学研究中，往往需要通过以统计地图的形式来展示数据的空间分布情况。然而，我们一般很难找到合适的用于绘制统计地图的地图边界数据。要么找到的地图行政区划边界数据太旧，实际的行政区划边界已经发生了改变，要么就是找不到相应的数据。</p>
-<p>目前还有一些制作统计地图的网站，可以提供绘制简单的统计地图的功能，但是基本上这些服务都是以收费为目的地，不符合互联网上开源自由的精神，但是如果同学不缺钱，那就可以去试试哈！</p>
-</section>
-<section id="如何利用阿里云datav可视化平台地图数据" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="如何利用阿里云datav可视化平台地图数据"><span class="header-section-number">3</span> 如何利用阿里云DataV可视化平台地图数据?</h2>
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid"></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid figure-img" width="1086"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>利用<strong>sf包</strong>读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(dplyr)</span>
-<span id="cb1-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#加载sf包</span></span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(sf)</span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#加载ggplot2包</span></span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span>
-<span id="cb1-6"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rm</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">list =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ls</span>())</span>
-<span id="cb1-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#利用read_sf函数读取json格式边界数据</span></span>
-<span id="cb1-8">china1 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read_sf</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json"</span>)</span>
-<span id="cb1-9"></span>
-<span id="cb1-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
-<span id="cb1-11">china1<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb1-12">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NA</span>,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"black"</span>)<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb1-13">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>也可以利用<strong>geojsonio包</strong>读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#加载geojsonio包</span></span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(geojsonio)</span>
-<span id="cb2-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#利用geojsonio包读取json格式数据为sp数据</span></span>
-<span id="cb2-4">states <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> geojsonio<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geojson_read</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">what =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"sp"</span>)</span>
-<span id="cb2-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#将地理空间数据转换为sf数据</span></span>
-<span id="cb2-6">states2<span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">st_as_sf</span>(states)</span>
-<span id="cb2-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
-<span id="cb2-8">states2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb2-9">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NA</span>,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"black"</span>)<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb2-10">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000.json">https://geo.datav.aliyun.com/areas_v3/bound/410000.json</a>，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json">https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json</a>。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#读取仅有河南省省界的json数据</span></span>
-<span id="cb3-2">hn1 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read_sf</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://geo.datav.aliyun.com/areas_v3/bound/410000.json"</span>)</span>
-<span id="cb3-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#读取具有河南省各市区边界的json数据</span></span>
-<span id="cb3-4">hn2 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read_sf</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>)</span>
-<span id="cb3-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#利用ggplot2包geom_sf函数绘制河南省省界</span></span>
-<span id="cb3-6">hn1<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb3-7">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NA</span>,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"black"</span>)<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb3-8">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#利用geom_sf函数绘制河南省省界及各市区边界</span></span>
-<span id="cb4-2">hn2<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NA</span>,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"black"</span>)<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#读取洛阳市各区县边界数据，并绘制地图</span></span>
-<span id="cb5-2">ly <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read_sf</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://geo.datav.aliyun.com/areas_v3/bound/410300_full.json"</span>)</span>
-<span id="cb5-3">ly<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb5-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NA</span>,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"black"</span>)<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb5-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="如何绘制统计地图" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="如何绘制统计地图"><span class="header-section-number">4</span> 如何绘制统计地图？</h2>
-<p>可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。</p>
-<p>实现代码如下：</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(RColorBrewer)</span>
-<span id="cb6-2">data<span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">adcode=</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>( <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"110000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"120000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"130000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"140000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"150000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"210000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"220000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"230000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"310000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"320000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"330000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"340000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"350000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"360000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"370000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"410000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"420000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"430000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"440000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"450000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"460000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"500000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"510000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"520000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"530000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"540000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"610000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"620000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"630000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"640000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"650000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"710000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"810000"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"820000"</span> ,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"100000"</span>),</span>
-<span id="cb6-3">                 <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">num=</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">391</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">13</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">28</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">60</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">40</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">884</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">230</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">12988</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">30</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">609</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">50</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">220</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">70</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">36</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">26</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">169</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">23</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">15</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">74</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">27</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">13742</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">59661</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">500</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>))</span>
-<span id="cb6-4">data<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>num[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">35</span>] <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sum</span>(data<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>num[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">34</span>])</span>
-<span id="cb6-5"></span>
-<span id="cb6-6">china2<span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span>china1<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb6-7">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">left_join</span>(data,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">by=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"adcode"</span>)<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb6-8">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">case=</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cut</span>(num,<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">500</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1000</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10000</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">50000</span>),<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">include.lowest=</span>T,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">right=</span>F))</span>
-<span id="cb6-9"></span>
-<span id="cb6-10"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(china2)<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-11">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_sf</span>()<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-12">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_void</span>()<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-13">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_sf</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill=</span>case))<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scale_fill_manual</span>(</span>
-<span id="cb6-15">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">name=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"现存病例数"</span>,</span>
-<span id="cb6-16">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">brewer.pal</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Reds"</span>),</span>
-<span id="cb6-17">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">labels=</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"0-10"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"10-100"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"100-500"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"500-1000"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"1000-10000"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"10000-50000"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&gt;50000"</span>))</span></code></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>科研作图</category>
-  <guid>https://www.chenq.site/qsight/2022-04-29-datav/</guid>
-  <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" medium="image" type="image/png" height="83" width="144"/>
 </item>
 <item>
   <title>利用ggplot2包绘制barplot简单条形图</title>
@@ -9816,6 +9219,603 @@ font-style: inherit;">element_blank</span>()</span>
   <category>科研作图</category>
   <guid>https://www.chenq.site/qsight/2022-04-29-ggplot2-barplot/</guid>
   <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>利用阿里云DataV可视化平台数据以及ggplot2包的geom_sf函数绘制统计地图</title>
+  <dc:creator>陈琼 </dc:creator>
+  <link>https://www.chenq.site/qsight/2022-04-29-datav/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="什么是统计地图" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="什么是统计地图"><span class="header-section-number">1</span> 什么是统计地图？</h2>
+<p>统计地图是以地图为背景，运用各种线纹、色彩、几何图形或实物形象来显示被研究现象的指标数值的大小及其在各地区的分布状况的一种统计图形。又称空间数列图和地理数列图。主要用于说明某些现象在地域上的分布，进行不同地区间的比较，反映现象所处的地理位置，以及它们的密集和分散程度。</p>
+</section>
+<section id="制作统计地图的难点有哪些" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="制作统计地图的难点有哪些"><span class="header-section-number">2</span> 制作统计地图的难点有哪些？</h2>
+<p>在流行病学研究中，往往需要通过以统计地图的形式来展示数据的空间分布情况。然而，我们一般很难找到合适的用于绘制统计地图的地图边界数据。要么找到的地图行政区划边界数据太旧，实际的行政区划边界已经发生了改变，要么就是找不到相应的数据。</p>
+<p>目前还有一些制作统计地图的网站，可以提供绘制简单的统计地图的功能，但是基本上这些服务都是以收费为目的地，不符合互联网上开源自由的精神，但是如果同学不缺钱，那就可以去试试哈！</p>
+</section>
+<section id="如何利用阿里云datav可视化平台地图数据" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="如何利用阿里云datav可视化平台地图数据"><span class="header-section-number">3</span> 如何利用阿里云DataV可视化平台地图数据?</h2>
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid"></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" class="img-fluid figure-img" width="1086"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>利用<strong>sf包</strong>读取阿里云DataV可视化平台的提供的json格式的区划边界数据，读取数据之后，可以利用统计地图相关包如ggplot2、leaflet等包来绘制相应的统计地图。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#加载sf包</span></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(sf)</span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#加载ggplot2包</span></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rm</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">list =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ls</span>())</span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#利用read_sf函数读取json格式边界数据</span></span>
+<span id="cb1-8">china1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_sf</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json"</span>)</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
+<span id="cb1-11">china1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>也可以利用<strong>geojsonio包</strong>读取数据，然后利用st_as_sf()函数转换为sf数据，就可以再利用ggplot2包的geom_sf()函数绘制地图了。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#加载geojsonio包</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(geojsonio)</span>
+<span id="cb2-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#利用geojsonio包读取json格式数据为sp数据</span></span>
+<span id="cb2-4">states <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> geojsonio<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geojson_read</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">what =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sp"</span>)</span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#将地理空间数据转换为sf数据</span></span>
+<span id="cb2-6">states2<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_as_sf</span>(states)</span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#利用ggplot2包geom_sf()函数绘制地图</span></span>
+<span id="cb2-8">states2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>可以根据行政区划编码直接读取个别省份或市区的区划边界数据，比如，河南省的区划边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000.json">https://geo.datav.aliyun.com/areas_v3/bound/410000.json</a>，这个边界数据仅包含省界，不包含下一级的市区的边界数据；而包含市区边界数据存放在<a href="https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json">https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json</a>。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#读取仅有河南省省界的json数据</span></span>
+<span id="cb3-2">hn1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_sf</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://geo.datav.aliyun.com/areas_v3/bound/410000.json"</span>)</span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#读取具有河南省各市区边界的json数据</span></span>
+<span id="cb3-4">hn2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_sf</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://geo.datav.aliyun.com/areas_v3/bound/410000_full.json"</span>)</span>
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#利用ggplot2包geom_sf函数绘制河南省省界</span></span>
+<span id="cb3-6">hn1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#利用geom_sf函数绘制河南省省界及各市区边界</span></span>
+<span id="cb4-2">hn2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#读取洛阳市各区县边界数据，并绘制地图</span></span>
+<span id="cb5-2">ly <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_sf</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://geo.datav.aliyun.com/areas_v3/bound/410300_full.json"</span>)</span>
+<span id="cb5-3">ly<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="如何绘制统计地图" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="如何绘制统计地图"><span class="header-section-number">4</span> 如何绘制统计地图？</h2>
+<p>可以拿中国各省的疫情数据来回绘制疫情分布地图，首先要准备各省的疫情流行数据,生成一个数据框，addcode存放各省的行政区划编码，此变量的值要与地图数据里的行政区划编码一致；num变量存放各省的现存新冠病人数量,然后把该变量转为因子型变量。</p>
+<p>实现代码如下：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(RColorBrewer)</span>
+<span id="cb6-2">data<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">adcode=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>( <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"110000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"120000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"130000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"140000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"150000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"210000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"220000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"230000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"310000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"320000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"330000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"340000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"350000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"360000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"370000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"410000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"420000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"430000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"440000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"450000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"460000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"500000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"510000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"520000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"530000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"540000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"610000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"620000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"630000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"640000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"650000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"710000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"810000"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"820000"</span> ,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"100000"</span>),</span>
+<span id="cb6-3">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">num=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">391</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">13</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">28</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">884</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">230</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12988</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">609</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">220</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">36</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">26</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">169</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">23</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">74</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">27</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">13742</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">59661</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>))</span>
+<span id="cb6-4">data<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>num[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">35</span>] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(data<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>num[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">34</span>])</span>
+<span id="cb6-5"></span>
+<span id="cb6-6">china2<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span>china1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(data,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"adcode"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">case=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut</span>(num,<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10000</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50000</span>),<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">include.lowest=</span>T,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">right=</span>F))</span>
+<span id="cb6-9"></span>
+<span id="cb6-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(china2)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_void</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span>case))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_manual</span>(</span>
+<span id="cb6-15">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"现存病例数"</span>,</span>
+<span id="cb6-16">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">brewer.pal</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Reds"</span>),</span>
+<span id="cb6-17">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"0-10"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"10-100"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"100-500"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"500-1000"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"1000-10000"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"10000-50000"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"&gt;50000"</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://www.chenq.site/qsight/2022-04-29-datav/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>科研作图</category>
+  <guid>https://www.chenq.site/qsight/2022-04-29-datav/</guid>
+  <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://www.chenq.site/qsight/2022-04-29-datav/preview.png" medium="image" type="image/png" height="83" width="144"/>
 </item>
 </channel>
 </rss>
