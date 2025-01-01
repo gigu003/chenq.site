@@ -11,7 +11,7 @@ categories:
 tags:
   - 肿瘤登记
   - 生存分析
-details: <em>中华肿瘤杂志</em>(修稿中)
+details: <em>中华肿瘤杂志</em>, 2024, 46(10):954-960
 Keywords:
   - 中华肿瘤杂志
   - 生存分析
