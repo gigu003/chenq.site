@@ -10,7 +10,41 @@
 <atom:link href="https://www.chenq.site/publications/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
 <generator>quarto-1.6.9</generator>
-<lastBuildDate>Mon, 21 Aug 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 01 Jan 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Lifetime risk of developing and dying from cancer in Henan Province, China: current status, temporal trends, and disparities</title>
+  <dc:creator>Qiong Chen,Shuzheng Liu,Yin Liu,Hongwei Liu,Hong Wang,Lanwei Guo,Huifang Xu,Xiaoli Guo,Xiaoyang Wang,Ruihua Kang,Liyang Zheng,Shaokai Zhang</dc:creator>
+  <link>https://www.chenq.site/publications/firstauthor/2025-1-1-lifetime cancer risk.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="objective" class="level2">
+<h2 class="anchored" data-anchor-id="objective">Objective</h2>
+<p>To understand the current status and changing trends in the lifetime risk of residents in Henan Province, China to develop and die from cancer.</p>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>Lifetime risk was estimated using the Adjusted for Multiple Primaries (AMP) method, incorporating cancer incidence, mortality, and all-cause mortality data from 55 cancer registries in Henan Province, China. Estimates were calculated overall and stratified by gender and area. The Annual Percent Change (APC) in lifetime risk from 2010 to 2020, stratified by gender and cancer site, was estimated using a log-linear model.</p>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>In 2020, the lifetime risk of developing and dying from cancer was 30.19% (95% CI: 29.63%–30.76%) and 23.62% (95% CI: 23.28%–23.95%), respectively. These estimates were higher in men, with values of 31.22% (95% CI: 30.59%–31.85%) for developing cancer and 26.73% (95% CI: 26.29%–27.16%) for dying from cancer, compared with women, who had values of 29.02% (95% CI: 28.12%–29.91%) and 20.08% (95% CI: 19.51%–20.64%), respectively. There were also geographical differences, with higher estimates in urban areas compared with rural areas. Residents had the highest lifetime risk of developing lung cancer, with a rate of 6.94%, followed by breast cancer (4.14%), stomach cancer (3.95%), esophageal cancer (3.75%), and liver cancer (2.86%). Similarly, the highest lifetime risk of dying from cancer was observed for the following sites: lung (5.99%), stomach (3.60%), esophagus (3.39%), liver (2.78%), and colorectum (1.55%). Overall, the lifetime risk of developing cancer increased, with an APC of 0.75% (P&lt;0.05). Varying trends were observed across different cancer sites. There were gradual decreases in nasopharynx, esophagus, stomach, and liver cancers. Conversely, increasing trends were noted for most other sites, with the highest APCs observed in thyroid, prostate, lymphoma, kidney, and gallbladder cancers.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The lifetime risks of developing and dying from cancer were 30.19% and 23.62%, respectively. Variations in cancer risk across different regions, genders, specific cancer sites, and over calendar years provide important information for cancer prevention and policy making in the population.</p>
+<p><strong>Keywords</strong> Lifetime Risk; Cancer Incidence; Mortality; Health Policy; China</p>
+
+
+</section>
+
+ ]]></description>
+  <category>英文论文</category>
+  <category>第一作者</category>
+  <guid>https://www.chenq.site/publications/firstauthor/2025-1-1-lifetime cancer risk.html</guid>
+  <pubDate>Wed, 01 Jan 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>2018年河南省恶性肿瘤发病与死亡情况及2014-2018年趋势分析</title>
   <dc:creator>张明霞,陈琼,郭兰伟,郑黎阳,刘茵,王红,王潇杨,刘纯亚,徐慧芳,刘曙正,张韶凯 </dc:creator>
@@ -695,23 +729,6 @@
   <category>共同作者</category>
   <guid>https://www.chenq.site/publications/coauthor/2022-Solid-tumor-research.html</guid>
   <pubDate>Sun, 15 May 2022 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>2021河南省肿瘤登记年报</title>
-  <dc:creator>张建功，张韶凯， &lt;strong&gt;陈琼&lt;/strong&gt;</dc:creator>
-  <link>https://www.chenq.site/publications/books/2021-annual report.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
- ]]></description>
-  <category>肿瘤登记年报</category>
-  <guid>https://www.chenq.site/publications/books/2021-annual report.html</guid>
-  <pubDate>Fri, 15 Apr 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://cdn.jsdelivr.net/gh/gigu003/db/images/book/2021.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
