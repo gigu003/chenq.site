@@ -1,0 +1,21 @@
+---
+title: 'canregtools\: 一个人群肿瘤登记统计分析软件包'
+date: 2025-01-23
+date-modified: last-modified
+categories:
+  - 肿瘤登记
+  - 软件
+keywords:
+  - canregtools
+  - 软件
+  - 肿瘤登记
+execute:
+  echo: false
+  message: false
+  warning: false
+toc: true
+---
+
+## canregtools安装包
+- Mac OS 二进制安装包: canregtools_0.2.8.tgz [（ 下载 🆓）️](versions/canregtools_0.2.8.tgz)
+

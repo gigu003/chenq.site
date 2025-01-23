@@ -9,6 +9,7 @@ project:
     - /qsight/qsightpic.jpeg
     - /slides/2023-5-16-canreg-report/example.html
     - /training/annumeeting2023/images/
+    - /packages/canregtools/versions/
 
 website:
   title: "普癌新声"
@@ -33,8 +34,8 @@ website:
         href: https://diary.chenq.site
         text: 随笔录
       - icon: hexagon
-        href: https://canregtools.chenq.site
-        text: Packages
+        href: /packages/
+        text: 软件
       - icon: journal-medical
         href: /publications/
         text: 出版作品
@@ -61,8 +62,8 @@ website:
         aria-label: Qiong@GitHub
       - icon: rss
         href: /qsight/index.xml
-        aria-label: RSS     
-freeze: auto  
+        aria-label: RSS
+freeze: auto
 
 format:
   html:
