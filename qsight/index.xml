@@ -3525,8 +3525,8 @@ font-style: inherit;">"pop.dta"</span>)</span></code></pre></div>
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts11379"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts2810"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts48546"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts63606"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
@@ -7935,7 +7935,7 @@ font-style: inherit;">anim_save</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"px.gif"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-plot2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="进度线图 progressive line plot">
+<div id="fig-plot2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="进度线图 progressive line plot" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-plot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="https://www.chenq.site/qsight/2022-05-07-progressive-line-plot/index_files/figure-html/fig-plot2-1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="进度线图 progressive line plot">

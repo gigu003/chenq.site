@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>普癌新声</title>
+<link>https://www.chenq.site/packages/</link>
+<atom:link href="https://www.chenq.site/packages/index.xml" rel="self" type="application/rss+xml"/>
+<description>一个公共卫生医师的个人网站</description>
+<generator>quarto-1.6.9</generator>
+<lastBuildDate>Thu, 23 Jan 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>canregtools: 一个人群肿瘤登记统计分析软件包</title>
+  <link>https://www.chenq.site/packages/canregtools/</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="canregtools安装包" class="level2">
+
+<ul>
+<li>Mac OS 二进制安装包: canregtools_0.2.8.tgz <a href="versions/canregtools_0.2.8.tgz">（ 下载 🆓）️</a></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>肿瘤登记</category>
+  <category>软件</category>
+  <guid>https://www.chenq.site/packages/canregtools/</guid>
+  <pubDate>Thu, 23 Jan 2025 00:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
