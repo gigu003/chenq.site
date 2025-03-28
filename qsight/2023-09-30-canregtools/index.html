@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-0a72271c56d77df9dda287cf98c1dd24.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-3222fcdc377403f56ad9eb3ddde39fe0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -103,19 +103,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "搜索"
   }
 }</script>
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?c07d97fb46a2cbcc09d408cf3a281e08";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
-    
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../_assets/css/qsight.css">
 <meta property="og:title" content="R包canregtools：肿瘤登记可视化和自动化报告 – 普癌新声">
 <meta property="og:description" content="为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“canregtools”，这篇博文将详细介绍这个R包的功能和使用。">
 <meta property="og:image" content="https://www.chenq.site/qsight/2023-09-30-canregtools/preview.jpg">
@@ -149,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../qsight/"> <i class="bi bi-tropical-storm" role="img">
+    <a class="nav-link" href="../../qsight.html"> <i class="bi bi-tropical-storm" role="img">
 </i> 
 <span class="menu-text">Qsight博客</span></a>
   </li>  
@@ -200,9 +190,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<!-- 微信公众号推广模块 -->
+<div class="wechat-promotion">
+  <h3>微信公众号</h3>
+  <div class="qrcode-container">
+    <img src="https://cdn.jsdelivr.net/gh/gigu003/db/images/qr.jpg" alt="微信公众号二维码" class="wechat-qrcode" width="258" height="258">
+    <div class="callout-box">
+      <p class="callout-text">扫码关注公众号</p>
+      <div class="arrow"></div>
+    </div>
+  </div>
+</div>
+
+</div></div>
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">该页面内容</h2>
+    <h2 id="toc-title">主要内容</h2>
    
   <ul>
   <li><a href="#canregtools的安装" id="toc-canregtools的安装" class="nav-link active" data-scroll-target="#canregtools的安装"><span class="header-section-number">1</span> canregtools的安装</a></li>
@@ -231,14 +234,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p class="subtitle lead">促进肿瘤登记数据的分析、可视化和报告流程化</p>
 </div>
 
-  
+
     <p>2023年9月30日</p>
+  
     
-    
-    <div class="quarto-categories">
-              <p class="quarto-category">肿瘤登记</p>
-              <p class="quarto-category">R语言</p>
-            </div>
+  <div class="quarto-categories">
+        <p class="quarto-category">肿瘤登记</p>
+        <p class="quarto-category">R语言</p>
+        <p class="quarto-category">canregtools</p>
+      </div>
 
     
 </header>
@@ -248,6 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <p>为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“<em>canregtools</em>”，这篇博文将详细介绍这个R包的功能和使用。</p>
   </div>
 </div><p></p>
+
 
 
 <p>R语言包“<em>canregtools</em>”提供了肿瘤登记常规数据分析中常用的数据处理、可视化、自动化报告等功能，该包的主要目的是通过一系列R语言函数功能实现肿瘤登记数据常规数据分析和数据可视化功能，并通过整合不同函数功能从而实现应用于不同场景的肿瘤登记报告，在统一的R语言环境中让肿瘤登记数据分析更流畅。</p>
@@ -267,16 +272,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
- version  R version 4.4.0 (2024-04-24)
- os       macOS Sonoma 14.6.1
+ version  R version 4.4.2 (2024-10-31)
+ os       macOS Sequoia 15.3.2
  system   aarch64, darwin20
  ui       X11
  language (EN)
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Asia/Shanghai
- date     2024-09-25
- pandoc   3.2.1 @ /opt/homebrew/bin/ (via rmarkdown)
+ date     2025-03-28
+ pandoc   3.6.3 @ /opt/homebrew/bin/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date (UTC) lib source
@@ -288,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  evaluate      0.24.0  2024-06-10 [1] CRAN (R 4.4.0)
  fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.4.0)
  fs            1.6.4   2024-04-25 [1] CRAN (R 4.4.0)
- glue          1.7.0   2024-01-09 [1] CRAN (R 4.3.1)
+ glue          1.8.0   2024-09-30 [1] CRAN (R 4.4.1)
  htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.4.0)
  htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.4.0)
  httpuv        1.6.15  2024-03-26 [1] CRAN (R 4.4.0)
@@ -304,12 +309,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  pkgload       1.3.4   2024-01-16 [1] CRAN (R 4.4.0)
  profvis       0.3.8   2023-05-02 [1] CRAN (R 4.3.0)
  promises      1.3.0   2024-04-05 [1] CRAN (R 4.4.0)
- purrr         1.0.2   2023-08-10 [1] CRAN (R 4.2.0)
+ purrr         1.0.2   2023-08-10 [1] CRAN (R 4.4.0)
  R6            2.5.1   2021-08-19 [1] CRAN (R 4.2.0)
  Rcpp          1.0.13  2024-07-17 [1] CRAN (R 4.4.0)
  remotes       2.5.0   2024-03-17 [1] CRAN (R 4.4.0)
  rlang         1.1.4   2024-06-04 [1] CRAN (R 4.4.0)
- rmarkdown     2.27    2024-05-17 [1] CRAN (R 4.4.0)
+ rmarkdown     2.29    2024-11-04 [1] CRAN (R 4.4.1)
  rstudioapi    0.16.0  2024-03-24 [1] CRAN (R 4.4.0)
  sessioninfo * 1.2.2   2021-12-06 [1] CRAN (R 4.2.0)
  shiny         1.8.1.1 2024-04-02 [1] CRAN (R 4.4.0)
@@ -338,7 +343,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>目前该包可以读取国家癌症中心发布的数据上报格式（call for data），包括以EXCEL格式保存的单年数据或生存数据，通过<em>read_canreg()</em>函数来实现。我们在包里内置了按照国家癌症中心数据上报格式准备的excel数据文档(“411721.xls”)。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(canregtools)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>file <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"411721.xls"</span>, <span class="at">package =</span> <span class="st">"canregtools"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>file <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"411721.xlsx"</span>, <span class="at">package =</span> <span class="st">"canregtools"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read_canreg</span>(file)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>我们给读入的原始数据定义一个类”canreg”， 我们可以通过class函数查看一下。</p>
@@ -367,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 指定癌症分类方法为small，并指定输出语言为英语</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>fbsw <span class="ot">&lt;-</span> <span class="fu">count_canreg</span>(data, <span class="at">cancer_type =</span> <span class="st">"small"</span>, <span class="at">lang=</span><span class="st">"en"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2"></a>fbsw <span class="ot">&lt;-</span> <span class="fu">count_canreg</span>(data, <span class="at">cancer_type =</span> <span class="st">"small"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="统计指标计算" class="level2" data-number="5">
@@ -443,52 +448,52 @@ $asr_uci
 <span id="cb14-14"><a href="#cb14-14"></a><span class="in">  keep_sex_specific = FALSE #是否保留年龄别专属癌种值</span></span>
 <span id="cb14-15"><a href="#cb14-15"></a><span class="in">)</span></span>
 <span id="cb14-16"><a href="#cb14-16"></a><span class="in">```</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>基于<em>canreg</em>类数据计算标化率,同时也可以输出0-74岁累积率和35-64岁截缩率。</p>
-<div class="cell">
+<p>基于<em>canreg</em>类数据计算标化率,同时也可以输出0-74岁累积率和35-64岁截缩率。 ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>asr <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(data, year, sex, cancer) <span class="sc">|&gt;</span> </span>
 <span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">add_labels</span>()</span>
 <span id="cb15-3"><a href="#cb15-3"></a>asr</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 56 × 13
-    year sex   cancer site    icd10  no_cases     cr asr_cn2000 asr_wld85  cumur
-   &lt;int&gt; &lt;fct&gt;  &lt;int&gt; &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;  &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
- 1  2016 男性      60 合计    ALL        1187 261.       218.      227.   16.3  
- 2  2016 男性      61 所有部… ALLbu…     1179 259.       216.      225.   16.3  
- 3  2016 男性     101 口腔和… C00-C…       13   2.85       2.46      2.73  0.185
- 4  2016 男性     102 鼻咽    C11           7   1.54       1.37      1.16  0.117
- 5  2016 男性     103 食管    C15         157  34.5       29.0      30.6   2.06 
- 6  2016 男性     104 胃      C16         135  29.6       24.0      24.9   1.94 
- 7  2016 男性     105 结直肠… C18-C…       72  15.8       12.4      12.6   1.09 
- 8  2016 男性     106 肝脏    C22         180  39.5       31.7      31.8   2.86 
- 9  2016 男性     107 胆囊及… C23-C…       16   3.51       2.74      2.70  0.210
-10  2016 男性     108 胰腺    C25          27   5.93       4.88      5.03  0.465
+    year sex   cancer site             icd10 no_cases    cr asr_cn2000 asr_wld85
+   &lt;int&gt; &lt;fct&gt; &lt;chr&gt;  &lt;fct&gt;            &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;
+ 1  2016 男性  101    口腔和咽（除外鼻咽）…… C00-…       13  2.85       2.46      2.73
+ 2  2016 男性  102    鼻咽             C11          7  1.54       1.37      1.16
+ 3  2016 男性  103    食管             C15        157 34.5       29.0      30.6 
+ 4  2016 男性  104    胃               C16        135 29.6       24.0      24.9 
+ 5  2016 男性  105    结直肠肛门       C18-…       72 15.8       12.4      12.6 
+ 6  2016 男性  106    肝脏             C22        180 39.5       31.7      31.8 
+ 7  2016 男性  107    胆囊及其他       C23-…       16  3.51       2.74      2.7 
+ 8  2016 男性  108    胰腺             C25         27  5.93       4.88      5.03
+ 9  2016 男性  109    喉               C32         11  2.41       1.89      1.78
+10  2016 男性  110    气管、支气管、肺 C33-…      320 70.2       59.2      61.0 
 # ℹ 46 more rows
-# ℹ 3 more variables: truncr_cn2000 &lt;dbl&gt;, truncr_wld85 &lt;dbl&gt;, prop &lt;dbl&gt;</code></pre>
+# ℹ 4 more variables: truncr_cn2000 &lt;dbl&gt;, truncr_wld85 &lt;dbl&gt;, cumur &lt;dbl&gt;,
+#   prop &lt;dbl&gt;</code></pre>
 </div>
-</div>
-<p>同样，也可以基于<em>fbswicd</em>类数据计算标化率。</p>
-<div class="cell">
+<p>:::</p>
+<p>同样，也可以基于<em>fbswicd</em>类数据计算标化率。 ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>asr <span class="ot">&lt;-</span> <span class="fu">create_asr</span>(fbsw, year, sex, cancer) <span class="sc">|&gt;</span> </span>
 <span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">add_labels</span>(<span class="at">lang =</span> <span class="st">"en"</span>)</span>
 <span id="cb17-3"><a href="#cb17-3"></a>asr</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 110 × 13
-    year sex   cancer site     icd10 no_cases     cr asr_cn2000 asr_wld85  cumur
-   &lt;int&gt; &lt;fct&gt;  &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;    &lt;int&gt;  &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
- 1  2016 Male       1 Lip      C00          0  0          0         0     0     
- 2  2016 Male       2 Tongue   C01-…        3  0.658      0.682     0.901 0.0231
- 3  2016 Male       3 Mouth    C03-…        5  1.10       0.865     0.888 0.0787
- 4  2016 Male       4 Salivar… C07-…        2  0.439      0.330     0.355 0.0231
- 5  2016 Male       5 Tonsil   C09          0  0          0         0     0     
- 6  2016 Male       6 Other O… C10          2  0.439      0.401     0.425 0.0469
- 7  2016 Male       7 Nasopha… C11          7  1.54       1.37      1.16  0.117 
- 8  2016 Male       8 Laryngo… C12-…        1  0.219      0.184     0.161 0.0134
- 9  2016 Male      10 Esophag… C15        157 34.5       29.0      30.6   2.06  
-10  2016 Male      11 Stomach  C16        135 29.6       24.0      24.9   1.94  
+    year sex   cancer site             icd10 no_cases    cr asr_cn2000 asr_wld85
+   &lt;int&gt; &lt;fct&gt; &lt;chr&gt;  &lt;fct&gt;            &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;
+ 1  2016 Male  1      Lip              C00          0  0          0         0   
+ 2  2016 Male  10     Esophagus        C15        157 34.5       29.0      30.6 
+ 3  2016 Male  11     Stomach          C16        135 29.6       24.0      24.9 
+ 4  2016 Male  12     Small Intestine  C17          3  0.66       0.51      0.55
+ 5  2016 Male  13     Colon            C18         33  7.24       5.79      6.1 
+ 6  2016 Male  14     Rectum           C19-…       38  8.34       6.43      6.36
+ 7  2016 Male  15     Anus             C21          1  0.22       0.18      0.16
+ 8  2016 Male  16     Liver            C22        180 39.5       31.7      31.8 
+ 9  2016 Male  17     Gallbladder and… C23-…       16  3.51       2.74      2.7 
+10  2016 Male  18     Pancreas         C25         27  5.93       4.88      5.03
 # ℹ 100 more rows
-# ℹ 3 more variables: truncr_cn2000 &lt;dbl&gt;, truncr_wld85 &lt;dbl&gt;, prop &lt;dbl&gt;</code></pre>
+# ℹ 4 more variables: truncr_cn2000 &lt;dbl&gt;, truncr_wld85 &lt;dbl&gt;, cumur &lt;dbl&gt;,
+#   prop &lt;dbl&gt;</code></pre>
 </div>
-</div>
+<p>:::</p>
 </section>
 </section>
 <section id="数据可视化" class="level2 page-columns page-full" data-number="6">
@@ -533,8 +538,7 @@ $asr_uci
 </div>
 </div>
 </div>
-<p>如果不想显示人口金字塔人口数字可以，设置<em>show_value = FALSE</em>，不显示这些数据。</p>
-<div class="cell">
+<p>如果不想显示人口金字塔人口数字可以，设置<em>show_value = FALSE</em>，不显示这些数据。 ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">draw_pyramid</span>(fbsw,</span>
 <span id="cb21-2"><a href="#cb21-2"></a>             <span class="at">csize =</span> <span class="fl">0.8</span>,</span>
 <span id="cb21-3"><a href="#cb21-3"></a>             <span class="at">cgap =</span> <span class="fl">0.4</span>,</span>
@@ -548,7 +552,7 @@ $asr_uci
 </figure>
 </div>
 </div>
-</div>
+<p>:::</p>
 </section>
 <section id="绘制条形图" class="level3 page-columns page-full" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="绘制条形图"><span class="header-section-number">6.2</span> 绘制条形图</h3>
@@ -563,9 +567,9 @@ $asr_uci
 <span id="cb22-7"><a href="#cb22-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span>cancer <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">60</span>,<span class="dv">61</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb22-8"><a href="#cb22-8"></a>  <span class="fu">add_labels</span>(<span class="at">lang=</span><span class="st">"en"</span>, <span class="at">label_type =</span> <span class="st">"abbr"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb22-9"><a href="#cb22-9"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex, <span class="at">values_from =</span> asr_cn2000) <span class="sc">|&gt;</span> </span>
-<span id="cb22-10"><a href="#cb22-10"></a>  <span class="fu">arrange</span>(Male)</span>
+<span id="cb22-10"><a href="#cb22-10"></a>  <span class="fu">arrange</span>(M)</span>
 <span id="cb22-11"><a href="#cb22-11"></a></span>
-<span id="cb22-12"><a href="#cb22-12"></a><span class="fu">draw_bar</span>(<span class="fu">list</span>(asr<span class="sc">$</span>Male),</span>
+<span id="cb22-12"><a href="#cb22-12"></a><span class="fu">draw_bar</span>(<span class="fu">list</span>(asr<span class="sc">$</span>M),</span>
 <span id="cb22-13"><a href="#cb22-13"></a>         <span class="at">cates =</span> <span class="fu">as.character</span>(asr<span class="sc">$</span>site),</span>
 <span id="cb22-14"><a href="#cb22-14"></a>         <span class="at">bar_side =</span> <span class="dv">1</span>,</span>
 <span id="cb22-15"><a href="#cb22-15"></a>         <span class="at">label =</span> <span class="fu">c</span>(<span class="st">"男性"</span>,<span class="st">"女性"</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -645,6 +649,29 @@ $asr_uci
 
 
 </section>
+</section>
+
+<section class="author-card">
+  <div class="avatar-container">
+    <img src="../author.png" alt="陈琼博士" class="author-avatar">
+  </div>
+  <div class="author-info">
+    <h3 class="anchored">陈 琼</h3>
+    <a class="badge badge-red"> <i class="bi bi-award"> </i> 博士 </a>
+    <a class="badge badge-blue"> <i class="bi bi-bar-chart"> </i> 副主任医师 </a>
+    <p class="bio">他从事肿瘤登记与人群流行病学研究，编写肿瘤登记年报，并开发和维护个人网站。他撰写博文，分享数据分析方法、可视化技巧和自动化报告解决方案，同时学习 R 语言，开发 R 包，不断探索高效的数据处理与展示方式。 🚀</p>
+    <div class="social-links">
+      <a href="https://github.com/gigu003" target="_blank">
+        <i class="bi bi-github"></i>
+      </a>
+      <a href="mailto:chenq08@126.com" target="_blank">
+        <i class="bi bi-envelope"></i>
+      </a>
+      <a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=KKgW5AwAAAAJ&amp;view_op=list_works&amp;authuser=1&amp;sortby=pubdate" target="_blank">
+        <i class="bi bi-google"></i>
+      </a>
+    </div>
+  </div>
 </section>
 
 </main> <!-- /main -->
@@ -1068,13 +1095,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://utteranc.es/client.js" repo="gigu003/chenqcomments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
-</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Copyright@Qiong Chen</p>
+<p>Copyright@ 2025 Qiong Chen</p>
 </div>   
     <div class="nav-footer-center">
 <p>豫ICP备2021032022号</p>
@@ -1097,6 +1122,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
+
+
 
 
 
