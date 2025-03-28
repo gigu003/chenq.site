@@ -1,0 +1,14 @@
+<script src="https://unpkg.com/valine@1.5.3/dist/Valine.min.js"></script>
+<div id="valine-comments"></div>
+<script>
+  new Valine({
+    el: '#valine-comments',       // 容器 ID
+    appId: '7eZCAbnLWtF15ZLxRWF5ir4M-gzGzoHsz',         // 替换为 LeanCloud 的 AppID
+    appKey: '9TyJMb9Nkn79aFqKxnYR7DIk',       // 替换为 LeanCloud 的 AppKey
+    serverURL: '7ezcabnl.lc-cn-n1-shared.com'
+    placeholder: '欢迎留言！(支持 Markdown 语法)', // 输入框占位文本
+    pageSize: 10,                             // 每页评论数量
+    lang: 'zh-CN',                            // 语言（支持 en/ zh-CN/ zh-TW）
+    visitor: true                             // 是否开启阅读量统计
+  });
+</script>

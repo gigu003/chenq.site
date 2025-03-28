@@ -1,0 +1,536 @@
+/* =Typography
+-----------------------------------------------------------------------------*/
+body {
+  font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  background-color: #faf8f8;
+  text-rendering: optimizeLegibility;
+}
+
+form,
+input[type="search"],
+select[multiple="multiple"] {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* 标题优化 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+h1 {
+  font-size: 1.6rem;
+  padding-bottom: 0;
+}
+
+h2 {
+  font-size: 1.3rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 100%;  /* 让线条宽度匹配文本 */
+  height: 3px;
+  background: linear-gradient(90deg, #487191, #b3cde0);
+  border-radius: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+
+h3 {
+  font-size: 1.1rem;
+}
+
+h6 {
+  font-size: 0.875rem;
+}
+
+a {
+  color: #487191;
+  text-decoration: none;
+}
+
+/* = Horizontal Rule (hr) */
+hr {
+  border-top: 1px solid rgba(179, 205, 224, 0.7);
+  margin-top: 4ex;
+  margin-bottom: 4ex;
+  max-width: 80%;
+  text-align: center;
+}
+
+/* = Lists */
+ul {
+  list-style: square;
+  color: #36454f; /* 调整列表符号颜色 */
+  padding-left: 1.5em; /* 让列表更加清晰 */
+}
+
+dd {
+  margin-left: 2em;
+}
+
+/* = Code Blocks */
+pre,
+code,
+kbd,
+samp,
+var,
+output {
+  font-size: 90%;
+  font-style: normal;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Hack', monospace !important;
+  font-variant-ligatures: normal !important;
+  background-color: #f8f9fa; /* 轻微灰色背景 */
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+
+pre {
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+
+
+a.nav-link:hover,
+a.navbar-brand:hover {
+  color: #e6c112; /* 调整 hover 颜色以减少视觉疲劳 */
+  transition: color 0.2s ease-in-out;
+}
+
+
+/* 参考文献整体样式 */
+.references {
+  font-size: 0.85em; /* 适度缩小字体 */
+  font-family: inherit; /* 继承 body 字体，保持一致 */
+  background: #ffffff; /* 纯白背景，极简风格 */
+  border-radius: 8px; /* 圆角让视觉更柔和 */
+  border-top: 3px solid #487191; /* 现代感的顶部边框 */
+  padding: 20px; /* 适当的内边距 */
+  margin-top: 60px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08); /* 轻微阴影，增加立体感 */
+  line-height: 1.6; /* 提高可读性 */
+}
+
+/* 参考文献标题 */
+.references::before {
+  content: "参考文献";
+  display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #36454f;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* 参考文献条目样式 */
+.csl-entry {
+  margin-bottom: 12px; /* 增加间距，使每条文献更清晰 */
+  padding-bottom: 10px; /* 底部内边距，防止内容紧凑 */
+  border-bottom: 1px dashed #ccc; /* 使用虚线分隔不同文献 */
+}
+
+div.csl-right-inline{
+  margin-left: 1em;
+
+}
+
+.csl-entry:last-child {
+  border-bottom: none; /* 去掉最后一个文献的分隔线 */
+}
+
+/* badge styles */
+a.badge {
+  color: #fff;
+}
+
+.badge {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 12.75px;
+  display: inline-block;
+  line-height: 1;
+  padding: 4px 7px;
+  text-align: center;
+  font-weight: normal;
+  text-transform: uppercase;
+  border-radius: 15px;
+  opacity: 0.8;
+  transition: all 0.3s ease-in-out;
+}
+
+.badge-large {
+  font-size: 18px !important;
+  padding: 6px 10px;
+  font-weight: bold;
+}
+
+.badge-small {
+  font-size: 11px;
+  padding: 3px 6px;
+}
+
+/* Badge Colors */
+.badge-black { background: #0f0f0f; }
+.badge-blue { background: #4673B8; }
+.badge-red { background: #BD666D; }
+.badge-green { background: #2c9f42; }
+.badge-yellow { background: #ffc800; }
+.badge-white { background: #ffffff; color: #000; }
+.badge-grey { background: #cccccc; }
+
+/* Hover Effects */
+.badge:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Outlined Badges */
+.label-outline {
+  background: none;
+  border: 1px solid #0f0f0f;
+  padding: 3px 6px;
+}
+
+/* Listing & Categories */
+.quarto-category {
+  color: white;
+  display: inline-block;
+  background-color: #536878;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: background 0.3s ease-in-out;
+}
+
+.quarto-categories .quarto-category a {
+  color: #ffffff;
+  line-height: 1.2rem;
+  font-size: 100%;
+  padding: 10px;
+  opacity: 0.9;
+}
+
+.quarto-category:hover,
+.badge-grey:hover,
+.listing-category:hover {
+  background-color: darkred;
+  color: #ffffff;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.badge-grey:hover a {
+  color: #ebebeb !important;
+}
+
+.quarto-listing-category,
+.listing-category,
+.listing-actions-group,
+.about-link-text {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+
+
+#quarto-margin-sidebar .category-default {
+  font-size: 11pt;
+}
+#quarto-margin-sidebar .category:hover {
+  color: #0d6efd;
+}
+.sidebar nav[role=doc-toc]>ul a:hover {
+  color: #0d6efd;
+}
+
+.quarto-categories,
+.quarto-category,
+.listing-category {
+  line-height: 2em !important;
+  margin-left: -3px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+div.quarto-post .metadata {
+  font-size: 1.1em;
+}
+div.quarto-post .listing-categories .listing-category {
+  background: #e9e9e9;
+  color: #536878;
+  text-align: center;
+  border-radius: 15px;
+  font-size: 11.25px;
+  padding: 1px 5px 0 5px;
+  border: none;
+  margin-left: -5px;
+  margin-right: 9px;
+}
+
+div.quarto-post .listing-categories:hover .listing-category:hover {
+  background-color: #536878;
+  color: #ffffff !important;
+  opacity: .6;
+}
+#mlb2-4240669.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,
+#mlb2-4240669.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody {
+  padding: 0px !important;
+}
+
+
+.imgrow {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+/* Create four equal columns that sits next to each other */
+.imgcolumn {
+  flex: 25%;
+  max-width: 25%;
+  padding-right: 0px;
+  padding-left: 0px;
+  text-align: center;
+}
+
+.imgcolumn img {
+  margin-top: 0px;
+  vertical-align: middle;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .imgcolumn {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .imgcolumn {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.list li {
+  margin: 10px 0;
+}
+
+#quarto-appendix.default {
+  background-color: #faf8f8;
+  border-top: none;
+  padding-top: 0;
+}
+#quarto-appendix.default .quarto-appendix-heading {
+  font-size: 1.3em !important;
+  border-bottom: 1px solid #b3cde0;
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+
+.description p{
+  padding: 10px;
+  border: 2px dashed  gray;
+  border-radius: 10px;
+  width: fit-content;
+  opacity: 0.9;
+  margin: 2px;
+}
+
+
+
+.def {
+  background-color: #f7f5fc;
+  font-weight: 400; /* 更柔和的粗体 */
+  margin: 1rem 0;
+  padding: 0.5rem 0.5em 0.5em 1.5em;
+  line-height: 1.6; /* 更好的可读性 */
+  border: 1px solid #d0cad1;
+  border-left: 4px solid #4CAF50;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 添加微妙投影 */
+}
+
+.def p {
+  margin: 1em; /* 移除默认段落边距 */
+  text-indent: 0; /* 确保无缩进 */
+}
+
+
+.def::before {
+  content: "🌱";
+  font-size: 2.7em;
+  color: #4CAF50; /* 绿色 */
+  float: left;
+  margin: -0.1em 0.3em 0 -0.4em;
+}
+
+
+
+.author{
+  display: inline-block;
+}
+
+/* 作者卡片 */
+.author-card {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.author-avatar {
+  width: 100%;
+  border-radius: 40%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.social-links {
+  margin-top: 1rem;
+}
+
+.social-links a {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  color: #6c757d;
+}
+
+.social-links a:hover {
+  color: #0d6efd;
+}
+
+
+
+
+
+/* 微信推广样式 */
+.wechat-promotion {
+  margin: 2rem auto;
+  padding: 1.5rem;
+  max-width: 400px;
+  text-align: center;
+}
+
+.qrcode-container {
+  position: relative;
+  display: inline-block;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 20px rgba(43, 138, 62, 0.15);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wechat-qrcode {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #e8e8e8;
+}
+
+.callout-box {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 10px 20px;
+  background: #2b8a3e;
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.callout-text {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.arrow {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: #2b8a3e;
+  transform: translateX(-50%) rotate(45deg);
+  border-radius: 3px;
+}
+
+/* 悬停动画 */
+.qrcode-container:hover {
+  transform: translateY(-5px);
+
+  .callout-box {
+    opacity: 1;
+    bottom: -45px;
+  }
+}
+
+/* 移动端适配 */
+@media (max-width: 480px) {
+  .wechat-promotion {
+    padding: 1rem;
+  }
+
+  .qrcode-container {
+    padding: 5px;
+  }
+
+  .wechat-qrcode {
+    width: 300px;
+    height: 300px;
+  }
+
+  .callout-text {
+    font-size: 1rem;
+  }
+
+  .callout-box {
+    padding: 8px 16px;
+    bottom: -40px;
+  }
+}
+
+/* 暗黑模式适配 */
+@media (prefers-color-scheme: dark) {
+  .qrcode-container {
+    background: #2d2d2d;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .wechat-qrcode {
+    border-color: #404040;
+  }
+
+  .callout-box,
+  .arrow {
+    background: #4caf50;
+  }
+}
+

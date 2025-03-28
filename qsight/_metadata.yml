@@ -19,16 +19,13 @@ format:
     page-layout: article
     toc: true
     toc-location: right
+    toc-title: "主要内容"
     number-sections: true
-    template: qsight.html
+    template: _assets/templates/qsight.html
     template-partials:
-      - title-block.html
-      - title-metadata.html
-
-comments:
-  utterances:
-    repo: gigu003/chenqcomments
-    
-
+      - _assets/partials/title-block.html
+      - _assets/partials/title-metadata.html
+      - _assets/partials/author-info.html
+    margin-header: _assets/partials/sidebar-wechat.html
 
 

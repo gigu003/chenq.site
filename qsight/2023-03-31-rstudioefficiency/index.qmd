@@ -7,7 +7,7 @@ slug: rstudio-efficient
 categories:
   - quarto
   - rstudio
-  - R
+  - R语言
 keywords:
   - quarto
   - rstudio

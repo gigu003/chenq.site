@@ -1,12 +1,13 @@
 project:
   type: website
+  preview:
+    port: 5050
   resources:
     - "*.pdf"
-    - baidu_verify_code-aDCTvXezZP.html
     - /report/2021/
     - /fonts/
     - author.png
-    - /qsight/qsightpic.jpeg
+    - /qsight/assets/images/*
     - /slides/2023-5-16-canreg-report/example.html
     - /training/annumeeting2023/images/
     - /packages/canregtools/versions/
@@ -18,8 +19,7 @@ website:
   twitter-card: true
   open-graph: true
   site-url: https://www.chenq.site
-
-
+  page-navigation: true
   navbar:
     background: "primary"
     search: true
@@ -28,7 +28,7 @@ website:
         href: index.qmd
         text: Home
       - icon: tropical-storm
-        href: /qsight/
+        href: qsight.qmd
         text: Qsight博客
       - icon: pen
         href: https://diary.chenq.site
@@ -51,10 +51,9 @@ website:
       - icon: pen
         href: https://notes.chenq.site
         text: 学习笔记
-
   page-footer:
     border: true
-    left: "Copyright@Qiong Chen"
+    left: "Copyright@ 2025 Qiong Chen"
     center: "豫ICP备2021032022号"
     right:
       - icon: github
@@ -70,5 +69,4 @@ format:
     code-line-numbers: true
     toc: false
     theme: flatly
-    css: styles.css
-    include-in-header: baidusta.html
+    css: _assets/css/qsight.css

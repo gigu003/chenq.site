@@ -2,9 +2,9 @@
 lang: zh
 format:
   html:
-    css: styles.css
     toc: true
     toc-location: right
+    toc-title: 目录
     template: publication.html
     template-partials: title-metadata.html
-page-layout: full   
+page-layout: full

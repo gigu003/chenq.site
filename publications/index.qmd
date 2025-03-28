@@ -47,8 +47,8 @@ language:
 ---
 
 ## 出版作品
-[&nbsp;&nbsp;CNKI作者&nbsp;&nbsp;](https://kns.cnki.net/kcms/detail/knetsearch.aspx?sfield=au&skey=陈琼&code=000033286925&v=L99VyCTXNqM33Iuyy_4c1O5o_4zvwh6EMZ8EGPBPbRz3L2FSij4Nu8tOzs8xmWMq){.badge .badge-large}
- &nbsp;&nbsp;&nbsp;&nbsp; [&nbsp;&nbsp;万方作者&nbsp;&nbsp;](https://fx.wanfangdata.com.cn/scholartrends/detail?scholar_id=a0003863732&scholar_name=陈琼&org_name=河南省肿瘤医院%3B郑州大学附属肿瘤医院){.badge .badge-large}&nbsp;&nbsp;&nbsp;&nbsp;   [&nbsp;{{< ai google-scholar >}}&nbsp;Google Scholar &nbsp;&nbsp;](https://scholar.google.com/citations?user=KKgW5AwAAAAJ&hl=zh-CN){.badge .badge-large}   
+[&nbsp;&nbsp;CNKI作者&nbsp;&nbsp;](https://kns.cnki.net/kcms/detail/knetsearch.aspx?sfield=au&skey=陈琼&code=000033286925&v=L99VyCTXNqM33Iuyy_4c1O5o_4zvwh6EMZ8EGPBPbRz3L2FSij4Nu8tOzs8xmWMq){.badge .badge-large .badge-green}
+ &nbsp;&nbsp;&nbsp;&nbsp; [&nbsp;&nbsp;万方作者&nbsp;&nbsp;](https://fx.wanfangdata.com.cn/scholartrends/detail?scholar_id=a0003863732&scholar_name=陈琼&org_name=河南省肿瘤医院%3B郑州大学附属肿瘤医院){.badge .badge-large .badge-red}&nbsp;&nbsp;&nbsp;&nbsp;   [&nbsp;{{< ai google-scholar >}}&nbsp;Google Scholar &nbsp;&nbsp;](https://scholar.google.com/citations?user=KKgW5AwAAAAJ&hl=zh-CN){.badge .badge-large .badge-blue}   
 
 ## 参编书籍
 

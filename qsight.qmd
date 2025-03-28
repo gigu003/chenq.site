@@ -1,0 +1,54 @@
+---
+lang: zh
+listing:
+  - id: all-post
+    type: grid
+    contents: "/qsight"
+    sort: "date desc"
+    categories: cloud
+    image-placeholder: "https://cdn.jsdelivr.net/gh/gigu003/db/images/qsightpic.jpeg"
+    max-description-length: 50
+    image-height: 10em
+    grid-item-border: true
+    grid-item-align: left
+    sort-ui: true
+    filter-ui: [date, title, author, details]
+    date-format: "YYYY-MM-DD"
+    page-size: 9
+    feed:
+      items: 10
+page-layout: full
+format: 
+  html:
+     margin-header: qsight/_assets/partials/sidebar-wechat.html
+---
+
+```{=html}
+<section class="author-card">
+  <div class="avatar-container">
+    <img src="../author.png" alt="陈琼博士" class="author-avatar">
+  </div>
+  <div class="author-info">
+    <h2>Qsight 博客</h2>
+    <p class="bio">Qsight 聚焦肿瘤登记、统计分析、R 语言 及 网站制作，分享数据分析方法、可视化技巧与自动化报告解决方案，助力肿瘤流行病学和公共卫生研究。无论你是研究人员、数据分析师，还是 R 语言爱好者，都能在这里找到实用内容！ 🚀</p>
+    <div class="social-links">
+      <a href="https://github.com/gigu003" target="_blank">
+        <i class="bi bi-github"></i>
+      </a>
+      <a href="mailto:chenq08@126.com" target="_blank">
+        <i class="bi bi-envelope"></i>
+      </a>
+      <a href="https://scholar.google.com/citations?hl=zh-CN&user=KKgW5AwAAAAJ&view_op=list_works&authuser=1&sortby=pubdate" target="_blank">
+        <i class="bi bi-google"></i>
+      </a>
+    </div>
+  </div>
+</section>
+```
+
+
+
+::: {#all-post}
+:::
+
+

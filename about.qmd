@@ -16,7 +16,7 @@ about:
       href: https://github.com/gigu003
     - icon: envelope
       text: 给我发邮件
-      href: "mailto:chenqiong@hnccr.org.cn"
+      href: "mailto:chenq08@126.com"
 ---
 
 ::: {#heading}

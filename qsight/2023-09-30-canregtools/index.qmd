@@ -13,6 +13,7 @@ date: 2023-09-30
 categories:
   - 肿瘤登记
   - R语言
+  - canregtools
 image: preview.jpg
 ---
 
@@ -46,7 +47,7 @@ session_info()
 ```{r}
 #| code-overflow: scroll
 library(canregtools)
-file <- system.file("extdata", "411721.xls", package = "canregtools")
+file <- system.file("extdata", "411721.xlsx", package = "canregtools")
 data <- read_canreg(file)
 ```
 
@@ -77,7 +78,7 @@ fbsw <- count_canreg(data, cancer_type = "system")
 
 ```{r}
 # 指定癌症分类方法为small，并指定输出语言为英语
-fbsw <- count_canreg(data, cancer_type = "small", lang="en")
+fbsw <- count_canreg(data, cancer_type = "small")
 ```
 
 ## 统计指标计算
@@ -204,9 +205,9 @@ asr <- create_asr(data, event = fbs, sex, cancer) |>
   filter(!cancer %in% c(60,61)) |> 
   add_labels(lang="en", label_type = "abbr") |> 
   pivot_wider(names_from = sex, values_from = asr_cn2000) |> 
-  arrange(Male)
+  arrange(M)
 
-draw_bar(list(asr$Male),
+draw_bar(list(asr$M),
          cates = as.character(asr$site),
          bar_side = 1,
          label = c("男性","女性"))
