@@ -9,7 +9,7 @@
 <link>https://www.chenq.site/packages/</link>
 <atom:link href="https://www.chenq.site/packages/index.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
-<generator>quarto-1.6.9</generator>
+<generator>quarto-1.7.17</generator>
 <lastBuildDate>Thu, 23 Jan 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>canregtools: 一个人群肿瘤登记统计分析软件包</title>

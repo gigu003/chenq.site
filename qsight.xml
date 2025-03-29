@@ -9,7 +9,7 @@
 <link>https://www.chenq.site/qsight.html</link>
 <atom:link href="https://www.chenq.site/qsight.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
-<generator>quarto-1.6.9</generator>
+<generator>quarto-1.7.17</generator>
 <lastBuildDate>Wed, 26 Mar 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>基于 R 语言构建人群肿瘤登记数据分析工具：理念与实践</title>
@@ -51,9 +51,6 @@
 <li><code>ggcanreg</code> 专注于肿瘤登记数据的可视化，绘制金字塔图、条形图、折线图、统计地图等常见类型的统计图（图&nbsp;3）；</li>
 <li><code>manuscript</code> 用于编写及生成各种类型的统计报告，如质量控制报告、数据分析报告、肿瘤登记年报等编写和管理维护（图&nbsp;4）。</li>
 </ul>
-<div>
-
-</div>
 <div class="quarto-layout-panel" data-layout-ncol="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
@@ -117,9 +114,6 @@
 <h2 data-number="5" class="anchored" data-anchor-id="设计数据类型"><span class="header-section-number">5</span> 设计数据类型</h2>
 <p>在处理肿瘤登记数据之前，首先需要将其导入 R 语言环境。对于工具开发而言，确定一个统一的数据格式是关键，因为数据读取函数应基于这种格式进行编写。我们常规分析的肿瘤登记数据主要包括三部分：肿瘤发病数据、肿瘤死亡数据和对应的人口数据，这也是国家癌症中心要求上报的数据格式。原始数据通常以 Excel 文件的形式存储，其中包含三个表单：<code>FB</code>（发病数据）、<code>SW</code>（死亡数据）和 <code>POP</code>（人口数据）。其中，<code>FB</code> 和 <code>SW</code> 表单包含的主要变量包括：登记编号、性别、年龄、出生日期、发病日期、解剖学部位、形态学、行为、分级、诊断依据、ICD-10 代码以及死亡日期等，其变量定义符合中国肿瘤登记数据集标准。<code>POP</code> 表单则包含与 FB 和 SW 表单相同年份的、按性别和年龄组划分的人口数据。</p>
 <p>我们引入了两个 S3 类数据类型（图&nbsp;5, 图&nbsp;6），以支持高效的肿瘤登记数据处理和分析。 “canreg”（图&nbsp;5） 类用于存储读入的原始数据，而 “fbswicd”（图&nbsp;6） 类基于 “canreg” 数据进行计数统计，保存分年份、性别、癌种及年龄别的发病数、死亡数等统计信息。通过 count_canreg 函数，用户可以轻松将 “canreg” 类数据转换为 “fbswicd” 类数据。针对数据量较大或登记机构数量较多的情况，直接对 “canreg” 类数据进行重组和合并可能会占用大量内存并影响运行效率，而通过将其转换为 “fbswicd” 类数据后进行操作，可显著优化内存使用并提高计算效率。</p>
-<div>
-
-</div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -227,7 +221,7 @@ font-style: inherit;">library</span>(crcheck)</span></code></pre></div>
 <p>为了帮助肿瘤登记工作者应对这些关键问题，我们开发了一套 R 语言工具集，以提升数据处理的准确性和效率。尽管这一过程耗时且充满挑战，但我们认为这项工作极具价值，值得投入时间和精力。同时，我们也希望更多同行能够加入，共同完善和优化这一工具集，为肿瘤登记工作提供更强有力的技术支持。</p>
 <div id="refs" class="references csl-bib-body">
 <div id="ref-wei2020" class="csl-entry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">Wei W, Zeng H, Zheng R, Zhang S, An L, Chen R, 等. <a href="https://doi.org/gkrcbt">Cancer Registration in <span>China</span> and Its Role in Cancer Prevention and Control</a>. Lancet Oncol. 2020年;21:e342–9. </div>
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Wei W, Zeng H, Zheng R, Zhang S, An L, Chen R, 等. <a href="https://doi.org/10/gkrcbt">Cancer Registration in <span>China</span> and Its Role in Cancer Prevention and Control</a>. Lancet Oncol. 2020年;21:e342–9. </div>
 </div>
 <div id="ref-ferlay2018" class="csl-entry">
 <div class="csl-left-margin">2. </div><div class="csl-right-inline">Ferlay J. <span>IARCcrgTools Version</span> 2.13 [网际网络]. Lyon (FR): Section of Cancer Surveillance, International Agency for Research on Cancer; 2018 [见引于 2024年12月21日]. 载于: <a href="http://www.iacr.com.fr/files/IARCcrgToolsSetup213.zip">http://www.iacr.com.fr/files/IARCcrgToolsSetup213.zip</a></div>
@@ -385,9 +379,6 @@ font-style: inherit;">library</span>(crcheck)</span></code></pre></div>
 
 <p>前几天有幸收到邀请来到安徽泾县分享肿瘤登记的质量控制和自动化报告。刚听到泾县时，对这里是没有概念的，在高铁上闲时对这个地方进行了初步的了解。泾县是个美丽的地方，有著名的桃花潭，李白曾在这里留下“桃花潭水深千尺，不及汪伦送我情。”的著名诗句。皖南事变也曾经发生在这片山区，国共合作抗日从这里开始彻底决裂。当我初下高铁，发现这里的空气很清新，从站台上望向远处的群山被云雾缭绕的水汽环绕，就像一副水墨山水画，很美的一个地方。</p>
 <p>在来时的高铁上，我从泾县政府的官网上找到了他们的宣传片，下面是其中的几张，是不是很漂亮。</p>
-<div>
-
-</div>
 <div class="quarto-layout-panel" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
@@ -458,12 +449,14 @@ font-style: inherit;">library</span>(crcheck)</span></code></pre></div>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```{r}</span></span>
-<span id="cb1-2"><span class="in" style="color: #5E5E5E;
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library(devtools)</span></span>
-<span id="cb1-3"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">library</span>(devtools)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">install_github("gigu003/canregtools")</span></span>
+font-style: inherit;">install_github</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gigu003/canregtools"</span>)</span>
 <span id="cb1-4"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```</span></span></code></pre></div>
@@ -638,36 +631,52 @@ font-style: inherit;">"small"</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```{r}</span></span>
-<span id="cb11-2"><span class="in" style="color: #5E5E5E;
+<span id="cb11-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#| eval: false</span></span>
-<span id="cb11-3"><span class="in" style="color: #5E5E5E;
+<span id="cb11-3"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">ageadjust(</span></span>
-<span id="cb11-4"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">ageadjust</span>(</span>
+<span id="cb11-4">  count, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  count, #不同年龄组病例数</span></span>
-<span id="cb11-5"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#不同年龄组病例数</span></span>
+<span id="cb11-5">  pop, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  pop, #不同年龄组风险人口数</span></span>
-<span id="cb11-6"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#不同年龄组风险人口数</span></span>
+<span id="cb11-6">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  rate = NULL, #不同年龄组发病率</span></span>
-<span id="cb11-7"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">rate =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">  stdpop = NULL, #各年龄组标准人口数</span></span>
-<span id="cb11-8"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">NULL</span>, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  method = "gamma", #估计可信区间的方法，选项为'gamma', 'normal'，'lognormal'</span></span>
-<span id="cb11-9"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#不同年龄组发病率</span></span>
+<span id="cb11-7">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  conf_level = 0.95, #设置可信区间水平, 范围为0-1， 0.95则输出95%可信区间</span></span>
-<span id="cb11-10"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">stdpop =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">  mp = 1e+05</span></span>
-<span id="cb11-11"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">NULL</span>, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span>
+font-style: inherit;">#各年龄组标准人口数</span></span>
+<span id="cb11-8">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gamma"</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#估计可信区间的方法，选项为'gamma', 'normal'，'lognormal'</span></span>
+<span id="cb11-9">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conf_level =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.95</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#设置可信区间水平, 范围为0-1， 0.95则输出95%可信区间</span></span>
+<span id="cb11-10">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mp =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1e+05</span></span>
+<span id="cb11-11">)</span>
 <span id="cb11-12"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```</span></span></code></pre></div>
@@ -758,48 +767,74 @@ $asr_uci
 <div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```{r}</span></span>
-<span id="cb14-2"><span class="in" style="color: #5E5E5E;
+<span id="cb14-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#| eval: false</span></span>
-<span id="cb14-3"><span class="in" style="color: #5E5E5E;
+<span id="cb14-3"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">create_asr(</span></span>
-<span id="cb14-4"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">create_asr</span>(</span>
+<span id="cb14-4">  x, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  x, # 类为canreg或fbswicd的数据</span></span>
-<span id="cb14-5"><span class="in" style="color: #5E5E5E;
+font-style: inherit;"># 类为canreg或fbswicd的数据</span></span>
+<span id="cb14-5">  ..., <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  ..., #指定输出的分类: year,sex,icd_cat</span></span>
-<span id="cb14-6"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#指定输出的分类: year,sex,icd_cat</span></span>
+<span id="cb14-6">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  event = fbs, #指定计算年龄率的变量</span></span>
-<span id="cb14-7"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">event =</span> fbs, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  pop = rks, # 指定人口数变量</span></span>
-<span id="cb14-8"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#指定计算年龄率的变量</span></span>
+<span id="cb14-7">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  agegrp = agegrp, #指定年龄分组变量</span></span>
-<span id="cb14-9"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">pop =</span> rks, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  std = c(china, segi), #指定标准人口</span></span>
-<span id="cb14-10"><span class="in" style="color: #5E5E5E;
+font-style: inherit;"># 指定人口数变量</span></span>
+<span id="cb14-8">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  mp = 1e+05, </span></span>
-<span id="cb14-11"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">agegrp =</span> agegrp, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  decimal = 2, #输出小数位</span></span>
-<span id="cb14-12"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#指定年龄分组变量</span></span>
+<span id="cb14-9">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  show_var = FALSE, #是否输出方差</span></span>
-<span id="cb14-13"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">std =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">  show_ci = FALSE, #是否输出可信区间</span></span>
-<span id="cb14-14"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">c</span>(china, segi), <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  keep_sex_specific = FALSE #是否保留年龄别专属癌种值</span></span>
-<span id="cb14-15"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#指定标准人口</span></span>
+<span id="cb14-10">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">)</span></span>
+font-style: inherit;">mp =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1e+05</span>, </span>
+<span id="cb14-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">decimal =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#输出小数位</span></span>
+<span id="cb14-12">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">show_var =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#是否输出方差</span></span>
+<span id="cb14-13">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">show_ci =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#是否输出可信区间</span></span>
+<span id="cb14-14">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">keep_sex_specific =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#是否保留年龄别专属癌种值</span></span>
+<span id="cb14-15">)</span>
 <span id="cb14-16"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```</span></span></code></pre></div>
@@ -879,69 +914,149 @@ font-style: inherit;">"en"</span>)</span>
 <div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```{r}</span></span>
-<span id="cb19-2"><span class="in" style="color: #5E5E5E;
+<span id="cb19-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#| eval: false</span></span>
-<span id="cb19-3"><span class="in" style="color: #5E5E5E;
+<span id="cb19-3"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">draw_pyramid(</span></span>
-<span id="cb19-4"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">draw_pyramid</span>(</span>
+<span id="cb19-4">  x, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  x, # 类为"canreg"或"fbswicd"的数据 </span></span>
-<span id="cb19-5"><span class="in" style="color: #5E5E5E;
+font-style: inherit;"># 类为"canreg"或"fbswicd"的数据 </span></span>
+<span id="cb19-5">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  show_value = TRUE, #是否在人口金字塔上显示人口数</span></span>
-<span id="cb19-6"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">show_value =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">  show_prop = TRUE,  #是否在人口金字塔上显示人口比例</span></span>
-<span id="cb19-7"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">TRUE</span>, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  left_axis = NULL, #设置人口金字塔左侧坐标轴值</span></span>
-<span id="cb19-8"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#是否在人口金字塔上显示人口数</span></span>
+<span id="cb19-6">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  right_axis = NULL, #设置人口金字塔右侧坐标轴值</span></span>
-<span id="cb19-9"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">show_prop =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">  axis_fm = "g", </span></span>
-<span id="cb19-10"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">TRUE</span>,  <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  axis_bm = "",</span></span>
-<span id="cb19-11"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#是否在人口金字塔上显示人口比例</span></span>
+<span id="cb19-7">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  axis_bi = 3,</span></span>
-<span id="cb19-12"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">left_axis =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">  cgap = 0.3, # 人口金字塔的中间间隔宽度</span></span>
-<span id="cb19-13"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">NULL</span>, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  cstep = 1, # 间隔1个条形显示人口金字塔</span></span>
-<span id="cb19-14"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#设置人口金字塔左侧坐标轴值</span></span>
+<span id="cb19-8">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  csize = 1, #设置字体大小，默认为1</span></span>
-<span id="cb19-15"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">right_axis =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">  labs = c("Males", "Ages", "Females"), # 设置左中右坐标标签</span></span>
-<span id="cb19-16"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">NULL</span>, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  gl = TRUE, # 是否显示竖型背景条</span></span>
-<span id="cb19-17"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#设置人口金字塔右侧坐标轴值</span></span>
+<span id="cb19-9">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  cadj = 0, # 调整标签位置</span></span>
-<span id="cb19-18"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">axis_fm =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">  cols = c("#006400", "#b32134"), # 设置人口金字塔条颜色</span></span>
-<span id="cb19-19"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">"g"</span>, </span>
+<span id="cb19-10">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  dens = c(-1, -1),</span></span>
-<span id="cb19-20"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">axis_bm =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">  main = "", # 设置人口金字塔图的标题</span></span>
-<span id="cb19-21"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">""</span>,</span>
+<span id="cb19-11">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  grid = c(2, 3) #如果绘制多个图，设置显示方式，c(2,3) 设置为2行3列</span></span>
-<span id="cb19-22"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">axis_bi =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">)</span></span>
+font-style: inherit;">3</span>,</span>
+<span id="cb19-12">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cgap =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 人口金字塔的中间间隔宽度</span></span>
+<span id="cb19-13">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cstep =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 间隔1个条形显示人口金字塔</span></span>
+<span id="cb19-14">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">csize =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#设置字体大小，默认为1</span></span>
+<span id="cb19-15">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labs =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Males"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ages"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Females"</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 设置左中右坐标标签</span></span>
+<span id="cb19-16">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gl =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 是否显示竖型背景条</span></span>
+<span id="cb19-17">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cadj =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 调整标签位置</span></span>
+<span id="cb19-18">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#006400"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#b32134"</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 设置人口金字塔条颜色</span></span>
+<span id="cb19-19">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dens =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb19-20">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">main =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 设置人口金字塔图的标题</span></span>
+<span id="cb19-21">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">grid =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#如果绘制多个图，设置显示方式，c(2,3) 设置为2行3列</span></span>
+<span id="cb19-22">)</span>
 <span id="cb19-23"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```</span></span></code></pre></div>
@@ -1141,42 +1256,50 @@ font-style: inherit;">"女性"</span>))</span></code></pre></div>
 <div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```{r}</span></span>
-<span id="cb23-2"><span class="in" style="color: #5E5E5E;
+<span id="cb23-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#| eval: false</span></span>
-<span id="cb23-3"><span class="in" style="color: #5E5E5E;
+<span id="cb23-3"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">draw_barchart(</span></span>
-<span id="cb23-4"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">draw_barchart</span>(</span>
+<span id="cb23-4">  data, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  data, #用于绘图的数据框</span></span>
-<span id="cb23-5"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#用于绘图的数据框</span></span>
+<span id="cb23-5">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  plot_var = cr, #用于绘图的变量</span></span>
-<span id="cb23-6"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">plot_var =</span> cr, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  cate_var = icd_cat, #分类变量</span></span>
-<span id="cb23-7"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#用于绘图的变量</span></span>
+<span id="cb23-6">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  group_var = year, #分组变量</span></span>
-<span id="cb23-8"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">cate_var =</span> icd_cat, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  side_var = sex,</span></span>
-<span id="cb23-9"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#分类变量</span></span>
+<span id="cb23-7">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  topn = 10,</span></span>
-<span id="cb23-10"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">group_var =</span> year, <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  bar_side = 1,</span></span>
-<span id="cb23-11"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">#分组变量</span></span>
+<span id="cb23-8">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  nrow = 2,</span></span>
-<span id="cb23-12"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">side_var =</span> sex,</span>
+<span id="cb23-9">  <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  ...</span></span>
-<span id="cb23-13"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">topn =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">)</span></span>
+font-style: inherit;">10</span>,</span>
+<span id="cb23-10">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bar_side =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb23-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nrow =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,</span>
+<span id="cb23-12">  ...</span>
+<span id="cb23-13">)</span>
 <span id="cb23-14"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```</span></span></code></pre></div>
@@ -3294,7 +3417,7 @@ font-style: inherit;">italic=</span>T) </span></code></pre></div>
 纳入分析
 </div></th>
 </tr>
-<tr class="odd">
+<tr class="even">
 <th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">登记处</th>
 <th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">类型</th>
 <th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">病例数</th>
@@ -3890,8 +4013,8 @@ font-style: inherit;">"pop.dta"</span>)</span></code></pre></div>
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts2638"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts9205"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts60474"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts44412"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
@@ -5361,7 +5484,7 @@ font-style: inherit;">FALSE</span>)</span></code></pre></div>
 </div></th>
 <th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; empty-cells: hide;"></th>
 </tr>
-<tr class="odd">
+<tr class="even">
 <th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">部位</th>
 <th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">CRS</th>
 <th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; font-style: italic; font-family: monospace;">ARS</th>
@@ -6061,7 +6184,7 @@ font-style: inherit;">kable_stylling</span>()</span></code></pre></div>
 </section>
 <section id="在不同文档间重复利用内容" class="level3" data-number="1.4">
 <h3 data-number="1.4" class="anchored" data-anchor-id="在不同文档间重复利用内容"><span class="header-section-number">1.4</span> 在不同文档间重复利用内容</h3>
-<p><code>{{&lt; include  &gt;}}</code>是一个quarto的shortcode使我们能够重复利用不同quarto文档的内容，而不用复制和粘贴。在你想插入内容的地方，添加shortcode <code>{{&lt; include  &gt;}}</code> include后面放入想添加的文档名称，记得在名称前添加下划线。</p>
+<p><code>{{&lt; include &gt;}}</code>是一个quarto的shortcode使我们能够重复利用不同quarto文档的内容，而不用复制和粘贴。在你想插入内容的地方，添加shortcode <code>{{&lt; include &gt;}}</code> include后面放入想添加的文档名称，记得在名称前添加下划线。</p>
 <div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1">{{&lt; incldue _content.qmd &gt;}}</span></code></pre></div>
 <p>也可以按照一定的条件纳入内容，比如，只在渲染为特定格式时显示内容，用.content-visible 或者 .content-hidden</p>
 <div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1">::: {.content-visible when-format="html"}</span>
@@ -6598,44 +6721,58 @@ font-style: inherit;">---</span></span></code></pre></div>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```{r}</span></span>
-<span id="cb3-2"><span class="in" style="color: #5E5E5E;
+<span id="cb3-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#| label: tbl-table1</span></span>
-<span id="cb3-3"><span class="in" style="color: #5E5E5E;
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#| tbl-cap-location: top</span></span>
-<span id="cb3-4"><span class="in" style="color: #5E5E5E;
+<span id="cb3-4"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#| tbl-cap: "接受不同药物治疗人群基本特征分析"</span></span>
-<span id="cb3-5"><span class="in" style="color: #5E5E5E;
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#| warning: false</span></span>
-<span id="cb3-6"><span class="in" style="color: #5E5E5E;
+<span id="cb3-6"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#| message: false</span></span>
 <span id="cb3-7"></span>
-<span id="cb3-8"><span class="in" style="color: #5E5E5E;
+<span id="cb3-8"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library(gtsummary)</span></span>
+font-style: inherit;">library</span>(gtsummary)</span>
 <span id="cb3-9"></span>
-<span id="cb3-10"><span class="in" style="color: #5E5E5E;
+<span id="cb3-10">trial <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">trial %&gt;% select(age, grade, response, trt) %&gt;% </span></span>
-<span id="cb3-11"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">  tbl_summary(by=trt) %&gt;% </span></span>
-<span id="cb3-12"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">select</span>(age, grade, response, trt) <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  add_p() %&gt;% </span></span>
-<span id="cb3-13"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb3-11">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">  add_overall() %&gt;% </span></span>
-<span id="cb3-14"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">tbl_summary</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  add_n() %&gt;% </span></span>
-<span id="cb3-15"><span class="in" style="color: #5E5E5E;
+font-style: inherit;">by=</span>trt) <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">  bold_labels() </span></span>
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb3-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">add_p</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb3-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">add_overall</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb3-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">add_n</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb3-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bold_labels</span>() </span>
 <span id="cb3-16"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```</span></span></code></pre></div>
@@ -7097,7 +7234,7 @@ font-style: inherit;">```</span></span></code></pre></div>
 <col style="width: 16%">
 </colgroup>
 <thead>
-<tr class="header gt_col_headings">
+<tr class="gt_col_headings header">
 <th id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
 <th id="<strong>N</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>N</strong></th>
 <th id="<strong>Overall</strong>, N = 200<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Overall</strong>, N = 200<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
