@@ -1,27 +1,41 @@
-# .github/workflows/render-and-publish.yaml
-name: Render and deploy Quarto files
+
+name: Render and Deploy Quarto Site
+
 on:
   push:
-  pull_request:
+    branches:
+      - main
 
 jobs:
   quarto-render-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: quarto-dev/quarto-actions/setup@v2
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: 1.6.9
+          version: latest
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
         with:
-          path: "." # By default, the current working dir is used i.e `quarto render .`
+          path: "."
 
-      - name: "Deploy to gh-pages"
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
+
+      - name: Deploy to Tencent Cloudbase
+        if: github.ref == 'refs/heads/main'
+        uses: TencentCloudBase/cloudbase-action@v2.0.1
+        with:
+          secretId: ${{ secrets.secretId }}
+          secretKey: ${{ secrets.secretKey }}
+          envId: ${{ secrets.envId }}
+          staticSrcPath: ./_site
+
