@@ -248,7 +248,7 @@ font-style: inherit;">library</span>(crcheck)</span></code></pre></div>
 
 <section class="author-card">
   <div class="avatar-container">
-    <img src="https://www.chenq.site/qsight/author.png" alt="陈琼博士" class="author-avatar">
+    <img src="https://www.chenq.site/qsight/_assets/images/author.png" alt="陈琼博士" class="author-avatar">
   </div>
   <div class="author-info">
     <h3 class="anchored">陈 琼</h3>
@@ -333,7 +333,7 @@ font-style: inherit;">library</span>(crcheck)</span></code></pre></div>
 
 <section class="author-card">
   <div class="avatar-container">
-    <img src="https://www.chenq.site/qsight/author.png" alt="陈琼博士" class="author-avatar">
+    <img src="https://www.chenq.site/qsight/_assets/images/author.png" alt="陈琼博士" class="author-avatar">
   </div>
   <div class="author-info">
     <h3 class="anchored">陈 琼</h3>
@@ -398,7 +398,7 @@ font-style: inherit;">library</span>(crcheck)</span></code></pre></div>
 
 <section class="author-card">
   <div class="avatar-container">
-    <img src="https://www.chenq.site/qsight/author.png" alt="陈琼博士" class="author-avatar">
+    <img src="https://www.chenq.site/qsight/_assets/images/author.png" alt="陈琼博士" class="author-avatar">
   </div>
   <div class="author-info">
     <h3 class="anchored">陈 琼</h3>
@@ -1503,7 +1503,7 @@ font-style: inherit;">1</span>))</span></code></pre></div>
 
 <section class="author-card">
   <div class="avatar-container">
-    <img src="https://www.chenq.site/qsight/author.png" alt="陈琼博士" class="author-avatar">
+    <img src="https://www.chenq.site/qsight/_assets/images/author.png" alt="陈琼博士" class="author-avatar">
   </div>
   <div class="author-info">
     <h3 class="anchored">陈 琼</h3>
@@ -1934,7 +1934,7 @@ font-style: inherit;">TRUE</span>)</span>
 
 <section class="author-card">
   <div class="avatar-container">
-    <img src="https://www.chenq.site/qsight/author.png" alt="陈琼博士" class="author-avatar">
+    <img src="https://www.chenq.site/qsight/_assets/images/author.png" alt="陈琼博士" class="author-avatar">
   </div>
   <div class="author-info">
     <h3 class="anchored">陈 琼</h3>
@@ -4013,8 +4013,8 @@ font-style: inherit;">"pop.dta"</span>)</span></code></pre></div>
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts12188"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts41015"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts21856"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts24095"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
@@ -5858,7 +5858,7 @@ font-style: inherit;">FALSE</span>)</span></code></pre></div>
 
 <section class="author-card">
   <div class="avatar-container">
-    <img src="https://www.chenq.site/qsight/author.png" alt="陈琼博士" class="author-avatar">
+    <img src="https://www.chenq.site/qsight/_assets/images/author.png" alt="陈琼博士" class="author-avatar">
   </div>
   <div class="author-info">
     <h3 class="anchored">陈 琼</h3>
@@ -6032,7 +6032,7 @@ _quarto.yml
 
 <section class="author-card">
   <div class="avatar-container">
-    <img src="https://www.chenq.site/qsight/author.png" alt="陈琼博士" class="author-avatar">
+    <img src="https://www.chenq.site/qsight/_assets/images/author.png" alt="陈琼博士" class="author-avatar">
   </div>
   <div class="author-info">
     <h3 class="anchored">陈 琼</h3>
@@ -6439,7 +6439,7 @@ Rstudio项目
 
 <section class="author-card">
   <div class="avatar-container">
-    <img src="https://www.chenq.site/qsight/author.png" alt="陈琼博士" class="author-avatar">
+    <img src="https://www.chenq.site/qsight/_assets/images/author.png" alt="陈琼博士" class="author-avatar">
   </div>
   <div class="author-info">
     <h3 class="anchored">陈 琼</h3>
@@ -7619,7 +7619,7 @@ authors-block设置方法
 
 <section class="author-card">
   <div class="avatar-container">
-    <img src="https://www.chenq.site/qsight/author.png" alt="陈琼博士" class="author-avatar">
+    <img src="https://www.chenq.site/qsight/_assets/images/author.png" alt="陈琼博士" class="author-avatar">
   </div>
   <div class="author-info">
     <h3 class="anchored">陈 琼</h3>
@@ -7705,7 +7705,7 @@ authors-block设置方法
 
 <section class="author-card">
   <div class="avatar-container">
-    <img src="https://www.chenq.site/qsight/author.png" alt="陈琼博士" class="author-avatar">
+    <img src="https://www.chenq.site/qsight/_assets/images/author.png" alt="陈琼博士" class="author-avatar">
   </div>
   <div class="author-info">
     <h3 class="anchored">陈 琼</h3>
