@@ -298,15 +298,14 @@ Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 把图片另存起来</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="fu">image_write</span>(logo, <span class="at">path =</span> <span class="st">"logo.png"</span>, <span class="at">format =</span> <span class="st">"png"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>可以更改图片的格式</p>
-<div class="cell">
+<p>可以更改图片的格式 ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>logo1 <span class="ot">&lt;-</span> <span class="fu">image_convert</span>(logo, <span class="st">"jpg"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="fu">image_info</span>(logo1)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  format width height colorspace matte filesize density
 1    JPG   300    225       sRGB FALSE        0   72x72</code></pre>
 </div>
-</div>
+<p>:::</p>
 </section>
 <section id="图片转换操作" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="图片转换操作"><span class="header-section-number">3</span> 图片转换操作</h2>

@@ -276,14 +276,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>数组有一个特征属性叫做维数向量（dim属性），维数向量是一个元素取正整数的向量，其长度是数组的维数，比如维数向量有两个元素时数组为二维数组（如矩阵）。维数向量的每一个元素指定了该下标的上界，下标的下界总为1.</p>
 <section id="一将向量定义为数组" class="level3" data-number="1.1">
 <h3 data-number="1.1" class="anchored" data-anchor-id="一将向量定义为数组"><span class="header-section-number">1.1</span> （一）将向量定义为数组</h3>
-<p>向量可以直接看作为一个一维数组，但要将向量定义为二维以上的数组，需要定义维数向量（dim属性）。比如：</p>
-<div class="cell">
+<p>向量可以直接看作为一个一维数组，但要将向量定义为二维以上的数组，需要定义维数向量（dim属性）。比如： ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>z<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>z</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10 11 12</code></pre>
 </div>
-</div>
+<p>:::</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">dim</span>(z)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a>z</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -319,8 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="1.2" class="anchored" data-anchor-id="二用array函数构造多维数组"><span class="header-section-number">1.2</span> （二）用array（）函数构造多维数组</h3>
 <p>R软件可以用array（）函数直接构造数组，其构造形式为：</p>
 <p>array(data=NA, dim=length(data) ,dimnames=NULL)</p>
-<p>其中data是一个向量数据，dim是数组各维的长度，缺省时为原向量的长度。dimnames是数组维的名字，缺省时为空。如： 产生一个4*5的二维数组（矩阵），即：</p>
-<div class="cell">
+<p>其中data是一个向量数据，dim是数组各维的长度，缺省时为原向量的长度。dimnames是数组维的名字，缺省时为空。如： 产生一个4*5的二维数组（矩阵），即： ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x<span class="ot">&lt;-</span><span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>))</span>
 <span id="cb7-2"><a href="#cb7-2"></a>x</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -330,13 +328,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [3,]    3    7   11   15   19
 [4,]    4    8   12   16   20</code></pre>
 </div>
-</div>
-<p>利用该函数也可以产生三维及以上的数组，如：</p>
-<div class="cell">
+<p>:::</p>
+<p>利用该函数也可以产生三维及以上的数组，如： ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>x<span class="ot">&lt;-</span><span class="fu">array</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>),<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>产生一个2<em>2</em>2的三维数组。</p>
-<div class="cell">
+<p>:::</p>
+<p>产生一个2<em>2</em>2的三维数组。 ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>x</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , 1
@@ -351,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [1,]    4    9
 [2,]    8   10</code></pre>
 </div>
-</div>
+<p>:::</p>
 <p>说明：如果数组每个元素相同，则array函数的data部分直接写成数字即可（与下面的matrix（）函数类似）如：</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x<span class="ot">&lt;-</span><span class="fu">array</span>(<span class="dv">0</span>,<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>))</span>
@@ -414,8 +410,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="二不规则的数组下标" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="二不规则的数组下标"><span class="header-section-number">2.2</span> （二）不规则的数组下标</h3>
-<p>在R语言中，甚至可以把数组中的任意位置的元素作为数组访问，其方法就是用一个二维数组作为数组的下标，二维数组的每一行就是一个元素的下标，列数为数组的维数。例如要把上面的性状为3*3的矩阵A的第[1,1] [1,3] [2,1] [2,2]号元素作为一个整体访问，先定义一个包含这些下标作为行的二维数组。</p>
-<div class="cell">
+<p>在R语言中，甚至可以把数组中的任意位置的元素作为数组访问，其方法就是用一个二维数组作为数组的下标，二维数组的每一行就是一个元素的下标，列数为数组的维数。例如要把上面的性状为3*3的矩阵A的第[1,1] [1,3] [2,1] [2,2]号元素作为一个整体访问，先定义一个包含这些下标作为行的二维数组。 ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>b<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>),<span class="at">ncol=</span><span class="dv">2</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
 <span id="cb21-2"><a href="#cb21-2"></a>b</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -425,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [3,]    2    1
 [4,]    2    2</code></pre>
 </div>
-</div>
+<p>:::</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>a[b]</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -583,8 +578,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="二矩阵的转置运算" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="二矩阵的转置运算"><span class="header-section-number">4.2</span> （二）矩阵的转置运算</h3>
-<p>对于矩阵A，函数t(A)表示矩阵A的转置，即AT 如：</p>
-<div class="cell">
+<p>对于矩阵A，函数t(A)表示矩阵A的转置，即AT 如： ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
 <span id="cb45-2"><a href="#cb45-2"></a>A</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -592,7 +586,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [1,]    1    3    5
 [2,]    2    4    6</code></pre>
 </div>
-</div>
+<p>:::</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">t</span>(A)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -615,8 +609,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="四生成对角矩阵和对矩阵取对角运算" class="level3" data-number="4.4">
 <h3 data-number="4.4" class="anchored" data-anchor-id="四生成对角矩阵和对矩阵取对角运算"><span class="header-section-number">4.4</span> (四)生成对角矩阵和对矩阵取对角运算</h3>
-<p>函数diag()依赖于它的变量，当v是一个向量时，diag(v)表示以v的元素为对角元素的对角阵。当M是一个矩阵时，则diag(M)表示的是取M对角线上的元素的向量。如：</p>
-<div class="cell">
+<p>函数diag()依赖于它的变量，当v是一个向量时，diag(v)表示以v的元素为对角元素的对角阵。当M是一个矩阵时，则diag(M)表示的是取M对角线上的元素的向量。如： ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>v<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
 <span id="cb51-2"><a href="#cb51-2"></a><span class="fu">diag</span>(v)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -625,7 +618,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [2,]    0    4    0
 [3,]    0    0    5</code></pre>
 </div>
-</div>
+<p>:::</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>m<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="at">nrow=</span><span class="dv">3</span>)</span>
 <span id="cb53-2"><a href="#cb53-2"></a>m</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -648,8 +641,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="5" class="anchored" data-anchor-id="五与矩阵运算有关的函数"><span class="header-section-number">5</span> 五、与矩阵运算有关的函数</h2>
 <section id="一去矩阵的维数" class="level3" data-number="5.1">
 <h3 data-number="5.1" class="anchored" data-anchor-id="一去矩阵的维数"><span class="header-section-number">5.1</span> （一）去矩阵的维数</h3>
-<p>函数dim（A）得到矩阵的维数，函数nrow(A)得到矩阵A的行数，函数ncol(A)得到矩阵A的列数。如：</p>
-<div class="cell">
+<p>函数dim（A）得到矩阵的维数，函数nrow(A)得到矩阵A的行数，函数ncol(A)得到矩阵A的列数。如： ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
 <span id="cb57-2"><a href="#cb57-2"></a>A</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -657,7 +649,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [1,]    1    3    5
 [2,]    2    4    6</code></pre>
 </div>
-</div>
+<p>:::</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">dim</span>(A)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -680,8 +672,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="二矩阵的合并" class="level3" data-number="5.2">
 <h3 data-number="5.2" class="anchored" data-anchor-id="二矩阵的合并"><span class="header-section-number">5.2</span> （二）矩阵的合并</h3>
 <p>函数cbind()把其自变量横向拼成一个大矩阵，rbind()把其自变量纵向合拼成一个大矩阵。cbind()的自变量是矩阵或看做列向量的向量时，自变量的高度应该相等。rbind()的自变量是矩阵或看做行向量的向量时，自变量的宽度应该相等。</p>
-<p>如果参与合并的的自变量比其变量短，则循环补足后合并。如：</p>
-<div class="cell">
+<p>如果参与合并的的自变量比其变量短，则循环补足后合并。如： ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>x1<span class="ot">&lt;-</span><span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span>
 <span id="cb65-2"><a href="#cb65-2"></a>x1</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -689,7 +680,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [1,]    1    2
 [2,]    3    4</code></pre>
 </div>
-</div>
+<p>:::</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>x2<span class="ot">&lt;-</span><span class="dv">10</span><span class="sc">+</span>x1</span>
 <span id="cb67-2"><a href="#cb67-2"></a>x3<span class="ot">&lt;-</span><span class="fu">cbind</span>(x1,x2)</span>
@@ -752,8 +743,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="5.4" class="anchored" data-anchor-id="四apply函数"><span class="header-section-number">5.4</span> （四）apply函数</h3>
 <p>对于想对矩阵的各行或各列进行某种计算，可用apply函数，其一般形式为：</p>
 <p>apply（A，MARGIN，FUN，…）</p>
-<p>其中A为一个矩阵（或数组），MARGIN取1，代表对行进行运算；MARGIN取2，代表队列进行运算，FUN是用来计算的函数。如：</p>
-<div class="cell">
+<p>其中A为一个矩阵（或数组），MARGIN取1，代表对行进行运算；MARGIN取2，代表队列进行运算，FUN是用来计算的函数。如： ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
 <span id="cb79-2"><a href="#cb79-2"></a>A</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -761,7 +751,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [1,]    1    3    5
 [2,]    2    4    6</code></pre>
 </div>
-</div>
+<p>:::</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a> <span class="fu">apply</span>(A,<span class="dv">1</span>,sum)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

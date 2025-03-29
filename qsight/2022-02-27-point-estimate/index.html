@@ -265,8 +265,7 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb5-9"><a href="#cb5-9"></a>df<span class="ot">&lt;-</span>df<span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">group=</span><span class="fu">factor</span>(group,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Q1"</span>,<span class="st">"Q2"</span>,<span class="st">"Q3"</span>,<span class="st">"Q4"</span>)),</span>
 <span id="cb5-10"><a href="#cb5-10"></a>                <span class="at">type=</span><span class="fu">factor</span>(type,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"PM10"</span>,<span class="st">"PM2.5"</span>)))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>我们可以利用ggplot2的geom_point函数绘制OR值的点，利用geom_errorbar函数绘制95%可信区间的上下限值，利用geom_hline函数绘制参考线，然后利用facet_wrap函数把两个指标的图绘制到一张图上。</p>
-<div class="cell">
+<p>我们可以利用ggplot2的geom_point函数绘制OR值的点，利用geom_errorbar函数绘制95%可信区间的上下限值，利用geom_hline函数绘制参考线，然后利用facet_wrap函数把两个指标的图绘制到一张图上。 ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>df<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>group,<span class="at">y=</span>value))<span class="sc">+</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour=</span>type),<span class="at">shape=</span><span class="st">"square"</span>,<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
@@ -290,7 +289,7 @@ Attaching package: 'dplyr'</code></pre>
 <div class="cell-output cell-output-stderr">
 <pre><code>Saving 7 x 5 in image</code></pre>
 </div>
-</div>
+<p>:::</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ratio.png" class="img-fluid figure-img"></p>

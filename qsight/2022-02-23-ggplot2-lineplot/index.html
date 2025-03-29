@@ -284,12 +284,9 @@ Attaching package: 'dplyr'</code></pre>
 </section>
 <section id="数据处理" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="数据处理"><span class="header-section-number">3</span> 数据处理</h2>
-<p>我们把需要用到的数据读取到向量中，我们的数据以csv的格式存放，我们可以基础包的read.csv函数来读取。</p>
-<div class="cell">
+<p>我们把需要用到的数据读取到向量中，我们的数据以csv的格式存放，我们可以基础包的read.csv函数来读取。 ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"age_incidence.csv"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>我们再来看看数据结构是什么样的</p>
-<div class="cell">
+<p>::: 我们再来看看数据结构是什么样的 ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">head</span>(data)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  area  sex variable agegrp
@@ -300,14 +297,12 @@ Attaching package: 'dplyr'</code></pre>
 5    1 合计     9.65     15
 6    1 合计    14.78     20</code></pre>
 </div>
-</div>
-<p>可以看出读入的数据框里有四个变量，分别为area,sex,variable,agegrp 分别为地区、性别、发病率和年龄组数据，其中area的值为1,2,3分别代表全省合计、城市地区和农村地区，agegrp的值0、1、5、10、15、20、25、30、35、40、45、50、55、60、65、70、75、80、85分别为年龄组范围。</p>
-<p>然后，我们把area和agegrp两个变量都转化为因子，并加上标签，标签的值为最终显示在图上的值。</p>
-<div class="cell">
+<p>::: 可以看出读入的数据框里有四个变量，分别为area,sex,variable,agegrp 分别为地区、性别、发病率和年龄组数据，其中area的值为1,2,3分别代表全省合计、城市地区和农村地区，agegrp的值0、1、5、10、15、20、25、30、35、40、45、50、55、60、65、70、75、80、85分别为年龄组范围。</p>
+<p>然后，我们把area和agegrp两个变量都转化为因子，并加上标签，标签的值为最终显示在图上的值。 ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>data <span class="ot">&lt;-</span> data<span class="sc">%&gt;%</span><span class="fu">mutate</span>(</span>
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="at">area=</span><span class="fu">factor</span>(area,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"全省合计"</span>,<span class="st">"城市地区"</span>,<span class="st">"农村地区"</span>)),</span>
 <span id="cb9-3"><a href="#cb9-3"></a>  <span class="at">agegrp=</span><span class="fu">factor</span>(agegrp,<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0~"</span>,<span class="st">"1~"</span>,<span class="st">"5~"</span>,<span class="st">"10~"</span>,<span class="st">"15~"</span>,<span class="st">"20~"</span>,<span class="st">"25~"</span>,<span class="st">"30~"</span>,<span class="st">"35~"</span>,<span class="st">"40~"</span>,<span class="st">"45~"</span>,<span class="st">"50~"</span>,<span class="st">"55~"</span>,<span class="st">"60~"</span>,<span class="st">"65~"</span>,<span class="st">"70~"</span>,<span class="st">"75~"</span>,<span class="st">"80~"</span>,<span class="st">"85~"</span>)))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>:::</p>
 </section>
 <section id="利用ggplot2作图" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="利用ggplot2作图"><span class="header-section-number">4</span> 利用ggplot2作图</h2>

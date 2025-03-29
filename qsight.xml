@@ -482,7 +482,7 @@ font-style: inherit;">session_info</span>()</span></code></pre></div>
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Asia/Shanghai
- date     2025-03-28
+ date     2025-03-30
  pandoc   3.6.3 @ /opt/homebrew/bin/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
@@ -1601,8 +1601,7 @@ font-style: inherit;">1</span>))</span></code></pre></div>
 <section id="存在问题及解决方法" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="存在问题及解决方法"><span class="header-section-number">3</span> 存在问题及解决方法</h2>
 <p>河南省肿瘤登记采用网络直报信息管理系统进行日常数据的收集和管理，在进行数据上报的时候，我们需要把最新的数据分登记处按照上报格式导出就可以了，这个过程中也涉及了变量名的更改等。</p>
-<p>首先加载相关R语言包</p>
-<div class="cell">
+<p>首先加载相关R语言包 ::: {.cell}</p>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(dplyr)</span>
@@ -1615,7 +1614,7 @@ font-style: inherit;">library</span>(Hmisc)</span>
 <span id="cb1-4"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(haven)</span></code></pre></div>
-</div>
+<p>:::</p>
 <p>我们在code.mdb数据库的registry表中存储了相关登记处的信息，report2019这个变量标记了哪些登记处入选了河南省肿瘤登记年报。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="do" style="color: #5E5E5E;
@@ -1660,10 +1659,10 @@ font-style: inherit;">$</span>areacode)</span></code></pre></div>
 </div>
 <p>通下面的程序，我们把选择需要上报的变量以及把上报变量更改为上报模板要求的变量名称。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><span class="do" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="annotated-cell-2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><span class="do" style="color: #5E5E5E;
 background-color: null;
 font-style: italic;">## 读取肿瘤登记数据</span></span>
-<span id="annotated-cell-3-2">canreg <span class="ot" style="color: #003B4F;
+<span id="annotated-cell-2-2">canreg <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1672,17 +1671,17 @@ background-color: null;
 font-style: inherit;">"tumorinfo.sas7bdat.zip"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-3" class="code-annotation-target">  <span class="fu" style="color: #4758AB;
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-3" class="code-annotation-target">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">rename_all</span>(tolower) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-4" class="code-annotation-target">  <span class="fu" style="color: #4758AB;
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-4" class="code-annotation-target">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(registr,indno,sex,age,birthda,inciden,topo,morp,beha,grad,autoicd10,deathda,basi,state,caus,dlc,areacode) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-5" class="code-annotation-target">  <span class="fu" style="color: #4758AB;
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-5" class="code-annotation-target">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1697,17 +1696,17 @@ background-color: null;
 font-style: inherit;">lastcontact=</span>dlc)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="1">把所有变量名改为小写字母</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="1">把所有变量名改为小写字母</span>
 </dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2">选择需要上报的变量</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="4" data-code-annotation="2">选择需要上报的变量</span>
 </dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="5" data-code-annotation="3">把变量名改成上报模板要求的变量名</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="3">把变量名改成上报模板要求的变量名</span>
 </dd>
 </dl>
 </div>
@@ -4013,8 +4012,8 @@ font-style: inherit;">"pop.dta"</span>)</span></code></pre></div>
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts21856"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts24095"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts25503"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts6358"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
@@ -6783,23 +6782,23 @@ font-style: inherit;">```</span></span></code></pre></div>
 </figcaption>
 <div aria-describedby="tbl-table1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="rlfilfcxfe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rlfilfcxfe table {
+<div id="hvfijhqezb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hvfijhqezb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rlfilfcxfe thead, #rlfilfcxfe tbody, #rlfilfcxfe tfoot, #rlfilfcxfe tr, #rlfilfcxfe td, #rlfilfcxfe th {
+#hvfijhqezb thead, #hvfijhqezb tbody, #hvfijhqezb tfoot, #hvfijhqezb tr, #hvfijhqezb td, #hvfijhqezb th {
   border-style: none;
 }
 
-#rlfilfcxfe p {
+#hvfijhqezb p {
   margin: 0;
   padding: 0;
 }
 
-#rlfilfcxfe .gt_table {
+#hvfijhqezb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -6825,12 +6824,12 @@ font-style: inherit;">```</span></span></code></pre></div>
   border-left-color: #D3D3D3;
 }
 
-#rlfilfcxfe .gt_caption {
+#hvfijhqezb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rlfilfcxfe .gt_title {
+#hvfijhqezb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -6842,7 +6841,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   border-bottom-width: 0;
 }
 
-#rlfilfcxfe .gt_subtitle {
+#hvfijhqezb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -6854,7 +6853,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   border-top-width: 0;
 }
 
-#rlfilfcxfe .gt_heading {
+#hvfijhqezb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -6866,13 +6865,13 @@ font-style: inherit;">```</span></span></code></pre></div>
   border-right-color: #D3D3D3;
 }
 
-#rlfilfcxfe .gt_bottom_border {
+#hvfijhqezb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rlfilfcxfe .gt_col_headings {
+#hvfijhqezb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6887,7 +6886,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   border-right-color: #D3D3D3;
 }
 
-#rlfilfcxfe .gt_col_heading {
+#hvfijhqezb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6907,7 +6906,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   overflow-x: hidden;
 }
 
-#rlfilfcxfe .gt_column_spanner_outer {
+#hvfijhqezb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6919,15 +6918,15 @@ font-style: inherit;">```</span></span></code></pre></div>
   padding-right: 4px;
 }
 
-#rlfilfcxfe .gt_column_spanner_outer:first-child {
+#hvfijhqezb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rlfilfcxfe .gt_column_spanner_outer:last-child {
+#hvfijhqezb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rlfilfcxfe .gt_column_spanner {
+#hvfijhqezb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -6939,11 +6938,11 @@ font-style: inherit;">```</span></span></code></pre></div>
   width: 100%;
 }
 
-#rlfilfcxfe .gt_spanner_row {
+#hvfijhqezb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rlfilfcxfe .gt_group_heading {
+#hvfijhqezb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6969,7 +6968,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   text-align: left;
 }
 
-#rlfilfcxfe .gt_empty_group_heading {
+#hvfijhqezb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -6984,15 +6983,15 @@ font-style: inherit;">```</span></span></code></pre></div>
   vertical-align: middle;
 }
 
-#rlfilfcxfe .gt_from_md > :first-child {
+#hvfijhqezb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rlfilfcxfe .gt_from_md > :last-child {
+#hvfijhqezb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rlfilfcxfe .gt_row {
+#hvfijhqezb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7011,7 +7010,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   overflow-x: hidden;
 }
 
-#rlfilfcxfe .gt_stub {
+#hvfijhqezb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7024,7 +7023,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   padding-right: 5px;
 }
 
-#rlfilfcxfe .gt_stub_row_group {
+#hvfijhqezb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7038,15 +7037,15 @@ font-style: inherit;">```</span></span></code></pre></div>
   vertical-align: top;
 }
 
-#rlfilfcxfe .gt_row_group_first td {
+#hvfijhqezb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rlfilfcxfe .gt_row_group_first th {
+#hvfijhqezb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rlfilfcxfe .gt_summary_row {
+#hvfijhqezb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7056,16 +7055,16 @@ font-style: inherit;">```</span></span></code></pre></div>
   padding-right: 5px;
 }
 
-#rlfilfcxfe .gt_first_summary_row {
+#hvfijhqezb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rlfilfcxfe .gt_first_summary_row.thick {
+#hvfijhqezb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rlfilfcxfe .gt_last_summary_row {
+#hvfijhqezb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7075,7 +7074,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   border-bottom-color: #D3D3D3;
 }
 
-#rlfilfcxfe .gt_grand_summary_row {
+#hvfijhqezb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7085,7 +7084,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   padding-right: 5px;
 }
 
-#rlfilfcxfe .gt_first_grand_summary_row {
+#hvfijhqezb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7095,7 +7094,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   border-top-color: #D3D3D3;
 }
 
-#rlfilfcxfe .gt_last_grand_summary_row_top {
+#hvfijhqezb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7105,11 +7104,11 @@ font-style: inherit;">```</span></span></code></pre></div>
   border-bottom-color: #D3D3D3;
 }
 
-#rlfilfcxfe .gt_striped {
+#hvfijhqezb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rlfilfcxfe .gt_table_body {
+#hvfijhqezb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7118,7 +7117,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   border-bottom-color: #D3D3D3;
 }
 
-#rlfilfcxfe .gt_footnotes {
+#hvfijhqezb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7132,7 +7131,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   border-right-color: #D3D3D3;
 }
 
-#rlfilfcxfe .gt_footnote {
+#hvfijhqezb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -7141,7 +7140,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   padding-right: 5px;
 }
 
-#rlfilfcxfe .gt_sourcenotes {
+#hvfijhqezb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7155,7 +7154,7 @@ font-style: inherit;">```</span></span></code></pre></div>
   border-right-color: #D3D3D3;
 }
 
-#rlfilfcxfe .gt_sourcenote {
+#hvfijhqezb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -7163,63 +7162,63 @@ font-style: inherit;">```</span></span></code></pre></div>
   padding-right: 5px;
 }
 
-#rlfilfcxfe .gt_left {
+#hvfijhqezb .gt_left {
   text-align: left;
 }
 
-#rlfilfcxfe .gt_center {
+#hvfijhqezb .gt_center {
   text-align: center;
 }
 
-#rlfilfcxfe .gt_right {
+#hvfijhqezb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rlfilfcxfe .gt_font_normal {
+#hvfijhqezb .gt_font_normal {
   font-weight: normal;
 }
 
-#rlfilfcxfe .gt_font_bold {
+#hvfijhqezb .gt_font_bold {
   font-weight: bold;
 }
 
-#rlfilfcxfe .gt_font_italic {
+#hvfijhqezb .gt_font_italic {
   font-style: italic;
 }
 
-#rlfilfcxfe .gt_super {
+#hvfijhqezb .gt_super {
   font-size: 65%;
 }
 
-#rlfilfcxfe .gt_footnote_marks {
+#hvfijhqezb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rlfilfcxfe .gt_asterisk {
+#hvfijhqezb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rlfilfcxfe .gt_indent_1 {
+#hvfijhqezb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rlfilfcxfe .gt_indent_2 {
+#hvfijhqezb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rlfilfcxfe .gt_indent_3 {
+#hvfijhqezb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rlfilfcxfe .gt_indent_4 {
+#hvfijhqezb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rlfilfcxfe .gt_indent_5 {
+#hvfijhqezb .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
