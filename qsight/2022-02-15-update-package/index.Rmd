@@ -39,7 +39,7 @@ install.packages('ggplots', repos = "file:///tmp/ryantester")
 ```
 ## 如何使用R包？
 一旦R包被安装之后，每次使用的时候只需要把它加载到目前的工作空间即可。加载R包的命令的有两个library()和require()命令
-```{r}
+```r
 # 加载SASmarkdown包
 library("SASmarkdown")
 #
