@@ -32,7 +32,7 @@ jobs:
 
       - name: Deploy to Tencent Cloudbase
         if: github.ref == 'refs/heads/main'
-        uses: TencentCloudBase/cloudbase-action@v2.0.1
+        uses: TencentCloudBase/cloudbase-action@v2.0
         with:
           secretId: ${{ secrets.secretId }}
           secretKey: ${{ secrets.secretKey }}
