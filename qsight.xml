@@ -12,7 +12,7 @@
 <generator>quarto-1.7.17</generator>
 <lastBuildDate>Wed, 26 Mar 2025 00:00:00 GMT</lastBuildDate>
 <item>
-  <title>基于 R 语言构建人群肿瘤登记数据分析工具：理念与实践</title>
+  <title>基于 R 语言构建人群肿瘤登记数据分析工具</title>
   <dc:creator>陈琼 </dc:creator>
   <link>https://www.chenq.site/qsight/20250326_pbcr-data-analysis-thoughts/</link>
   <description><![CDATA[ 
@@ -4012,8 +4012,8 @@ font-style: inherit;">"pop.dta"</span>)</span></code></pre></div>
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts25503"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts6358"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts5934"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts64007"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
