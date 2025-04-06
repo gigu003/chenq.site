@@ -12,7 +12,7 @@
 <generator>quarto-1.7.17</generator>
 <lastBuildDate>Thu, 23 Jan 2025 00:00:00 GMT</lastBuildDate>
 <item>
-  <title>canregtools: 一个人群肿瘤登记统计分析软件包</title>
+  <title>canregtools</title>
   <link>https://www.chenq.site/packages/canregtools/</link>
   <description><![CDATA[ 
 
@@ -29,10 +29,9 @@
 </section>
 
  ]]></description>
-  <category>肿瘤登记</category>
-  <category>软件</category>
   <guid>https://www.chenq.site/packages/canregtools/</guid>
   <pubDate>Thu, 23 Jan 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://chenq.site/qsight/20250326_pbcr-data-analysis-thoughts/images/logo_canregtools.png" medium="image" type="image/png"/>
 </item>
 </channel>
 </rss>

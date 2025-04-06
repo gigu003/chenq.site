@@ -104,6 +104,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "搜索"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=GTM-NPK7BT6Z"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
+</script>
 
 
 <link rel="stylesheet" href="../../_assets/css/qsight.css">
@@ -247,6 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="什么是人口金字塔图" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="什么是人口金字塔图"><span class="header-section-number">1</span> 什么是人口金字塔图？</h2>
 <p>人口金字塔是用类似古埃及金字塔的形象描绘人口年龄和性别分布状况的图形。能表明人口现状及其发展类型，比如看一个地区或国家的人口结构类型是扩展型、稳定型或者收缩型。</p>
@@ -283,7 +293,8 @@ Attaching package: 'dplyr'</code></pre>
 <section id="数据处理" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="数据处理"><span class="header-section-number">4</span> 数据处理</h2>
 <p>首先需要把我们手里的现有数据读取到R工作环境，然后把数据调整为ggplot2包绘图所需要的格式。</p>
-<p>我们看一下，我们目前的数据结构和变量基本信息吧，目前我们有一个数据框，数据框里有20列数据，第一列为性别(sex),其余分别为0<sub>，1</sub>，4~，…，85+岁组各年龄组的人口数据。 ::: {.cell}</p>
+<p>我们看一下，我们目前的数据结构和变量基本信息吧，目前我们有一个数据框，数据框里有20列数据，第一列为性别(sex),其余分别为0<sub>，1</sub>，4~，…，85+岁组各年龄组的人口数据。</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>pop  <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"pop.csv"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
@@ -301,7 +312,7 @@ incomplete final line found by readTableHeader on 'pop.csv'</code></pre>
 1 1322747 1338809 1145094 941395 812746 622679 440440 300147 183825 102596
 2 1261624 1292094 1101333 918208 801106 635924 467743 342476 228937 164663</code></pre>
 </div>
-<p>:::</p>
+</div>
 <p>但是，ggplot2绘图需要读取纵向格式的数据，也就是说我们需要把目前的数据格式转换成两列，一列为性别，另一列为人口数。因此，我们需要把目前的数据转换成纵向结构数据。</p>
 <p>reshape2包的melt函数可以把横向数据转换为纵向数据，id.vars参数指定保留的变量名称，其余的变量都转职置为纵向结构，转换为两列，一列存放变量名，一列存放变量值。variable.name指定存放变量名的那一列的变量名，value.name指定存放变量值的那一列的变量名。</p>
 <div class="cell">
@@ -312,7 +323,8 @@ incomplete final line found by readTableHeader on 'pop.csv'</code></pre>
 <span id="cb10-5"><a href="#cb10-5"></a>       <span class="at">variable.name=</span><span class="st">"age"</span>,</span>
 <span id="cb10-6"><a href="#cb10-6"></a>       <span class="at">value.name =</span> <span class="st">"pop"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>现在来看看转置后的数据吧 ::: {.cell}</p>
+<p>现在来看看转置后的数据吧</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">head</span>(pop)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   sex age     pop
@@ -323,19 +335,21 @@ incomplete final line found by readTableHeader on 'pop.csv'</code></pre>
 5 男性  r5 1186130
 6 女性  r5 1038768</code></pre>
 </div>
-<p>::: 然后把目前pop数据框的age变量值进行转换，因为它的值就是人口金字塔中显示的年龄组的值。</p>
+</div>
+<p>然后把目前pop数据框的age变量值进行转换，因为它的值就是人口金字塔中显示的年龄组的值。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>pop<span class="ot">&lt;-</span>pop<span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">mutate</span>(<span class="at">age=</span><span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">"r"</span>,<span class="st">""</span>,age)),</span>
 <span id="cb13-3"><a href="#cb13-3"></a>         <span class="at">pop=</span><span class="fu">ifelse</span>(sex<span class="sc">==</span><span class="st">"男性"</span>,<span class="sc">-</span>pop,pop))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>绘制人口金字塔的时候，横条的长度采用跟年龄组人口数占相应人口的百分比来表示，因此计算人口百分比数据。 ::: {.cell}</p>
+<p>绘制人口金字塔的时候，横条的长度采用跟年龄组人口数占相应人口的百分比来表示，因此计算人口百分比数据。</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>age_label<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"0"</span>,<span class="st">"1-4"</span>,<span class="st">"5-9"</span>,<span class="st">"10-14"</span>,<span class="st">"15-19"</span>,<span class="st">"20-24"</span>,<span class="st">"25-29"</span>,<span class="st">"30-34"</span>,<span class="st">"35-39"</span>,<span class="st">"40-44"</span>,<span class="st">"45-49"</span>,<span class="st">"50-54"</span>,<span class="st">"55-59"</span>,<span class="st">"60-64"</span>,<span class="st">"65-69"</span>,<span class="st">"70-74"</span>,<span class="st">"75-79"</span>,<span class="st">"80-84"</span>,<span class="st">"85-"</span>)</span>
 <span id="cb14-2"><a href="#cb14-2"></a>pop <span class="ot">&lt;-</span> pop<span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">group_by</span>(sex)<span class="sc">%&gt;%</span></span>
 <span id="cb14-4"><a href="#cb14-4"></a>  <span class="fu">mutate</span>(<span class="at">pop_rate=</span>pop<span class="sc">/</span><span class="fu">sum</span>(pop)<span class="sc">*</span><span class="dv">100</span>)<span class="sc">%&gt;%</span></span>
 <span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">mutate</span>(<span class="at">pop_rate=</span><span class="fu">ifelse</span>(sex<span class="sc">==</span><span class="st">"男性"</span>,<span class="sc">-</span>pop_rate,pop_rate))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>:::</p>
+</div>
 <p>然后把人口数据拆分成男性和女性两个数据框，并把这个两个数据框存入列表ct</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>ct <span class="ot">&lt;-</span> pop<span class="sc">%&gt;%</span><span class="fu">group_by</span>(sex)<span class="sc">%&gt;%</span><span class="fu">group_split</span>()</span>
@@ -460,6 +474,7 @@ Adding another scale for x, which will replace the existing scale.</code></pre>
 
 </section>
 
+
 <section class="author-card">
   <div class="avatar-container">
     <img src="../_assets/images/author.png" alt="陈琼博士" class="author-avatar">
@@ -481,8 +496,8 @@ Adding another scale for x, which will replace the existing scale.</code></pre>
       </a>
     </div>
   </div>
-</section>
-
+</section><div class="sharethis-inline-reaction-buttons"></div>
+<div class="sharethis-inline-share-buttons"></div>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

@@ -104,6 +104,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "搜索"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=GTM-NPK7BT6Z"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
+</script>
 
 
 <link rel="stylesheet" href="../../_assets/css/qsight.css">
@@ -247,6 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="什么是森林图" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="什么是森林图"><span class="header-section-number">1</span> 什么是森林图？</h2>
 <p>森林图是在平面直角坐标系中，以一条垂直的无效线（横坐标刻度为1或0）为中心，用平行于横轴的多条线段描述了每个被纳入研究的效应量和可信区间（confidence interval，CI），用一个棱形（或其它图形）描述了多个研究合并的效应量及可信区间。它非常简单和直观地描述了Meta分析的统计结果，是Meta分析中最常用的结果表达形式。</p>
@@ -271,7 +281,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="准备数据" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="准备数据"><span class="header-section-number">4</span> 准备数据</h2>
 <p>加载survival包时，自动加载了colon数据框，我们就可以利用这个数据来拟合预后风险。</p>
-<p>首先加载survival包，并查看一下colon数据框的基本情况 ::: {.cell}</p>
+<p>首先加载survival包，并查看一下colon数据框的基本情况</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 加载dplyr包进行数据处理</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(dplyr)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -307,12 +318,13 @@ Attaching package: 'dplyr'</code></pre>
 5    0     1  963     2
 6    0     1  542     1</code></pre>
 </div>
-<p>:::</p>
+</div>
 </section>
 <section id="首先我们对colon数据预处理一下" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="首先我们对colon数据预处理一下"><span class="header-section-number">5</span> 首先我们对colon数据预处理一下</h2>
 <p>我们对sex变量和differ变量因子化，并增加中文值标签。</p>
-<p>如果我们想在森林图里显示交互作用项，那么就需要提前处理数据，比如我们想看surg和nodes的交互作用，我们可以把两者的相乘项加入模型里。 ::: {.cell}</p>
+<p>如果我们想在森林图里显示交互作用项，那么就需要提前处理数据，比如我们想看surg和nodes的交互作用，我们可以把两者的相乘项加入模型里。</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># 预处理colon数据框</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>colon <span class="ot">&lt;-</span> colon<span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">mutate</span>(<span class="at">sex=</span><span class="fu">factor</span>(sex, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"女性"</span>, <span class="st">"男性"</span>)),</span>
@@ -321,7 +333,7 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb9-6"><a href="#cb9-6"></a>         <span class="at">interaction=</span>surg<span class="sc">*</span>nodes,</span>
 <span id="cb9-7"><a href="#cb9-7"></a>         <span class="at">surg=</span> <span class="fu">factor</span>(surg,<span class="at">label=</span><span class="fu">c</span>(<span class="st">"非手术组"</span>,<span class="st">"手术组"</span>))</span>
 <span id="cb9-8"><a href="#cb9-8"></a>         )</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>:::</p>
+</div>
 </section>
 <section id="利用colon数据来拟合预后风险" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="利用colon数据来拟合预后风险"><span class="header-section-number">6</span> 利用colon数据来拟合预后风险</h2>
@@ -411,6 +423,7 @@ Attaching package: 'survminer'</code></pre>
 
 </section>
 
+
 <section class="author-card">
   <div class="avatar-container">
     <img src="../_assets/images/author.png" alt="陈琼博士" class="author-avatar">
@@ -432,8 +445,8 @@ Attaching package: 'survminer'</code></pre>
       </a>
     </div>
   </div>
-</section>
-
+</section><div class="sharethis-inline-reaction-buttons"></div>
+<div class="sharethis-inline-share-buttons"></div>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

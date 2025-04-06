@@ -104,6 +104,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "搜索"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=GTM-NPK7BT6Z"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
+</script>
 
 
 <link rel="stylesheet" href="../../_assets/css/qsight.css">
@@ -234,62 +243,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <p>其实一类数据的展示方式有多种，可以用表格的形式展示，也可以用图的形式来展示。两种方式各有优缺点，表格可以展示信息量比较丰富的数据，但是不太直观；而图的展示方式比较直观，但是展示的信息量有限。所以，我们在选择展示方式时，需要平衡这两者之间的关系。</p>
 <p>我们在前面的<a href="https://chenq.site/tech/2022-r-ggforest/">一篇博文</a>中介绍了利用<strong>森林图</strong>的方式展示比值比数据，这种方式对于展示多个不同类型变量，不同亚组的比值比数据比较有优势，但是如果我们的研究结果变量类型比较单一的话，也可以试试我们下面一种展示方式。</p>
 <p>首先，我们生成一组比值比可信区间数据，包含5个变量：group分组1,2,3,4分别代表Q1、Q2、Q3和Q4；type：指标类型，1代表PM10,2代表PM2.5；value代表OR值，lower和upper分别代表95%可信区间的下限和上限。</p>
 <p>然后，我们把group和type两个变量因子化，并添加相应的值标签，这样标签数据就可以显示到图上。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">group=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>),</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">type=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">4</span>)),</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">1.5</span>, <span class="fl">1.8</span>, <span class="fl">0.9</span>,<span class="fl">1.2</span>,<span class="fl">1.4</span>,<span class="fl">1.6</span>),</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="at">upper =</span> <span class="fu">c</span>(<span class="fl">0.8</span>,<span class="fl">2.5</span>, <span class="fl">1.9</span>, <span class="fl">2.6</span>,<span class="fl">1.1</span>,<span class="fl">1.4</span>,<span class="fl">1.8</span>,<span class="fl">2.0</span>),</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="at">lower =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.3</span>, <span class="fl">1.0</span>, <span class="fl">1.1</span>, <span class="fl">0.1</span>,<span class="fl">0.7</span>,<span class="fl">1.1</span>,<span class="fl">1.2</span>,<span class="fl">1.3</span>)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a>df<span class="ot">&lt;-</span>df<span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">group=</span><span class="fu">factor</span>(group,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Q1"</span>,<span class="st">"Q2"</span>,<span class="st">"Q3"</span>,<span class="st">"Q4"</span>)),</span>
+<span id="cb1-11"><a href="#cb1-11"></a>                <span class="at">type=</span><span class="fu">factor</span>(type,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"PM10"</span>,<span class="st">"PM2.5"</span>)))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="at">group=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>),</span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="at">type=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">4</span>)),</span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">1.5</span>, <span class="fl">1.8</span>, <span class="fl">0.9</span>,<span class="fl">1.2</span>,<span class="fl">1.4</span>,<span class="fl">1.6</span>),</span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="at">upper =</span> <span class="fu">c</span>(<span class="fl">0.8</span>,<span class="fl">2.5</span>, <span class="fl">1.9</span>, <span class="fl">2.6</span>,<span class="fl">1.1</span>,<span class="fl">1.4</span>,<span class="fl">1.8</span>,<span class="fl">2.0</span>),</span>
-<span id="cb5-6"><a href="#cb5-6"></a>  <span class="at">lower =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.3</span>, <span class="fl">1.0</span>, <span class="fl">1.1</span>, <span class="fl">0.1</span>,<span class="fl">0.7</span>,<span class="fl">1.1</span>,<span class="fl">1.2</span>,<span class="fl">1.3</span>)</span>
-<span id="cb5-7"><a href="#cb5-7"></a>)</span>
-<span id="cb5-8"><a href="#cb5-8"></a></span>
-<span id="cb5-9"><a href="#cb5-9"></a>df<span class="ot">&lt;-</span>df<span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">group=</span><span class="fu">factor</span>(group,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Q1"</span>,<span class="st">"Q2"</span>,<span class="st">"Q3"</span>,<span class="st">"Q4"</span>)),</span>
-<span id="cb5-10"><a href="#cb5-10"></a>                <span class="at">type=</span><span class="fu">factor</span>(type,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"PM10"</span>,<span class="st">"PM2.5"</span>)))</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>我们可以利用ggplot2的geom_point函数绘制OR值的点，利用geom_errorbar函数绘制95%可信区间的上下限值，利用geom_hline函数绘制参考线，然后利用facet_wrap函数把两个指标的图绘制到一张图上。 ::: {.cell}</p>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>df<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>group,<span class="at">y=</span>value))<span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour=</span>type),<span class="at">shape=</span><span class="st">"square"</span>,<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept=</span><span class="dv">1</span>),<span class="at">linetype=</span><span class="dv">8</span>)<span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower, <span class="at">ymax =</span> upper), <span class="at">width =</span> <span class="fl">0.1</span>)<span class="sc">+</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>type)<span class="sc">+</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Hypertension"</span>, <span class="at">y =</span> <span class="st">"Adjusted OR and 95% CI"</span>)<span class="sc">+</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a>  <span class="fu">theme</span>(</span>
-<span id="cb6-11"><a href="#cb6-11"></a>    <span class="at">strip.text.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb6-12"><a href="#cb6-12"></a>    <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.9</span>),</span>
-<span id="cb6-13"><a href="#cb6-13"></a>    <span class="at">legend.title =</span>  <span class="fu">element_blank</span>()</span>
-<span id="cb6-14"><a href="#cb6-14"></a>  )<span class="ot">-&gt;</span>pp</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>我们可以利用ggplot2的geom_point函数绘制OR值的点，利用geom_errorbar函数绘制95%可信区间的上下限值，利用geom_hline函数绘制参考线，然后利用facet_wrap函数把两个指标的图绘制到一张图上。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>df<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>group,<span class="at">y=</span>value))<span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour=</span>type),<span class="at">shape=</span><span class="st">"square"</span>,<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept=</span><span class="dv">1</span>),<span class="at">linetype=</span><span class="dv">8</span>)<span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower, <span class="at">ymax =</span> upper), <span class="at">width =</span> <span class="fl">0.1</span>)<span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>type)<span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Hypertension"</span>, <span class="at">y =</span> <span class="st">"Adjusted OR and 95% CI"</span>)<span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="fu">theme</span>(</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="at">strip.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.9</span>),</span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="at">legend.title =</span>  <span class="fu">element_blank</span>()</span>
+<span id="cb2-14"><a href="#cb2-14"></a>  )<span class="ot">-&gt;</span>pp</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: A numeric `legend.position` argument in `theme()` was deprecated in ggplot2
 3.5.0.
 ℹ Please use the `legend.position.inside` argument of `theme()` instead.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">ggsave</span>(<span class="st">"ratio.png"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggsave</span>(<span class="st">"ratio.png"</span>)</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Saving 7 x 5 in image</code></pre>
 </div>
-<p>:::</p>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ratio.png" class="img-fluid figure-img"></p>
@@ -297,7 +294,7 @@ Attaching package: 'dplyr'</code></pre>
 </figure>
 </div>
 <p>上图就是我们最终的结果。R的绘图功能很强大，很灵活，可以实现很精确的绘图，让我们坚持每天学一点科研作图吧！</p>
-<p>如果你有不能绘制的统计图形，请在下面的评论框里留言吧！</p>
+
 
 
 
@@ -322,8 +319,8 @@ Attaching package: 'dplyr'</code></pre>
       </a>
     </div>
   </div>
-</section>
-
+</section><div class="sharethis-inline-reaction-buttons"></div>
+<div class="sharethis-inline-share-buttons"></div>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

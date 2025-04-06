@@ -104,6 +104,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "搜索"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=GTM-NPK7BT6Z"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
+</script>
 
 
 <link rel="stylesheet" href="../../_assets/css/qsight.css">
@@ -242,6 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <p>By-Group 最常见的功能就是，在一个数据集里利用SET、MERGE、MODIFY 和 UPGRADE语句和By语句进行两个或者多个数据集的合并。当你在用SET、MERGE、MODIFY和UPGRADE语句合并By语句时，数据集里的记录必须是经过排序的。</p>
 <p>当在处理这些语句时，SAS每次读取一条记录到程序数据向量。在By-Group语句的作用下，SAS会根据一个或者多个By变量的值在数据集中选择相应的记录。当处理完一个By-Group的记录后，SAS会挪到下一个By-Group继续处理。 ### By-Group+条件语句</p>
 <p>我们可以通过利用条件语句（IF 或者IF-THEN语句或者SELECT语句）加上SAS临时变量First.variable 或者Last.variable，从而可以有条件地处理记录。 例如，我们可以利用它来执行每一个By-group组的计算，并且在一个By-Group组的第一条记录或者最后一条记录已经写进程序数据向量时写记录到数据集。 <br>下面的程序计算了每一年各个部门的工资，在每一个By-Group开始的时候，它利用IF-THEN语句和自动变量First.variable和Last.variable来重置工资到0，在每个By-group处理结束的时候，写记录到数据集。</p>
@@ -295,6 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </section>
 
+
 <section class="author-card">
   <div class="avatar-container">
     <img src="../_assets/images/author.png" alt="陈琼博士" class="author-avatar">
@@ -316,8 +327,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>
     </div>
   </div>
-</section>
-
+</section><div class="sharethis-inline-reaction-buttons"></div>
+<div class="sharethis-inline-share-buttons"></div>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
