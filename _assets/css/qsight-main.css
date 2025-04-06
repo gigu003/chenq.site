@@ -747,7 +747,7 @@ th {
   border: 1px solid #d0dce5;
   border-left: 4px solid #005c99;
   padding: 1rem 1.25rem;
-  margin-top: 3rem; /* 增加与上一模块的垂直间距 */
+  margin-top: 3rem;
   margin-bottom: 1rem;
   border-radius: 6px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
