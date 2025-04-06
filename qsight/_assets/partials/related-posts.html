@@ -1,0 +1,8 @@
+<div class="related-posts">
+  <h3>相关文章推荐</h3>
+  <ul>
+    {% for post in posts[:limit] %}
+      <li><a href="{{ post.file }}">{{ post.file | replace('.qmd', '') }}</a></li>
+    {% endfor %}
+  </ul>
+</div>

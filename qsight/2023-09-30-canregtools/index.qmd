@@ -22,6 +22,7 @@ R语言包“*canregtools*”提供了肿瘤登记常规数据分析中常用的
 目前*canregtools*包还处在开发阶段，新的功能会不断补充更新到该包中，大家可以登陆[canregtools包网站](https://caregtools.chenq.site)了解开发进度和最新功能，如果您有关于该包的建议，请[发送邮件](mailto:chenq08@126.com)给我。
 
 ## canregtools的安装
+
 该包还正处于开发阶段，暂时还没有准备将其提交至CRAN，我们会等其功能稳定之后再考虑将其正式提交。目前代码托管在github上，大家可以通过下面的代码进行安装。
 
 ```{{r}}
@@ -49,6 +50,7 @@ session_info()
 library(canregtools)
 file <- system.file("extdata", "411721.xlsx", package = "canregtools")
 data <- read_canreg(file)
+
 ```
 
 我们给读入的原始数据定义一个类"canreg"， 我们可以通过class函数查看一下。
@@ -85,7 +87,7 @@ fbsw <- count_canreg(data, cancer_type = "small")
 ### 年龄标化率
 计算年龄标化率的函数为ageadjust()，可以基于不同标准人口计算年龄标化率，并基于不同方法估计可信区间。该函数主要有以下参数：
 
-```{{r}}
+```{r}
 #| eval: false
 ageadjust(
   count, #不同年龄组病例数
@@ -112,7 +114,7 @@ ageadjust(cases, pop, stdpop = spop, mp = 100000)
 ### 基于类canreg或fbswicd计算标化率
 我们把数据读入R以后被转换为'canreg'类，我可以直接基于'canreg'数据计算标化率。函数为*create_asr()*，该函数的参数如下：
 
-```{{r}}
+```{r}
 #| eval: false
 create_asr(
   x, # 类为canreg或fbswicd的数据
@@ -130,6 +132,7 @@ create_asr(
 ```
 
 基于*canreg*类数据计算标化率,同时也可以输出0-74岁累积率和35-64岁截缩率。
+
 ```{r}
 asr <- create_asr(data, year, sex, cancer) |> 
   add_labels()
@@ -137,6 +140,7 @@ asr
 ```
 
 同样，也可以基于*fbswicd*类数据计算标化率。
+
 ```{r}
 asr <- create_asr(fbsw, year, sex, cancer) |> 
   add_labels(lang = "en")
@@ -147,7 +151,8 @@ asr
 ## 数据可视化
 ### 绘制人口金字塔图
 绘图函数为draw_pyramid()，该函数的主要功能为绘制一个或多个人口金字塔，用于展示人口数据结构。该函数主要有以下参数：
-```{{r}}
+
+```{r}
 #| eval: false
 draw_pyramid(
   x, # 类为"canreg"或"fbswicd"的数据 
@@ -181,6 +186,7 @@ draw_pyramid(fbsw,
 ```
 
 如果不想显示人口金字塔人口数字可以，设置*show_value = FALSE*，不显示这些数据。
+
 ```{r}
 draw_pyramid(fbsw,
              csize = 0.8,
@@ -214,7 +220,7 @@ draw_bar(list(asr$M),
 ```
 
 
-```{{r}}
+```{r}
 #| eval: false
 draw_barchart(
   data, #用于绘图的数据框

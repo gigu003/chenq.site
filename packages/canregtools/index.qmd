@@ -1,14 +1,11 @@
 ---
-title: 'canregtools\: 一个人群肿瘤登记统计分析软件包'
+title: 'canregtools'
+description: '用于人群肿瘤登记数据管理和统计分析'
 date: 2025-01-23
 date-modified: last-modified
-categories:
-  - 肿瘤登记
-  - 软件
-keywords:
-  - canregtools
-  - 软件
-  - 肿瘤登记
+image: https://chenq.site/qsight/20250326_pbcr-data-analysis-thoughts/images/logo_canregtools.png
+deploy:
+  - github
 execute:
   echo: false
   message: false

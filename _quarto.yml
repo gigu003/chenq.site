@@ -1,5 +1,6 @@
 project:
   type: website
+
   preview:
     port: 5050
   resources:
@@ -20,6 +21,9 @@ website:
   open-graph: true
   site-url: https://www.chenq.site
   page-navigation: true
+  google-analytics:
+    tracking-id: "GTM-NPK7BT6Z"
+    anonymize-ip: true
   navbar:
     background: "primary"
     search: true
@@ -70,3 +74,4 @@ format:
     toc: false
     theme: flatly
     css: _assets/css/qsight.css
+    margin-header: _assets/sidebar-wechat.html

@@ -26,6 +26,4 @@ format:
       - _assets/partials/title-block.html
       - _assets/partials/title-metadata.html
       - _assets/partials/author-info.html
-    margin-header: _assets/partials/sidebar-wechat.html
-
-
+      - _assets/partials/sharethis.html

@@ -37,7 +37,9 @@ install.packages("dplyr")
 
 把这些要用到的R包加载到工作环境中
 
-```{r,warning==FALSE}
+```{r}
+#| warning: false
+
 library(ggplot2)
 library(cowplot)
 library(dplyr)
@@ -46,16 +48,21 @@ library(dplyr)
 ## 数据处理
 
 我们把需要用到的数据读取到向量中，我们的数据以csv的格式存放，我们可以基础包的read.csv函数来读取。
+
 ```{r}
 data<-read.csv("age_incidence.csv")
 ```
+
 我们再来看看数据结构是什么样的
+
 ```{r}
 head(data)
 ```
+
 可以看出读入的数据框里有四个变量，分别为area,sex,variable,agegrp 分别为地区、性别、发病率和年龄组数据，其中area的值为1,2,3分别代表全省合计、城市地区和农村地区，agegrp的值0、1、5、10、15、20、25、30、35、40、45、50、55、60、65、70、75、80、85分别为年龄组范围。
 
 然后，我们把area和agegrp两个变量都转化为因子，并加上标签，标签的值为最终显示在图上的值。
+
 ```{r}
 data <- data%>%mutate(
   area=factor(area,labels=c("全省合计","城市地区","农村地区")),
@@ -66,7 +73,7 @@ data <- data%>%mutate(
 
 ggplot2包作折线图主要用的是geom_line()函数，我们先来一个示例，先作一个单图，把data数据框里的全省合计数据提取出来制作一个年龄别发病率的折线图。
 
-```{r,fig.alt="科研作图，折线图"}
+```{r}
 # 利用dplyr包filter函数提取数据
 data%>%filter(area=="全省合计")%>%
   ggplot(mapping = aes(x=agegrp))+
@@ -138,6 +145,7 @@ theme_classic()+
 ```{r,fig.alt="科研作图，折线图"}
 p2
 ```
+
 注意：facet_wrap()函数还提供了一个参数就 scales="fixed" fixed是默认的参数值，意思是所有图共享一个统一的坐标轴刻度，但是还可以选择scales="free"，这个每个图根据自身值的范围自动选择坐标轴刻度范围。
 
 但是因为我们已经在前面的语句中已经通过scale_y_continuous语句设置了坐标轴刻度，所以加入scales="free"选项，只会再每个图上再单独显示出来坐标轴，但是刻度范围还是按照scale_y_continuous语句设置的来显示。

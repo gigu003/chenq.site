@@ -16,9 +16,15 @@ image: https://cdn.jsdelivr.net/gh/gigu003/db/images/book/2022.jpg
 
 肿瘤登记年报是肿瘤登记处发布肿瘤发病、死亡、生存等肿瘤监测流行病学数据的重要方式和途径。近年来，发布肿瘤登记年报也被纳入到健康中国行动-癌症防治行动实施方案中， 因此，这项工作也成为了各省级肿瘤登记处每年的重要工作内容，而如何高质量、高效率的完成此项工作也至关重要。
 
-![](https://cdn.jsdelivr.net/gh/gigu003/db/images/book/2022.jpg){width=20% .lightbox group="yearbook"}
-![](https://cdn.jsdelivr.net/gh/gigu003/db/images/book/2021.jpg){width=20% .lightbox group="yearbook"}
-![](https://cdn.jsdelivr.net/gh/gigu003/db/images/book/2020.jpg){width=20% .lightbox group="yearbook"}
+::: {.layout-ncol=2}
+
+![2022河南省肿瘤登记年报](https://cdn.jsdelivr.net/gh/gigu003/db/images/book/2022.jpg){width=50% .lightbox group="yearbook" }
+
+![2021河南省肿瘤登记年报](https://cdn.jsdelivr.net/gh/gigu003/db/images/book/2021.jpg){width=50% .lightbox group="yearbook" }
+
+![2020河南省肿瘤登记年报](https://cdn.jsdelivr.net/gh/gigu003/db/images/book/2020.jpg){width=50% .lightbox group="yearbook" }
+
+:::
 
 ## 肿瘤登记年报的特点
 - *定期性和系统性*: 肿瘤登记年报通常按年度发布，具备明确的时间周期性。这种年鉴式的定期报告使得研究者、公共卫生从业者以及医疗管理人员能够持续追踪和监测肿瘤的发生趋势、变化和分布情况。

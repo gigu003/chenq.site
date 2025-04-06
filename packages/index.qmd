@@ -4,17 +4,17 @@ toc: false
 listing:
   type: table
   contents: "**/index.qmd"
+  sort: "date desc"
   sort-ui: false
   filter-ui: false
-  sort: "date desc"
   date-format: "YYYY-MM-DD"
   table-striped: true
   field-display-names:
-    date: "日期"
-    title: "主题"
-    github: "地点"
-    cran:
-  fields: [date, title, address]
+    image: "图标"
+    title: "包名"
+    description: "功能"
+    deploy: "部署"
+  fields: [image, title, description, deploy]
   feed: true
 
 language:

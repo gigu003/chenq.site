@@ -1,6 +1,6 @@
 ---
 title: 陈琼博士
-image: "profile.jpeg"
+image: "_assets/images/author.png"
 image-alt: "Dr. Qiong Chen Profile"
 about:
   id: heading

@@ -2,7 +2,7 @@
   "hash": "aa0c1e89878d1b2ee9c1ccb9963b0e26",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: 科技写作，我选择使用quarto\ndate: 2023-03-02\ntags: [\"安装\"]\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nknitr::include_url(\"https://www.chenq.site/slides/2022-12-what-is-quarto/#/title-slide\")\n```\n\n<iframe src=\"https://www.chenq.site/slides/2022-12-what-is-quarto/#/title-slide\" width=\"672\" height=\"400px\" data-external=\"1\"></iframe>\n:::\n",
+    "markdown": "---\ntitle: 科技写作，我选择使用quarto\ndate: 2023-03-02\ntags: [\"安装\"]\n---\n\n\n::: {.cell}\n\n```{.r .cell-code}\nknitr::include_url(\"https://www.chenq.site/slides/2022-12-what-is-quarto/#/title-slide\")\n```\n\n<iframe src=\"https://www.chenq.site/slides/2022-12-what-is-quarto/#/title-slide\" width=\"672\" height=\"400px\" data-external=\"1\"></iframe>\n:::\n\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

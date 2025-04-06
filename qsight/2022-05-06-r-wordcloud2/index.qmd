@@ -50,6 +50,7 @@ head(demoFreq)
 ```
 
 还有一个中文词频数据框，包含两个变量 V2 词汇，V1词汇频率。
+
 ```{r}
 head(demoFreqC)
 ```
@@ -57,6 +58,7 @@ head(demoFreqC)
 ## 绘制词云图
 
 绘制星形词云图，字体大小设置为1
+
 ```{r}
 #| fig-width: 8
 #| fig-height: 8
@@ -74,6 +76,7 @@ wordcloud2(demoFreqC,size = 2,fontFamily = "微软雅黑",color = "random-light"
 ```
 
 绘制默认词云图，字体大小设置为2，字体旋转最小和最大均设置为-pi/2。
+
 ```{r}
 #| fig-width: 8
 #| fig-height: 8
@@ -82,6 +85,7 @@ wordcloud2(demoFreq, size = 2, minRotation = -pi/2, maxRotation = -pi/2)
 ```
 
 绘制词云图，字体大小设置为2，字体旋转最大和最小角度均为-pi/6，旋转比例设置为0.5，一半的字体会旋转。
+
 ```{r}
 #| fig-width: 8
 #| fig-height: 8

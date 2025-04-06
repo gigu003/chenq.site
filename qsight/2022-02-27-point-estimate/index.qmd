@@ -22,7 +22,9 @@ image: "ratio.png"
 
 然后，我们把group和type两个变量因子化，并添加相应的值标签，这样标签数据就可以显示到图上。
 
-```{r,warning=FALSE}
+```{r}
+#| warning: false
+
 library(dplyr)
 df <- data.frame(
   group=c(1,2,3,4,1,2,3,4),
@@ -38,7 +40,8 @@ df<-df%>%mutate(group=factor(group,labels=c("Q1","Q2","Q3","Q4")),
 ```
 
 我们可以利用ggplot2的geom_point函数绘制OR值的点，利用geom_errorbar函数绘制95%可信区间的上下限值，利用geom_hline函数绘制参考线，然后利用facet_wrap函数把两个指标的图绘制到一张图上。
-```{r,fig.alt="比值比95%可信区间"}
+
+```{r}
 library(ggplot2)
 df%>%ggplot(aes(x=group,y=value))+
   geom_point(aes(colour=type),shape="square",size=3)+
@@ -59,5 +62,3 @@ ggsave("ratio.png")
 ![比值比图](ratio.png)
 
 上图就是我们最终的结果。R的绘图功能很强大，很灵活，可以实现很精确的绘图，让我们坚持每天学一点科研作图吧！
-
-如果你有不能绘制的统计图形，请在下面的评论框里留言吧！

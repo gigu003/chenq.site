@@ -1,11 +1,11 @@
 ---
 title: 陈琼博士
-image: "profile.jpeg"
+image: "_assets/images/author.png"
 image-alt: "Dr. Qiong Chen Profile"
 about:
   id: heading
   template: jolla
-  image-width: 15em
+  image-width: 10em
   image-shape: round
   links:
     - icon: git
@@ -20,17 +20,13 @@ about:
 ---
 
 
-::: {#heading}
-*I'm a Cancer Register working in [Henan Cancer Hospital](http://anti-cancer.com.cn/), and I earned my PhD from Department of Epidemiology in [Shanxi Medical University](http://www.sxmu.edu.cn/). 
-My current work often involves SAS and R coding, and cancer registration data report and visualization*. *I also have been invovled in the publication of the Cancer Registration Annual Report in Henan, China for several years, and I like sharing the experience, knowledge, and my life here*. 
-*I have two daughters and they are the greatest achievement I have made*.
+::: {.intro}
 
-*这是陈琼的个人主页。2011年，我从[兰州大学](http://www.lzu.edu.cn/)流行病与卫生统计学专业毕业，就职于[河南省肿瘤医院](http://anti-cancer.com.cn/)，之后一直从事肿瘤登记工作*。
-*2015年中，我开始在山西医科大学攻读博士学位，于2018年顺利毕业，此后，继续从事肿瘤登记工作*。
-*我在工作中经常会涉及SAS以及R的编程，以实现肿瘤登记数据统计报告和可视化等。我喜欢电子产品、喜欢编程、爱折腾网页，用Blog记录点滴。*
-*我将在这里记录和分享一些工作、学习、生活相关的一些信息*。
+Hi, and welcome to my personal website. I’m a cancer epidemiologist with a focus on cancer registry, R programming, data analysis, and visualization. Here, I share practical insights, tools, and workflows — from building websites to creating automated reports — all tailored for researchers and data professionals.
+
+欢迎访问我的个人网站！我是一名专注于肿瘤流行病学的研究者，主要从事肿瘤登记、R 语言编程、数据分析与可视化等相关工作。在这个网站中，我分享自己在研究与实践中积累的方法、工具和工作流程，内容涵盖网站开发、自动化报告生成等。本站既是我个人学习与工作的记录，也希望能为同行提供有价值的参考。
+
 
 [了解更多](about.qmd)
 
 :::
-

@@ -14,10 +14,13 @@ R magick包在R中提供了一套简单而有效的图片处理工具，让你�
 
 ## 安装magick包
 可以从CRAN上安装magick包
+
 ```r
 install.packages("magick")
 ```
+
 当然也可以从github上安装
+
 ```r
 devtools::install_github('ropensci/magick')
 ```
@@ -50,7 +53,9 @@ plot(logo)
 # 把图片另存起来
 image_write(logo, path = "logo.png", format = "png")
 ```
+
 可以更改图片的格式
+
 ```{r}
 logo1 <- image_convert(logo, "jpg")
 image_info(logo1)
@@ -105,6 +110,7 @@ image_annotate(image_scale(logo,"x300"), "logo image", size=30, color="red", box
 ```
 
 ## magick包支持管道操作符"%"
+
 ```{r,fig.alt="magick包处理图片，科研作图"}
 # 等比例调整图片高度为300像素
 image_scale(logo,"x300")%>%
@@ -120,6 +126,7 @@ image_scale(logo,"x300")%>%
 ```
 
 ## 图片向量，magick还支持图层叠加、图片拼接、动图处理等功能。
+
 ```{r,fig.alt="magick包处理图片，科研作图"}
 # 先把一个gif的图片读进来
 rabbit <- image_read("rabbit.gif")
@@ -173,6 +180,7 @@ image_animate(image_scale(img, "x200"), fps = 1, dispose = "previous")
 magick包提供的image_read_pdf()函数可以读取pdf文件，当读取pdf文件后，pdf文件被转化为一个向量，而pdf的每一页被转化为该向量的每一个元素。由于pdf在被读取时进行渲染，所以需要在读取函数中设置density参数。下面我们来试一试吧：
 
 这个功能是借助pdftools包来实现的
+
 ```r
 # 先安装pdftools包
 install.packages("pdftools")

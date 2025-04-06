@@ -24,6 +24,7 @@ image: forest.png
 照例两种方式，要么从R CRAN的不同镜像上安装，要么从github上安装。
 
 第一种方式：从CRAN镜像上安装
+
 ```r
 install.packages("survminer")
 ```
@@ -41,6 +42,7 @@ devtools::install_github("kassambara/survminer", build_vignettes = FALSE))
 加载survival包时，自动加载了colon数据框，我们就可以利用这个数据来拟合预后风险。
 
 首先加载survival包，并查看一下colon数据框的基本情况
+
 ```{r}
 # 加载dplyr包进行数据处理
 library(dplyr)
@@ -54,6 +56,7 @@ head(colon)
 我们对sex变量和differ变量因子化，并增加中文值标签。
 
 如果我们想在森林图里显示交互作用项，那么就需要提前处理数据，比如我们想看surg和nodes的交互作用，我们可以把两者的相乘项加入模型里。
+
 ```{r}
 # 预处理colon数据框
 colon <- colon%>%
@@ -67,6 +70,7 @@ colon <- colon%>%
 
 
 ## 利用colon数据来拟合预后风险
+
 ```{r}
 model <- coxph(Surv(time, status) ~ sex +  differ + surg + nodes + interaction, data = colon )
 summary(model)

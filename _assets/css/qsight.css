@@ -139,6 +139,8 @@ a.navbar-brand:hover {
   margin-bottom: 12px; /* 增加间距，使每条文献更清晰 */
   padding-bottom: 10px; /* 底部内边距，防止内容紧凑 */
   border-bottom: 1px dashed #ccc; /* 使用虚线分隔不同文献 */
+  word-wrap: break-word; /* 强制长单词换行 */
+  overflow-wrap: break-word; /* 防止网址等长文本溢出容器 */
 }
 
 div.csl-right-inline{
@@ -535,3 +537,152 @@ div.quarto-post .listing-categories:hover .listing-category:hover {
 }
 
 
+/* ========== 404 页面样式 ========== */
+.error-page {
+
+  text-align: center;
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.error-message {
+  background-color: #f4f7fa;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.error-message h1 {
+  font-size: 3em;
+  color: #ff5733; /* 亮色，如橙色 */
+  font-weight: bold; /* 增加加粗效果 */
+  margin-bottom: 10px;
+  text-align: center; /* 保证标题剧中显示 */
+}
+
+.error-message p {
+  font-size: 1.2em;
+  color: #333;
+  line-height: 1.6;
+}
+
+.suggestions {
+  font-size: 1.1em;
+}
+
+.suggestions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.suggestions ul li {
+  margin: 12px 0;
+}
+
+.suggestions a {
+  text-decoration: none;
+  color: #487191;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.suggestions a:hover {
+  color: #2c3e50;
+  border-bottom: 2px solid #487191;
+}
+
+/* 为移动设备优化 */
+@media (max-width: 600px) {
+  .error-page {
+    padding: 20px;
+  }
+
+  .error-message h1 {
+    font-size: 2.5rem;
+  }
+
+  .error-message p {
+    font-size: 1rem;
+  }
+}
+
+
+/* 设置整个表格的宽度和居中 */
+table {
+  width: 100%; /* 表格宽度 */
+  margin: 20px 0; /* 给表格添加上下间距 */
+  border-collapse: collapse; /* 去掉表格的间隙 */
+}
+
+/* 设置表头和表格内容的居中 */
+th, td {
+  text-align: center; /* 水平方向居中 */
+  vertical-align: middle; /* 垂直方向居中 */
+  padding: 8px 12px; /* 给表格单元格增加内边距，增强可读性 */
+  border: 1px solid #ddd; /* 添加边框 */
+}
+
+/* 设置表头的样式 */
+th {
+  background-color: #f4f4f4; /* 表头背景色 */
+  font-weight: bold; /* 表头字体加粗 */
+}
+
+.qsight-list ul {
+  list-style: none;
+  padding-left: 1.5em;
+  margin: 1em 0;
+  font-size: 90%;
+  line-height: 1.7;
+  color: #2e2e2e;
+}
+
+.qsight-list ul li {
+  margin: 0.6em 0;
+  padding-left: 0.5em;
+  position: relative;
+  border-left: none;
+}
+
+/* 去除默认项目符号，使用简洁圆点 */
+.qsight-list ul > li::before {
+  content: "";
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  background-color: #36454f;
+  border-radius: 50%;
+  margin-right: 0.6em;
+  vertical-align: middle;
+}
+
+/* 子列表加虚线边框，更学术排版感 */
+.qsight-list ul li ul {
+  margin-top: 0.4em;
+  margin-left: 1em;
+  padding-left: 1.2em;
+  border-left: 1.5px dashed #a0a0a0;
+}
+
+.qsight-list ul li ul li::before {
+  content: "";
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  background-color: #7a7a7a;
+  border-radius: 50%;
+  margin-right: 0.6em;
+  vertical-align: middle;
+}
+
+/* 去除最后一项边距 */
+.qsight-list ul li:last-child {
+  margin-bottom: 0;
+}
+
+.intro{
+  text-align: justify;
+}

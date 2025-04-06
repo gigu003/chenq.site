@@ -32,23 +32,22 @@ listing:
     page-size: 999
     feed: true
   - id: books
+    type: table
     contents: books
-    type: grid
-    fields: [image]
-    grid-columns: 6
-    grid-item-align: left
-    grid-item-border: true
-    image-height: 200 em
-    page-size: 6
-    
+    table-striped: true
+    table-hover: true
+    date-format: "YYYY"
+    fields: [ image, title, date, author ]
+    sort: ["date desc"]
+    field-display-names: 
+      title: 年报名称
+      date: 年份
+      author: 主编/副主编
+      image: 封面
 language:
   listing-page-field-categories: "文章类型"
   
 ---
-
-## 出版作品
-[&nbsp;&nbsp;CNKI作者&nbsp;&nbsp;](https://kns.cnki.net/kcms/detail/knetsearch.aspx?sfield=au&skey=陈琼&code=000033286925&v=L99VyCTXNqM33Iuyy_4c1O5o_4zvwh6EMZ8EGPBPbRz3L2FSij4Nu8tOzs8xmWMq){.badge .badge-large .badge-green}
- &nbsp;&nbsp;&nbsp;&nbsp; [&nbsp;&nbsp;万方作者&nbsp;&nbsp;](https://fx.wanfangdata.com.cn/scholartrends/detail?scholar_id=a0003863732&scholar_name=陈琼&org_name=河南省肿瘤医院%3B郑州大学附属肿瘤医院){.badge .badge-large .badge-red}&nbsp;&nbsp;&nbsp;&nbsp;   [&nbsp;{{< ai google-scholar >}}&nbsp;Google Scholar &nbsp;&nbsp;](https://scholar.google.com/citations?user=KKgW5AwAAAAJ&hl=zh-CN){.badge .badge-large .badge-blue}   
 
 ## 参编书籍
 
