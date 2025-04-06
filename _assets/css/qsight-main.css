@@ -683,28 +683,33 @@ th {
 }
 
 
+
 .post-meta-inline {
   display: flex;
   align-items: center;
   font-size: 0.95em;
   color: #555;
-  margin: 0em 0 2em 0em;
-  flex-wrap: wrap;
+  margin: 0 0 2em 0;
+  flex-wrap: nowrap;
+  gap: 0.6em; /* 替代 margin-right，让间距更自然 */
+  overflow: hidden;
 }
 
 .avatar-inline {
+  flex-shrink: 0; /* 防止头像被压缩 */
   width: 32px;
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 0.5em;
   border: 1px solid #ddd;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .meta-text {
-  display: inline-block;
+  flex-grow: 1;
+  min-width: 0;
   line-height: 1.4;
+  word-break: break-word; /* 允许长词换行 */
 }
 
 .quarto-title-meta {
