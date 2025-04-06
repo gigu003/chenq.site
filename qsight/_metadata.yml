@@ -26,4 +26,3 @@ format:
       - _assets/partials/title-block.html
       - _assets/partials/title-metadata.html
       - _assets/partials/author-info.html
-      - _assets/partials/sharethis.html

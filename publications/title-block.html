@@ -1,3 +1,10 @@
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">$title$</h1>
+$if(subtitle)$
+<p class="subtitle lead">$subtitle$</p>
+$endif$
+</div>
 
 $if(categories)$
 $if(quarto-template-params.title-block-categories)$
@@ -20,3 +27,5 @@ $if(date)$
   </span>
 </div>
 $endif$
+
+$title-metadata.html()$

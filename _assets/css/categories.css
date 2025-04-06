@@ -1,0 +1,46 @@
+/* Listing & Categories */
+.quarto-category {
+  color: white;
+  display: inline-block;
+  background-color: #536878;
+  padding: 3px;
+  border-radius: 3px;
+  transition: background 0.3s ease-in-out;
+}
+
+.quarto-categories .quarto-category a {
+  color: #ffffff;
+  line-height: 1.2rem;
+  font-size: 0.9rem;
+  padding: 3px;
+  opacity: 0.9;
+}
+
+.quarto-category:hover,
+.badge-grey:hover,
+.listing-category:hover {
+  background-color: darkred;
+  color: white;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.badge-grey:hover a {
+  color: #ebebeb !important;
+}
+
+.quarto-listing-category,
+.listing-category,
+.listing-actions-group,
+.about-link-text {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.quarto-categories,
+.quarto-category,
+.listing-category {
+  line-height: 2em !important;
+  margin-left: 0px;
+  margin-right: 5px;
+  border-radius: 5px;
+}

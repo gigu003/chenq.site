@@ -1,5 +1,5 @@
 ---
-title: 陈琼博士
+title: '陈琼博士'
 image: "_assets/images/author.png"
 image-alt: "Dr. Qiong Chen Profile"
 about:

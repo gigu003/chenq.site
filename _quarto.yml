@@ -1,13 +1,11 @@
 project:
   type: website
-
   preview:
     port: 5050
   resources:
     - "*.pdf"
     - /report/2021/
     - /fonts/
-    - author.png
     - /qsight/assets/images/*
     - /slides/2023-5-16-canreg-report/example.html
     - /training/annumeeting2023/images/
@@ -21,6 +19,7 @@ website:
   open-graph: true
   site-url: https://www.chenq.site
   page-navigation: true
+  back-to-top-navigation: true
   google-analytics:
     tracking-id: "GTM-NPK7BT6Z"
     anonymize-ip: true
@@ -73,5 +72,6 @@ format:
     code-line-numbers: true
     toc: false
     theme: flatly
-    css: _assets/css/qsight.css
+    css:
+      - _assets/css/qsight.css
     margin-header: _assets/sidebar-wechat.html

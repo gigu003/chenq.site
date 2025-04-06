@@ -36,5 +36,3 @@ message("Using library: ", .libPaths()[1])
 if (interactive()) {
   suppressMessages(require(devtools))
 }
-
-source("newpost.R")

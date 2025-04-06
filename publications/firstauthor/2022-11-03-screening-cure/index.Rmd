@@ -4,10 +4,10 @@ author: <strong>陈琼</strong>，李变云，刘曙正，徐慧芳，于亮，�
 date: '2022-11-03'
 slug: screening-cure
 categories: 
-- 中文论文
-- 第一作者
-- 治愈比例
-- 中国肿瘤
+  - 中文论文
+  - 第一作者
+  - 治愈比例
+  - 中国肿瘤
 tags:
   - 肿瘤登记
   - 治愈比例

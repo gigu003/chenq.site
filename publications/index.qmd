@@ -5,35 +5,34 @@ listing:
     contents: firstauthor
     template: pubs.ejs
     sort: "date desc"
-    categories: true
     sort-ui: [title,date,author]
     filter-ui: [date, title, author, details]
     date-format: "YYYY-MM-DD"
-    page-size: 999
+    page-size: 30
     feed: true
   - id: corresponding
     contents: corresponding
     template: pubs.ejs
     sort: "date desc"
-    categories: true
     sort-ui: [title,date,author]
     filter-ui: [date, title, author, details]
     date-format: "YYYY-MM-DD"
-    page-size: 999
+    page-size: 10
     feed: true
   - id: coauthor
     contents: coauthor
     template: pubs.ejs
     sort: "date desc"
-    categories: true
     sort-ui: [title,date,author]
     filter-ui: [date, title, author, details]
     date-format: "YYYY-MM-DD"
-    page-size: 999
+    page-size: 10
     feed: true
   - id: books
     type: table
     contents: books
+    filter-ui: false
+    sort-ui: false
     table-striped: true
     table-hover: true
     date-format: "YYYY"
@@ -41,12 +40,12 @@ listing:
     sort: ["date desc"]
     field-display-names: 
       title: 年报名称
-      date: 年份
+      date: 出版年份
       author: 主编/副主编
       image: 封面
+    page-size: 3
 language:
   listing-page-field-categories: "文章类型"
-  
 ---
 
 ## 参编书籍

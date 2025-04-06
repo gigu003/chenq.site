@@ -2,6 +2,7 @@
 title: 河南省恶性肿瘤2017-2019年5年相对生存率分析
 author: <strong>陈琼</strong>, 张明霞, 郭兰伟, 郑黎阳, 刘纯亚, 王一先, 刘茵, 王红, 徐慧芳, 康瑞华, 王潇杨, 刘曙正, 张韶凯
 date: '2023-5-12'
+date-modified: last-modified
 slug: period-relative-survival
 categories: 
 - 中文论文
@@ -16,6 +17,8 @@ Keywords:
   - 中华肿瘤杂志
   - 生存分析
   - 河南省
+link: https://rs.yiigle.com/cmaid/1517579
+doi: 10.3760/cma.j.cn112152-20231024-00237
 ---
 
 ## 目的 
