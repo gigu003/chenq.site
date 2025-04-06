@@ -72,6 +72,5 @@ format:
     code-line-numbers: true
     toc: false
     theme: flatly
-    css:
-      - _assets/css/qsight.css
+    css: _assets/css/qsight-main.css
     margin-header: _assets/sidebar-wechat.html
