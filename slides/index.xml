@@ -27,7 +27,7 @@
 
 
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>肿瘤登记</category>
   <category>年报</category>
   <guid>https://www.chenq.site/slides/canreg/canreg-report-2023-5-16/</guid>
@@ -59,7 +59,7 @@
 
 
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>肿瘤登记</category>
   <category>直报系统</category>
   <guid>https://www.chenq.site/slides/canreg/cancer-registration-2023-4-20/</guid>
@@ -88,7 +88,7 @@ font-style: inherit;">"https://www.chenq.site/slides/2022-12-what-is-quarto/#/ti
 
 
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <guid>https://www.chenq.site/slides/articles/choose-quarto.html</guid>
   <pubDate>Thu, 02 Mar 2023 00:00:00 GMT</pubDate>
 </item>

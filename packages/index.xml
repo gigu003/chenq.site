@@ -28,7 +28,7 @@
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <guid>https://www.chenq.site/packages/canregtools/</guid>
   <pubDate>Thu, 23 Jan 2025 00:00:00 GMT</pubDate>
   <media:content url="https://chenq.site/qsight/20250326_pbcr-data-analysis-thoughts/images/logo_canregtools.png" medium="image" type="image/png"/>

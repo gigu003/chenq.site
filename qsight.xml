@@ -23,7 +23,7 @@
   <div class="def">
     <p>该文章介绍了一款专为人群肿瘤登记开发的 R 语言工具包（canregtools），用于内部一致性逻辑审核、统计分析、数据可视化和报告撰写。文章详细阐述了 R 包的开发背景、设计思路、功能验证、应用场景及未来规划，旨在提升肿瘤登记工作的效率，帮助工作者解决常见难题。我们希望该工具集能为肿瘤登记工作提供有力支持，并期待领域内专家的宝贵意见，以进一步优化和完善其功能。</p>
   </div>
-</div><p></p>
+</div>
 
 
 
@@ -269,9 +269,8 @@ font-style: inherit;">library</span>(crcheck)</span></code></pre></div>
       </a>
     </div>
   </div>
-</section><div class="sharethis-inline-reaction-buttons"></div>
-<div class="sharethis-inline-share-buttons"></div>
- ]]></description>
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a> ]]></description>
   <category>肿瘤登记</category>
   <category>R语言</category>
   <category>canregtools</category>
@@ -291,7 +290,7 @@ font-style: inherit;">library</span>(crcheck)</span></code></pre></div>
   <div class="def">
     <p>近年来发布肿瘤登记年报已经成为各省级或着市级肿瘤登记处的主要工作内容之一，本篇文章将向大家介绍基于R语言和quarto的方法实现<em>自动化</em>编写肿瘤登记年报的思路，希望通过这样的方式提高登记处工作效率。</p>
   </div>
-</div><p></p>
+</div>
 
 
 
@@ -375,9 +374,8 @@ font-style: inherit;">library</span>(crcheck)</span></code></pre></div>
       </a>
     </div>
   </div>
-</section><div class="sharethis-inline-reaction-buttons"></div>
-<div class="sharethis-inline-share-buttons"></div>
- ]]></description>
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a> ]]></description>
   <category>肿瘤登记</category>
   <category>R语言</category>
   <guid>https://www.chenq.site/qsight/2024-09-25_write-cancer-report/</guid>
@@ -396,7 +394,7 @@ font-style: inherit;">library</span>(crcheck)</span></code></pre></div>
   <div class="def">
     <p>李白乘舟将欲行，忽闻岸上踏歌声。桃花潭水深千尺，不及汪伦送我情。</p>
   </div>
-</div><p></p>
+</div>
 
 
 
@@ -442,9 +440,8 @@ font-style: inherit;">library</span>(crcheck)</span></code></pre></div>
       </a>
     </div>
   </div>
-</section><div class="sharethis-inline-reaction-buttons"></div>
-<div class="sharethis-inline-share-buttons"></div>
- ]]></description>
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a> ]]></description>
   <category>肿瘤登记</category>
   <guid>https://www.chenq.site/qsight/2024-4-19-jingxian/</guid>
   <pubDate>Fri, 19 Apr 2024 00:00:00 GMT</pubDate>
@@ -462,7 +459,7 @@ font-style: inherit;">library</span>(crcheck)</span></code></pre></div>
   <div class="def">
     <p>为了使肿瘤登记数据分析和可视化更加容易，我写了一个R语言软件包“<em>canregtools</em>”，这篇博文将详细介绍这个R包的功能和使用。</p>
   </div>
-</div><p></p>
+</div>
 
 
 
@@ -1524,9 +1521,8 @@ font-style: inherit;">1</span>))</span></code></pre></div>
       </a>
     </div>
   </div>
-</section><div class="sharethis-inline-reaction-buttons"></div>
-<div class="sharethis-inline-share-buttons"></div>
- ]]></description>
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a> ]]></description>
   <category>肿瘤登记</category>
   <category>R语言</category>
   <category>canregtools</category>
@@ -1546,7 +1542,7 @@ font-style: inherit;">1</span>))</span></code></pre></div>
   <div class="def">
     <p>每年向国家肿瘤登记处上报当年肿瘤登记数据是每个省级肿瘤登记处的每年的工作内容，而当县区级登记处的数量很多的时候，数据整理工作变得很琐碎，这篇博文将向大家介绍如何处理肿瘤登记上报过程中的数据处理。</p>
   </div>
-</div><p></p>
+</div>
 
 
 
@@ -1957,9 +1953,8 @@ font-style: inherit;">TRUE</span>)</span>
       </a>
     </div>
   </div>
-</section><div class="sharethis-inline-reaction-buttons"></div>
-<div class="sharethis-inline-share-buttons"></div>
- ]]></description>
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a> ]]></description>
   <category>数据处理</category>
   <category>R</category>
   <category>肿瘤登记</category>
@@ -1979,7 +1974,7 @@ font-style: inherit;">TRUE</span>)</span>
   <div class="def">
     <p>癌症5年生存率是评估癌症诊疗水平的一个重要指标，本篇博文介绍了如何利用R语言"periodR"包基于人群肿瘤登记数据计算人群癌症5年相对生存率。</p>
   </div>
-</div><p></p>
+</div>
 
 
 
@@ -4018,8 +4013,8 @@ font-style: inherit;">"pop.dta"</span>)</span></code></pre></div>
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts55615"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts38765"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts21993"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts21748"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
@@ -5883,9 +5878,8 @@ font-style: inherit;">FALSE</span>)</span></code></pre></div>
       </a>
     </div>
   </div>
-</section><div class="sharethis-inline-reaction-buttons"></div>
-<div class="sharethis-inline-share-buttons"></div>
- ]]></description>
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a> ]]></description>
   <category>肿瘤登记</category>
   <category>数据分析</category>
   <category>R</category>
@@ -5905,7 +5899,7 @@ font-style: inherit;">FALSE</span>)</span></code></pre></div>
   <div class="def">
     <p>Quarto自1.3以后的版本中将支持网页输出中包含其他输出格式（PDF、MS Word等）的链接，这对于多种格式的内容分享很重要。</p>
   </div>
-</div><p></p>
+</div>
 
 
 
@@ -6059,9 +6053,8 @@ _quarto.yml
       </a>
     </div>
   </div>
-</section><div class="sharethis-inline-reaction-buttons"></div>
-<div class="sharethis-inline-share-buttons"></div>
- ]]></description>
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a> ]]></description>
   <category>quarto</category>
   <category>个人网站</category>
   <guid>https://www.chenq.site/qsight/2023-04-04-quartomultiformat/</guid>
@@ -6080,7 +6073,7 @@ _quarto.yml
   <div class="def">
     <p>本篇博文介绍了我们使用Rstudio进行数据分析或使用Quarto撰写报告时提高效率的一些方法和配置，通过这些配置可以大大提高我们工作的便捷性和效率，俗话说“磨刀不误砍柴工”，开始数据分析之前，先把工具“Rstudio,R”配置好，肯定事半功倍！</p>
   </div>
-</div><p></p>
+</div>
 
 
 
@@ -6468,9 +6461,8 @@ Rstudio项目
       </a>
     </div>
   </div>
-</section><div class="sharethis-inline-reaction-buttons"></div>
-<div class="sharethis-inline-share-buttons"></div>
- ]]></description>
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a> ]]></description>
   <category>quarto</category>
   <category>rstudio</category>
   <category>R语言</category>
@@ -6490,7 +6482,7 @@ Rstudio项目
   <div class="def">
     <p>这篇博文介绍我使用quarto进行论文写作的一些技巧和经验，它们在无形中提高了我论文写作的效率，使论文的数据统计结果具有可能重复性，如果你还没听说过quarto，耐心的读完这篇博文，我相信会给你带来帮助。</p>
   </div>
-</div><p></p>
+</div>
 
 
 
@@ -7650,9 +7642,8 @@ authors-block设置方法
       </a>
     </div>
   </div>
-</section><div class="sharethis-inline-reaction-buttons"></div>
-<div class="sharethis-inline-share-buttons"></div>
- ]]></description>
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a> ]]></description>
   <category>quarto</category>
   <category>论文写作</category>
   <guid>https://www.chenq.site/qsight/2023-3-25-quarto-writing/</guid>
@@ -7671,7 +7662,7 @@ authors-block设置方法
   <div class="def">
     <p>今天我审读了一篇肿瘤临床预后影响因素分析的投稿论文，也想起了以前看过的几篇临床肿瘤预后影响因素的文章，我发现他们在进行数据分析的时候存在某些共同的问题，今天在这里和大家分享一下我的一些观点，希望能对肿瘤预后分析的朋友有所帮助。</p>
   </div>
-</div><p></p>
+</div>
 
 
 
@@ -7738,9 +7729,8 @@ authors-block设置方法
       </a>
     </div>
   </div>
-</section><div class="sharethis-inline-reaction-buttons"></div>
-<div class="sharethis-inline-share-buttons"></div>
- ]]></description>
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a> ]]></description>
   <category>数据分析</category>
   <guid>https://www.chenq.site/qsight/2023-03-21-肿瘤临床预后影响因素分析应该注意哪些因素/</guid>
   <pubDate>Tue, 21 Mar 2023 00:00:00 GMT</pubDate>

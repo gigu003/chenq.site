@@ -27,24 +27,34 @@ h1 {
 }
 
 h2 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: "Source Serif Pro", Georgia, serif;
+  color: #2c3e50;
   position: relative;
   display: inline-block;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 h2::after {
   content: "";
-  display: block;
-  width: 100%;  /* 让线条宽度匹配文本 */
-  height: 3px;
-  background: linear-gradient(90deg, #487191, #b3cde0);
-  border-radius: 2px;
   position: absolute;
-  bottom: 0;
   left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 0%;
+  background: linear-gradient(90deg, #2c3e50, #5e6f74); /* 墨蓝到青灰 */
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: width 0.4s ease-in-out;
 }
 
+/* 悬停时展开线条 */
+h2:hover::after {
+  width: 100%;
+}
 
 h3 {
   font-size: 1.1rem;
@@ -57,6 +67,12 @@ h6 {
 a {
   color: #487191;
   text-decoration: none;
+}
+
+a.nav-link:hover,
+a.navbar-brand:hover {
+  color: #e6c112;
+  transition: color 0.2s ease-in-out;
 }
 
 /* = Horizontal Rule (hr) */
@@ -73,10 +89,6 @@ ul {
   list-style: square;
   color: #36454f; /* 调整列表符号颜色 */
   padding-left: 1.5em; /* 让列表更加清晰 */
-}
-
-dd {
-  margin-left: 2em;
 }
 
 /* = Code Blocks */
@@ -101,14 +113,92 @@ pre {
   overflow-x: auto;
 }
 
-
-
-a.nav-link:hover,
-a.navbar-brand:hover {
-  color: #e6c112; /* 调整 hover 颜色以减少视觉疲劳 */
-  transition: color 0.2s ease-in-out;
+/* TOC 容器样式 */
+#TOC {
+  border-radius: 8px;
+  padding: 1.2rem 1rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+}
+/* TOC 标题 */
+#TOC h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-block: 1em;
 }
 
+
+
+/* TOC 链接样式 */
+#TOC .nav-link {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 0.4rem 0.4rem;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* 悬浮效果 */
+#TOC .nav-link:hover {
+  background-color: #e6f0f7;
+  color: #005c99;
+}
+
+/* 当前激活项 */
+#TOC .nav-link.active {
+  background-color: #dbe9f6;
+  font-weight: 600;
+  color: #004877;
+}
+
+
+.quarto-listing-category .category {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+
+/* 分类标签 */
+.quarto-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.quarto-category {
+  margin: 0;
+}
+
+.quarto-category a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25em 0.75em;
+  font-size: 0.9rem;
+  color: #555;
+  background-color: #f9f9f9;
+  border: 1px solid #cccccc;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  line-height: 1.2;
+}
+
+.quarto-category a:hover {
+  background-color: #004b6e;
+  color: #ffffff;
+  border-color: #004b6e;
+}
+
+.quarto-category a::before {
+  content: "#";
+  margin-right: 0.4em;
+  font-size: 1em;
+  display: inline-block;
+  transform: translateY(-1px);
+}
 
 /* 参考文献整体样式 */
 .references {
@@ -152,179 +242,79 @@ div.csl-right-inline{
   border-bottom: none; /* 去掉最后一个文献的分隔线 */
 }
 
-/* badge styles */
-a.badge {
-  color: #fff;
-}
 
+/* 通用 badge 样式 */
 .badge {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 12.75px;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 13px;
   display: inline-block;
-  line-height: 1;
-  padding: 4px 7px;
+  padding: 4px 10px;
   text-align: center;
-  font-weight: normal;
+  font-weight: 500;
   text-transform: uppercase;
-  border-radius: 15px;
-  opacity: 0.8;
-  transition: all 0.3s ease-in-out;
+  border-radius: 6px;
+  opacity: 0.95;
+  transition: background-color 0.2s ease-in-out, transform 0.15s;
+  color: #fff !important;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
 }
 
+/* 尺寸变化 */
 .badge-large {
-  font-size: 18px !important;
-  padding: 6px 10px;
-  font-weight: bold;
+  font-size: 15px !important;
+  padding: 6px 12px;
+  font-weight: 600;
 }
 
 .badge-small {
   font-size: 11px;
-  padding: 3px 6px;
+  padding: 3px 7px;
 }
 
-/* Badge Colors */
-.badge-black { background: #0f0f0f; }
-.badge-blue { background: #4673B8; }
-.badge-red { background: #BD666D; }
-.badge-green { background: #2c9f42; }
-.badge-yellow { background: #ffc800; }
-.badge-white { background: #ffffff; color: #000; }
-.badge-grey { background: #cccccc; }
+/* 更深的颜色，更有厚重感 */
+.badge-black  { background: #121212; }
+.badge-blue   { background: #3a6aa1; }
+.badge-red    { background: #a85252; }
+.badge-green  { background: #4b8850; }
+.badge-yellow { background: #d6ab1d; }
+.badge-white  { background: #e5e5e5; color: #111; }
+.badge-grey   { background: #999999; color: #222; }
 
-/* Hover Effects */
+/* hover 效果 */
 .badge:hover {
   opacity: 1;
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.15);
+  transform: translateY(-1px) scale(1.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease-in-out;
 }
 
-/* Outlined Badges */
-.label-outline {
-  background: none;
-  border: 1px solid #0f0f0f;
-  padding: 3px 6px;
-}
-
-/* Listing & Categories */
-.quarto-category {
-  color: white;
-  display: inline-block;
-  background-color: #536878;
-  padding: 5px 10px;
-  border-radius: 8px;
-  transition: background 0.3s ease-in-out;
-}
-
-.quarto-categories .quarto-category a {
-  color: #ffffff;
-  line-height: 1.2rem;
-  font-size: 100%;
-  padding: 10px;
-  opacity: 0.9;
-}
-
-.quarto-category:hover,
-.badge-grey:hover,
-.listing-category:hover {
-  background-color: darkred;
-  color: #ffffff;
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-.badge-grey:hover a {
-  color: #ebebeb !important;
-}
-
-.quarto-listing-category,
-.listing-category,
-.listing-actions-group,
-.about-link-text {
-  font-family: "Source Sans Pro", sans-serif;
+/* 描边风格 badge（可选） */
+.badge-outline {
+  background-color: transparent;
+  color: #333 !important;
+  border: 1px solid currentColor;
+  opacity: 0.85;
 }
 
 
-
-#quarto-margin-sidebar .category-default {
-  font-size: 11pt;
-}
-#quarto-margin-sidebar .category:hover {
-  color: #0d6efd;
-}
-.sidebar nav[role=doc-toc]>ul a:hover {
-  color: #0d6efd;
+.quarto-listing-category a {
+  font-size: 0.8rem;
 }
 
-.quarto-categories,
-.quarto-category,
-.listing-category {
-  line-height: 2em !important;
-  margin-left: -3px;
-  margin-right: 5px;
-  border-radius: 5px;
-}
 
 div.quarto-post .metadata {
   font-size: 1.1em;
 }
-div.quarto-post .listing-categories .listing-category {
-  background: #e9e9e9;
-  color: #536878;
-  text-align: center;
-  border-radius: 15px;
-  font-size: 11.25px;
-  padding: 1px 5px 0 5px;
-  border: none;
-  margin-left: -5px;
-  margin-right: 9px;
-}
 
-div.quarto-post .listing-categories:hover .listing-category:hover {
-  background-color: #536878;
-  color: #ffffff !important;
-  opacity: .6;
-}
+
 #mlb2-4240669.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,
 #mlb2-4240669.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody {
   padding: 0px !important;
 }
 
 
-.imgrow {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-}
-
-/* Create four equal columns that sits next to each other */
-.imgcolumn {
-  flex: 25%;
-  max-width: 25%;
-  padding-right: 0px;
-  padding-left: 0px;
-  text-align: center;
-}
-
-.imgcolumn img {
-  margin-top: 0px;
-  vertical-align: middle;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-  .imgcolumn {
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .imgcolumn {
-    flex: 100%;
-    max-width: 100%;
-  }
-}
 
 .list li {
   margin: 10px 0;
@@ -335,6 +325,7 @@ div.quarto-post .listing-categories:hover .listing-category:hover {
   border-top: none;
   padding-top: 0;
 }
+
 #quarto-appendix.default .quarto-appendix-heading {
   font-size: 1.3em !important;
   border-bottom: 1px solid #b3cde0;
@@ -389,7 +380,7 @@ div.quarto-post .listing-categories:hover .listing-category:hover {
 
 /* 作者卡片 */
 .author-card {
-  margin: 2rem 0;
+  margin: 1rem 0;
   padding: 1.5rem;
   background: #f8f9fa;
   border-radius: 8px;
@@ -426,10 +417,14 @@ div.quarto-post .listing-categories:hover .listing-category:hover {
 
 /* 微信推广样式 */
 .wechat-promotion {
-  margin: 2rem auto;
+  margin: 0;
   padding: 1.5rem;
   max-width: 400px;
   text-align: center;
+}
+
+.wechat-promotion h3{
+  margin-top: 0;
 }
 
 .qrcode-container {
@@ -685,4 +680,90 @@ th {
 
 .intro{
   text-align: justify;
+}
+
+
+.post-meta-inline {
+  display: flex;
+  align-items: center;
+  font-size: 0.95em;
+  color: #555;
+  margin: 0em 0 2em 0em;
+  flex-wrap: wrap; /* 防止在窄屏错位 */
+}
+
+.avatar-inline {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.5em;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.meta-text {
+  display: inline-block;
+  line-height: 1.4;
+}
+
+.quarto-title-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* 略微紧凑 */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  color: #333;
+  margin-top: 1.5rem;
+  padding-left: 0.75rem; /* 更明显的边线空隙 */
+  border-left: 3px solid #005c99;
+  background-color: #f9f9f9; /* 轻柔背景色区分块 */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.quarto-title-meta-heading {
+  font-weight: 600;
+  font-size: 0.8rem; /* 更紧凑 */
+  text-transform: uppercase;
+  color: #005c99;
+  margin-bottom: 0.15rem;
+  letter-spacing: 0.02em;
+}
+
+.quarto-title-meta-contents p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 0.93rem;
+}
+
+.quarto-title-meta-contents strong {
+  font-weight: 600;
+  color: #222;
+}
+
+.abstract {
+  background-color: #f0f4f8;
+  border: 1px solid #d0dce5;
+  border-left: 4px solid #005c99;
+  padding: 1rem 1.25rem;
+  margin-top: 3rem; /* 增加与上一模块的垂直间距 */
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.abstract-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #005c99;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid #d0dce5;
+  padding-bottom: 0.25rem;
 }

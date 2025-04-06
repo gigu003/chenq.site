@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Qiong Chen,Shuzheng Liu,Yin Liu,Hongwei Liu,Hong Wang,Lanwei Guo,Huifang Xu,Xiaoli Guo,Xiaoyang Wang,Ruihua Kang,Liyang Zheng,Shaokai Zhang">
+<meta name="author" content="陈琼, 郑荣寿, 刘曙正, 刘红伟, 刘茵, 郄然然, 张韶凯">
 
-<title>Lifetime risk of developing and dying from cancer in Henan Province, China: current status, temporal trends, and disparities – 普癌新声</title>
+<title>Canregtools: 基于R语言的人群肿瘤登记数据分析工具包 – 普癌新声</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,12 +81,18 @@ gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../_assets/css/qsight.css">
-<meta property="og:title" content="Lifetime risk of developing and dying from cancer in Henan Province, China: current status, temporal trends, and disparities – 普癌新声">
-<meta property="og:description" content="一个公共卫生医师的个人网站">
+<meta property="og:title" content="Canregtools: 基于R语言的人群肿瘤登记数据分析工具包 – 普癌新声">
+<meta property="og:image" content="https://www.chenq.site/_assets/images/author.png">
 <meta property="og:site_name" content="普癌新声">
-<meta name="twitter:title" content="Lifetime risk of developing and dying from cancer in Henan Province, China: current status, temporal trends, and disparities – 普癌新声">
-<meta name="twitter:description" content="一个公共卫生医师的个人网站">
-<meta name="twitter:card" content="summary">
+<meta property="og:image:alt" content="作者头像">
+<meta property="og:image:height" content="390">
+<meta property="og:image:width" content="313">
+<meta name="twitter:title" content="Canregtools: 基于R语言的人群肿瘤登记数据分析工具包 – 普癌新声">
+<meta name="twitter:image" content="https://www.chenq.site/_assets/images/author.png">
+<meta name="twitter:image:alt" content="作者头像">
+<meta name="twitter:image-height" content="390">
+<meta name="twitter:image-width" content="313">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -181,10 +187,10 @@ gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
     <h2 id="toc-title">目录</h2>
    
   <ul>
-  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective">Objective</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#目的" id="toc-目的" class="nav-link active" data-scroll-target="#目的">目的</a></li>
+  <li><a href="#方法" id="toc-方法" class="nav-link" data-scroll-target="#方法"><strong>方法</strong></a></li>
+  <li><a href="#结果" id="toc-结果" class="nav-link" data-scroll-target="#结果"><strong>结果</strong></a></li>
+  <li><a href="#结论" id="toc-结论" class="nav-link" data-scroll-target="#结论"><strong>结论</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -193,13 +199,21 @@ gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lifetime risk of developing and dying from cancer in Henan Province, China: current status, temporal trends, and disparities</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">英文论文</div>
-    <div class="quarto-category">第一作者</div>
-  </div>
+<h1 class="title">Canregtools: 基于R语言的人群肿瘤登记数据分析工具包</h1>
+</div>
+
+<div class="quarto-categories">
+    <p class="quarto-category">中文论文</p>
+    <p class="quarto-category">第一作者</p>
   </div>
 
+<div class="post-meta-inline">
+  <img src="../../_assets/images/author.png" alt="作者头像" class="avatar-inline">
+  <span class="meta-text">
+    陈琼博士 · 发布于  2025年4月6日
+        · 更新于 2025年4月6日
+      </span>
+</div>
 
 
 <div class="quarto-title-meta column-page-left">
@@ -207,7 +221,7 @@ gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">作者</div>
     <div class="quarto-title-meta-contents">
-            <p>Qiong Chen,Shuzheng Liu,Yin Liu,Hongwei Liu,Hong Wang,Lanwei Guo,Huifang Xu,Xiaoli Guo,Xiaoyang Wang,Ruihua Kang,Liyang Zheng,Shaokai Zhang 
+            <p>陈琼, 郑荣寿, 刘曙正, 刘红伟, 刘茵, 郄然然, 张韶凯 
       </p>
           </div>
   </div>
@@ -215,7 +229,7 @@ gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">发布于</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025年1月1日</p>
+      <p class="date">2025年4月6日</p>
     </div>
   </div>
   
@@ -223,7 +237,7 @@ gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
     <div class="quarto-title-meta-heading">详细出版信息</div>
     <div class="quarto-title-meta-contents">
       <p class="date">
-                <em>Journal of the National Cancer Center</em>
+                <em>中华肿瘤杂志</em>
               </p>
     </div>
   </div>
@@ -232,12 +246,10 @@ gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
     <div class="quarto-title-meta-heading">附件</div>
     <div class="quarto-title-meta-contents">
       <p class="date" style="color: #fff !important;">
-            <a href="https://doi.org/10.1016/j.jncc.2024.11.005" class="badge badge badge-blue">DOI</a>
                                     
       
       
       
-      <span data-doi="10.1016/j.jncc.2024.11.005" data-hide-no-mentions="true" class="altmetric-embed"></span>
       
       </p>
     </div>
@@ -248,29 +260,29 @@ gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
 
 
 <p>&nbsp;</p>
-</header>
 
-<section id="objective" class="level2">
-<h2 class="anchored" data-anchor-id="objective">Objective</h2>
-<p>To understand the current status and changing trends in the lifetime risk of residents in Henan Province, China to develop and die from cancer.</p>
+<section id="目的" class="level2">
+<h2 class="anchored" data-anchor-id="目的">目的</h2>
+<p>开发一款名为 canregtools 的 R 语言包，用于人群肿瘤登记（Population-Based Cancer Registration, PBCR）的数据分析、可视化与报告生成，以简化和促进全国 PBCR 数据分析与应用。</p>
 </section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>Lifetime risk was estimated using the Adjusted for Multiple Primaries (AMP) method, incorporating cancer incidence, mortality, and all-cause mortality data from 55 cancer registries in Henan Province, China. Estimates were calculated overall and stratified by gender and area. The Annual Percent Change (APC) in lifetime risk from 2010 to 2020, stratified by gender and cancer site, was estimated using a log-linear model.</p>
+<section id="方法" class="level2">
+<h2 class="anchored" data-anchor-id="方法"><strong>方法</strong></h2>
+<p>本研究基于 R 语言开发了一个免费开源的 R 语言包。该工具基于S3类的泛函数概念开发相关功能，为不同的数据类型定义对应的S3类，从而实现相同函数在不同S3类对象上的功能多样化。该工具主要通过五类函数实现数据读取、数据处理、统计计算、可视化和统计报告等功能。本研究利用该工具包汇总分析多个肿瘤登记处的发病、死亡和人口数据，输出汇总统计结果。</p>
 </section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>In 2020, the lifetime risk of developing and dying from cancer was 30.19% (95% CI: 29.63%–30.76%) and 23.62% (95% CI: 23.28%–23.95%), respectively. These estimates were higher in men, with values of 31.22% (95% CI: 30.59%–31.85%) for developing cancer and 26.73% (95% CI: 26.29%–27.16%) for dying from cancer, compared with women, who had values of 29.02% (95% CI: 28.12%–29.91%) and 20.08% (95% CI: 19.51%–20.64%), respectively. There were also geographical differences, with higher estimates in urban areas compared with rural areas. Residents had the highest lifetime risk of developing lung cancer, with a rate of 6.94%, followed by breast cancer (4.14%), stomach cancer (3.95%), esophageal cancer (3.75%), and liver cancer (2.86%). Similarly, the highest lifetime risk of dying from cancer was observed for the following sites: lung (5.99%), stomach (3.60%), esophagus (3.39%), liver (2.78%), and colorectum (1.55%). Overall, the lifetime risk of developing cancer increased, with an APC of 0.75% (P&lt;0.05). Varying trends were observed across different cancer sites. There were gradual decreases in nasopharynx, esophagus, stomach, and liver cancers. Conversely, increasing trends were noted for most other sites, with the highest APCs observed in thyroid, prostate, lymphoma, kidney, and gallbladder cancers.</p>
+<section id="结果" class="level2">
+<h2 class="anchored" data-anchor-id="结果"><strong>结果</strong></h2>
+<p>Canregtools 主要包含五类函数，分别为数据读取、数据处理、统计计算、可视化和统计报告。数据读取功能支持读取中国国家癌症中心要求上报的数据格式；数据处理功能包括年龄分组、ICD-10分类、儿童肿瘤分类、人口数估计及简略寿命表扩展等；统计计算功能包括年龄标化率、截缩率、累积率、累积风险、寿命表以及将简略寿命表扩展为完全寿命表等功能；可视化功能可以绘制人口金字塔图、条形图、线图等人群肿瘤登记常规统计常用统计图形；统计报告功能则把统计指标、图表以及文字描述整合为综合的肿瘤登记报告。</p>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>The lifetime risks of developing and dying from cancer were 30.19% and 23.62%, respectively. Variations in cancer risk across different regions, genders, specific cancer sites, and over calendar years provide important information for cancer prevention and policy making in the population.</p>
-<p><strong>Keywords</strong> Lifetime Risk; Cancer Incidence; Mortality; Health Policy; China</p>
+<section id="结论" class="level2">
+<h2 class="anchored" data-anchor-id="结论"><strong>结论</strong></h2>
+<p>本研究基于S3类泛函数的概念，开发了一款名为 canregtools 的 R 语言工具包。该工具包具有免费、开源和高效的特点，可通过规范化的数据处理流程满足多样化的肿瘤登记数据分析、可视化及报告生成需求，从而助力肿瘤登记处的常规统计工作顺利开展。</p>
+<p>【<strong>关键词</strong>】 软件; R语言包; 人群肿瘤登记; 数据分析</p>
+<p>【<strong>基金项目</strong>】河南省科技攻关项目（232102310166）</p>
 
 
 </section>
 
-</main> <!-- /main -->
+</header><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
