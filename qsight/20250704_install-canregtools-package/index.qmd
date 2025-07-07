@@ -1,0 +1,205 @@
+---
+title: R语言包 canregtools 的安装和使用
+subtitle: '功能分类、方法依据、使用方法、安装和使用'
+description: |
+  人群肿瘤登记数据分析R语言包canregtools主要包括数据读取、数据操作、数据处理、统计计算、可视化和统计报告等六类功能函数，从而实现常规统计分析的相关功能。该文章介绍了各类函数实现功能的方法依据、使用方法和推荐的操作流程，使大家对canregtools的功能实现有个总体的认识。
+date: 2025-07-04
+date-modified: last-modified
+categories:
+ - 肿瘤登记
+ - R语言
+ - canregtools
+image: preview.png
+bibliography: references.bib
+---
+
+:::{.callout-important}
+## 获取安装包
+  关注微信公众号 “**普癌新声**”，发送 canregtools 获取 canregtools 包安装文件。
+:::
+
+## 功能需求
+我们基于问卷调查的方式收集了省、市、县三级人群肿瘤登记处工作人员对登记数据常规统计分析的功能需求。经汇总整理，主要需求集中在以下五个方面：：数据读取、数据操作、统计计算、可视化以及统计报告。
+
+1. 数据读取：读取符合全国肿瘤登记中心要求上报格式的肿瘤登记原始数据（发病、死亡和人口数据）。
+2. 数据操作：支持对登记处或其记录进行条件筛选，按登记处的属性（如地区、城乡类型等）对数据进行重组、合并或转换，以适应不同的分析需求。
+3. 统计计算：计算常用肿瘤登记统计指标，如粗率、标化率（中标/世标）、截缩率、累积率、构成比、年龄别率，以及质量控制指标，如病理诊断比例、死亡发病比、DCO 比例、部位不明比例等。
+5. 可视化：绘制人口金字塔图、折线图、条形图等常用图表。
+6. 统计报告：自动生成肿瘤登记年度报告、质量控制报告等标准化统计报表，支持格式规范、内容完整的一键输出。
+
+在信息收集过程中，得到了来自河南省、山东省、安徽省与江苏省肿瘤登记工作人员的积极支持与配合，在此谨致诚挚谢意。
+
+## 分类标准和方法依据
+canregtools的主要函数均参考行业标准分析方法进行编写。数据读取函数参考全国肿瘤登记中心要求的数据上报格式编写。癌症的分类方法依据《中国肿瘤登记年报》的标准，将癌症划分为 59 个小类或 26 个大类 [@GuoJiaAiZhengZhongXin2023]，或根据 GLOBOCAN 2022 提出的国际分类方案进行处理 [@bray2024]。儿童肿瘤依据国际儿童分类方法第三版（International Classification of Childhood Cancer, Third Edition, ICCC3）进行分类[@steliarova-foucher2005]。年龄标化率的计算采用直接法，并基于 Gamma 分布方法估计其 95% 可信区间 [@fay1997]。累积率通过各年龄别率加权求和计算，累积风险则由累积率经公式 ${\text{Cumrisk} = 1 - e^{-\text{Cumrate}}}$ 转换而得[@sasieni2011]。根据 Elandt–Johnson 模型完成简略寿命表至完全寿命表的转换[@An2019]。
+
+## 包的托管与维护
+为提升 R 包的更新效率并及时向用户推送最新版本，我们将相关源代码托管于 GitHub 平台[https://github.com/gigu003/canregtools](https://github.com/gigu003/canregtools)，便于用户获取、安装和反馈。
+
+```{r}
+#| eval: false
+library(remotes)
+install_github("gigu003/canregtools")
+```
+
+由于国内网络访问github网站不太稳定，所以我们把canregtools的安装包（Windows 系统版本和 MAC OS 系统版本）存放在网盘中，大家可以关注微信公众号（普癌新声），发送 canregtools 获取 R 包的下载地址。同时也可以通过下面的代码进行安装和使用。
+
+```{r}
+#| eval: false
+package_address <- "D:\\canregtools.tar.gz"
+install.packages(package_address)
+```
+
+
+同时，我们为该 R 包构建了在线文档网站 [(https://canregtools.chenq.site)](https://canregtools.chenq.iste)，用户可通过该网站查阅各函数的使用说明与示例。
+
+## 功能介绍和使用方法
+本节将简要展示各类函数的基本用法。如需了解每个函数的详细参数与使用说明，可访问在线文档网站：https://canregtools.chenq.site。
+
+在功能实现过程中，我们结合作者的实际工作经验，补充设计了一类数据处理函数，用于支持向量化操作，专门实现肿瘤登记数据处理中的常见任务，如年龄标化率计算、ICD-10 编码分类等。我们将从这几个方面分别介绍其功能和相应的使用方法（示例程序代码）。
+
+### 数据读取
+通过canregtools中的read_canreg函数可读取1个或多个按照全国肿瘤登记中心要求的数据上报格式保存的原始excel文件，也可读取1个文件夹内的多个excel文件，文件后缀为XLS、xls、XLSX或xlsx均可。当读取的数据仅包含一个县区的登记数据时，返回的数据类型为 canreg 类；若包含多个县区的数据，则返回的数据类型为 canregs 类。相关示例程序代码如下。
+
+```{r}
+#| eval: false
+
+## 加载包
+library(canregtools)
+## 读取单个肿瘤登记处数据为‘canreg’类数据
+canreg <- read_canreg(here::here("data", "raw"))
+
+## 读取多个肿瘤登记处数据为‘canregs’类数据
+canreg_files <- list.files("stored_folder")
+canregs <- read_canreg(canreg_files)
+```
+
+### 数据操作
+数据操作类函数包含五个具体函数，对读入的登记处数据进行筛选、过滤以及重新分组等操作。write_registry 函数用于编辑和维护登记处的属性信息字典，如所属市、省、区域、城乡类型或用户定义的其它属性；cr_reframe 函数根据写入的登记处属性信息对 canregs 或 fbswicds 类数据进行重新合并或分组，以根据新的分组进行统计计算；count_canreg 函数，用于把 canreg 或 canregs 类数据转换为 fbswicd 或 fbswicds 类数据，在数据量较大或登记机构数量较多的情况，通过预先转换可以减少内存占用，提高计算效率；cr_select 函数可以筛选满足特定条件的登记处数据，cr_filter 函数根据对给定条件筛选登记处数据的记录行。相关示例程序代码如下。
+
+```{r}
+#| eval: false
+
+## 读取多个区县肿瘤登记数据
+files <- c("410302.xls", "410303.xls", "410304.xls", "410305.xls")
+county_data <- read_canreg(files)
+
+## 编辑和维护肿瘤登记处属性信息
+dict_registry <- list(
+  '410302' = '410301',
+  '410303' = '410301',
+  '410304' = '410301',
+  '410305' = '410301'
+  )
+write_registry(dict_registry, dict = "registry")
+
+## 按照‘registry’属性合并多个区县数据为一个登记处数据
+registry_data <- cr_reframe(county_data, strat = "registry")
+
+## 选择死亡发病比大于0.5且发病率大于300/10万的登记处数据
+selected_data <- cr_select(county_data, mi > 0.5, inci > 300)
+
+## 筛选ICD10编码为‘C15’的数据
+filtered_data <- cr_filter(county_data,
+                           substr(icd10, 1, 3) == "C15"
+                           )
+```
+
+### 数据处理
+数据处理类函数包括一组支持向量化操作的工具函数，主要用于实现编码重分类、人口结构估算和标准化处理等常见数据整理任务。cutage 按指定方式对年龄变量进行重新分组，如划分为五岁组、十岁组等，便于开展年龄分层统计分析；classify_icd10 函数用于对ICD10编码中的肿瘤部分编码进行归类和分组；ageadjust 函数基于直接法，结合输入的标准人口结构，对发病率或死亡率进行年龄标准化处理；esti_pop 函数采用线性内插法对缺失年份的人口结构数据进行估算；expand_lifetable 函数使用 Elandt–Johnson 方法将五岁分组的简略寿命表转换为一岁间隔的完整寿命表。相关示例程序代码如下。
+
+```{r}
+#| eval: false
+
+## 把年龄按照一定方式分为不同的组
+ages <- sample(30:100, 100, replace = TRUE)
+agegrps <- cutage(ages, breaks = c(0, 15, 40, 65))
+
+## 把ICD10编码按照中国肿瘤登记年报的分类标准进行归类分组
+icd10 <- c("C15.2", "C16.0", "C33.9", "C26.9", "C18.2")
+cancer <- classify_icd10(icd10, cancer_type = "big", lang = "cn")
+
+## 计算年龄别标化率
+cases <- c(50, 60, 45, 70)
+pop <- c(1000, 1200, 1100, 900)
+spop <- c(800, 1000, 1100, 900)
+rate_ageadjust <- ageadjust(cases, pop, stdpop = spop, mp = 100000)
+
+## 基于 Elandt–Johnson 方法将五岁分组的简略寿命表扩充为一岁间隔的完整寿命表
+lx <- c(
+  100000, 99498.39, 99294.62, 99173.88, 99047.59, 98840.46,
+  98521.16, 98161.25, 97636.99, 96900.13, 95718.96, 93930.91,
+  91463.21, 87131.41, 80525.02, 70907.59, 58090.75, 41630.48,
+  24019.33)
+lx <- lx / 100000
+expand_lifetable(lx)
+```
+
+### 统计计算
+统计计算类函数用于计算肿瘤登记常规统计指标，接受的数据类型为 canreg、canregs 或 fbswicd、fbswicds 类数据。create_quality 函数用于计算人群肿瘤登记质量控制指标，如发病率、死亡率、死亡发病比、病理诊断比例、只有死亡医学证明书比例、部位不明病例比例等；create_asr 函数用于计算粗率、标化率（中标/世标）、截缩率、累积率、构成比等；create_age_rate 函数用于计算年龄别率，并支持多种格式输出。相关示例程序代码如下。
+
+```{r}
+#| eval: false
+
+## 加载内置数据集
+data("canregs")
+
+## 按照年份、性别和癌种分成计算质量控制指标
+qua <- create_quality(canregs, year, sex, cancer)
+
+## 按照年份、性别以及癌种分层计算死亡粗率、标化率、截缩率等
+asr <- create_asr(canregs, event = "sws", year, sex, cancer)
+
+## 按照年份、性别分层计算年龄别发病率
+agerate <-  create_age_rate(canregs, year, sex)
+```
+
+### 可视化
+可视化函数用于绘制肿瘤登记报告常用统计图。draw_pyramid 函数绘制人口金字塔图；draw_linechart 函数用于绘制折线图；draw_barchart 函数用于绘制条形图。相关示例程序代码如下。
+
+```{r}
+#| eval: false
+# 加载示例数据
+data("canregs")
+
+## 绘制人口金字塔图
+pop <- canregs[[1]]$POP
+draw_pyramid(pop, x = agegrp, y = rks, group = sex,
+             show_value = F, csize = 0.8, cgap = 0.2,
+             labs = c("男性", "年龄组", "女性"),
+             cols = c("#708090", "#f08080"))
+
+## 绘制折线图
+agerate <- create_age_rate(canregs[[1]], sex)
+draw_linechart(agerate,
+               x = agegrp,
+               y = rate,
+               group = sex,
+               axis_label = c("年龄(岁)", "年龄别发病率 (1 / 10万 )"))
+
+## 绘制条形图
+asr <- create_asr(canregs[[1]], sex, cancer) |>
+  cr_filter(drop = c("total", "others"))
+draw_barchart(asr, x = cancer, y = asr_wld85, group = sex,
+              y_label = c("标化发病率(1/10万)"),
+              cols = c("#708090", "#f08080"))
+```
+
+### 统计报告
+canregtools具有自动生成报告的功能，create_report函数可以基于canreg类数据生成单个肿瘤登记处的报告，基于canregs类数据生成多个肿瘤登记处的报告。输出报告的文件类型可以是Word、html或pdf，输出报告类型包括年度常规报告、质量控制报告和五大洲癌症发病率质量控制报告。相关示例程序代码如下。
+
+```{r}
+#| eval: false
+
+## 加载内置数据集
+data("canregs")
+
+## 生成统计报告
+create_report(canregs[[1]],
+              template = "annual",
+              title = "Cancer Registry Report",
+              output_format = "word_document"
+              )
+```
+
+## 小结
+我们开发了一个名为 canregtools 的 R 语言包用于肿瘤登记数据的常规统计分析，本文介绍了该工具各类函数实现功能的方法依据、使用方法和推荐的操作流程，使大家对canregtools的功能实现有个总体的认识。
