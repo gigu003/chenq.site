@@ -8,6 +8,27 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.navbar-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-brand {
+  padding: 0.3rem 1rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.navbar-brand:hover .navbar-title {
+  color: #1abc9c;
+  transform: scale(1.05);
+}
+
 form,
 input[type="search"],
 select[multiple="multiple"] {
