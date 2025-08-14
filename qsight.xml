@@ -10,7 +10,347 @@
 <atom:link href="https://www.chenq.site/qsight.xml" rel="self" type="application/rss+xml"/>
 <description>一个公共卫生医师的个人网站</description>
 <generator>quarto-1.7.17</generator>
-<lastBuildDate>Fri, 25 Jul 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 11 Aug 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>可重复性数据分析的概念及其R语言实现</title>
+  <dc:creator>陈琼 </dc:creator>
+  <link>https://www.chenq.site/qsight/20250811_reproduciable-data-analysis/</link>
+  <description><![CDATA[ 
+
+
+
+<div>
+  <div class="def">
+    <p>“可重复性数据分析”的理念假设科学研究中数据生成阶段是可靠且准确的，并鼓励研究者公开原始数据，从而使数据处理与分析过程能够被完整验证，并有机会在相同数据的基础上发现新的科学问题。</p>
+  </div>
+</div>
+
+
+
+
+<section id="可重复性数据分析基本概念" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="可重复性数据分析基本概念"><span class="header-section-number">1</span> 可重复性数据分析基本概念</h2>
+<section id="为什么开展可重复性数据分析" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="为什么开展可重复性数据分析"><span class="header-section-number">1.1</span> 为什么开展可重复性数据分析</h3>
+<p>重复性是现代科学的基本原则，也是检验科学结论有效性的“金标准”。如果自然界中确实存在某种关联，不同的研究者即使采用不同的方法，也应能够独立地发现这一关联。通常，科学研究会经历一个渐进过程：研究者基于观察提出假设，进行初步探索；随后，通过更大规模的研究验证该假设；再接着，由不同的独立研究团队开展类似研究，并得出相同或相似的结论。这样的累积过程，有助于形成科学界的共识。</p>
+<p>当前的科研环境对重复性研究并不友好。此类研究往往需要投入大量时间与资源，但回报有限，且难以获得经费支持，因此很少有研究者愿意仅仅为了验证他人结果而投入精力与资金。随着技术的飞速发展、研究规模的不断扩大、研究周期的延长以及数据复杂度的显著提升，开展可重复性研究或复现他人工作变得愈发艰难。正如吴家睿先生在论文<a href="https://lifescience.sinh.ac.cn/webadmin/upload/20240702163811_3556_4383.pdf">《生命科学研究面临的实验可重复性之危机》</a>中所指出的，这一趋势对科研生态构成了严峻挑战。</p>
+<p>技术进步推动了数据规模的指数级增长，这不仅对存储与计算资源提出了更高要求，也为数据共享与重复分析带来了巨大挑战。面对如此庞大的数据集，研究者固然能够解答既定的科学问题，但这些数据往往还蕴藏着探索其他问题的潜力。甚至在分析同一批数据时，不同研究者也可能得出截然不同的结论。</p>
+<p>这也对数据处理与分析提出了更高的可重复性要求。基于此背景，<a href="https://rdpeng.org">Roger D. Peng</a>提出了“可重复性数据分析”概念。该理念假设科学研究中数据生成阶段是可靠且准确的，并鼓励研究者公开原始数据，从而使数据处理与分析过程能够被完整验证，并有机会在相同数据的基础上发现新的科学问题。</p>
+<p>因此，研究者在发表论文的同时，应提供完整的数据、分析代码及详尽的方法说明，使他人能够依照相同步骤重现研究结果。这不仅有助于验证科学结论的可靠性，还能促进知识共享、提升研究效率，并减少不必要的重复劳动。</p>
+<blockquote class="blockquote">
+<p>需要注意的是，可重复性数据分析只能验证数据分析过程，无法验证科学问题本身。</p>
+</blockquote>
+</section>
+<section id="可重复性数据分析流程" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="可重复性数据分析流程"><span class="header-section-number">1.2</span> 可重复性数据分析流程</h3>
+<p>可重复性数据分析关注的核心环节，是在获取数据之后到论文正式发表之前的整个过程。研究者在拿到测量数据后，需要对原始数据进行预处理、分析与计算，并通过图表、统计描述等方式进行结果呈现，随后将成果提交期刊，接受审稿人的评估，最终以论文的形式公开发表，使其他研究者能够了解研究者的发现与结论。在这一过程中，需要详细记录从数据处理到论文定稿前的每一个操作步骤，这不仅有助于审稿人评估研究的可靠性，也为后续复现分析提供了保障。实际上，这与实验性研究中要求的完整实验记录类似，只不过这里记录的对象是数据分析的每一个环节，见 图&nbsp;1。</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-flowchart" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flowchart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-flowchart">flowchart TD
+  A[研究测量数据] --&gt; |数据处理代码| B[分析数据]
+  B --&gt; |数据分析代码| C[计算结果]
+  C --&gt; |数据展现代码| C1[图]
+  C --&gt; |数据展现代码| C2[表格]
+  C --&gt; |数据展现代码| C3[数据摘要]
+  C1 --&gt; D[论文]
+  C2 --&gt; D
+  C3 --&gt; D
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flowchart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1: 可重复性数据分析基本流程
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>使用你熟悉的编程语言来记录你的数据分析过程，R，Python或者其它语言。</p>
+</blockquote>
+</section>
+<section id="为什么要开展可重复性数据分析" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="为什么要开展可重复性数据分析"><span class="header-section-number">1.3</span> 为什么要开展可重复性数据分析</h3>
+<blockquote class="blockquote">
+<p>可重复性数据分析是研究过程关注和记录数据分析过程的结果，它允许研究者以相同的结果多次重复数据分析过程。</p>
+</blockquote>
+<ul>
+<li>帮助研究人员记录数据分析过程</li>
+<li>使研究人员能够快速修改数据分析的相关内容</li>
+<li>使重新配置并开展类似的研究更加容易</li>
+<li>它是科学研究严谨性、可信度和透明度的有力指标</li>
+<li>增加论文的被引几率</li>
+<li>……</li>
+</ul>
+</section>
+</section>
+<section id="文学编程的概念与可重复性数据分析" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="文学编程的概念与可重复性数据分析"><span class="header-section-number">2</span> 文学编程的概念与可重复性数据分析</h2>
+<p><a href="http://www.literateprogramming.com/index.html">文学编程（Literate Programming）</a>是由 Donald Knuth 提出的编程思想，核心理念是——代码不仅是给计算机看的，更是给人看的。它主张将代码与文档紧密结合，把解释性文字、公式、图片和源代码交织在一起，让读者可以像读一篇文章一样理解程序的设计思路和实现细节。</p>
+<p>在文学编程中：</p>
+<ul>
+<li>叙述（Narrative）：用自然语言解释你的思路、假设、方法和逻辑。</li>
+<li>代码（Code）：紧跟叙述部分，给出可运行的代码实现。</li>
+<li>可执行文档：既能输出报告，又能直接运行生成结果。</li>
+</ul>
+<p>文学编程（Literate Programming）的理念最初主要应用于技术文档撰写，强调将程序代码与文字说明紧密结合，让代码既能被计算机执行，又便于人类理解。随着这一理念的发展，文学编程被广泛用于科研论文（将数据分析与研究方法直接嵌入文档）、技术教程与教材（边讲解边运行示例代码）、可重复性报告（确保分析过程可追溯）、软件文档（代码与说明同步更新）、博客以及网站等场景。这种方法尤其适合数据分析、算法教学以及需要长期维护和共享的项目，因为它能让代码更易理解、可复用性更高。</p>
+</section>
+<section id="r语言中如何实现可重复性数据分析" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="r语言中如何实现可重复性数据分析"><span class="header-section-number">3</span> R语言中如何实现可重复性数据分析</h2>
+<p>在 R 语言中，文学编程的实现主要有两种方式：Sweave 和 knitr。Sweave 以 LaTeX 作为文档语言，R语言作为编程语言；而 knitr 则采用更为简洁的 Markdown 作为文档语言，同样以R语言作为编程语言。这两种工具都能将文字说明、代码和运行结果整合在同一个文档中，从而有效支持可重复性研究和数据分析。</p>
+<section id="sweave" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="sweave"><span class="header-section-number">3.1</span> Sweave</h3>
+<p>Sweave采用 Latex做文档语言和R代码作为计算语言，组合成<code>.Rnw</code>文件，Sweave会首先执行R代码，把代码输出和图形结果潜入到LaTex文本中，生成一个纯.tex文件，然后通过通过 pdflatex、xelatex 或 lualatex 将 .tex 文件编译为 .pdf，生成的 PDF 包含排版后的文档和代码输出结果。和 R Markdown 不同，Sweave 完全依赖 LaTeX 进行排版，因此它适合对排版精度要求很高的科研论文，但灵活性比R Markdown小很多。</p>
+</section>
+<section id="r-markdown" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="r-markdown"><span class="header-section-number">3.2</span> R Markdown</h3>
+<blockquote class="blockquote">
+<p>Rmarkdown通过knitr包实现艺术编程的理念，从而实现可重复性数据分析。</p>
+</blockquote>
+<p>R Markdown将报告文本与统计计算代码无缝整合，实现“一次编写，多种格式输出”，在渲染 R Markdown 时，R 会首先执行文档中的代码块，然后<a href="https://yihui.org/knitr/">knitr</a>将计算结果与Markdown正文合并，生成一个完整的Markdown文件。接着，利用 <a href="https://pandoc.org">pandoc</a> 将其直接转换为 Word 或 HTML 等格式；若需要生成 PDF，则会先将Markdown转换为LaTeX，再通过LaTeX引擎编译为 PDF。</p>
+<p><img src="https://www.chenq.site/qsight/20250811_reproduciable-data-analysis/workflow.png" class="img-fluid"></p>
+<p>R Markdown 文本以<code>.Rmd</code>和<code>.Rmarkdown</code>为文件后缀，一个完整的 R Markdown 文档通常由三部分组成：</p>
+<ol type="1">
+<li>YAML元数据：定义标题、作者、日期、输出格式等文档信息</li>
+<li>Markdown文本：使用 Markdown 语法编写正文内容</li>
+<li>代码块：可包含 R、Python 等语言的代码，用于数据处理与分析</li>
+</ol>
+<p><strong>YAML 头部（YAML header）</strong>：</p>
+<p>YAML元数据用于定义文档的元数据，例如标题、作者、日期、输出格式等。 在 YAML 头部中，元数据通常以 键值对（key-value pair） 的形式出现：<code>key: value</code></p>
+<ul>
+<li>键（key） 表示一个元数据项</li>
+<li>值（value） 则是该元数据项对应的信息</li>
+</ul>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">title</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> My R Markdown Report</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> # 标题</span></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">author</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> Qiong Chen</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> # 作者</span></span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">output</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> # 输出格式</span></span>
+<span id="cb1-5"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">html_document</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb1-6"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toc</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">true</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> # 输出目录</span></span>
+<span id="cb1-7"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">toc_float</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">true</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> # 目录悬浮</span></span>
+<span id="cb1-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">params</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> # 自定义参数</span></span>
+<span id="cb1-9"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">start_date</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'2020-01-01'</span></span>
+<span id="cb1-10"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">end_date</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'2020-06-01'</span></span>
+<span id="cb1-11"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--</span></span></code></pre></div>
+<p><strong>Markdown作为文档语言</strong>：</p>
+<p>Markdown是一种轻量级标记语言，由<a href="https://daringfireball.net/projects/markdown/">John Gruber</a>于2004年创建，旨在让人们使用易读易写的纯文本格式来编写内容，并能方便地转换成结构化的 HTML、PDF 等格式。</p>
+<p>它的主要特点是：</p>
+<ul>
+<li>语法简洁：使用少量符号（如 #、*、&gt; 等）来表示标题、粗体、引用等格式</li>
+<li>可读性高：即使不渲染，也能直接阅读纯文本内容</li>
+<li>跨平台：广泛支持于 GitHub、博客平台、文档系统、笔记软件等</li>
+<li>易于转换：通过工具（如 pandoc）可导出为 HTML、PDF、Word 等多种格式</li>
+</ul>
+<p>一个简单例子：</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"># 一级标题</span></span>
+<span id="cb2-2">这是 **加粗** 的文字，这是 *斜体* 的文字。  </span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">- </span>列表项 1  </span>
+<span id="cb2-5"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">- </span>列表项 2  </span>
+<span id="cb2-6"></span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">这是一个链接</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">](https://example.com)</span></span></code></pre></div>
+<p><strong>通过<code>代码块</code>实现统计计算</strong>：</p>
+<p>在 R Markdown 中，代码块（code chunk） 是用来嵌入并执行代码的区域，可以写 R、Python、SQL 等多种语言的代码。它的作用是把代码、运行结果、图表直接整合到文档中，实现“代码即文档”的理念。</p>
+<ol type="1">
+<li>代码块的基本结构</li>
+</ol>
+<p>代码块用 三个反引号 ``` 包裹，并在起始行加上花括号 {} 指定语言和选项：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```{r}</span></span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summary</span>(cars)</span>
+<span id="cb3-3"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     speed           dist       
+ Min.   : 4.0   Min.   :  2.00  
+ 1st Qu.:12.0   1st Qu.: 26.00  
+ Median :15.0   Median : 36.00  
+ Mean   :15.4   Mean   : 42.98  
+ 3rd Qu.:19.0   3rd Qu.: 56.00  
+ Max.   :25.0   Max.   :120.00  </code></pre>
+</div>
+</div>
+<p><code>{r}</code>表示这是 R 语言代码块，也可以写成<code>{python}</code>、<code>{sql}</code>等，使用不同语言。</p>
+<ol start="2" type="1">
+<li>行内代码</li>
+</ol>
+<p>除了独立代码块，R Markdown还支持行内代码，可在正文中直接嵌入计算结果，实现数据与文字的无缝融合。计算结果一旦更新，文本描述也会随之自动调整。</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span></code></pre></div>
+<p>渲染后会直接显示 2。</p>
+</section>
+<section id="r-markdown的发展演化" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="r-markdown的发展演化"><span class="header-section-number">3.3</span> R Markdown的发展演化</h3>
+<p>随着 R Markdown 的发展，已形成一个较为完善的生态体系。R 语言社区围绕它开发了众多功能丰富的扩展包，例如：bookdown 用于撰写书籍，blogdown 用于创建博客或网站，posterdown 用于设计学术海报，xaringan 用于制作幻灯片等。</p>
+<p><img src="https://www.chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-packages.png" class="img-fluid" style="width:80.0%"></p>
+</section>
+<section id="quarto" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="quarto"><span class="header-section-number">3.4</span> Quarto</h3>
+<blockquote class="blockquote">
+<p>Quarto® is an open-source scientific and technical publishing system built on Pandoc. 基于 Pandoc 的开源科学与技术出版系统。</p>
+</blockquote>
+<p><a href="https://quarto.org">Quarto</a>是一款跨平台、可独立运行的文档与出版系统，不依赖 R、RStudio 或其他特定编程环境。它继承了 R Markdown 生态中部分扩展包（如 blogdown、bookdown、xaringan）的功能，同时提供统一语法，支持网站、博客、书籍、幻灯片等多种输出格式，大幅降低了学习成本。Quarto 原生支持 R、Python、Julia 和 Observable JS 等多种编程语言，引入了新的 .qmd 文档格式，并调整了代码块选项的书写方式。此外，它内置对科学写作的支持，包括公式、文献引用、交叉引用和图表，使科研文档的撰写更加高效、规范和可复现。</p>
+<p>作为 R Markdown 的升级与扩展版本，Quarto在多语言支持、跨平台运行、统一语法、标准化项目管理和科学写作功能等方面均具有显著优势。它适合大型、多语言或跨团队的科研与技术出版项目，能够简化项目配置、便于版本控制，并促进协作与知识共享。</p>
+<p>因此，Quarto是实现可重复性数据分析的重要工具。</p>
+</section>
+</section>
+<section id="可重复性数据分析内容" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="可重复性数据分析内容"><span class="header-section-number">4</span> 可重复性数据分析内容</h2>
+<blockquote class="blockquote">
+<p>可重复性数据分析的关键在于有效记录数据处理、数据分析和数据报告的过程，从而使自己或别人均可以通过记录重复得出相同或相似的结果。</p>
+</blockquote>
+<p>我们可以将数据分析划分为三个阶段：分析前、分析中和分析后。在分析前，安全、有效地管理数据是保证可重复性数据分析的核心。数据通常分为 原始数据 和 分析数据。</p>
+<ul>
+<li><strong>原始数据：</strong>必须安全保存和备份，并保持只读属性，确保内容不被修改。应记录数据的获取途径和方式。例如，通过网络下载的数据需注明下载地址与时间；在R中，最好使用代码自动下载数据，若无法实现，也应保留完整的文档说明。</li>
+<li><strong>分析数据：</strong>应通过代码完整记录从原始数据到分析数据的清洗与转换过程，并检查其是否符合后续建模或其他分析的要求。同时，分析数据需配备说明文档，明确数据结构、变量含义及生成方式。</li>
+</ul>
+<p>在分析过程中，代码应遵循社区规范，以保证可读性，并在关键位置添加注释，说明每段代码的功能与目的。许多人都有过类似经历——曾写下的代码，过一段时间便忘了用途。若研究涉及合作者，应共同审阅数据与代码，以减少潜在错误。此外，分析中使用的R包或其他软件，应记录版本信息及计算环境，以便日后复现结果。</p>
+<p>分析完成后，应明确分析代码和结果的存放位置，并评估其是否具备对外共享的条件。</p>
+
+
+</section>
+
+
+<section class="author-card">
+  <div class="avatar-container">
+    <img src="https://www.chenq.site/qsight/_assets/images/author.png" alt="陈琼博士" class="author-avatar">
+  </div>
+  <div class="author-info">
+    <h3 class="anchored">陈 琼</h3>
+    <a class="badge badge-red"> <i class="bi bi-award"> </i> 博士 </a>
+    <a class="badge badge-blue"> <i class="bi bi-bar-chart"> </i> 副主任医师 </a>
+    <p class="bio">他从事肿瘤登记与人群流行病学研究，编写肿瘤登记年报，并开发和维护个人网站。他撰写博文，分享数据分析方法、可视化技巧和自动化报告解决方案，同时学习 R 语言，开发 R 包，不断探索高效的数据处理与展示方式。 🚀</p>
+    <div class="social-links">
+      <a href="https://github.com/gigu003" target="_blank">
+        <i class="bi bi-github"></i>
+      </a>
+      <a href="mailto:chenq08@126.com" target="_blank">
+        <i class="bi bi-envelope"></i>
+      </a>
+      <a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=KKgW5AwAAAAJ&amp;view_op=list_works&amp;authuser=1&amp;sortby=pubdate" target="_blank">
+        <i class="bi bi-google"></i>
+      </a>
+    </div>
+  </div>
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a> ]]></description>
+  <category>R</category>
+  <guid>https://www.chenq.site/qsight/20250811_reproduciable-data-analysis/</guid>
+  <pubDate>Mon, 11 Aug 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>开通微信公众号:普癌新声|每日一R专栏，分享学习R语言知识和技术</title>
   <dc:creator>陈琼 </dc:creator>
@@ -4822,8 +5162,8 @@ font-style: inherit;">"pop.dta"</span>)</span></code></pre></div>
 <section id="stata数据准备" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="stata数据准备"><span class="header-section-number">6.2</span> stata数据准备</h3>
 <p>我们在扩展简略寿命表的过程中使用了ej-hm的方法，这个方法需要用到ej系数和ej-hm方法的do程序，大家可以点击下面的按钮下载使用。</p>
-<p><button class="btn btn-info downloadthis  " id="dnldts34496"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
-<p><button class="btn btn-info downloadthis  " id="dnldts12579"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts44656"><i class="bi bi-database-fill-down"></i> 下载ej系数 </button></p>
+<p><button class="btn btn-info downloadthis  " id="dnldts54371"><i class="bi bi-database-fill-down"></i> 下载ej-hm.do </button></p>
 </section>
 <section id="计算简略寿命表" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="计算简略寿命表"><span class="header-section-number">6.3</span> 计算简略寿命表</h3>
@@ -6869,415 +7209,6 @@ _quarto.yml
   <guid>https://www.chenq.site/qsight/2023-04-04-quartomultiformat/</guid>
   <pubDate>Tue, 04 Apr 2023 00:00:00 GMT</pubDate>
   <media:content url="https://www.chenq.site/qsight/2023-04-04-quartomultiformat/formats.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>提高Rstudio和Quarto使用效率的一些方法和配置</title>
-  <dc:creator>陈琼 </dc:creator>
-  <link>https://www.chenq.site/qsight/2023-03-31-rstudioefficiency/</link>
-  <description><![CDATA[ 
-
-
-
-<div>
-  <div class="def">
-    <p>本篇博文介绍了我们使用Rstudio进行数据分析或使用Quarto撰写报告时提高效率的一些方法和配置，通过这些配置可以大大提高我们工作的便捷性和效率，俗话说“磨刀不误砍柴工”，开始数据分析之前，先把工具“Rstudio,R”配置好，肯定事半功倍！</p>
-  </div>
-</div>
-
-
-
-
-<section id="提高quarto效率的常见配置" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="提高quarto效率的常见配置"><span class="header-section-number">1</span> 提高Quarto效率的常见配置</h2>
-<p>Quarto是基于Pandoc的开源科技出版系统，我们可以利用Quarto把常规文本以及基于不同语言的数据分析过程（R、Python等）混合格式转化为静态网页、PDF、WORD文档、网站以及其他更多的格式。我也写过一篇博文介绍了<a href="https://www.chenq.site/qsight/2023-3-25-quarto-writing/">如何利用Quarto提高科技论文效率</a>，今天在这个段落介绍一下提高Quarto撰写效率的方法。</p>
-<section id="利用snippets自动插入divs和spans" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="利用snippets自动插入divs和spans"><span class="header-section-number">1.1</span> 利用snippets自动插入Divs和Spans</h3>
-<p>Quarto支持利用Divs和Spans来给特定的内容增加一些属性。比如，我们可以给一段话增加边框，语句如下：</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1">::: {.border}</span>
-<span id="cb1-2">这是具有边框样式的一段话。</span>
-<span id="cb1-3">:::</span></code></pre></div>
-<p>具体显示效果如下：</p>
-<div class="border">
-<p>这是具有边框样式的一段话。</p>
-</div>
-<p>我们也可以使用一些内置的callout样式，语法如下：</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1">::: {.callout-warning}</span>
-<span id="cb2-2">这是一段warning类型callout段落。</span>
-<span id="cb2-3">:::</span></code></pre></div>
-<p>具体显示效果如下：</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-警告
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>这是一段warning类型callout段落的显示效果。</p>
-</div>
-</div>
-<p>但是我们在实际使用的时候，每次录入3个”:“开头，然后紧接着是”{}“内表明具体的属性名称，最后以3个”:“结尾，这么多的字符输入很浪费时间，但是我们可以通过在Rstudio里设置snippets片段的方式来提高输入效率，snippets是自动插入代码比较好的一种方式，使我们能够比较快地在quarto文档里插入相应的代码片段。</p>
-<p>下面是一些quarto文本中常用的一些snippet片段，我们可以在Rstudio里通过依次点击Tools &gt; Global Options &gt; Code &gt; Edit Code Snippets，在出现的界面中选择Markdown选项卡，然后把下面的代码片段插入到最后。</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1">snippet fragment</span>
-<span id="cb3-2">    [${1:text}]{.${2:type}}</span>
-<span id="cb3-3">    </span>
-<span id="cb3-4">snippet aside</span>
-<span id="cb3-5">    [${1:text}]{.aside}</span>
-<span id="cb3-6">    </span>
-<span id="cb3-7">snippet fence</span>
-<span id="cb3-8">    :::{.${1:type}}</span>
-<span id="cb3-9">        ${2:body}</span>
-<span id="cb3-10">    :::</span>
-<span id="cb3-11"></span>
-<span id="cb3-12">snippet panel</span>
-<span id="cb3-13">    ::: {.panel-tabset}</span>
-<span id="cb3-14">        ${1:body}</span>
-<span id="cb3-15">    :::</span>
-<span id="cb3-16">    </span>
-<span id="cb3-17">snippet column</span>
-<span id="cb3-18">    :::: {.columns}</span>
-<span id="cb3-19">    ::: {.column width="50%"}</span>
-<span id="cb3-20">    Left column</span>
-<span id="cb3-21">    :::</span>
-<span id="cb3-22"></span>
-<span id="cb3-23">    ::: {.column width="50%"}</span>
-<span id="cb3-24">    Right column</span>
-<span id="cb3-25">    :::</span>
-<span id="cb3-26">    ::::</span></code></pre></div>
-<p>我们在在使用的时候，在Quarto文档里输入snippet名称，然后按Shift+Tab键就可以按照设定的片段录入代码了。比如，我们可以将将内容进行分栏，可以录入column，然后按Shift+Tab键，然后相应的代码块会自动填充。</p>
-</section>
-<section id="善于使用echo-fenced选项" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="善于使用echo-fenced选项"><span class="header-section-number">1.2</span> 善于使用echo: fenced选项</h3>
-<p>Quarto支持插入代码块从而实现一些相应的功能，而我们在利用Quarto进行写作时，有时需要把代码显示出来，从而让其他人知道相应的部分的内容的原始代码是什么样的，而在代码块的echo选项设定为fenced之后，可以把包括选项部分的设置一块显示出来。</p>
-<p>在没有这是 echo: fenced时，代码块的显示是下面这样的。</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1">data <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> </span>
-<span id="cb4-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">kable</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> </span>
-<span id="cb4-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">kable_stylling</span>()</span></code></pre></div>
-<p>设置echo: fenced之后，代码块的显示是这样的：</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#| label: tbl-t1</span></span>
-<span id="cb5-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#| tbl-cap: "不同地区恶性肿瘤5年相对生存率"</span></span>
-<span id="cb5-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#| tbl-location: top</span></span>
-<span id="cb5-4"></span>
-<span id="cb5-5">data <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> </span>
-<span id="cb5-6">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">kable</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> </span>
-<span id="cb5-7">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">kable_stylling</span>()</span></code></pre></div>
-</section>
-<section id="利用shortcode方便地插入内容" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="利用shortcode方便地插入内容"><span class="header-section-number">1.3</span> 利用shortcode方便地插入内容</h3>
-<p>通常我们可以在quarto文档中添加HTML内容，比如通过添加视频内容等，shortcode可以使我们很方便地插入我们想插入的内容。Quarto原生支持一些shortcode，比如运行下面的代码。</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1">这篇博客的标题是`提高Rstudio和Quarto使用效率的一些方法和配置`。</span></code></pre></div>
-<p>显示的内容如下：</p>
-<p>这篇博客的标题是提高Rstudio和Quarto使用效率的一些方法和配置。</p>
-</section>
-<section id="在不同文档间重复利用内容" class="level3" data-number="1.4">
-<h3 data-number="1.4" class="anchored" data-anchor-id="在不同文档间重复利用内容"><span class="header-section-number">1.4</span> 在不同文档间重复利用内容</h3>
-<p><code>{{&lt; include &gt;}}</code>是一个quarto的shortcode使我们能够重复利用不同quarto文档的内容，而不用复制和粘贴。在你想插入内容的地方，添加shortcode <code>{{&lt; include &gt;}}</code> include后面放入想添加的文档名称，记得在名称前添加下划线。</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1">{{&lt; incldue _content.qmd &gt;}}</span></code></pre></div>
-<p>也可以按照一定的条件纳入内容，比如，只在渲染为特定格式时显示内容，用.content-visible 或者 .content-hidden</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource quarto number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1">::: {.content-visible when-format="html"}</span>
-<span id="cb8-2">这部分文字只在渲染为HTML时显示</span>
-<span id="cb8-3">:::</span></code></pre></div>
-</section>
-</section>
-<section id="善于使用快捷键" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="善于使用快捷键"><span class="header-section-number">2</span> 善于使用快捷键</h2>
-<p>我们在使用Rstudio在进行统计分析时，有些使用频率非常高的操作，比如添加或者取消注释、赋值号、管道操作符、运行当前行代码、运行有所代码，从代码界面切换到Console界面，切换到Terminal界面等等，如果记住一些键盘快捷键将会大大提高操作效率，就不用在写着代码的时候到桌面上找鼠标了。下面的表格中列出了我比较常用的键盘快捷键，我们在使用的时候可以参考借鉴。</p>
-<p>我们在数据分析的过程中也要保持良好的习惯，比如记得<strong>添加代码注释</strong>，通过添加注释可以使我们的代码具有更高的可读性，使代码更易于维护，帮助我们更好的理解代码的含义。</p>
-<table class="caption-top table">
-<caption>不同操作系统Rstudio常用快捷键</caption>
-<colgroup>
-<col style="width: 8%">
-<col style="width: 31%">
-<col style="width: 30%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>编号</th>
-<th>操作</th>
-<th>MAC OS</th>
-<th>Linux 或者Windows</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>添加或者取消代码注释</td>
-<td>Command + Shift + C</td>
-<td>Control + Shift + C</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>插入赋值号 &lt;-</td>
-<td>Option + -</td>
-<td>Alt + -</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>插入管道操作符 %&gt;%</td>
-<td>Command + Shift + M</td>
-<td>Ctrl + Shift + M</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>运行目前行代码</td>
-<td>Command + Enter</td>
-<td>Control + Enter</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>运行所有代码</td>
-<td>Command + A + Enter</td>
-<td>Control + A + Enter</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>查看Rstudio快捷键</td>
-<td>Option + Shift + K</td>
-<td>Alt + Shift + K</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>切换到代码编辑界面</td>
-<td>Ctrl + 1</td>
-<td>Ctrl + 1</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>切换到Console界面</td>
-<td>Ctrl + 2</td>
-<td>Ctrl + 2</td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>切换到Terminal界面</td>
-<td>Option + Shift + M</td>
-<td>Alt + Shift + M</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>quarto文档插入代码块</td>
-<td>Option + Comman + I</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-记住快捷键的小技巧
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>一下子记住所有的快捷键肯定是有困难的，但是，我们在日常使用的时候一定要想着使用快捷键，这样即使使用的当时没有记住，但是我们通过每次的查询和使用，不出几天肯定都能熟练的记住了。</p>
-</div>
-</div>
-</section>
-<section id="不要保存工作环境变量" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="不要保存工作环境变量"><span class="header-section-number">3</span> 不要保存工作环境变量</h2>
-<p>尽量不要保存Rstudio工作环境，如果您创建了值得保存的 R 对象，请将生成该对象的 R 代码保存到一个 R 脚本文件中。保存 R 脚本，但不要保存对象生成时的环境或工作空间。</p>
-<p>为防止 RStudio 保存您的工作空间，请打开”首选项 &gt; 通用”并取消选择将 .RData 在启动时恢复到工作空间的选项。请确保指定您永不想保存工作空间，如下所示：</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://www.chenq.site/qsight/2023-03-31-rstudioefficiency/global.jpg" class="img-fluid figure-img" width="527"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="用项目projects组织管理工作" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="用项目projects组织管理工作"><span class="header-section-number">4</span> 用项目(Projects)组织管理工作</h2>
-<p>如果我们使用Rstudio进行数据分析时，一定要有<strong>项目</strong>的概念，当我们处理多个分析时，时常需要在多个分析之间来回切换，使用了项目的概念之后，我们各个分析会更有组织性。</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Rstudio项目
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>RStudio Project是一个以特定目录作为根目录的工作环境，其中包含R代码、数据、图片、说明文件、结果输出等多个文件。这个根目录还包括一个用于管理项目的.Rproj文件。</p>
-</div>
-</div>
-<p>通过创建RStudio Project，您可以将所有相关文件组织在一个目录中，使得在进行多个分析或项目时更加方便、清晰和高效。此外，RStudio Project还提供了许多其他有用的功能，例如：</p>
-<ul>
-<li>能够在项目之间快速切换，而无需重新打开各个文件</li>
-<li>为每个项目分配单独的工作空间，从而避免命名空间冲突</li>
-<li>将项目文件和支持文件打包，便于与他人共享和合作</li>
-<li>可以使用renv等工具来管理项目依赖项，以确保在不同计算机上运行项目时的一致性。</li>
-</ul>
-<p>通过导航到 RStudio 中的”文件”选项卡并选择”新建项目”来创建新项目。您可以选择在新目录或现有目录中创建新项目。</p>
-<p>但是，如果您想实现无缝协作，可能需要将软件包管理引入工作流程。幸运的是，RStudio 提供了一个有用的软件包管理工具 renv，现在与 RStudio Projects 兼容。</p>
-</section>
-<section id="利用renv管理r包的版本" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="利用renv管理r包的版本"><span class="header-section-number">5</span> 利用renv管理R包的版本</h2>
-<p>因为R语言的开源使用，越来越多的数据科学家使用R语言来进行了数据分析和数据管理，近年来有大量的R包被上传到CRAN上，这大大方便了我们使用R语言进行数据分析，同时也加大了我们R包管理的难度。</p>
-<p>使用renv来管理R包版本是一种有效的方式，以确保在不同计算机上运行R代码时的一致性和可重复性。以下是使用renv管理R包版本的步骤：</p>
-<ol type="1">
-<li><p>在RStudio中打开您的项目，并在终端中安装renv包。可以使用以下命令：install.packages(“renv”)</p></li>
-<li><p>在RStudio的控制台或终端中，输入以下命令，以初始化renv项目：renv::init()</p></li>
-<li><p>在项目的根目录中创建一个名为”renv.lock”的文件，该文件用于跟踪项目的包依赖项。可以使用以下命令创建该文件：renv::snapshot()</p></li>
-<li><p>在R代码中使用renv来管理R包版本。例如，使用以下命令安装特定版本的tidyverse包：renv::install(“tidyverse@1.3.1”)</p></li>
-<li><p>在renv项目中更新或添加新的R包时，使用以下命令将这些更改保存到”renv.lock”文件中：renv::snapshot()</p></li>
-<li><p>当您要在另一个计算机上运行该项目时，只需将整个项目目录复制到该计算机上，并使用以下命令恢复项目的环境：renv::restore()</p></li>
-</ol>
-<p>通过使用renv管理R包版本，您可以确保您的项目在不同计算机上具有相同的R包版本，从而使得您的分析结果更加可靠和可重复。<i class="fa-solid fa-thumbs-up" aria-label="thumbs-up"></i></p>
-</section>
-<section id="配置r和rstudio启动文件" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="配置r和rstudio启动文件"><span class="header-section-number">6</span> 配置R和Rstudio启动文件</h2>
-<p>在启动Rstudio和R时，软件会自动寻找几个文件，这些文件分别为.Rprofile, .Renviron, Rprofile.site, Renviron.site, rsession.conf 和 repos.conf，可以通过这些文件设置一些选项和环境变量。这一部分将介绍如何在R启动时设置特定选项。</p>
-<p>下面一个表格总结了如何在启动时控制R选项和环境变量。</p>
-<table class="caption-top table">
-<caption>R启动文件列表</caption>
-<colgroup>
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 24%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Id</th>
-<th>文件</th>
-<th>需要权限</th>
-<th>级别</th>
-<th>限制</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>.Rprofile</td>
-<td>用户或管理员</td>
-<td>用户或项目</td>
-<td>没有，运行R代码</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>.Renviron</td>
-<td>用户或管理员</td>
-<td>用户或项目</td>
-<td>只能设置环境变量</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>Rprofile.site</td>
-<td>管理员</td>
-<td>R版本</td>
-<td>没有，运行R代码</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>Renviron.site</td>
-<td>管理员</td>
-<td>R版本</td>
-<td>只能设置环境变量</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>rsession.conf</td>
-<td>管理员</td>
-<td>服务器</td>
-<td>只能配置Rstudio设置，只能设置一个存储库</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td><code>repos.conf</code></td>
-<td>管理员</td>
-<td>服务器</td>
-<td>只能设置存储库</td>
-</tr>
-</tbody>
-</table>
-<section id="rprofile" class="level3" data-number="6.1">
-<h3 data-number="6.1" class="anchored" data-anchor-id="rprofile"><span class="header-section-number">6.1</span> .Rprofile</h3>
-<p>.Rprofile文件是用户可控的文件，用于设置选项和环境变量。.Rprofile文件可以是用户级别或项目级别。用户级别的.Rprofile文件位于用户主目录的根目录中，项目级别的.Rprofile文件位于项目目录的根目录中。</p>
-<p>R只会使用一个.Rprofile文件。因此，如果您既有一个特定于项目的.Rprofile文件，又有一个用户.Rprofile文件需要使用，则必须在项目级.Rprofile的顶部显式调用用户级.Rprofile，使用source(“~/.Rprofile”)。</p>
-<p>.Rprofile文件作为常规的R代码进行调用，因此设置环境变量必须在Sys.setenv(key = “value”)调用内完成。</p>
-<p>编辑.Rprofile文件的一种简单方法是在R会话中使用usethis::edit_r_profile()函数。您可以指定要编辑的用户或项目级.Rprofile。</p>
-</section>
-<section id="renviron" class="level3" data-number="6.2">
-<h3 data-number="6.2" class="anchored" data-anchor-id="renviron"><span class="header-section-number">6.2</span> .Renviron</h3>
-<p>.Renviron是一个可由用户控制的文件，可用于创建环境变量。这对于避免在R脚本中包含凭据（如API密钥）特别有用。该文件采用键值格式编写，因此环境变量的创建格式为：</p>
-<p>Key1=value1 Key2=value2 ... 然后，在R会话中使用Sys.getenv(“Key1”)将返回”value1”。</p>
-<p>与.Rprofile文件一样，.Renviron文件可以是用户级别或项目级别。如果有项目级别的.Renviron文件，则不会加载用户级别的文件。usethis包中包含一个帮助函数，可以使用usethis::edit_r_environ()从R会话中编辑.Renviron文件。</p>
-</section>
-<section id="rprofile.site-和renviron.site" class="level3" data-number="6.3">
-<h3 data-number="6.3" class="anchored" data-anchor-id="rprofile.site-和renviron.site"><span class="header-section-number">6.3</span> Rprofile.site 和Renviron.site</h3>
-<p>.Rprofile和.Renviron文件都有服务器范围内的等效文件。Rprofile.site和Renviron.site（没有前导点）文件由RStudio Workbench或RStudio Server上的管理员管理，并且特定于特定版本的R。这些文件的最常见设置涉及对软件包存储库的访问。例如，通常使用共享基线软件包管理策略是从Rprofile.site中完成的。</p>
-<p>用户可以使用其个人.Rprofile文件覆盖这些文件中的设置。</p>
-<p>这些文件针对每个版本的R进行设置，应位于R_HOME / etc /中。您可以通过在该版本的R会话中运行命令R.home（component =“home”）来找到R_HOME。因此，例如，如果您发现R_HOME是/opt/R/3.6.2/lib/R，则R 3.6.2的Rprofile.site将位于/opt/R/3.6.2/lib/R/etc/Rprofile.site中。</p>
-</section>
-<section id="rsession.conf和repos.conf" class="level3" data-number="6.4">
-<h3 data-number="6.4" class="anchored" data-anchor-id="rsession.conf和repos.conf"><span class="header-section-number">6.4</span> rsession.conf和repos.conf</h3>
-<p>RStudio Workbench和RStudio Server允许服务器管理员通过rsession.conf和repos.conf文件配置特定的服务器范围内的R包存储库。rsession.conf中只能配置一个存储库。如果需要多个存储库，应该使用repos.conf。</p>
-
-
-</section>
-</section>
-
-
-<section class="author-card">
-  <div class="avatar-container">
-    <img src="https://www.chenq.site/qsight/_assets/images/author.png" alt="陈琼博士" class="author-avatar">
-  </div>
-  <div class="author-info">
-    <h3 class="anchored">陈 琼</h3>
-    <a class="badge badge-red"> <i class="bi bi-award"> </i> 博士 </a>
-    <a class="badge badge-blue"> <i class="bi bi-bar-chart"> </i> 副主任医师 </a>
-    <p class="bio">他从事肿瘤登记与人群流行病学研究，编写肿瘤登记年报，并开发和维护个人网站。他撰写博文，分享数据分析方法、可视化技巧和自动化报告解决方案，同时学习 R 语言，开发 R 包，不断探索高效的数据处理与展示方式。 🚀</p>
-    <div class="social-links">
-      <a href="https://github.com/gigu003" target="_blank">
-        <i class="bi bi-github"></i>
-      </a>
-      <a href="mailto:chenq08@126.com" target="_blank">
-        <i class="bi bi-envelope"></i>
-      </a>
-      <a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=KKgW5AwAAAAJ&amp;view_op=list_works&amp;authuser=1&amp;sortby=pubdate" target="_blank">
-        <i class="bi bi-google"></i>
-      </a>
-    </div>
-  </div>
-</section>
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a> ]]></description>
-  <category>quarto</category>
-  <category>rstudio</category>
-  <category>R语言</category>
-  <guid>https://www.chenq.site/qsight/2023-03-31-rstudioefficiency/</guid>
-  <pubDate>Fri, 31 Mar 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://www.chenq.site/qsight/2023-03-31-rstudioefficiency/shortcuts.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

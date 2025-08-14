@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.17">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="陈琼">
+<meta name="description" content="“可重复性数据分析”的理念假设科学研究中数据生成阶段是可靠且准确的，并鼓励研究者公开原始数据，从而使数据处理与分析过程能够被完整验证，并有机会在相同数据的基础上发现新的科学问题。">
+
+<title>可重复性数据分析的概念及其R语言实现 – 普癌新声</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-da03d714c310c60cec1d83284c92da2c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-94babb7a1c2aca725e1649c625df513c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=GTM-NPK7BT6Z"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GTM-NPK7BT6Z', { 'anonymize_ip': true});
+</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../_assets/css/qsight.css">
+<meta property="og:title" content="可重复性数据分析的概念及其R语言实现 – 普癌新声">
+<meta property="og:description" content="“可重复性数据分析”的理念假设科学研究中数据生成阶段是可靠且准确的，并鼓励研究者公开原始数据，从而使数据处理与分析过程能够被完整验证，并有机会在相同数据的基础上发现新的科学问题。">
+<meta property="og:image" content="https://www.chenq.site/_assets/images/author-preview.png">
+<meta property="og:site_name" content="普癌新声">
+<meta property="og:image:alt" content="作者头像">
+<meta property="og:image:height" content="128">
+<meta property="og:image:width" content="128">
+<meta name="twitter:title" content="可重复性数据分析的概念及其R语言实现 – 普癌新声">
+<meta name="twitter:description" content="“可重复性数据分析”的理念假设科学研究中数据生成阶段是可靠且准确的，并鼓励研究者公开原始数据，从而使数据处理与分析过程能够被完整验证，并有机会在相同数据的基础上发现新的科学问题。">
+<meta name="twitter:image" content="https://www.chenq.site/_assets/images/author-preview.png">
+<meta name="twitter:image:alt" content="作者头像">
+<meta name="twitter:image-height" content="128">
+<meta name="twitter:image-width" content="128">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">普癌新声</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../qsight.html"> <i class="bi bi-tropical-storm" role="img">
+</i> 
+<span class="menu-text">Qsight博客</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://diary.chenq.site"> <i class="bi bi-pen" role="img">
+</i> 
+<span class="menu-text">随笔录</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../packages/"> <i class="bi bi-hexagon" role="img">
+</i> 
+<span class="menu-text">软件</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publications/"> <i class="bi bi-journal-medical" role="img">
+</i> 
+<span class="menu-text">出版作品</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://slides.chenq.site"> <i class="bi bi-file-slides-fill" role="img">
+</i> 
+<span class="menu-text">Slides</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">关于</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../qsight/index.xml"> <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://notes.chenq.site"> <i class="bi bi-pen" role="img">
+</i> 
+<span class="menu-text">学习笔记</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<!-- 微信公众号推广模块 -->
+<div class="wechat-promotion">
+  <h3>微信公众号</h3>
+  <div class="qrcode-container">
+    <img src="https://cdn.jsdelivr.net/gh/gigu003/db/images/qr.jpg" alt="微信公众号二维码" class="wechat-qrcode" width="258" height="258">
+    <div class="callout-box">
+      <p class="callout-text">扫码关注公众号</p>
+      <div class="arrow"></div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">主要内容</h2>
+   
+  <ul>
+  <li><a href="#可重复性数据分析基本概念" id="toc-可重复性数据分析基本概念" class="nav-link active" data-scroll-target="#可重复性数据分析基本概念"><span class="header-section-number">1</span> 可重复性数据分析基本概念</a>
+  <ul class="collapse">
+  <li><a href="#为什么开展可重复性数据分析" id="toc-为什么开展可重复性数据分析" class="nav-link" data-scroll-target="#为什么开展可重复性数据分析"><span class="header-section-number">1.1</span> 为什么开展可重复性数据分析</a></li>
+  <li><a href="#可重复性数据分析流程" id="toc-可重复性数据分析流程" class="nav-link" data-scroll-target="#可重复性数据分析流程"><span class="header-section-number">1.2</span> 可重复性数据分析流程</a></li>
+  <li><a href="#为什么要开展可重复性数据分析" id="toc-为什么要开展可重复性数据分析" class="nav-link" data-scroll-target="#为什么要开展可重复性数据分析"><span class="header-section-number">1.3</span> 为什么要开展可重复性数据分析</a></li>
+  </ul></li>
+  <li><a href="#文学编程的概念与可重复性数据分析" id="toc-文学编程的概念与可重复性数据分析" class="nav-link" data-scroll-target="#文学编程的概念与可重复性数据分析"><span class="header-section-number">2</span> 文学编程的概念与可重复性数据分析</a></li>
+  <li><a href="#r语言中如何实现可重复性数据分析" id="toc-r语言中如何实现可重复性数据分析" class="nav-link" data-scroll-target="#r语言中如何实现可重复性数据分析"><span class="header-section-number">3</span> R语言中如何实现可重复性数据分析</a>
+  <ul class="collapse">
+  <li><a href="#sweave" id="toc-sweave" class="nav-link" data-scroll-target="#sweave"><span class="header-section-number">3.1</span> Sweave</a></li>
+  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown"><span class="header-section-number">3.2</span> R Markdown</a></li>
+  <li><a href="#r-markdown的发展演化" id="toc-r-markdown的发展演化" class="nav-link" data-scroll-target="#r-markdown的发展演化"><span class="header-section-number">3.3</span> R Markdown的发展演化</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">3.4</span> Quarto</a></li>
+  </ul></li>
+  <li><a href="#可重复性数据分析内容" id="toc-可重复性数据分析内容" class="nav-link" data-scroll-target="#可重复性数据分析内容"><span class="header-section-number">4</span> 可重复性数据分析内容</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">可重复性数据分析的概念及其R语言实现</h1>
+<p class="subtitle lead">保证数据分析结果可信度的有力工具</p>
+</div>
+
+
+<div class="quarto-categories">
+    <p class="quarto-category">R</p>
+  </div>
+
+<div class="post-meta-inline">
+  <img src="../../_assets/images/author-preview.png" alt="作者头像" class="avatar-inline">
+  <span class="meta-text">
+    陈琼博士 · 发布于  2025年8月11日
+        · 最后更新于 2025年8月14日
+      </span>
+</div>
+
+</header>
+
+<div>
+  <div class="def">
+    <p>“可重复性数据分析”的理念假设科学研究中数据生成阶段是可靠且准确的，并鼓励研究者公开原始数据，从而使数据处理与分析过程能够被完整验证，并有机会在相同数据的基础上发现新的科学问题。</p>
+  </div>
+</div>
+
+
+
+
+<section id="可重复性数据分析基本概念" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="可重复性数据分析基本概念"><span class="header-section-number">1</span> 可重复性数据分析基本概念</h2>
+<section id="为什么开展可重复性数据分析" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="为什么开展可重复性数据分析"><span class="header-section-number">1.1</span> 为什么开展可重复性数据分析</h3>
+<p>重复性是现代科学的基本原则，也是检验科学结论有效性的“金标准”。如果自然界中确实存在某种关联，不同的研究者即使采用不同的方法，也应能够独立地发现这一关联。通常，科学研究会经历一个渐进过程：研究者基于观察提出假设，进行初步探索；随后，通过更大规模的研究验证该假设；再接着，由不同的独立研究团队开展类似研究，并得出相同或相似的结论。这样的累积过程，有助于形成科学界的共识。</p>
+<p>当前的科研环境对重复性研究并不友好。此类研究往往需要投入大量时间与资源，但回报有限，且难以获得经费支持，因此很少有研究者愿意仅仅为了验证他人结果而投入精力与资金。随着技术的飞速发展、研究规模的不断扩大、研究周期的延长以及数据复杂度的显著提升，开展可重复性研究或复现他人工作变得愈发艰难。正如吴家睿先生在论文<a href="https://lifescience.sinh.ac.cn/webadmin/upload/20240702163811_3556_4383.pdf">《生命科学研究面临的实验可重复性之危机》</a>中所指出的，这一趋势对科研生态构成了严峻挑战。</p>
+<p>技术进步推动了数据规模的指数级增长，这不仅对存储与计算资源提出了更高要求，也为数据共享与重复分析带来了巨大挑战。面对如此庞大的数据集，研究者固然能够解答既定的科学问题，但这些数据往往还蕴藏着探索其他问题的潜力。甚至在分析同一批数据时，不同研究者也可能得出截然不同的结论。</p>
+<p>这也对数据处理与分析提出了更高的可重复性要求。基于此背景，<a href="https://rdpeng.org">Roger D. Peng</a>提出了“可重复性数据分析”概念。该理念假设科学研究中数据生成阶段是可靠且准确的，并鼓励研究者公开原始数据，从而使数据处理与分析过程能够被完整验证，并有机会在相同数据的基础上发现新的科学问题。</p>
+<p>因此，研究者在发表论文的同时，应提供完整的数据、分析代码及详尽的方法说明，使他人能够依照相同步骤重现研究结果。这不仅有助于验证科学结论的可靠性，还能促进知识共享、提升研究效率，并减少不必要的重复劳动。</p>
+<blockquote class="blockquote">
+<p>需要注意的是，可重复性数据分析只能验证数据分析过程，无法验证科学问题本身。</p>
+</blockquote>
+</section>
+<section id="可重复性数据分析流程" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="可重复性数据分析流程"><span class="header-section-number">1.2</span> 可重复性数据分析流程</h3>
+<p>可重复性数据分析关注的核心环节，是在获取数据之后到论文正式发表之前的整个过程。研究者在拿到测量数据后，需要对原始数据进行预处理、分析与计算，并通过图表、统计描述等方式进行结果呈现，随后将成果提交期刊，接受审稿人的评估，最终以论文的形式公开发表，使其他研究者能够了解研究者的发现与结论。在这一过程中，需要详细记录从数据处理到论文定稿前的每一个操作步骤，这不仅有助于审稿人评估研究的可靠性，也为后续复现分析提供了保障。实际上，这与实验性研究中要求的完整实验记录类似，只不过这里记录的对象是数据分析的每一个环节，见 <a href="#fig-flowchart" class="quarto-xref">图&nbsp;1</a>。</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-flowchart" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flowchart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-flowchart">flowchart TD
+  A[研究测量数据] --&gt; |数据处理代码| B[分析数据]
+  B --&gt; |数据分析代码| C[计算结果]
+  C --&gt; |数据展现代码| C1[图]
+  C --&gt; |数据展现代码| C2[表格]
+  C --&gt; |数据展现代码| C3[数据摘要]
+  C1 --&gt; D[论文]
+  C2 --&gt; D
+  C3 --&gt; D
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flowchart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1: 可重复性数据分析基本流程
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>使用你熟悉的编程语言来记录你的数据分析过程，R，Python或者其它语言。</p>
+</blockquote>
+</section>
+<section id="为什么要开展可重复性数据分析" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="为什么要开展可重复性数据分析"><span class="header-section-number">1.3</span> 为什么要开展可重复性数据分析</h3>
+<blockquote class="blockquote">
+<p>可重复性数据分析是研究过程关注和记录数据分析过程的结果，它允许研究者以相同的结果多次重复数据分析过程。</p>
+</blockquote>
+<ul>
+<li>帮助研究人员记录数据分析过程</li>
+<li>使研究人员能够快速修改数据分析的相关内容</li>
+<li>使重新配置并开展类似的研究更加容易</li>
+<li>它是科学研究严谨性、可信度和透明度的有力指标</li>
+<li>增加论文的被引几率</li>
+<li>……</li>
+</ul>
+</section>
+</section>
+<section id="文学编程的概念与可重复性数据分析" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="文学编程的概念与可重复性数据分析"><span class="header-section-number">2</span> 文学编程的概念与可重复性数据分析</h2>
+<p><a href="http://www.literateprogramming.com/index.html">文学编程（Literate Programming）</a>是由 Donald Knuth 提出的编程思想，核心理念是——代码不仅是给计算机看的，更是给人看的。它主张将代码与文档紧密结合，把解释性文字、公式、图片和源代码交织在一起，让读者可以像读一篇文章一样理解程序的设计思路和实现细节。</p>
+<p>在文学编程中：</p>
+<ul>
+<li>叙述（Narrative）：用自然语言解释你的思路、假设、方法和逻辑。</li>
+<li>代码（Code）：紧跟叙述部分，给出可运行的代码实现。</li>
+<li>可执行文档：既能输出报告，又能直接运行生成结果。</li>
+</ul>
+<p>文学编程（Literate Programming）的理念最初主要应用于技术文档撰写，强调将程序代码与文字说明紧密结合，让代码既能被计算机执行，又便于人类理解。随着这一理念的发展，文学编程被广泛用于科研论文（将数据分析与研究方法直接嵌入文档）、技术教程与教材（边讲解边运行示例代码）、可重复性报告（确保分析过程可追溯）、软件文档（代码与说明同步更新）、博客以及网站等场景。这种方法尤其适合数据分析、算法教学以及需要长期维护和共享的项目，因为它能让代码更易理解、可复用性更高。</p>
+</section>
+<section id="r语言中如何实现可重复性数据分析" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="r语言中如何实现可重复性数据分析"><span class="header-section-number">3</span> R语言中如何实现可重复性数据分析</h2>
+<p>在 R 语言中，文学编程的实现主要有两种方式：Sweave 和 knitr。Sweave 以 LaTeX 作为文档语言，R语言作为编程语言；而 knitr 则采用更为简洁的 Markdown 作为文档语言，同样以R语言作为编程语言。这两种工具都能将文字说明、代码和运行结果整合在同一个文档中，从而有效支持可重复性研究和数据分析。</p>
+<section id="sweave" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="sweave"><span class="header-section-number">3.1</span> Sweave</h3>
+<p>Sweave采用 Latex做文档语言和R代码作为计算语言，组合成<code>.Rnw</code>文件，Sweave会首先执行R代码，把代码输出和图形结果潜入到LaTex文本中，生成一个纯.tex文件，然后通过通过 pdflatex、xelatex 或 lualatex 将 .tex 文件编译为 .pdf，生成的 PDF 包含排版后的文档和代码输出结果。和 R Markdown 不同，Sweave 完全依赖 LaTeX 进行排版，因此它适合对排版精度要求很高的科研论文，但灵活性比R Markdown小很多。</p>
+</section>
+<section id="r-markdown" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="r-markdown"><span class="header-section-number">3.2</span> R Markdown</h3>
+<blockquote class="blockquote">
+<p>Rmarkdown通过knitr包实现艺术编程的理念，从而实现可重复性数据分析。</p>
+</blockquote>
+<p>R Markdown将报告文本与统计计算代码无缝整合，实现“一次编写，多种格式输出”，在渲染 R Markdown 时，R 会首先执行文档中的代码块，然后<a href="https://yihui.org/knitr/">knitr</a>将计算结果与Markdown正文合并，生成一个完整的Markdown文件。接着，利用 <a href="https://pandoc.org">pandoc</a> 将其直接转换为 Word 或 HTML 等格式；若需要生成 PDF，则会先将Markdown转换为LaTeX，再通过LaTeX引擎编译为 PDF。</p>
+<p><img src="workflow.png" class="img-fluid"></p>
+<p>R Markdown 文本以<code>.Rmd</code>和<code>.Rmarkdown</code>为文件后缀，一个完整的 R Markdown 文档通常由三部分组成：</p>
+<ol type="1">
+<li>YAML元数据：定义标题、作者、日期、输出格式等文档信息</li>
+<li>Markdown文本：使用 Markdown 语法编写正文内容</li>
+<li>代码块：可包含 R、Python 等语言的代码，用于数据处理与分析</li>
+</ol>
+<p><strong>YAML 头部（YAML header）</strong>：</p>
+<p>YAML元数据用于定义文档的元数据，例如标题、作者、日期、输出格式等。 在 YAML 头部中，元数据通常以 键值对（key-value pair） 的形式出现：<code>key: value</code></p>
+<ul>
+<li>键（key） 表示一个元数据项</li>
+<li>值（value） 则是该元数据项对应的信息</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> My R Markdown Report</span><span class="co"> # 标题</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Qiong Chen</span><span class="co"> # 作者</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">output</span><span class="kw">:</span><span class="co"> # 输出格式</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # 输出目录</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # 目录悬浮</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">params</span><span class="kw">:</span><span class="co"> # 自定义参数</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="at">  </span><span class="fu">start_date</span><span class="kw">:</span><span class="at"> </span><span class="st">'2020-01-01'</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="at">  </span><span class="fu">end_date</span><span class="kw">:</span><span class="at"> </span><span class="st">'2020-06-01'</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="at">--</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Markdown作为文档语言</strong>：</p>
+<p>Markdown是一种轻量级标记语言，由<a href="https://daringfireball.net/projects/markdown/">John Gruber</a>于2004年创建，旨在让人们使用易读易写的纯文本格式来编写内容，并能方便地转换成结构化的 HTML、PDF 等格式。</p>
+<p>它的主要特点是：</p>
+<ul>
+<li>语法简洁：使用少量符号（如 #、*、&gt; 等）来表示标题、粗体、引用等格式</li>
+<li>可读性高：即使不渲染，也能直接阅读纯文本内容</li>
+<li>跨平台：广泛支持于 GitHub、博客平台、文档系统、笔记软件等</li>
+<li>易于转换：通过工具（如 pandoc）可导出为 HTML、PDF、Word 等多种格式</li>
+</ul>
+<p>一个简单例子：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu"># 一级标题</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>这是 **加粗** 的文字，这是 *斜体* 的文字。  </span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="ss">- </span>列表项 1  </span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="ss">- </span>列表项 2  </span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">[</span><span class="ot">这是一个链接</span><span class="co">](https://example.com)</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>通过<code>代码块</code>实现统计计算</strong>：</p>
+<p>在 R Markdown 中，代码块（code chunk） 是用来嵌入并执行代码的区域，可以写 R、Python、SQL 等多种语言的代码。它的作用是把代码、运行结果、图表直接整合到文档中，实现“代码即文档”的理念。</p>
+<ol type="1">
+<li>代码块的基本结构</li>
+</ol>
+<p>代码块用 三个反引号 ``` 包裹，并在起始行加上花括号 {} 指定语言和选项：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">summary</span>(cars)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="in">```</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     speed           dist       
+ Min.   : 4.0   Min.   :  2.00  
+ 1st Qu.:12.0   1st Qu.: 26.00  
+ Median :15.0   Median : 36.00  
+ Mean   :15.4   Mean   : 42.98  
+ 3rd Qu.:19.0   3rd Qu.: 56.00  
+ Max.   :25.0   Max.   :120.00  </code></pre>
+</div>
+</div>
+<p><code>{r}</code>表示这是 R 语言代码块，也可以写成<code>{python}</code>、<code>{sql}</code>等，使用不同语言。</p>
+<ol start="2" type="1">
+<li>行内代码</li>
+</ol>
+<p>除了独立代码块，R Markdown还支持行内代码，可在正文中直接嵌入计算结果，实现数据与文字的无缝融合。计算结果一旦更新，文本描述也会随之自动调整。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="dv">2</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>渲染后会直接显示 2。</p>
+</section>
+<section id="r-markdown的发展演化" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="r-markdown的发展演化"><span class="header-section-number">3.3</span> R Markdown的发展演化</h3>
+<p>随着 R Markdown 的发展，已形成一个较为完善的生态体系。R 语言社区围绕它开发了众多功能丰富的扩展包，例如：bookdown 用于撰写书籍，blogdown 用于创建博客或网站，posterdown 用于设计学术海报，xaringan 用于制作幻灯片等。</p>
+<p><img src="https://www.chenq.site/qsight/2022-12-05-rmd-to-quarto/rmd-packages.png" class="img-fluid" style="width:80.0%"></p>
+</section>
+<section id="quarto" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="quarto"><span class="header-section-number">3.4</span> Quarto</h3>
+<blockquote class="blockquote">
+<p>Quarto® is an open-source scientific and technical publishing system built on Pandoc. 基于 Pandoc 的开源科学与技术出版系统。</p>
+</blockquote>
+<p><a href="https://quarto.org">Quarto</a>是一款跨平台、可独立运行的文档与出版系统，不依赖 R、RStudio 或其他特定编程环境。它继承了 R Markdown 生态中部分扩展包（如 blogdown、bookdown、xaringan）的功能，同时提供统一语法，支持网站、博客、书籍、幻灯片等多种输出格式，大幅降低了学习成本。Quarto 原生支持 R、Python、Julia 和 Observable JS 等多种编程语言，引入了新的 .qmd 文档格式，并调整了代码块选项的书写方式。此外，它内置对科学写作的支持，包括公式、文献引用、交叉引用和图表，使科研文档的撰写更加高效、规范和可复现。</p>
+<p>作为 R Markdown 的升级与扩展版本，Quarto在多语言支持、跨平台运行、统一语法、标准化项目管理和科学写作功能等方面均具有显著优势。它适合大型、多语言或跨团队的科研与技术出版项目，能够简化项目配置、便于版本控制，并促进协作与知识共享。</p>
+<p>因此，Quarto是实现可重复性数据分析的重要工具。</p>
+</section>
+</section>
+<section id="可重复性数据分析内容" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="可重复性数据分析内容"><span class="header-section-number">4</span> 可重复性数据分析内容</h2>
+<blockquote class="blockquote">
+<p>可重复性数据分析的关键在于有效记录数据处理、数据分析和数据报告的过程，从而使自己或别人均可以通过记录重复得出相同或相似的结果。</p>
+</blockquote>
+<p>我们可以将数据分析划分为三个阶段：分析前、分析中和分析后。在分析前，安全、有效地管理数据是保证可重复性数据分析的核心。数据通常分为 原始数据 和 分析数据。</p>
+<ul>
+<li><strong>原始数据：</strong>必须安全保存和备份，并保持只读属性，确保内容不被修改。应记录数据的获取途径和方式。例如，通过网络下载的数据需注明下载地址与时间；在R中，最好使用代码自动下载数据，若无法实现，也应保留完整的文档说明。</li>
+<li><strong>分析数据：</strong>应通过代码完整记录从原始数据到分析数据的清洗与转换过程，并检查其是否符合后续建模或其他分析的要求。同时，分析数据需配备说明文档，明确数据结构、变量含义及生成方式。</li>
+</ul>
+<p>在分析过程中，代码应遵循社区规范，以保证可读性，并在关键位置添加注释，说明每段代码的功能与目的。许多人都有过类似经历——曾写下的代码，过一段时间便忘了用途。若研究涉及合作者，应共同审阅数据与代码，以减少潜在错误。此外，分析中使用的R包或其他软件，应记录版本信息及计算环境，以便日后复现结果。</p>
+<p>分析完成后，应明确分析代码和结果的存放位置，并评估其是否具备对外共享的条件。</p>
+
+
+</section>
+
+
+<section class="author-card">
+  <div class="avatar-container">
+    <img src="../_assets/images/author.png" alt="陈琼博士" class="author-avatar">
+  </div>
+  <div class="author-info">
+    <h3 class="anchored">陈 琼</h3>
+    <a class="badge badge-red"> <i class="bi bi-award"> </i> 博士 </a>
+    <a class="badge badge-blue"> <i class="bi bi-bar-chart"> </i> 副主任医师 </a>
+    <p class="bio">他从事肿瘤登记与人群流行病学研究，编写肿瘤登记年报，并开发和维护个人网站。他撰写博文，分享数据分析方法、可视化技巧和自动化报告解决方案，同时学习 R 语言，开发 R 包，不断探索高效的数据处理与展示方式。 🚀</p>
+    <div class="social-links">
+      <a href="https://github.com/gigu003" target="_blank">
+        <i class="bi bi-github"></i>
+      </a>
+      <a href="mailto:chenq08@126.com" target="_blank">
+        <i class="bi bi-envelope"></i>
+      </a>
+      <a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=KKgW5AwAAAAJ&amp;view_op=list_works&amp;authuser=1&amp;sortby=pubdate" target="_blank">
+        <i class="bi bi-google"></i>
+      </a>
+    </div>
+  </div>
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到顶部</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.chenq\.site");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright@ 2025 Qiong Chen</p>
+</div>   
+    <div class="nav-footer-center">
+<p>豫ICP备2021032022号</p>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gigu003">
+      <i class="bi bi-github" role="img" aria-label="Qiong@GitHub">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="../../qsight/index.xml">
+      <i class="bi bi-rss" role="img" aria-label="RSS">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+</body></html>
